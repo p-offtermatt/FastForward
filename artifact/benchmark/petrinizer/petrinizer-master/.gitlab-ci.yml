@@ -1,0 +1,16 @@
+image: gitlab-runner/haskell
+
+stages:
+  - build
+
+Build:
+  stage:
+    build
+  script:
+    - make
+    - cp dist/build/slapnet/slapnet petrinizer
+  artifacts:
+    paths:
+      - petrinizer
+    when: on_success
+    expire_in: 1 week

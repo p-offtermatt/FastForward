@@ -1,0 +1,153 @@
+place "i" init 1;
+place "o";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy";
+place "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy";
+trans "*:Model.4bas--0-----u--:Model.4bas--0-----u--:start"~"*:Model.4bas--0-----u--:Model.4bas--0-----u--:start"
+    in "i"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition"
+;
+trans "*:Model.4bas--0-----u--:Model.4bas--0-----u--:end"~"*:Model.4bas--0-----u--:Model.4bas--0-----u--:end"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:join:InputCondition"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:join:InputCondition"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:split:Split_Split_and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:split:Split_Split_and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):join:Split_Split_and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):join:Split_Split_and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):split:Split_Join_and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):split:Split_Join_and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):join:Split_Split_and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):join:Split_Split_and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)"
+       "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:join:Split_Join_and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:join:Split_Join_and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:split:Join_Split_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:split:Join_Split_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):join:Split_Yes_and (4bba)*and (4bba)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):join:Split_Yes_and (4bba)*and (4bba)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):split:and (4bba)*Processing of Master Production Schedule (4bc9)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):split:and (4bba)*Processing of Master Production Schedule (4bc9)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):join:and (4bba)*Processing of Master Production Schedule (4bc9)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):join:and (4bba)*Processing of Master Production Schedule (4bc9)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):split:Processing of Master Production Schedule (4bc9)*or (4bbh)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):split:Processing of Master Production Schedule (4bc9)*or (4bbh)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):join:Processing of Master Production Schedule (4bc9)*or (4bbh)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):join:Processing of Master Production Schedule (4bc9)*or (4bbh)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):split:or (4bbh)*or (4bds)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):split:or (4bbh)*or (4bds)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):join:or (4bbh)*or (4bds)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):join:or (4bbh)*or (4bds)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):split:or (4bds)*Material Staging (4bed)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):split:or (4bds)*Material Staging (4bed)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):join:or (4bds)*Material Staging (4bed)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):join:or (4bds)*Material Staging (4bed)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):split:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):split:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):join:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):join:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):split:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):split:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):join:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):join:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):split:and (4bdz)*Join_Yes_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):split:and (4bdz)*Join_Yes_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):join:Join_Split_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):join:Join_Split_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):split:Join_Join_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):split:Join_Join_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)"
+       "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):split:Join_Join_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):split:Join_Join_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:join:Join_Join_and (4bdz)"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:join:Join_Join_and (4bdz)"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy"
+;
+trans "t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:split:outputCondition"~"t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:split:outputCondition"
+    in "p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy"
+   out "p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition"
+;
+

@@ -1,0 +1,55 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToProcess.s00004048.inputCriterion.s00000937.used, callToProcess.s00004048.output.s00000981, callToTask.s00002466.input.s00000950, callToTask.s00002466.inputCriterion.s00000937.used, callToTask.s00002466.output.s00000956, callToTask.s00002776.inputCriterion.s00000937.used, callToTask.s00002776.output.s00000979, merge.s00000945.activated, merge.s00000945.input.s00000935, merge.s00000945.input.s00000950, merge.s00000945.input.s00000952;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToProcess.s00004048.inputCriterion.s00000937
+  CONSUME callToTask.s00002466.output.s00000956:1;
+  PRODUCE callToProcess.s00004048.inputCriterion.s00000937.used:1;
+
+TRANSITION callToProcess.s00004048.outputCriterion.s00000939
+  CONSUME callToProcess.s00004048.inputCriterion.s00000937.used:1;
+  PRODUCE callToProcess.s00004048.output.s00000981:1;
+
+TRANSITION callToTask.s00002466.inputCriterion.s00000937
+  CONSUME callToTask.s00002466.input.s00000950:1;
+  PRODUCE callToTask.s00002466.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00002466.outputCriterion.s00000939
+  CONSUME callToTask.s00002466.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00002466.output.s00000956:1;
+
+TRANSITION callToTask.s00002776.inputCriterion.s00000937
+  CONSUME callToProcess.s00004048.output.s00000981:1;
+  PRODUCE callToTask.s00002776.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00002776.outputCriterion.s00000939
+  CONSUME callToTask.s00002776.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00002776.output.s00000979:1;
+
+TRANSITION merge.s00000945.activate.s00000946
+  CONSUME merge.s00000945.input.s00000935:1;
+  PRODUCE merge.s00000945.activated:1;
+
+TRANSITION merge.s00000945.activate.s00000948
+  CONSUME merge.s00000945.input.s00000950:1;
+  PRODUCE merge.s00000945.activated:1;
+
+TRANSITION merge.s00000945.activate.s00000949
+  CONSUME merge.s00000945.input.s00000952:1;
+  PRODUCE merge.s00000945.activated:1;
+
+TRANSITION merge.s00000945.fire.s00000953
+  CONSUME merge.s00000945.activated:1;
+  PRODUCE callToTask.s00002466.input.s00000950:1;
+
+TRANSITION process.s00000069##s00004063.inputCriterion.s00000937
+  CONSUME alpha:1;
+  PRODUCE merge.s00000945.input.s00000935:1, merge.s00000945.input.s00000950:1, merge.s00000945.input.s00000952:1;
+
+
+{ END OF FILE }

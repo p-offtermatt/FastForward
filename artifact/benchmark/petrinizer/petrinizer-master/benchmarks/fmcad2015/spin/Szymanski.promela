@@ -1,0 +1,66 @@
+#define CHECK 1
+
+byte flag[N];
+
+active [N] proctype p() {
+     int j;
+s1:  skip;
+s2:  flag[_pid] = 1;
+s3:  j = 0;
+     do
+     :: j == N ->
+         break;
+     :: j < N && flag[j] <= 2 ->
+         j++;
+     :: j < N && flag[j] > 2 ->
+         skip;
+     od
+s4:  flag[_pid] = 3
+s5:  j = 0
+     do
+     :: j == N ->
+         goto s8;
+     :: j < N && flag[j] == 1 ->
+         goto s6;
+     :: j < N && flag[j] != 1 ->
+         j++;
+     od
+s6:  flag[_pid] = 2
+s7:  j = 0
+     do
+     :: j == N ->
+         j = 0;
+     :: j < N && flag[j] == 4 ->
+         break;
+     :: j < N && flag[j] != 4 ->
+         j++;
+     od
+s8:  flag[_pid] = 4
+s9:  j = 0;
+     do
+     :: j == _pid ->
+         break;
+     :: j < _pid && flag[j] <= 1 ->
+         j++;
+     :: j < _pid && flag[j] > 1 ->
+         skip;
+     od
+s10: if
+     :: _pid == CHECK ->
+progress: skip;
+     :: else ->
+          skip;
+     fi
+s11: j = _pid + 1;
+     do
+     :: j == N ->
+         break;
+     :: j < N && (flag[j] <= 1 || flag[j] == 4) ->
+         j++;
+     :: j < N && (flag[j] == 2 || flag[j] == 3) ->
+         skip;
+     od
+s12: flag[_pid] = 0
+s13: goto s1;
+}
+

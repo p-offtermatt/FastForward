@@ -1,0 +1,32 @@
+PLACE 'sigma,'m1,'m2,alpha,callToProcess.s00000984.input.s00001009,callToProcess.s00000984.input.s00001010,callToProcess.s00000984.inputCriterion.s00000937.used,callToProcess.s00000984.output.s00000979,'alpha,'callToProcess.s00000984.input.s00001009,'callToProcess.s00000984.input.s00001010,'callToProcess.s00000984.inputCriterion.s00000937.used,'callToProcess.s00000984.output.s00000979;
+
+MARKING 'alpha:1,'m1:1,alpha:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION callToProcess.s00000984.inputCriterion.s00000937
+CONSUME 'callToProcess.s00000984.input.s00001009:1,'callToProcess.s00000984.input.s00001010:1,callToProcess.s00000984.input.s00001009:1,callToProcess.s00000984.input.s00001010:1,'m1:1;
+PRODUCE 'callToProcess.s00000984.inputCriterion.s00000937.used:1,callToProcess.s00000984.inputCriterion.s00000937.used:1,'m1:1;
+
+TRANSITION 'callToProcess.s00000984.inputCriterion.s00000937
+CONSUME 'callToProcess.s00000984.input.s00001009:1,'callToProcess.s00000984.input.s00001010:1,'m2:1;
+PRODUCE 'callToProcess.s00000984.inputCriterion.s00000937.used:1,'sigma:1,'m2:1;
+
+TRANSITION callToProcess.s00000984.outputCriterion.s00000939
+CONSUME 'callToProcess.s00000984.inputCriterion.s00000937.used:1,callToProcess.s00000984.inputCriterion.s00000937.used:1,'m1:1;
+PRODUCE 'callToProcess.s00000984.output.s00000979:1,callToProcess.s00000984.output.s00000979:1,'m1:1;
+
+TRANSITION 'callToProcess.s00000984.outputCriterion.s00000939
+CONSUME 'callToProcess.s00000984.inputCriterion.s00000937.used:1,'m2:1;
+PRODUCE 'callToProcess.s00000984.output.s00000979:1,'sigma:1,'m2:1;
+
+TRANSITION process.s00000041##s00004077.inputCriterion.s00000937
+CONSUME 'alpha:1,alpha:1,'m1:1;
+PRODUCE 'callToProcess.s00000984.input.s00001009:1,'callToProcess.s00000984.input.s00001010:1,callToProcess.s00000984.input.s00001009:1,callToProcess.s00000984.input.s00001010:1,'m1:1;
+
+TRANSITION 'process.s00000041##s00004077.inputCriterion.s00000937
+CONSUME 'alpha:1,'m2:1;
+PRODUCE 'callToProcess.s00000984.input.s00001009:1,'callToProcess.s00000984.input.s00001010:1,'sigma:1,'m2:1;
+

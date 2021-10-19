@@ -1,0 +1,41 @@
+#define CHECK 0
+#define SIZE short
+
+SIZE q[N];
+SIZE turn[N];
+
+active [N] proctype p() {
+    int j;
+    int k;
+s1: for (j : 1 .. (N-1)) {
+        q[_pid] = j;
+        turn[j] = _pid;
+s4:     k = 0;
+s5:     if
+        :: k == N || (k == _pid && _pid == N - 1) ->
+            goto s6;
+        :: k == _pid && _pid < N - 1 ->
+            k = _pid + 1;
+        :: else ->
+            skip;
+        fi
+        if
+        :: q[k] >= j && turn[j] == _pid ->
+            goto s4;
+        :: else ->
+            k++;
+            goto s5;
+        fi
+    }
+s6:
+    q[_pid] = N;
+    if
+    :: _pid == CHECK ->
+progress: skip;
+    :: else ->
+        skip;
+    fi
+cs: skip;
+    q[_pid] = 0;
+    goto s1;
+}

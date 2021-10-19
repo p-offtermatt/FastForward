@@ -1,0 +1,13 @@
+set title "Number of petri nets with certain number of places for IBM workflow nets"
+
+set boxwidth 0.9
+#set style fill solid 1.0
+set key off
+set xtics out
+set ytics out
+set xlabel "Places"
+set ylabel "Number of nets"
+
+set terminal pdf
+set output 'places.pdf'
+plot 'places-hist.list' with boxes linecolor rgb 'black'

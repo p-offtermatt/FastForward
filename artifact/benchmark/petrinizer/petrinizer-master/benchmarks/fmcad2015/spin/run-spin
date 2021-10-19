@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+if [[ -z $1 ]]; then
+  echo "Error: No promela script given"
+  exit 5
+fi
+if [[ -z $2 ]]; then
+  echo "Error: No output file given"
+  exit 5
+fi
+if [[ -z $3 ]]; then
+  echo "Error: No process number given"
+  exit 5
+fi
+
+name=$1
+basename=$( basename $name )
+
+output=$2
+trail="$basename.trail"
+pan="/tmp/$basename.pan"
+
+n=$3
+nfair=$(expr \( \( $n + 2 \) / 4 + 2 \) )
+
+exit_with() {
+  # cleanup compiling products from spin
+  rm -f pan.* _spin_nvr.tmp
+  # remove pan file and trail
+  rm -f "$pan" "$trail"
+  exit $1
+}
+parsing-error () {
+  echo "Parsing Error: $@"
+  exit_with 3
+}
+runtime-error () {
+  echo "Runtime Error: $@"
+  exit_with 4
+}
+
+# compile Promela model
+# -a : generate pan
+spin -a -DN=$n "$name" >"$output" || parsing-error "Spin failed"
+
+# compile generated pan
+# -DNOREDUCE : disables the partial order reduction algorithm
+# -DCOLLAPSE : a state vector compression mode
+# -DMA=XX : use a minimized DFA encoding for the state space
+# -DNFAIR : specify the number of processes for fair scheduling
+# -DNP : check for non-progress cycles
+gcc -DNOREDUCE -DNFAIR=$nfair -DNP pan.c -o "$pan" || parsing-error "GCC failed"
+
+# run pan
+# -l : check for non-progress cycles
+# -f : use weakly fair scheduling
+# -n : do not print unreached states
+# -m : search depth
+"$pan" -l -f -n -m100000000 >>"$output" 2>&1 || runtime-error "PAN failed"
+
+# check for errors in pan output
+grep -e "^error:" "$output" && runtime-error "PAN error"
+
+# check for out of memory
+if grep -q -e "out of memory" "$output"; then
+    exit_with 2
+else
+    # check for trail
+    if [[ -e "$trail" ]]; then
+        exit_with 1
+    else
+        exit_with 0
+    fi
+fi

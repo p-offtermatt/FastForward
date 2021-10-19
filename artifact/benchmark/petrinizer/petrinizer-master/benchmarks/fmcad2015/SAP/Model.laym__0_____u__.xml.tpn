@@ -1,0 +1,189 @@
+place "i" init 1;
+place "o";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:InputCondition";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Lease Payment (laz7)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Lease Payment (laz7)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_xor (lazm)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_xor (lazm)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Change in a Leasing Agreement (lb0n)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Change in a Leasing Agreement (lb0n)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Split_xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Join_xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:outputCondition";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm)*xor (lazm)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7)*xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv)*Join_Yes_xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm)*Transfer Leased Asset (lb09)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09)*xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n)*xor (lazv)";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split:busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Skip:busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):busy";
+place "p:Model.laym--0-----u--:Model.laym--0-----u--:Output:busy";
+trans "*:Model.laym--0-----u--:Model.laym--0-----u--:start"~"*:Model.laym--0-----u--:Model.laym--0-----u--:start"
+    in "i"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:InputCondition"
+;
+trans "*:Model.laym--0-----u--:Model.laym--0-----u--:end"~"*:Model.laym--0-----u--:Model.laym--0-----u--:end"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split:join:InputCondition"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split:join:InputCondition"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:InputCondition"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split:busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split:split:Split_Split_Lease Payment (laz7):Split_Split_xor (lazm):Split_Split_Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split:split:Split_Split_Lease Payment (laz7):Split_Split_xor (lazm):Split_Split_Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split:busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Lease Payment (laz7)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_xor (lazm)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Change in a Leasing Agreement (lb0n)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):join:Split_Split_Lease Payment (laz7)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):join:Split_Split_Lease Payment (laz7)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Lease Payment (laz7)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):split:Split_Join_Lease Payment (laz7)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):split:Split_Join_Lease Payment (laz7)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Lease Payment (laz7):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Lease Payment (laz7)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):join:Split_Split_Lease Payment (laz7)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):join:Split_Split_Lease Payment (laz7)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Lease Payment (laz7)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):split:Split_Join_Lease Payment (laz7):Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):split:Split_Join_Lease Payment (laz7):Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Lease Payment (laz7)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):join:Split_Split_xor (lazm)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):join:Split_Split_xor (lazm)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_xor (lazm)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):split:Split_Join_xor (lazm)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):split:Split_Join_xor (lazm)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_xor (lazm):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_xor (lazm)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):join:Split_Split_xor (lazm)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):join:Split_Split_xor (lazm)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_xor (lazm)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):split:Split_Join_xor (lazm):Split_Yes_xor (lazm)*xor (lazm)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):split:Split_Join_xor (lazm):Split_Yes_xor (lazm)*xor (lazm)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_xor (lazm)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm)*xor (lazm)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):join:Split_Split_Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):join:Split_Split_Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Change in a Leasing Agreement (lb0n)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):split:Split_Join_Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):split:Split_Join_Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_No_Change in a Leasing Agreement (lb0n):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Change in a Leasing Agreement (lb0n)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):join:Split_Split_Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):join:Split_Split_Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Split_Change in a Leasing Agreement (lb0n)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):split:Split_Join_Change in a Leasing Agreement (lb0n):Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):split:Split_Join_Change in a Leasing Agreement (lb0n):Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Change in a Leasing Agreement (lb0n)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Skip:join:Split_Join_Lease Payment (laz7):Split_Join_xor (lazm):Split_Join_Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Skip:join:Split_Join_Lease Payment (laz7):Split_Join_xor (lazm):Split_Join_Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Lease Payment (laz7)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_xor (lazm)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Join_Change in a Leasing Agreement (lb0n)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Skip:busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Skip:split:Join_Split_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Skip:split:Join_Split_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Skip:busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Split_xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):join:Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):join:Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Lease Payment (laz7)*Lease Payment (laz7)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):split:Lease Payment (laz7)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):split:Lease Payment (laz7)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7)*xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Lease Payment (laz7)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Lease Payment (laz7)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Lease Payment (laz7)*xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Transfer Leased Asset (lb09)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Transfer Leased Asset (lb09)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09)*xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Change in a Leasing Agreement (lb0n)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):join:Change in a Leasing Agreement (lb0n)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n)*xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):split:xor (lazv)*Join_Yes_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):split:xor (lazv)*Join_Yes_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv)*Join_Yes_xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):join:Split_Yes_xor (lazm)*xor (lazm)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):join:Split_Yes_xor (lazm)*xor (lazm)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_xor (lazm)*xor (lazm)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):split:xor (lazm)*Transfer Leased Asset (lb09)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):split:xor (lazm)*Transfer Leased Asset (lb09)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm)*Transfer Leased Asset (lb09)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):join:xor (lazm)*Transfer Leased Asset (lb09)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):join:xor (lazm)*Transfer Leased Asset (lb09)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazm)*Transfer Leased Asset (lb09)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):split:Transfer Leased Asset (lb09)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):split:Transfer Leased Asset (lb09)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Transfer Leased Asset (lb09)*xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):join:Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):join:Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Split_Yes_Change in a Leasing Agreement (lb0n)*Change in a Leasing Agreement (lb0n)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):split:Change in a Leasing Agreement (lb0n)*xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):split:Change in a Leasing Agreement (lb0n)*xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Change in a Leasing Agreement (lb0n)*xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):join:Join_Split_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):join:Join_Split_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Split_xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):split:Join_Join_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):split:Join_Join_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_No_xor (lazv):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Join_xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):join:xor (lazv)*Join_Yes_xor (lazv):Join_Split_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):join:xor (lazv)*Join_Yes_xor (lazv):Join_Split_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:xor (lazv)*Join_Yes_xor (lazv)"
+       "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Split_xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):split:Join_Join_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):split:Join_Join_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Yes_xor (lazv):busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Join_xor (lazv)"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Output:join:Join_Join_xor (lazv)"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Output:join:Join_Join_xor (lazv)"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Join_Join_xor (lazv)"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:Output:busy"
+;
+trans "t:Model.laym--0-----u--:Model.laym--0-----u--:Output:split:outputCondition"~"t:Model.laym--0-----u--:Model.laym--0-----u--:Output:split:outputCondition"
+    in "p:Model.laym--0-----u--:Model.laym--0-----u--:Output:busy"
+   out "p:Model.laym--0-----u--:Model.laym--0-----u--:outputCondition"
+;
+

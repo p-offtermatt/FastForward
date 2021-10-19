@@ -1,0 +1,126 @@
+place "i" init 1;
+place "o";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy";
+place "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy";
+trans "*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:start"~"*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:start"
+    in "i"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition"
+;
+trans "*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:end"~"*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:end"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:join:InputCondition"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:join:InputCondition"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:split:Split_Split_and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:split:Split_Split_and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):join:Split_Split_and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):join:Split_Split_and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):split:Split_Join_and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):split:Split_Join_and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):join:Split_Split_and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):join:Split_Split_and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)"
+       "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:join:Split_Join_and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:join:Split_Join_and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:split:Join_Split_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:split:Join_Split_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):join:Split_Yes_and (cnxp)*and (cnxp)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):join:Split_Yes_and (cnxp)*and (cnxp)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)"
+       "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):join:and (cnxp)*Substance Search Using Substance Information System (cnya)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):join:and (cnxp)*Substance Search Using Substance Information System (cnya)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):split:Substance Search Using Substance Information System (cnya)*and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):split:Substance Search Using Substance Information System (cnya)*and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)"
+       "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):split:and (cnxw)*Join_Yes_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):split:and (cnxw)*Join_Yes_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):join:and (cnxp)*Report Search Using Report Information System (cnyo)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):join:and (cnxp)*Report Search Using Report Information System (cnyo)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):split:Report Search Using Report Information System (cnyo)*and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):split:Report Search Using Report Information System (cnyo)*and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):join:Join_Split_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):join:Join_Split_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):split:Join_Join_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):split:Join_Join_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)"
+       "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):split:Join_Join_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):split:Join_Join_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:join:Join_Join_and (cnxw)"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:join:Join_Join_and (cnxw)"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy"
+;
+trans "t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:split:outputCondition"~"t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:split:outputCondition"
+    in "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy"
+   out "p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition"
+;
+

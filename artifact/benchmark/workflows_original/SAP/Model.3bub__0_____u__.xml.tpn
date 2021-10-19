@@ -1,0 +1,204 @@
+place "i" init 1;
+place "o";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:InputCondition";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Removal Processing (3buw)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Removal Processing (3buw)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Placement Processing (3bvj)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Placement Processing (3bvj)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_xor (3bv5)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_xor (3bv5)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_Difference Processing (3bw1)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_Difference Processing (3bw1)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:OutputCondition";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw)*or (3bw8)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8)*xor (3bv5)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Join_Yes_xor (3bv5)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Difference Processing (3bw1)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj)*Confirmation (3bwm)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm)*or (3bw8)";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):busy";
+place "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:busy";
+trans "*:Model.3bub--0-----u--:Model.3bub--0-----u--:start"~"*:Model.3bub--0-----u--:Model.3bub--0-----u--:start"
+    in "i"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:InputCondition"
+;
+trans "*:Model.3bub--0-----u--:Model.3bub--0-----u--:end"~"*:Model.3bub--0-----u--:Model.3bub--0-----u--:end"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:join:InputCondition"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:join:InputCondition"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:InputCondition"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:split:Split_Split_Stock Removal Processing (3buw):Split_Split_Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:split:Split_Split_Stock Removal Processing (3buw):Split_Split_Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split:busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Removal Processing (3buw)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Placement Processing (3bvj)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):join:Split_Split_Stock Removal Processing (3buw)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):join:Split_Split_Stock Removal Processing (3buw)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Removal Processing (3buw)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):split:Split_Join_Stock Removal Processing (3buw)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):split:Split_Join_Stock Removal Processing (3buw)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Removal Processing (3buw):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Removal Processing (3buw)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):join:Split_Split_Stock Removal Processing (3buw)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):join:Split_Split_Stock Removal Processing (3buw)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Removal Processing (3buw)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):split:Split_Join_Stock Removal Processing (3buw):Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):split:Split_Join_Stock Removal Processing (3buw):Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Removal Processing (3buw)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):join:Split_Split_Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):join:Split_Split_Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Placement Processing (3bvj)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):split:Split_Join_Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):split:Split_Join_Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_No_Stock Placement Processing (3bvj):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Placement Processing (3bvj)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):join:Split_Split_Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):join:Split_Split_Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Split_Stock Placement Processing (3bvj)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):split:Split_Join_Stock Placement Processing (3bvj):Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):split:Split_Join_Stock Placement Processing (3bvj):Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Placement Processing (3bvj)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:join:Split_Join_Stock Removal Processing (3buw):Split_Join_Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:join:Split_Join_Stock Removal Processing (3buw):Split_Join_Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Removal Processing (3buw)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Join_Stock Placement Processing (3bvj)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:split:Join_Split_xor (3bv5):Join_Split_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:split:Join_Split_xor (3bv5):Join_Split_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Skip:busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_xor (3bv5)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_Difference Processing (3bw1)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):join:Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):join:Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Removal Processing (3buw)*Stock Removal Processing (3buw)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):split:Stock Removal Processing (3buw)*or (3bw8)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):split:Stock Removal Processing (3buw)*or (3bw8)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw)*or (3bw8)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Stock Removal Processing (3buw)*or (3bw8)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Stock Removal Processing (3buw)*or (3bw8)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw)*or (3bw8)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Confirmation (3bwm)*or (3bw8)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Confirmation (3bwm)*or (3bw8)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm)*or (3bw8)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Stock Removal Processing (3buw)*or (3bw8):Confirmation (3bwm)*or (3bw8)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):join:Stock Removal Processing (3buw)*or (3bw8):Confirmation (3bwm)*or (3bw8)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Removal Processing (3buw)*or (3bw8)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm)*or (3bw8)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):split:or (3bw8)*xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):split:or (3bw8)*xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8)*xor (3bv5)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):join:or (3bw8)*xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):join:or (3bw8)*xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:or (3bw8)*xor (3bv5)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):split:xor (3bv5)*Join_Yes_xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):split:xor (3bv5)*Join_Yes_xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Join_Yes_xor (3bv5)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):split:xor (3bv5)*Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):split:xor (3bv5)*Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Difference Processing (3bw1)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):join:xor (3bv5)*Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):join:xor (3bv5)*Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Difference Processing (3bw1)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):split:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):split:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):join:Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):join:Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Split_Yes_Stock Placement Processing (3bvj)*Stock Placement Processing (3bvj)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):split:Stock Placement Processing (3bvj)*Confirmation (3bwm)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):split:Stock Placement Processing (3bvj)*Confirmation (3bwm)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj)*Confirmation (3bwm)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):join:Stock Placement Processing (3bvj)*Confirmation (3bwm)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):join:Stock Placement Processing (3bvj)*Confirmation (3bwm)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Stock Placement Processing (3bvj)*Confirmation (3bwm)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):split:Confirmation (3bwm)*or (3bw8)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):split:Confirmation (3bwm)*or (3bw8)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Confirmation (3bwm)*or (3bw8)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):join:Join_Split_xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):join:Join_Split_xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_xor (3bv5)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):split:Join_Join_xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):split:Join_Join_xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_xor (3bv5):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_xor (3bv5)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):join:xor (3bv5)*Join_Yes_xor (3bv5):Join_Split_xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):join:xor (3bv5)*Join_Yes_xor (3bv5):Join_Split_xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:xor (3bv5)*Join_Yes_xor (3bv5)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_xor (3bv5)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):split:Join_Join_xor (3bv5)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):split:Join_Join_xor (3bv5)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_xor (3bv5):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_xor (3bv5)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):join:Join_Split_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):join:Join_Split_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_Difference Processing (3bw1)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):split:Join_Join_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):split:Join_Join_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_No_Difference Processing (3bw1):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_Difference Processing (3bw1)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):join:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1):Join_Split_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):join:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1):Join_Split_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Difference Processing (3bw1)*Join_Yes_Difference Processing (3bw1)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Split_Difference Processing (3bw1)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):split:Join_Join_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):split:Join_Join_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Yes_Difference Processing (3bw1):busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_Difference Processing (3bw1)"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:join:Join_Join_xor (3bv5):Join_Join_Difference Processing (3bw1)"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:join:Join_Join_xor (3bv5):Join_Join_Difference Processing (3bw1)"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_xor (3bv5)"
+       "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Join_Join_Difference Processing (3bw1)"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:busy"
+;
+trans "t:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:split:OutputCondition"~"t:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:split:OutputCondition"
+    in "p:Model.3bub--0-----u--:Model.3bub--0-----u--:Output:busy"
+   out "p:Model.3bub--0-----u--:Model.3bub--0-----u--:OutputCondition"
+;
+

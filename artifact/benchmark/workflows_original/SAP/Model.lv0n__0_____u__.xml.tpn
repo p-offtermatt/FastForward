@@ -1,0 +1,329 @@
+place "i" init 1;
+place "o";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:InputCondition";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_or (lv1h)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_or (lv1h)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv1o)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv1o)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv2u)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv2u)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3e)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3e)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3l)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3l)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_xor (lv31)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_xor (lv31)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification that Application is on Hold (lv1a)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification that Application is on Hold (lv1a)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification of Rejection of Application (lv22)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification of Rejection of Application (lv22)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:OutputCondition";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h)*or (lv1h)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o)*and (lv1o)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u)*and (lv2u)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e)*and (lv3e)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l)*and (lv3l)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h)*and (lv1o)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o)*and (lv2u)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u)*Applicant Pool Administration (lv4c)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c)*xor (lv31)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*Join_Yes_xor (lv31)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3e)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3l)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e)*Notification that Application is on Hold (lv1a)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l)*Notification of Rejection of Application (lv22)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22)";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):busy";
+place "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:busy";
+trans "*:Model.lv0n--0-----u--:Model.lv0n--0-----u--:start"~"*:Model.lv0n--0-----u--:Model.lv0n--0-----u--:start"
+    in "i"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:InputCondition"
+;
+trans "*:Model.lv0n--0-----u--:Model.lv0n--0-----u--:end"~"*:Model.lv0n--0-----u--:Model.lv0n--0-----u--:end"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:join:InputCondition"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:join:InputCondition"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:InputCondition"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:split:Split_Split_or (lv1h):Split_Split_and (lv1o):Split_Split_and (lv2u):Split_Split_and (lv3e):Split_Split_and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:split:Split_Split_or (lv1h):Split_Split_and (lv1o):Split_Split_and (lv2u):Split_Split_and (lv3e):Split_Split_and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split:busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_or (lv1h)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv1o)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv2u)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3e)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3l)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):join:Split_Split_or (lv1h)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):join:Split_Split_or (lv1h)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_or (lv1h)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):split:Split_Join_or (lv1h)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):split:Split_Join_or (lv1h)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_or (lv1h):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_or (lv1h)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):join:Split_Split_or (lv1h)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):join:Split_Split_or (lv1h)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_or (lv1h)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):split:Split_Join_or (lv1h):Split_Yes_or (lv1h)*or (lv1h)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):split:Split_Join_or (lv1h):Split_Yes_or (lv1h)*or (lv1h)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_or (lv1h)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h)*or (lv1h)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):join:Split_Split_and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):join:Split_Split_and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv1o)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):split:Split_Join_and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):split:Split_Join_and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv1o):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv1o)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):join:Split_Split_and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):join:Split_Split_and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv1o)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):split:Split_Join_and (lv1o):Split_Yes_and (lv1o)*and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):split:Split_Join_and (lv1o):Split_Yes_and (lv1o)*and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv1o)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o)*and (lv1o)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):join:Split_Split_and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):join:Split_Split_and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv2u)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):split:Split_Join_and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):split:Split_Join_and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv2u):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv2u)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):join:Split_Split_and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):join:Split_Split_and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv2u)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):split:Split_Join_and (lv2u):Split_Yes_and (lv2u)*and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):split:Split_Join_and (lv2u):Split_Yes_and (lv2u)*and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv2u)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u)*and (lv2u)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):join:Split_Split_and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):join:Split_Split_and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3e)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):split:Split_Join_and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):split:Split_Join_and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3e):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3e)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):join:Split_Split_and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):join:Split_Split_and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3e)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):split:Split_Join_and (lv3e):Split_Yes_and (lv3e)*and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):split:Split_Join_and (lv3e):Split_Yes_and (lv3e)*and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3e)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e)*and (lv3e)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):join:Split_Split_and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):join:Split_Split_and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3l)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):split:Split_Join_and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):split:Split_Join_and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_No_and (lv3l):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3l)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):join:Split_Split_and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):join:Split_Split_and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Split_and (lv3l)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):split:Split_Join_and (lv3l):Split_Yes_and (lv3l)*and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):split:Split_Join_and (lv3l):Split_Yes_and (lv3l)*and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3l)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l)*and (lv3l)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:join:Split_Join_or (lv1h):Split_Join_and (lv1o):Split_Join_and (lv2u):Split_Join_and (lv3e):Split_Join_and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:join:Split_Join_or (lv1h):Split_Join_and (lv1o):Split_Join_and (lv2u):Split_Join_and (lv3e):Split_Join_and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_or (lv1h)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv1o)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv2u)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3e)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Join_and (lv3l)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:split:Join_Split_xor (lv31):Join_Split_Notification that Application is on Hold (lv1a):Join_Split_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:split:Join_Split_xor (lv31):Join_Split_Notification that Application is on Hold (lv1a):Join_Split_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Skip:busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_xor (lv31)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification that Application is on Hold (lv1a)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification of Rejection of Application (lv22)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):join:Split_Yes_or (lv1h)*or (lv1h)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):join:Split_Yes_or (lv1h)*or (lv1h)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_or (lv1h)*or (lv1h)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):split:or (lv1h)*and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):split:or (lv1h)*and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h)*and (lv1o)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):join:Split_Yes_and (lv1o)*and (lv1o):or (lv1h)*and (lv1o)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):join:Split_Yes_and (lv1o)*and (lv1o):or (lv1h)*and (lv1o)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv1o)*and (lv1o)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:or (lv1h)*and (lv1o)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):split:and (lv1o)*and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):split:and (lv1o)*and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o)*and (lv2u)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):join:Split_Yes_and (lv2u)*and (lv2u):and (lv1o)*and (lv2u)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):join:Split_Yes_and (lv2u)*and (lv2u):and (lv1o)*and (lv2u)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv2u)*and (lv2u)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv1o)*and (lv2u)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):split:and (lv2u)*Applicant Pool Administration (lv4c)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):split:and (lv2u)*Applicant Pool Administration (lv4c)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u)*Applicant Pool Administration (lv4c)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):join:and (lv2u)*Applicant Pool Administration (lv4c)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):join:and (lv2u)*Applicant Pool Administration (lv4c)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv2u)*Applicant Pool Administration (lv4c)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):split:Applicant Pool Administration (lv4c)*xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):split:Applicant Pool Administration (lv4c)*xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c)*xor (lv31)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):join:Applicant Pool Administration (lv4c)*xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):join:Applicant Pool Administration (lv4c)*xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Applicant Pool Administration (lv4c)*xor (lv31)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*Join_Yes_xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*Join_Yes_xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*Join_Yes_xor (lv31)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3e)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):split:xor (lv31)*and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3l)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):join:Split_Yes_and (lv3e)*and (lv3e):xor (lv31)*and (lv3e)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):join:Split_Yes_and (lv3e)*and (lv3e):xor (lv31)*and (lv3e)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3e)*and (lv3e)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3e)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):split:and (lv3e)*Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):split:and (lv3e)*Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e)*Notification that Application is on Hold (lv1a)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):join:and (lv3e)*Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):join:and (lv3e)*Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3e)*Notification that Application is on Hold (lv1a)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):split:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):split:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):join:Split_Yes_and (lv3l)*and (lv3l):xor (lv31)*and (lv3l)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):join:Split_Yes_and (lv3l)*and (lv3l):xor (lv31)*and (lv3l)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Split_Yes_and (lv3l)*and (lv3l)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*and (lv3l)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):split:and (lv3l)*Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):split:and (lv3l)*Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l)*Notification of Rejection of Application (lv22)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):join:and (lv3l)*Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):join:and (lv3l)*Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:and (lv3l)*Notification of Rejection of Application (lv22)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):split:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):split:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):join:Join_Split_xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):join:Join_Split_xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_xor (lv31)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):split:Join_Join_xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):split:Join_Join_xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_xor (lv31):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_xor (lv31)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):join:xor (lv31)*Join_Yes_xor (lv31):Join_Split_xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):join:xor (lv31)*Join_Yes_xor (lv31):Join_Split_xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:xor (lv31)*Join_Yes_xor (lv31)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_xor (lv31)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):split:Join_Join_xor (lv31)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):split:Join_Join_xor (lv31)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_xor (lv31):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_xor (lv31)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):join:Join_Split_Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):join:Join_Split_Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification that Application is on Hold (lv1a)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):split:Join_Join_Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):split:Join_Join_Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification that Application is on Hold (lv1a):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification that Application is on Hold (lv1a)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):join:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a):Join_Split_Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):join:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a):Join_Split_Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification that Application is on Hold (lv1a)*Join_Yes_Notification that Application is on Hold (lv1a)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification that Application is on Hold (lv1a)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):split:Join_Join_Notification that Application is on Hold (lv1a)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):split:Join_Join_Notification that Application is on Hold (lv1a)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification that Application is on Hold (lv1a):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification that Application is on Hold (lv1a)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):join:Join_Split_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):join:Join_Split_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification of Rejection of Application (lv22)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):split:Join_Join_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):split:Join_Join_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_No_Notification of Rejection of Application (lv22):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification of Rejection of Application (lv22)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):join:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22):Join_Split_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):join:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22):Join_Split_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Notification of Rejection of Application (lv22)*Join_Yes_Notification of Rejection of Application (lv22)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Split_Notification of Rejection of Application (lv22)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):split:Join_Join_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):split:Join_Join_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Yes_Notification of Rejection of Application (lv22):busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification of Rejection of Application (lv22)"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:join:Join_Join_xor (lv31):Join_Join_Notification that Application is on Hold (lv1a):Join_Join_Notification of Rejection of Application (lv22)"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:join:Join_Join_xor (lv31):Join_Join_Notification that Application is on Hold (lv1a):Join_Join_Notification of Rejection of Application (lv22)"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_xor (lv31)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification that Application is on Hold (lv1a)"
+       "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Join_Join_Notification of Rejection of Application (lv22)"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:busy"
+;
+trans "t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:split:OutputCondition"~"t:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:split:OutputCondition"
+    in "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:Output:busy"
+   out "p:Model.lv0n--0-----u--:Model.lv0n--0-----u--:OutputCondition"
+;
+

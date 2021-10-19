@@ -1,0 +1,37 @@
+SORT pid = [ 0 , 1 ];
+
+FUNCTION all(): pid
+    VAR x: pid;
+BEGIN
+    FOR ALL x DO
+        RETURN x
+    END
+END
+
+PLACE
+    idle: pid, request: pid, critical: pid,
+    sem;
+
+MARKING
+    idle: all(),
+    sem: 1;
+
+TRANSITION g0
+    VAR x: pid;
+    CONSUME idle: x;
+    PRODUCE idle: x;
+
+TRANSITION g1
+    VAR x: pid;
+    CONSUME idle: x;
+    PRODUCE request: x;
+
+TRANSITION g2 STRONG FAIR
+    VAR x: pid;
+    CONSUME request: x, sem: 1;
+    PRODUCE critical: x;
+
+TRANSITION g3 WEAK FAIR
+    VAR x: pid;
+    CONSUME critical: x;
+    PRODUCE idle: x, sem: 1;

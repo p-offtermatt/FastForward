@@ -1,0 +1,143 @@
+petri net "Peterson's mutual exclusion algorithm with levels for n=2" {
+  places {
+    p1s1
+    p1s2j1
+    p1s3j1
+    p1s4j1
+    p1s5j1k2
+    p1s6j1k2
+    p1s7j1k2
+    p1s8j1k2
+    p1s9j1
+    p1s10
+    p1s11
+    p1s12
+    p1s13
+    q1v0 q1v1 q1v2
+
+    p2s1
+    p2s2j1
+    p2s3j1
+    p2s4j1
+    p2s5j1k1
+    p2s6j1k1
+    p2s7j1k1
+    p2s8j1k1
+    p2s9j1
+    p2s10
+    p2s11
+    p2s12
+    p2s13
+    q2v0 q2v1 q2v2
+
+    turn1v0 turn1v1 turn1v2
+  }
+  transitions {
+    t1s1
+    t1s2j1
+    t1s3j1turn1v0 t1s3j1turn1v1 t1s3j1turn1v2
+    t1s4j1
+    t1s5j1k2q2v0 t1s5j1k2q2v1 t1s5j1k2q2v2
+    t1s6j1k2turn1v0 t1s6j1k2turn1v1 t1s6j1k2turn1v2
+    t1s7j1k2
+    t1s8j1k2
+    t1s9j1
+    t1s10
+    t1s11
+    t1s12
+    t1s13
+
+    t2s1
+    t2s2j1
+    t2s3j1turn1v0 t2s3j1turn1v1 t2s3j1turn1v2
+    t2s4j1
+    t2s5j1k1q1v0 t2s5j1k1q1v1 t2s5j1k1q1v2
+    t2s6j1k1turn1v0 t2s6j1k1turn1v1 t2s6j1k1turn1v2
+    t2s7j1k1
+    t2s8j1k1
+    t2s9j1
+    t2s10
+    t2s11
+    t2s12
+    t2s13
+  }
+  arcs {
+
+    { p1s1 } -> t1s1 -> { p1s2j1 }
+
+    { p1s2j1 q1v0 } -> t1s2j1 -> { p1s3j1 q1v1 }
+
+    { p1s3j1 turn1v0 } -> t1s3j1turn1v0 -> { p1s4j1 turn1v1 }
+    { p1s3j1 turn1v1 } -> t1s3j1turn1v1 -> { p1s4j1 turn1v1 }
+    { p1s3j1 turn1v2 } -> t1s3j1turn1v2 -> { p1s4j1 turn1v1 }
+
+    { p1s4j1 } -> t1s4j1 -> { p1s5j1k2 }
+
+    { p1s5j1k2 q2v0 } -> t1s5j1k2q2v0 -> { p1s8j1k2 q2v0 }
+    { p1s5j1k2 q2v1 } -> t1s5j1k2q2v1 -> { p1s6j1k2 q2v1 }
+    { p1s5j1k2 q2v2 } -> t1s5j1k2q2v2 -> { p1s6j1k2 q2v2 }
+
+    { p1s6j1k2 turn1v0 } -> t1s6j1k2turn1v0 -> { p1s8j1k2 turn1v0 }
+    { p1s6j1k2 turn1v1 } -> t1s6j1k2turn1v1 -> { p1s7j1k2 turn1v1 }
+    { p1s6j1k2 turn1v2 } -> t1s6j1k2turn1v2 -> { p1s8j1k2 turn1v2 }
+
+    { p1s7j1k2 } -> t1s7j1k2 -> { p1s4j1 }
+
+    { p1s8j1k2 } -> t1s8j1k2 -> { p1s9j1 }
+
+    { p1s9j1 } -> t1s9j1 -> { p1s10 }
+
+    { p1s10 q1v1 } -> t1s10 -> { p1s11 q1v2 }
+
+    { p1s11 } -> t1s11 -> { p1s12 }
+
+    { p1s12 q1v2 } -> t1s12 -> { p1s13 q1v0 }
+
+    { p1s13 } -> t1s13 -> { p1s1 }
+
+
+
+    { p2s1 } -> t2s1 -> { p2s2j1 }
+
+    { p2s2j1 q2v0 } -> t2s2j1 -> { p2s3j1 q2v1 }
+
+    { p2s3j1 turn1v0 } -> t2s3j1turn1v0 -> { p2s4j1 turn1v2 }
+    { p2s3j1 turn1v1 } -> t2s3j1turn1v1 -> { p2s4j1 turn1v2 }
+    { p2s3j1 turn1v2 } -> t2s3j1turn1v2 -> { p2s4j1 turn1v2 }
+
+    { p2s4j1 } -> t2s4j1 -> { p2s5j1k1 }
+
+    { p2s5j1k1 q1v0 } -> t2s5j1k1q1v0 -> { p2s8j1k1 q1v0 }
+    { p2s5j1k1 q1v1 } -> t2s5j1k1q1v1 -> { p2s6j1k1 q1v1 }
+    { p2s5j1k1 q1v2 } -> t2s5j1k1q1v2 -> { p2s6j1k1 q1v2 }
+
+    { p2s6j1k1 turn1v0 } -> t2s6j1k1turn1v0 -> { p2s8j1k1 turn1v0 }
+    { p2s6j1k1 turn1v1 } -> t2s6j1k1turn1v1 -> { p2s8j1k1 turn1v1 }
+    { p2s6j1k1 turn1v2 } -> t2s6j1k1turn1v2 -> { p2s7j1k1 turn1v2 }
+
+    { p2s7j1k1 } -> t2s7j1k1 -> { p2s4j1 }
+
+    { p2s8j1k1 } -> t2s8j1k1 -> { p2s9j1 }
+
+    { p2s9j1 } -> t2s9j1 -> { p2s10 }
+
+    { p2s10 q2v1 } -> t2s10 -> { p2s11 q2v2 }
+
+    { p2s11 } -> t2s11 -> { p2s12 }
+
+    { p2s12 q2v2 } -> t2s12 -> { p2s13 q2v0 }
+
+    { p2s13 } -> t2s13 -> { p2s1 }
+
+  }
+  initial {
+    p1s1 q1v0
+    p2s1 q2v0
+    turn1v0
+  }
+}
+liveness property "starvation freedom for process 1" {
+    t1s1 + t1s2j1 + t1s3j1turn1v0 + t1s3j1turn1v1 + t1s3j1turn1v2 + t1s4j1 + t1s5j1k2q2v0 + t1s5j1k2q2v1 + t1s5j1k2q2v2 + t1s6j1k2turn1v0 + t1s6j1k2turn1v1 + t1s6j1k2turn1v2 + t1s7j1k2 + t1s8j1k2 + t1s9j1 + t1s10 + t1s11 + t1s12 + t1s13 > 0 &&
+    t2s1 + t2s2j1 + t2s3j1turn1v0 + t2s3j1turn1v1 + t2s3j1turn1v2 + t2s4j1 + t2s5j1k1q1v0 + t2s5j1k1q1v1 + t2s5j1k1q1v2 + t2s6j1k1turn1v0 + t2s6j1k1turn1v1 + t2s6j1k1turn1v2 + t2s7j1k1 + t2s8j1k1 + t2s9j1 + t2s10 + t2s11 + t2s12 + t2s13 > 0 &&
+    t1s11 = 0
+}

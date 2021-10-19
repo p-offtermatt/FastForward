@@ -1,0 +1,64 @@
+PLACE 'sigma,'m1,'m2,alpha,task.s00000033.inputCriterion.s00000257.used,task.s00000033.output.s00000264,task.s00000810.input.s00000285,task.s00000810.inputCriterion.s00000257.used,task.s00000810.output.s00000264,task.s00000810.output.s00000275,task.s00000810.output.s00000281,task.s00000811.inputCriterion.s00000257.used,task.s00000811.output.s00000264,'alpha,'task.s00000033.inputCriterion.s00000257.used,'task.s00000033.output.s00000264,'task.s00000810.input.s00000285,'task.s00000810.inputCriterion.s00000257.used,'task.s00000810.output.s00000264,'task.s00000810.output.s00000275,'task.s00000810.output.s00000281,'task.s00000811.inputCriterion.s00000257.used,'task.s00000811.output.s00000264;
+
+MARKING 'alpha:1,'m1:1,alpha:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION process.s00000030##s00000809.inputCriterion.s00000257
+CONSUME 'alpha:1,alpha:1,'m1:1;
+PRODUCE 'task.s00000810.input.s00000285:1,task.s00000810.input.s00000285:1,'m1:1;
+
+TRANSITION 'process.s00000030##s00000809.inputCriterion.s00000257
+CONSUME 'alpha:1,'m2:1;
+PRODUCE 'task.s00000810.input.s00000285:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000033.inputCriterion.s00000257
+CONSUME 'task.s00000810.output.s00000264:1,task.s00000810.output.s00000264:1,'m1:1;
+PRODUCE 'task.s00000033.inputCriterion.s00000257.used:1,task.s00000033.inputCriterion.s00000257.used:1,'m1:1;
+
+TRANSITION 'task.s00000033.inputCriterion.s00000257
+CONSUME 'task.s00000810.output.s00000264:1,'m2:1;
+PRODUCE 'task.s00000033.inputCriterion.s00000257.used:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000033.outputCriterion.s00000258
+CONSUME 'task.s00000033.inputCriterion.s00000257.used:1,task.s00000033.inputCriterion.s00000257.used:1,'m1:1;
+PRODUCE 'task.s00000033.output.s00000264:1,task.s00000033.output.s00000264:1,'m1:1;
+
+TRANSITION 'task.s00000033.outputCriterion.s00000258
+CONSUME 'task.s00000033.inputCriterion.s00000257.used:1,'m2:1;
+PRODUCE 'task.s00000033.output.s00000264:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000810.inputCriterion.s00000257
+CONSUME 'task.s00000033.output.s00000264:1,'task.s00000810.input.s00000285:1,'task.s00000811.output.s00000264:1,task.s00000033.output.s00000264:1,task.s00000810.input.s00000285:1,task.s00000811.output.s00000264:1,'m1:1;
+PRODUCE 'task.s00000810.inputCriterion.s00000257.used:1,task.s00000810.inputCriterion.s00000257.used:1,'m1:1;
+
+TRANSITION 'task.s00000810.inputCriterion.s00000257
+CONSUME 'task.s00000033.output.s00000264:1,'task.s00000810.input.s00000285:1,'task.s00000811.output.s00000264:1,'m2:1;
+PRODUCE 'task.s00000810.inputCriterion.s00000257.used:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000810.outputCriterion.s00000258
+CONSUME 'task.s00000810.inputCriterion.s00000257.used:1,task.s00000810.inputCriterion.s00000257.used:1,'m1:1;
+PRODUCE 'task.s00000810.output.s00000264:1,'task.s00000810.output.s00000275:1,'task.s00000810.output.s00000281:1,task.s00000810.output.s00000264:1,task.s00000810.output.s00000275:1,task.s00000810.output.s00000281:1,'m1:1;
+
+TRANSITION 'task.s00000810.outputCriterion.s00000258
+CONSUME 'task.s00000810.inputCriterion.s00000257.used:1,'m2:1;
+PRODUCE 'task.s00000810.output.s00000264:1,'task.s00000810.output.s00000275:1,'task.s00000810.output.s00000281:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000811.inputCriterion.s00000257
+CONSUME 'task.s00000810.output.s00000281:1,task.s00000810.output.s00000281:1,'m1:1;
+PRODUCE 'task.s00000811.inputCriterion.s00000257.used:1,task.s00000811.inputCriterion.s00000257.used:1,'m1:1;
+
+TRANSITION 'task.s00000811.inputCriterion.s00000257
+CONSUME 'task.s00000810.output.s00000281:1,'m2:1;
+PRODUCE 'task.s00000811.inputCriterion.s00000257.used:1,'sigma:1,'m2:1;
+
+TRANSITION task.s00000811.outputCriterion.s00000258
+CONSUME 'task.s00000811.inputCriterion.s00000257.used:1,task.s00000811.inputCriterion.s00000257.used:1,'m1:1;
+PRODUCE 'task.s00000811.output.s00000264:1,task.s00000811.output.s00000264:1,'m1:1;
+
+TRANSITION 'task.s00000811.outputCriterion.s00000258
+CONSUME 'task.s00000811.inputCriterion.s00000257.used:1,'m2:1;
+PRODUCE 'task.s00000811.output.s00000264:1,'sigma:1,'m2:1;
+

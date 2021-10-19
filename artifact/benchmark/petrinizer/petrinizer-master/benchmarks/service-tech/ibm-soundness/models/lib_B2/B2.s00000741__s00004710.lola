@@ -1,0 +1,35 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToTask.s00004711.input.s00000950, callToTask.s00004711.inputCriterion.s00000937.used, callToTask.s00004711.output.s00000938, callToTask.s00004711.output.s00000956, callToTask.s00004712.inputCriterion.s00000937.used, callToTask.s00004712.output.s00000938, callToTask.s00004712.output.s00000956, process.s00000741##s00004710.input.s00000935, process.s00000741##s00004710.outputCriterion.s00000939_omega;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToTask.s00004711.inputCriterion.s00000937
+  CONSUME callToTask.s00004711.input.s00000950:1, process.s00000741##s00004710.input.s00000935:1;
+  PRODUCE callToTask.s00004711.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00004711.outputCriterion.s00000939
+  CONSUME callToTask.s00004711.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00004711.output.s00000938:1, callToTask.s00004711.output.s00000956:1;
+
+TRANSITION callToTask.s00004712.inputCriterion.s00000937
+  CONSUME callToTask.s00004711.output.s00000938:1, callToTask.s00004711.output.s00000956:1;
+  PRODUCE callToTask.s00004712.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00004712.outputCriterion.s00000939
+  CONSUME callToTask.s00004712.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00004712.output.s00000938:1, callToTask.s00004712.output.s00000956:1;
+
+TRANSITION process.s00000741##s00004710.inputCriterion.s00000937
+  CONSUME alpha:1;
+  PRODUCE callToTask.s00004711.input.s00000950:1, process.s00000741##s00004710.input.s00000935:1;
+
+TRANSITION process.s00000741##s00004710.outputCriterion.s00000939
+  CONSUME callToTask.s00004712.output.s00000938:1;
+  PRODUCE process.s00000741##s00004710.outputCriterion.s00000939_omega:1;
+
+
+{ END OF FILE }

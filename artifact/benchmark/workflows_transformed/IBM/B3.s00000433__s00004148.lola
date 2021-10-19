@@ -1,0 +1,48 @@
+PLACE
+alpha,callToTask.s00002765.input.s00001066,callToTask.s00002765.input.s00001068,callToTask.s00002765.input.s00001127,callToTask.s00002765.input.s00001128,callToTask.s00002765.input.s00001129,callToTask.s00002765.inputCriterion.s00001053.used,callToTask.s00002765.output.s00001077,decision.s00001123.activated,endNode.s00001057.input.default,endNode.s00001058.input.default,final;
+
+MARKING
+alpha: 1, callToTask.s00002765.input.s00001066: 0, callToTask.s00002765.input.s00001068: 0, callToTask.s00002765.input.s00001127: 0, callToTask.s00002765.input.s00001128: 0, callToTask.s00002765.input.s00001129: 0, callToTask.s00002765.inputCriterion.s00001053.used: 0, callToTask.s00002765.output.s00001077: 0, decision.s00001123.activated: 0, endNode.s00001057.input.default: 0, endNode.s00001058.input.default: 0, final: 0;
+
+TRANSITION callToTask.s00002765.inputCriterion.s00001053
+CONSUME callToTask.s00002765.input.s00001066: 1, callToTask.s00002765.input.s00001068: 1, callToTask.s00002765.input.s00001127: 1, callToTask.s00002765.input.s00001128: 1, callToTask.s00002765.input.s00001129: 1;
+PRODUCE callToTask.s00002765.inputCriterion.s00001053.used: 1;
+
+
+
+TRANSITION callToTask.s00002765.outputCriterion.s00001055
+CONSUME callToTask.s00002765.inputCriterion.s00001053.used: 1;
+PRODUCE callToTask.s00002765.output.s00001077: 1;
+
+
+
+TRANSITION decision.s00001123.activate.s00001072
+CONSUME callToTask.s00002765.output.s00001077: 1;
+PRODUCE decision.s00001123.activated: 1;
+
+
+
+TRANSITION decision.s00001123.fire.s00001073
+CONSUME decision.s00001123.activated: 1;
+PRODUCE endNode.s00001057.input.default: 1, endNode.s00001058.input.default: 1;
+
+
+
+TRANSITION decision.s00001123.fire.s00001075
+CONSUME decision.s00001123.activated: 1;
+PRODUCE endNode.s00001058.input.default: 1, endNode.s00001057.input.default: 1;
+
+
+
+TRANSITION process.s00000433##s00004148.inputCriterion.s00001053
+CONSUME alpha: 1;
+PRODUCE callToTask.s00002765.input.s00001066: 1, callToTask.s00002765.input.s00001068: 1, callToTask.s00002765.input.s00001127: 1, callToTask.s00002765.input.s00001128: 1, callToTask.s00002765.input.s00001129: 1;
+
+
+
+TRANSITION t_final
+CONSUME endNode.s00001057.input.default: 1, endNode.s00001058.input.default: 1;
+PRODUCE final: 1;
+
+
+

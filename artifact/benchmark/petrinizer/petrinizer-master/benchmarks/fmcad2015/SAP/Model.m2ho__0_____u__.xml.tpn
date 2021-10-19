@@ -1,0 +1,138 @@
+place "i" init 1;
+place "o";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:InputCondition";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_xor (m2ia)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_xor (m2ia)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_and (m2ih)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_and (m2ih)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:outputCondition";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia)*xor (m2ia)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih)*and (m2ih)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia)*and (m2ih)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv)";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):busy";
+place "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:busy";
+trans "*:Model.m2ho--0-----u--:Model.m2ho--0-----u--:start"~"*:Model.m2ho--0-----u--:Model.m2ho--0-----u--:start"
+    in "i"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:InputCondition"
+;
+trans "*:Model.m2ho--0-----u--:Model.m2ho--0-----u--:end"~"*:Model.m2ho--0-----u--:Model.m2ho--0-----u--:end"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:join:InputCondition"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:join:InputCondition"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:InputCondition"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:split:Split_Split_xor (m2ia):Split_Split_and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:split:Split_Split_xor (m2ia):Split_Split_and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split:busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_xor (m2ia)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_and (m2ih)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):join:Split_Split_xor (m2ia)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):join:Split_Split_xor (m2ia)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_xor (m2ia)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):split:Split_Join_xor (m2ia)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):split:Split_Join_xor (m2ia)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_xor (m2ia):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_xor (m2ia)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):join:Split_Split_xor (m2ia)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):join:Split_Split_xor (m2ia)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_xor (m2ia)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):split:Split_Join_xor (m2ia):Split_Yes_xor (m2ia)*xor (m2ia)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):split:Split_Join_xor (m2ia):Split_Yes_xor (m2ia)*xor (m2ia)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_xor (m2ia)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia)*xor (m2ia)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):join:Split_Split_and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):join:Split_Split_and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_and (m2ih)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):split:Split_Join_and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):split:Split_Join_and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_No_and (m2ih):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_and (m2ih)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):join:Split_Split_and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):join:Split_Split_and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Split_and (m2ih)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):split:Split_Join_and (m2ih):Split_Yes_and (m2ih)*and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):split:Split_Join_and (m2ih):Split_Yes_and (m2ih)*and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_and (m2ih)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih)*and (m2ih)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:join:Split_Join_xor (m2ia):Split_Join_and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:join:Split_Join_xor (m2ia):Split_Join_and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_xor (m2ia)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Join_and (m2ih)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:split:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:split:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Skip:busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):join:Split_Yes_xor (m2ia)*xor (m2ia)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):join:Split_Yes_xor (m2ia)*xor (m2ia)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_xor (m2ia)*xor (m2ia)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):split:xor (m2ia)*and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):split:xor (m2ia)*and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia)*and (m2ih)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):join:Split_Yes_and (m2ih)*and (m2ih):xor (m2ia)*and (m2ih)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):join:Split_Yes_and (m2ih)*and (m2ih):xor (m2ia)*and (m2ih)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Split_Yes_and (m2ih)*and (m2ih)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:xor (m2ia)*and (m2ih)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):split:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):split:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):join:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):join:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:and (m2ih)*Planning and Organization of Personnel Appraisal (m2iv)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):split:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):split:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):join:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):join:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):split:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):split:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_No_Planning and Organization of Personnel Appraisal (m2iv):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):join:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):join:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Planning and Organization of Personnel Appraisal (m2iv)*Join_Yes_Planning and Organization of Personnel Appraisal (m2iv)"
+       "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Split_Planning and Organization of Personnel Appraisal (m2iv)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):split:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):split:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Yes_Planning and Organization of Personnel Appraisal (m2iv):busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:join:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:join:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Join_Join_Planning and Organization of Personnel Appraisal (m2iv)"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:busy"
+;
+trans "t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:split:outputCondition"~"t:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:split:outputCondition"
+    in "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:Output:busy"
+   out "p:Model.m2ho--0-----u--:Model.m2ho--0-----u--:outputCondition"
+;
+

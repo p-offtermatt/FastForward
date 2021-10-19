@@ -1,0 +1,42 @@
+PLACE
+alpha,callToTask.s00002644.input.s00000935,callToTask.s00002644.inputCriterion.s00000937.used,callToTask.s00002644.output.s00000938,merge.s00000945.activated,merge.s00000945.input.s00000935,merge.s00000945.input.s00000950;
+
+MARKING
+alpha: 1, callToTask.s00002644.input.s00000935: 0, callToTask.s00002644.inputCriterion.s00000937.used: 0, callToTask.s00002644.output.s00000938: 0, merge.s00000945.activated: 0, merge.s00000945.input.s00000935: 0, merge.s00000945.input.s00000950: 0;
+
+TRANSITION callToTask.s00002644.inputCriterion.s00000937
+CONSUME callToTask.s00002644.input.s00000935: 1;
+PRODUCE callToTask.s00002644.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002644.outputCriterion.s00000939
+CONSUME callToTask.s00002644.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002644.output.s00000938: 1;
+
+
+
+TRANSITION merge.s00000945.activate.s00000946
+CONSUME merge.s00000945.input.s00000935: 1;
+PRODUCE merge.s00000945.activated: 1;
+
+
+
+TRANSITION merge.s00000945.activate.s00000948
+CONSUME merge.s00000945.input.s00000950: 1;
+PRODUCE merge.s00000945.activated: 1;
+
+
+
+TRANSITION merge.s00000945.fire.s00000953
+CONSUME merge.s00000945.activated: 1;
+PRODUCE callToTask.s00002644.input.s00000935: 1;
+
+
+
+TRANSITION process.s00000625##s00002643.inputCriterion.s00000937
+CONSUME alpha: 1;
+PRODUCE merge.s00000945.input.s00000935: 1, merge.s00000945.input.s00000950: 1;
+
+
+

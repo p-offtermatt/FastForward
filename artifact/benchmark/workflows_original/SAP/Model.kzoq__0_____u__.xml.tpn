@@ -1,0 +1,435 @@
+place "i" init 1;
+place "o";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:InputCondition";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Overhead Calculation [Investment Order] (kzpk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Overhead Calculation [Investment Order] (kzpk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Settlement Account Assignment (kzq9)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Settlement Account Assignment (kzq9)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_and (kzs3)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_and (kzs3)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_xor (kzsk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_xor (kzsk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_or (kzsr)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_or (kzsr)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzt5)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzt5)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_and (kztp)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_and (kztp)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzpv)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzpv)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:OutputCondition";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3)*and (kzs3)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk)*xor (kzsk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr)*or (kzsr)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk)*or (kzsr)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr)*or (kzsy)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy)*Periodic Settlement (kzqr)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr)*xor (kzt5)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*Join_Yes_xor (kzt5)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*xor (kzti)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti)*and (kztp)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*Join_Yes_and (kztp)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*and (kzp6)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6)*Investment Settlement [Investment Order] (kzre)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre)*xor (kzpv)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv)*Join_Yes_xor (kzpv)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9)*xor (kzqy)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*xor (kzrp)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*or (kzrw)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*and (kzs3)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp)*or (kzsy)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3)*or (kzrw)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw)*and (kzp6)";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):busy";
+place "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:busy";
+trans "*:Model.kzoq--0-----u--:Model.kzoq--0-----u--:start"~"*:Model.kzoq--0-----u--:Model.kzoq--0-----u--:start"
+    in "i"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:InputCondition"
+;
+trans "*:Model.kzoq--0-----u--:Model.kzoq--0-----u--:end"~"*:Model.kzoq--0-----u--:Model.kzoq--0-----u--:end"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:join:InputCondition"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:join:InputCondition"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:InputCondition"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:split:Split_Split_Overhead Calculation [Investment Order] (kzpk):Split_Split_Settlement Account Assignment (kzq9):Split_Split_and (kzs3):Split_Split_xor (kzsk):Split_Split_or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:split:Split_Split_Overhead Calculation [Investment Order] (kzpk):Split_Split_Settlement Account Assignment (kzq9):Split_Split_and (kzs3):Split_Split_xor (kzsk):Split_Split_or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split:busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Overhead Calculation [Investment Order] (kzpk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Settlement Account Assignment (kzq9)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_and (kzs3)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_xor (kzsk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_or (kzsr)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):join:Split_Split_Overhead Calculation [Investment Order] (kzpk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):join:Split_Split_Overhead Calculation [Investment Order] (kzpk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Overhead Calculation [Investment Order] (kzpk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):split:Split_Join_Overhead Calculation [Investment Order] (kzpk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):split:Split_Join_Overhead Calculation [Investment Order] (kzpk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Overhead Calculation [Investment Order] (kzpk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Overhead Calculation [Investment Order] (kzpk)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):join:Split_Split_Overhead Calculation [Investment Order] (kzpk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):join:Split_Split_Overhead Calculation [Investment Order] (kzpk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Overhead Calculation [Investment Order] (kzpk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):split:Split_Join_Overhead Calculation [Investment Order] (kzpk):Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):split:Split_Join_Overhead Calculation [Investment Order] (kzpk):Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Overhead Calculation [Investment Order] (kzpk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):join:Split_Split_Settlement Account Assignment (kzq9)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):join:Split_Split_Settlement Account Assignment (kzq9)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Settlement Account Assignment (kzq9)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):split:Split_Join_Settlement Account Assignment (kzq9)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):split:Split_Join_Settlement Account Assignment (kzq9)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_Settlement Account Assignment (kzq9):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Settlement Account Assignment (kzq9)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):join:Split_Split_Settlement Account Assignment (kzq9)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):join:Split_Split_Settlement Account Assignment (kzq9)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_Settlement Account Assignment (kzq9)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):split:Split_Join_Settlement Account Assignment (kzq9):Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):split:Split_Join_Settlement Account Assignment (kzq9):Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Settlement Account Assignment (kzq9)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):join:Split_Split_and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):join:Split_Split_and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_and (kzs3)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):split:Split_Join_and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):split:Split_Join_and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_and (kzs3):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_and (kzs3)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):join:Split_Split_and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):join:Split_Split_and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_and (kzs3)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):split:Split_Join_and (kzs3):Split_Yes_and (kzs3)*and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):split:Split_Join_and (kzs3):Split_Yes_and (kzs3)*and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_and (kzs3)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3)*and (kzs3)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):join:Split_Split_xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):join:Split_Split_xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_xor (kzsk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):split:Split_Join_xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):split:Split_Join_xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_xor (kzsk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_xor (kzsk)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):join:Split_Split_xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):join:Split_Split_xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_xor (kzsk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):split:Split_Join_xor (kzsk):Split_Yes_xor (kzsk)*xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):split:Split_Join_xor (kzsk):Split_Yes_xor (kzsk)*xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_xor (kzsk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk)*xor (kzsk)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):join:Split_Split_or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):join:Split_Split_or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):split:Split_Join_or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):split:Split_Join_or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_No_or (kzsr):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_or (kzsr)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):join:Split_Split_or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):join:Split_Split_or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Split_or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):split:Split_Join_or (kzsr):Split_Yes_or (kzsr)*or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):split:Split_Join_or (kzsr):Split_Yes_or (kzsr)*or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_or (kzsr)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr)*or (kzsr)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:join:Split_Join_Overhead Calculation [Investment Order] (kzpk):Split_Join_Settlement Account Assignment (kzq9):Split_Join_and (kzs3):Split_Join_xor (kzsk):Split_Join_or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:join:Split_Join_Overhead Calculation [Investment Order] (kzpk):Split_Join_Settlement Account Assignment (kzq9):Split_Join_and (kzs3):Split_Join_xor (kzsk):Split_Join_or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Overhead Calculation [Investment Order] (kzpk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_Settlement Account Assignment (kzq9)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_and (kzs3)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_xor (kzsk)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Join_or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:split:Join_Split_xor (kzt5):Join_Split_and (kztp):Join_Split_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:split:Join_Split_xor (kzt5):Join_Split_and (kztp):Join_Split_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Skip:busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzt5)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_and (kztp)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzpv)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):join:Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):join:Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Overhead Calculation [Investment Order] (kzpk)*Overhead Calculation [Investment Order] (kzpk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):split:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):split:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):join:Split_Yes_xor (kzsk)*xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):join:Split_Yes_xor (kzsk)*xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_xor (kzsk)*xor (kzsk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):join:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):join:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Overhead Calculation [Investment Order] (kzpk)*xor (kzsk)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):split:xor (kzsk)*or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):split:xor (kzsk)*or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk)*or (kzsr)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:Split_Yes_or (kzsr)*or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:Split_Yes_or (kzsr)*or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr)*or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:xor (kzsk)*or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:xor (kzsk)*or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk)*or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:Split_Yes_or (kzsr)*or (kzsr):xor (kzsk)*or (kzsr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):join:Split_Yes_or (kzsr)*or (kzsr):xor (kzsk)*or (kzsr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_or (kzsr)*or (kzsr)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzsk)*or (kzsr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):split:or (kzsr)*or (kzsy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):split:or (kzsr)*or (kzsy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr)*or (kzsy)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:or (kzsr)*or (kzsy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:or (kzsr)*or (kzsy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr)*or (kzsy)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:xor (kzrp)*or (kzsy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:xor (kzrp)*or (kzsy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp)*or (kzsy)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:or (kzsr)*or (kzsy):xor (kzrp)*or (kzsy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):join:or (kzsr)*or (kzsy):xor (kzrp)*or (kzsy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsr)*or (kzsy)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp)*or (kzsy)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):split:or (kzsy)*Periodic Settlement (kzqr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):split:or (kzsy)*Periodic Settlement (kzqr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy)*Periodic Settlement (kzqr)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):join:or (kzsy)*Periodic Settlement (kzqr)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):join:or (kzsy)*Periodic Settlement (kzqr)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzsy)*Periodic Settlement (kzqr)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):split:Periodic Settlement (kzqr)*xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):split:Periodic Settlement (kzqr)*xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr)*xor (kzt5)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):join:Periodic Settlement (kzqr)*xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):join:Periodic Settlement (kzqr)*xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Periodic Settlement (kzqr)*xor (kzt5)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):split:xor (kzt5)*Join_Yes_xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):split:xor (kzt5)*Join_Yes_xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*Join_Yes_xor (kzt5)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):split:xor (kzt5)*xor (kzti)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):split:xor (kzt5)*xor (kzti)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*xor (kzti)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):join:xor (kzt5)*xor (kzti)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):join:xor (kzt5)*xor (kzti)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*xor (kzti)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):split:xor (kzti)*and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):split:xor (kzti)*and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti)*and (kztp)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):join:xor (kzti)*and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):join:xor (kzti)*and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzti)*and (kztp)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):split:and (kztp)*Join_Yes_and (kztp):and (kztp)*and (kzp6)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):split:and (kztp)*Join_Yes_and (kztp):and (kztp)*and (kzp6)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*Join_Yes_and (kztp)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*and (kzp6)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):join:and (kztp)*and (kzp6):or (kzrw)*and (kzp6)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):join:and (kztp)*and (kzp6):or (kzrw)*and (kzp6)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*and (kzp6)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw)*and (kzp6)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):split:and (kzp6)*Investment Settlement [Investment Order] (kzre)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):split:and (kzp6)*Investment Settlement [Investment Order] (kzre)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6)*Investment Settlement [Investment Order] (kzre)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):join:and (kzp6)*Investment Settlement [Investment Order] (kzre)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):join:and (kzp6)*Investment Settlement [Investment Order] (kzre)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzp6)*Investment Settlement [Investment Order] (kzre)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):split:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):split:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):join:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):join:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Investment Settlement [Investment Order] (kzre)*xor (kzpv)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):split:xor (kzpv)*Join_Yes_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):split:xor (kzpv)*Join_Yes_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv)*Join_Yes_xor (kzpv)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):join:Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):join:Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_Settlement Account Assignment (kzq9)*Settlement Account Assignment (kzq9)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):split:Settlement Account Assignment (kzq9)*xor (kzqy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):split:Settlement Account Assignment (kzq9)*xor (kzqy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9)*xor (kzqy)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):join:Settlement Account Assignment (kzq9)*xor (kzqy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):join:Settlement Account Assignment (kzq9)*xor (kzqy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Settlement Account Assignment (kzq9)*xor (kzqy)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*xor (kzrp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*xor (kzrp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*xor (kzrp)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*or (kzrw)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*or (kzrw)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*or (kzrw)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):split:xor (kzqy)*and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*and (kzs3)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):join:xor (kzqy)*xor (kzrp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):join:xor (kzqy)*xor (kzrp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*xor (kzrp)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):split:xor (kzrp)*or (kzsy)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):split:xor (kzrp)*or (kzsy)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzrp)*or (kzsy)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):join:Split_Yes_and (kzs3)*and (kzs3):xor (kzqy)*and (kzs3)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):join:Split_Yes_and (kzs3)*and (kzs3):xor (kzqy)*and (kzs3)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Split_Yes_and (kzs3)*and (kzs3)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*and (kzs3)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):split:and (kzs3)*or (kzrw)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):split:and (kzs3)*or (kzrw)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3)*or (kzrw)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:xor (kzqy)*or (kzrw)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:xor (kzqy)*or (kzrw)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*or (kzrw)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:and (kzs3)*or (kzrw)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:and (kzs3)*or (kzrw)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3)*or (kzrw)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:xor (kzqy)*or (kzrw):and (kzs3)*or (kzrw)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):join:xor (kzqy)*or (kzrw):and (kzs3)*or (kzrw)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzqy)*or (kzrw)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kzs3)*or (kzrw)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):split:or (kzrw)*and (kzp6)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):split:or (kzrw)*and (kzp6)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:or (kzrw)*and (kzp6)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):join:Join_Split_xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):join:Join_Split_xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzt5)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):split:Join_Join_xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):split:Join_Join_xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzt5):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzt5)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):join:xor (kzt5)*Join_Yes_xor (kzt5):Join_Split_xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):join:xor (kzt5)*Join_Yes_xor (kzt5):Join_Split_xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzt5)*Join_Yes_xor (kzt5)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzt5)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):split:Join_Join_xor (kzt5)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):split:Join_Join_xor (kzt5)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzt5):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzt5)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):join:Join_Split_and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):join:Join_Split_and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_and (kztp)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):split:Join_Join_and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):split:Join_Join_and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_and (kztp):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_and (kztp)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):join:and (kztp)*Join_Yes_and (kztp):Join_Split_and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):join:and (kztp)*Join_Yes_and (kztp):Join_Split_and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:and (kztp)*Join_Yes_and (kztp)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_and (kztp)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):split:Join_Join_and (kztp)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):split:Join_Join_and (kztp)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_and (kztp):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_and (kztp)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):join:Join_Split_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):join:Join_Split_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzpv)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):split:Join_Join_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):split:Join_Join_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_No_xor (kzpv):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzpv)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):join:xor (kzpv)*Join_Yes_xor (kzpv):Join_Split_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):join:xor (kzpv)*Join_Yes_xor (kzpv):Join_Split_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:xor (kzpv)*Join_Yes_xor (kzpv)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Split_xor (kzpv)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):split:Join_Join_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):split:Join_Join_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Yes_xor (kzpv):busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzpv)"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:join:Join_Join_xor (kzt5):Join_Join_and (kztp):Join_Join_xor (kzpv)"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:join:Join_Join_xor (kzt5):Join_Join_and (kztp):Join_Join_xor (kzpv)"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzt5)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_and (kztp)"
+       "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Join_Join_xor (kzpv)"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:busy"
+;
+trans "t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:split:OutputCondition"~"t:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:split:OutputCondition"
+    in "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:Output:busy"
+   out "p:Model.kzoq--0-----u--:Model.kzoq--0-----u--:OutputCondition"
+;
+

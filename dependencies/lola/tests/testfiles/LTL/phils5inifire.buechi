@@ -1,0 +1,12 @@
+buechi {
+start:
+  INITIAL => hungry,
+hungry:
+  ea.1 = 1 => eating
+  ea.1 = 0 => hungry,
+eating:
+  ea.1 = 1 => eating
+  ea.1 = 0 => hungry
+  FIREABLE( rl.[y=1] )  => hungry,
+}
+accept { eating };

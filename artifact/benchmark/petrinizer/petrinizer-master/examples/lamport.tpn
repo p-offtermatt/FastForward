@@ -1,0 +1,25 @@
+place p1 init 1;
+place p2;
+place p3;
+place b1;
+place nb1 init 1;
+place q1 init 1;
+place q2;
+place q3;
+place q4;
+place q5;
+place b2;
+place nb2 init 1;
+
+trans s1 in p1 nb1 out p2  b1;
+trans s2 in p2  b2 out p2  b2;
+trans s3 in p2 nb2 out p3 nb2;
+trans s4 in p3  b1 out p1 nb1;
+
+trans t1 in q1 nb2 out q2  b2;
+trans t2 in q2  b1 out q3  b1;
+trans t3 in q3  b2 out q4 nb2;
+trans t4 in q4 nb1 out q1 nb1;
+trans t5 in q4  b1 out q4  b1;
+trans t6 in q2 nb1 out q5 nb1;
+trans t7 in q5  b2 out q1 nb2;

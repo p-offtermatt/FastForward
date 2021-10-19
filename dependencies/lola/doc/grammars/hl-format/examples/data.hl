@@ -1,0 +1,38 @@
+NET data
+
+const int R = 40; 
+const int W = 40;
+
+PLACE nrea, rea, sem: int(1,R);
+      nwri, wri, pen: int(1,W);   
+      key  ; // a low level place
+
+MARKING nrea : all(int(1,R)) , nwri : all(int(1,W)) , sem : all(int(1,R)) , key : 1 ; // oder key?	                                                        // evt. ; als Trenner
+
+TRANSITION br
+
+int(1,R) x;  // oder: int(1,R) x; ?
+
+CONSUME key : 1 ,  nrea : x , sem : x ; // oder key?   evt. ; als Trenner
+PRODUCE key : 1 ,  rea : x ;
+
+TRANSITION er 
+
+int(1,R) x;
+
+CONSUME rea : x ;
+PRODUCE nrea : x , sem : x ;
+
+TRANSITION bw
+
+int(1,W) y;
+
+CONSUME sem : all(int(1,R)) , nwri : y ;
+PRODUCE wri : y  , key : 1 ;
+
+TRANSITION ew
+
+int(1,W) y;
+
+CONSUME wri : y ;
+PRODUCE sem : all(int(1,R)) , nwri : y ;

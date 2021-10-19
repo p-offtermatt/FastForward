@@ -1,0 +1,211 @@
+place "i" init 1;
+place "o";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:InputCondition";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_and (kjf7)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_and (kjf7)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_Blanket Order (kjgw)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_Blanket Order (kjgw)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_Update (kje1)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_Update (kje1)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_and (kjgi)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_and (kjgi)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:OutputCondition";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7)*and (kjf7)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7)*Update (kje1)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1)*Join_Yes_Update (kje1)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw)*or (kjhs)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Analysis (kjfn)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Procurement and capitalization (kjha)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn)*and (kjgi)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi)*Join_Yes_and (kjgi)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha)*and (kjf7)";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):busy";
+place "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:busy";
+trans "*:Model.kjdg--0-----u--:Model.kjdg--0-----u--:start"~"*:Model.kjdg--0-----u--:Model.kjdg--0-----u--:start"
+    in "i"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:InputCondition"
+;
+trans "*:Model.kjdg--0-----u--:Model.kjdg--0-----u--:end"~"*:Model.kjdg--0-----u--:Model.kjdg--0-----u--:end"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:join:InputCondition"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:join:InputCondition"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:InputCondition"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:split:Split_Split_and (kjf7):Split_Split_Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:split:Split_Split_and (kjf7):Split_Split_Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split:busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_and (kjf7)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_Blanket Order (kjgw)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):join:Split_Split_and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):join:Split_Split_and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_and (kjf7)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):split:Split_Join_and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):split:Split_Join_and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_and (kjf7):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_and (kjf7)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):join:Split_Split_and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):join:Split_Split_and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_and (kjf7)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):split:Split_Join_and (kjf7):Split_Yes_and (kjf7)*and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):split:Split_Join_and (kjf7):Split_Yes_and (kjf7)*and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_and (kjf7)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7)*and (kjf7)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):join:Split_Split_Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):join:Split_Split_Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_Blanket Order (kjgw)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):split:Split_Join_Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):split:Split_Join_Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_No_Blanket Order (kjgw):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_Blanket Order (kjgw)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):join:Split_Split_Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):join:Split_Split_Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Split_Blanket Order (kjgw)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):split:Split_Join_Blanket Order (kjgw):Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):split:Split_Join_Blanket Order (kjgw):Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_Blanket Order (kjgw)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:join:Split_Join_and (kjf7):Split_Join_Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:join:Split_Join_and (kjf7):Split_Join_Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_and (kjf7)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Join_Blanket Order (kjgw)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:split:Join_Split_Update (kje1):Join_Split_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:split:Join_Split_Update (kje1):Join_Split_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Skip:busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_Update (kje1)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_and (kjgi)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):join:Split_Yes_and (kjf7)*and (kjf7):Procurement and capitalization (kjha)*and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):join:Split_Yes_and (kjf7)*and (kjf7):Procurement and capitalization (kjha)*and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_and (kjf7)*and (kjf7)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha)*and (kjf7)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):split:and (kjf7)*Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):split:and (kjf7)*Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7)*Update (kje1)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):join:and (kjf7)*Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):join:and (kjf7)*Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjf7)*Update (kje1)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):split:Update (kje1)*Join_Yes_Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):split:Update (kje1)*Join_Yes_Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1)*Join_Yes_Update (kje1)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):join:Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):join:Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Split_Yes_Blanket Order (kjgw)*Blanket Order (kjgw)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):split:Blanket Order (kjgw)*or (kjhs)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):split:Blanket Order (kjgw)*or (kjhs)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw)*or (kjhs)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):join:Blanket Order (kjgw)*or (kjhs)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):join:Blanket Order (kjgw)*or (kjhs)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Blanket Order (kjgw)*or (kjhs)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Analysis (kjfn)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Analysis (kjfn)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Analysis (kjfn)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Procurement and capitalization (kjha)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Procurement and capitalization (kjha)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Procurement and capitalization (kjha)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Analysis (kjfn):or (kjhs)*Procurement and capitalization (kjha)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):split:or (kjhs)*Analysis (kjfn):or (kjhs)*Procurement and capitalization (kjha)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Analysis (kjfn)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Procurement and capitalization (kjha)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):join:or (kjhs)*Analysis (kjfn)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):join:or (kjhs)*Analysis (kjfn)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Analysis (kjfn)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):split:Analysis (kjfn)*and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):split:Analysis (kjfn)*and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn)*and (kjgi)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):join:Analysis (kjfn)*and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):join:Analysis (kjfn)*and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Analysis (kjfn)*and (kjgi)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):split:and (kjgi)*Join_Yes_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):split:and (kjgi)*Join_Yes_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi)*Join_Yes_and (kjgi)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):join:or (kjhs)*Procurement and capitalization (kjha)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):join:or (kjhs)*Procurement and capitalization (kjha)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:or (kjhs)*Procurement and capitalization (kjha)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):split:Procurement and capitalization (kjha)*and (kjf7)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):split:Procurement and capitalization (kjha)*and (kjf7)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Procurement and capitalization (kjha)*and (kjf7)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):join:Join_Split_Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):join:Join_Split_Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_Update (kje1)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):split:Join_Join_Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):split:Join_Join_Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_Update (kje1):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_Update (kje1)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):join:Update (kje1)*Join_Yes_Update (kje1):Join_Split_Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):join:Update (kje1)*Join_Yes_Update (kje1):Join_Split_Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Update (kje1)*Join_Yes_Update (kje1)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_Update (kje1)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):split:Join_Join_Update (kje1)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):split:Join_Join_Update (kje1)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_Update (kje1):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_Update (kje1)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):join:Join_Split_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):join:Join_Split_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_and (kjgi)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):split:Join_Join_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):split:Join_Join_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_No_and (kjgi):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_and (kjgi)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):join:and (kjgi)*Join_Yes_and (kjgi):Join_Split_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):join:and (kjgi)*Join_Yes_and (kjgi):Join_Split_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:and (kjgi)*Join_Yes_and (kjgi)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Split_and (kjgi)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):split:Join_Join_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):split:Join_Join_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Yes_and (kjgi):busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_and (kjgi)"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:join:Join_Join_Update (kje1):Join_Join_and (kjgi)"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:join:Join_Join_Update (kje1):Join_Join_and (kjgi)"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_Update (kje1)"
+       "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Join_Join_and (kjgi)"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:busy"
+;
+trans "t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:split:OutputCondition"~"t:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:split:OutputCondition"
+    in "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:Output:busy"
+   out "p:Model.kjdg--0-----u--:Model.kjdg--0-----u--:OutputCondition"
+;
+

@@ -1,0 +1,186 @@
+place "i" init 1;
+place "o";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:InputCondition";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7la)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7la)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_xor (l7lh)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_xor (l7lh)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7lq)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7lq)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Split_xor (l7lz)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Join_xor (l7lz)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:outputCondition";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la)*and (l7la)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh)*xor (l7lh)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq)*and (l7lq)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la)*xor (l7lh)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh)*and (l7lq)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq)*Program Cost Planning (l7mf)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf)*xor (l7lz)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz)*Join_Yes_xor (l7lz)";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):busy";
+place "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:busy";
+trans "*:Model.l7kw--0-----u--:Model.l7kw--0-----u--:start"~"*:Model.l7kw--0-----u--:Model.l7kw--0-----u--:start"
+    in "i"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:InputCondition"
+;
+trans "*:Model.l7kw--0-----u--:Model.l7kw--0-----u--:end"~"*:Model.l7kw--0-----u--:Model.l7kw--0-----u--:end"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:join:InputCondition"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:join:InputCondition"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:InputCondition"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:split:Split_Split_and (l7la):Split_Split_xor (l7lh):Split_Split_and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:split:Split_Split_and (l7la):Split_Split_xor (l7lh):Split_Split_and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split:busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7la)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_xor (l7lh)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7lq)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):join:Split_Split_and (l7la)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):join:Split_Split_and (l7la)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7la)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):split:Split_Join_and (l7la)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):split:Split_Join_and (l7la)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7la):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7la)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):join:Split_Split_and (l7la)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):join:Split_Split_and (l7la)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7la)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):split:Split_Join_and (l7la):Split_Yes_and (l7la)*and (l7la)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):split:Split_Join_and (l7la):Split_Yes_and (l7la)*and (l7la)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7la)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la)*and (l7la)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):join:Split_Split_xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):join:Split_Split_xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_xor (l7lh)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):split:Split_Join_xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):split:Split_Join_xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_xor (l7lh):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_xor (l7lh)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):join:Split_Split_xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):join:Split_Split_xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_xor (l7lh)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):split:Split_Join_xor (l7lh):Split_Yes_xor (l7lh)*xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):split:Split_Join_xor (l7lh):Split_Yes_xor (l7lh)*xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_xor (l7lh)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh)*xor (l7lh)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):join:Split_Split_and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):join:Split_Split_and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7lq)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):split:Split_Join_and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):split:Split_Join_and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_No_and (l7lq):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7lq)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):join:Split_Split_and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):join:Split_Split_and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Split_and (l7lq)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):split:Split_Join_and (l7lq):Split_Yes_and (l7lq)*and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):split:Split_Join_and (l7lq):Split_Yes_and (l7lq)*and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7lq)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq)*and (l7lq)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:join:Split_Join_and (l7la):Split_Join_xor (l7lh):Split_Join_and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:join:Split_Join_and (l7la):Split_Join_xor (l7lh):Split_Join_and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7la)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_xor (l7lh)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Join_and (l7lq)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:split:Join_Split_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:split:Join_Split_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Skip:busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Split_xor (l7lz)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):join:Split_Yes_and (l7la)*and (l7la)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):join:Split_Yes_and (l7la)*and (l7la)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7la)*and (l7la)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):split:and (l7la)*xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):split:and (l7la)*xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la)*xor (l7lh)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):join:Split_Yes_xor (l7lh)*xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):join:Split_Yes_xor (l7lh)*xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_xor (l7lh)*xor (l7lh)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):join:and (l7la)*xor (l7lh)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):join:and (l7la)*xor (l7lh)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7la)*xor (l7lh)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):split:xor (l7lh)*and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):split:xor (l7lh)*and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh)*and (l7lq)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):join:Split_Yes_and (l7lq)*and (l7lq):xor (l7lh)*and (l7lq)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):join:Split_Yes_and (l7lq)*and (l7lq):xor (l7lh)*and (l7lq)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Split_Yes_and (l7lq)*and (l7lq)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lh)*and (l7lq)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):split:and (l7lq)*Program Cost Planning (l7mf)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):split:and (l7lq)*Program Cost Planning (l7mf)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq)*Program Cost Planning (l7mf)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):join:and (l7lq)*Program Cost Planning (l7mf)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):join:and (l7lq)*Program Cost Planning (l7mf)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:and (l7lq)*Program Cost Planning (l7mf)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):split:Program Cost Planning (l7mf)*xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):split:Program Cost Planning (l7mf)*xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf)*xor (l7lz)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):join:Program Cost Planning (l7mf)*xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):join:Program Cost Planning (l7mf)*xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Program Cost Planning (l7mf)*xor (l7lz)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):split:xor (l7lz)*Join_Yes_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):split:xor (l7lz)*Join_Yes_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz)*Join_Yes_xor (l7lz)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):join:Join_Split_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):join:Join_Split_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Split_xor (l7lz)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):split:Join_Join_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):split:Join_Join_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_No_xor (l7lz):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Join_xor (l7lz)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):join:xor (l7lz)*Join_Yes_xor (l7lz):Join_Split_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):join:xor (l7lz)*Join_Yes_xor (l7lz):Join_Split_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:xor (l7lz)*Join_Yes_xor (l7lz)"
+       "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Split_xor (l7lz)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):split:Join_Join_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):split:Join_Join_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Yes_xor (l7lz):busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Join_xor (l7lz)"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:join:Join_Join_xor (l7lz)"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:join:Join_Join_xor (l7lz)"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Join_Join_xor (l7lz)"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:busy"
+;
+trans "t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:split:outputCondition"~"t:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:split:outputCondition"
+    in "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:Output:busy"
+   out "p:Model.l7kw--0-----u--:Model.l7kw--0-----u--:outputCondition"
+;
+

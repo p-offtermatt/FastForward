@@ -1,0 +1,219 @@
+place "i" init 1;
+place "o";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:InputCondition";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Split_and (3nw5)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Join_and (3nw5)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nxo)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nxo)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nwq)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nwq)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_Printout of Production Order (3nyk)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_Printout of Production Order (3nyk)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:OutputCondition";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5)*and (3nw5)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5)*Conversion of Planned Order (3nwj)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf)*or (3nxo)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Join_Yes_or (3nxo)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Release of Production Order (3ny2)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2)*or (3nwq)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Join_Yes_or (3nwq)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Printout of Production Order (3nyk)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk)";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):busy";
+place "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:busy";
+trans "*:Model.3nuo--0-----u--:Model.3nuo--0-----u--:start"~"*:Model.3nuo--0-----u--:Model.3nuo--0-----u--:start"
+    in "i"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:InputCondition"
+;
+trans "*:Model.3nuo--0-----u--:Model.3nuo--0-----u--:end"~"*:Model.3nuo--0-----u--:Model.3nuo--0-----u--:end"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:join:InputCondition"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:join:InputCondition"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:InputCondition"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:split:Split_Split_and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:split:Split_Split_and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split:busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Split_and (3nw5)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):join:Split_Split_and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):join:Split_Split_and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Split_and (3nw5)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):split:Split_Join_and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):split:Split_Join_and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_No_and (3nw5):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Join_and (3nw5)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):join:Split_Split_and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):join:Split_Split_and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Split_and (3nw5)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):split:Split_Join_and (3nw5):Split_Yes_and (3nw5)*and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):split:Split_Join_and (3nw5):Split_Yes_and (3nw5)*and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Join_and (3nw5)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5)*and (3nw5)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:join:Split_Join_and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:join:Split_Join_and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Join_and (3nw5)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:split:Join_Split_or (3nxo):Join_Split_or (3nwq):Join_Split_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:split:Join_Split_or (3nxo):Join_Split_or (3nwq):Join_Split_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Skip:busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nxo)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nwq)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):join:Split_Yes_and (3nw5)*and (3nw5)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):join:Split_Yes_and (3nw5)*and (3nw5)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Split_Yes_and (3nw5)*and (3nw5)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):split:and (3nw5)*Conversion of Planned Order (3nwj)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):split:and (3nw5)*Conversion of Planned Order (3nwj)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5)*Conversion of Planned Order (3nwj)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):join:and (3nw5)*Conversion of Planned Order (3nwj)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):join:and (3nw5)*Conversion of Planned Order (3nwj)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:and (3nw5)*Conversion of Planned Order (3nwj)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):split:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):split:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):join:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):join:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Conversion of Planned Order (3nwj)*Creating/ Processing Production Order (3nxf)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):split:Creating/ Processing Production Order (3nxf)*or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):split:Creating/ Processing Production Order (3nxf)*or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf)*or (3nxo)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):join:Creating/ Processing Production Order (3nxf)*or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):join:Creating/ Processing Production Order (3nxf)*or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Creating/ Processing Production Order (3nxf)*or (3nxo)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Join_Yes_or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Join_Yes_or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Join_Yes_or (3nxo)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Release of Production Order (3ny2)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Release of Production Order (3ny2)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Release of Production Order (3ny2)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Join_Yes_or (3nxo):or (3nxo)*Release of Production Order (3ny2)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):split:or (3nxo)*Join_Yes_or (3nxo):or (3nxo)*Release of Production Order (3ny2)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Join_Yes_or (3nxo)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Release of Production Order (3ny2)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):join:or (3nxo)*Release of Production Order (3ny2)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):join:or (3nxo)*Release of Production Order (3ny2)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Release of Production Order (3ny2)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):split:Release of Production Order (3ny2)*or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):split:Release of Production Order (3ny2)*or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2)*or (3nwq)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):join:Release of Production Order (3ny2)*or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):join:Release of Production Order (3ny2)*or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Release of Production Order (3ny2)*or (3nwq)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Join_Yes_or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Join_Yes_or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Join_Yes_or (3nwq)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Join_Yes_or (3nwq):or (3nwq)*Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):split:or (3nwq)*Join_Yes_or (3nwq):or (3nwq)*Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Join_Yes_or (3nwq)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):join:or (3nwq)*Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):join:or (3nwq)*Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Printout of Production Order (3nyk)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):split:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):split:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):join:Join_Split_or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):join:Join_Split_or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nxo)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):split:Join_Join_or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):split:Join_Join_or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nxo):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nxo)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):join:or (3nxo)*Join_Yes_or (3nxo):Join_Split_or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):join:or (3nxo)*Join_Yes_or (3nxo):Join_Split_or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nxo)*Join_Yes_or (3nxo)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nxo)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):split:Join_Join_or (3nxo)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):split:Join_Join_or (3nxo)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nxo):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nxo)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):join:Join_Split_or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):join:Join_Split_or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nwq)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):split:Join_Join_or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):split:Join_Join_or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_or (3nwq):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nwq)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):join:or (3nwq)*Join_Yes_or (3nwq):Join_Split_or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):join:or (3nwq)*Join_Yes_or (3nwq):Join_Split_or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:or (3nwq)*Join_Yes_or (3nwq)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_or (3nwq)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):split:Join_Join_or (3nwq)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):split:Join_Join_or (3nwq)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_or (3nwq):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nwq)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):join:Join_Split_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):join:Join_Split_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_Printout of Production Order (3nyk)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):split:Join_Join_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):split:Join_Join_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_No_Printout of Production Order (3nyk):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):join:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk):Join_Split_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):join:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk):Join_Split_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Printout of Production Order (3nyk)*Join_Yes_Printout of Production Order (3nyk)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Split_Printout of Production Order (3nyk)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):split:Join_Join_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):split:Join_Join_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Yes_Printout of Production Order (3nyk):busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_Printout of Production Order (3nyk)"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:join:Join_Join_or (3nxo):Join_Join_or (3nwq):Join_Join_Printout of Production Order (3nyk)"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:join:Join_Join_or (3nxo):Join_Join_or (3nwq):Join_Join_Printout of Production Order (3nyk)"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nxo)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_or (3nwq)"
+       "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Join_Join_Printout of Production Order (3nyk)"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:busy"
+;
+trans "t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:split:OutputCondition"~"t:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:split:OutputCondition"
+    in "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:Output:busy"
+   out "p:Model.3nuo--0-----u--:Model.3nuo--0-----u--:OutputCondition"
+;
+

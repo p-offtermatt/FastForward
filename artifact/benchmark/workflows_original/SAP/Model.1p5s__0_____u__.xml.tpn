@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:InputCondition";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Split_or (1p6l)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Join_or (1p6l)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Split_Material Forecast (1p6z)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Join_Material Forecast (1p6z)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:outputCondition";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l)*or (1p6l)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l)*Material Forecast (1p6z)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z)";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):busy";
+place "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:busy";
+trans "*:Model.1p5s--0-----u--:Model.1p5s--0-----u--:start"~"*:Model.1p5s--0-----u--:Model.1p5s--0-----u--:start"
+    in "i"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:InputCondition"
+;
+trans "*:Model.1p5s--0-----u--:Model.1p5s--0-----u--:end"~"*:Model.1p5s--0-----u--:Model.1p5s--0-----u--:end"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:join:InputCondition"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:join:InputCondition"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:InputCondition"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:split:Split_Split_or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:split:Split_Split_or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split:busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Split_or (1p6l)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):join:Split_Split_or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):join:Split_Split_or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Split_or (1p6l)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):split:Split_Join_or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):split:Split_Join_or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_No_or (1p6l):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Join_or (1p6l)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):join:Split_Split_or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):join:Split_Split_or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Split_or (1p6l)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):split:Split_Join_or (1p6l):Split_Yes_or (1p6l)*or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):split:Split_Join_or (1p6l):Split_Yes_or (1p6l)*or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Join_or (1p6l)"
+       "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l)*or (1p6l)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:join:Split_Join_or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:join:Split_Join_or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Join_or (1p6l)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:split:Join_Split_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:split:Join_Split_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Skip:busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Split_Material Forecast (1p6z)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):join:Split_Yes_or (1p6l)*or (1p6l)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):join:Split_Yes_or (1p6l)*or (1p6l)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Split_Yes_or (1p6l)*or (1p6l)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):split:or (1p6l)*Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):split:or (1p6l)*Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l)*Material Forecast (1p6z)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):join:or (1p6l)*Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):join:or (1p6l)*Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:or (1p6l)*Material Forecast (1p6z)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):split:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):split:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):join:Join_Split_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):join:Join_Split_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Split_Material Forecast (1p6z)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):split:Join_Join_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):split:Join_Join_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_No_Material Forecast (1p6z):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Join_Material Forecast (1p6z)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):join:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z):Join_Split_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):join:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z):Join_Split_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Material Forecast (1p6z)*Join_Yes_Material Forecast (1p6z)"
+       "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Split_Material Forecast (1p6z)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):split:Join_Join_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):split:Join_Join_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Yes_Material Forecast (1p6z):busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Join_Material Forecast (1p6z)"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:join:Join_Join_Material Forecast (1p6z)"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:join:Join_Join_Material Forecast (1p6z)"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Join_Join_Material Forecast (1p6z)"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:busy"
+;
+trans "t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:split:outputCondition"~"t:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:split:outputCondition"
+    in "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:Output:busy"
+   out "p:Model.1p5s--0-----u--:Model.1p5s--0-----u--:outputCondition"
+;
+

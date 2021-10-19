@@ -1,0 +1,30 @@
+PLACE
+alpha,callToProcess.s00004552.input.s00000783,callToProcess.s00004552.input.s00000807,callToProcess.s00004552.input.s00000819,callToProcess.s00004552.inputCriterion.s00000772.used,callToProcess.s00004552.output.s00000788,callToProcess.s00004552.output.s00000849,final;
+
+MARKING
+alpha: 1, callToProcess.s00004552.input.s00000783: 0, callToProcess.s00004552.input.s00000807: 0, callToProcess.s00004552.input.s00000819: 0, callToProcess.s00004552.inputCriterion.s00000772.used: 0, callToProcess.s00004552.output.s00000788: 0, callToProcess.s00004552.output.s00000849: 0, final: 0;
+
+TRANSITION callToProcess.s00004552.inputCriterion.s00000772
+CONSUME callToProcess.s00004552.input.s00000783: 1, callToProcess.s00004552.input.s00000807: 1, callToProcess.s00004552.input.s00000819: 1;
+PRODUCE callToProcess.s00004552.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToProcess.s00004552.outputCriterion.s00000773
+CONSUME callToProcess.s00004552.inputCriterion.s00000772.used: 1;
+PRODUCE callToProcess.s00004552.output.s00000788: 1, callToProcess.s00004552.output.s00000849: 1;
+
+
+
+TRANSITION process.s00000426##s00004567.inputCriterion.s00000772
+CONSUME alpha: 1;
+PRODUCE callToProcess.s00004552.input.s00000783: 1, callToProcess.s00004552.input.s00000807: 1, callToProcess.s00004552.input.s00000819: 1;
+
+
+
+TRANSITION t_final
+CONSUME callToProcess.s00004552.output.s00000788: 1, callToProcess.s00004552.output.s00000849: 1;
+PRODUCE final: 1;
+
+
+

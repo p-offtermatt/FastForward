@@ -1,0 +1,123 @@
+place "i" init 1;
+place "o";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy";
+place "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy";
+trans "*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:start"~"*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:start"
+    in "i"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition"
+;
+trans "*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:end"~"*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:end"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:join:InputCondition"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:join:InputCondition"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:split:Split_Split_and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:split:Split_Split_and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):join:Split_Split_and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):join:Split_Split_and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):split:Split_Join_and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):split:Split_Join_and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):join:Split_Split_and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):join:Split_Split_and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)"
+       "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:join:Split_Join_and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:join:Split_Join_and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:split:Join_Split_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:split:Join_Split_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):join:Split_Yes_and (bmf0)*and (bmf0)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):join:Split_Yes_and (bmf0)*and (bmf0)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):split:and (bmf0)*Worklist Prerequisite (bmeb)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):split:and (bmf0)*Worklist Prerequisite (bmeb)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):join:and (bmf0)*Worklist Prerequisite (bmeb)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):join:and (bmf0)*Worklist Prerequisite (bmeb)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):split:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):split:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):join:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):join:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):split:Worklist Generation (bmep)*and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):split:Worklist Generation (bmep)*and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):join:Worklist Generation (bmep)*and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):join:Worklist Generation (bmep)*and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):split:and (bmdm)*Join_Yes_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):split:and (bmdm)*Join_Yes_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):join:Join_Split_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):join:Join_Split_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):split:Join_Join_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):split:Join_Join_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)"
+       "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):split:Join_Join_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):split:Join_Join_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:join:Join_Join_and (bmdm)"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:join:Join_Join_and (bmdm)"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy"
+;
+trans "t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:split:outputCondition"~"t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:split:outputCondition"
+    in "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy"
+   out "p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition"
+;
+

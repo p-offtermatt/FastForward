@@ -1,0 +1,159 @@
+/*
+Grammatik für das High-Level-Format im C-Stil.
+
+Hinweise:
+- Die Terminalsymbole sind hier nicht benannt (z.B. "KEY_PLACE") sondern einfach in Anführungszeichen geschrieben. Klassen wie "IDENT" und "NUMBER" müssen noch entsprechend spezifiziert werden.
+*/
+
+net ::=
+  ('NET' IDENT)?                                /* name of the net */
+  (sort | function | constant)*         /* prefix with definitions */
+  'PLACE' placelist+ 'MARKING' marking? ";" transition*  /* actual net */
+
+sort ::=
+ "typedef" type var_or_array ';'  /* ident must not be defined before */
+
+/* define every type that does not contain multiset nor unbounded int as */
+/* finite type */
+
+type ::=
+ "bool"
+| "enum" "{" IDENT (':' NUMBER)? (',' IDENT (':' NUMBER)?)*  "}"
+| IDENT       /* name of a previously defined type */
+| "int" "(" NUMBER "," NUMBER ")" /* integers between N1 and (including) N2 */
+| "struct" "{" (type var_or_array ";")+ "}"
+| "int"
+| "^" type /* multisets over type; type must be finite */
+
+var_or_array ::= IDENT ("[" expression "]")* 
+				/* ...[N] denotes that IDENT is array rather than single value */
+
+function ::=
+  type var_or_array "(" (type var_or_array (',' type var_or_array)*)? ")" block
+
+constant ::= "const" type var_or_array "=" expression ";" 
+					/* expression must be constant */
+					/* delivered type of expression must match type */
+
+placelist ::=
+  ("SAFE" NUMBER?)? type? place ("," type? place)* ";" /* default for N: 1 */
+				/* no type given --> low level place */
+					/* type must be finite */
+
+place ::= IDENT
+
+marking ::=
+  IDENT ":" expression ("," IDENT ":" expression)* /* expression must not contain variables */
+	/* for low level place, expression must have type int */
+	/* for high level place, delivered type of expression must match place */
+
+transition ::=
+  "TRANSITION" IDENT fairness?
+  (variable+)? /* no variables given --> low level transition
+  ("GUARD" expression)?    
+  "CONSUME" (IDENT ":" expression ("," IDENT ":" expression)*)? ";"
+  "PRODUCE" (IDENT ":" expression ("," IDENT ":" expression)*)? ";"
+	/* expressions can use the declared variables (and no others) */
+	/* required type of arc expression: type of connected place */
+	/* required type of guard expression: bool */
+
+fairness ::=
+  ("WEAK" | "STRONG") "FAIR"
+
+variable ::=
+  type var_or_array ("," var_or_array)* ";" /* type must be finite */
+
+statement ::=
+| ';'
+| block
+| expression ";"
+| "if" "(" expression ")" statement ("else" statement)? /* req. type: bool */
+| "while" "(" expression ")" statement /* req. type: bool*/
+| "do" statement "while" "(" expression ")" ";" /* req. type: bool */
+| "for" "(" expression ";" expression ";" expression ")" statement
+		/* required types: arbitrary/bool/arbitrary */
+| "for" "(" type IDENT "=" expression ";" expression ";" expression ")" statement
+		/* required types: type/bool/arbitrary */
+| "for" "(" IDENT ":" expression ")" statement /* required type: multiset */
+| "switch" "(" expression ")" "{" switch_case+ "}" /* req. type: int */
+| "break" ";"
+| "continue" ";"
+| "return" expression ";" /* req: type: return type of function */
+
+block ::= '{' (declaration | statement)* '}'
+
+declaration ::= type var_or_array ( "," var_or_array )* ";"
+
+switch_case ::=
+  'case' expression ":" statement  /* expression must be constant, req: type: int */
+| 'default' ":" statement
+
+expression ::=
+  assignment
+| incdecrement
+| arithmetic
+| logical
+| comparison
+| leftvalue /* a storage unit */
+| other
+| initializer_list
+| '(' expression ')'
+
+assignment ::= /* delivered type of expression must match required type of leftvalue; delivered type: type of leftvalue */
+  leftvalue "=" expression
+| leftvalue "+=" expression
+| leftvalue "-=" expression
+| leftvalue "*=" expression
+| leftvalue "/=" expression
+| leftvalue "%=" expression
+
+incdecrement ::= /* required type for leftvalue: int; delivered type: int */
+  "++" leftvalue
+| "--" leftvalue
+| leftvalue "++"
+| leftvalue "--"
+
+arithmetic ::= /* required type for subexpressions: int; delivered type: int */
+  "+" expression
+| "-" expression
+| expression "+" expression
+| expression "-" expression
+| expression "*" expression
+| expression "/" expression
+| expression "%" expression
+| NUMBER
+
+logical ::= /* req. type for subexpressions: bool; delivered type: bool */
+  "!" expression
+| expression "&&" expression
+| expression "||" expression
+| "true"
+| "false"
+
+comparison ::= /* delivered type: bool */
+  expression "==" expression /* required type: right convertible to left */
+| expression "!=" expression /* required type: right convertible to left */
+| expression "<" expression /* required type: int */
+| expression ">" expression /* required type: int */
+| expression "<=" expression /* required type: int */
+| expression ">=" expression /* required type: int */
+
+leftvalue ::=
+  IDENT          /* del. type: as declared */
+| leftvalue "[" expression "]" /* leftvalue must deliver array type; req. for expression: int; del.: component type of leftvalue */
+| leftvalue "." IDENT /* left value must deliver struct type; del.: type of component IDENT */
+| "(" leftvalue ")" 
+
+other ::=
+  IDENT "(" (expression ("," expression)*)? ")" /* function call: required type of expressions given by type of formal arguments; del. type: return type of function */
+| expression "," expression /* del. value/type = snd. expression */
+| expression "?" expression ":" expression /* required types: bool / arbitrary / as second expression; delivered type: as snd. expression */
+| "all" "(" type ")" /* multiset containing all elements of type once */
+			/* type must be finite */
+			/* delivered type: ^type */
+
+initializer_list ::=
+  "{" expression ("," expression)* "}" /* del. type: struct or array, as required */
+| "{" expression ":" expression ("," expression ":" expression)* "}" /* del. type: multiset */
+	/* in c : E is c a constant(?) expression of the basis type and E a numerical value that represents the multiplicity of c */
+| "{" "}"  /* empty multiset */

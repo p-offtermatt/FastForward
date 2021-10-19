@@ -1,0 +1,189 @@
+place "i" init 1;
+place "o";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:InputCondition";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Split_xor (exwg)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Join_xor (exwg)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:OutputCondition";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg)*xor (exwg)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Automatic Clearing (exxa)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa)*xor (exxm)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9)*Join_Yes_and (exw9)";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):busy";
+place "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:busy";
+trans "*:Model.exvr--0-----u--:Model.exvr--0-----u--:start"~"*:Model.exvr--0-----u--:Model.exvr--0-----u--:start"
+    in "i"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:InputCondition"
+;
+trans "*:Model.exvr--0-----u--:Model.exvr--0-----u--:end"~"*:Model.exvr--0-----u--:Model.exvr--0-----u--:end"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:join:InputCondition"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:join:InputCondition"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:InputCondition"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:split:Split_Split_xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:split:Split_Split_xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split:busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Split_xor (exwg)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):join:Split_Split_xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):join:Split_Split_xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Split_xor (exwg)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Join_xor (exwg)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):join:Split_Split_xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):join:Split_Split_xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Split_xor (exwg)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):split:Split_Join_xor (exwg):Split_Yes_xor (exwg)*xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):split:Split_Join_xor (exwg):Split_Yes_xor (exwg)*xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Join_xor (exwg)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg)*xor (exwg)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:join:Split_Join_xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:join:Split_Join_xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Join_xor (exwg)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:split:Join_Split_Manual Clearing (exww):Join_Split_xor (exxm):Join_Split_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:split:Join_Split_Manual Clearing (exww):Join_Split_xor (exxm):Join_Split_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Skip:busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):join:Split_Yes_xor (exwg)*xor (exwg)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):join:Split_Yes_xor (exwg)*xor (exwg)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_Yes_xor (exwg)*xor (exwg)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Automatic Clearing (exxa)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Automatic Clearing (exxa)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Automatic Clearing (exxa)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):join:xor (exwg)*Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):join:xor (exwg)*Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):split:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):split:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):join:xor (exwg)*Automatic Clearing (exxa)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):join:xor (exwg)*Automatic Clearing (exxa)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Automatic Clearing (exxa)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):split:Automatic Clearing (exxa)*xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):split:Automatic Clearing (exxa)*xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa)*xor (exxm)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):join:Automatic Clearing (exxa)*xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):join:Automatic Clearing (exxa)*xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Automatic Clearing (exxa)*xor (exxm)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):join:xor (exxm)*and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):join:xor (exxm)*and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):split:and (exw9)*Join_Yes_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):split:and (exw9)*Join_Yes_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9)*Join_Yes_and (exw9)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):join:Join_Split_Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):join:Join_Split_Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):join:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww):Join_Split_Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):join:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww):Join_Split_Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Manual Clearing (exww)*Join_Yes_Manual Clearing (exww)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):join:Join_Split_xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):join:Join_Split_xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):split:Join_Join_xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):split:Join_Join_xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):join:xor (exxm)*Join_Yes_xor (exxm):Join_Split_xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):join:xor (exxm)*Join_Yes_xor (exxm):Join_Split_xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):join:Join_Split_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):join:Join_Split_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):split:Join_Join_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):split:Join_Join_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):join:and (exw9)*Join_Yes_and (exw9):Join_Split_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):join:and (exw9)*Join_Yes_and (exw9):Join_Split_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:and (exw9)*Join_Yes_and (exw9)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:join:Join_Join_Manual Clearing (exww):Join_Join_xor (exxm):Join_Join_and (exw9)"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:join:Join_Join_Manual Clearing (exww):Join_Join_xor (exxm):Join_Join_and (exw9)"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)"
+       "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:busy"
+;
+trans "t:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:split:OutputCondition"~"t:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:split:OutputCondition"
+    in "p:Model.exvr--0-----u--:Model.exvr--0-----u--:Output:busy"
+   out "p:Model.exvr--0-----u--:Model.exvr--0-----u--:OutputCondition"
+;
+

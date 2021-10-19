@@ -1,0 +1,93 @@
+place "i" init 1;
+place "o";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:InputCondition";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:outputCondition";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy";
+place "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:busy";
+trans "*:Model.avfd--0-----u--:Model.avfd--0-----u--:start"~"*:Model.avfd--0-----u--:Model.avfd--0-----u--:start"
+    in "i"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:InputCondition"
+;
+trans "*:Model.avfd--0-----u--:Model.avfd--0-----u--:end"~"*:Model.avfd--0-----u--:Model.avfd--0-----u--:end"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:join:InputCondition"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:join:InputCondition"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:InputCondition"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:split:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:split:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split:busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2):Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2):Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+       "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:join:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:join:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:split:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:split:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Skip:busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Split_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_No_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):join:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Evaluations of Plant Maintenance Information System [PMIS] (avg2)*Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+       "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Split_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):split:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Yes_Evaluations of Plant Maintenance Information System [PMIS] (avg2):busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:join:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:join:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Join_Join_Evaluations of Plant Maintenance Information System [PMIS] (avg2)"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:busy"
+;
+trans "t:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:split:outputCondition"~"t:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:split:outputCondition"
+    in "p:Model.avfd--0-----u--:Model.avfd--0-----u--:Output:busy"
+   out "p:Model.avfd--0-----u--:Model.avfd--0-----u--:outputCondition"
+;
+

@@ -1,0 +1,43 @@
+\begin{figure}[h]
+  \centering  
+  \begin{minipage}[t]{0.45\textwidth}%
+      \vspace*{0pt}%
+      \input{sypet.tex}%
+    \end{minipage}%
+  \hspace*{15pt}%
+  \begin{minipage}[t]{0.45\textwidth}%
+      \vspace*{0pt}%
+      \input{random_walk.tex}%
+  \end{minipage}%
+  
+  %% Bottom legend
+  \begin{tikzpicture}[very thick, scale=\plotscale,
+      every node/.style={scale=\plotscale}]
+    \begin{customlegend}[legend columns=4,
+        legend style={draw=none, column sep=1ex},
+        legend entries={
+          \textsc{FF(\astar, $\mathcal{D}_{\Q}$)},
+          \textsc{FF(GBFS, $\mathcal{D}_{\Q}$)},
+          \textsc{FF(Dijkstra)},
+          \textsc{LoLA},
+          \textsc{FF(\astar, $\mathcal{D}_{\Qpos}$)},
+          \textsc{FF(\astar, $\mathcal{N}$)},
+          \textsc{FF(GBFS, $\mathcal{D}_{\Qpos}$)},
+          \textsc{FF(GBFS, $\mathcal{N}$)}
+        },]
+      \addlegend{FastForward QMarkingEQGurobi+Competitive}{diamond*}
+      \addlegend{GBFS}{square*}
+      \addlegend{FastForward zero+Competitive}{*}
+      \addlegend{Lola}{+}
+      \addlegend{AStarQReach}{x}
+      \addlegend{AStarN}{x}
+      \addlegend{GBFSQReach}{x}
+      \addlegend{GBFSN}{x}
+    \end{customlegend}
+  \end{tikzpicture}
+  \caption{Cumulative number of reachability instances decided over
+    time. \emph{Left}: \textsc{sypet} suite (semi-log
+    scale). \emph{Right}: \textsc{random-walk} suite (log
+    scale). Corresponds to Figure 2 of the paper.}\label{fig:reach:all}
+\end{figure}
+

@@ -1,0 +1,20 @@
+buechi { /*   F G s1 = 1 && F G s4 = 0 */
+zero: 
+ TRUE => zero
+ s1 = 1 AND s4 = 0  => two
+ s4 = 0 => three 
+ s1 = 1 => one,
+
+one:
+ s1 = 1 =>  one
+ s1 = 1 AND s4 = 0 => two,
+
+three:
+ s4 = 0 => three
+ s1 = 1 AND s4 = 0  => two,
+
+two: 
+ s1 = 1 AND s4 = 0  => two,
+}
+accept { two };
+

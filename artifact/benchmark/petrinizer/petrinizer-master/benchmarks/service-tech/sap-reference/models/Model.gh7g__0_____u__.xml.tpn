@@ -1,0 +1,191 @@
+place "i" init 1;
+place "o";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:InputCondition";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Split_Process Cash Flow (gh92)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Join_Process Cash Flow (gh92)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:OutputCondition";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92)*and (gh7w)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Settlement (gh9g)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g)*or (gh8o)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u)";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):busy";
+place "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:busy";
+trans "*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:start"~"*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:start"
+    in "i"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:InputCondition"
+;
+trans "*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end"~"*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:join:InputCondition"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:join:InputCondition"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:InputCondition"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:split:Split_Split_Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:split:Split_Split_Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split:busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Split_Process Cash Flow (gh92)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):join:Split_Split_Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):join:Split_Split_Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Split_Process Cash Flow (gh92)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Join_Process Cash Flow (gh92)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):join:Split_Split_Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):join:Split_Split_Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Split_Process Cash Flow (gh92)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92):Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92):Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Join_Process Cash Flow (gh92)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:join:Split_Join_Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:join:Split_Join_Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Join_Process Cash Flow (gh92)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:split:Join_Split_and (gh7w):Join_Split_or (gh8o):Join_Split_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:split:Join_Split_and (gh7w):Join_Split_or (gh8o):Join_Split_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Skip:busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):join:Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):join:Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_Yes_Process Cash Flow (gh92)*Process Cash Flow (gh92)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):split:Process Cash Flow (gh92)*and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):split:Process Cash Flow (gh92)*and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92)*and (gh7w)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):join:Process Cash Flow (gh92)*and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):join:Process Cash Flow (gh92)*and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Process Cash Flow (gh92)*and (gh7w)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):split:and (gh7w)*Join_Yes_and (gh7w):and (gh7w)*Settlement (gh9g)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):split:and (gh7w)*Join_Yes_and (gh7w):and (gh7w)*Settlement (gh9g)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Settlement (gh9g)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):join:and (gh7w)*Settlement (gh9g)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):join:and (gh7w)*Settlement (gh9g)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Settlement (gh9g)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):split:Settlement (gh9g)*or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):split:Settlement (gh9g)*or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g)*or (gh8o)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):join:Settlement (gh9g)*or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):join:Settlement (gh9g)*or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Settlement (gh9g)*or (gh8o)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):join:or (gh8o)*Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):join:or (gh8o)*Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):split:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):split:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):join:Join_Split_and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):join:Join_Split_and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):split:Join_Join_and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):split:Join_Join_and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):join:and (gh7w)*Join_Yes_and (gh7w):Join_Split_and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):join:and (gh7w)*Join_Yes_and (gh7w):Join_Split_and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):join:Join_Split_or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):join:Join_Split_or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):split:Join_Join_or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):split:Join_Join_or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):join:or (gh8o)*Join_Yes_or (gh8o):Join_Split_or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):join:or (gh8o)*Join_Yes_or (gh8o):Join_Split_or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):join:Join_Split_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):join:Join_Split_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):join:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u):Join_Split_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):join:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u):Join_Split_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Netting Processing (gh9u)*Join_Yes_Netting Processing (gh9u)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:join:Join_Join_and (gh7w):Join_Join_or (gh8o):Join_Join_Netting Processing (gh9u)"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:join:Join_Join_and (gh7w):Join_Join_or (gh8o):Join_Join_Netting Processing (gh9u)"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)"
+       "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:busy"
+;
+trans "t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:split:OutputCondition"~"t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Output:busy"
+   out "p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:OutputCondition"
+;
+

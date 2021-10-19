@@ -1,0 +1,26 @@
+#define SIZE short
+#define NEXT(x) (x+1) % N
+
+chan m[N] = [1] of { SIZE };
+SIZE leader = 0;
+
+active [N] proctype p() {
+    SIZE rec;
+l:  m[NEXT(_pid)] ! _pid;
+    do
+    :: m[_pid]?rec ->
+        if
+        :: _pid < rec ->
+            m[NEXT(_pid)] ! rec;
+        :: _pid > rec ->
+            skip;
+        :: else ->
+progress:   leader = _pid + 1;
+            // reset
+            leader = 0;
+            goto l;
+        fi
+    :: leader > 0 ->
+        goto l;
+    od
+}

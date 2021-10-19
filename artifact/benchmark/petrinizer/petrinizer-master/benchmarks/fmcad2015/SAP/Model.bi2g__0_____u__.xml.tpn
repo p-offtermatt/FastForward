@@ -1,0 +1,194 @@
+place "i" init 1;
+place "o";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:InputCondition";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_and (bi2y)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:OutputCondition";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y)*and (bi2y)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y)*Capacity Evaluation (bi3y)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y)*xor (bi37)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*or (bi3i)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i)*Capacity Dispatching and Leveling (bi4c)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c)";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):busy";
+place "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:busy";
+trans "*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:start"~"*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:start"
+    in "i"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:InputCondition"
+;
+trans "*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end"~"*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:join:InputCondition"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:join:InputCondition"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:InputCondition"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:split:Split_Split_and (bi2y):Split_Split_or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:split:Split_Split_and (bi2y):Split_Split_or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split:busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_and (bi2y)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):join:Split_Split_and (bi2y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):join:Split_Split_and (bi2y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_and (bi2y)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):join:Split_Split_and (bi2y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):join:Split_Split_and (bi2y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_and (bi2y)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):split:Split_Join_and (bi2y):Split_Yes_and (bi2y)*and (bi2y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):split:Split_Join_and (bi2y):Split_Yes_and (bi2y)*and (bi2y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y)*and (bi2y)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):join:Split_Split_or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):join:Split_Split_or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):split:Split_Join_or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):split:Split_Join_or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):join:Split_Split_or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):join:Split_Split_or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:join:Split_Join_and (bi2y):Split_Join_or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:join:Split_Join_and (bi2y):Split_Join_or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):join:Split_Yes_and (bi2y)*and (bi2y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):join:Split_Yes_and (bi2y)*and (bi2y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_and (bi2y)*and (bi2y)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):split:and (bi2y)*Capacity Evaluation (bi3y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):split:and (bi2y)*Capacity Evaluation (bi3y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y)*Capacity Evaluation (bi3y)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):join:and (bi2y)*Capacity Evaluation (bi3y)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):join:and (bi2y)*Capacity Evaluation (bi3y)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:and (bi2y)*Capacity Evaluation (bi3y)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):split:Capacity Evaluation (bi3y)*xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):split:Capacity Evaluation (bi3y)*xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y)*xor (bi37)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Evaluation (bi3y)*xor (bi37)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*Join_Yes_xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*Join_Yes_xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*or (bi3i)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:xor (bi37)*or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:xor (bi37)*or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*or (bi3i)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):split:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):split:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):join:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):join:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i)*Capacity Dispatching and Leveling (bi4c)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):split:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):split:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):join:Join_Split_xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):join:Join_Split_xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):split:Join_Join_xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):split:Join_Join_xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):join:xor (bi37)*Join_Yes_xor (bi37):Join_Split_xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):join:xor (bi37)*Join_Yes_xor (bi37):Join_Split_xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):join:Join_Split_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):join:Join_Split_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):join:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c):Join_Split_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):join:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c):Join_Split_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Capacity Dispatching and Leveling (bi4c)*Join_Yes_Capacity Dispatching and Leveling (bi4c)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:join:Join_Join_xor (bi37):Join_Join_Capacity Dispatching and Leveling (bi4c)"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:join:Join_Join_xor (bi37):Join_Join_Capacity Dispatching and Leveling (bi4c)"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)"
+       "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:busy"
+;
+trans "t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:split:OutputCondition"~"t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:split:OutputCondition"
+    in "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Output:busy"
+   out "p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:OutputCondition"
+;
+

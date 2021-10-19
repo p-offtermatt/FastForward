@@ -1,0 +1,126 @@
+place "i" init 1;
+place "o";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:InputCondition";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Split_and (cpg2)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Join_and (cpg2)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Split_and (cpg9)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Join_and (cpg9)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:outputCondition";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2)*and (cpg2)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Injury/ Illness Log (cpfv)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Protocol (cpgn)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv)*and (cpg9)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9)*Join_Yes_and (cpg9)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn)*and (cpg9)";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):busy";
+place "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:busy";
+trans "*:Model.cpez--0-----u--:Model.cpez--0-----u--:start"~"*:Model.cpez--0-----u--:Model.cpez--0-----u--:start"
+    in "i"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:InputCondition"
+;
+trans "*:Model.cpez--0-----u--:Model.cpez--0-----u--:end"~"*:Model.cpez--0-----u--:Model.cpez--0-----u--:end"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:join:InputCondition"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:join:InputCondition"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:InputCondition"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:split:Split_Split_and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:split:Split_Split_and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split:busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Split_and (cpg2)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):join:Split_Split_and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):join:Split_Split_and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Split_and (cpg2)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):split:Split_Join_and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):split:Split_Join_and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_No_and (cpg2):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Join_and (cpg2)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):join:Split_Split_and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):join:Split_Split_and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Split_and (cpg2)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):split:Split_Join_and (cpg2):Split_Yes_and (cpg2)*and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):split:Split_Join_and (cpg2):Split_Yes_and (cpg2)*and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Join_and (cpg2)"
+       "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2)*and (cpg2)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:join:Split_Join_and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:join:Split_Join_and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Join_and (cpg2)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:split:Join_Split_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:split:Join_Split_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Skip:busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Split_and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):join:Split_Yes_and (cpg2)*and (cpg2)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):join:Split_Yes_and (cpg2)*and (cpg2)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Split_Yes_and (cpg2)*and (cpg2)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):split:and (cpg2)*Injury/ Illness Log (cpfv):and (cpg2)*Protocol (cpgn)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):split:and (cpg2)*Injury/ Illness Log (cpfv):and (cpg2)*Protocol (cpgn)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Injury/ Illness Log (cpfv)"
+       "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Protocol (cpgn)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):join:and (cpg2)*Injury/ Illness Log (cpfv)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):join:and (cpg2)*Injury/ Illness Log (cpfv)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Injury/ Illness Log (cpfv)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):split:Injury/ Illness Log (cpfv)*and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):split:Injury/ Illness Log (cpfv)*and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv)*and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):join:Injury/ Illness Log (cpfv)*and (cpg9):Protocol (cpgn)*and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):join:Injury/ Illness Log (cpfv)*and (cpg9):Protocol (cpgn)*and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Injury/ Illness Log (cpfv)*and (cpg9)"
+       "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn)*and (cpg9)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):split:and (cpg9)*Join_Yes_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):split:and (cpg9)*Join_Yes_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9)*Join_Yes_and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):join:and (cpg2)*Protocol (cpgn)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):join:and (cpg2)*Protocol (cpgn)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg2)*Protocol (cpgn)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):split:Protocol (cpgn)*and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):split:Protocol (cpgn)*and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Protocol (cpgn)*and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):join:Join_Split_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):join:Join_Split_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Split_and (cpg9)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):split:Join_Join_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):split:Join_Join_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_No_and (cpg9):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Join_and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):join:and (cpg9)*Join_Yes_and (cpg9):Join_Split_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):join:and (cpg9)*Join_Yes_and (cpg9):Join_Split_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:and (cpg9)*Join_Yes_and (cpg9)"
+       "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Split_and (cpg9)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):split:Join_Join_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):split:Join_Join_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Yes_and (cpg9):busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Join_and (cpg9)"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:join:Join_Join_and (cpg9)"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:join:Join_Join_and (cpg9)"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Join_Join_and (cpg9)"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:busy"
+;
+trans "t:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:split:outputCondition"~"t:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:split:outputCondition"
+    in "p:Model.cpez--0-----u--:Model.cpez--0-----u--:Output:busy"
+   out "p:Model.cpez--0-----u--:Model.cpez--0-----u--:outputCondition"
+;
+

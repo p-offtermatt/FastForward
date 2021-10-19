@@ -1,0 +1,48 @@
+set terminal tikz latex size 9cm, 5.5cm
+#set terminal pdf size 9cm, 9cm
+#set terminal gif size 600,300
+set output 'benchmark-full-data.tex'
+#set output 'benchmark-full-data.pdf'
+
+set datafile separator ' '
+
+set logscale
+set size ratio 0.5
+set xrange [1:100000]
+set yrange [0.01:10000]
+#set xtics nomirror scale 1, 0 format "{\\supertiny $10^{%T}$}"
+#set ytics nomirror scale 1, 0 format "{\\supertiny $10^{%T}$}"
+set xtics nomirror scale 1, 0 format "$10^{%T}$"
+set ytics mirror scale 1, 0 format "$10^{%T}$"
+#set ylabel offset 0, 0
+unset key
+set origin 0,0
+set size 1,2
+set multiplot #layout 2,1 rowsfirst
+
+set xlabel "Number of places"
+set ylabel "Execution time (s)"
+set arrow 1 from 1,7200 to 100000,7200 nohead lw 0.5 lc rgb '#880000'
+set label "time limit" at 1.5,2500 tc rgb '#880000'
+#set label "positive" at 6000,0.4 tc 0
+#set label "negative" at 6000,0.08 tc rgb "#00ff6644"
+#set palette model RGB defined ( -0.1 '#6666FF', 0 "#FF6666", 0.1 'green' )
+set origin 0,0.28
+set size 0.85,1
+set title "Positive" offset 20,-6.25 tc rgb '#2244bb'
+unset xlabel
+#unset xtics
+#set xtics nomirror scale 1, 0 format "$10^{%T}$" 1,10,10000
+plot \
+     'benchmark-full-positive-2.data' using 'places':($2+$3) \
+     w p pt 7 ps 0.8 lw 1 lc rgb '#2244bb'
+#unset ylabel
+#set ytics mirror scale 1, 0 format ""
+set origin 0,-0.4
+set size 0.85,1
+set title "Negative" tc rgb '#bb4422'
+set xlabel "Number of places"
+#set xtics nomirror scale 1, 0 format "$10^{%T}$" 10,10,100000
+plot \
+     'benchmark-full-negative-2.data' using 'places':($2+$3) \
+     w p pt 7 ps 0.8 lw 1 lc rgb '#bb4422'

@@ -1,0 +1,8 @@
+Order of elements in types:
+
+- bool:  false < true
+- int(), int: as usual
+- enum:  by numerical representation
+- struct: s1 < s2 if there is an i such that s1.ith-component < s2.ith-component and for all j < i: s1.jth-component=s2.jth-component
+- array: a1 < a2 if there is an i such that a1[i] < a2[i] and for all j < i: a1[j]=a2[j]
+- multiset m1 < m2 if there is an i such that m1[i] < m2[i] and for all j < i: m1[j]=m2[j]; j<i refers to oredering of base type

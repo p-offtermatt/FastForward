@@ -1,0 +1,160 @@
+place "i" init 1;
+place "o";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:InputCondition";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:OutputCondition";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9)*or (f6d9)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9)*Process Planned Items (f6d2)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2)";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):busy";
+place "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:busy";
+trans "*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:start"~"*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:start"
+    in "i"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:InputCondition"
+;
+trans "*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end"~"*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:join:InputCondition"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:join:InputCondition"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:InputCondition"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:split:Split_Split_Create Planned Items (f6ck):Split_Split_or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:split:Split_Split_Create Planned Items (f6ck):Split_Split_or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split:busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):join:Split_Split_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):join:Split_Split_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_Create Planned Items (f6ck)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):join:Split_Split_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):join:Split_Split_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_Create Planned Items (f6ck)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):join:Split_Split_or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):join:Split_Split_or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):split:Split_Join_or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):split:Split_Join_or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):join:Split_Split_or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):join:Split_Split_or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):split:Split_Join_or (f6d9):Split_Yes_or (f6d9)*or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):split:Split_Join_or (f6d9):Split_Yes_or (f6d9)*or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9)*or (f6d9)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:join:Split_Join_Create Planned Items (f6ck):Split_Join_or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:join:Split_Join_Create Planned Items (f6ck):Split_Join_or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):join:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):join:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):split:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):split:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_or (f6d9)*or (f6d9)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):split:or (f6d9)*Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):split:or (f6d9)*Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9)*Process Planned Items (f6d2)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):join:or (f6d9)*Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):join:or (f6d9)*Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9)*Process Planned Items (f6d2)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):split:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):split:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):join:Join_Split_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):join:Join_Split_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):join:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck):Join_Split_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):join:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck):Join_Split_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Create Planned Items (f6ck)*Join_Yes_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):join:Join_Split_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):join:Join_Split_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):join:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2):Join_Split_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):join:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2):Join_Split_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Process Planned Items (f6d2)*Join_Yes_Process Planned Items (f6d2)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:join:Join_Join_Create Planned Items (f6ck):Join_Join_Process Planned Items (f6d2)"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:join:Join_Join_Create Planned Items (f6ck):Join_Join_Process Planned Items (f6d2)"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)"
+       "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:busy"
+;
+trans "t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:split:OutputCondition"~"t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:split:OutputCondition"
+    in "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Output:busy"
+   out "p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:OutputCondition"
+;
+

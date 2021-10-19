@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:InputCondition";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Split_Service Customer Contact Processing (agh1)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Join_Service Customer Contact Processing (agh1)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Split_or (aggn)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Join_or (aggn)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:outputCondition";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1)*or (aggn)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn)*Join_Yes_or (aggn)";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):busy";
+place "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:busy";
+trans "*:Model.agg3--0-----u--:Model.agg3--0-----u--:start"~"*:Model.agg3--0-----u--:Model.agg3--0-----u--:start"
+    in "i"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:InputCondition"
+;
+trans "*:Model.agg3--0-----u--:Model.agg3--0-----u--:end"~"*:Model.agg3--0-----u--:Model.agg3--0-----u--:end"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:join:InputCondition"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:join:InputCondition"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:InputCondition"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:split:Split_Split_Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:split:Split_Split_Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split:busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Split_Service Customer Contact Processing (agh1)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):join:Split_Split_Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):join:Split_Split_Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Split_Service Customer Contact Processing (agh1)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):split:Split_Join_Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):split:Split_Join_Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_No_Service Customer Contact Processing (agh1):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Join_Service Customer Contact Processing (agh1)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):join:Split_Split_Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):join:Split_Split_Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Split_Service Customer Contact Processing (agh1)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):split:Split_Join_Service Customer Contact Processing (agh1):Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):split:Split_Join_Service Customer Contact Processing (agh1):Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Join_Service Customer Contact Processing (agh1)"
+       "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:join:Split_Join_Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:join:Split_Join_Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Join_Service Customer Contact Processing (agh1)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:split:Join_Split_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:split:Join_Split_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Skip:busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Split_or (aggn)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):join:Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):join:Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Split_Yes_Service Customer Contact Processing (agh1)*Service Customer Contact Processing (agh1)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):split:Service Customer Contact Processing (agh1)*or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):split:Service Customer Contact Processing (agh1)*or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1)*or (aggn)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):join:Service Customer Contact Processing (agh1)*or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):join:Service Customer Contact Processing (agh1)*or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Service Customer Contact Processing (agh1)*or (aggn)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):split:or (aggn)*Join_Yes_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):split:or (aggn)*Join_Yes_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn)*Join_Yes_or (aggn)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):join:Join_Split_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):join:Join_Split_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Split_or (aggn)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):split:Join_Join_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):split:Join_Join_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_No_or (aggn):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Join_or (aggn)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):join:or (aggn)*Join_Yes_or (aggn):Join_Split_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):join:or (aggn)*Join_Yes_or (aggn):Join_Split_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:or (aggn)*Join_Yes_or (aggn)"
+       "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Split_or (aggn)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):split:Join_Join_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):split:Join_Join_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Yes_or (aggn):busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Join_or (aggn)"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:join:Join_Join_or (aggn)"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:join:Join_Join_or (aggn)"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Join_Join_or (aggn)"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:busy"
+;
+trans "t:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:split:outputCondition"~"t:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:split:outputCondition"
+    in "p:Model.agg3--0-----u--:Model.agg3--0-----u--:Output:busy"
+   out "p:Model.agg3--0-----u--:Model.agg3--0-----u--:outputCondition"
+;
+

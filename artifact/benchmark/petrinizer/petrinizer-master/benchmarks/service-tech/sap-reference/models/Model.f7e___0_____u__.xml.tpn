@@ -1,0 +1,152 @@
+place "i" init 1;
+place "o";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:InputCondition";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Split_or (f8h-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Join_or (f8h-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Split_Change Analysis (fa2-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Join_Change Analysis (fa2-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:outputCondition";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-)*or (f8h-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-)*Change Analysis (fa2-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):busy";
+place "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:busy";
+trans "*:Model.f7e---0-----u--:Model.f7e---0-----u--:start"~"*:Model.f7e---0-----u--:Model.f7e---0-----u--:start"
+    in "i"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:InputCondition"
+;
+trans "*:Model.f7e---0-----u--:Model.f7e---0-----u--:end"~"*:Model.f7e---0-----u--:Model.f7e---0-----u--:end"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:join:InputCondition"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:join:InputCondition"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:InputCondition"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:split:Split_Split_or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:split:Split_Split_or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split:busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Split_or (f8h-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):join:Split_Split_or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):join:Split_Split_or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Split_or (f8h-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):split:Split_Join_or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):split:Split_Join_or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_No_or (f8h-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Join_or (f8h-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):join:Split_Split_or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):join:Split_Split_or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Split_or (f8h-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):split:Split_Join_or (f8h-):Split_Yes_or (f8h-)*or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):split:Split_Join_or (f8h-):Split_Yes_or (f8h-)*or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Join_or (f8h-)"
+       "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-)*or (f8h-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:join:Split_Join_or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:join:Split_Join_or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Join_or (f8h-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:split:Join_Split_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:split:Join_Split_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Skip:busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Split_Change Analysis (fa2-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):join:Split_Yes_or (f8h-)*or (f8h-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):join:Split_Yes_or (f8h-)*or (f8h-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Split_Yes_or (f8h-)*or (f8h-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):split:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"
+       "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):join:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):join:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):split:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):split:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-):Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):join:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-):Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt with Engineering Change Request/Order (ECR/ECO) (f7z-)*or (f8o-)"
+       "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):split:or (f8o-)*Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):split:or (f8o-)*Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-)*Change Analysis (fa2-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):join:or (f8o-)*Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):join:or (f8o-)*Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8o-)*Change Analysis (fa2-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):split:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):split:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):join:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):join:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:or (f8h-)*Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):split:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):split:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Mgmt w/o Engineering Change Request/Order (ECR/ECO) (f9d-)*or (f8o-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):join:Join_Split_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):join:Join_Split_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Split_Change Analysis (fa2-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):split:Join_Join_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):split:Join_Join_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_No_Change Analysis (fa2-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Join_Change Analysis (fa2-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):join:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-):Join_Split_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):join:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-):Join_Split_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Change Analysis (fa2-)*Join_Yes_Change Analysis (fa2-)"
+       "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Split_Change Analysis (fa2-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):split:Join_Join_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):split:Join_Join_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Yes_Change Analysis (fa2-):busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Join_Change Analysis (fa2-)"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:join:Join_Join_Change Analysis (fa2-)"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:join:Join_Join_Change Analysis (fa2-)"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Join_Join_Change Analysis (fa2-)"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:busy"
+;
+trans "t:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:split:outputCondition"~"t:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:split:outputCondition"
+    in "p:Model.f7e---0-----u--:Model.f7e---0-----u--:Output:busy"
+   out "p:Model.f7e---0-----u--:Model.f7e---0-----u--:outputCondition"
+;
+

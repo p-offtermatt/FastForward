@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:InputCondition";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Split_Material Master (cmu6)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Join_Material Master (cmu6)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:OutputCondition";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6)*Material Master (cmu6)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6)*xor (cmss)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts)*Join_Yes_Information System (cmts)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk)";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):busy";
+place "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:busy";
+trans "*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:start"~"*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:start"
+    in "i"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:InputCondition"
+;
+trans "*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end"~"*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:join:InputCondition"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:join:InputCondition"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:InputCondition"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:split:Split_Split_Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:split:Split_Split_Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split:busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Split_Material Master (cmu6)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):join:Split_Split_Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):join:Split_Split_Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Split_Material Master (cmu6)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Join_Material Master (cmu6)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):join:Split_Split_Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):join:Split_Split_Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Split_Material Master (cmu6)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):split:Split_Join_Material Master (cmu6):Split_Yes_Material Master (cmu6)*Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):split:Split_Join_Material Master (cmu6):Split_Yes_Material Master (cmu6)*Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Join_Material Master (cmu6)"
+       "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6)*Material Master (cmu6)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:join:Split_Join_Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:join:Split_Join_Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Join_Material Master (cmu6)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:split:Join_Split_Information System (cmts):Join_Split_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:split:Join_Split_Information System (cmts):Join_Split_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Skip:busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)"
+       "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):join:Split_Yes_Material Master (cmu6)*Material Master (cmu6)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):join:Split_Yes_Material Master (cmu6)*Material Master (cmu6)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_Yes_Material Master (cmu6)*Material Master (cmu6)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):split:Material Master (cmu6)*xor (cmss)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):split:Material Master (cmu6)*xor (cmss)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6)*xor (cmss)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):join:Material Master (cmu6)*xor (cmss)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):join:Material Master (cmu6)*xor (cmss)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Material Master (cmu6)*xor (cmss)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):join:xor (cmss)*Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):join:xor (cmss)*Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):split:Information System (cmts)*Join_Yes_Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):split:Information System (cmts)*Join_Yes_Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts)*Join_Yes_Information System (cmts)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):join:xor (cmss)*Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):join:xor (cmss)*Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):split:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):split:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):join:Join_Split_Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):join:Join_Split_Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):split:Join_Join_Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):split:Join_Join_Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):join:Information System (cmts)*Join_Yes_Information System (cmts):Join_Split_Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):join:Information System (cmts)*Join_Yes_Information System (cmts):Join_Split_Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Information System (cmts)*Join_Yes_Information System (cmts)"
+       "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):join:Join_Split_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):join:Join_Split_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):join:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk):Join_Split_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):join:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk):Join_Split_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Product Safety (cmuk)*Join_Yes_Product Safety (cmuk)"
+       "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:join:Join_Join_Information System (cmts):Join_Join_Product Safety (cmuk)"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:join:Join_Join_Information System (cmts):Join_Join_Product Safety (cmuk)"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)"
+       "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:busy"
+;
+trans "t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:split:OutputCondition"~"t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:split:OutputCondition"
+    in "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Output:busy"
+   out "p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:OutputCondition"
+;
+

@@ -1,0 +1,166 @@
+place "i" init 1;
+place "o";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:InputCondition";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_or (3qst)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_or (3qst)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_Goods Issue Processing for Production Orders (3qto)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_Goods Issue Processing for Production Orders (3qto)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Split_Processing of Goods Receipts from Production (3qs0)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Join_Processing of Goods Receipts from Production (3qs0)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:outputCondition";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst)*or (3qst)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst)*Production Order Execution (3qu2)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto)*or (3qst)";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):busy";
+place "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:busy";
+trans "*:Model.3qr1--0-----u--:Model.3qr1--0-----u--:start"~"*:Model.3qr1--0-----u--:Model.3qr1--0-----u--:start"
+    in "i"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:InputCondition"
+;
+trans "*:Model.3qr1--0-----u--:Model.3qr1--0-----u--:end"~"*:Model.3qr1--0-----u--:Model.3qr1--0-----u--:end"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:join:InputCondition"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:join:InputCondition"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:InputCondition"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:split:Split_Split_or (3qst):Split_Split_Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:split:Split_Split_or (3qst):Split_Split_Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split:busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_or (3qst)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_Goods Issue Processing for Production Orders (3qto)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):join:Split_Split_or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):join:Split_Split_or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_or (3qst)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):split:Split_Join_or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):split:Split_Join_or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_or (3qst):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_or (3qst)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):join:Split_Split_or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):join:Split_Split_or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_or (3qst)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):split:Split_Join_or (3qst):Split_Yes_or (3qst)*or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):split:Split_Join_or (3qst):Split_Yes_or (3qst)*or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_or (3qst)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst)*or (3qst)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):join:Split_Split_Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):join:Split_Split_Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_Goods Issue Processing for Production Orders (3qto)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):split:Split_Join_Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):split:Split_Join_Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_No_Goods Issue Processing for Production Orders (3qto):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_Goods Issue Processing for Production Orders (3qto)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):join:Split_Split_Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):join:Split_Split_Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Split_Goods Issue Processing for Production Orders (3qto)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):split:Split_Join_Goods Issue Processing for Production Orders (3qto):Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):split:Split_Join_Goods Issue Processing for Production Orders (3qto):Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_Goods Issue Processing for Production Orders (3qto)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:join:Split_Join_or (3qst):Split_Join_Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:join:Split_Join_or (3qst):Split_Join_Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_or (3qst)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Join_Goods Issue Processing for Production Orders (3qto)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:split:Join_Split_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:split:Join_Split_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Skip:busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Split_Processing of Goods Receipts from Production (3qs0)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Split_Yes_or (3qst)*or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Split_Yes_or (3qst)*or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst)*or (3qst)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Goods Issue Processing for Production Orders (3qto)*or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Split_Yes_or (3qst)*or (3qst):Goods Issue Processing for Production Orders (3qto)*or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):join:Split_Yes_or (3qst)*or (3qst):Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_or (3qst)*or (3qst)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):split:or (3qst)*Production Order Execution (3qu2)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):split:or (3qst)*Production Order Execution (3qu2)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst)*Production Order Execution (3qu2)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):join:or (3qst)*Production Order Execution (3qu2)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):join:or (3qst)*Production Order Execution (3qu2)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:or (3qst)*Production Order Execution (3qu2)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):split:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):split:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):join:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):join:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Execution (3qu2)*Production Order Confirmation (3qrm)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):split:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):split:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):join:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):join:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Production Order Confirmation (3qrm)*Processing of Goods Receipts from Production (3qs0)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):split:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):split:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):join:Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):join:Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Split_Yes_Goods Issue Processing for Production Orders (3qto)*Goods Issue Processing for Production Orders (3qto)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):split:Goods Issue Processing for Production Orders (3qto)*or (3qst)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):split:Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Goods Issue Processing for Production Orders (3qto)*or (3qst)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):join:Join_Split_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):join:Join_Split_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Split_Processing of Goods Receipts from Production (3qs0)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):split:Join_Join_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):split:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_No_Processing of Goods Receipts from Production (3qs0):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):join:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0):Join_Split_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):join:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0):Join_Split_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Processing of Goods Receipts from Production (3qs0)*Join_Yes_Processing of Goods Receipts from Production (3qs0)"
+       "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Split_Processing of Goods Receipts from Production (3qs0)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):split:Join_Join_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):split:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Yes_Processing of Goods Receipts from Production (3qs0):busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:join:Join_Join_Processing of Goods Receipts from Production (3qs0)"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:join:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Join_Join_Processing of Goods Receipts from Production (3qs0)"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:busy"
+;
+trans "t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:split:outputCondition"~"t:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:split:outputCondition"
+    in "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:Output:busy"
+   out "p:Model.3qr1--0-----u--:Model.3qr1--0-----u--:outputCondition"
+;
+

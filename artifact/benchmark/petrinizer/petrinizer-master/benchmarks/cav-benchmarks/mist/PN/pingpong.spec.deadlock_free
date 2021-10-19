@@ -1,0 +1,27 @@
+PLACE start,x,_x,ping,pong,main;
+
+MARKING start:1;
+
+TRANSITION 't1
+CONSUME start:1;
+PRODUCE x:1,main:1;
+
+TRANSITION 't2
+CONSUME start:1;
+PRODUCE main:1,_x:1;
+
+TRANSITION 't3
+CONSUME _x:1,main:1;
+PRODUCE ping:1,_x:1;
+
+TRANSITION 't4
+CONSUME x:1,main:1;
+PRODUCE ping:1,_x:1;
+
+TRANSITION 't5
+CONSUME _x:1,ping:1;
+PRODUCE x:1,pong:1;
+
+TRANSITION 't6
+CONSUME x:1,pong:1;
+PRODUCE ping:1,_x:1;

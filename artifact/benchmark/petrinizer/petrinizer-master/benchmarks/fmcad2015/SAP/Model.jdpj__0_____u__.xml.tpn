@@ -1,0 +1,239 @@
+place "i" init 1;
+place "o";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:InputCondition";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Split_Preparation for Costing (jdqj)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Join_Preparation for Costing (jdqj)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:OutputCondition";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj)*xor (jdq5)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq)*Costing analysis (jdsy)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy)*xor (jdrd)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts)*and (jdsk)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk)*Join_Yes_and (jdsk)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):busy";
+place "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:busy";
+trans "*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:start"~"*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:start"
+    in "i"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:InputCondition"
+;
+trans "*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end"~"*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:join:InputCondition"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:join:InputCondition"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:InputCondition"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:split:Split_Split_Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:split:Split_Split_Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split:busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Split_Preparation for Costing (jdqj)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):join:Split_Split_Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):join:Split_Split_Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Split_Preparation for Costing (jdqj)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Join_Preparation for Costing (jdqj)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):join:Split_Split_Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):join:Split_Split_Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Split_Preparation for Costing (jdqj)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj):Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj):Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Join_Preparation for Costing (jdqj)"
+       "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:join:Split_Join_Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:join:Split_Join_Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Join_Preparation for Costing (jdqj)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:split:Join_Split_xor (jdrd):Join_Split_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:split:Join_Split_xor (jdrd):Join_Split_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Skip:busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)"
+       "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):join:Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):join:Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_Yes_Preparation for Costing (jdqj)*Preparation for Costing (jdqj)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):split:Preparation for Costing (jdqj)*xor (jdq5)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):split:Preparation for Costing (jdqj)*xor (jdq5)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj)*xor (jdq5)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):join:Preparation for Costing (jdqj)*xor (jdq5)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):join:Preparation for Costing (jdqj)*xor (jdq5)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Preparation for Costing (jdqj)*xor (jdq5)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):split:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):join:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):join:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate with Quantity Structure (jdr6)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):split:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):split:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate with Quantity Structure (jdr6)*xor (jdqq)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):join:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):split:xor (jdqq)*Costing analysis (jdsy)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):split:xor (jdqq)*Costing analysis (jdsy)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq)*Costing analysis (jdsy)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):join:xor (jdqq)*Costing analysis (jdsy)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):join:xor (jdqq)*Costing analysis (jdsy)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdqq)*Costing analysis (jdsy)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):split:Costing analysis (jdsy)*xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):split:Costing analysis (jdsy)*xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy)*xor (jdrd)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):join:Costing analysis (jdsy)*xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):join:Costing analysis (jdsy)*xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Costing analysis (jdsy)*xor (jdrd)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):join:xor (jdrd)*Price Marking (jdte)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):join:xor (jdrd)*Price Marking (jdte)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):split:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):split:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):join:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):join:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Marking (jdte)*Price Release with Standard Cost Estimate (jdts)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):split:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):split:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):join:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):join:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Price Release with Standard Cost Estimate (jdts)*and (jdsk)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):split:and (jdsk)*Join_Yes_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):split:and (jdsk)*Join_Yes_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk)*Join_Yes_and (jdsk)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):join:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):join:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate Without Quantity Structure (jdrt)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):split:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):split:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate Without Quantity Structure (jdrt)*xor (jdqq)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):join:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):join:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdq5)*Standard Cost Estimate for Co-Products (jdsb)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):split:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):split:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Standard Cost Estimate for Co-Products (jdsb)*xor (jdqq)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):join:Join_Split_xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):join:Join_Split_xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):split:Join_Join_xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):split:Join_Join_xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):join:xor (jdrd)*Join_Yes_xor (jdrd):Join_Split_xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):join:xor (jdrd)*Join_Yes_xor (jdrd):Join_Split_xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)"
+       "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):join:Join_Split_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):join:Join_Split_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):split:Join_Join_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):split:Join_Join_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):join:and (jdsk)*Join_Yes_and (jdsk):Join_Split_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):join:and (jdsk)*Join_Yes_and (jdsk):Join_Split_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:and (jdsk)*Join_Yes_and (jdsk)"
+       "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:join:Join_Join_xor (jdrd):Join_Join_and (jdsk)"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:join:Join_Join_xor (jdrd):Join_Join_and (jdsk)"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)"
+       "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:busy"
+;
+trans "t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:split:OutputCondition"~"t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:split:OutputCondition"
+    in "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Output:busy"
+   out "p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:OutputCondition"
+;
+

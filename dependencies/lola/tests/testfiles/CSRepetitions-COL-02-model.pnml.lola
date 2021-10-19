@@ -1,0 +1,123 @@
+{ Petri net created by Petri Net API 4.03 Frontend (x86_64-apple-darwin13.1.0) reading CSRepetitions-PT-02/model.pnml }
+
+PLACE
+  Client_Sending_1, Client_Sending_2, Client_Sending_3, Client_Sending_4, Client_Waiting_1, Client_Waiting_2, Client_Waiting_3, Client_Waiting_4, RequestBufferSlots, RequestBuffer_1, RequestBuffer_2, RequestBuffer_3, RequestBuffer_4, Server_Anwering_1_1, Server_Anwering_1_2, Server_Anwering_2_1, Server_Anwering_2_2, Server_Anwering_3_1, Server_Anwering_3_2, Server_Anwering_4_1, Server_Anwering_4_2, Server_Waiting_1, Server_Waiting_2;
+
+MARKING
+  Client_Waiting_1:1, Client_Waiting_2:1, Client_Waiting_3:1, Client_Waiting_4:1, RequestBufferSlots:2, Server_Waiting_1:1, Server_Waiting_2:1;
+
+
+TRANSITION Lose_Request_1
+  CONSUME RequestBuffer_1:1;
+  PRODUCE ;
+
+TRANSITION Lose_Request_2
+  CONSUME RequestBuffer_2:1;
+  PRODUCE ;
+
+TRANSITION Lose_Request_3
+  CONSUME RequestBuffer_3:1;
+  PRODUCE ;
+
+TRANSITION Lose_Request_4
+  CONSUME RequestBuffer_4:1;
+  PRODUCE ;
+
+TRANSITION Prepare_Request_1
+  CONSUME Client_Waiting_1:1;
+  PRODUCE Client_Sending_1:1;
+
+TRANSITION Prepare_Request_2
+  CONSUME Client_Waiting_2:1;
+  PRODUCE Client_Sending_2:1;
+
+TRANSITION Prepare_Request_3
+  CONSUME Client_Waiting_3:1;
+  PRODUCE Client_Sending_3:1;
+
+TRANSITION Prepare_Request_4
+  CONSUME Client_Waiting_4:1;
+  PRODUCE Client_Sending_4:1;
+
+TRANSITION Read_Request_1_1
+  CONSUME RequestBuffer_1:1, Server_Waiting_1:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_1_1:1;
+
+TRANSITION Read_Request_1_2
+  CONSUME RequestBuffer_1:1, Server_Waiting_2:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_1_2:1;
+
+TRANSITION Read_Request_2_1
+  CONSUME RequestBuffer_2:1, Server_Waiting_1:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_2_1:1;
+
+TRANSITION Read_Request_2_2
+  CONSUME RequestBuffer_2:1, Server_Waiting_2:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_2_2:1;
+
+TRANSITION Read_Request_3_1
+  CONSUME RequestBuffer_3:1, Server_Waiting_1:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_3_1:1;
+
+TRANSITION Read_Request_3_2
+  CONSUME RequestBuffer_3:1, Server_Waiting_2:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_3_2:1;
+
+TRANSITION Read_Request_4_1
+  CONSUME RequestBuffer_4:1, Server_Waiting_1:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_4_1:1;
+
+TRANSITION Read_Request_4_2
+  CONSUME RequestBuffer_4:1, Server_Waiting_2:1;
+  PRODUCE RequestBufferSlots:1, Server_Anwering_4_2:1;
+
+TRANSITION Send_Answer_1_1
+  CONSUME Client_Sending_1:1, Server_Anwering_1_1:1;
+  PRODUCE Client_Waiting_1:1, Server_Waiting_1:1;
+
+TRANSITION Send_Answer_1_2
+  CONSUME Client_Sending_1:1, Server_Anwering_1_2:1;
+  PRODUCE Client_Waiting_1:1, Server_Waiting_2:1;
+
+TRANSITION Send_Answer_2_1
+  CONSUME Client_Sending_2:1, Server_Anwering_2_1:1;
+  PRODUCE Client_Waiting_2:1, Server_Waiting_1:1;
+
+TRANSITION Send_Answer_2_2
+  CONSUME Client_Sending_2:1, Server_Anwering_2_2:1;
+  PRODUCE Client_Waiting_2:1, Server_Waiting_2:1;
+
+TRANSITION Send_Answer_3_1
+  CONSUME Client_Sending_3:1, Server_Anwering_3_1:1;
+  PRODUCE Client_Waiting_3:1, Server_Waiting_1:1;
+
+TRANSITION Send_Answer_3_2
+  CONSUME Client_Sending_3:1, Server_Anwering_3_2:1;
+  PRODUCE Client_Waiting_3:1, Server_Waiting_2:1;
+
+TRANSITION Send_Answer_4_1
+  CONSUME Client_Sending_4:1, Server_Anwering_4_1:1;
+  PRODUCE Client_Waiting_4:1, Server_Waiting_1:1;
+
+TRANSITION Send_Answer_4_2
+  CONSUME Client_Sending_4:1, Server_Anwering_4_2:1;
+  PRODUCE Client_Waiting_4:1, Server_Waiting_2:1;
+
+TRANSITION Send_Request_1
+  CONSUME Client_Sending_1:1, RequestBufferSlots:1;
+  PRODUCE Client_Sending_1:1, RequestBuffer_1:1;
+
+TRANSITION Send_Request_2
+  CONSUME Client_Sending_2:1, RequestBufferSlots:1;
+  PRODUCE Client_Sending_2:1, RequestBuffer_2:1;
+
+TRANSITION Send_Request_3
+  CONSUME Client_Sending_3:1, RequestBufferSlots:1;
+  PRODUCE Client_Sending_3:1, RequestBuffer_3:1;
+
+TRANSITION Send_Request_4
+  CONSUME Client_Sending_4:1, RequestBufferSlots:1;
+  PRODUCE Client_Sending_4:1, RequestBuffer_4:1;
+
+
+{ END OF FILE }

@@ -1,0 +1,160 @@
+place "i" init 1;
+place "o";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:InputCondition";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_and (4mbt)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_and (4mbt)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Basic Data Processing for Legal Controls (4mbm)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Basic Data Processing for Legal Controls (4mbm)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:OutputCondition";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt)*and (4mbt)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci)";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):busy";
+place "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:busy";
+trans "*:Model.4mai--0-----u--:Model.4mai--0-----u--:start"~"*:Model.4mai--0-----u--:Model.4mai--0-----u--:start"
+    in "i"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:InputCondition"
+;
+trans "*:Model.4mai--0-----u--:Model.4mai--0-----u--:end"~"*:Model.4mai--0-----u--:Model.4mai--0-----u--:end"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:join:InputCondition"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:join:InputCondition"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:InputCondition"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:split:Split_Split_and (4mbt):Split_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:split:Split_Split_and (4mbt):Split_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split:busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_and (4mbt)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):join:Split_Split_and (4mbt)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):join:Split_Split_and (4mbt)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_and (4mbt)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):split:Split_Join_and (4mbt)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):split:Split_Join_and (4mbt)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_and (4mbt):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_and (4mbt)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):join:Split_Split_and (4mbt)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):join:Split_Split_and (4mbt)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_and (4mbt)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):split:Split_Join_and (4mbt):Split_Yes_and (4mbt)*and (4mbt)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):split:Split_Join_and (4mbt):Split_Yes_and (4mbt)*and (4mbt)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_and (4mbt)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt)*and (4mbt)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):join:Split_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):join:Split_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):split:Split_Join_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):split:Split_Join_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_No_Monitoring of Legal Control Regulations (4mci):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):join:Split_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):join:Split_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Split_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):split:Split_Join_Monitoring of Legal Control Regulations (4mci):Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):split:Split_Join_Monitoring of Legal Control Regulations (4mci):Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_Monitoring of Legal Control Regulations (4mci)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:join:Split_Join_and (4mbt):Split_Join_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:join:Split_Join_and (4mbt):Split_Join_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_and (4mbt)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Join_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:split:Join_Split_Basic Data Processing for Legal Controls (4mbm):Join_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:split:Join_Split_Basic Data Processing for Legal Controls (4mbm):Join_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Skip:busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Basic Data Processing for Legal Controls (4mbm)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):join:Split_Yes_and (4mbt)*and (4mbt)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):join:Split_Yes_and (4mbt)*and (4mbt)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_and (4mbt)*and (4mbt)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):split:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):split:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):join:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):join:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:and (4mbt)*Basic Data Processing for Legal Controls (4mbm)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):split:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):split:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):join:Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):join:Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Split_Yes_Monitoring of Legal Control Regulations (4mci)*Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):split:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):split:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):join:Join_Split_Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):join:Join_Split_Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Basic Data Processing for Legal Controls (4mbm)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):split:Join_Join_Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):split:Join_Join_Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Basic Data Processing for Legal Controls (4mbm):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Basic Data Processing for Legal Controls (4mbm)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):join:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm):Join_Split_Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):join:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm):Join_Split_Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Basic Data Processing for Legal Controls (4mbm)*Join_Yes_Basic Data Processing for Legal Controls (4mbm)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Basic Data Processing for Legal Controls (4mbm)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):split:Join_Join_Basic Data Processing for Legal Controls (4mbm)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):split:Join_Join_Basic Data Processing for Legal Controls (4mbm)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Basic Data Processing for Legal Controls (4mbm):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Basic Data Processing for Legal Controls (4mbm)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):join:Join_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):join:Join_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):split:Join_Join_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):split:Join_Join_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_No_Monitoring of Legal Control Regulations (4mci):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):join:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci):Join_Split_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):join:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci):Join_Split_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Monitoring of Legal Control Regulations (4mci)*Join_Yes_Monitoring of Legal Control Regulations (4mci)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Split_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):split:Join_Join_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):split:Join_Join_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Yes_Monitoring of Legal Control Regulations (4mci):busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Monitoring of Legal Control Regulations (4mci)"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:join:Join_Join_Basic Data Processing for Legal Controls (4mbm):Join_Join_Monitoring of Legal Control Regulations (4mci)"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:join:Join_Join_Basic Data Processing for Legal Controls (4mbm):Join_Join_Monitoring of Legal Control Regulations (4mci)"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Basic Data Processing for Legal Controls (4mbm)"
+       "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Join_Join_Monitoring of Legal Control Regulations (4mci)"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:busy"
+;
+trans "t:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:split:OutputCondition"~"t:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:split:OutputCondition"
+    in "p:Model.4mai--0-----u--:Model.4mai--0-----u--:Output:busy"
+   out "p:Model.4mai--0-----u--:Model.4mai--0-----u--:OutputCondition"
+;
+

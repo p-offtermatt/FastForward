@@ -1,0 +1,32 @@
+PLACE Entered, WaitBag, Undress, InBath, Dress, Dressed, Out, Cabins, Bags ;
+
+MARKING Out:20, Cabins:10, Bags:15 ;
+
+TRANSITION GetK2
+CONSUME Cabins:1, InBath:1 ;
+PRODUCE Dress:1 ;
+
+TRANSITION GetK
+CONSUME Entered:1, Cabins:1 ;
+PRODUCE WaitBag:1 ;
+
+TRANSITION GetB
+CONSUME WaitBag:1, Bags:1 ;
+PRODUCE Undress:1 ;
+
+TRANSITION RKey
+CONSUME Dressed:1 ;
+PRODUCE Out:1, Cabins:1 ;
+
+TRANSITION RelK
+CONSUME Undress:1 ;
+PRODUCE Cabins:1, InBath:1 ;
+
+TRANSITION RBag
+CONSUME Dress:1 ;
+PRODUCE Bags:1, Dressed:1 ;
+
+TRANSITION Enter
+CONSUME Out:1 ;
+PRODUCE Entered:1 ;
+

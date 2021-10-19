@@ -1,0 +1,173 @@
+NET Echo
+
+// current settings for cube with 5 x 5 x 5 nodes
+const int Dimensions = 3;
+const int Size = 5;
+
+typedef int(0,Size-1) agent[Dimensions];
+
+typedef struct 
+	{
+		agent from;
+		agent to;
+	} message;
+
+agent middle()
+{
+	agent result;
+	int i;
+	for(i=0;i<Dimensions;i++)
+	{
+		result[i] = Size / 2;
+	}
+	return result;
+}
+
+^message make_message(^agent F, ^agent T) // build cross product of messages
+{
+	^message result;
+	result = {};
+
+	// loop for all agents in F
+	agent current_F;
+	for(d=0;d<Dimensions;d++)
+	{
+		current_F[d] = 0;
+	}
+
+	while(true)
+	{
+		if(F[current_F] > 0)
+		{
+			// loop for all agents in T
+			agent current_T;
+			for(d=0;d<Dimensions;d++)
+			{
+				current_T[d] = 0;
+			}
+
+			while(true)
+			{
+				if(T[current_T] > 0)
+				{
+					result += {current_F,current_T};
+				}
+				for(d=0;d<Dimensions;d++)
+				{
+					if(current_T[d] == Size - 1)
+					{
+						current_T[d] = 0;
+					}
+					else
+					{
+						break;
+					}
+				}
+				if(d == Dimensions) break;
+				++(current_T[d]);
+			}
+		}	
+
+		for(d=0;d<Dimensions;d++)
+		{
+			if(current_F[d] == Size - 1)
+			{
+				current_F[d] = 0;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if(d == Dimensions) break;
+		++(current_F[d]);
+	}
+}
+	
+^agent all_neighbours(agent x)
+{
+	^agent result;
+	int d;
+	result = {};
+
+	for(d=0;d < Dimensions; d++)
+	{
+		if(x[d] > 0)
+		{
+			--x[d];
+			result += x;
+			++x[d];
+		}
+		if(x[d] < Size - 1)
+		{
+			++x[d];
+			result += x;
+			--x[d];
+		}
+	}
+	return result;
+}
+
+bool is_neighbour(agent x; agent y)
+{
+	// neighbour := differ by 1 in exactly one component
+
+	int(0,Dimensions) d;
+	int count;
+
+	for(d=0,count=0;d < Dimensions; d++)
+	{
+		if((x[d] - y[d] > 1) || (y[d] - x[d] > 1))
+		{
+			return false,
+		}
+		if(x[d] != y[d]) count++;
+		if(count > 1) return false;
+	}
+	if(count == 0) return false;
+	return true;
+}
+
+
+PLACE	quiet, waiting, terminated, uninformed, accepted: agent;
+	pending, mailbox: message;  
+
+	
+MARKING quiet      : middle();
+	uninformed : all(agent) - middle(); 
+
+TRANSITION start_initiator
+// starts the protocol by letting the initiator send messages to all neighbours 
+
+	CONSUME	quiet   : middle();
+	PRODUCE	waiting : middle(),
+			mailbox :make_message(middle(),all_neighbours(middle())); 
+	
+TRANSITION stop_initiator
+// terminates the protocol on receipt of acknowledgments from all neighbours of 
+// the initiator                                                                
+
+	CONSUME	waiting	  : middle(),
+			mailbox   : make_message(all_neighbours(middle()),middle());
+	PRODUCE terminated:	middle();
+	
+TRANSITION  start_other
+// other agent forwards first message to all other neighbours and stores sender of 
+		
+	VAR x,z: agent;
+	GUARD  (x != middle() && is_neighbour( x, z )) 
+
+	CONSUME uninformed : x,
+			mailbox    : {z,x};
+	PRODUCE mailbox    : make_message(x,all_neighbours(x) - z),
+			pending    : {x,z};
+
+TRANSITION stop_other
+
+	VAR x,z: agent;
+	GUARD (x != middle() && is_neighbour(x,z)) 
+
+	CONSUME pending  : {x,z)},
+			mailbox  : make_message(all_neighbours(x) - z, x);
+	PRODUCE accepted : x,
+			mailbox  : {x,z};

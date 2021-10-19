@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:InputCondition";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Split_Stock Removal Processing (2kko)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Join_Stock Removal Processing (2kko)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_xor (2kk8)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_xor (2kk8)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_Difference Processing (2kjf)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_Difference Processing (2kjf)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:OutputCondition";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko)*Confirmation (2kjt)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt)*xor (2kk8)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Join_Yes_xor (2kk8)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Difference Processing (2kjf)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf)";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):busy";
+place "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:busy";
+trans "*:Model.2kiu--0-----u--:Model.2kiu--0-----u--:start"~"*:Model.2kiu--0-----u--:Model.2kiu--0-----u--:start"
+    in "i"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:InputCondition"
+;
+trans "*:Model.2kiu--0-----u--:Model.2kiu--0-----u--:end"~"*:Model.2kiu--0-----u--:Model.2kiu--0-----u--:end"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:join:InputCondition"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:join:InputCondition"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:InputCondition"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:split:Split_Split_Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:split:Split_Split_Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split:busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Split_Stock Removal Processing (2kko)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):join:Split_Split_Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):join:Split_Split_Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Split_Stock Removal Processing (2kko)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):split:Split_Join_Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):split:Split_Join_Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_No_Stock Removal Processing (2kko):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Join_Stock Removal Processing (2kko)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):join:Split_Split_Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):join:Split_Split_Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Split_Stock Removal Processing (2kko)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):split:Split_Join_Stock Removal Processing (2kko):Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):split:Split_Join_Stock Removal Processing (2kko):Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Join_Stock Removal Processing (2kko)"
+       "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:join:Split_Join_Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:join:Split_Join_Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Join_Stock Removal Processing (2kko)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:split:Join_Split_xor (2kk8):Join_Split_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:split:Join_Split_xor (2kk8):Join_Split_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Skip:busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_xor (2kk8)"
+       "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_Difference Processing (2kjf)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):join:Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):join:Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Split_Yes_Stock Removal Processing (2kko)*Stock Removal Processing (2kko)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):split:Stock Removal Processing (2kko)*Confirmation (2kjt)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):split:Stock Removal Processing (2kko)*Confirmation (2kjt)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko)*Confirmation (2kjt)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):join:Stock Removal Processing (2kko)*Confirmation (2kjt)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):join:Stock Removal Processing (2kko)*Confirmation (2kjt)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Stock Removal Processing (2kko)*Confirmation (2kjt)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):split:Confirmation (2kjt)*xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):split:Confirmation (2kjt)*xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt)*xor (2kk8)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):join:Confirmation (2kjt)*xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):join:Confirmation (2kjt)*xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Confirmation (2kjt)*xor (2kk8)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):split:xor (2kk8)*Join_Yes_xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):split:xor (2kk8)*Join_Yes_xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Join_Yes_xor (2kk8)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):split:xor (2kk8)*Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):split:xor (2kk8)*Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Difference Processing (2kjf)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):join:xor (2kk8)*Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):join:xor (2kk8)*Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Difference Processing (2kjf)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):split:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):split:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):join:Join_Split_xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):join:Join_Split_xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_xor (2kk8)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):split:Join_Join_xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):split:Join_Join_xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_xor (2kk8):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_xor (2kk8)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):join:xor (2kk8)*Join_Yes_xor (2kk8):Join_Split_xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):join:xor (2kk8)*Join_Yes_xor (2kk8):Join_Split_xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:xor (2kk8)*Join_Yes_xor (2kk8)"
+       "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_xor (2kk8)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):split:Join_Join_xor (2kk8)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):split:Join_Join_xor (2kk8)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_xor (2kk8):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_xor (2kk8)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):join:Join_Split_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):join:Join_Split_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_Difference Processing (2kjf)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):split:Join_Join_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):split:Join_Join_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_No_Difference Processing (2kjf):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_Difference Processing (2kjf)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):join:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf):Join_Split_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):join:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf):Join_Split_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Difference Processing (2kjf)*Join_Yes_Difference Processing (2kjf)"
+       "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Split_Difference Processing (2kjf)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):split:Join_Join_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):split:Join_Join_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Yes_Difference Processing (2kjf):busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_Difference Processing (2kjf)"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:join:Join_Join_xor (2kk8):Join_Join_Difference Processing (2kjf)"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:join:Join_Join_xor (2kk8):Join_Join_Difference Processing (2kjf)"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_xor (2kk8)"
+       "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Join_Join_Difference Processing (2kjf)"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:busy"
+;
+trans "t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:split:OutputCondition"~"t:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:split:OutputCondition"
+    in "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:Output:busy"
+   out "p:Model.2kiu--0-----u--:Model.2kiu--0-----u--:OutputCondition"
+;
+

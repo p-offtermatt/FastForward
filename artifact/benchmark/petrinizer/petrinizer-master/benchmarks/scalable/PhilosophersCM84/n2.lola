@@ -1,0 +1,51 @@
+PLACE fork1clean,fork1dirty,fork1p1,fork1p2,fork2clean,fork2dirty,fork2p1,fork2p2,p1e,p1h,p2e,p2h,req1p1,req1p2,req2p1,req2p2,p1eatc,p2eatc;
+
+MARKING fork1dirty:1,fork1p1:1,fork2dirty:1,fork2p1:1,p1h:1,p2h:1,req1p2:1,req2p2:1;
+
+TRANSITION p1done
+CONSUME p1e:1;
+PRODUCE p1h:1;
+
+TRANSITION p1eat
+CONSUME fork1clean:1,fork1p1:1,fork2clean:1,fork2p1:1,p1h:1;
+PRODUCE fork1dirty:1,fork1p1:1,fork2dirty:1,fork2p1:1,p1e:1,p1eatc:1;
+
+TRANSITION p1give1
+CONSUME fork1dirty:1,fork1p1:1,p1h:1,req1p1:1;
+PRODUCE fork1clean:1,fork1p2:1,p1h:1,req1p1:1;
+
+TRANSITION p1give2
+CONSUME fork2dirty:1,fork2p1:1,p1h:1,req2p1:1;
+PRODUCE fork2clean:1,fork2p2:1,p1h:1,req2p1:1;
+
+TRANSITION p1req1
+CONSUME fork1p2:1,p1h:1,req1p1:1;
+PRODUCE fork1p2:1,p1h:1,req1p2:1;
+
+TRANSITION p1req2
+CONSUME fork2p2:1,p1h:1,req2p1:1;
+PRODUCE fork2p2:1,p1h:1,req2p2:1;
+
+TRANSITION p2done
+CONSUME p2e:1;
+PRODUCE p2h:1;
+
+TRANSITION p2eat
+CONSUME fork1clean:1,fork1p2:1,fork2clean:1,fork2p2:1,p2h:1;
+PRODUCE fork1dirty:1,fork1p2:1,fork2dirty:1,fork2p2:1,p2e:1,p2eatc:1;
+
+TRANSITION p2give1
+CONSUME fork1dirty:1,fork1p2:1,p2h:1,req1p2:1;
+PRODUCE fork1clean:1,fork1p1:1,p2h:1,req1p2:1;
+
+TRANSITION p2give2
+CONSUME fork2dirty:1,fork2p2:1,p2h:1,req2p2:1;
+PRODUCE fork2clean:1,fork2p1:1,p2h:1,req2p2:1;
+
+TRANSITION p2req1
+CONSUME fork1p1:1,p2h:1,req1p2:1;
+PRODUCE fork1p1:1,p2h:1,req1p1:1;
+
+TRANSITION p2req2
+CONSUME fork2p1:1,p2h:1,req2p2:1;
+PRODUCE fork2p1:1,p2h:1,req2p1:1;

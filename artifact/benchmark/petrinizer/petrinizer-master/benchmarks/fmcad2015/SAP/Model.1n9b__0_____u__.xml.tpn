@@ -1,0 +1,143 @@
+place "i" init 1;
+place "o";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:InputCondition";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Split_Distribution Network (1nci)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Join_Distribution Network (1nci)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Split_Deployment (1nat)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Join_Deployment (1nat)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:outputCondition";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci)*Planning (1ncw)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw)*xor (1nbx)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx)*xor (1nc4)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat)*Join_Yes_Deployment (1nat)";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):busy";
+place "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:busy";
+trans "*:Model.1n9b--0-----u--:Model.1n9b--0-----u--:start"~"*:Model.1n9b--0-----u--:Model.1n9b--0-----u--:start"
+    in "i"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:InputCondition"
+;
+trans "*:Model.1n9b--0-----u--:Model.1n9b--0-----u--:end"~"*:Model.1n9b--0-----u--:Model.1n9b--0-----u--:end"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:join:InputCondition"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:join:InputCondition"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:InputCondition"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:split:Split_Split_Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:split:Split_Split_Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split:busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Split_Distribution Network (1nci)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):join:Split_Split_Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):join:Split_Split_Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Split_Distribution Network (1nci)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):split:Split_Join_Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):split:Split_Join_Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_No_Distribution Network (1nci):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Join_Distribution Network (1nci)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):join:Split_Split_Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):join:Split_Split_Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Split_Distribution Network (1nci)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):split:Split_Join_Distribution Network (1nci):Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):split:Split_Join_Distribution Network (1nci):Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Join_Distribution Network (1nci)"
+       "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:join:Split_Join_Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:join:Split_Join_Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Join_Distribution Network (1nci)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:split:Join_Split_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:split:Join_Split_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Skip:busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Split_Deployment (1nat)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):join:Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):join:Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Split_Yes_Distribution Network (1nci)*Distribution Network (1nci)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):split:Distribution Network (1nci)*Planning (1ncw)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):split:Distribution Network (1nci)*Planning (1ncw)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci)*Planning (1ncw)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):join:Distribution Network (1nci)*Planning (1ncw)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):join:Distribution Network (1nci)*Planning (1ncw)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Distribution Network (1nci)*Planning (1ncw)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):split:Planning (1ncw)*xor (1nbx)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):split:Planning (1ncw)*xor (1nbx)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw)*xor (1nbx)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):join:Planning (1ncw)*xor (1nbx)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):join:Planning (1ncw)*xor (1nbx)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Planning (1ncw)*xor (1nbx)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):split:xor (1nbx)*xor (1nc4)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):split:xor (1nbx)*xor (1nc4)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx)*xor (1nc4)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):join:xor (1nbx)*xor (1nc4)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):join:xor (1nbx)*xor (1nc4)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nbx)*xor (1nc4)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):split:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):split:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):join:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):join:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:xor (1nc4)*DRP - Distribution Resource Planning Run (1nda)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):split:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):split:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):join:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):join:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:DRP - Distribution Resource Planning Run (1nda)*Deployment (1nat)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):split:Deployment (1nat)*Join_Yes_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):split:Deployment (1nat)*Join_Yes_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat)*Join_Yes_Deployment (1nat)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):join:Join_Split_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):join:Join_Split_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Split_Deployment (1nat)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):split:Join_Join_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):split:Join_Join_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_No_Deployment (1nat):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Join_Deployment (1nat)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):join:Deployment (1nat)*Join_Yes_Deployment (1nat):Join_Split_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):join:Deployment (1nat)*Join_Yes_Deployment (1nat):Join_Split_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Deployment (1nat)*Join_Yes_Deployment (1nat)"
+       "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Split_Deployment (1nat)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):split:Join_Join_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):split:Join_Join_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Yes_Deployment (1nat):busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Join_Deployment (1nat)"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:join:Join_Join_Deployment (1nat)"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:join:Join_Join_Deployment (1nat)"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Join_Join_Deployment (1nat)"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:busy"
+;
+trans "t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:split:outputCondition"~"t:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:split:outputCondition"
+    in "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:Output:busy"
+   out "p:Model.1n9b--0-----u--:Model.1n9b--0-----u--:outputCondition"
+;
+

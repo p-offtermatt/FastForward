@@ -1,0 +1,36 @@
+PLACE
+alpha,callToProcess.s00001419.inputCriterion.s00001053.used,callToProcess.s00001419.output.s00001077,callToTask.s00006664.input.s00001052,callToTask.s00006664.input.s00001066,callToTask.s00006664.input.s00001068,callToTask.s00006664.input.s00001127,callToTask.s00006664.inputCriterion.s00001053.used,callToTask.s00006664.output.s00001054;
+
+MARKING
+alpha: 1, callToProcess.s00001419.inputCriterion.s00001053.used: 0, callToProcess.s00001419.output.s00001077: 0, callToTask.s00006664.input.s00001052: 0, callToTask.s00006664.input.s00001066: 0, callToTask.s00006664.input.s00001068: 0, callToTask.s00006664.input.s00001127: 0, callToTask.s00006664.inputCriterion.s00001053.used: 0, callToTask.s00006664.output.s00001054: 0;
+
+TRANSITION callToProcess.s00001419.inputCriterion.s00001053
+CONSUME callToTask.s00006664.output.s00001054: 1;
+PRODUCE callToProcess.s00001419.inputCriterion.s00001053.used: 1;
+
+
+
+TRANSITION callToProcess.s00001419.outputCriterion.s00001055
+CONSUME callToProcess.s00001419.inputCriterion.s00001053.used: 1;
+PRODUCE callToProcess.s00001419.output.s00001077: 1;
+
+
+
+TRANSITION callToTask.s00006664.inputCriterion.s00001053
+CONSUME callToTask.s00006664.input.s00001052: 1, callToTask.s00006664.input.s00001066: 1, callToTask.s00006664.input.s00001068: 1, callToTask.s00006664.input.s00001127: 1;
+PRODUCE callToTask.s00006664.inputCriterion.s00001053.used: 1;
+
+
+
+TRANSITION callToTask.s00006664.outputCriterion.s00001055
+CONSUME callToTask.s00006664.inputCriterion.s00001053.used: 1;
+PRODUCE callToTask.s00006664.output.s00001054: 1;
+
+
+
+TRANSITION process.s00000891##s00006663.inputCriterion.s00001053
+CONSUME alpha: 1;
+PRODUCE callToTask.s00006664.input.s00001052: 1, callToTask.s00006664.input.s00001066: 1, callToTask.s00006664.input.s00001068: 1, callToTask.s00006664.input.s00001127: 1;
+
+
+

@@ -1,0 +1,768 @@
+#############################################################################
+#  This file is part of LoLA.
+#
+#  LoLA is free software: you can redistribute it and/or modify it under the
+#  terms of the GNU Affero General Public License as published by the Free
+#  Software Foundation, either version 3 of the License, or (at your option)
+#  any later version.
+#
+#  LoLA is distributed in the hope that it will be useful, but WITHOUT ANY
+#  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+#  FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+#  more details.
+#
+#  You should have received a copy of the GNU Affero General Public License
+#  along with LoLA. If not, see <http://www.gnu.org/licenses/>.
+#############################################################################
+
+
+usage " [FILE] [--formula=FORMULA] [OPTIONS]..."
+
+args "--include-getopt --show-required --unamed-opts=FILE --no-handle-error"
+
+description "About LoLA:"
+
+#versiontext "LoLA: a low-level analyzer.
+#Report bugs to <lola@service-technology.org>.
+#Visit LoLA's home page at <http://service-technology.org/lola>."
+
+
+
+#############################################################################
+
+section "Verification Problem"
+sectiondesc="
+The verification problem specifies the question that LoLA is supposed to
+answer.
+"
+
+option "check" c
+  "Verify a property"
+   details = "
+The type of property to be verified by LoLA is selected:
+
+* modelchecking: A given temporal logic formula (specified using the
+  mandatory `--formula' or `--buechi' option) is evaluated while generating
+  the state space. Search terminates as soon as the value of the formula is
+  determined.
+* full: All reachable states are computed without evaluating any property.
+  This is useful for determining the size of a (reduced) state space.
+* none: No state space search is performed at all. This is useful for just
+  getting statistical data for the net and pre-processing information.
+
+"
+  values="none","full","modelchecking" enum
+  typestr="PROPERTY"
+  default="modelchecking"
+  optional
+
+
+option "formula" f
+  "Check a formula"
+  details="
+If the given string is a formula in one of the temporal logics CTL or LTL,
+this formula is verified during state space exploration. Otherwise, if the
+given string is a file name, such a formula is expected as content of that
+file (requires `--check=modelchecking').
+
+"
+  string
+  typestr="FORMULA"
+  optional
+
+
+option "buechi" -
+  "Check a linear time property specified as a Büchi automaton"
+  details="
+The given string is expected to be a file name that contains the description
+of a Büchi automaton. During state space exploration, LoLA searches for a
+path that is accepted by that automaton (requires `--check=modelchecking').
+"
+  string
+  typestr="AUTOMATON"
+  optional
+
+
+
+#############################################################################
+
+section "Reduction Techniques"
+sectiondesc="
+LoLA offers several techniques for alleviating the state space explosion
+problem. Many of them can be applied in combination.
+"
+
+option "search" -
+  "Search the state space using a particular strategy"
+  details="
+The search strategy determines (1) the order in which states are explored,
+and (2) whether or not computed states are kept in memory.
+
+* depth: States are explored using the depth-first strategy and kept in
+  memory forever.
+* sweepline: States are explored in ascending progress value order determined
+  by a pre-processed progress measure. They are released from memory as soon
+  as their progress value is smaller those of than any unprocessed states,
+  unless the search algorithm has marked them as persistent (for assuring
+  termination). Search is exhaustive.
+* covergraph: States are explored using the coverability graph constructions, 
+  i.e. sequences of states are abstracted to their limit. Evaluation of 
+  properties may lead to inconclusive results.
+
+"
+  values="depth","sweepline","covergraph" enum
+  typestr="STRATEGY"
+  default="depth"
+  optional
+
+option "findpath" -
+  "Perform repeated runs without storing states"
+  details="
+This technique can be applied to simple properties such as reachability
+of a state predicate or deadlock. It repeatedly generates firing sequences
+and checks if the target property is satisfied. States are not stored, hence
+sequence generation is very fast. On the other hand, this method is inherently
+incomplete. The value of the property determines, where the technique is
+placed w.r.t. exhaustive search.
+
+* seq: apply it before executing exhaustive search 
+* par: apply it in parallel to exhaustive search
+* alone: apply it instead of exhaustive search
+* off: do not apply it at all (default)
+"
+
+  values="seq","par","alone","off" enum
+  typestr="POSITION"
+  default="off"
+  optional
+
+
+option "stubborn" -
+  "Apply a particular scheme for computing stubborn sets."
+  details="
+If LoLA searches for deadlocks or reduces a temporal logic property to a
+simple reachability problem, it always uses the stubborn set method (a
+partial order reduction technique). There are several ways to compute
+stubborn sets which have different performance.
+
+* tarjan: Stubborn sets are computed by an incremental method that
+  investigates strongly connected components in a dependency graph. It has
+  linear complexity (in the number of transitions) and leads to superior
+  performance if a target state (or deadlock) is actually reachable).
+* deletion: Stubborn sets are computed by repeated deletion of transitions.
+  It has quadratic complexity (in the number of transitions) but produces
+  smaller stubborn sets. It has superior performance if no target state (or
+  deadlock) is actually reachable.
+
+"
+  values="tarjan","deletion","off" enum
+  typestr="STUBBORN"
+  default="tarjan"
+  optional
+
+
+option "cycle" -
+  "Apply transition invariant based reduction."
+  details="
+States are computed but only some of them are stored. Stored states are
+sufficient to cover at least one state for each cycle in the state space,
+thus guaranteeing termination of the search. Information about cycles in the
+state space is obtained from transition invariants of the Petri net that are
+determined in preprocessing.
+
+"
+  flag off
+
+option "symmetry" -
+  "Apply symmetry reduction."
+  details="
+A generating set for the symmetries of the given net (respecting the given
+formula, if applicable) is computed during pre-processing. During state space
+exploration, markings are transformed into (approximated) canonical
+representatives of their respective equivalence classes before storing. This
+way, only few members of an equivalence class are physically present in the
+set of stored markings.
+"
+  flag off
+
+option "ltlstubborn" - 
+  "Apply computing stubborn sets for LTL."
+  details=""
+  values="off", "on" enum
+  typestr="ONorOFF"
+  default="off"
+  optional
+
+#############################################################################
+
+section "Structural Analysis"
+sectiondesc="
+For some problems, LoLA can execute structural checks that yield necessary
+or sufficient conditions. They are applied concurrently to the state
+space exploration. 
+"
+
+option "siphontrap" -
+  "Check for deadlock freedom by exploring the siphon/trap property"
+  details="
+A Petri net where all input arcs to transitions have multiplicity 1
+is deadlock-free if every siphon (set of places S where post(S) is subset
+of pre(S)) includes a marked trap (set of places S' where pre(S') is subset
+of post(S')). LoLA translates the problem into a propositional formula and
+evaluates it using the integrated Minisat SAT solver. If the net does not
+satisfy the multiplicity condition, LoLA skips the check.
+
+* off: do not apply this check (default)
+* seq: apply this check before the main search
+* par: apply this check in parallel to the main search
+* alone: apply only this check (and no other check)
+"
+  values = "off","seq","par","alone" enum
+  typestr = "ORDER"
+  default = "off"
+  optional
+
+
+option "siphondepth" -
+  "Control the length of the formula for the siphon/trap check."
+  details="
+If the value is smaller than the number of places of the net, a shorter
+formula for the siphon/trap problem is generated. It may then yield 
+inconclusive results. Shorter value means smaller formula, higher
+probability of an inconclusive result but on the other hand less memory
+consumption and quicker result. LoLA will never make false decisions on
+an inconclusive outcome.
+"
+  int
+  default="1073741824"
+  optional
+
+option "minisatargs" -
+  "Pass options to the integrated Minisat SAT solver."
+  details="
+The string is passed to Minisat as if it were its command line string.
+This way, you can modify the way Minisat is solving the siphon/trap problem.
+Do not try to give a filename as the input comes from LoLA.
+"
+  string
+  default=""
+  optional
+
+option "siphonwitness" -
+  "Print witness siphon and trap"
+  details="
+If the siphon/trap property does not hold, print a siphon that does not contain 
+a marked trap and the unique maximal trap included. This option is only useful
+when siphontrap != off. If the siphon/trap propert happens to hold, or the result is inconclusive, no witness is printed.
+"
+  string
+  typestr="FILE"
+  optional
+  default="-"
+  argoptional
+
+
+#############################################################################
+
+section "StateEquationTask"
+sectiondesc=""
+
+option "stateequation" -
+  "Checking reachability of petri net state equation"
+  details="
+Using this option invokes Sara, which sends the results back.
+There are four values to set stateequation: off, seq, par and alone.
+
+* off: do not apply this check (default)
+* seq: apply this check before the main search
+* par: apply this check in parallel to the main search
+* alone: do only this check without the main search
+"
+  values = "off","seq","par","alone" enum
+  typestr = "ORDER"
+  default = "off"
+  optional
+
+
+#############################################################################
+
+section "Input"
+sectiondesc="
+Input can be given in several formats.
+"
+
+option "compressed" -
+  "Read a compressed file"
+  details="
+In compressed format, net elements are reduced to indices, thus making it
+easier to transform an input file into internal data structures. This is
+useful for repeated use of the same net, but not at all readable for humans.
+"
+  hidden
+  flag off
+
+
+
+#############################################################################
+
+section "Output"
+sectiondesc="
+Apart from the answer to the verification problem, LoLA can output other
+useful information. This information can help in understanding the result
+produced by LoLA.
+"
+
+option "state" s
+  "Print witness state"
+  details="
+If the verification problem asks for the reachability of a state, and such a
+state is indeed reachable, this option forces LoLA to write such a state to
+the specified file, or to the standard output stream (-).
+
+"
+  string
+  typestr="FILE"
+  optional
+  default="-"
+  argoptional
+
+option "path" p
+  "Print witness path"
+  details="
+If the verification problem asks for the existence of a path (e.g. to a given
+state, or accepted by a Büchi automaton), this option forces LoLA to write
+such a path to the specified file, or to the standard output stream (-).
+
+"
+  string
+  typestr="FILE"
+  optional
+  default="-"
+  argoptional
+
+option "pathshape" -
+  "Select the shape of the witness path"
+  details="
+If a path is written using the `--path' option, several formats are available
+to control the way in which concurrency is expressed, and how much redundant
+information is provided.
+
+* linear: Print all transitions in path in sequential order, i.e. no
+  concurrency information is given.
+* fullrun: The path is expressed as a partially ordered run (an unrolling of
+  the net) consisting of conditions (places) and events (transitions).
+* run: Same as fullrun, but obvious places and transitions (e.g. plain
+  sequences) are suppressed.
+* eventstructure: Same as run, bit places are not reported.
+
+"
+  values="linear","run","fullrun","eventstructure" enum
+  typestr="SHAPE"
+  default="linear"
+  dependon="path"
+  optional
+  argoptional
+  hidden
+
+option "writeCompressed" -
+  "Write a compressed file"
+   details="
+The net structure is written using indices instead of identifiers. Thus,
+subsequent reading is more efficient.
+"
+  string
+  typestr="PREFIX"
+  optional
+  default="compressedOutput"
+  argoptional
+  hidden
+
+option "writeBuechi" -
+  "Write a Buechi automaton"
+   details="
+If a formula classified as LTL problem is given, this option writes a text file
+containing the corresponding Buechi automaton (accepting the negation of the given problem)
+"
+  string
+  typestr="PREFIX"
+  optional
+  default="automaton"
+  argoptional
+  hidden
+
+
+
+#############################################################################
+
+section "Logging"
+  sectiondesc="
+During search, LoLA generates tons of messages concerning results of
+preprocessing, progress information during search, or statistical data.
+"
+
+option "quiet" q
+  "Suppress messages."
+  details="
+In quiet mode, nothing is reported (except of error messages). This option is
+in particular useful in combination with the JSON output.
+
+"
+  flag off
+
+option "reporter" r
+  "Select a reporting procedure."
+  details="
+LoLA has different ways to emit log messages.
+
+* stream: Messages are sent to the standard error stream (stderr) of the
+  process that runs LoLA.
+* socket: Messages are sent to a remote process (`listener') via socket
+  communication.
+* silent: All messages are suppressed.
+
+"
+  values="stream","socket","silent" enum
+  typestr="REPORTER"
+  default="stream"
+  optional
+  hidden
+
+option "json" j
+  "Output structured data in JSON format."
+  details="
+Creates structured output in JSON format (JavaScript Object Notation). This
+format is designed to be easily consumable by other programs. The used keys
+are described in LoLA's manual. The output is written into the specified
+file, or by default to the standard output stream (-).
+
+"
+  string
+  typestr="FILE"
+  optional
+  default="-"
+  argoptional
+  hidden
+
+option "jsoninclude" -
+  "Control which data should be included in the JSON output."
+  details="
+This option controls whether additional aspects should be included in the
+JSON output.
+
+"
+  dependon="json"
+  values="path","state" enum
+  typestr="DATA"
+  optional
+  multiple
+  hidden
+
+option "nolog" -
+  "Do not send logging information"
+  details="
+LoLA sends statistical data to a logging server. This function switches off
+logging.
+
+"
+  flag off
+  hidden
+
+option "outputport" -
+  "Define output port number"
+  details="
+This option specifies a port number for outgoing messages. This port is used
+to communicate with a listener process which displays LoLA's reports.
+
+"
+  short
+  typestr="PORT"
+  default="5555"
+  optional
+  hidden
+
+option "inputport" -
+  "Define input port number"
+  details="
+This option specifies a port number for incoming messages. This port is used
+to remotely terminate LoLA in case the option `--remoteTermination' is used.
+
+"
+  short
+  typestr="PORT"
+  default="5556"
+  optional
+  hidden
+
+option "address" -
+  "Define hostname or IP for reports"
+  details="
+The hostname or IP address of a listener process to which LoLA will send
+reports to.
+"
+  string
+  typestr="HOSTNAME"
+  default="localhost"
+  optional
+  hidden
+
+option "remoteTermination" -
+  "Allow remote termination"
+  details="
+This option installs a termination handler that allows to remotely terminate
+LoLA by sending a specified SECRET to the input port.
+"
+   string
+   typestr="SECRET"
+   optional
+   default="goodbye"
+   argoptional
+   hidden
+
+
+
+#############################################################################
+
+section "Debugging"
+
+option "printNet" -
+  "Print the net"
+  flag off
+  hidden
+
+option "stats" -
+  "Print memory statistics"
+  flag off
+  hidden
+
+option "tscc" -
+  "Use TSCC exploration"
+  flag off
+  hidden
+
+
+
+#############################################################################
+
+section "Limits"
+sectiondesc="
+To avoid negative effects of physically exceeding the resources of the
+machine that runs LoLA, artificial limits can be set that force LoLA to
+terminate when exceeded.
+"
+
+option "timelimit" -
+  "Abort LoLA after the given time has passed"
+  details="
+LoLA is aborted when the given number of seconds have passed.
+
+"
+  int
+  typestr="SECONDS"
+  optional
+
+option "localtimelimit" -
+  "Abort a child process of LoLA that executes a subtask,
+   after the given time has passed. Use 0 to use a dynamic calculated limit."
+  details="
+A child process of LoLA is aborted when the given number of seconds have passed. 
+The process returns UNKNOWN as result. LoLA continues with the execution of the next subproblem.
+If 0 is passed as argument a dynamic calculated local time limit is used. It is calculated 
+based on the remaining time, if a globel time limit (--timelimit) is set. 
+"
+  int
+  typestr="SECONDS"
+  optional
+
+option "symmtimelimit" -
+  "Abort symmetry computation after the given time has passed"
+  details="
+When the given time limit is exceeded, LoLA stops exploration of symmetries
+and continues with those generators that have been found so far.
+
+"
+  int
+  typestr="SECONDS"
+  optional
+
+option "markinglimit" -
+  "Abort LoLA after the given number of markings have been explored"
+   details="
+LoLA is aborted as soon as it reports a number of explored markings that is
+larger than the specified number.
+"
+  int
+  typestr="MARKINGS"
+  optional
+
+
+
+#############################################################################
+
+section "Advanced"
+sectiondesc="
+A lot of other aspects of LoLA can be controlled with command line
+parameters. A complete list can be shown with `--detailed-help'.
+"
+
+option "store" -
+  "Manage visited states using the specified data structure"
+  details="
+LoLA supports several structures for managing the stored states:
+
+* comp: for internal (debugging) use only
+* prefix: Store states as a prefix tree
+* stl: Store states using the set class in the C++ standard template library
+  (STL).
+* bloom: do not store states, but record hash values of visited states. When
+  hash collisions occur, search is not exhaustive. The probability of hash
+  collisions can be reduced by increasing the number of concurrently used
+  hash functions.
+
+"
+  values="comp", "prefix", "stl", "bloom" enum
+  typestr="STORE"
+  default="prefix"
+  optional
+
+option "encoder" -
+  "Code visited states using the specified coding scheme"
+  details="
+LoLA supports several strategies for transforming a marking into a sequence
+of bits to be finally stored. Some schemes represent only significant places.
+The marking of insignificant places is fully determined by the significant
+ones via place invariants of the Petri net. Information about significance of
+places is computed in pre-processing.
+
+* bit: Marking of significant places is packed such that each place gets only
+  as many bits as necessary according to its capacity.
+* copy: Marking of significant places is transformed using one word per
+  place.
+* simplecompressed: Marking of significant places is encoded using a variable
+  length coding scheme that assigns small codes to low marking values and
+  large codes to bigger marking values.
+* fullcopy: Marking of all places is transformed using one word per place.
+
+"
+  values="bit", "copy", "simplecompressed", "fullcopy" enum
+  typestr="ENCODER"
+  default="bit"
+  optional
+  hidden
+
+option "bucketing" -
+  "Activate bucketing, if the selected store supports it."
+  details="
+The argument is valid for the sweep-line method only, should be a power of 2,
+and determines the number of buckets per progress value.
+
+"
+  typestr="BUCKETS"
+  int
+  optional
+  default="16"
+  argoptional
+  hidden
+
+option "hashfunctions" -
+  "Activate the specified number of hash functions for the Bloom filter"
+  details="
+Using the `--store=bloom' option, only the hash values of visited states are
+recorded. This option controls, for how many (stochastically independent)
+hash functions, the hash value is recorded. Increased number reduces the
+probability of hash collisions thus getting search closer to exhaustion of
+the state space.
+
+"
+  short
+  default="2"
+  optional
+  hidden
+
+option "ltlmode" -
+  "Select LTL-state storage mode"
+  values="tree","flat" enum
+  typestr="LTLMODE"
+  default="tree"
+  optional
+  hidden
+
+option "sweepfronts" -
+  "Number of fronts that may run simultaneously in the SweepLine method."
+  details="
+In addition, a higher number of threads can be selected to sweep through
+states inside any single front concurrently.
+
+"
+  int
+  typestr="FRONTS"
+  default="1"
+  optional
+  hidden
+
+option "sweeplinedelay" -
+  "Parameter for the SweepLine search strategy"
+  details="
+Percentage of transitions with negative progress values for which
+non-persistent states are remembered.
+
+"
+  int
+  typestr="PERCENTAGE"
+  default="100"
+  optional
+  hidden
+
+option "sweeplinespread" -
+  "Allow spreading of progress values over a larger range."
+  int
+  typestr="MULTIPLIER"
+  default="1"
+  optional
+  hidden
+
+option "cycleheuristic" -
+  "Heuristical parameter for transition invariant based analysis."
+  int
+  typestr="K"
+  default="-1"
+  optional
+  hidden
+
+option "retrylimit" -
+  "Set number of retries (0 for infinite retries; relevant only for `--search=findpath')"
+  details="
+Using `--search=findpath', randomly selected transitions are fired without
+storing states. Occasionally, search resumes at the initial marking (see
+`--depthlimit'). After RETRIES resets to the initial marking, LoLA terminates
+and assumes that the target state is not reachable (which is not necessarily
+the correct result as search is not exhaustive).
+
+"
+  int
+  typestr="RETRIES"
+  optional
+  default="0"
+
+option "depthlimit" -
+  "Set number of transitions to fire before search is aborted or retried (relevant for `--search=findpath')."
+  details="
+Using `--search=findpath', randomly selected transitions are fired without
+storing states. When DEPTH is reached, search resumes at the initial marking
+thus exploring another path.
+
+"
+  int
+  typestr="DEPTH"
+  optional
+  default="1000000"
+  
+option "threads" -
+  "Set number of threads to be used for parallelization"
+  details="
+If the machine running LoLA has several cores, LoLA can parallelize the
+access to the stored markings to the given number of threads.
+"
+  short
+  typestr="THREADS"
+  optional
+  default="1"

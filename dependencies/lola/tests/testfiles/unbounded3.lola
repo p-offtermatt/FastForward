@@ -1,0 +1,33 @@
+PLACE
+	p, q, r, s, x, y;
+MARKING
+	p : 1;
+TRANSITION a
+	CONSUME
+		p : 1;
+	PRODUCE
+		q : 1;
+TRANSITION b
+	CONSUME
+		q : 1;
+	PRODUCE
+		p : 1,
+        r : 1;
+TRANSITION c
+	CONSUME
+		q : 1,
+        r : 1;
+	PRODUCE
+		s : 1;
+TRANSITION d
+	CONSUME
+		s : 1;
+	PRODUCE
+		x : 1;
+TRANSITION e
+	CONSUME
+		x : 1;
+	PRODUCE
+		s : 1,
+        y : 1;
+

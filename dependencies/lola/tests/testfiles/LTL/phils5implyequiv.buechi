@@ -1,0 +1,9 @@
+buechi{
+hungry:
+     ( ( fo.4 = 1 AND hl.3 = 1 ) -> ea.3 = 1 ) => eating
+     ea.3 = 0 <-> TRUE  => hungry,
+eating: 
+    ( ( NOT  ( fo.4 = 0 OR  hl.3 = 1 )) <-> TRUE ) => hungry
+    ea.3 = 1 <-> TRUE  => eating,
+}
+accept{ eating  };

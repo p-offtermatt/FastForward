@@ -1,0 +1,104 @@
+PLACE 'sigma,'m1,'m2,begin,do,sc1,oh_ns,point1,oh_a_dt,sc2,sc3,point2,'begin,'do,'sc1,'oh_ns,'point1,'oh_a_dt,'sc2,'sc3,'point2;
+
+MARKING 'begin:1,'m1:1,begin:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION 't1
+CONSUME 'begin:1,begin:1,'m1:1;
+PRODUCE 'do:1,do:1,'m1:1;
+
+TRANSITION ''t1
+CONSUME 'begin:1,'m2:1;
+PRODUCE 'do:1,'sigma:1,'m2:1;
+
+TRANSITION 't2
+CONSUME 'do:1,do:1,'m1:1;
+PRODUCE 'sc1:1,sc1:1,'m1:1;
+
+TRANSITION ''t2
+CONSUME 'do:1,'m2:1;
+PRODUCE 'sc1:1,'sigma:1,'m2:1;
+
+TRANSITION 't3
+CONSUME 'sc1:1,sc1:1,'m1:1;
+PRODUCE 'oh_ns:1,oh_ns:1,'m1:1;
+
+TRANSITION ''t3
+CONSUME 'sc1:1,'m2:1;
+PRODUCE 'oh_ns:1,'sigma:1,'m2:1;
+
+TRANSITION 't4
+CONSUME 'oh_ns:1,oh_ns:1,'m1:1;
+PRODUCE 'point1:1,point1:1,'m1:1;
+
+TRANSITION ''t4
+CONSUME 'oh_ns:1,'m2:1;
+PRODUCE 'point1:1,'sigma:1,'m2:1;
+
+TRANSITION 't5
+CONSUME 'oh_ns:1,oh_ns:1,'m1:1;
+PRODUCE 'point2:1,point2:1,'m1:1;
+
+TRANSITION ''t5
+CONSUME 'oh_ns:1,'m2:1;
+PRODUCE 'point2:1,'sigma:1,'m2:1;
+
+TRANSITION 't6
+CONSUME 'point1:1,point1:1,'m1:1;
+PRODUCE 'oh_a_dt:1,oh_a_dt:1,'m1:1;
+
+TRANSITION ''t6
+CONSUME 'point1:1,'m2:1;
+PRODUCE 'oh_a_dt:1,'sigma:1,'m2:1;
+
+TRANSITION 't7
+CONSUME 'oh_a_dt:1,oh_a_dt:1,'m1:1;
+PRODUCE 'point2:1,point2:1,'m1:1;
+
+TRANSITION ''t7
+CONSUME 'oh_a_dt:1,'m2:1;
+PRODUCE 'point2:1,'sigma:1,'m2:1;
+
+TRANSITION 't8
+CONSUME 'oh_a_dt:1,oh_a_dt:1,'m1:1;
+PRODUCE 'sc2:1,sc2:1,'m1:1;
+
+TRANSITION ''t8
+CONSUME 'oh_a_dt:1,'m2:1;
+PRODUCE 'sc2:1,'sigma:1,'m2:1;
+
+TRANSITION 't9
+CONSUME 'oh_a_dt:1,oh_a_dt:1,'m1:1;
+PRODUCE 'sc3:1,sc3:1,'m1:1;
+
+TRANSITION ''t9
+CONSUME 'oh_a_dt:1,'m2:1;
+PRODUCE 'sc3:1,'sigma:1,'m2:1;
+
+TRANSITION 't10
+CONSUME 'sc2:1,sc2:1,'m1:1;
+PRODUCE 'point2:1,point2:1,'m1:1;
+
+TRANSITION ''t10
+CONSUME 'sc2:1,'m2:1;
+PRODUCE 'point2:1,'sigma:1,'m2:1;
+
+TRANSITION 't11
+CONSUME 'sc3:1,sc3:1,'m1:1;
+PRODUCE 'point2:1,point2:1,'m1:1;
+
+TRANSITION ''t11
+CONSUME 'sc3:1,'m2:1;
+PRODUCE 'point2:1,'sigma:1,'m2:1;
+
+TRANSITION 't12
+CONSUME 'point2:1,point2:1,'m1:1;
+PRODUCE 'do:1,do:1,'m1:1;
+
+TRANSITION ''t12
+CONSUME 'point2:1,'m2:1;
+PRODUCE 'do:1,'sigma:1,'m2:1;
+

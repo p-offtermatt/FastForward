@@ -1,0 +1,22 @@
+petri net "simple liveness property test" {
+    places {
+        p1 p2 p3
+    }
+    transitions {
+        t1 t2 t3
+    }
+    arcs {
+        p1 -> t1 -> p1
+        p2 -> t1 -> p2
+        p1 -> t2 -> p2
+        p2 -> t3 -> p1
+        p3 -> t2
+        p3 -> t3
+    }
+    initial {
+        p1 p3
+    }
+}
+liveness property "termination" {
+    true
+}

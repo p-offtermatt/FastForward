@@ -1,0 +1,108 @@
+PLACE
+alpha,callToProcess.s00000843.input.s00000792,callToProcess.s00000843.input.s00000821,callToProcess.s00000843.input.s00000881,callToProcess.s00000843.inputCriterion.s00000772.used,callToProcess.s00000843.output.s00000788,callToProcess.s00000843.output.s00000883,callToProcess.s00003459.input.s00000783,callToProcess.s00003459.input.s00000807,callToProcess.s00003459.inputCriterion.s00000772.used,callToProcess.s00003459.output.s00000785,callToTask.s00003462.inputCriterion.s00000772.used,callToTask.s00003462.output.s00000785,callToTask.s00003462.output.s00000788,callToTask.s00003462.output.s00000849,callToTask.s00003463.input.s00000807,callToTask.s00003463.inputCriterion.s00000772.used,callToTask.s00003463.output.s00000785,callToTask.s00003463.output.s00000788,callToTask.s00003464.inputCriterion.s00000772.used,callToTask.s00003464.output.s00000785,callToTask.s00003464.output.s00000788,fork.s00001053.activated.s00000784,fork.s00001053.activated.s00000787,join.s00000879.activated.s00000816,join.s00000879.activated.s00000817,join.s00000879.input.s00000783,join.s00000879.input.s00000819,process.s00000461##s00003461.input.s00000783;
+
+MARKING
+alpha: 1, callToProcess.s00000843.input.s00000792: 0, callToProcess.s00000843.input.s00000821: 0, callToProcess.s00000843.input.s00000881: 0, callToProcess.s00000843.inputCriterion.s00000772.used: 0, callToProcess.s00000843.output.s00000788: 0, callToProcess.s00000843.output.s00000883: 0, callToProcess.s00003459.input.s00000783: 0, callToProcess.s00003459.input.s00000807: 0, callToProcess.s00003459.inputCriterion.s00000772.used: 0, callToProcess.s00003459.output.s00000785: 0, callToTask.s00003462.inputCriterion.s00000772.used: 0, callToTask.s00003462.output.s00000785: 0, callToTask.s00003462.output.s00000788: 0, callToTask.s00003462.output.s00000849: 0, callToTask.s00003463.input.s00000807: 0, callToTask.s00003463.inputCriterion.s00000772.used: 0, callToTask.s00003463.output.s00000785: 0, callToTask.s00003463.output.s00000788: 0, callToTask.s00003464.inputCriterion.s00000772.used: 0, callToTask.s00003464.output.s00000785: 0, callToTask.s00003464.output.s00000788: 0, fork.s00001053.activated.s00000784: 0, fork.s00001053.activated.s00000787: 0, join.s00000879.activated.s00000816: 0, join.s00000879.activated.s00000817: 0, join.s00000879.input.s00000783: 0, join.s00000879.input.s00000819: 0, process.s00000461##s00003461.input.s00000783: 0;
+
+TRANSITION callToProcess.s00000843.inputCriterion.s00000772
+CONSUME callToProcess.s00000843.input.s00000792: 1, callToProcess.s00000843.input.s00000821: 1, callToProcess.s00000843.input.s00000881: 1;
+PRODUCE callToProcess.s00000843.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToProcess.s00000843.outputCriterion.s00000773
+CONSUME callToProcess.s00000843.inputCriterion.s00000772.used: 1;
+PRODUCE callToProcess.s00000843.output.s00000788: 1, callToProcess.s00000843.output.s00000883: 1;
+
+
+
+TRANSITION callToProcess.s00003459.inputCriterion.s00000772
+CONSUME callToProcess.s00003459.input.s00000783: 1, callToProcess.s00003459.input.s00000807: 1;
+PRODUCE callToProcess.s00003459.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToProcess.s00003459.outputCriterion.s00000773
+CONSUME callToProcess.s00003459.inputCriterion.s00000772.used: 1;
+PRODUCE callToProcess.s00003459.output.s00000785: 1;
+
+
+
+TRANSITION callToTask.s00003462.inputCriterion.s00000772
+CONSUME callToTask.s00003464.output.s00000785: 1, callToTask.s00003464.output.s00000788: 1;
+PRODUCE callToTask.s00003462.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00003462.outputCriterion.s00000773
+CONSUME callToTask.s00003462.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00003462.output.s00000785: 1, callToTask.s00003462.output.s00000788: 1, callToTask.s00003462.output.s00000849: 1;
+
+
+
+TRANSITION callToTask.s00003463.inputCriterion.s00000772
+CONSUME callToTask.s00003463.input.s00000807: 1, process.s00000461##s00003461.input.s00000783: 1;
+PRODUCE callToTask.s00003463.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00003463.outputCriterion.s00000773
+CONSUME callToTask.s00003463.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00003463.output.s00000785: 1, callToTask.s00003463.output.s00000788: 1;
+
+
+
+TRANSITION callToTask.s00003464.inputCriterion.s00000772
+CONSUME callToTask.s00003463.output.s00000785: 1, callToTask.s00003463.output.s00000788: 1;
+PRODUCE callToTask.s00003464.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00003464.outputCriterion.s00000773
+CONSUME callToTask.s00003464.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00003464.output.s00000785: 1, callToTask.s00003464.output.s00000788: 1;
+
+
+
+TRANSITION fork.s00001053.activate.s00000782
+CONSUME callToTask.s00003462.output.s00000785: 1, callToTask.s00003462.output.s00000788: 1, callToTask.s00003462.output.s00000849: 1;
+PRODUCE fork.s00001053.activated.s00000784: 1, fork.s00001053.activated.s00000787: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000784
+CONSUME fork.s00001053.activated.s00000784: 1;
+PRODUCE callToProcess.s00000843.input.s00000792: 1, callToProcess.s00000843.input.s00000821: 1, callToProcess.s00000843.input.s00000881: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000787
+CONSUME fork.s00001053.activated.s00000787: 1;
+PRODUCE join.s00000879.input.s00000783: 1, join.s00000879.input.s00000819: 1;
+
+
+
+TRANSITION join.s00000879.activate.s00000816
+CONSUME join.s00000879.input.s00000783: 1, join.s00000879.input.s00000819: 1;
+PRODUCE join.s00000879.activated.s00000816: 1;
+
+
+
+TRANSITION join.s00000879.activate.s00000817
+CONSUME callToProcess.s00000843.output.s00000788: 1, callToProcess.s00000843.output.s00000883: 1;
+PRODUCE join.s00000879.activated.s00000817: 1;
+
+
+
+TRANSITION join.s00000879.fire.s00000824
+CONSUME join.s00000879.activated.s00000816: 1, join.s00000879.activated.s00000817: 1;
+PRODUCE callToProcess.s00003459.input.s00000783: 1, callToProcess.s00003459.input.s00000807: 1;
+
+
+
+TRANSITION process.s00000461##s00003461.inputCriterion.s00000772
+CONSUME alpha: 1;
+PRODUCE callToTask.s00003463.input.s00000807: 1, process.s00000461##s00003461.input.s00000783: 1;
+
+
+

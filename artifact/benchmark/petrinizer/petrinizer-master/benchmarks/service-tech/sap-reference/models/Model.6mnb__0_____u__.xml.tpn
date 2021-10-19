@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:InputCondition";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Split_Credit Control (6mnw)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Join_Credit Control (6mnw)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Split_xor (6mo7)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Join_xor (6mo7)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:outputCondition";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw)*xor (6mo7)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7)*Join_Yes_xor (6mo7)";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):busy";
+place "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:busy";
+trans "*:Model.6mnb--0-----u--:Model.6mnb--0-----u--:start"~"*:Model.6mnb--0-----u--:Model.6mnb--0-----u--:start"
+    in "i"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:InputCondition"
+;
+trans "*:Model.6mnb--0-----u--:Model.6mnb--0-----u--:end"~"*:Model.6mnb--0-----u--:Model.6mnb--0-----u--:end"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:join:InputCondition"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:join:InputCondition"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:InputCondition"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:split:Split_Split_Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:split:Split_Split_Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split:busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Split_Credit Control (6mnw)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):join:Split_Split_Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):join:Split_Split_Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Split_Credit Control (6mnw)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):split:Split_Join_Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):split:Split_Join_Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_No_Credit Control (6mnw):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Join_Credit Control (6mnw)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):join:Split_Split_Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):join:Split_Split_Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Split_Credit Control (6mnw)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):split:Split_Join_Credit Control (6mnw):Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):split:Split_Join_Credit Control (6mnw):Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Join_Credit Control (6mnw)"
+       "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:join:Split_Join_Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:join:Split_Join_Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Join_Credit Control (6mnw)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:split:Join_Split_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:split:Join_Split_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Skip:busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Split_xor (6mo7)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):join:Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):join:Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Split_Yes_Credit Control (6mnw)*Credit Control (6mnw)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):split:Credit Control (6mnw)*xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):split:Credit Control (6mnw)*xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw)*xor (6mo7)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):join:Credit Control (6mnw)*xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):join:Credit Control (6mnw)*xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Credit Control (6mnw)*xor (6mo7)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):split:xor (6mo7)*Join_Yes_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):split:xor (6mo7)*Join_Yes_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7)*Join_Yes_xor (6mo7)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):join:Join_Split_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):join:Join_Split_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Split_xor (6mo7)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):split:Join_Join_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):split:Join_Join_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_No_xor (6mo7):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Join_xor (6mo7)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):join:xor (6mo7)*Join_Yes_xor (6mo7):Join_Split_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):join:xor (6mo7)*Join_Yes_xor (6mo7):Join_Split_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:xor (6mo7)*Join_Yes_xor (6mo7)"
+       "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Split_xor (6mo7)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):split:Join_Join_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):split:Join_Join_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Yes_xor (6mo7):busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Join_xor (6mo7)"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:join:Join_Join_xor (6mo7)"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:join:Join_Join_xor (6mo7)"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Join_Join_xor (6mo7)"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:busy"
+;
+trans "t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:split:outputCondition"~"t:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:split:outputCondition"
+    in "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:Output:busy"
+   out "p:Model.6mnb--0-----u--:Model.6mnb--0-----u--:outputCondition"
+;
+

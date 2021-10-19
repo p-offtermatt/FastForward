@@ -1,0 +1,43 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToProcess.s00000984.inputCriterion.s00000937.used, callToProcess.s00000984.output.s00000938, callToProcess.s00000984.output.s00000979, callToTask.s00003278.inputCriterion.s00000937.used, callToTask.s00003278.output.s00000938, callToTask.s00003279.input.s00000935, callToTask.s00003279.inputCriterion.s00000937.used, callToTask.s00003279.output.s00000938, callToTask.s00003279.output.s00000956, process.s00000677##s00003277.outputCriterion.s00000939_omega;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToProcess.s00000984.inputCriterion.s00000937
+  CONSUME callToTask.s00003279.output.s00000956:1;
+  PRODUCE callToProcess.s00000984.inputCriterion.s00000937.used:1;
+
+TRANSITION callToProcess.s00000984.outputCriterion.s00000939
+  CONSUME callToProcess.s00000984.inputCriterion.s00000937.used:1;
+  PRODUCE callToProcess.s00000984.output.s00000938:1, callToProcess.s00000984.output.s00000979:1;
+
+TRANSITION callToTask.s00003278.inputCriterion.s00000937
+  CONSUME callToTask.s00003279.output.s00000938:1;
+  PRODUCE callToTask.s00003278.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00003278.outputCriterion.s00000939
+  CONSUME callToTask.s00003278.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00003278.output.s00000938:1;
+
+TRANSITION callToTask.s00003279.inputCriterion.s00000937
+  CONSUME callToTask.s00003279.input.s00000935:1;
+  PRODUCE callToTask.s00003279.inputCriterion.s00000937.used:1;
+
+TRANSITION callToTask.s00003279.outputCriterion.s00000939
+  CONSUME callToTask.s00003279.inputCriterion.s00000937.used:1;
+  PRODUCE callToTask.s00003279.output.s00000938:1, callToTask.s00003279.output.s00000956:1;
+
+TRANSITION process.s00000677##s00003277.inputCriterion.s00000937
+  CONSUME alpha:1;
+  PRODUCE callToTask.s00003279.input.s00000935:1;
+
+TRANSITION process.s00000677##s00003277.outputCriterion.s00000939
+  CONSUME callToProcess.s00000984.output.s00000938:1;
+  PRODUCE process.s00000677##s00003277.outputCriterion.s00000939_omega:1;
+
+
+{ END OF FILE }

@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:InputCondition";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Split_Material Master Processing EH+S (craz)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Join_Material Master Processing EH+S (craz)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Split_xor (crba)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Join_xor (crba)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:outputCondition";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz)*xor (crba)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba)*Join_Yes_xor (crba)";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split:busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Skip:busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):busy";
+place "p:Model.crae--0-----u--:Model.crae--0-----u--:Output:busy";
+trans "*:Model.crae--0-----u--:Model.crae--0-----u--:start"~"*:Model.crae--0-----u--:Model.crae--0-----u--:start"
+    in "i"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:InputCondition"
+;
+trans "*:Model.crae--0-----u--:Model.crae--0-----u--:end"~"*:Model.crae--0-----u--:Model.crae--0-----u--:end"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split:join:InputCondition"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split:join:InputCondition"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:InputCondition"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split:busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split:split:Split_Split_Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split:split:Split_Split_Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split:busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Split_Material Master Processing EH+S (craz)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):join:Split_Split_Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):join:Split_Split_Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Split_Material Master Processing EH+S (craz)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):split:Split_Join_Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):split:Split_Join_Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_No_Material Master Processing EH+S (craz):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Join_Material Master Processing EH+S (craz)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):join:Split_Split_Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):join:Split_Split_Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Split_Material Master Processing EH+S (craz)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):split:Split_Join_Material Master Processing EH+S (craz):Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):split:Split_Join_Material Master Processing EH+S (craz):Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Join_Material Master Processing EH+S (craz)"
+       "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Skip:join:Split_Join_Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Skip:join:Split_Join_Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Join_Material Master Processing EH+S (craz)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Skip:busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Skip:split:Join_Split_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Skip:split:Join_Split_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Skip:busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Split_xor (crba)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):join:Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):join:Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Split_Yes_Material Master Processing EH+S (craz)*Material Master Processing EH+S (craz)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):split:Material Master Processing EH+S (craz)*xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):split:Material Master Processing EH+S (craz)*xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz)*xor (crba)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):join:Material Master Processing EH+S (craz)*xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):join:Material Master Processing EH+S (craz)*xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Material Master Processing EH+S (craz)*xor (crba)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):split:xor (crba)*Join_Yes_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):split:xor (crba)*Join_Yes_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba)*Join_Yes_xor (crba)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):join:Join_Split_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):join:Join_Split_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Split_xor (crba)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):split:Join_Join_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):split:Join_Join_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_No_xor (crba):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Join_xor (crba)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):join:xor (crba)*Join_Yes_xor (crba):Join_Split_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):join:xor (crba)*Join_Yes_xor (crba):Join_Split_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:xor (crba)*Join_Yes_xor (crba)"
+       "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Split_xor (crba)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):split:Join_Join_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):split:Join_Join_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Yes_xor (crba):busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Join_xor (crba)"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Output:join:Join_Join_xor (crba)"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Output:join:Join_Join_xor (crba)"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Join_Join_xor (crba)"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:Output:busy"
+;
+trans "t:Model.crae--0-----u--:Model.crae--0-----u--:Output:split:outputCondition"~"t:Model.crae--0-----u--:Model.crae--0-----u--:Output:split:outputCondition"
+    in "p:Model.crae--0-----u--:Model.crae--0-----u--:Output:busy"
+   out "p:Model.crae--0-----u--:Model.crae--0-----u--:outputCondition"
+;
+

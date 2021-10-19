@@ -1,0 +1,3312 @@
+AT_INIT
+AT_COLOR_TESTS
+
+############################################################################
+AT_BANNER([Command-line parameters])
+############################################################################
+
+AT_SETUP([Help output])
+AT_CHECK([LOLA --help],0,ignore)
+AT_CHECK([LISTENER --help],0,ignore)
+AT_CHECK([KILLER --help],0,ignore)
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Version output])
+AT_CHECK([LOLA --version],0,ignore)
+AT_CHECK([LISTENER --version],0,ignore)
+AT_CHECK([KILLER --version],0,ignore)
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Wrong parameter])
+AT_CHECK([LOLA --unknownparameter],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*invalid command-line parameter(s)" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Output of distributed run 1])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"FORMULA EXPATH EVENTUALLY (ea.1 = 1 AND ea.3 = 1);"' --path=runfile --pathshape=run],0,ignore,ignore)
+AT_CHECK([GREP -q "digraph" runfile])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Output of distributed run 2])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"FORMULA EXPATH EVENTUALLY FIREABLE(tr.[[y=1]]);"' --path=runfile --pathshape=run],0,ignore,ignore)
+AT_CHECK([GREP -q "digraph" runfile])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Output of event structure])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"FORMULA EXPATH EVENTUALLY FIREABLE(tr.[[y=1]]);"' --path=runfile --pathshape=eventstructure],0,ignore,ignore)
+AT_CHECK([GREP -q "digraph" runfile])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Output statistics])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"EF DEADLOCK"' --stats],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*memory consumption" stderr])
+AT_CHECK([GREP -q "lola:\s*time consumption" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Remote termination (dry run)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --remoteTermination=goodbye],0,ignore,stderr)
+AT_CHECK([GREP -q "enabling remote termination (--remoteTermination)" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Remote termination (complete)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(script.sh,[LOLA garavel.lola --store=bloom --check=full --remoteTermination=goodbye &
+LOLA_PID=$!
+sleep 5
+KILLER
+sleep 1
+kill $LOLA_PID || echo "successful"
+])
+AT_CHECK([sh script.sh],0,stdout,stderr)
+AT_CHECK([GREP -q "successful" stdout])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Store/property mismatch])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"FORMULA ALLPATH ALWAYS EXPATH EVENTUALLY ea.1 = 1;"' --store=bloom],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* specified store does not fit the given task" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Error in FIREABLE clause])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(fireability.task, [FORMULA
+	EXPATH EVENTUALLY
+	FIREABLE(foo);
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=fireability.task],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* transition 'foo' unknown" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([File error with silent reporter])
+AT_CHECK([LOLA --reporter=silent --check=none foo.lola],1,ignore,[lola: file input/output error -- aborting [[#03]]
+])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([File error with socket reporter])
+AT_CHECK([LOLA --reporter=socket --check=none foo.lola],1)
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Parameter error with silent reporter])
+AT_CHECK([LOLA --reporter=socket --check=foobar],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* invalid argument, \"foobar\", for option \`--check' (\`-c')" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Parameter error with socket reporter])
+AT_CHECK([LOLA --reporter=socket --check=foobar],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* invalid argument, \"foobar\", for option \`--check' (\`-c')" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Parameter error with missing formula])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* --check=modelchecking given without --formula or --buechi" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+AT_SETUP([Multiple net file arguments])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA --compressed phils5.lola phils10.lola garavel.lola],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*too many files given" stderr])
+AT_KEYWORDS(commandline)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([File input/output])
+############################################################################
+
+AT_SETUP([Piping from stdin (1/2)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([cat garavel.lola | LOLA --check=none],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Piping from stdin (2/2)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA --check=none < garavel.lola],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reading from file])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA --check=none garavel.lola],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reading from two files (error)])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/phils5.lola .])
+AT_CHECK([LOLA --check=none garavel.lola phils5.lola],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* too many files given - expecting at most one" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reading from nonexisting file])
+AT_CHECK([LOLA --check=none garavel.lola],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* could not open net file garavel.lola" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reading from nonreadable file])
+AT_DATA(netfile,[
+])
+AT_CHECK([chmod a-r netfile])
+AT_CHECK([LOLA --check=none netfile],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* could not open net file netfile" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Writing compressed files])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA --check=none --writeCompressed garavel.lola],0,ignore,stderr)
+AT_CHECK([GREP -q -E "485 419" compressedOutput.net])
+AT_CHECK([GREP -q -E "776" compressedOutput.net])
+AT_CHECK([GREP -q -E "485" compressedOutput.names])
+AT_CHECK([GREP -q -E "776" compressedOutput.names])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Writing and reading compressed files (1/4)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA  --check=none --writeCompressed phils5.lola],0,ignore,stderr)
+AT_CHECK([LOLA --compressed --formula='"EF DEADLOCK"' < compressedOutput.net],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Writing and reading compressed files (2/4)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA --check=none --writeCompressed phils5.lola],0,ignore,stderr)
+AT_CHECK([LOLA --compressed compressedOutput.net --formula='"EF DEADLOCK"'],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Writing and reading compressed files (3/4)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([cp TESTFILES/garavel.task .])
+AT_CHECK([LOLA --check=none --writeCompressed garavel.lola],0,ignore,stderr)
+AT_CHECK([LOLA --compressed compressedOutput.net compressedOutput.names --check=modelchecking --formula=garavel.task],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Writing and reading compressed files (4/4)])
+AT_CHECK([cp TESTFILES/syntax_full.lola .])
+AT_CHECK([LOLA --check=none --writeCompressed syntax_full.lola],0,ignore,stderr)
+AT_CHECK([LOLA --compressed compressedOutput.net compressedOutput.names --formula='"EF DEADLOCK"'],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* result: no" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([JSON output])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --timelimit=120 --symmtimelimit=60 --markinglimit=10000 --quiet --json=output.json],0,ignore,ignore)
+AT_CHECK([GREP -q "{\"type\": \"none\"}" output.json])
+AT_CHECK([GREP -q "\"markings\": 10000" output.json])
+AT_CHECK([GREP -q "\"time\": 120" output.json])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([JSON output for reachability])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --formula='"EF FIREABLE(t2)"' --check=modelchecking --reporter=silent --json=output.json --jsoninclude=path,state],0,ignore,ignore)
+AT_CHECK([GREP -q "\"result\": true" output.json])
+AT_CHECK([GREP -q "\"transitions\": 776" output.json])
+AT_CHECK([GREP -q "[[\"t0\", \"t78\", \"t563\"]]" output.json])
+AT_CHECK([GREP -q "\"p.10\": 1" output.json])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([JSON output for LTL])
+AT_CHECK([cp TESTFILES/LTL/cycle5.lola .])
+AT_CHECK([LOLA cycle5.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --reporter=silent --json=output.json --jsoninclude=path,state],0,ignore,ignore)
+AT_CHECK([GREP -q "\"result\": false" output.json])
+AT_CHECK([GREP -q "\"transitions\": 10" output.json])
+AT_CHECK([GREP -q "\"t23\"" output.json])
+AT_CHECK([GREP -q "\"toMirror\"" output.json])
+AT_CHECK([GREP -q "[[\"t12m\", \"t21m\"]]" output.json])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([JSON output without path])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"' --json=output.json --jsoninclude=path,state],0,ignore,ignore)
+AT_CHECK([GREP -q "\"path\": null" output.json])
+AT_CHECK([GREP -q "\"state\": null" output.json])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Net syntax])
+############################################################################
+
+AT_SETUP([Minimal syntactic correct net])
+AT_CHECK([cp TESTFILES/syntax_min.lola .])
+AT_CHECK([cat syntax_min.lola | LOLA --check=none],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([All syntactic features])
+AT_CHECK([cp TESTFILES/syntax_full.lola .])
+AT_CHECK([cat syntax_full.lola | LOLA --check=none],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Double arc])
+AT_DATA(netfile,[PLACE p1, p2, p3;
+MARKING p1;
+TRANSITION t1
+CONSUME p1:1;
+PRODUCE p1:1;
+TRANSITION t2
+CONSUME p2:2;
+PRODUCE p2:1;
+TRANSITION t3
+CONSUME p3:1;
+PRODUCE p3:2;
+])
+AT_CHECK([cat netfile | LOLA --check=none],0,ignore,stderr)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([UTF8 input])
+AT_CHECK([cp TESTFILES/syntax_utf8.lola .])
+AT_CHECK([cat syntax_utf8.lola | LOLA --check=none],0,ignore,ignore)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Generic syntax error])
+AT_DATA(netfile,[foobar;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* syntax error, unexpected" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Duplicate place])
+AT_DATA(netfile,[PLACE p1, p1;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'p1' name used twice" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Mark nonexisting place (1/2)])
+AT_DATA(netfile,[PLACE p1;
+MARKING p2: 1;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'p2' does not exist" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Mark nonexisting place (2/2)])
+AT_DATA(netfile,[PLACE p1;
+MARKING p2;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'p2' does not exist" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reference nonexisting place (1/2)])
+AT_DATA(netfile,[PLACE p1;
+MARKING p1: 1;
+TRANSITION t1
+CONSUME p2: 1;
+PRODUCE p1;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'p2' does not exist" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Reference nonexisting place (2/2)])
+AT_DATA(netfile,[PLACE p1;
+MARKING p1: 1;
+TRANSITION t1
+CONSUME p2;
+PRODUCE p1;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'p2' does not exist" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Duplicate transition])
+AT_DATA(netfile,[PLACE p1;
+MARKING p1;
+TRANSITION t1
+CONSUME p1;
+PRODUCE p1;
+TRANSITION t1
+CONSUME p1;
+PRODUCE p1;
+])
+AT_CHECK([cat netfile | LOLA --check=none],1,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s* transition name 't1' used twice" stderr])
+AT_CHECK([GREP -q "lola:\s* syntax error -- aborting \[[#01\|]]" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+AT_SETUP([Large net with hash table collisions])
+AT_CHECK([cp TESTFILES/largenet.lola .])
+AT_CHECK([LOLA largenet.lola --check=none],0,ignore,stderr)
+AT_CHECK([GREP -q "0 collisions" stderr],1)
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Formula syntax])
+############################################################################
+
+AT_SETUP([Syntax error: unknown operator])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA FORMULA"'],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* syntax error, unexpected keyword FORMULA" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Syntax error: unknown place])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA foo > 1;"'],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* place 'foo' unknown" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: TRUE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA TRUE;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 0 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: FALSE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA FALSE;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 0 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: <=])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 <= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: <])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 < 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: >])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 > 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: >=])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: =])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 = 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: !=])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 != 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: AND])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1 AND p.2 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: OR])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1 OR p.2 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: NOT])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT p.1 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: XOR])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1 XOR p.2 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 4 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: ->])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1 -> p.2 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Language constructs: <->])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA p.1 >= 1 <-> p.2 >= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 4 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+#AT_SETUP([Temporal operators: ALLPATH ALWAYS])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"FORMULA ALLPATH ALWAYS ea.1 > 0 OR hl.1 > 0 OR fo.1 > 0 OR hr.1 > 0 OR th.1 > 0;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Temporal operators: ALLPATH ALWAYS NOT])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA ALLPATH ALWAYS NOT p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Temporal operators: EXPATH EVENTUALLY])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA EXPATH EVENTUALLY p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Temporal operators: REACHABLE])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA REACHABLE p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Temporal operators: INVARIANT])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA INVARIANT p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Temporal operators: IMPOSSIBLE])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA IMPOSSIBLE p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT TRUE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT TRUE;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 0 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT FALSE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT FALSE;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 0 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT NOT])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT NOT p.1 < 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT AND])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT (p.1 < 1 AND p.2 > 1);"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT OR])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT (p.1 < 1 OR p.2 > 1);"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 2 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT <])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA NOT p.1 < 1;
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT p.1 < 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT <=])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA NOT p.1 <= 1;"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT A])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT AF ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT E])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT EF ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: no" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT G])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT G ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT F])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT F ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: no" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT X])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT X ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT U])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT (ea.1 = 1 U ea.3 = 1)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Tautologies: NOT R])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"NOT (ea.1 = 1 R ea.3 = 1)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* result: yes" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+#AT_SETUP([Tautologies: AGAG])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA ALLPATH ALWAYS ALLPATH ALWAYS p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Tautologies: EFEF])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"FORMULA EXPATH EVENTUALLY EXPATH EVENTUALLY p.1 <= 1;"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s* processed formula with 1 atomic propositions" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+AT_SETUP([complex formula])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA p.1 != 1 AND (3 * p.1 + 2 * p.2) >= (4 * p.3) - (1 * p.1);
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* processed formula with 3 atomic propositions" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Scenario detection: liveness])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* AGEF should be recognized as liveness */
+FORMULA ALLPATH ALWAYS EXPATH EVENTUALLY ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking liveness" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Scenario detection: reversibility])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* AGEF INITIAL should be recognized as reversibility */
+FORMULA ALLPATH ALWAYS EXPATH EVENTUALLY INITIAL;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking liveness" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Scenario detection: stabilization])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* FG should be recognized as stabilization */
+FORMULA EVENTUALLY ALWAYS ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking stabilization" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Scenario detection: LTL with preceding A])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* A FG should be recognized as LTL with a preceding A */
+FORMULA ALLPATH EVENTUALLY ALWAYS ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking LTL" stderr])
+AT_CHECK([GREP -q "lola:\s* result: no" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Scenario detection: CTL*])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* EFG should be recognized as CTL* */
+FORMULA EXPATH EVENTUALLY ALWAYS ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking CTL*" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: optional SEMICOLON])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[FORMULA EXPATH EVENTUALLY ALWAYS ea.1 = 1
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking CTL*" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: optional FORMULA])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[EXPATH EVENTUALLY ALWAYS ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking CTL*" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: optional FORMULA and SEMICOLON])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[EXPATH EVENTUALLY ALWAYS ea.1 = 1
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking CTL*" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: AGEF])
+AT_DATA(formula.task,[FORMULA AGEFEX F = 1;
+])
+AT_DATA(example.lola,[/* a net with weird node names */
+PLACE AGEF, F;
+MARKING AGEF;
+TRANSITION GF
+CONSUME AGEF;
+PRODUCE F;
+])
+AT_CHECK([LOLA example.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s* checking CTL" stderr])
+AT_CHECK([GREP -q "lola:\s* CTL formula contains 2 significant temporal operators and needs 9 bytes of payload" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: F G])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* FG should be recognized as stabilization */
+F G ea.1 = 1;
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*checking stabilization" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: U])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[E (hl.1 = 1 U ea.1 = 1);
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*checking CTL" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: R])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[E (hl.1 = 1 R ea.1 = 1);
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*checking CTL" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Simplified syntax: syntax error])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_DATA(formula.task,[/* U is used unary - this should be an error */
+(ea.1 = 1 F ea.3 = 1);
+])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula=formula.task],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*operator 'F' is not allowed here" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+#AT_SETUP([Long formula input])
+#AT_CHECK([cp TESTFILES/phils10.lola .])
+#AT_CHECK([LOLA phils10.lola --formula='"EF (ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1 AND ea.1 = 1)"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*processed formula with 126 atomic propositions" stderr])
+#AT_CHECK([GREP -q "lola:\s*formula mentions 1 of 50 places; total mentions: 126" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+#AT_SETUP([Long formula output])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=modelchecking --formula='"INITIAL"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*processed formula with 970 atomic propositions" stderr])
+#AT_CHECK([GREP -q "lola:\s*formula mentions 485 of 485 places; total mentions: 970" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+AT_SETUP([Omega markings without --search=cover])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"EF ea.1 = oo"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*warning: omega markings used without --search=cover" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Invalid multiplication of omega])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"EF ea.1 = oo - oo"'],1,stdout,stderr)
+AT_CHECK([GREP -q "error in formula: invalid multiplication with oo" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([Invalid subtraction of omega])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=modelchecking --formula='"ea.1 + oo < oo"'],1,stdout,stderr)
+AT_CHECK([GREP -q "error in formula: invalid subtraction of oo or appearance of oo on both sides of a comparison" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+AT_SETUP([MCC2014 contradictions (regression tests)])
+AT_CHECK([cp TESTFILES/Eratosthenes-PT-010-ReachabilityCardinality-10.task TESTFILES/Eratosthenes-PT-010-ReachabilityCardinality-3.task TESTFILES/Eratosthenes-PT-010-ReachabilityCardinality-8.task TESTFILES/Eratosthenes-PT-010-model.pnml.lola .])
+AT_CHECK([LOLA Eratosthenes-PT-010-model.pnml.lola --formula=Eratosthenes-PT-010-ReachabilityCardinality-3.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([LOLA Eratosthenes-PT-010-model.pnml.lola --formula=Eratosthenes-PT-010-ReachabilityCardinality-8.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([LOLA Eratosthenes-PT-010-model.pnml.lola --formula=Eratosthenes-PT-010-ReachabilityCardinality-10.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net violates the given property already in its initial state." stderr])
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(formula)
+AT_CLEANUP
+
+#AT_SETUP([MCC2014 empty quantifiers (regression test)])
+#AT_CHECK([cp TESTFILES/CSRepetitions-COL-02-CTLCardinality-3.task TESTFILES/CSRepetitions-COL-02-model.pnml.lola .])
+#AT_CHECK([LOLA CSRepetitions-COL-02-model.pnml.lola --formula=CSRepetitions-COL-02-CTLCardinality-3.task],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*CTL formula contains 0 significant temporal operators and needs 0 bytes of payload" stderr])
+#AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+#AT_KEYWORDS(formula)
+#AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Buechi automaton syntax])
+############################################################################
+
+AT_SETUP([Phils5 buechi (unequal)])
+AT_CHECK([cp TESTFILES/LTL/phils5unequal.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5unequal.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (negation,conjunction)])
+AT_CHECK([cp TESTFILES/LTL/phils5negation.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5negation.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (disjunction)])
+AT_CHECK([cp TESTFILES/LTL/phils5disjunction.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5disjunction.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (exclusivedisjunction)])
+AT_CHECK([cp TESTFILES/LTL/phils5exdisjunction.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5exdisjunction.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (implication disjunction)])
+AT_CHECK([cp TESTFILES/LTL/phils5implyequiv.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5implyequiv.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (less-,greater equal)])
+AT_CHECK([cp TESTFILES/LTL/phils5lgequals.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5lgequals.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (addition, multiplication)])
+AT_CHECK([cp TESTFILES/LTL/phils5calc.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5calc.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (initial, fireable)])
+AT_CHECK([cp TESTFILES/LTL/phils5inifire.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5inifire.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (fireable unkown transition)])
+AT_CHECK([cp TESTFILES/LTL/phils5inifirefail.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5inifirefail.buechi --check=modelchecking],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*transition 'unknowntransition' unknown" stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (acceptingset error )])
+AT_CHECK([cp TESTFILES/LTL/phils5erracceptingset.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5erracceptingset.buechi --check=modelchecking],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*state 'statetocreateaerror' unknown" stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (acceptingset error 2)])
+AT_CHECK([cp TESTFILES/LTL/unkownstate.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=unkownstate.buechi --check=modelchecking],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*state 'some' unknown" stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (acceptingset empty)])
+AT_CHECK([cp TESTFILES/LTL/empty.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=empty.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Phils5 buechi (place error)])
+AT_CHECK([cp TESTFILES/LTL/phils5markingerror.buechi .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --buechi=phils5markingerror.buechi --check=modelchecking],1,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*place 'errormarking' unknown" stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+
+###########################################################################
+AT_BANNER([state equation context])
+###########################################################################
+AT_SETUP([successful handling: Formula consists of AtomicProposition])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF (Entered > 2)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([successful handling: Formula consists of ConjunctionList])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF (Entered > 2 AND WaitBag > 2 AND Cabins <= 0)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([successful handling DisjunctionList: Atomic OR Atomic])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF (Entered > 2 OR Dressed > 5)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "CONSTRAINTS Entered > 3;" stateEquationProblem.sara])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([successful handling DisjunctionList: Atomic OR ConjunctionList])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF (Entered > 200 OR (Dressed > 5 AND WaitBag < 2))"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "CONSTRAINTS Dressed > 6,WaitBag < 1;" stateEquationProblem.sara])
+AT_CHECK([grep -q "CONSTRAINTS Entered > 201;" stateEquationProblem.sara])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([successful handling DisjunctionList: ConjunctionList OR Atomic])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF ((Dressed > 5 AND WaitBag < 2) OR Entered > 200)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "CONSTRAINTS Dressed > 6,WaitBag < 1;" stateEquationProblem.sara])
+AT_CHECK([grep -q "CONSTRAINTS Entered > 201;" stateEquationProblem.sara])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([successful handling DisjunctionList: ConjunctionList OR ConjunctionList])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF ((Dressed > 500 AND WaitBag < 2) OR (Entered > 2 AND WaitBag < 7))"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "CONSTRAINTS Dressed > 501,WaitBag < 1;" stateEquationProblem.sara])
+AT_CHECK([grep -q "CONSTRAINTS Entered > 3,WaitBag < 6;" stateEquationProblem.sara])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([correct unparsing <= to < for sara input])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF (Cabins <= 0)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "CONSTRAINTS Cabins < 0;" stateEquationProblem.sara])
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([RESULT OR - option in sara works])
+AT_CHECK([cp TESTFILES/SwimmingPool-PT-01.lola .])
+AT_CHECK([LOLA SwimmingPool-PT-01.lola --check=modelchecking --stateequation=alone  --formula='"EF(Entered > 100 OR Entered > 100 OR (Entered > 5) OR (Entered > 200))"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution produced" stderr])
+AT_CHECK([grep -q "Problem 4" stateEquationProblem.sararesult],1)
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([sequentiell: first sara, second lola])
+AT_CHECK([cp TESTFILES/hajdu2015_distant3.lola .])
+AT_CHECK([LOLA hajdu2015_distant3.lola --check=modelchecking --stateequation=seq  --formula='"EF(p0 = 1 AND p1 = 1 AND p4 = 2)"'],0,stdout,stderr)
+AT_CHECK([grep -q "sara:solution unknown" stderr],0)
+AT_CHECK([grep -q "The predicate is reachable." stderr],0)
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([parallel for negative result: sara ends quicker])
+AT_CHECK([cp TESTFILES/Philosophers_1000_Sara_vs_Lola_parallel.lola .])
+AT_CHECK([LOLA Philosophers_1000_Sara_vs_Lola_parallel.lola --check=modelchecking --stateequation=par  --formula='"EF ((Eat_50 > 12 AND Eat_60 > 3 AND Eat_65 > 0 AND Eat_70 > 7) OR Eat_40 > 1)"'],0,stdout,stderr)
+AT_CHECK([grep -q "The predicate is unreachable." stderr],0)
+AT_CHECK([grep -q "sara:solution impossible" stderr],0)
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+AT_SETUP([parallel for positive result: lola ends quicker])
+AT_CHECK([cp TESTFILES/Philosophers_1000_Sara_vs_Lola_parallel.lola .])
+AT_CHECK([LOLA Philosophers_1000_Sara_vs_Lola_parallel.lola --check=modelchecking --stateequation=par  --formula='"EF (Eat_40 > 0)"'],0,stdout,stderr)
+AT_CHECK([grep -q "The predicate is reachable." stderr],0)
+AT_CHECK([grep -q "sara:solution produced" stderr],1)
+AT_KEYWORDS([state equation context])
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Utility: reporter])
+############################################################################
+
+AT_SETUP([Logging])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA_LOG --check=none garavel.lola],0,stdout,stderr)
+AT_KEYWORDS(reporter)
+AT_CLEANUP
+
+AT_SETUP([ReporterStream: stdout])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --reporter=stream],0,stdout,stderr)
+AT_CHECK([GREP -q "reading net from garavel.lola" stderr])
+AT_KEYWORDS(reporter)
+AT_CLEANUP
+
+AT_SETUP([ReporterStream: file])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --reporter=stream >& output],0)
+AT_CHECK([test -f output])
+AT_CHECK([GREP -q "reading net from garavel.lola" output])
+AT_KEYWORDS(reporter)
+AT_CLEANUP
+
+AT_SETUP([ReporterSocket: sending only (1/2)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --reporter=socket],0,ignore,ignore)
+AT_KEYWORDS(reporter)
+AT_CLEANUP
+
+AT_SETUP([ReporterSocket: sending only (2/2)])
+AT_CHECK([LOLA garavel.lola --reporter=socket],1,ignore,ignore)
+AT_KEYWORDS(reporter)
+AT_CLEANUP
+
+#AT_SETUP([ReporterSocket: sending/receiving])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_DATA(script.sh,[LISTENER 2> listener.log &
+#LISTENER_PID=$!
+#sleep 1
+#LOLA garavel.lola --reporter=socket --check=none
+#sleep 1
+#kill $LISTENER_PID && echo "successful"
+#])
+#AT_CHECK([sh script.sh],0,stdout,stderr)
+#AT_CHECK([GREP -q "successful" stdout])
+#AT_CHECK([GREP -q "finished parsing" listener.log])
+#AT_KEYWORDS(commandline)
+#AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Debugging options])
+############################################################################
+
+AT_SETUP([Print net])
+AT_CHECK([cp TESTFILES/syntax_full.lola .])
+AT_CHECK([LOLA syntax_full.lola --check=none --printNet ],0,stdout,stderr)
+AT_CHECK([GREP -q "6 places" stderr])
+AT_CHECK([GREP -q "5 transitions" stderr])
+AT_KEYWORDS(debug)
+AT_CLEANUP
+
+AT_SETUP([Simple property])
+AT_CHECK([cp TESTFILES/process.lola .])
+AT_CHECK([LOLA process.lola --check=full],0,stdout,stderr)
+AT_CHECK([GREP -q "result: no" stderr])
+AT_CHECK([GREP -q "6 markings, 5 edges" stderr])
+AT_KEYWORDS(debug)
+AT_CLEANUP
+
+AT_SETUP([Quietly check nothing])
+AT_CHECK([cp TESTFILES/process.lola .])
+AT_CHECK([LOLA process.lola --check=none --quiet],0)
+AT_KEYWORDS(debug)
+AT_CLEANUP
+
+AT_SETUP([Significant places])
+AT_CHECK([cp TESTFILES/test_significant.lola .])
+AT_CHECK([LOLA test_significant.lola --check=full],0,stdout,stderr)
+AT_CHECK([GREP -q "3 places, 1 transitions, 0 significant places" stderr])
+AT_KEYWORDS(debug)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Limits])
+############################################################################
+
+#AT_SETUP([Garavel (--timelimit=5)])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=full --timelimit=5],2,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*time limit reached - aborting" stderr])
+#AT_KEYWORDS(limit)
+#AT_CLEANUP
+
+#AT_SETUP([Garavel (--markinglimit=1000)])
+#AT_CHECK([cp TESTFILES/garavel.lola .])
+#AT_CHECK([LOLA garavel.lola --check=full --markinglimit=1000],2,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*marking limit reached - aborting" stderr])
+#AT_KEYWORDS(limit)
+#AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Full])
+############################################################################
+
+AT_SETUP([Phils 10])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings, 393650 edges" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Phils 10 (parallel)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (parallel)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --check=full --stubborn=off --bucketing --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2546432 markings" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Phils 10 (super parallel)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (super parallel)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --check=full --stubborn=off --threads=64 --bucketing],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2546432 markings" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Deadlock])
+############################################################################
+
+AT_SETUP([Deadlock as atomic proposition])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=modelchecking --formula='"EF(DEADLOCK AND hl.3 > 0)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Phils 10])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --path=pathfile],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.1 : 1" statefile])
+AT_CHECK([GREP -q "tl.\[[y=9\]]" pathfile])
+AT_CHECK([GREP -q "lola:\s*29 markings, 37 edges" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (deadlock)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2573 markings, 4302 edges" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (no deadlock)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"IMPOSSIBLE DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*checking absence of deadlocks" stderr])
+AT_CHECK([GREP -q "lola:\s*2573 markings, 4302 edges" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (bloomstore)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"' --store=bloom],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The net may or may not have deadlocks." stderr])
+AT_CHECK([GREP -q "lola:\s*2573 markings, 4302 edges" stderr])
+AT_KEYWORDS(deadlock)
+AT_CLEANUP
+
+AT_SETUP([Phils 10 (parallel)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --path=pathfile --threads=4 ],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.1 : 1" statefile])
+AT_CHECK([GREP -q "tl.\[[y=9\]]" pathfile])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Phils 10 (super parallel)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --path=pathfile --threads=64 ],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.1 : 1" statefile])
+AT_CHECK([GREP -q "tl.\[[y=9\]]" pathfile])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (parallel)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"' --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Kanban 5 (super parallel)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (1/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (2/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (3/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (4/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (5/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (6/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (7/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (8/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (9/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Echo D3R3 (super parallel) (10/10)])
+AT_CHECK([cp TESTFILES/echo-d3r3.name.lola .])
+AT_CHECK([LOLA echo-d3r3.name.lola --formula='"EF DEADLOCK"' --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(deadlock parallel)
+AT_CLEANUP
+
+AT_SETUP([Deadlock and coverability (1/2)])
+AT_CHECK([cp TESTFILES/unboundeddeadlock.lola .])
+AT_CHECK([LOLA unboundeddeadlock.lola --formula='"EF (p2 = oo AND DEADLOCK)"' --search=covergraph],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate may or may not be reachable." stderr])
+AT_KEYWORDS(deadlock covergraph)
+AT_CLEANUP
+
+AT_SETUP([Deadlock and coverability (2/2)])
+AT_CHECK([cp TESTFILES/unboundeddeadlock.lola .])
+AT_CHECK([LOLA unboundeddeadlock.lola --formula='"AG (p2 = oo OR DEADLOCK)"' --search=covergraph],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate is not invariant." stderr])
+AT_KEYWORDS(deadlock covergraph)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([State Predicate])
+############################################################################
+
+AT_SETUP([Garavel])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*17 markings, 16 edges" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([positive formula])
+AT_CHECK([cp TESTFILES/phils5.lola TESTFILES/philpos.task .])
+AT_CHECK([LOLA phils5.lola --formula=philpos.task --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([Garavel (parallel)])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --check=modelchecking --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([Garavel (super parallel)])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --check=modelchecking --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([positive formula (parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola TESTFILES/philpos.task .])
+AT_CHECK([LOLA phils5.lola --formula=philpos.task --check=modelchecking --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([positive formula (super parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola TESTFILES/philpos.task .])
+AT_CHECK([LOLA phils5.lola --formula=philpos.task --check=modelchecking --threads=64],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([deadlock while checking state predicate])
+AT_DATA(deadlock.lola, [/* deadlocking net, checking for unreachable marking */
+PLACE p1, p2;
+MARKING ;
+TRANSITION t
+CONSUME p1;
+PRODUCE p2;
+])
+AT_CHECK([LOLA deadlock.lola --formula='"FORMULA EXPATH EVENTUALLY p2 > 0;"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([Large search stack])
+AT_DATA(large.lola, [/* net yielding a large search stack */
+PLACE p1, p2;
+MARKING p1: 8000;
+TRANSITION t
+CONSUME p1;
+PRODUCE p2;
+])
+AT_CHECK([LOLA large.lola --formula='"FORMULA EXPATH EVENTUALLY p2 = 8000;"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(frontend)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Initially satisfied predicates])
+############################################################################
+
+AT_SETUP([State predicate initially satisfied])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsinitial.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsinitial.task phils5.lola],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([Findpath initially satisfied])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsinitial.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsinitial.task --findpath=alone phils5.lola],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([TRUE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA TRUE;
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([State predicate initially satisfied (parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsinitial.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsinitial.task phils5.lola --threads=4],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([Findpath initially satisfied (parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsinitial.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsinitial.task --findpath=alone phils5.lola --threads=4],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(findpath parallel)
+AT_CLEANUP
+
+AT_SETUP([TRUE (parallel)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA TRUE;
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula=formula.task --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Unsatisfiable predicates])
+############################################################################
+
+AT_SETUP([State predicate unsatisfiable])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsunsat.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsunsat.task phils5.lola],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([Findpath unsatisfiable])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsunsat.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsunsat.task --findpath=alone --retrylimit=100 --depthlimit=1000 phils5.lola],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate is not invariant." stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([FALSE])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA FALSE;
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula=formula.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate)
+AT_CLEANUP
+
+AT_SETUP([State predicate unsatisfiable (parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsunsat.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsunsat.task phils5.lola --threads=4],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+AT_SETUP([Findpath unsatisfiable (parallel)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([cp TESTFILES/philsunsat.task .])
+AT_CHECK([LOLA --check=modelchecking --formula=philsunsat.task --findpath=alone --retrylimit=100 --depthlimit=1000 phils5.lola --threads=4],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate is not invariant." stderr])
+AT_KEYWORDS(findpath parallel)
+AT_CLEANUP
+
+AT_SETUP([FALSE (parallel)])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_DATA(formula.task,[FORMULA FALSE;
+])
+AT_CHECK([LOLA garavel.lola --check=modelchecking --formula=formula.task --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(statepredicate parallel)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([TSCC])
+############################################################################
+
+#AT_SETUP([liveness tscc (positive formula)])
+#AT_CHECK([cp TESTFILES/tscc.lola .])
+#AT_CHECK([LOLA --tscc tscc.lola  --formula='"AGEF  ( p5 > 0 OR p13 > 0 )"'  --check=full],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+#AT_SETUP([liveness tscc(negative formula)])
+#AT_CHECK([cp TESTFILES/tscc.lola .])
+#AT_CHECK([LOLA tscc.lola --tscc --formula='"AGEF  p5 > 0"'  --check=full ],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+#AT_SETUP([liveness tscc(negative formula)])
+#AT_CHECK([cp TESTFILES/tscc.lola .])
+#AT_CHECK([LOLA tscc.lola --tscc --formula='"AGEF  ( p5 > 0 AND p14 > 0 )"'  --check=full ],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+#AT_SETUP([liveness tscc(ResAllocation (mcc 2014))])
+#AT_CHECK([cp TESTFILES/ResAllocation-PT-R003C002.lola TESTFILES/ResAllocation-PT-R003C002-CTLCardinality-1.task .])
+#AT_CHECK([LOLA ResAllocation-PT-R003C002.lola --tscc --formula=ResAllocation-PT-R003C002-CTLCardinality-1.task  --check=full ],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+#AT_SETUP([EGAGEF tscc (positive formula)])
+#AT_CHECK([cp TESTFILES/tscc.lola .])
+#AT_CHECK([LOLA --tscc tscc.lola  --formula='"EGAGEF   p5 > 0 "'  --check=full],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+#AT_SETUP([EGAGEF tscc(negative formula)])
+#AT_CHECK([cp TESTFILES/tscc.lola .])
+#AT_CHECK([LOLA tscc.lola --tscc --formula='"EGAGEF ( p14 > 0 AND p5 > 0 ) "'  --check=full ],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+#AT_KEYWORDS(tscc)
+#AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Stubborn])
+############################################################################
+
+AT_SETUP(disabled tscc in deadlock stubborn sets)
+AT_CHECK([cp TESTFILES/m.lola .])
+AT_CHECK([LOLA --formula='"EF DEADLOCK"' m.lola],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(stubborn)
+AT_CLEANUP
+
+AT_SETUP(disabled tscc in deadlock stubborn sets (parallel))
+AT_CHECK([cp TESTFILES/m.lola .])
+AT_CHECK([LOLA --formula='"EF DEADLOCK"' m.lola --threads=4],0,ignore,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(stubborn parallel)
+AT_CLEANUP
+
+AT_SETUP([deletion algorithm (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --path=pathfile --stubborn=deletion],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.1 : 1" statefile])
+AT_CHECK([GREP -q "tl.\[[y=9\]]" pathfile])
+AT_CHECK([GREP -q "lola:\s*13 markings, 13 edges" stderr])
+AT_KEYWORDS(stubborn)
+AT_CLEANUP
+
+AT_SETUP([deletion algorithm (Kanban5)])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --formula='"EF DEADLOCK"' --stubborn=deletion],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*110 markings, 148 edges" stderr])
+AT_KEYWORDS(stubborn)
+AT_CLEANUP
+
+AT_SETUP([deletion algorithm (positive formula)])
+AT_CHECK([cp TESTFILES/phils5.lola TESTFILES/philpos.task .])
+AT_CHECK([LOLA phils5.lola --formula=philpos.task --check=modelchecking --stubborn=deletion],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(stubborn)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Symmetries])
+############################################################################
+
+AT_SETUP([Symmetry calculation phils deadlock])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --symmetry --formula='"EF DEADLOCK"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 9 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Symmetry calculation phils ctl formula])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --symmetry --formula='"EF (AG((DEADLOCK AND hl.2 > 0) OR (DEADLOCK AND hl.7 > 0)))"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 1 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Symmetry calculation phils ctl formula with boolean])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --symmetry --formula='"EG((A(hl.1 > 1 U hl.2 > 1) AND A(hl.6 > 1 U hl.7 > 1)) OR EF DEADLOCK)"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 1 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Symmetry calculation phils state formula])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --symmetry --formula='"EF (hl.1 > 0 OR hl.3 > 0 OR hl.5 > 0 OR hl.7 > 0 OR hl.9 > 0)"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 4 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Symmetry calculation garavel])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --symmetry --check=none],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 220 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+##AT_SETUP([Symmetry calculation with dead branch])
+##AT_CHECK([cp TESTFILES/deadbranch.lola .])
+##AT_CHECK([LOLA deadbranch.lola --symmetry --check=none],0,stdout,stderr)
+##AT_CHECK([GREP -q "1 dead branches visited" stderr])
+##AT_KEYWORDS(symmetry)
+##AT_CLEANUP
+
+AT_SETUP([Symmetry calculation with time limit])
+AT_CHECK([cp TESTFILES/phils10000.lola .])
+AT_CHECK([LOLA phils10000.lola --symmetry --check=none --symmtimelimit=5],0,stdout,stderr)
+AT_CHECK([GREP -q "time limit for symmetry computation of 5 seconds given" stderr])
+AT_CHECK([GREP -q "time limit for symmetry computation exceeded - aborting" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Garavel])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola --check=none --symmetry],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 220 generators" stderr])
+AT_CHECK([GREP -q "lola:\s*0 dead branches visited in search tree" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([ResAllocation])
+AT_CHECK([cp TESTFILES/ResAllocation-PT-R003C002.lola .])
+AT_CHECK([LOLA ResAllocation-PT-R003C002.lola --check=none --symmetry],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators" stderr])
+AT_CHECK([GREP -q "lola:\s*0 dead branches visited in search tree" stderr])
+AT_CHECK([GREP -q "lola:\s*representing 1 symmetries" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([Phils])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=modelchecking --symmetry --formula='"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "computed 9 generators" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+AT_SETUP([CTL AX])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"AF ( AX ( ea.1 <= 1 ) )"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*checking CTL" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([CTL EX])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"EX ea.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([CTL AU])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"A ( th.1 = 1 U ( EX ( hl.1 = 1 ) ) )"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([CTL EU])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"E (th.1 = 1 U hl.1 = 1)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([CTL conjunction])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"(EX ea.1 = 1 AND AX ea.2 = 1)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([CTL disjunction])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --symmetry --formula='"(EX ea.1 = 1 OR AX ea.2 = 1)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(symmetry ctl)
+AT_CLEANUP
+
+AT_SETUP([Sorting the arcs in the automorphism graph])
+AT_DATA(net.lola, [/* net with a lot of different colors */
+PLACE p1, p2, p3;
+
+MARKING p1: 10000;
+
+TRANSITION t1
+CONSUME p1:1000;
+PRODUCE p2:5000;
+])
+AT_CHECK([LOLA net.lola --symmetry --formula='"A ((3 * p1 + 2 * p2 < 100) U ( EX (10 * p3 > 10)))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*computed 0 generators (0 in search tree, 0 by composition)" stderr])
+AT_KEYWORDS(symmetry)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Find path])
+############################################################################
+
+AT_SETUP([Garavel])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --findpath=alone --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([Garavel (check path)])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --findpath=alone --check=modelchecking --path=pathfile],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate is reachable." stderr])
+AT_CHECK([GREP -q "t0" pathfile])
+AT_CHECK([GREP -q "t55" pathfile])
+AT_CHECK([GREP -q "t304" pathfile])
+AT_CHECK([GREP -q "t471" pathfile])
+AT_CHECK([GREP -q "t196" pathfile])
+AT_CHECK([GREP -q "t194" pathfile])
+AT_CHECK([GREP -q "t519" pathfile])
+AT_CHECK([GREP -q "t512" pathfile])
+AT_CHECK([GREP -q "t477" pathfile])
+AT_CHECK([GREP -q "t476" pathfile])
+AT_CHECK([GREP -q "t475" pathfile])
+AT_CHECK([GREP -q "t474" pathfile])
+AT_CHECK([GREP -q "t473" pathfile])
+AT_CHECK([GREP -q "t472" pathfile])
+AT_CHECK([GREP -q "t122" pathfile])
+AT_CHECK([GREP -q "t321" pathfile])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([Phils1000 (findpath, retrylimit)])
+AT_CHECK([cp TESTFILES/garavel.lola  .])
+AT_CHECK([LOLA garavel.lola --findpath=alone --formula='"EF DEADLOCK"' --retrylimit=1],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The net may or may not have deadlocks." stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([Phils5 (findpath, depthlimit)])
+AT_CHECK([cp TESTFILES/phils5.lola TESTFILES/philsunreach.task .])
+AT_CHECK([LOLA phils5.lola --findpath=alone --check=modelchecking --depthlimit=100 --retrylimit=100 --formula=philsunreach.task],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate may or may not be reachable." stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+AT_SETUP([Garavel (parallel)])
+AT_CHECK([cp TESTFILES/garavel.lola TESTFILES/garavel.task .])
+AT_CHECK([LOLA garavel.lola --formula=garavel.task --findpath=alone --check=modelchecking --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(findpath parallel)
+AT_CLEANUP
+
+AT_SETUP([Forcing random choice after empty selection])
+AT_DATA(large.lola, [/* net with cyclic behavior */
+PLACE p1, p2;
+MARKING p1;
+TRANSITION t1 CONSUME p1; PRODUCE p2;
+TRANSITION t2 CONSUME p2; PRODUCE p1;
+])
+AT_CHECK([LOLA large.lola --formula='"FORMULA EXPATH EVENTUALLY p2 > 1;"' --check=modelchecking --findpath=alone --retrylimit=10],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_KEYWORDS(findpath)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Sweepline])
+############################################################################
+
+AT_SETUP([Deadlock, 1 front, no helper threads (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "transients in .-3,1" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.10 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Full, 1 front, no helper threads (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --state=statefile --search=sweepline],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*50930 persistent markings, 5704 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*56634 markings, 589961 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, 2 fronts, no helper threads (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --sweepfronts=2],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "total number of threads changed to 2" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.9 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings" stderr])
+AT_CHECK([GREP -q "410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, 1 front, 1 helper thread (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --threads=2],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.8 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, Sweepline delay (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --sweeplinedelay=0],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "transients in .0,1" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.7 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*83 persistent markings, 22 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*105 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, Sweepline spread (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --sweeplinespread=2],0,stdout,stderr)
+AT_CHECK([GREP -q "range .-3,1" stderr])
+AT_CHECK([GREP -q "transients in .-3,1" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.3 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, bucketing (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --bucketing=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.5 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, copy encoder (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --encoder=copy],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.4 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, simple compressed encoder (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --encoder=simple],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.4 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, full copy encoder (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --encoder=full],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.4 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, stl store (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --store=stl],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "hl.3 : 1" statefile])
+AT_CHECK([GREP -q "lola:\s*82 persistent markings, 27 transient markings (max)" stderr])
+AT_CHECK([GREP -q "lola:\s*109 markings, 410 edges" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Full, stl store (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --search=sweepline --store=stl],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+AT_SETUP([Deadlock, other store (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"EF DEADLOCK"' --state=statefile --search=sweepline --store=bloom],1,stdout,stderr)
+AT_CHECK([GREP -q "aborting" stderr])
+AT_KEYWORDS(sweepline)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([Covergraph])
+############################################################################
+
+AT_SETUP([Full, 1 thread (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --search=covergraph --encoder=full],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings, 393650 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Full, 4 threads (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --search=covergraph --encoder=full --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings, 393650 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Full, 4 threads, stl-store (Phils 10)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --check=full --stubborn=off --search=covergraph --encoder=full --store=stl --threads=4],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*59048 markings, 393650 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Full, 8 threads (Phils 2)])
+AT_CHECK([cp TESTFILES/phils2.lola .])
+AT_CHECK([LOLA phils2.lola --check=full --search=covergraph --encoder=full --threads=8],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*8 markings, 10 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Full, 1 thread (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=full --stubborn=off --search=covergraph --encoder=full],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*57 markings, 205 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Initially true, 1 thread (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF p1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*1 markings, 0 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Initially true, 2 threads (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF p1 = 1"' --threads=2],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*1 markings, 0 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Next step true, 1 thread (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF p2 = 2"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings, 1 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Comparing with omega, 1 thread (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF a2 > 2"' --path=pathfile --json=result.json --jsoninclude=path],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "s2" pathfile])
+AT_CHECK([GREP -q "===end of cycle===" pathfile])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Negative signum change, 1 thread])
+AT_CHECK([cp TESTFILES/covergraph_signum.lola .])
+AT_CHECK([LOLA covergraph_signum.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF x > 0"' --path='"pathfile"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "t3" pathfile])
+AT_CHECK([GREP -q "lola:\s*4 markings, 3 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Disjunction (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF ((p1 > 1) OR (p2 > 2))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings, 6 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Disjunction 2 (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF ((p2 > 2) OR (p1 > 1))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings, 6 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Conjunction (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF ((p1 > 1) AND (p2 > 2))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*8 markings, 7 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Conjunction 2 (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF ((a1 > 2) AND (a3 <= 2))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Unknown (unbounded2)])
+AT_CHECK([cp TESTFILES/unbounded2.lola .])
+AT_CHECK([LOLA unbounded2.lola --check=modelchecking --search=covergraph --stubborn=off --encoder=full --formula='"EF (p <= 2)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings, 2 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([True (unbounded2)])
+AT_CHECK([cp TESTFILES/unbounded2.lola .])
+AT_CHECK([LOLA unbounded2.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF (TRUE)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([False (unbounded2)])
+AT_CHECK([cp TESTFILES/unbounded2.lola .])
+AT_CHECK([LOLA unbounded2.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF (FALSE)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings, 0 edges" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Wrong encoder (unbounded2)])
+AT_CHECK([cp TESTFILES/unbounded2.lola .])
+AT_CHECK([LOLA unbounded2.lola --check=modelchecking --stubborn=off --search=covergraph --encoder=bit --formula='"EF (p <= 2)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "encoder does not fully support" stderr])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+AT_SETUP([Omega marking output])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF p1 = oo"' --state=state --json=unbounded.json --jsoninclude=state],0,stdout,stderr)
+AT_CHECK([GREP -q "p1 : oo" state])
+AT_CHECK([GREP -q "\"p1\": \"oo\"" unbounded.json])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+#AT_SETUP([AGEF, result true (unbounded3)])
+#AT_CHECK([cp TESTFILES/unbounded3.lola .])
+#AT_CHECK([LOLA unbounded3.lola --check=modelchecking --search=covergraph --encoder=full --formula='"AG EF x > 0"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+#AT_CHECK([GREP -q "lola:\s*8 markings, 9 edges" stderr])
+#AT_KEYWORDS(covergraph)
+#AT_CLEANUP
+
+#AT_SETUP([AGEF, result false (unbounded3)])
+#AT_CHECK([cp TESTFILES/unbounded3.lola .])
+#AT_CHECK([LOLA unbounded3.lola --check=modelchecking --search=covergraph --encoder=full --formula='"AG EF x > 1"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+#AT_CHECK([GREP -q "lola:\s*8 markings, 9 edges" stderr])
+#AT_KEYWORDS(covergraph)
+#AT_CLEANUP
+
+#AT_SETUP([AGEF, result unknown (unbounded3)])
+#AT_CHECK([cp TESTFILES/unbounded3.lola .])
+#AT_CHECK([LOLA unbounded3.lola --check=modelchecking --search=covergraph --encoder=full --formula='"AG EF y > 1"'],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+#AT_CHECK([GREP -q "lola:\s*8 markings, 9 edges" stderr])
+#AT_KEYWORDS(covergraph)
+#AT_CLEANUP
+
+AT_SETUP([EF, result unknown (unbounded)])
+AT_CHECK([cp TESTFILES/unbounded.lola .])
+AT_CHECK([LOLA unbounded.lola --check=modelchecking --search=covergraph --encoder=full --formula='"EF p1 = 10"' --path --state --json=output.json --jsoninclude=path,state],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "\"path\": null" output.json])
+AT_CHECK([GREP -q "\"state\": null" output.json])
+AT_KEYWORDS(covergraph)
+AT_CLEANUP
+
+
+###########################################################################
+AT_BANNER([CTL])
+############################################################################
+
+AT_SETUP([3-Cycle])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --formula='"FORMULA EXPATH ALWAYS s4 = 0;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*3 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle2.lola .])
+AT_CHECK([LOLA cycle2.lola --formula='"FORMULA EXPATH ALWAYS s4 = 0;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 not strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle3.lola .])
+AT_CHECK([LOLA cycle3.lola --formula='"FORMULA EXPATH ALWAYS s4 = 0;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (iterate SCC)])
+AT_CHECK([cp TESTFILES/LTL/cycle4.lola .])
+AT_CHECK([LOLA cycle4.lola --formula='"FORMULA EXPATH ALWAYS s4 = 0;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (witness path)])
+AT_CHECK([cp TESTFILES/LTL/cycle5.lola .])
+AT_CHECK([LOLA cycle5.lola --formula='"FORMULA EXPATH ALWAYS s4 = 0;"' --check=modelchecking --store=prefix --encoder=bit --path=pathfile],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_CHECK([GREP -q "t23" pathfile])
+AT_CHECK([GREP -q "t31" pathfile])
+AT_CHECK([GREP -q "toMirror" pathfile])
+AT_CHECK([GREP -q "t12m" pathfile])
+AT_CHECK([GREP -q "t21m" pathfile])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([E(TRUE R FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA EXPATH (TRUE RELEASE FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([E(TRUE R TRUE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA EXPATH (TRUE RELEASE TRUE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([A(TRUE R FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH (TRUE RELEASE FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([A(TRUE R TRUE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH (TRUE RELEASE TRUE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([E(FALSE U FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA EXPATH (FALSE UNTIL FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([E(FALSE U TRUE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA EXPATH (FALSE UNTIL TRUE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([A(FALSE U FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH (FALSE UNTIL FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([A(FALSE U TRUE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH (FALSE UNTIL TRUE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([A(th.1 = 1 UNTIL FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH (th.1 = 1 UNTIL FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([E(th.1 = 1 UNTIL FALSE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA EXPATH (th.1 = 1 UNTIL FALSE);"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AG(FALSE) OR AG(TRUE)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"FORMULA ALLPATH ALWAYS FALSE OR ALLPATH ALWAYS TRUE;"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AF(FALSE) with deadlock])
+AT_CHECK([cp TESTFILES/4state.lola .])
+AT_CHECK([LOLA 4state.lola --formula='"FORMULA ALLPATH EVENTUALLY FALSE;"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*0 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AU and AX on phils5])
+AT_CHECK([cp TESTFILES/CTL/phils-AX.task .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula=phils-AX.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AU and EX on phils5])
+AT_CHECK([cp TESTFILES/CTL/phils-EX.task .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula=phils-EX.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+#AT_SETUP([ER, AR, and AG on phils5])
+#AT_CHECK([cp TESTFILES/phils5.lola .])
+#AT_DATA(formula.task,[/* test to cover ER, AR, and AG (AG alone would be translated to reachability) */
+#(E (hl.1 = 1 R th.1 = 1) OR A(hl.1 = 1 R th.1 = 1)) AND AG th.1 < 2
+#])
+#AT_CHECK([LOLA phils5.lola --formula=formula.task --check=modelchecking],0,stdout,stderr)
+#AT_CHECK([GREP -q "lola:\s*CTL formula contains 3 significant temporal operators and needs 13 bytes of payload" stderr])
+#AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+#AT_KEYWORDS(ctl)
+#AT_CLEANUP
+
+AT_SETUP([EU + Conjunction on phils5])
+AT_CHECK([cp TESTFILES/CTL/phils-TemporalConjunction.task .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula=phils-TemporalConjunction.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*78 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([EU + Conjunction on phils5dld])
+AT_CHECK([cp TESTFILES/CTL/phils-TemporalConjunction.task .])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([LOLA phils5dld.lola --formula=phils-TemporalConjunction.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*78 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([EU + Disjunction on phils5])
+AT_CHECK([cp TESTFILES/CTL/phils-TemporalDisjunction.task .])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula=phils-TemporalDisjunction.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AU early termination (1/2)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"A ((hr.1 = 1) U (hr.1 = 1))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AU early termination (2/2)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"A ((EX (hl.1 >= 1) AND EX (hl.3 >= 1)) U (AX ea.3 >= 1))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([EU early termination (1/2)])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --formula='"E ((EX (hl.1 >= 1) AND EX (hl.3 >= 1)) U (AX ea.3 >= 1))"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([EU early termination (2/2)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"EF (ea.1 = 1) AND  E ((EF ea.1 = 1) U hl.1 = 2)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([AU and initial deadlock])
+AT_DATA(netfile,[PLACE p;
+MARKING ;
+TRANSITION t
+CONSUME p;
+PRODUCE ;
+])
+AT_CHECK([LOLA netfile --formula='"A(TRUE U p = 1)"' --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*1 markings, 0 edges" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Nested EX])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"EX EX th.1 = 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Nested AX])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --formula='"AX AX (ea.1 = 0 OR ea.3 = 0)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula." stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Complex Formula on phils10dld])
+AT_CHECK([cp TESTFILES/CTL/phils-complex.task .])
+AT_CHECK([cp TESTFILES/phils10dld.lola .])
+AT_CHECK([LOLA phils10dld.lola --formula=phils-complex.task --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*40354 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (no weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak1.lola .])
+AT_CHECK([LOLA cycle_weak1.lola --formula='"FORMULA ALLPATH EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (fulfill weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak2.lola .])
+AT_CHECK([LOLA cycle_weak2.lola --formula='"FORMULA ALLPATH EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ctl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (force weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak3.lola .])
+AT_CHECK([LOLA cycle_weak3.lola --formula='"FORMULA TRUE AND ALLPATH ALWAYS a + b + c + token = 2 ;"' --check=modelchecking --store=prefix --encoder=bit],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([LTL - tree storage mode])
+############################################################################
+
+AT_SETUP([3-Cycle])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle.lola --buechi simple.buechi --check=modelchecking --store=stl --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*3 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle2.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle2.lola --buechi simple.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 not strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle3.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle3.lola --buechi simple.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair (cmplx)])
+AT_CHECK([cp TESTFILES/LTL/cycle2.lola .])
+AT_CHECK([cp TESTFILES/LTL/cycleprop.buechi .])
+AT_CHECK([LOLA cycle2.lola --buechi cycleprop.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (iterate SCC)])
+AT_CHECK([cp TESTFILES/LTL/cycle4.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle4.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (multiple SCC)])
+AT_CHECK([cp TESTFILES/LTL/cycle6.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle6.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair (formula)])
+AT_CHECK([cp TESTFILES/LTL/cycle3.lola .])
+AT_CHECK([LOLA cycle3.lola --formula='"FORMULA ALWAYS s4 = 0 OR EVENTUALLY s1 = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle (wrong formula)])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --formula='"FORMULA ALWAYS s1 = 0 AND EVENTUALLY s1 = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*3 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (witness path)])
+AT_CHECK([cp TESTFILES/LTL/cycle5.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle5.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --path=pathfile --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_CHECK([GREP -q "t23" pathfile])
+AT_CHECK([GREP -q "t31" pathfile])
+AT_CHECK([GREP -q "toMirror" pathfile])
+AT_CHECK([GREP -q "===begin of cycle===" pathfile])
+AT_CHECK([GREP -q "t12m" pathfile])
+AT_CHECK([GREP -q "t21m" pathfile])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (allways eating)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([cp TESTFILES/LTL/phils5dld.buechi .])
+AT_CHECK([LOLA --check=modelchecking --buechi phils5dld.buechi phils5dld.lola --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (fork 1 will be used)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([cp TESTFILES/LTL/fork1.buechi .])
+AT_CHECK([LOLA --check=modelchecking --buechi fork1.buechi phils5dld.lola --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (formula 1)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([LOLA --check=modelchecking --formula='"FORMULA ALWAYS (EVENTUALLY (ea.1 = 0));"' phils5dld.lola --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*75 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (formula 2)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([LOLA --check=modelchecking --formula='"FORMULA ALWAYS (EVENTUALLY (fo.1 = 0 OR fo.3 = 0 OR fo.5 = 0));"' phils5dld.lola --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (no weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak1.lola .])
+AT_CHECK([LOLA cycle_weak1.lola --formula='"FORMULA EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (fulfill weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak2.lola .])
+AT_CHECK([LOLA cycle_weak2.lola --formula='"FORMULA EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (force weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak3.lola .])
+AT_CHECK([LOLA cycle_weak3.lola --formula='"FORMULA ALWAYS a + b + c + token = 2 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (force weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak3.lola .])
+AT_CHECK([LOLA cycle_weak3.lola --formula='"FORMULA ALWAYS a + b + c + token = 2 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=tree],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+
+############################################################################
+AT_BANNER([LTL - flat storage mode])
+############################################################################
+
+AT_SETUP([3-Cycle])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle.lola --buechi simple.buechi --check=modelchecking --store=stl --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*3 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle2.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle2.lola --buechi simple.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 not strong fair])
+AT_CHECK([cp TESTFILES/LTL/cycle3.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle3.lola --buechi simple.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair (cmplx)])
+AT_CHECK([cp TESTFILES/LTL/cycle2.lola .])
+AT_CHECK([cp TESTFILES/LTL/cycleprop.buechi .])
+AT_CHECK([LOLA cycle2.lola --buechi cycleprop.buechi --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (iterate SCC)])
+AT_CHECK([cp TESTFILES/LTL/cycle4.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle4.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (multiple SCC)])
+AT_CHECK([cp TESTFILES/LTL/cycle6.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle6.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle + 1 strong fair (formula)])
+AT_CHECK([cp TESTFILES/LTL/cycle3.lola .])
+AT_CHECK([LOLA cycle3.lola --formula='"FORMULA ALWAYS s4 = 0 OR EVENTUALLY s1 = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*4 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([3-Cycle (wrong formula)])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --formula='"FORMULA ALWAYS s1 = 0 AND EVENTUALLY s1 = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*3 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([2x3-Cycle + 1 strong fair (witness path)])
+AT_CHECK([cp TESTFILES/LTL/cycle5.lola .])
+AT_CHECK([cp TESTFILES/LTL/simple.buechi .])
+AT_CHECK([LOLA cycle5.lola --formula='"FORMULA EVENTUALLY s4 = 1 ;"' --check=modelchecking --store=prefix --encoder=bit --path=pathfile --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*7 markings" stderr])
+AT_CHECK([GREP -q "t23" pathfile])
+AT_CHECK([GREP -q "t31" pathfile])
+AT_CHECK([GREP -q "toMirror" pathfile])
+AT_CHECK([GREP -q "===begin of cycle===" pathfile])
+AT_CHECK([GREP -q "t12m" pathfile])
+AT_CHECK([GREP -q "t21m" pathfile])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (allways eating)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([cp TESTFILES/LTL/phils5dld.buechi .])
+AT_CHECK([LOLA --check=modelchecking --buechi phils5dld.buechi phils5dld.lola --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (fork 1 will be used)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([cp TESTFILES/LTL/fork1.buechi .])
+AT_CHECK([LOLA --check=modelchecking --buechi fork1.buechi phils5dld.lola --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (formula 1)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([LOLA --check=modelchecking --formula='"FORMULA ALWAYS (EVENTUALLY (ea.1 = 0));"' phils5dld.lola --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*75 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Phils5 Deadlock-free (formula 2)])
+AT_CHECK([cp TESTFILES/phils5dld.lola .])
+AT_CHECK([LOLA --check=modelchecking --formula='"FORMULA ALWAYS (EVENTUALLY (fo.1 = 0 OR fo.3 = 0 OR fo.5 = 0));"' phils5dld.lola --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*242 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (no weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak1.lola .])
+AT_CHECK([LOLA cycle_weak1.lola --formula='"FORMULA EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (fulfill weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak2.lola .])
+AT_CHECK([LOLA cycle_weak2.lola --formula='"FORMULA EVENTUALLY b = 1;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (force weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak3.lola .])
+AT_CHECK([LOLA cycle_weak3.lola --formula='"FORMULA ALWAYS a + b + c + token = 2 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+AT_SETUP([Weak Fairness (force weak)])
+AT_CHECK([cp TESTFILES/LTL/cycle_weak3.lola .])
+AT_CHECK([LOLA cycle_weak3.lola --formula='"FORMULA ALWAYS a + b + c + token = 2 ;"' --check=modelchecking --store=prefix --encoder=bit --ltlmode=flat],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*2 markings" stderr])
+AT_KEYWORDS(ltl)
+AT_CLEANUP
+
+
+###########################################################################
+AT_BANNER([LTL Buechi])
+############################################################################
+
+AT_SETUP([Cycle buechi (check state reachability)])
+AT_CHECK([cp TESTFILES/LTL/cyclecheck.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cyclecheck.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Cycle buechi (FG && FG)])
+AT_CHECK([cp TESTFILES/LTL/cycle2FG.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cycle2FG.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Cycle buechi ( U  && U )])
+AT_CHECK([cp TESTFILES/LTL/cycle2U.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cycle2U.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not satisfy the given formula (language of the product automaton is nonempty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Cycle buechi ( GFG )])
+AT_CHECK([cp TESTFILES/LTL/cycleFG.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cycleFG.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Cycle buechi ( GF )])
+AT_CHECK([cp TESTFILES/LTL/cycleGF.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cycleGF.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: " stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+AT_SETUP([Cycle buechi ( U )])
+AT_CHECK([cp TESTFILES/LTL/cycleU.buechi .])
+AT_CHECK([cp TESTFILES/LTL/cycle.lola .])
+AT_CHECK([LOLA cycle.lola --buechi=cycleU.buechi --check=modelchecking],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net satisfies the given formula (language of the product automaton is empty)." stderr])
+AT_KEYWORDS(buechi)
+AT_CLEANUP
+
+############################################################################
+AT_BANNER([Cycle reduction])
+############################################################################
+
+AT_SETUP([Phils full])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --cycle --check=full],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*found 10 transitions to cover the cycles" stderr])
+AT_KEYWORDS(cycle)
+AT_CLEANUP
+
+AT_SETUP([Phils deadlock])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --cycle -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*found 10 transitions to cover the cycles" stderr])
+AT_CHECK([GREP -q "result: yes" stderr])
+AT_KEYWORDS(cycle)
+AT_CLEANUP
+
+############################################################################
+AT_BANNER([Siphon / Trap])
+############################################################################
+
+AT_SETUP([Siphon/trap property: EF DEADLOCK false])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --siphontrap=alone -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property does not hold" stderr])
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The net may or may not have deadlocks." stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon/trap property: EF DEADLOCK true])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --siphontrap=alone -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property holds" stderr])
+AT_CHECK([GREP -q "lola:\s*result: no" stderr])
+AT_CHECK([GREP -q "lola:\s*The net does not have deadlocks." stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon/trap property: EF DEADLOCK false/seq true])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --siphontrap=seq -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property does not hold" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net has deadlock(s)." stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon/trap property: AG (NOT DEADLOCK) false])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --siphontrap=alone -f '"AG (NOT DEADLOCK)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property does not hold" stderr])
+AT_CHECK([GREP -q "lola:\s*result: unknown" stderr])
+AT_CHECK([GREP -q "lola:\s*The net may or may not be deadlock-free." stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon/trap property: AG (NOT DEADLOCK) true])
+AT_CHECK([cp TESTFILES/Kanban5.pnml.lola .])
+AT_CHECK([LOLA Kanban5.pnml.lola --siphontrap=alone -f '"AG (NOT DEADLOCK)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property holds" stderr])
+AT_CHECK([GREP -q "lola:\s*result: yes" stderr])
+AT_CHECK([GREP -q "lola:\s*The net is deadlock-free." stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon/trap property not applicable])
+AT_CHECK([cp TESTFILES/unbounded2.lola .])
+AT_CHECK([LOLA unbounded2.lola --siphontrap=alone -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property is not applicable since the net is inhomogeneous" stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+## AT_SETUP([Siphon/trap property with minisat args])
+## AT_CHECK([cp TESTFILES/garavel.lola .])
+## AT_CHECK([LOLA garavel.lola --siphontrap=alone --minisatargs='"-verb=2 -luby -cpu-lim=1000 -mem-lim=10"' --siphondepth=2 -f '"EF DEADLOCK"'],0,stdout,stderr)
+## AT_CHECK([GREP -q "lola:\s*The siphon/trap property does not hold" stderr])
+## AT_KEYWORDS(siphon)
+## AT_CLEANUP
+
+AT_SETUP([Siphon depth underflow])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --siphontrap=alone  --siphondepth=0 -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property is inconclusive" stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+AT_SETUP([Siphon depth overflow])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola --siphontrap=alone  --siphondepth=5000 -f '"EF DEADLOCK"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The siphon/trap property does not hold" stderr])
+AT_KEYWORDS(siphon)
+AT_CLEANUP
+
+############################################################################
+AT_BANNER([Task management])
+############################################################################
+
+AT_SETUP([Compute Bound Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola  -f '"MAX(hl.1 + 2 * hl.2)"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The maximum value of the given expression is 3" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Compound Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola  -f '"MAX(hl.1 + 2 * hl.2) : EF DEADLOCK : AG hl.1 < 2"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*summary:  3 yes yes" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Interrupted Compound Task])
+AT_CHECK([cp TESTFILES/garavel.lola .])
+AT_CHECK([LOLA garavel.lola  --timelimit=10 -f '" p.1 <= 1 : EF DEADLOCK : AG p.1 < 10"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*preliminary result:  yes" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Boolean Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola  -f '"EF DEADLOCK AND AG hl.1 < 1"'],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*The net has deadlock(s)" stderr])
+AT_CHECK([GREP -q "lola:\s*The predicate is not invariant" stderr])
+AT_CHECK([GREP -q "lola:\s*The Boolean predicate is false" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Empty Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola  --ch=n],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*checking nothing" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Parallel Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola -f '"EF DEADLOCK"' --siphontrap=par],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*Planning: workflow for deadlock check: siphon\|\|search" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+AT_SETUP([Sequential Task])
+AT_CHECK([cp TESTFILES/phils10.lola .])
+AT_CHECK([LOLA phils10.lola -f '"EF DEADLOCK"' --siphontrap=seq],0,stdout,stderr)
+AT_CHECK([GREP -q "lola:\s*Planning: workflow for deadlock check: siphon;search" stderr])
+AT_KEYWORDS(task)
+AT_CLEANUP
+
+############################################################################
+AT_BANNER([Stores])
+############################################################################
+
+# AT_CHECK_RUNLOLA([Net Name], [Filename], [--check=], [--stubborn=], [--store=], [--encoder=], [bucketing], [--threads=], [--hashfunctions=], expected answer, expected number of markings, expected number of edges)
+
+AT_SETUP([5 Philosophers (compare Store)])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=full --store=bloom --hashfunctions=4],0,stdout,stderr)
+AT_CHECK([GREP -q "25 places, 20 transitions, 15 significant places" stderr])
+AT_KEYWORDS(store)
+AT_CLEANUP
+
+AT_SETUP([5 Philosophers (bloom Store ,hashfunctions=4 )])
+AT_CHECK([cp TESTFILES/phils5.lola .])
+AT_CHECK([LOLA phils5.lola --check=full --store=comp],0,stdout,stderr)
+AT_CHECK([GREP -q "25 places, 20 transitions, 15 significant places" stderr])
+AT_KEYWORDS(store)
+AT_CLEANUP
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[bit],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[copy],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[simplecompressed],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[fullcopy],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[bit],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[copy],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[fullcopy],[--bucketing],1,2,[no],242,805)
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[bit],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[copy],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[simplecompressed],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[fullcopy],[],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[bit],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[copy],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[simplecompressed],[--bucketing],1,2,[no],242,805)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[fullcopy],[--bucketing],1,2,[no],242,805)
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[bit],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[copy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[simplecompressed],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[fullcopy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[bit],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[copy],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[fullcopy],[--bucketing],1,2,[no],,)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[bit],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[copy],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[simplecompressed],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[fullcopy],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[copy],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[fullcopy],[--bucketing],1,2,[no],2048,23040)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[bit],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[copy],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[simplecompressed],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[fullcopy],[],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[bit],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[copy],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[simplecompressed],[--bucketing],1,2,[no],2048,23040)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[fullcopy],[--bucketing],1,2,[no],2048,23040)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[bit],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[copy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[simplecompressed],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[fullcopy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[bit],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[copy],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[fullcopy],[--bucketing],1,2,[no],,)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[bit],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[copy],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[simplecompressed],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[fullcopy],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[bit],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[copy],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[fullcopy],[--bucketing],1,2,[no],47905,137280)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[bit],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[copy],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[simplecompressed],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[fullcopy],[],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[bit],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[copy],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[simplecompressed],[--bucketing],1,2,[no],47905,137280)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[fullcopy],[--bucketing],1,2,[no],47905,137280)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[bit],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[copy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[simplecompressed],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[fullcopy],[],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[bit],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[copy],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[fullcopy],[--bucketing],1,2,[no],,)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[bit],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[copy],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[simplecompressed],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[fullcopy],[],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[copy],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[fullcopy],[--bucketing],1,2,[no],2546432,24460016)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[bit],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[copy],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[simplecompressed],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[fullcopy],[],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[bit],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[copy],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[simplecompressed],[--bucketing],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[fullcopy],[--bucketing],1,2,[no],2546432,24460016)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[bit],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[copy],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[simplecompressed],[],1,2,[no],2546432,24460016)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[fullcopy],[],1,2,[no],2546432,24460016)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[bit],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[copy],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],1,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[fullcopy],[--bucketing],1,2,[no],,)
+
+
+############################################################################
+AT_BANNER([Parallel stores])
+############################################################################
+
+# AT_CHECK_RUNLOLA([Net Name], [Filename], [--check=], [--stubborn=], [--store=], [--encoder=], [bucketing], [--threads=], [--hashfunctions=], expected answer, expected number of markings, leave empty!)
+# The last field has to be left empty because parallel exploration can't guarante to visit any specific number of edges.
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[bit],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[copy],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[simplecompressed],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[fullcopy],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[bit],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[copy],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[fullcopy],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[prefix],[bit],[--bucketing],64,2,[no],242,)
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[bit],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[copy],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[simplecompressed],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[fullcopy],[],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[bit],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[copy],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[simplecompressed],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[fullcopy],[--bucketing],4,2,[no],242,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[stl],[bit],[--bucketing],64,2,[no],242,)
+
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[bit],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[copy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[simplecompressed],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[fullcopy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[bit],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[copy],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[fullcopy],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([5 Philosophers],[phils5.lola],[full],[off],[bloom],[bit],[--bucketing],64,2,[no],,)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[bit],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[copy],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[simplecompressed],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[fullcopy],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[copy],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[fullcopy],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],64,2,[no],2048,)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[bit],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[copy],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[simplecompressed],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[fullcopy],[],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[bit],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[copy],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[simplecompressed],[--bucketing],4,2,[no],2048,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[stl],[fullcopy],[--bucketing],4,2,[no],2048,)
+
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[bit],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[copy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[simplecompressed],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[fullcopy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[bit],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[copy],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Eratosthenes],[eratosthenes-020.pnml.lola],[full],[off],[bloom],[fullcopy],[--bucketing],4,2,[no],,)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[bit],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[copy],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[simplecompressed],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[fullcopy],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[bit],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[copy],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[fullcopy],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[prefix],[bit],[--bucketing],64,2,[no],47905,)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[bit],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[copy],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[simplecompressed],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[fullcopy],[],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[bit],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[copy],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[simplecompressed],[--bucketing],4,2,[no],47905,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[stl],[fullcopy],[--bucketing],4,2,[no],47905,)
+
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[bit],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[copy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[simplecompressed],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[fullcopy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[bit],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[copy],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([4state],[4state.lola],[full],[off],[bloom],[fullcopy],[--bucketing],4,2,[no],,)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[bit],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[copy],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[simplecompressed],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[fullcopy],[],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[copy],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[simplecompressed],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[fullcopy],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[prefix],[bit],[--bucketing],64,2,[no],2546432,)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[bit],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[copy],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[simplecompressed],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[fullcopy],[],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[bit],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[copy],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[simplecompressed],[--bucketing],4,2,[no],2546432,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[stl],[fullcopy],[--bucketing],4,2,[no],2546432,)
+
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[bit],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[copy],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[simplecompressed],[],4,2,[no],2546432,)
+# AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[fullcopy],[],4,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[bit],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[copy],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[simplecompressed],[--bucketing],4,2,[no],,)
+AT_CHECK_RUNLOLA([Kanban5 (5-safe)],[Kanban5.5safe.pnml.lola],[full],[off],[bloom],[fullcopy],[--bucketing],4,2,[no],,)
+
+############################################################################
+AT_BANNER([Memory Management])
+############################################################################
+
+# AT_ST_CHECK_MEMORY([Net Name], [Filename], [--check=], [--store=], [--threads=])
+# E.G.: AT_ST_CHECK_MEMORY([Garavel], [garavel.lola], [none], [prefix], 1)
+
+AT_ST_CHECK_MEMORY([Phils 10], [phils10.lola], [full], [prefix], [copy], 4)
+AT_ST_CHECK_MEMORY([Phils 10], [phils10.lola], [full], [prefix], [simplecompressed], 4)
+AT_ST_CHECK_MEMORY([Phils 10], [phils10.lola], [full], [prefix], [bit], 4)
+
+# AT_LTL_CHECK_MEMORY([Phils 10], [cycle.lola], [simple.buechi], [psbstl])
+
+#AT_SETUP([Unfolded formulae])
+#AT_CHECK([cp TESTFILES/phils5.lola .])
+#AT_DATA(initial.task,[EF INITIAL
+#])
+#AT_CHECK([VALGRIND --leak-check=full --show-reachable=yes LOLA_RAW --formula=initial.task --symmetry phils5.lola],0,ignore,stderr)
+#AT_CHECK([GREP -q -E "definitely lost: 0 bytes in 0 blocks|All heap blocks were freed -- no leaks are possible" stderr])
+#AT_KEYWORDS(valgrind)
+#AT_CLEANUP
+#
+#AT_SETUP([Symmetries])
+#AT_CHECK([cp TESTFILES/phils10.lola .])
+#AT_DATA(dl.task,[EF (ea.1 = 1 OR ea.2 = 1 OR ea.3 = 1 OR ea.4 = 1 OR ea.5 = 1 OR ea.6 = 1 OR ea.7 = 1 OR ea.8 = 1 OR ea.9 = 1 OR ea.10 = 1)
+#])
+#AT_CHECK([VALGRIND --leak-check=full --show-reachable=yes LOLA_RAW --formula=dl.task --symmetry phils10.lola],0,ignore,stderr)
+#AT_CHECK([GREP -q -E "definitely lost: 0 bytes in 0 blocks|All heap blocks were freed -- no leaks are possible" stderr])
+#AT_KEYWORDS(valgrind)
+#AT_CLEANUP

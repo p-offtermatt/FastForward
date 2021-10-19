@@ -1,0 +1,236 @@
+PLACE 'sigma,'m1,'m2,s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,l0,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14,l15,l16,l17,l18,l19,l20,l21,l22,l23,l24,l25,l26,l27,l28,l29,l30,l31,l32,l33,l34,l35,l36,l37,l38,l39,l40,l41,l42,l43,l44,l45,l46,l47,l48,l49,l50,l51,l52,l53,l54,l55,l56,l57,l58,l59,l60,l61,l62,l63,l64,l65,l66,l67,l68,l69,l70,l71,l72,l73,l74,l75,l76,l77,l78,l79,l80,l81,l82,l83,l84,l85,l86,l87,l88,l89,l90,l91,l92,l93,l94,l95,l96,'s0,'s1,'s2,'s3,'s4,'s5,'s6,'s7,'s8,'s9,'l0,'l1,'l2,'l3,'l4,'l5,'l6,'l7,'l8,'l9,'l10,'l11,'l12,'l13,'l14,'l15,'l16,'l17,'l18,'l19,'l20,'l21,'l22,'l23,'l24,'l25,'l26,'l27,'l28,'l29,'l30,'l31,'l32,'l33,'l34,'l35,'l36,'l37,'l38,'l39,'l40,'l41,'l42,'l43,'l44,'l45,'l46,'l47,'l48,'l49,'l50,'l51,'l52,'l53,'l54,'l55,'l56,'l57,'l58,'l59,'l60,'l61,'l62,'l63,'l64,'l65,'l66,'l67,'l68,'l69,'l70,'l71,'l72,'l73,'l74,'l75,'l76,'l77,'l78,'l79,'l80,'l81,'l82,'l83,'l84,'l85,'l86,'l87,'l88,'l89,'l90,'l91,'l92,'l93,'l94,'l95,'l96;
+
+MARKING 'l0:1,'m1:1,'s0:1,l0:1,s0:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION 'init1
+CONSUME 'm1:1;
+PRODUCE 'l0:1,l0:1,'m1:1;
+
+TRANSITION 't1
+CONSUME 'l0:1,'s0:1,l0:1,s0:1,'m1:1;
+PRODUCE 'l1:1,'s1:1,l1:1,s1:1,'m1:1;
+
+TRANSITION ''t1
+CONSUME 'l0:1,'s0:1,'m2:1;
+PRODUCE 'l1:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't2
+CONSUME 'l0:1,'s1:1,l0:1,s1:1,'m1:1;
+PRODUCE 'l0:1,'s2:1,l0:1,s2:1,'m1:1;
+
+TRANSITION ''t2
+CONSUME 'l0:1,'s1:1,'m2:1;
+PRODUCE 'l0:1,'s2:1,'sigma:1,'m2:1;
+
+TRANSITION 't3
+CONSUME 'l1:1,'s1:1,l1:1,s1:1,'m1:1;
+PRODUCE 'l13:1,'s1:1,l13:1,s1:1,'m1:1;
+
+TRANSITION ''t3
+CONSUME 'l1:1,'s1:1,'m2:1;
+PRODUCE 'l13:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't4
+CONSUME 'l13:1,'s1:1,l13:1,s1:1,'m1:1;
+PRODUCE 'l36:1,'s3:1,l36:1,s3:1,'m1:1;
+
+TRANSITION ''t4
+CONSUME 'l13:1,'s1:1,'m2:1;
+PRODUCE 'l36:1,'s3:1,'sigma:1,'m2:1;
+
+TRANSITION 't5
+CONSUME 'l22:1,'s1:1,l22:1,s1:1,'m1:1;
+PRODUCE 'l28:1,'s1:1,l28:1,s1:1,'m1:1;
+
+TRANSITION ''t5
+CONSUME 'l22:1,'s1:1,'m2:1;
+PRODUCE 'l28:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't6
+CONSUME 'l24:1,'s1:1,l24:1,s1:1,'m1:1;
+PRODUCE 'l25:1,'s4:1,l25:1,s4:1,'m1:1;
+
+TRANSITION ''t6
+CONSUME 'l24:1,'s1:1,'m2:1;
+PRODUCE 'l25:1,'s4:1,'sigma:1,'m2:1;
+
+TRANSITION 't7
+CONSUME 'l26:1,'s1:1,l26:1,s1:1,'m1:1;
+PRODUCE 'l24:1,'s1:1,l24:1,s1:1,'m1:1;
+
+TRANSITION ''t7
+CONSUME 'l26:1,'s1:1,'m2:1;
+PRODUCE 'l24:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't8
+CONSUME 'l28:1,'s1:1,l28:1,s1:1,'m1:1;
+PRODUCE 'l29:1,'s5:1,l29:1,s5:1,'m1:1;
+
+TRANSITION ''t8
+CONSUME 'l28:1,'s1:1,'m2:1;
+PRODUCE 'l29:1,'s5:1,'sigma:1,'m2:1;
+
+TRANSITION 't9
+CONSUME 'l35:1,'s1:1,l35:1,s1:1,'m1:1;
+PRODUCE 'l24:1,'s1:1,l24:1,s1:1,'m1:1;
+
+TRANSITION ''t9
+CONSUME 'l35:1,'s1:1,'m2:1;
+PRODUCE 'l24:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't10
+CONSUME 'l36:1,'s1:1,l36:1,s1:1,'m1:1;
+PRODUCE 'l89:1,'s1:1,l89:1,s1:1,'m1:1;
+
+TRANSITION ''t10
+CONSUME 'l36:1,'s1:1,'m2:1;
+PRODUCE 'l89:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't11
+CONSUME 'l83:1,'s1:1,l83:1,s1:1,'m1:1;
+PRODUCE 'l90:1,'s1:1,l90:1,s1:1,'m1:1;
+
+TRANSITION ''t11
+CONSUME 'l83:1,'s1:1,'m2:1;
+PRODUCE 'l90:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't12
+CONSUME 'l84:1,'s1:1,l84:1,s1:1,'m1:1;
+PRODUCE 'l90:1,'s1:1,l90:1,s1:1,'m1:1;
+
+TRANSITION ''t12
+CONSUME 'l84:1,'s1:1,'m2:1;
+PRODUCE 'l90:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't13
+CONSUME 'l89:1,'s1:1,l89:1,s1:1,'m1:1;
+PRODUCE 'l0:1,'s6:1,l0:1,s6:1,'m1:1;
+
+TRANSITION ''t13
+CONSUME 'l89:1,'s1:1,'m2:1;
+PRODUCE 'l0:1,'s6:1,'sigma:1,'m2:1;
+
+TRANSITION 't14
+CONSUME 'l89:1,'s1:1,l89:1,s1:1,'m1:1;
+PRODUCE 'l0:1,'s7:1,l0:1,s7:1,'m1:1;
+
+TRANSITION ''t14
+CONSUME 'l89:1,'s1:1,'m2:1;
+PRODUCE 'l0:1,'s7:1,'sigma:1,'m2:1;
+
+TRANSITION 't15
+CONSUME 'l90:1,'s1:1,l90:1,s1:1,'m1:1;
+PRODUCE 'l0:1,'s8:1,l0:1,s8:1,'m1:1;
+
+TRANSITION ''t15
+CONSUME 'l90:1,'s1:1,'m2:1;
+PRODUCE 'l0:1,'s8:1,'sigma:1,'m2:1;
+
+TRANSITION 't16
+CONSUME 'l90:1,'s1:1,l90:1,s1:1,'m1:1;
+PRODUCE 'l0:1,'s9:1,l0:1,s9:1,'m1:1;
+
+TRANSITION ''t16
+CONSUME 'l90:1,'s1:1,'m2:1;
+PRODUCE 'l0:1,'s9:1,'sigma:1,'m2:1;
+
+TRANSITION 't17
+CONSUME 'l92:1,'s1:1,l92:1,s1:1,'m1:1;
+PRODUCE 'l86:1,'s1:1,l86:1,s1:1,'m1:1;
+
+TRANSITION ''t17
+CONSUME 'l92:1,'s1:1,'m2:1;
+PRODUCE 'l86:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't18
+CONSUME 'l92:1,'s1:1,l92:1,s1:1,'m1:1;
+PRODUCE 'l94:1,'s1:1,l94:1,s1:1,'m1:1;
+
+TRANSITION ''t18
+CONSUME 'l92:1,'s1:1,'m2:1;
+PRODUCE 'l94:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't19
+CONSUME 'l93:1,'s1:1,l93:1,s1:1,'m1:1;
+PRODUCE 'l88:1,'s1:1,l88:1,s1:1,'m1:1;
+
+TRANSITION ''t19
+CONSUME 'l93:1,'s1:1,'m2:1;
+PRODUCE 'l88:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't20
+CONSUME 'l93:1,'s1:1,l93:1,s1:1,'m1:1;
+PRODUCE 'l89:1,'s1:1,l89:1,s1:1,'m1:1;
+
+TRANSITION ''t20
+CONSUME 'l93:1,'s1:1,'m2:1;
+PRODUCE 'l89:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't21
+CONSUME 'l94:1,'s2:1,l94:1,s2:1,'m1:1;
+PRODUCE 'l96:1,'s2:1,l96:1,s2:1,'m1:1;
+
+TRANSITION ''t21
+CONSUME 'l94:1,'s2:1,'m2:1;
+PRODUCE 'l96:1,'s2:1,'sigma:1,'m2:1;
+
+TRANSITION 't22
+CONSUME 'l0:1,'s3:1,l0:1,s3:1,'m1:1;
+PRODUCE 'l35:1,'s1:1,l35:1,s1:1,'m1:1;
+
+TRANSITION ''t22
+CONSUME 'l0:1,'s3:1,'m2:1;
+PRODUCE 'l35:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't23
+CONSUME 'l0:1,'s4:1,l0:1,s4:1,'m1:1;
+PRODUCE 'l22:1,'s1:1,l22:1,s1:1,'m1:1;
+
+TRANSITION ''t23
+CONSUME 'l0:1,'s4:1,'m2:1;
+PRODUCE 'l22:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't24
+CONSUME 'l0:1,'s5:1,l0:1,s5:1,'m1:1;
+PRODUCE 'l26:1,'s1:1,l26:1,s1:1,'m1:1;
+
+TRANSITION ''t24
+CONSUME 'l0:1,'s5:1,'m2:1;
+PRODUCE 'l26:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't25
+CONSUME 'l25:1,'s6:1,l25:1,s6:1,'m1:1;
+PRODUCE 'l83:1,'s1:1,l83:1,s1:1,'m1:1;
+
+TRANSITION ''t25
+CONSUME 'l25:1,'s6:1,'m2:1;
+PRODUCE 'l83:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't26
+CONSUME 'l29:1,'s7:1,l29:1,s7:1,'m1:1;
+PRODUCE 'l84:1,'s1:1,l84:1,s1:1,'m1:1;
+
+TRANSITION ''t26
+CONSUME 'l29:1,'s7:1,'m2:1;
+PRODUCE 'l84:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't27
+CONSUME 'l25:1,'s8:1,l25:1,s8:1,'m1:1;
+PRODUCE 'l92:1,'s1:1,l92:1,s1:1,'m1:1;
+
+TRANSITION ''t27
+CONSUME 'l25:1,'s8:1,'m2:1;
+PRODUCE 'l92:1,'s1:1,'sigma:1,'m2:1;
+
+TRANSITION 't28
+CONSUME 'l29:1,'s9:1,l29:1,s9:1,'m1:1;
+PRODUCE 'l93:1,'s1:1,l93:1,s1:1,'m1:1;
+
+TRANSITION ''t28
+CONSUME 'l29:1,'s9:1,'m2:1;
+PRODUCE 'l93:1,'s1:1,'sigma:1,'m2:1;
+

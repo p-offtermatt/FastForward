@@ -1,0 +1,49 @@
+petri net "Peterson's algorithm" {
+    places {
+        p1 p2 p3 p4
+        q1 q2 q3 q4
+        m1f m1t m2f m2t
+        hold1 hold2
+    }
+    transitions {
+        u1 u2 u3 u4 u5 u6 u7
+        v1 v2 v3 v4 v5 v6 v7
+    }
+    arcs {
+        { p1 m1f   } -> u1 -> { p2 m1t   }
+
+        { p2 hold2 } -> u2 -> { p3 hold1 }
+        { p2 hold1 } -> u3 -> { p3 hold1 }
+
+        { p3 m2f   } -> u4 -> { p4 m2f   }
+        { p3 hold2 } -> u5 -> { p4 hold2 }
+        { p3 hold1 m2t } -> u6 -> { p3 hold1 m2t }
+
+        { p4 m1t   } -> u7 -> { p1 m1f   }
+
+        { q1 m2f   } -> v1 -> { q2 m2t   }
+
+        { q2 hold2 } -> v2 -> { q3 hold2 }
+        { q2 hold1 } -> v3 -> { q3 hold2 }
+
+        { q3 m1f   } -> v4 -> { q4 m1f   }
+        { q3 hold1 } -> v5 -> { q4 hold1 }
+        { q3 hold2 m1t } -> v6 -> { q3 hold2 m1t }
+
+        { q4 m2t   } -> v7 -> { q1 m2f   }
+    }
+    initial {
+        p1 q1 m1f m2f hold1
+    }
+}
+liveness property "fairness for first process" {
+    u1 + u2 + u3 + u4 + u5 + u6 + u7 > 0 && u4 + u5 = 0 &&
+    v1 + v2 + v3 + v4 + v5 + v6 + v7 > 0
+}
+liveness property "fairness for second process" {
+    u1 + u2 + u3 + u4 + u5 + u6 + u7 > 0 &&
+    v1 + v2 + v3 + v4 + v5 + v6 + v7 > 0 && v4 + v5 = 0
+}
+safety property "mutual exclusion" {
+    p4 >= 1 && q4 >= 1
+}

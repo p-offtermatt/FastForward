@@ -1,0 +1,113 @@
+place "i" init 1;
+place "o";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:InputCondition";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Split_and (m64n)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Join_and (m64n)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Split_Employee Notification of Retraction (m651)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Join_Employee Notification of Retraction (m651)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:outputCondition";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n)*and (m64n)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n)*Retraction of Long-Term Incentives (m64e)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651)";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):busy";
+place "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:busy";
+trans "*:Model.m63t--0-----u--:Model.m63t--0-----u--:start"~"*:Model.m63t--0-----u--:Model.m63t--0-----u--:start"
+    in "i"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:InputCondition"
+;
+trans "*:Model.m63t--0-----u--:Model.m63t--0-----u--:end"~"*:Model.m63t--0-----u--:Model.m63t--0-----u--:end"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:join:InputCondition"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:join:InputCondition"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:InputCondition"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:split:Split_Split_and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:split:Split_Split_and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split:busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Split_and (m64n)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):join:Split_Split_and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):join:Split_Split_and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Split_and (m64n)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):split:Split_Join_and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):split:Split_Join_and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_No_and (m64n):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Join_and (m64n)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):join:Split_Split_and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):join:Split_Split_and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Split_and (m64n)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):split:Split_Join_and (m64n):Split_Yes_and (m64n)*and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):split:Split_Join_and (m64n):Split_Yes_and (m64n)*and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Join_and (m64n)"
+       "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n)*and (m64n)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:join:Split_Join_and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:join:Split_Join_and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Join_and (m64n)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:split:Join_Split_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:split:Join_Split_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Skip:busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Split_Employee Notification of Retraction (m651)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):join:Split_Yes_and (m64n)*and (m64n)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):join:Split_Yes_and (m64n)*and (m64n)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Split_Yes_and (m64n)*and (m64n)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):split:and (m64n)*Retraction of Long-Term Incentives (m64e)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):split:and (m64n)*Retraction of Long-Term Incentives (m64e)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n)*Retraction of Long-Term Incentives (m64e)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):join:and (m64n)*Retraction of Long-Term Incentives (m64e)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):join:and (m64n)*Retraction of Long-Term Incentives (m64e)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:and (m64n)*Retraction of Long-Term Incentives (m64e)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):split:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):split:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):join:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):join:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Retraction of Long-Term Incentives (m64e)*Employee Notification of Retraction (m651)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):split:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):split:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):join:Join_Split_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):join:Join_Split_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Split_Employee Notification of Retraction (m651)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):split:Join_Join_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):split:Join_Join_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_No_Employee Notification of Retraction (m651):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Join_Employee Notification of Retraction (m651)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):join:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651):Join_Split_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):join:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651):Join_Split_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Employee Notification of Retraction (m651)*Join_Yes_Employee Notification of Retraction (m651)"
+       "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Split_Employee Notification of Retraction (m651)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):split:Join_Join_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):split:Join_Join_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Yes_Employee Notification of Retraction (m651):busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Join_Employee Notification of Retraction (m651)"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:join:Join_Join_Employee Notification of Retraction (m651)"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:join:Join_Join_Employee Notification of Retraction (m651)"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Join_Join_Employee Notification of Retraction (m651)"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:busy"
+;
+trans "t:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:split:outputCondition"~"t:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:split:outputCondition"
+    in "p:Model.m63t--0-----u--:Model.m63t--0-----u--:Output:busy"
+   out "p:Model.m63t--0-----u--:Model.m63t--0-----u--:outputCondition"
+;
+

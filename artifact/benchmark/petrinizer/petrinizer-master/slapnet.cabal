@@ -1,0 +1,28 @@
+name:                slapnet
+version:             0.9.1.1
+synopsis:            Safety and Liveness Analysis of Petri Nets with SMT solvers
+description:
+    SLAPnet is a tool to check safety and liveness properties of Petri nets
+    using SMT solvers such as Z3, Yices or CVC4.
+license:             GPL-3
+license-file:        LICENSE
+author:              Philipp Meyer
+maintainer:          meyerphi@in.tum.de
+category:            Formal Methods
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+source-repository head
+  type: git
+  location: git://github.com/cryptica/slapnet.git
+
+executable slapnet
+  main-is: Main.hs
+  other-modules:
+  -- other-extensions:
+  build-depends:       base >=4 && <5, sbv >=8 && <9, parsec, containers, transformers,
+                       bytestring, mtl, stm, async, parallel-io
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:         -fsimpl-tick-factor=1000 -threaded -rtsopts -with-rtsopts=-N -dynamic

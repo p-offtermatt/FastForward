@@ -1,0 +1,133 @@
+place "i" init 1;
+place "o";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:InputCondition";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Split_or (id0b)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Join_or (id0b)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Split_Product Cost Analysis in Actual Costing (iczp)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Join_Product Cost Analysis in Actual Costing (iczp)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:outputCondition";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b)*or (id0b)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b)*Material Price Determination (icxm)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp)";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):busy";
+place "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:busy";
+trans "*:Model.icx1--0-----u--:Model.icx1--0-----u--:start"~"*:Model.icx1--0-----u--:Model.icx1--0-----u--:start"
+    in "i"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:InputCondition"
+;
+trans "*:Model.icx1--0-----u--:Model.icx1--0-----u--:end"~"*:Model.icx1--0-----u--:Model.icx1--0-----u--:end"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:join:InputCondition"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:join:InputCondition"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:InputCondition"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:split:Split_Split_or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:split:Split_Split_or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split:busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Split_or (id0b)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):join:Split_Split_or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):join:Split_Split_or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Split_or (id0b)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):split:Split_Join_or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):split:Split_Join_or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_No_or (id0b):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Join_or (id0b)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):join:Split_Split_or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):join:Split_Split_or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Split_or (id0b)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):split:Split_Join_or (id0b):Split_Yes_or (id0b)*or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):split:Split_Join_or (id0b):Split_Yes_or (id0b)*or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Join_or (id0b)"
+       "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b)*or (id0b)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:join:Split_Join_or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:join:Split_Join_or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Join_or (id0b)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:split:Join_Split_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:split:Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Skip:busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):join:Split_Yes_or (id0b)*or (id0b)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):join:Split_Yes_or (id0b)*or (id0b)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Split_Yes_or (id0b)*or (id0b)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):split:or (id0b)*Material Price Determination (icxm)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):split:or (id0b)*Material Price Determination (icxm)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b)*Material Price Determination (icxm)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):join:or (id0b)*Material Price Determination (icxm)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):join:or (id0b)*Material Price Determination (icxm)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:or (id0b)*Material Price Determination (icxm)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):split:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):split:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):join:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):join:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Material Price Determination (icxm)*Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):split:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):split:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):join:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):join:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Allocation of Follow-Up Costs to Semifinished and Finished Products (icy0)*Price Update in Actual Costing (icye)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):split:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):split:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):join:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):join:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Price Update in Actual Costing (icye)*Product Cost Analysis in Actual Costing (iczp)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):split:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):split:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):join:Join_Split_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):join:Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):split:Join_Join_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):split:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_No_Product Cost Analysis in Actual Costing (iczp):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):join:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp):Join_Split_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):join:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp):Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Product Cost Analysis in Actual Costing (iczp)*Join_Yes_Product Cost Analysis in Actual Costing (iczp)"
+       "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Split_Product Cost Analysis in Actual Costing (iczp)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):split:Join_Join_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):split:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Yes_Product Cost Analysis in Actual Costing (iczp):busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:join:Join_Join_Product Cost Analysis in Actual Costing (iczp)"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:join:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Join_Join_Product Cost Analysis in Actual Costing (iczp)"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:busy"
+;
+trans "t:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:split:outputCondition"~"t:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:split:outputCondition"
+    in "p:Model.icx1--0-----u--:Model.icx1--0-----u--:Output:busy"
+   out "p:Model.icx1--0-----u--:Model.icx1--0-----u--:outputCondition"
+;
+

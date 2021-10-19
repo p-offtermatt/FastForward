@@ -1,0 +1,106 @@
+#--------------#
+# GNU autotest #
+#--------------#
+
+TESTSUITE = $(builddir)/testsuite
+EXTRA_DIST = testsuite.at wrap.sh $(addprefix testfiles/,$(TESTFILES))
+DISTCLEANFILES = atconfig package.m4 $(TESTSUITE)
+
+# run the test suite when calling "make check"
+check-local: atconfig $(TESTSUITE)
+	$(AM_V_at)$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
+
+# clean the test results on "make clean"
+clean-local:
+	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
+
+# call a specific test set by keyword (e.g. "make check-basic")
+check-%: atconfig $(TESTSUITE)
+	$(AM_V_at)$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS) --keywords=$*
+
+# create the testsuite using autom4te
+$(TESTSUITE): $(srcdir)/testsuite.at package.m4
+	$(AM_V_GEN)$(AUTOM4TE) --language=autotest -I '$(srcdir)' -o $@.tmp $@.at
+	$(AM_V_at)mv $@.tmp $@
+
+
+#---------------#
+# Test coverage #
+#---------------#
+
+cover: cover-html
+
+## Generate an HTML overview
+cover-html: cover-collect descriptions
+	$(LCOV_GENHTML) --title "$(PACKAGE_STRING)" cover.info \
+		--ignore-errors source --sort --description-file descriptions \
+		--show-details --legend --demangle-cpp --prefix $(abs_top_builddir) \
+		--output-directory cover-html
+	@echo see `pwd`/cover-html/index.html for a coverage report
+
+## Get descriptions from the testsuite
+# This script is suboptimal in the sense that the names of the test cases may
+# be repeated in the HTML output. Furthermore, it is unclear what use the test
+# descriptions have as it is not possible to filter for a specific test case.
+descriptions: $(TESTSUITE)
+	$(SHELL) '$(TESTSUITE)' -l > descriptions.txt
+	$(SED) -i '1,5d;n;d;' descriptions.txt
+	$(SED) -i 's/:[ \t]*testsuite.at:[0-9]*[ \t]*/ /;s/^[ \t]*//' descriptions.txt
+	$(SED) -i 's/ /\n\t/' descriptions.txt
+	$(LCOV_GENDESC) descriptions.txt -o descriptions1
+	cp descriptions1 descriptions10
+	cp descriptions1 descriptions100
+	$(SED) -i 's/^TN: \([1-9]\)$$/TN: 0\1/' descriptions10
+	$(SED) -i 's/^TN: \([1-9]\)$$/TN: 00\1/' descriptions100
+	$(SED) -i 's/^TN: \([1-9][1-9]\)$$/TN: 0\1/' descriptions100
+	cat descriptions1 descriptions10 descriptions100 > descriptions
+	rm descriptions1 descriptions10 descriptions100 descriptions.txt
+
+## Collect coverage data
+# Generate coverage data for all test cases, delete empty results, combine all
+# results in one file ("cover.info"), and filter any unwanted file (controlled
+# with variable NO_COVER_FILES in file tests/Makefile.am). lcov is called just
+# to provoke an error message if it is not found by the configure script. In
+# that case, the Automake's "missing" script handles the error message.
+cover-collect: cover-check
+	$(LCOV) -v >/dev/null
+	$(AM_V_at) $(MAKE) $(patsubst %,%.info, $(wildcard cover/*))
+	$(AM_V_at) find cover/*.info -type f -size 0 -exec rm -v {} \;
+	$(AM_V_at) $(LCOV) -o cover.info `for F in \`ls cover/*.info\`; do echo "-a $$F"; done | xargs`
+	$(AM_V_at) $(LCOV) --quiet --remove cover.info $(addprefix ",$(addsuffix ", $(NO_COVER_FILES))) -o cover.info
+
+## Execute tests using coverage
+# This target creates for each test case a directory in which coverage data is
+# collected. This is done by the tests/cover.sh script. It does not call lcov to
+# process the data.
+cover-check: cover-compile $(TESTSUITE)
+	test ! -d cover || rm -fr cover
+	$(MKDIR_P) cover
+	-$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS) COVER=YES
+
+## Compile with coverage flags
+# Actually calls the configure script to set flags for the C/C++ compiler
+# and the linker. Note that assertions and optimizations are switched off. Then
+# cleans the build and recompiles.
+cover-compile:
+	cd $(top_srcdir) ; LDFLAGS="--coverage" LIBS="-lgcov" CXXFLAGS="--coverage -O0" CFLAGS="--coverage -O0" CPPFLAGS="-DNDEBUG" ./configure --enable-debug
+	$(MAKE) --directory=$(top_srcdir) clean all
+
+## Collect coverage data
+# First copies .gcno files to the directory of and then executes lcov.
+cover/%.info:
+	$(AM_V_GEN)
+	-$(AM_V_at) \ 
+	TESTCASE=`echo $@ | sed 's|cover/||;s|.info||'` ; \
+    TESTNAME=`echo $$TESTCASE | awk -F- '{print $$1}'` ; \
+	find $(abs_top_builddir)/src -type f -name '*.gcno' -exec cp '{}' cover/$$TESTCASE \; ; \
+    $(LCOV) --quiet --capture --directory cover/$$TESTCASE \
+		--base-directory $(top_srcdir)/src --derive-func-data \
+		--no-external --test-name $$TESTNAME \
+		--output-file cover/$$TESTCASE.info
+
+# clean also the temp files in the src directory
+CLEANFILES = -fr cover descriptions 
+MAINTAINERCLEANFILES = -fr cover-html
+maintainer-clean-local:
+	find $(top_builddir) -name *.gcov -o -name *.gcno -o -name *.gcda -delete

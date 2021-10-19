@@ -1,0 +1,186 @@
+place "i" init 1;
+place "o";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:InputCondition";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_or (klpq)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_or (klpq)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_xor (klsr)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_xor (klsr)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_and (klt0)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_and (klt0)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Split_Budget Update [Capital Investment] (klpj)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Join_Budget Update [Capital Investment] (klpj)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:outputCondition";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq)*or (klpq)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr)*xor (klsr)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0)*and (klt0)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq)*and (klt0)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr)*Budget Update [Capital Investment] (klpj)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj)";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split:busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Skip:busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):busy";
+place "p:Model.klol--0-----u--:Model.klol--0-----u--:Output:busy";
+trans "*:Model.klol--0-----u--:Model.klol--0-----u--:start"~"*:Model.klol--0-----u--:Model.klol--0-----u--:start"
+    in "i"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:InputCondition"
+;
+trans "*:Model.klol--0-----u--:Model.klol--0-----u--:end"~"*:Model.klol--0-----u--:Model.klol--0-----u--:end"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split:join:InputCondition"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split:join:InputCondition"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:InputCondition"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split:busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split:split:Split_Split_or (klpq):Split_Split_xor (klsr):Split_Split_and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split:split:Split_Split_or (klpq):Split_Split_xor (klsr):Split_Split_and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split:busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_or (klpq)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_xor (klsr)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_and (klt0)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):join:Split_Split_or (klpq)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):join:Split_Split_or (klpq)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_or (klpq)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):split:Split_Join_or (klpq)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):split:Split_Join_or (klpq)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_or (klpq):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_or (klpq)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):join:Split_Split_or (klpq)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):join:Split_Split_or (klpq)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_or (klpq)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):split:Split_Join_or (klpq):Split_Yes_or (klpq)*or (klpq)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):split:Split_Join_or (klpq):Split_Yes_or (klpq)*or (klpq)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_or (klpq)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq)*or (klpq)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):join:Split_Split_xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):join:Split_Split_xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_xor (klsr)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):split:Split_Join_xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):split:Split_Join_xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_xor (klsr):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_xor (klsr)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):join:Split_Split_xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):join:Split_Split_xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_xor (klsr)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):split:Split_Join_xor (klsr):Split_Yes_xor (klsr)*xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):split:Split_Join_xor (klsr):Split_Yes_xor (klsr)*xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_xor (klsr)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr)*xor (klsr)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):join:Split_Split_and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):join:Split_Split_and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_and (klt0)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):split:Split_Join_and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):split:Split_Join_and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_No_and (klt0):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_and (klt0)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):join:Split_Split_and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):join:Split_Split_and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Split_and (klt0)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):split:Split_Join_and (klt0):Split_Yes_and (klt0)*and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):split:Split_Join_and (klt0):Split_Yes_and (klt0)*and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_and (klt0)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0)*and (klt0)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Skip:join:Split_Join_or (klpq):Split_Join_xor (klsr):Split_Join_and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Skip:join:Split_Join_or (klpq):Split_Join_xor (klsr):Split_Join_and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_or (klpq)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_xor (klsr)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Join_and (klt0)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Skip:busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Skip:split:Join_Split_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Skip:split:Join_Split_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Skip:busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Split_Budget Update [Capital Investment] (klpj)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):join:Split_Yes_or (klpq)*or (klpq)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):join:Split_Yes_or (klpq)*or (klpq)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_or (klpq)*or (klpq)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):split:or (klpq)*and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):split:or (klpq)*and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq)*and (klt0)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):join:Split_Yes_and (klt0)*and (klt0):or (klpq)*and (klt0)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):join:Split_Yes_and (klt0)*and (klt0):or (klpq)*and (klt0)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_and (klt0)*and (klt0)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:or (klpq)*and (klt0)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):split:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):split:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):join:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):join:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:and (klt0)*Check of Order Update [Direct Capitalization] (klq8)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):split:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):split:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):join:Split_Yes_xor (klsr)*xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):join:Split_Yes_xor (klsr)*xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Split_Yes_xor (klsr)*xor (klsr)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):join:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):join:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Check of Order Update [Direct Capitalization] (klq8)*xor (klsr)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):split:xor (klsr)*Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):split:xor (klsr)*Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr)*Budget Update [Capital Investment] (klpj)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):join:xor (klsr)*Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):join:xor (klsr)*Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:xor (klsr)*Budget Update [Capital Investment] (klpj)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):split:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):split:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):join:Join_Split_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):join:Join_Split_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Split_Budget Update [Capital Investment] (klpj)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):split:Join_Join_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):split:Join_Join_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_No_Budget Update [Capital Investment] (klpj):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Join_Budget Update [Capital Investment] (klpj)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):join:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj):Join_Split_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):join:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj):Join_Split_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Budget Update [Capital Investment] (klpj)*Join_Yes_Budget Update [Capital Investment] (klpj)"
+       "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Split_Budget Update [Capital Investment] (klpj)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):split:Join_Join_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):split:Join_Join_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Yes_Budget Update [Capital Investment] (klpj):busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Join_Budget Update [Capital Investment] (klpj)"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Output:join:Join_Join_Budget Update [Capital Investment] (klpj)"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Output:join:Join_Join_Budget Update [Capital Investment] (klpj)"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Join_Join_Budget Update [Capital Investment] (klpj)"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:Output:busy"
+;
+trans "t:Model.klol--0-----u--:Model.klol--0-----u--:Output:split:outputCondition"~"t:Model.klol--0-----u--:Model.klol--0-----u--:Output:split:outputCondition"
+    in "p:Model.klol--0-----u--:Model.klol--0-----u--:Output:busy"
+   out "p:Model.klol--0-----u--:Model.klol--0-----u--:outputCondition"
+;
+

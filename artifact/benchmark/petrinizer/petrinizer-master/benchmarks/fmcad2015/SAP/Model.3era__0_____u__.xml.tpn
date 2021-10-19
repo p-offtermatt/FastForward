@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:InputCondition";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_Delivery Processing (3esf)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_Delivery Processing (3esf)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_xor (3esz)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_xor (3esz)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Split_and (3et6)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Join_and (3et6)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:outputCondition";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz)*xor (3esz)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf)*xor (3esz)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz)*Goods Issue Processing (3erx)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx)*and (3et6)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6)*Join_Yes_and (3et6)";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split:busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Skip:busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):busy";
+place "p:Model.3era--0-----u--:Model.3era--0-----u--:Output:busy";
+trans "*:Model.3era--0-----u--:Model.3era--0-----u--:start"~"*:Model.3era--0-----u--:Model.3era--0-----u--:start"
+    in "i"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:InputCondition"
+;
+trans "*:Model.3era--0-----u--:Model.3era--0-----u--:end"~"*:Model.3era--0-----u--:Model.3era--0-----u--:end"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split:join:InputCondition"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split:join:InputCondition"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:InputCondition"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split:busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split:split:Split_Split_Delivery Processing (3esf):Split_Split_xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split:split:Split_Split_Delivery Processing (3esf):Split_Split_xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split:busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_Delivery Processing (3esf)"
+       "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_xor (3esz)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):join:Split_Split_Delivery Processing (3esf)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):join:Split_Split_Delivery Processing (3esf)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_Delivery Processing (3esf)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):split:Split_Join_Delivery Processing (3esf)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):split:Split_Join_Delivery Processing (3esf)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_Delivery Processing (3esf):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_Delivery Processing (3esf)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):join:Split_Split_Delivery Processing (3esf)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):join:Split_Split_Delivery Processing (3esf)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_Delivery Processing (3esf)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):split:Split_Join_Delivery Processing (3esf):Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):split:Split_Join_Delivery Processing (3esf):Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_Delivery Processing (3esf)"
+       "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):join:Split_Split_xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):join:Split_Split_xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_xor (3esz)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):split:Split_Join_xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):split:Split_Join_xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_No_xor (3esz):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_xor (3esz)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):join:Split_Split_xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):join:Split_Split_xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Split_xor (3esz)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):split:Split_Join_xor (3esz):Split_Yes_xor (3esz)*xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):split:Split_Join_xor (3esz):Split_Yes_xor (3esz)*xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_xor (3esz)"
+       "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz)*xor (3esz)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Skip:join:Split_Join_Delivery Processing (3esf):Split_Join_xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Skip:join:Split_Join_Delivery Processing (3esf):Split_Join_xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_Delivery Processing (3esf)"
+       "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Join_xor (3esz)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Skip:busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Skip:split:Join_Split_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Skip:split:Join_Split_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Skip:busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Split_and (3et6)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):join:Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):join:Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_Delivery Processing (3esf)*Delivery Processing (3esf)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):split:Delivery Processing (3esf)*xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):split:Delivery Processing (3esf)*xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf)*xor (3esz)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):join:Split_Yes_xor (3esz)*xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):join:Split_Yes_xor (3esz)*xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Split_Yes_xor (3esz)*xor (3esz)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):join:Delivery Processing (3esf)*xor (3esz)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):join:Delivery Processing (3esf)*xor (3esz)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Delivery Processing (3esf)*xor (3esz)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):split:xor (3esz)*Goods Issue Processing (3erx)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):split:xor (3esz)*Goods Issue Processing (3erx)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz)*Goods Issue Processing (3erx)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):join:xor (3esz)*Goods Issue Processing (3erx)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):join:xor (3esz)*Goods Issue Processing (3erx)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:xor (3esz)*Goods Issue Processing (3erx)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):split:Goods Issue Processing (3erx)*and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):split:Goods Issue Processing (3erx)*and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx)*and (3et6)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):join:Goods Issue Processing (3erx)*and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):join:Goods Issue Processing (3erx)*and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Goods Issue Processing (3erx)*and (3et6)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):split:and (3et6)*Join_Yes_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):split:and (3et6)*Join_Yes_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6)*Join_Yes_and (3et6)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):join:Join_Split_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):join:Join_Split_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Split_and (3et6)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):split:Join_Join_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):split:Join_Join_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_No_and (3et6):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Join_and (3et6)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):join:and (3et6)*Join_Yes_and (3et6):Join_Split_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):join:and (3et6)*Join_Yes_and (3et6):Join_Split_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:and (3et6)*Join_Yes_and (3et6)"
+       "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Split_and (3et6)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):split:Join_Join_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):split:Join_Join_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Yes_and (3et6):busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Join_and (3et6)"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Output:join:Join_Join_and (3et6)"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Output:join:Join_Join_and (3et6)"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Join_Join_and (3et6)"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:Output:busy"
+;
+trans "t:Model.3era--0-----u--:Model.3era--0-----u--:Output:split:outputCondition"~"t:Model.3era--0-----u--:Model.3era--0-----u--:Output:split:outputCondition"
+    in "p:Model.3era--0-----u--:Model.3era--0-----u--:Output:busy"
+   out "p:Model.3era--0-----u--:Model.3era--0-----u--:outputCondition"
+;
+

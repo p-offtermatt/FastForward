@@ -1,0 +1,10 @@
+buechi { /* check if the "dead" state s4 is reachable and if always just one
+Marking is in the cycle*/ 
+normal:
+    s1 > 0 XOR s2 > 0 XOR s3 > 0 => normal
+    s1 + s2 + s3 > 1 OR s4 = 1 => error,
+error : 
+    TRUE => error
+}
+accept { normal  };
+

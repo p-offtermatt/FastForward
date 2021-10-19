@@ -1,0 +1,108 @@
+PLACE
+alpha,callToTask.s00002184.input.s00000783,callToTask.s00002184.input.s00000807,callToTask.s00002184.inputCriterion.s00000772.used,callToTask.s00002184.output.s00000785,callToTask.s00002184.output.s00000788,callToTask.s00002185.inputCriterion.s00000772.used,callToTask.s00002185.output.s00000785,callToTask.s00002185.output.s00000788,callToTask.s00002186.inputCriterion.s00000772.used,callToTask.s00002186.output.s00000788,callToTask.s00002186.output.s00000849,endNode.s00000779.input.default,endNode.s00000780.input.default,endNode.s00000877.input.default,endNode.s00000878.input.default,fork.s00001053.activated.s00000784,fork.s00001053.activated.s00000787,fork.s00001053.activated.s00000984,fork.s00001053.activated.s00000986,merge.s00000815.activated,merge.s00000815.input.s00000783,merge.s00000815.input.s00000807,process.s00000293##s00002183.input.s00000807,process.s00000293##s00002183.output.s00000785,process.s00000293##s00002183.outputCriterion.s00000773_omega,final;
+
+MARKING
+alpha: 1, callToTask.s00002184.input.s00000783: 0, callToTask.s00002184.input.s00000807: 0, callToTask.s00002184.inputCriterion.s00000772.used: 0, callToTask.s00002184.output.s00000785: 0, callToTask.s00002184.output.s00000788: 0, callToTask.s00002185.inputCriterion.s00000772.used: 0, callToTask.s00002185.output.s00000785: 0, callToTask.s00002185.output.s00000788: 0, callToTask.s00002186.inputCriterion.s00000772.used: 0, callToTask.s00002186.output.s00000788: 0, callToTask.s00002186.output.s00000849: 0, endNode.s00000779.input.default: 0, endNode.s00000780.input.default: 0, endNode.s00000877.input.default: 0, endNode.s00000878.input.default: 0, fork.s00001053.activated.s00000784: 0, fork.s00001053.activated.s00000787: 0, fork.s00001053.activated.s00000984: 0, fork.s00001053.activated.s00000986: 0, merge.s00000815.activated: 0, merge.s00000815.input.s00000783: 0, merge.s00000815.input.s00000807: 0, process.s00000293##s00002183.input.s00000807: 0, process.s00000293##s00002183.output.s00000785: 0, process.s00000293##s00002183.outputCriterion.s00000773_omega: 0, final: 0;
+
+TRANSITION callToTask.s00002184.inputCriterion.s00000772
+CONSUME callToTask.s00002184.input.s00000783: 1, callToTask.s00002184.input.s00000807: 1;
+PRODUCE callToTask.s00002184.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00002184.outputCriterion.s00000773
+CONSUME callToTask.s00002184.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00002184.output.s00000785: 1, callToTask.s00002184.output.s00000788: 1;
+
+
+
+TRANSITION callToTask.s00002185.inputCriterion.s00000772
+CONSUME callToTask.s00002186.output.s00000788: 1, callToTask.s00002186.output.s00000849: 1;
+PRODUCE callToTask.s00002185.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00002185.outputCriterion.s00000773
+CONSUME callToTask.s00002185.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00002185.output.s00000785: 1, callToTask.s00002185.output.s00000788: 1;
+
+
+
+TRANSITION callToTask.s00002186.inputCriterion.s00000772
+CONSUME callToTask.s00002184.output.s00000785: 1, callToTask.s00002184.output.s00000788: 1;
+PRODUCE callToTask.s00002186.inputCriterion.s00000772.used: 1;
+
+
+
+TRANSITION callToTask.s00002186.outputCriterion.s00000773
+CONSUME callToTask.s00002186.inputCriterion.s00000772.used: 1;
+PRODUCE callToTask.s00002186.output.s00000788: 1, callToTask.s00002186.output.s00000849: 1;
+
+
+
+TRANSITION fork.s00001053.activate.s00000782
+CONSUME callToTask.s00002185.output.s00000785: 1, callToTask.s00002185.output.s00000788: 1;
+PRODUCE fork.s00001053.activated.s00000784: 1, fork.s00001053.activated.s00000787: 1, fork.s00001053.activated.s00000984: 1, fork.s00001053.activated.s00000986: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000784
+CONSUME fork.s00001053.activated.s00000784: 1;
+PRODUCE endNode.s00000779.input.default: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000787
+CONSUME fork.s00001053.activated.s00000787: 1;
+PRODUCE endNode.s00000780.input.default: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000984
+CONSUME fork.s00001053.activated.s00000984: 1;
+PRODUCE endNode.s00000877.input.default: 1;
+
+
+
+TRANSITION fork.s00001053.fire.s00000986
+CONSUME fork.s00001053.activated.s00000986: 1;
+PRODUCE endNode.s00000878.input.default: 1, process.s00000293##s00002183.output.s00000785: 1;
+
+
+
+TRANSITION merge.s00000815.activate.s00000816
+CONSUME merge.s00000815.input.s00000783: 1;
+PRODUCE merge.s00000815.activated: 1;
+
+
+
+TRANSITION merge.s00000815.activate.s00000817
+CONSUME merge.s00000815.input.s00000807: 1, process.s00000293##s00002183.input.s00000807: 1;
+PRODUCE merge.s00000815.activated: 1;
+
+
+
+TRANSITION merge.s00000815.fire.s00000824
+CONSUME merge.s00000815.activated: 1;
+PRODUCE callToTask.s00002184.input.s00000783: 1, callToTask.s00002184.input.s00000807: 1;
+
+
+
+TRANSITION process.s00000293##s00002183.inputCriterion.s00000772
+CONSUME alpha: 1;
+PRODUCE merge.s00000815.input.s00000783: 1, merge.s00000815.input.s00000807: 1, process.s00000293##s00002183.input.s00000807: 1;
+
+
+
+TRANSITION process.s00000293##s00002183.outputCriterion.s00000773
+CONSUME process.s00000293##s00002183.output.s00000785: 1;
+PRODUCE process.s00000293##s00002183.outputCriterion.s00000773_omega: 1;
+
+
+
+TRANSITION t_final
+CONSUME endNode.s00000779.input.default: 1, endNode.s00000780.input.default: 1, endNode.s00000877.input.default: 1, endNode.s00000878.input.default: 1, process.s00000293##s00002183.outputCriterion.s00000773_omega: 1;
+PRODUCE final: 1;
+
+
+

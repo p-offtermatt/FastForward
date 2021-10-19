@@ -1,0 +1,28 @@
+PLACE
+	e, i1, i2, p, x;
+
+MARKING
+	p : 3,
+    e : 1;
+
+TRANSITION t1
+	CONSUME
+		e : 1;
+	PRODUCE
+		p : 1,
+		i2 : 1;
+
+TRANSITION t2
+	CONSUME
+		p : 2,
+        i2 : 1;
+	PRODUCE
+		i1 : 1;
+
+TRANSITION t3
+	CONSUME
+		i1 : 1;
+	PRODUCE
+        p : 1,
+		x : 1;
+

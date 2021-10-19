@@ -1,0 +1,196 @@
+place "i" init 1;
+place "o";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:InputCondition";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_and (kegs)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Split_xor (kehh)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Join_xor (kehh)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:outputCondition";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw)*or (kefw)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1)*xor (kei1)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw)*and (kegs)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs)*Mass Retirement (keh6)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6)*xor (kehh)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh)*Join_Yes_xor (kehh)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1)*Retirement (kega)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega)*xor (kehh)";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):busy";
+place "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:busy";
+trans "*:Model.kefi--0-----u--:Model.kefi--0-----u--:start"~"*:Model.kefi--0-----u--:Model.kefi--0-----u--:start"
+    in "i"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:InputCondition"
+;
+trans "*:Model.kefi--0-----u--:Model.kefi--0-----u--:end"~"*:Model.kefi--0-----u--:Model.kefi--0-----u--:end"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:join:InputCondition"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:join:InputCondition"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:InputCondition"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:split:Split_Split_or (kefw):Split_Split_and (kegs):Split_Split_xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:split:Split_Split_or (kefw):Split_Split_and (kegs):Split_Split_xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split:busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_and (kegs)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):join:Split_Split_or (kefw)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):join:Split_Split_or (kefw)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):split:Split_Join_or (kefw)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):split:Split_Join_or (kefw)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):join:Split_Split_or (kefw)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):join:Split_Split_or (kefw)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):split:Split_Join_or (kefw):Split_Yes_or (kefw)*or (kefw)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):split:Split_Join_or (kefw):Split_Yes_or (kefw)*or (kefw)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw)*or (kefw)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):join:Split_Split_and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):join:Split_Split_and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_and (kegs)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):join:Split_Split_and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):join:Split_Split_and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_and (kegs)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):join:Split_Split_xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):join:Split_Split_xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):split:Split_Join_xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):split:Split_Join_xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):join:Split_Split_xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):join:Split_Split_xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):split:Split_Join_xor (kei1):Split_Yes_xor (kei1)*xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):split:Split_Join_xor (kei1):Split_Yes_xor (kei1)*xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1)*xor (kei1)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:join:Split_Join_or (kefw):Split_Join_and (kegs):Split_Join_xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:join:Split_Join_or (kefw):Split_Join_and (kegs):Split_Join_xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:split:Join_Split_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:split:Join_Split_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Skip:busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Split_xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_or (kefw)*or (kefw)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):split:or (kefw)*and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):split:or (kefw)*and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw)*and (kegs)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):join:Split_Yes_and (kegs)*and (kegs):or (kefw)*and (kegs)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):join:Split_Yes_and (kegs)*and (kegs):or (kefw)*and (kegs)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw)*and (kegs)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):split:and (kegs)*Mass Retirement (keh6)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):split:and (kegs)*Mass Retirement (keh6)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs)*Mass Retirement (keh6)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):join:and (kegs)*Mass Retirement (keh6)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):join:and (kegs)*Mass Retirement (keh6)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:and (kegs)*Mass Retirement (keh6)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):split:Mass Retirement (keh6)*xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):split:Mass Retirement (keh6)*xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6)*xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Mass Retirement (keh6)*xor (kehh)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega)*xor (kehh)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):split:xor (kehh)*Join_Yes_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):split:xor (kehh)*Join_Yes_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh)*Join_Yes_xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):join:Split_Yes_xor (kei1)*xor (kei1)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):join:Split_Yes_xor (kei1)*xor (kei1)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_xor (kei1)*xor (kei1)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):split:xor (kei1)*Retirement (kega)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):split:xor (kei1)*Retirement (kega)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1)*Retirement (kega)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):join:xor (kei1)*Retirement (kega)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):join:xor (kei1)*Retirement (kega)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kei1)*Retirement (kega)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):split:Retirement (kega)*xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):split:Retirement (kega)*xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Retirement (kega)*xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):join:Join_Split_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):join:Join_Split_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Split_xor (kehh)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Join_xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):join:xor (kehh)*Join_Yes_xor (kehh):Join_Split_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):join:xor (kehh)*Join_Yes_xor (kehh):Join_Split_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh)*Join_Yes_xor (kehh)"
+       "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Split_xor (kehh)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Join_xor (kehh)"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:join:Join_Join_xor (kehh)"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:join:Join_Join_xor (kehh)"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Join_xor (kehh)"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:busy"
+;
+trans "t:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:split:outputCondition"~"t:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:split:outputCondition"
+    in "p:Model.kefi--0-----u--:Model.kefi--0-----u--:Output:busy"
+   out "p:Model.kefi--0-----u--:Model.kefi--0-----u--:outputCondition"
+;
+

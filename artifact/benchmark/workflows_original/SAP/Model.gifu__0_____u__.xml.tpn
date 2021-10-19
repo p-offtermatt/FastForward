@@ -1,0 +1,234 @@
+place "i" init 1;
+place "o";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:InputCondition";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_Posting Release (gigm)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_Posting Release (gigm)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_xor (gihv)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_xor (gihv)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_and (gii2)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_and (gii2)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_xor (giih)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_xor (giih)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_or (gig8)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_or (gig8)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:OutputCondition";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm)*Posting Release (gigm)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv)*xor (gihv)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm)*xor (gihv)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv)*Perform Posting (gih4)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4)*and (gii2)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*Join_Yes_and (gii2)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*xor (giih)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Join_Yes_xor (giih)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Process Payment Request (gihk)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk)*or (gig8)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8)*Join_Yes_or (gig8)";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):busy";
+place "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:busy";
+trans "*:Model.gifu--0-----u--:Model.gifu--0-----u--:start"~"*:Model.gifu--0-----u--:Model.gifu--0-----u--:start"
+    in "i"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:InputCondition"
+;
+trans "*:Model.gifu--0-----u--:Model.gifu--0-----u--:end"~"*:Model.gifu--0-----u--:Model.gifu--0-----u--:end"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:join:InputCondition"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:join:InputCondition"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:InputCondition"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:split:Split_Split_Posting Release (gigm):Split_Split_xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:split:Split_Split_Posting Release (gigm):Split_Split_xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split:busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_Posting Release (gigm)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_xor (gihv)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):join:Split_Split_Posting Release (gigm)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):join:Split_Split_Posting Release (gigm)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_Posting Release (gigm)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):split:Split_Join_Posting Release (gigm)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):split:Split_Join_Posting Release (gigm)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_Posting Release (gigm):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_Posting Release (gigm)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):join:Split_Split_Posting Release (gigm)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):join:Split_Split_Posting Release (gigm)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_Posting Release (gigm)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):split:Split_Join_Posting Release (gigm):Split_Yes_Posting Release (gigm)*Posting Release (gigm)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):split:Split_Join_Posting Release (gigm):Split_Yes_Posting Release (gigm)*Posting Release (gigm)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_Posting Release (gigm)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm)*Posting Release (gigm)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):join:Split_Split_xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):join:Split_Split_xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_xor (gihv)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):split:Split_Join_xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):split:Split_Join_xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_No_xor (gihv):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_xor (gihv)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):join:Split_Split_xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):join:Split_Split_xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Split_xor (gihv)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):split:Split_Join_xor (gihv):Split_Yes_xor (gihv)*xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):split:Split_Join_xor (gihv):Split_Yes_xor (gihv)*xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_xor (gihv)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv)*xor (gihv)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:join:Split_Join_Posting Release (gigm):Split_Join_xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:join:Split_Join_Posting Release (gigm):Split_Join_xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_Posting Release (gigm)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Join_xor (gihv)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:split:Join_Split_and (gii2):Join_Split_xor (giih):Join_Split_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:split:Join_Split_and (gii2):Join_Split_xor (giih):Join_Split_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Skip:busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_and (gii2)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_xor (giih)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_or (gig8)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):join:Split_Yes_Posting Release (gigm)*Posting Release (gigm)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):join:Split_Yes_Posting Release (gigm)*Posting Release (gigm)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_Posting Release (gigm)*Posting Release (gigm)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):split:Posting Release (gigm)*xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):split:Posting Release (gigm)*xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm)*xor (gihv)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):join:Split_Yes_xor (gihv)*xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):join:Split_Yes_xor (gihv)*xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Split_Yes_xor (gihv)*xor (gihv)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):join:Posting Release (gigm)*xor (gihv)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):join:Posting Release (gigm)*xor (gihv)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Posting Release (gigm)*xor (gihv)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):split:xor (gihv)*Perform Posting (gih4)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):split:xor (gihv)*Perform Posting (gih4)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv)*Perform Posting (gih4)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):join:xor (gihv)*Perform Posting (gih4)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):join:xor (gihv)*Perform Posting (gih4)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (gihv)*Perform Posting (gih4)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):split:Perform Posting (gih4)*and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):split:Perform Posting (gih4)*and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4)*and (gii2)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):join:Perform Posting (gih4)*and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):join:Perform Posting (gih4)*and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Perform Posting (gih4)*and (gii2)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):split:and (gii2)*Join_Yes_and (gii2):and (gii2)*xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):split:and (gii2)*Join_Yes_and (gii2):and (gii2)*xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*Join_Yes_and (gii2)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*xor (giih)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):join:and (gii2)*xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):join:and (gii2)*xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*xor (giih)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):split:xor (giih)*Join_Yes_xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):split:xor (giih)*Join_Yes_xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Join_Yes_xor (giih)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):split:xor (giih)*Process Payment Request (gihk)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):split:xor (giih)*Process Payment Request (gihk)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Process Payment Request (gihk)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):join:xor (giih)*Process Payment Request (gihk)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):join:xor (giih)*Process Payment Request (gihk)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Process Payment Request (gihk)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):split:Process Payment Request (gihk)*or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):split:Process Payment Request (gihk)*or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk)*or (gig8)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):join:Process Payment Request (gihk)*or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):join:Process Payment Request (gihk)*or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Process Payment Request (gihk)*or (gig8)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):split:or (gig8)*Join_Yes_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):split:or (gig8)*Join_Yes_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8)*Join_Yes_or (gig8)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):join:Join_Split_and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):join:Join_Split_and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_and (gii2)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):split:Join_Join_and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):split:Join_Join_and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_and (gii2):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_and (gii2)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):join:and (gii2)*Join_Yes_and (gii2):Join_Split_and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):join:and (gii2)*Join_Yes_and (gii2):Join_Split_and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:and (gii2)*Join_Yes_and (gii2)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_and (gii2)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):split:Join_Join_and (gii2)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):split:Join_Join_and (gii2)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_and (gii2):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_and (gii2)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):join:Join_Split_xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):join:Join_Split_xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_xor (giih)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):split:Join_Join_xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):split:Join_Join_xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_xor (giih):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_xor (giih)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):join:xor (giih)*Join_Yes_xor (giih):Join_Split_xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):join:xor (giih)*Join_Yes_xor (giih):Join_Split_xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:xor (giih)*Join_Yes_xor (giih)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_xor (giih)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):split:Join_Join_xor (giih)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):split:Join_Join_xor (giih)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_xor (giih):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_xor (giih)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):join:Join_Split_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):join:Join_Split_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_or (gig8)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):split:Join_Join_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):split:Join_Join_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_No_or (gig8):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_or (gig8)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):join:or (gig8)*Join_Yes_or (gig8):Join_Split_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):join:or (gig8)*Join_Yes_or (gig8):Join_Split_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:or (gig8)*Join_Yes_or (gig8)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Split_or (gig8)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):split:Join_Join_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):split:Join_Join_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Yes_or (gig8):busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_or (gig8)"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:join:Join_Join_and (gii2):Join_Join_xor (giih):Join_Join_or (gig8)"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:join:Join_Join_and (gii2):Join_Join_xor (giih):Join_Join_or (gig8)"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_and (gii2)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_xor (giih)"
+       "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Join_Join_or (gig8)"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:busy"
+;
+trans "t:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:split:OutputCondition"~"t:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gifu--0-----u--:Model.gifu--0-----u--:Output:busy"
+   out "p:Model.gifu--0-----u--:Model.gifu--0-----u--:OutputCondition"
+;
+

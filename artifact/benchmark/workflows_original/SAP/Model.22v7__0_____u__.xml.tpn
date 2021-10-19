@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:InputCondition";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Split_Stock Placement Processing (22w1)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Join_Stock Placement Processing (22w1)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_xor (22vn)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_xor (22vn)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_Difference Processing (22wf)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_Difference Processing (22wf)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:OutputCondition";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1)*Confirmation (22wt)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt)*xor (22vn)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Join_Yes_xor (22vn)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Difference Processing (22wf)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf)";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):busy";
+place "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:busy";
+trans "*:Model.22v7--0-----u--:Model.22v7--0-----u--:start"~"*:Model.22v7--0-----u--:Model.22v7--0-----u--:start"
+    in "i"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:InputCondition"
+;
+trans "*:Model.22v7--0-----u--:Model.22v7--0-----u--:end"~"*:Model.22v7--0-----u--:Model.22v7--0-----u--:end"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:join:InputCondition"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:join:InputCondition"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:InputCondition"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:split:Split_Split_Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:split:Split_Split_Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split:busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Split_Stock Placement Processing (22w1)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):join:Split_Split_Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):join:Split_Split_Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Split_Stock Placement Processing (22w1)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):split:Split_Join_Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):split:Split_Join_Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_No_Stock Placement Processing (22w1):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Join_Stock Placement Processing (22w1)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):join:Split_Split_Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):join:Split_Split_Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Split_Stock Placement Processing (22w1)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):split:Split_Join_Stock Placement Processing (22w1):Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):split:Split_Join_Stock Placement Processing (22w1):Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Join_Stock Placement Processing (22w1)"
+       "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:join:Split_Join_Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:join:Split_Join_Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Join_Stock Placement Processing (22w1)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:split:Join_Split_xor (22vn):Join_Split_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:split:Join_Split_xor (22vn):Join_Split_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Skip:busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_xor (22vn)"
+       "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_Difference Processing (22wf)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):join:Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):join:Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Split_Yes_Stock Placement Processing (22w1)*Stock Placement Processing (22w1)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):split:Stock Placement Processing (22w1)*Confirmation (22wt)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):split:Stock Placement Processing (22w1)*Confirmation (22wt)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1)*Confirmation (22wt)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):join:Stock Placement Processing (22w1)*Confirmation (22wt)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):join:Stock Placement Processing (22w1)*Confirmation (22wt)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Stock Placement Processing (22w1)*Confirmation (22wt)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):split:Confirmation (22wt)*xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):split:Confirmation (22wt)*xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt)*xor (22vn)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):join:Confirmation (22wt)*xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):join:Confirmation (22wt)*xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Confirmation (22wt)*xor (22vn)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):split:xor (22vn)*Join_Yes_xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):split:xor (22vn)*Join_Yes_xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Join_Yes_xor (22vn)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):split:xor (22vn)*Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):split:xor (22vn)*Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Difference Processing (22wf)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):join:xor (22vn)*Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):join:xor (22vn)*Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Difference Processing (22wf)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):split:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):split:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):join:Join_Split_xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):join:Join_Split_xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_xor (22vn)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):split:Join_Join_xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):split:Join_Join_xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_xor (22vn):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_xor (22vn)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):join:xor (22vn)*Join_Yes_xor (22vn):Join_Split_xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):join:xor (22vn)*Join_Yes_xor (22vn):Join_Split_xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:xor (22vn)*Join_Yes_xor (22vn)"
+       "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_xor (22vn)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):split:Join_Join_xor (22vn)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):split:Join_Join_xor (22vn)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_xor (22vn):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_xor (22vn)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):join:Join_Split_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):join:Join_Split_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_Difference Processing (22wf)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):split:Join_Join_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):split:Join_Join_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_No_Difference Processing (22wf):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_Difference Processing (22wf)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):join:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf):Join_Split_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):join:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf):Join_Split_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Difference Processing (22wf)*Join_Yes_Difference Processing (22wf)"
+       "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Split_Difference Processing (22wf)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):split:Join_Join_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):split:Join_Join_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Yes_Difference Processing (22wf):busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_Difference Processing (22wf)"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:join:Join_Join_xor (22vn):Join_Join_Difference Processing (22wf)"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:join:Join_Join_xor (22vn):Join_Join_Difference Processing (22wf)"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_xor (22vn)"
+       "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Join_Join_Difference Processing (22wf)"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:busy"
+;
+trans "t:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:split:OutputCondition"~"t:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:split:OutputCondition"
+    in "p:Model.22v7--0-----u--:Model.22v7--0-----u--:Output:busy"
+   out "p:Model.22v7--0-----u--:Model.22v7--0-----u--:OutputCondition"
+;
+

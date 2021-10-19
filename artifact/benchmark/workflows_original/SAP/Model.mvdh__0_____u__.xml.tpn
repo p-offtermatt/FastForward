@@ -1,0 +1,196 @@
+place "i" init 1;
+place "o";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:InputCondition";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvdx)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvdx)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvf3)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvf3)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvfa)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvfa)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:OutputCondition";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Join_Yes_and (mvdx)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvf3)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvfa)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3)*Join_Yes_and (mvf3)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa)*Join_Yes_and (mvfa)";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):busy";
+place "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:busy";
+trans "*:Model.mvdh--0-----u--:Model.mvdh--0-----u--:start"~"*:Model.mvdh--0-----u--:Model.mvdh--0-----u--:start"
+    in "i"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:InputCondition"
+;
+trans "*:Model.mvdh--0-----u--:Model.mvdh--0-----u--:end"~"*:Model.mvdh--0-----u--:Model.mvdh--0-----u--:end"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:join:InputCondition"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:join:InputCondition"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:InputCondition"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:split:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:split:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split:busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):join:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):join:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):split:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):split:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_No_Entry of Inquiry of Business Event Attendee (mvew):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):join:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):join:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Split_Entry of Inquiry of Business Event Attendee (mvew)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):split:Split_Join_Entry of Inquiry of Business Event Attendee (mvew):Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):split:Split_Join_Entry of Inquiry of Business Event Attendee (mvew):Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:join:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:join:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Join_Entry of Inquiry of Business Event Attendee (mvew)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:split:Join_Split_and (mvdx):Join_Split_and (mvf3):Join_Split_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:split:Join_Split_and (mvdx):Join_Split_and (mvf3):Join_Split_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Skip:busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvdx)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvf3)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvfa)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):join:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):join:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Split_Yes_Entry of Inquiry of Business Event Attendee (mvew)*Entry of Inquiry of Business Event Attendee (mvew)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):split:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):split:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):join:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):join:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Entry of Inquiry of Business Event Attendee (mvew)*and (mvdx)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):split:and (mvdx)*Join_Yes_and (mvdx):and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):split:and (mvdx)*Join_Yes_and (mvdx):and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Join_Yes_and (mvdx)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):join:and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):join:and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Creation of Offer of Business Event Attendances (mvfo)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):split:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):split:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):join:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):join:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Creation of Offer of Business Event Attendances (mvfo)*xor (mvfv)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):split:xor (mvfv)*and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):split:xor (mvfv)*and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvf3)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):split:xor (mvfv)*and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):split:xor (mvfv)*and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvfa)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):join:xor (mvfv)*and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):join:xor (mvfv)*and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvf3)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):split:and (mvf3)*Join_Yes_and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):split:and (mvf3)*Join_Yes_and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3)*Join_Yes_and (mvf3)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):join:xor (mvfv)*and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):join:xor (mvfv)*and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:xor (mvfv)*and (mvfa)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):split:and (mvfa)*Join_Yes_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):split:and (mvfa)*Join_Yes_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa)*Join_Yes_and (mvfa)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):join:Join_Split_and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):join:Join_Split_and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvdx)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):split:Join_Join_and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):split:Join_Join_and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvdx):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvdx)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):join:and (mvdx)*Join_Yes_and (mvdx):Join_Split_and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):join:and (mvdx)*Join_Yes_and (mvdx):Join_Split_and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvdx)*Join_Yes_and (mvdx)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvdx)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):split:Join_Join_and (mvdx)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):split:Join_Join_and (mvdx)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvdx):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvdx)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):join:Join_Split_and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):join:Join_Split_and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvf3)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):split:Join_Join_and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):split:Join_Join_and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvf3):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvf3)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):join:and (mvf3)*Join_Yes_and (mvf3):Join_Split_and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):join:and (mvf3)*Join_Yes_and (mvf3):Join_Split_and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvf3)*Join_Yes_and (mvf3)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvf3)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):split:Join_Join_and (mvf3)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):split:Join_Join_and (mvf3)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvf3):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvf3)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):join:Join_Split_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):join:Join_Split_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvfa)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):split:Join_Join_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):split:Join_Join_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_No_and (mvfa):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvfa)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):join:and (mvfa)*Join_Yes_and (mvfa):Join_Split_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):join:and (mvfa)*Join_Yes_and (mvfa):Join_Split_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:and (mvfa)*Join_Yes_and (mvfa)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Split_and (mvfa)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):split:Join_Join_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):split:Join_Join_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Yes_and (mvfa):busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvfa)"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:join:Join_Join_and (mvdx):Join_Join_and (mvf3):Join_Join_and (mvfa)"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:join:Join_Join_and (mvdx):Join_Join_and (mvf3):Join_Join_and (mvfa)"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvdx)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvf3)"
+       "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Join_Join_and (mvfa)"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:busy"
+;
+trans "t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:split:OutputCondition"~"t:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:split:OutputCondition"
+    in "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:Output:busy"
+   out "p:Model.mvdh--0-----u--:Model.mvdh--0-----u--:OutputCondition"
+;
+

@@ -1,0 +1,260 @@
+place "i" init 1;
+place "o";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:InputCondition";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Split_xor (gjej)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Join_xor (gjej)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_and (gjcj)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_and (gjcj)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_xor (gjcq)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_xor (gjcq)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_or (gjd7)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_or (gjd7)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:OutputCondition";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej)*xor (gjej)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej)*Transaction Processing (gjdz)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz)*or (gjbl)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjbs)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjca)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs)*Closing Operations (gjex)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex)*xor (gjbz)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz)*xor (gjca)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca)*Accounting (gjdl)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl)*and (gjcj)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*Join_Yes_and (gjcj)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*xor (gjcq)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*Join_Yes_xor (gjcq)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*or (gjd7)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7)*Join_Yes_or (gjd7)";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):busy";
+place "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:busy";
+trans "*:Model.gjb3--0-----u--:Model.gjb3--0-----u--:start"~"*:Model.gjb3--0-----u--:Model.gjb3--0-----u--:start"
+    in "i"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:InputCondition"
+;
+trans "*:Model.gjb3--0-----u--:Model.gjb3--0-----u--:end"~"*:Model.gjb3--0-----u--:Model.gjb3--0-----u--:end"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:join:InputCondition"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:join:InputCondition"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:InputCondition"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:split:Split_Split_xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:split:Split_Split_xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split:busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Split_xor (gjej)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):join:Split_Split_xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):join:Split_Split_xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Split_xor (gjej)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):split:Split_Join_xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):split:Split_Join_xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_No_xor (gjej):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Join_xor (gjej)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):join:Split_Split_xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):join:Split_Split_xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Split_xor (gjej)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):split:Split_Join_xor (gjej):Split_Yes_xor (gjej)*xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):split:Split_Join_xor (gjej):Split_Yes_xor (gjej)*xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Join_xor (gjej)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej)*xor (gjej)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:join:Split_Join_xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:join:Split_Join_xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Join_xor (gjej)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:split:Join_Split_and (gjcj):Join_Split_xor (gjcq):Join_Split_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:split:Join_Split_and (gjcj):Join_Split_xor (gjcq):Join_Split_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Skip:busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_and (gjcj)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_xor (gjcq)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_or (gjd7)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):join:Split_Yes_xor (gjej)*xor (gjej)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):join:Split_Yes_xor (gjej)*xor (gjej)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Split_Yes_xor (gjej)*xor (gjej)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):split:xor (gjej)*Transaction Processing (gjdz)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):split:xor (gjej)*Transaction Processing (gjdz)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej)*Transaction Processing (gjdz)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):join:xor (gjej)*Transaction Processing (gjdz)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):join:xor (gjej)*Transaction Processing (gjdz)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjej)*Transaction Processing (gjdz)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):split:Transaction Processing (gjdz)*or (gjbl)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):split:Transaction Processing (gjdz)*or (gjbl)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz)*or (gjbl)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):join:Transaction Processing (gjdz)*or (gjbl)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):join:Transaction Processing (gjdz)*or (gjbl)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Transaction Processing (gjdz)*or (gjbl)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjbs)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjbs)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjbs)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjca)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjca)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjca)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjbs):or (gjbl)*xor (gjca)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):split:or (gjbl)*xor (gjbs):or (gjbl)*xor (gjca)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjbs)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjca)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):join:or (gjbl)*xor (gjbs)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):join:or (gjbl)*xor (gjbs)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjbs)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):split:xor (gjbs)*Closing Operations (gjex)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):split:xor (gjbs)*Closing Operations (gjex)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs)*Closing Operations (gjex)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):join:xor (gjbs)*Closing Operations (gjex)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):join:xor (gjbs)*Closing Operations (gjex)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbs)*Closing Operations (gjex)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):split:Closing Operations (gjex)*xor (gjbz)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):split:Closing Operations (gjex)*xor (gjbz)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex)*xor (gjbz)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):join:Closing Operations (gjex)*xor (gjbz)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):join:Closing Operations (gjex)*xor (gjbz)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Closing Operations (gjex)*xor (gjbz)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):split:xor (gjbz)*xor (gjca)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):split:xor (gjbz)*xor (gjca)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz)*xor (gjca)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):join:or (gjbl)*xor (gjca)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):join:or (gjbl)*xor (gjca)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjbl)*xor (gjca)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):join:xor (gjbz)*xor (gjca)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):join:xor (gjbz)*xor (gjca)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjbz)*xor (gjca)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):split:xor (gjca)*Accounting (gjdl)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):split:xor (gjca)*Accounting (gjdl)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca)*Accounting (gjdl)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):join:xor (gjca)*Accounting (gjdl)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):join:xor (gjca)*Accounting (gjdl)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjca)*Accounting (gjdl)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):split:Accounting (gjdl)*and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):split:Accounting (gjdl)*and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl)*and (gjcj)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):join:Accounting (gjdl)*and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):join:Accounting (gjdl)*and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Accounting (gjdl)*and (gjcj)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):split:and (gjcj)*Join_Yes_and (gjcj):and (gjcj)*xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):split:and (gjcj)*Join_Yes_and (gjcj):and (gjcj)*xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*Join_Yes_and (gjcj)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*xor (gjcq)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):join:and (gjcj)*xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):join:and (gjcj)*xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*xor (gjcq)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):split:xor (gjcq)*Join_Yes_xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):split:xor (gjcq)*Join_Yes_xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*Join_Yes_xor (gjcq)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):split:xor (gjcq)*or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):split:xor (gjcq)*or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*or (gjd7)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):join:xor (gjcq)*or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):join:xor (gjcq)*or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*or (gjd7)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):split:or (gjd7)*Join_Yes_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):split:or (gjd7)*Join_Yes_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7)*Join_Yes_or (gjd7)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):join:Join_Split_and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):join:Join_Split_and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_and (gjcj)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):split:Join_Join_and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):split:Join_Join_and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_and (gjcj):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_and (gjcj)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):join:and (gjcj)*Join_Yes_and (gjcj):Join_Split_and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):join:and (gjcj)*Join_Yes_and (gjcj):Join_Split_and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:and (gjcj)*Join_Yes_and (gjcj)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_and (gjcj)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):split:Join_Join_and (gjcj)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):split:Join_Join_and (gjcj)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_and (gjcj):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_and (gjcj)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):join:Join_Split_xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):join:Join_Split_xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_xor (gjcq)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):split:Join_Join_xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):split:Join_Join_xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_xor (gjcq):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_xor (gjcq)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):join:xor (gjcq)*Join_Yes_xor (gjcq):Join_Split_xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):join:xor (gjcq)*Join_Yes_xor (gjcq):Join_Split_xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:xor (gjcq)*Join_Yes_xor (gjcq)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_xor (gjcq)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):split:Join_Join_xor (gjcq)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):split:Join_Join_xor (gjcq)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_xor (gjcq):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_xor (gjcq)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):join:Join_Split_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):join:Join_Split_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_or (gjd7)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):split:Join_Join_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):split:Join_Join_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_No_or (gjd7):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_or (gjd7)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):join:or (gjd7)*Join_Yes_or (gjd7):Join_Split_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):join:or (gjd7)*Join_Yes_or (gjd7):Join_Split_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:or (gjd7)*Join_Yes_or (gjd7)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Split_or (gjd7)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):split:Join_Join_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):split:Join_Join_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Yes_or (gjd7):busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_or (gjd7)"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:join:Join_Join_and (gjcj):Join_Join_xor (gjcq):Join_Join_or (gjd7)"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:join:Join_Join_and (gjcj):Join_Join_xor (gjcq):Join_Join_or (gjd7)"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_and (gjcj)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_xor (gjcq)"
+       "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Join_Join_or (gjd7)"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:busy"
+;
+trans "t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:split:OutputCondition"~"t:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:Output:busy"
+   out "p:Model.gjb3--0-----u--:Model.gjb3--0-----u--:OutputCondition"
+;
+

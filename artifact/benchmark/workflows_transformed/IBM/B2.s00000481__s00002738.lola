@@ -1,0 +1,126 @@
+PLACE
+alpha,callToProcess.s00002689.inputCriterion.s00000937.used,callToProcess.s00002689.output.s00000938,callToProcess.s00002689.output.s00000956,callToProcess.s00002705.inputCriterion.s00000937.used,callToProcess.s00002705.output.s00000961,callToProcess.s00002705.output.s00001125,callToProcess.s00002705.output.s00001126,callToTask.s00002739.inputCriterion.s00000937.used,callToTask.s00002739.output.s00000938,callToTask.s00002739.output.s00000956,callToTask.s00002740.inputCriterion.s00000937.used,callToTask.s00002740.output.s00000938,callToTask.s00002740.output.s00000979,callToTask.s00002740.output.s00000981,callToTask.s00002741.inputCriterion.s00000937.used,callToTask.s00002741.output.s00000959,callToTask.s00002741.output.s00000960,callToTask.s00002742.inputCriterion.s00000937.used,callToTask.s00002742.output.s00000959,callToTask.s00002742.output.s00000962,callToTask.s00002742.output.s00001119,callToTask.s00002742.output.s00001125,callToTask.s00002743.input.s00000985,callToTask.s00002743.inputCriterion.s00000937.used,callToTask.s00002743.output.s00000938,callToTask.s00002743.output.s00000979,merge.s00000945.activated,process.s00000481##s00002738.input.s00000936,process.s00000481##s00002738.output.s00000938,process.s00000481##s00002738.outputCriterion.s00000939_omega,final;
+
+MARKING
+alpha: 1, callToProcess.s00002689.inputCriterion.s00000937.used: 0, callToProcess.s00002689.output.s00000938: 0, callToProcess.s00002689.output.s00000956: 0, callToProcess.s00002705.inputCriterion.s00000937.used: 0, callToProcess.s00002705.output.s00000961: 0, callToProcess.s00002705.output.s00001125: 0, callToProcess.s00002705.output.s00001126: 0, callToTask.s00002739.inputCriterion.s00000937.used: 0, callToTask.s00002739.output.s00000938: 0, callToTask.s00002739.output.s00000956: 0, callToTask.s00002740.inputCriterion.s00000937.used: 0, callToTask.s00002740.output.s00000938: 0, callToTask.s00002740.output.s00000979: 0, callToTask.s00002740.output.s00000981: 0, callToTask.s00002741.inputCriterion.s00000937.used: 0, callToTask.s00002741.output.s00000959: 0, callToTask.s00002741.output.s00000960: 0, callToTask.s00002742.inputCriterion.s00000937.used: 0, callToTask.s00002742.output.s00000959: 0, callToTask.s00002742.output.s00000962: 0, callToTask.s00002742.output.s00001119: 0, callToTask.s00002742.output.s00001125: 0, callToTask.s00002743.input.s00000985: 0, callToTask.s00002743.inputCriterion.s00000937.used: 0, callToTask.s00002743.output.s00000938: 0, callToTask.s00002743.output.s00000979: 0, merge.s00000945.activated: 0, process.s00000481##s00002738.input.s00000936: 0, process.s00000481##s00002738.output.s00000938: 0, process.s00000481##s00002738.outputCriterion.s00000939_omega: 0, final: 0;
+
+TRANSITION callToProcess.s00002689.inputCriterion.s00000937
+CONSUME callToTask.s00002739.output.s00000938: 1, callToTask.s00002739.output.s00000956: 1;
+PRODUCE callToProcess.s00002689.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToProcess.s00002689.outputCriterion.s00000939
+CONSUME callToProcess.s00002689.inputCriterion.s00000937.used: 1;
+PRODUCE callToProcess.s00002689.output.s00000938: 1, callToProcess.s00002689.output.s00000956: 1;
+
+
+
+TRANSITION callToProcess.s00002705.inputCriterion.s00000937
+CONSUME callToTask.s00002742.output.s00000962: 1, callToTask.s00002742.output.s00001119: 1;
+PRODUCE callToProcess.s00002705.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToProcess.s00002705.outputCriterion.s00000939
+CONSUME callToProcess.s00002705.inputCriterion.s00000937.used: 1;
+PRODUCE callToProcess.s00002705.output.s00000961: 1, callToProcess.s00002705.output.s00001125: 1, callToProcess.s00002705.output.s00001126: 1;
+
+
+
+TRANSITION callToTask.s00002739.inputCriterion.s00000937
+CONSUME callToTask.s00002741.output.s00000959: 1, callToTask.s00002741.output.s00000960: 1;
+PRODUCE callToTask.s00002739.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002739.outputCriterion.s00000939
+CONSUME callToTask.s00002739.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002739.output.s00000938: 1, callToTask.s00002739.output.s00000956: 1;
+
+
+
+TRANSITION callToTask.s00002740.inputCriterion.s00000937
+CONSUME callToProcess.s00002705.output.s00000961: 1, callToProcess.s00002705.output.s00001126: 1, callToTask.s00002742.output.s00000959: 1, callToTask.s00002742.output.s00001125: 1;
+PRODUCE callToTask.s00002740.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002740.outputCriterion.s00000939
+CONSUME callToTask.s00002740.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002740.output.s00000938: 1, callToTask.s00002740.output.s00000979: 1, callToTask.s00002740.output.s00000981: 1;
+
+
+
+TRANSITION callToTask.s00002741.inputCriterion.s00000937
+CONSUME callToTask.s00002740.output.s00000938: 1, callToTask.s00002740.output.s00000981: 1;
+PRODUCE callToTask.s00002741.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002741.outputCriterion.s00000939
+CONSUME callToTask.s00002741.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002741.output.s00000959: 1, callToTask.s00002741.output.s00000960: 1;
+
+
+
+TRANSITION callToTask.s00002742.inputCriterion.s00000937
+CONSUME callToTask.s00002743.output.s00000938: 1, callToTask.s00002743.output.s00000979: 1;
+PRODUCE callToTask.s00002742.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002742.outputCriterion.s00000939
+CONSUME callToTask.s00002742.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002742.output.s00000959: 1, callToTask.s00002742.output.s00000962: 1, callToTask.s00002742.output.s00001119: 1, callToTask.s00002742.output.s00001125: 1;
+
+
+
+TRANSITION callToTask.s00002743.inputCriterion.s00000937
+CONSUME callToTask.s00002743.input.s00000985: 1, process.s00000481##s00002738.input.s00000936: 1;
+PRODUCE callToTask.s00002743.inputCriterion.s00000937.used: 1;
+
+
+
+TRANSITION callToTask.s00002743.outputCriterion.s00000939
+CONSUME callToTask.s00002743.inputCriterion.s00000937.used: 1;
+PRODUCE callToTask.s00002743.output.s00000938: 1, callToTask.s00002743.output.s00000979: 1;
+
+
+
+TRANSITION merge.s00000945.activate.s00000946
+CONSUME callToTask.s00002740.output.s00000979: 1;
+PRODUCE merge.s00000945.activated: 1;
+
+
+
+TRANSITION merge.s00000945.activate.s00000948
+CONSUME callToProcess.s00002689.output.s00000938: 1;
+PRODUCE merge.s00000945.activated: 1;
+
+
+
+TRANSITION merge.s00000945.fire.s00000953
+CONSUME merge.s00000945.activated: 1;
+PRODUCE process.s00000481##s00002738.output.s00000938: 1;
+
+
+
+TRANSITION process.s00000481##s00002738.inputCriterion.s00000937
+CONSUME alpha: 1;
+PRODUCE callToTask.s00002743.input.s00000985: 1, process.s00000481##s00002738.input.s00000936: 1;
+
+
+
+TRANSITION process.s00000481##s00002738.outputCriterion.s00000939
+CONSUME process.s00000481##s00002738.output.s00000938: 1;
+PRODUCE process.s00000481##s00002738.outputCriterion.s00000939_omega: 1;
+
+
+
+TRANSITION t_final
+CONSUME callToProcess.s00002689.output.s00000956: 1, callToProcess.s00002705.output.s00001125: 1, process.s00000481##s00002738.outputCriterion.s00000939_omega: 1;
+PRODUCE final: 1;
+
+
+

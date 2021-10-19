@@ -1,0 +1,87 @@
+NET Asynchronous_Stack
+
+const int N = 17; // number of slots in the stack
+const int M = 25; // number of values to be stored
+
+typedef int(1,N) slots;  // indices for slots
+typedef int(0,M) values;  // 1 .. M: values to be stored; 0: empty slot
+
+typedef struct
+	{
+		slots slot;
+		values value;
+	} one_item;
+
+typedef struct
+	{
+		slots slot;
+		values value1;
+		values value2;
+	} two_items;
+
+^two_items all_quiet()
+{
+	^two_items result;
+	
+	for(slots i)
+	{
+		result += {i,0};
+	}
+
+}
+
+PLACE one_item quiet, two_items storing_two_items, slots storing_no_value;
+
+MARKING quiet : all_quiet();
+
+TRANSITION push
+
+values y,z;
+
+CONSUME quiet: {1,z};
+PRODUCE storing_two_values: {1,z,y};
+
+TRANSITION pop
+
+values z;
+
+CONSUME quiet: {1,0};
+PRODUCE storing_no_value: 1;
+
+TRANSITION propagate_push
+
+slots i;
+values x,y,z;
+
+GUARD i < N
+
+CONSUME storing_two_values: {i,y,x},
+	quiet: {i+1,z};
+PRODUCE storing_two_values: {i+1,z,y};
+	quiet: {i,x};
+
+TRANSITION propagate_push_final
+
+values x,y;
+
+CONSUME storing_two_values: {N,y,x};
+PRODUCE quiet: {n,x};
+
+TRANSITION propagate_pop
+
+slots i;
+values z;
+
+GUARD i < N
+
+CONSUME quiet: {i+1,z},
+	storing_no_value: i;
+PRODUCE quiet: {i,z},
+	storing_no_value: i+1;
+
+TRANSITION propagate_pop_final
+
+CONSUME storing_no_value: N;
+PRODUCE quiet: {N,0};
+
+

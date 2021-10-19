@@ -1,0 +1,36 @@
+PLACE p_0_0, r_0_0, p_0_1, r_0_1, p_0_2, r_0_2, p_1_0, r_1_0, p_1_1, r_1_1, p_1_2, r_1_2 ;
+
+MARKING r_0_0:1, r_0_1:1, r_0_2:1, r_1_0:1, r_1_1:1, r_1_2:1 ;
+
+TRANSITION t_0_1
+CONSUME p_0_0:1, r_0_1:1 ;
+PRODUCE r_0_0:1, p_0_1:1 ;
+
+TRANSITION t_0_0
+CONSUME r_0_0:1 ;
+PRODUCE p_0_0:1 ;
+
+TRANSITION t_0_3
+CONSUME p_0_2:1 ;
+PRODUCE r_0_2:1 ;
+
+TRANSITION t_0_2
+CONSUME p_0_1:1, r_0_2:1 ;
+PRODUCE r_0_1:1, p_0_2:1 ;
+
+TRANSITION t_1_0
+CONSUME p_1_0:1 ;
+PRODUCE r_0_0:1, r_1_0:1 ;
+
+TRANSITION t_1_1
+CONSUME r_0_0:1, r_1_0:1, p_1_1:1 ;
+PRODUCE r_0_1:1, p_1_0:1, r_1_1:1 ;
+
+TRANSITION t_1_2
+CONSUME r_0_1:1, r_1_1:1, p_1_2:1 ;
+PRODUCE r_0_2:1, p_1_1:1, r_1_2:1 ;
+
+TRANSITION t_1_3
+CONSUME r_0_2:1, r_1_2:1 ;
+PRODUCE p_1_2:1 ;
+

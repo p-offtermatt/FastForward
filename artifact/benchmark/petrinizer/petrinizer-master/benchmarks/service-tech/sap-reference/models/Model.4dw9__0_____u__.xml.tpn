@@ -1,0 +1,187 @@
+place "i" init 1;
+place "o";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:InputCondition";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Split_or (4dyj)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Join_or (4dyj)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dya)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dya)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dys)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dys)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:OutputCondition";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj)*or (4dyj)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj)*Processing the Pull List (4dwu)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu)*or (4dy3)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*Picking (4dx8)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*or (4dya)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8)*or (4dya)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*Join_Yes_or (4dya)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*or (4dys)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys)*Join_Yes_or (4dys)";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):busy";
+place "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:busy";
+trans "*:Model.4dw9--0-----u--:Model.4dw9--0-----u--:start"~"*:Model.4dw9--0-----u--:Model.4dw9--0-----u--:start"
+    in "i"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:InputCondition"
+;
+trans "*:Model.4dw9--0-----u--:Model.4dw9--0-----u--:end"~"*:Model.4dw9--0-----u--:Model.4dw9--0-----u--:end"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:join:InputCondition"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:join:InputCondition"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:InputCondition"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:split:Split_Split_or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:split:Split_Split_or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split:busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Split_or (4dyj)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):join:Split_Split_or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):join:Split_Split_or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Split_or (4dyj)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):split:Split_Join_or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):split:Split_Join_or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_No_or (4dyj):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Join_or (4dyj)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):join:Split_Split_or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):join:Split_Split_or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Split_or (4dyj)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):split:Split_Join_or (4dyj):Split_Yes_or (4dyj)*or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):split:Split_Join_or (4dyj):Split_Yes_or (4dyj)*or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Join_or (4dyj)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj)*or (4dyj)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:join:Split_Join_or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:join:Split_Join_or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Join_or (4dyj)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:split:Join_Split_or (4dya):Join_Split_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:split:Join_Split_or (4dya):Join_Split_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Skip:busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dya)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dys)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):join:Split_Yes_or (4dyj)*or (4dyj)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):join:Split_Yes_or (4dyj)*or (4dyj)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Split_Yes_or (4dyj)*or (4dyj)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):split:or (4dyj)*Processing the Pull List (4dwu)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):split:or (4dyj)*Processing the Pull List (4dwu)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj)*Processing the Pull List (4dwu)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):join:or (4dyj)*Processing the Pull List (4dwu)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):join:or (4dyj)*Processing the Pull List (4dwu)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dyj)*Processing the Pull List (4dwu)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):split:Processing the Pull List (4dwu)*or (4dy3)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):split:Processing the Pull List (4dwu)*or (4dy3)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu)*or (4dy3)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):join:Processing the Pull List (4dwu)*or (4dy3)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):join:Processing the Pull List (4dwu)*or (4dy3)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Processing the Pull List (4dwu)*or (4dy3)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*Picking (4dx8)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*Picking (4dx8)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*Picking (4dx8)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*or (4dya)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*Picking (4dx8):or (4dy3)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):split:or (4dy3)*Picking (4dx8):or (4dy3)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*Picking (4dx8)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*or (4dya)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):join:or (4dy3)*Picking (4dx8)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):join:or (4dy3)*Picking (4dx8)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*Picking (4dx8)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):split:Picking (4dx8)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):split:Picking (4dx8)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8)*or (4dya)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:or (4dy3)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:or (4dy3)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*or (4dya)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:Picking (4dx8)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:Picking (4dx8)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8)*or (4dya)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:or (4dy3)*or (4dya):Picking (4dx8)*or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):join:or (4dy3)*or (4dya):Picking (4dx8)*or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dy3)*or (4dya)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Picking (4dx8)*or (4dya)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):split:or (4dya)*Join_Yes_or (4dya):or (4dya)*or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):split:or (4dya)*Join_Yes_or (4dya):or (4dya)*or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*Join_Yes_or (4dya)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*or (4dys)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):join:or (4dya)*or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):join:or (4dya)*or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*or (4dys)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):split:or (4dys)*Join_Yes_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):split:or (4dys)*Join_Yes_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys)*Join_Yes_or (4dys)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):join:Join_Split_or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):join:Join_Split_or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dya)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):split:Join_Join_or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):split:Join_Join_or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dya):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dya)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):join:or (4dya)*Join_Yes_or (4dya):Join_Split_or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):join:or (4dya)*Join_Yes_or (4dya):Join_Split_or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dya)*Join_Yes_or (4dya)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dya)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):split:Join_Join_or (4dya)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):split:Join_Join_or (4dya)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dya):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dya)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):join:Join_Split_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):join:Join_Split_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dys)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):split:Join_Join_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):split:Join_Join_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_No_or (4dys):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dys)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):join:or (4dys)*Join_Yes_or (4dys):Join_Split_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):join:or (4dys)*Join_Yes_or (4dys):Join_Split_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:or (4dys)*Join_Yes_or (4dys)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Split_or (4dys)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):split:Join_Join_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):split:Join_Join_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Yes_or (4dys):busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dys)"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:join:Join_Join_or (4dya):Join_Join_or (4dys)"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:join:Join_Join_or (4dya):Join_Join_or (4dys)"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dya)"
+       "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Join_Join_or (4dys)"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:busy"
+;
+trans "t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:split:OutputCondition"~"t:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:split:OutputCondition"
+    in "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:Output:busy"
+   out "p:Model.4dw9--0-----u--:Model.4dw9--0-----u--:OutputCondition"
+;
+

@@ -1,0 +1,238 @@
+place "i" init 1;
+place "o";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:InputCondition";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96pf)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:OutputCondition";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf)*and (96pf)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf)*Technical Order Completion (96s5)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5)*and (96qa)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa)*Order Settlement (96ss)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss)*and (96rr)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr)*Business Order Completion (96tj)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj)*and (96se)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc)";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):busy";
+place "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:busy";
+trans "*:Model.96oz--0-----u--:Model.96oz--0-----u--:start"~"*:Model.96oz--0-----u--:Model.96oz--0-----u--:start"
+    in "i"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:InputCondition"
+;
+trans "*:Model.96oz--0-----u--:Model.96oz--0-----u--:end"~"*:Model.96oz--0-----u--:Model.96oz--0-----u--:end"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:join:InputCondition"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:join:InputCondition"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:InputCondition"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:split:Split_Split_and (96pf):Split_Split_and (96qa):Split_Split_and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:split:Split_Split_and (96pf):Split_Split_and (96qa):Split_Split_and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split:busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96pf)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):join:Split_Split_and (96pf)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):join:Split_Split_and (96pf)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96pf)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):join:Split_Split_and (96pf)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):join:Split_Split_and (96pf)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96pf)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):split:Split_Join_and (96pf):Split_Yes_and (96pf)*and (96pf)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):split:Split_Join_and (96pf):Split_Yes_and (96pf)*and (96pf)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf)*and (96pf)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):join:Split_Split_and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):join:Split_Split_and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):split:Split_Join_and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):split:Split_Join_and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):join:Split_Split_and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):join:Split_Split_and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):join:Split_Split_and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):join:Split_Split_and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):split:Split_Join_and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):split:Split_Join_and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):join:Split_Split_and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):join:Split_Split_and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:join:Split_Join_and (96pf):Split_Join_and (96qa):Split_Join_and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:join:Split_Join_and (96pf):Split_Join_and (96qa):Split_Join_and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96pf)*and (96pf)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):split:and (96pf)*Technical Order Completion (96s5)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):split:and (96pf)*Technical Order Completion (96s5)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf)*Technical Order Completion (96s5)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):join:and (96pf)*Technical Order Completion (96s5)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):join:and (96pf)*Technical Order Completion (96s5)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf)*Technical Order Completion (96s5)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):split:Technical Order Completion (96s5)*and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):split:Technical Order Completion (96s5)*and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5)*and (96qa)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):join:Split_Yes_and (96qa)*and (96qa):Technical Order Completion (96s5)*and (96qa)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):join:Split_Yes_and (96qa)*and (96qa):Technical Order Completion (96s5)*and (96qa)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Technical Order Completion (96s5)*and (96qa)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):split:and (96qa)*Order Settlement (96ss)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):split:and (96qa)*Order Settlement (96ss)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa)*Order Settlement (96ss)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):join:and (96qa)*Order Settlement (96ss)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):join:and (96qa)*Order Settlement (96ss)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96qa)*Order Settlement (96ss)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):split:Order Settlement (96ss)*and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):split:Order Settlement (96ss)*and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss)*and (96rr)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):join:Split_Yes_and (96rr)*and (96rr):Order Settlement (96ss)*and (96rr)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):join:Split_Yes_and (96rr)*and (96rr):Order Settlement (96ss)*and (96rr)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Settlement (96ss)*and (96rr)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):split:and (96rr)*Business Order Completion (96tj)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):split:and (96rr)*Business Order Completion (96tj)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr)*Business Order Completion (96tj)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):join:and (96rr)*Business Order Completion (96tj)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):join:and (96rr)*Business Order Completion (96tj)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96rr)*Business Order Completion (96tj)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):split:Business Order Completion (96tj)*and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):split:Business Order Completion (96tj)*and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj)*and (96se)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):join:Business Order Completion (96tj)*and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):join:Business Order Completion (96tj)*and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Business Order Completion (96tj)*and (96se)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):join:and (96se)*Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):join:and (96se)*Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):split:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):split:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):join:Join_Split_and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):join:Join_Split_and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):split:Join_Join_and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):split:Join_Join_and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):join:and (96se)*Join_Yes_and (96se):Join_Split_and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):join:and (96se)*Join_Yes_and (96se):Join_Split_and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):join:Join_Split_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):join:Join_Split_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):join:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc):Join_Split_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):join:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc):Join_Split_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Order Archiving (96uc)*Join_Yes_Order Archiving (96uc)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:join:Join_Join_and (96se):Join_Join_Order Archiving (96uc)"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:join:Join_Join_and (96se):Join_Join_Order Archiving (96uc)"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)"
+       "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:busy"
+;
+trans "t:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:split:OutputCondition"~"t:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:split:OutputCondition"
+    in "p:Model.96oz--0-----u--:Model.96oz--0-----u--:Output:busy"
+   out "p:Model.96oz--0-----u--:Model.96oz--0-----u--:OutputCondition"
+;
+

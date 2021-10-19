@@ -1,0 +1,23 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToProcess.s00007121.input.s00001066, callToProcess.s00007121.inputCriterion.s00001053.used, callToProcess.s00007121.output.s00001054, process.s00000669##s00007156.input.s00001052;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToProcess.s00007121.inputCriterion.s00001053
+  CONSUME callToProcess.s00007121.input.s00001066:1, process.s00000669##s00007156.input.s00001052:1;
+  PRODUCE callToProcess.s00007121.inputCriterion.s00001053.used:1;
+
+TRANSITION callToProcess.s00007121.outputCriterion.s00001055
+  CONSUME callToProcess.s00007121.inputCriterion.s00001053.used:1;
+  PRODUCE callToProcess.s00007121.output.s00001054:1;
+
+TRANSITION process.s00000669##s00007156.inputCriterion.s00001053
+  CONSUME alpha:1;
+  PRODUCE callToProcess.s00007121.input.s00001066:1, process.s00000669##s00007156.input.s00001052:1;
+
+
+{ END OF FILE }

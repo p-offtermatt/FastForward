@@ -1,0 +1,272 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta content="Railroad Diagram Generator 1.31.721" name="generator"><style type="text/css">
+    ::-moz-selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }
+    ::selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }      
+    .ebnf a
+    {
+      text-decoration: none;
+    }
+    .ebnf a:hover
+    {
+      color: #050400;
+      text-decoration: underline;
+    }    
+    .signature
+    {
+      color: #806600;
+      font-size: 11px;
+      text-align: right;
+    }
+    body
+    {
+      font: normal 12px Verdana, sans-serif;
+      color: #0F0C00;
+      background: #FFFCF0;
+    }
+    a:link, a:visited
+    {
+      color: #0F0C00;
+    }
+    a:link.signature, a:visited.signature
+    {
+      color: #806600;
+    }
+    a.button, #tabs li a
+    {
+      padding: 0.25em 0.5em;
+      border: 1px solid #806600;
+      background: #F1E8C6;
+      color: #806600;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.button:hover, #tabs li a:hover
+    {
+      color: #050400;
+      background: #FFF6D1;
+      border-color: #050400;       
+    }     
+    #tabs
+    {
+      padding: 3px 10px;
+      margin-left: 0;
+      margin-top: 58px;
+      border-bottom: 1px solid #0F0C00;
+    }  
+    #tabs li
+    {
+      list-style: none;
+      margin-left: 5px;
+      display: inline;
+    }
+    #tabs li a
+    {     
+      border-bottom: 1px solid #0F0C00;
+    }
+    #tabs li a.active
+    {
+      color: #0F0C00;
+      background: #FFFCF0;
+      border-color: #0F0C00;
+      border-bottom: 1px solid #FFFCF0;
+      outline: none;
+    }
+    #divs div
+    {
+      display: none;
+      overflow:auto;
+    }
+    #divs div.active
+    {
+      display: block;
+    }
+    #text
+    {
+      border-color: #806600;
+      background: #FFFEFA;
+      color: #050400;
+    }
+    .small
+    {
+      vertical-align: top;
+      text-align: right;
+      font-size: 9px;
+      font-weight: normal;
+      line-height: 120%;
+    }
+    td.small
+    {
+      padding-top: 0px;
+    }
+    .hidden
+    {
+      visibility: hidden;
+    }
+    td:hover .hidden 
+    {
+      visibility: visible;
+    }
+    div.download
+    {
+      display: none;
+      background: #FFFCF0;
+      position: absolute;
+      right: 34px;
+      top: 94px;
+      padding: 10px;
+      border: 1px dotted #0F0C00;
+    }
+    #divs div.ebnf, div.ebnf
+    {
+      display: block;
+      padding-left: 16px;
+      padding-top: 2px; 
+      padding-bottom: 2px; 
+      background: #FFF6D1;
+    }
+    table.palette
+    {
+      border-top: 1px solid #050400;
+      border-right: 1px solid #050400;
+      margin-bottom: 4px
+    }
+    td.palette
+    {
+      border-bottom: 1px solid #050400;
+      border-left: 1px solid #050400;
+    }
+    a.palette
+    {
+      padding: 2px 3px 2px 10px;
+      text-decoration: none;
+    }
+    .palette
+    {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ms-user-select: none;
+    }
+  </style><style type="text/css"></style></head>
+   <body>
+      <p style="font-size: 14px; font-weight:bold"><a name="net">net:</a></p><img border="0" height="68" src="net/net.png" usemap="#net.map" width="670"><map name="net.map">
+         <area coords="111,17,197,49" href="#place_lists" shape="rect" title="place_lists">
+         <area coords="341,17,437,49" href="#marking_list" shape="rect" title="marking_list">
+         <area coords="541,17,621,49" href="#transition" shape="rect" title="transition"></map><p>
+         <div class="ebnf"><pre><a href="#net" title="net">net</a>      ::= 'PLACE' <a href="#place_lists" title="place_lists">place_lists</a> 'MARKING' <a href="#marking_list" title="marking_list">marking_list</a>? ';' <a href="#transition" title="transition">transition</a>+</pre></div>
+      </p>
+      <p>no references</p><br><p style="font-size: 14px; font-weight:bold"><a name="place_lists">place_lists:</a></p><img border="0" height="68" src="net/place_lists.png" usemap="#place_lists.map" width="350"><map name="place_lists.map">
+         <area coords="69,17,139,49" href="#capacity" shape="rect" title="capacity">
+         <area coords="179,17,257,49" href="#place_list" shape="rect" title="place_list"></map><p>
+         <div class="ebnf"><pre><a href="#place_lists" title="place_lists">place_lists</a>
+         ::= ( <a href="#capacity" title="capacity">capacity</a>? <a href="#place_list" title="place_list">place_list</a> ';' )+</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#net" title="net">net</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="capacity">capacity:</a></p><img border="0" height="52" src="net/capacity.png" width="292"><p>
+         <div class="ebnf"><pre><a href="#capacity" title="capacity">capacity</a> ::= 'SAFE' 'NUMBER'? ':'</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#place_lists" title="place_lists">place_lists</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="place_list">place_list:</a></p><img border="0" height="80" src="net/place_list.png" usemap="#place_list.map" width="182"><map name="place_list.map">
+         <area coords="49,45,133,77" href="#nodeident" shape="rect" title="nodeident"></map><p>
+         <div class="ebnf"><pre><a href="#place_list" title="place_list">place_list</a>
+         ::= <a href="#nodeident" title="nodeident">nodeident</a> ( ',' <a href="#nodeident" title="nodeident">nodeident</a> )*</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#place_lists" title="place_lists">place_lists</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="nodeident">nodeident:</a></p><img border="0" height="80" src="net/nodeident.png" width="196"><p>
+         <div class="ebnf"><pre><a href="#nodeident" title="nodeident">nodeident</a>
+         ::= 'IDENTIFIER'
+           | 'NUMBER'</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#arc" title="arc">arc</a></li>
+            <li><a href="#marking" title="marking">marking</a></li>
+            <li><a href="#place_list" title="place_list">place_list</a></li>
+            <li><a href="#transition" title="transition">transition</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="marking_list">marking_list:</a></p><img border="0" height="80" src="net/marking_list.png" usemap="#marking_list.map" width="168"><map name="marking_list.map">
+         <area coords="49,45,119,77" href="#marking" shape="rect" title="marking"></map><p>
+         <div class="ebnf"><pre><a href="#marking_list" title="marking_list">marking_list</a>
+         ::= <a href="#marking" title="marking">marking</a> ( ',' <a href="#marking" title="marking">marking</a> )*</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#net" title="net">net</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="marking">marking:</a></p><img border="0" height="52" src="net/marking.png" usemap="#marking.map" width="322"><map name="marking.map">
+         <area coords="29,1,113,33" href="#nodeident" shape="rect" title="nodeident"></map><p>
+         <div class="ebnf"><pre><a href="#marking" title="marking">marking</a>  ::= <a href="#nodeident" title="nodeident">nodeident</a> ( ':' 'NUMBER' )?</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#marking_list" title="marking_list">marking_list</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="transition">transition:</a></p><img border="0" height="52" src="net/transition.png" usemap="#transition.map" width="948"><map name="transition.map">
+         <area coords="155,1,239,33" href="#nodeident" shape="rect" title="nodeident">
+         <area coords="279,1,349,33" href="#fairness" shape="rect" title="fairness">
+         <area coords="517,1,581,33" href="#arc_list" shape="rect" title="arc_list">
+         <area coords="791,1,855,33" href="#arc_list" shape="rect" title="arc_list"></map><p>
+         <div class="ebnf"><pre><a href="#transition" title="transition">transition</a>
+         ::= 'TRANSITION' <a href="#nodeident" title="nodeident">nodeident</a> <a href="#fairness" title="fairness">fairness</a>? 'CONSUME' <a href="#arc_list" title="arc_list">arc_list</a>? ';' 'PRODUCE' <a href="#arc_list" title="arc_list">arc_list</a>? ';'</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#net" title="net">net</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="fairness">fairness:</a></p><img border="0" height="80" src="net/fairness.png" width="246"><p>
+         <div class="ebnf"><pre><a href="#fairness" title="fairness">fairness</a> ::= ( 'STRONG' | 'WEAK' ) 'FAIR'</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#transition" title="transition">transition</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="arc_list">arc_list:</a></p><img border="0" height="80" src="net/arc_list.png" usemap="#arc_list.map" width="136"><map name="arc_list.map">
+         <area coords="49,45,87,77" href="#arc" shape="rect" title="arc"></map><p>
+         <div class="ebnf"><pre><a href="#arc_list" title="arc_list">arc_list</a> ::= <a href="#arc" title="arc">arc</a> ( ',' <a href="#arc" title="arc">arc</a> )*</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#transition" title="transition">transition</a></li>
+         </ul>
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="arc">arc:</a></p><img border="0" height="52" src="net/arc.png" usemap="#arc.map" width="322"><map name="arc.map">
+         <area coords="29,1,113,33" href="#nodeident" shape="rect" title="nodeident"></map><p>
+         <div class="ebnf"><pre><a href="#arc" title="arc">arc</a>      ::= <a href="#nodeident" title="nodeident">nodeident</a> ( ':' 'NUMBER' )?</pre></div>
+      </p>
+      <p>referenced by:
+         <ul>
+            <li><a href="#arc_list" title="arc_list">arc_list</a></li>
+         </ul>
+      </p><br><hr>
+      <p>
+         <table border="0" class="signature">
+            <tr>
+               <td style="width: 100%">&nbsp;</td>
+               <td valign="top">
+                  <nobr class="signature">... generated by <a class="signature" href="http://www.bottlecaps.de/rr/ui" name="Railroad-Diagram-Generator" target="_blank" title="http://www.bottlecaps.de/rr/ui">Railroad Diagram Generator</a></nobr>
+               </td>
+               <td><a href="http://www.bottlecaps.de/rr/ui" name="Railroad-Diagram-Generator" target="_blank" title="http://www.bottlecaps.de/rr/ui"><img border="0" height="16" src="net/rr-1.31.721.png" width="16"></a></td>
+            </tr>
+         </table>
+      </p>
+   </body>
+</html>

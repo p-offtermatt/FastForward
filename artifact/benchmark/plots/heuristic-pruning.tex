@@ -1,0 +1,67 @@
+\colorlet{colNeq}{black}
+\definecolor{colQeq}{HTML}{9393FF}%\colorlet{colQeq}{cyan}
+\colorlet{colCont}{magenta}
+\begin{figure}[!h]
+  \centering
+  \begin{minipage}[c]{0.43\textwidth}
+    \vspace{0pt}
+    \heuristicplot{shortest path}{initial heuristic value}{
+
+    \addplot[darkgray] plot coordinates {(1,1) (50, 50)};
+
+    \IfFileExists{data/heuristics_data.tex}{
+      \input{data/heuristics_data.tex}
+    }
+    
+    }
+
+    \hspace*{30pt}\centering
+\begin{tikzpicture}[very thick, scale=\plotscale, 
+    every node/.style={scale=\plotscale}]
+\begin{customlegend}[legend columns=3,
+    legend style={draw=none, column sep=1ex},
+legend entries={
+\textsc{$\mathcal{D}_\Z$},
+\textsc{$\mathcal{D}_\Q$},
+\textsc{$\mathcal{D}_{\Qnon}$},
+%\textsc{$d_{struct}$}
+  }] 
+\addlegendmark{Neq}{*}
+\addlegendmark{Qeq}{diamond*}
+\addlegendmark{Cont}{x}
+%\addlegendmark{syntactic}{+}
+\end{customlegend}
+\end{tikzpicture}
+\end{minipage}%
+\hspace*{10pt}
+%% Pruning
+\begin{minipage}[c]{0.55\textwidth}
+  \vspace{0pt}
+  %\centering
+  \begin{tabular}{cc}
+    \footnotesize\, Places & \footnotesize\, Transitions \\
+    \histogram{percentage removed}{number of instances}{
+
+    \IfFileExists{data/pruning_places_data.tex}{%
+      \input{data/pruning_places_data.tex}%
+    }
+
+    } 
+    &
+    \histogram{percentage removed}{number of instances}{
+
+      \IfFileExists{data/pruning_transitions_data.tex}{%
+        \input{data/pruning_transitions_data.tex}%
+     }
+
+    } 
+  \end{tabular}
+\end{minipage}
+
+\caption{\emph{Left}: initial distance estimation compared to the
+  exact distance (points closer to the diagonal are
+  better). \emph{Right}: number of instances per percentage of places
+  (left) and transitions (right) removed by pruning (rounded to
+  nearest multiple of~10). Corresponds to Figure 6 of the paper.
+  Note that the main benchmark scripts do not populate this - see the README for more information.}\label{fig:other}
+\end{figure}

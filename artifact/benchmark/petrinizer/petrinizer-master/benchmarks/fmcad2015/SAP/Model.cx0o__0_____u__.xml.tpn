@@ -1,0 +1,133 @@
+place "i" init 1;
+place "o";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:InputCondition";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Split_or (cx2z)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Join_or (cx2z)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Split_xor (cx4s)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Join_xor (cx4s)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:outputCondition";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z)*or (cx2z)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z)*Preparation for Project Closing (cx56)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56)*Project Completion (cx1v)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v)*Project Archiving (cx4a)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a)*xor (cx4s)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s)*Join_Yes_xor (cx4s)";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):busy";
+place "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:busy";
+trans "*:Model.cx0o--0-----u--:Model.cx0o--0-----u--:start"~"*:Model.cx0o--0-----u--:Model.cx0o--0-----u--:start"
+    in "i"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:InputCondition"
+;
+trans "*:Model.cx0o--0-----u--:Model.cx0o--0-----u--:end"~"*:Model.cx0o--0-----u--:Model.cx0o--0-----u--:end"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:join:InputCondition"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:join:InputCondition"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:InputCondition"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:split:Split_Split_or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:split:Split_Split_or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split:busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Split_or (cx2z)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):join:Split_Split_or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):join:Split_Split_or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Split_or (cx2z)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):split:Split_Join_or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):split:Split_Join_or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_No_or (cx2z):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Join_or (cx2z)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):join:Split_Split_or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):join:Split_Split_or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Split_or (cx2z)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):split:Split_Join_or (cx2z):Split_Yes_or (cx2z)*or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):split:Split_Join_or (cx2z):Split_Yes_or (cx2z)*or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Join_or (cx2z)"
+       "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z)*or (cx2z)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:join:Split_Join_or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:join:Split_Join_or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Join_or (cx2z)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:split:Join_Split_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:split:Join_Split_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Skip:busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Split_xor (cx4s)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):join:Split_Yes_or (cx2z)*or (cx2z)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):join:Split_Yes_or (cx2z)*or (cx2z)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Split_Yes_or (cx2z)*or (cx2z)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):split:or (cx2z)*Preparation for Project Closing (cx56)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):split:or (cx2z)*Preparation for Project Closing (cx56)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z)*Preparation for Project Closing (cx56)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):join:or (cx2z)*Preparation for Project Closing (cx56)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):join:or (cx2z)*Preparation for Project Closing (cx56)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:or (cx2z)*Preparation for Project Closing (cx56)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):split:Preparation for Project Closing (cx56)*Project Completion (cx1v)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):split:Preparation for Project Closing (cx56)*Project Completion (cx1v)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56)*Project Completion (cx1v)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):join:Preparation for Project Closing (cx56)*Project Completion (cx1v)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):join:Preparation for Project Closing (cx56)*Project Completion (cx1v)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Preparation for Project Closing (cx56)*Project Completion (cx1v)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):split:Project Completion (cx1v)*Project Archiving (cx4a)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):split:Project Completion (cx1v)*Project Archiving (cx4a)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v)*Project Archiving (cx4a)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):join:Project Completion (cx1v)*Project Archiving (cx4a)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):join:Project Completion (cx1v)*Project Archiving (cx4a)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Completion (cx1v)*Project Archiving (cx4a)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):split:Project Archiving (cx4a)*xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):split:Project Archiving (cx4a)*xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a)*xor (cx4s)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):join:Project Archiving (cx4a)*xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):join:Project Archiving (cx4a)*xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Project Archiving (cx4a)*xor (cx4s)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):split:xor (cx4s)*Join_Yes_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):split:xor (cx4s)*Join_Yes_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s)*Join_Yes_xor (cx4s)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):join:Join_Split_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):join:Join_Split_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Split_xor (cx4s)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):split:Join_Join_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):split:Join_Join_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_No_xor (cx4s):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Join_xor (cx4s)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):join:xor (cx4s)*Join_Yes_xor (cx4s):Join_Split_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):join:xor (cx4s)*Join_Yes_xor (cx4s):Join_Split_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:xor (cx4s)*Join_Yes_xor (cx4s)"
+       "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Split_xor (cx4s)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):split:Join_Join_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):split:Join_Join_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Yes_xor (cx4s):busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Join_xor (cx4s)"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:join:Join_Join_xor (cx4s)"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:join:Join_Join_xor (cx4s)"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Join_Join_xor (cx4s)"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:busy"
+;
+trans "t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:split:outputCondition"~"t:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:split:outputCondition"
+    in "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:Output:busy"
+   out "p:Model.cx0o--0-----u--:Model.cx0o--0-----u--:outputCondition"
+;
+

@@ -1,0 +1,111 @@
+NET distributed_message_passing_rearrangement
+
+// in the abstract notion, there are disjoint sets L and R of elements
+// We implement this by chosing L as the set of the first L even numbers
+// and R as the set of the first R odd numbers.
+
+
+const int L = 7; // number of elements initially left
+const int R = 5; // number of elements initially right
+
+
+const int l = 6; // one of the first L even numbers
+const int r = 5; // one of the first R odd numbers
+
+
+
+const int M = 2 * (L-1) > 2 * (R-1) +1 ? 2 * (L-1) : 2 * (R-1) + 1; // the maximum element in the sets
+
+^int set_L()
+{
+	^int result;
+	result = {};
+	for(int i: all(int(0,L-1)))
+	{
+		result += 2 * i;
+	}
+	return result;
+}
+
+^int set_R()
+{
+	^int result;
+	result = {};
+	for(int i: all(int(0,R-1)))
+	{
+		result += 2 * i + 1;
+	}
+	return result;
+}
+
+PLACE int(0,M) storage_l, actual_l, compared_l, min_l, reaction_l, reaction_r, new_value_l, new_value_r, actual_r, max_r, compared_r, storage_r;
+      round_end_l, round_end_r;
+
+MARKING storage_l: set_L - l,
+        storage_r: set_R - r,
+	compared_l: l,
+	compared_r: r;
+
+TRANSITION t1
+int(0,M) y,z;
+
+CONSUME actual_l: y, reaction_r: z;
+PRODUCE round_end_l: 1, compared_l: z;
+
+TRANSITION t2
+int(0,M) x,y;
+
+GUARD y > x
+
+CONSUME storage_l: y, compared_l: x;
+PRODUCE storage_l: x, actual_l: y, new_value_l: y;
+
+TRANSITION t3
+int(0,M) y,z;
+
+CONSUME actual_l: y, new_value_r : z;
+PRODUCE round_end_l: 1, min_l: y < z ? y : z;
+
+TRANSITION t4
+int(0,M) x,z;
+
+CONSUME compared_l: x, new_value_r: z;
+PRODUCE min_l: x < z ? x : z, reaction_l x > z ? x : z;
+
+TRANSITION t5
+int(0,M) z;
+
+CONSUME min_l: z, round_end_r: 1;
+PRODUCE compared_l: z;
+
+TRANSITION t6
+int(0,M) z;
+
+CONSUME round_end_l: 1, max_r: z;
+PRODUCE compared_r: z;
+
+TRANSITION t7
+int(0,M) x,z;
+
+CONSUME compared_r: x, new_value_l: z;
+PRODUCE reaction_r: x < z ? x : z; max_r x > z ? x : z;
+
+TRANSITION t8
+int(0,M) y,z;
+
+CONSUME actual_r: y, new_value_l: z;
+PRODUCE max_r y > z ? y : z, round_end_r : 1;
+
+TRANSITION t9
+int(0,M) x,y;
+
+GUARD x > y
+
+CONSUME compared_r : x, storage_r: y;
+PRODUCE storage_r: x, actual_r: y, new_value_r: y;
+
+TRANSITION t10
+int(0,M) y,z;
+
+CONSUME actual_r: y, reaction_l: z;
+PRODUCE round_end_r: 1, compared_r: z;

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml>
+<net type="http://www.pnml.org/version-2009/grammar/ptnet" id="id"><page id="page">
+
+  <place id="alpha">
+    <initialMarking><text>1</text></initialMarking>
+  </place>
+  <place id="p33"></place>
+  <place id="p31"></place>
+  <place id="p32"></place>
+  <place id="p34"></place>
+  <place id="p35"></place>
+  <place id="p18"></place>
+  <place id="p30"></place>
+  <place id="p29"></place>
+  <place id="p25"></place>
+  <place id="p28"></place>
+  <place id="omega"></place>
+
+  <transition id="_ti_">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">0</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t4">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t17">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t20">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t10">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t24">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="t27">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">1</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+  <transition id="_to_">
+    <toolspecific tool="StochasticPetriNet" version="0.2">
+    <property key="distributionType">DETERMINISTIC</property>
+    <property key="distributionParameters">0</property>
+    <property key="weight">1</property>
+    <property key="priority">1</property>
+    </toolspecific>
+  </transition>
+
+  <arc id="a1" source="alpha" target="_ti_"></arc>
+  <arc id="a2" source="_ti_" target="p34"></arc>
+  <arc id="a3" source="p34" target="t4"></arc>
+  <arc id="a4" source="t4" target="p33"></arc>
+  <arc id="a4" source="t4" target="p30"></arc>
+  <arc id="a5" source="p32" target="t17"></arc>
+  <arc id="a6" source="p29" target="t17"></arc>
+  <arc id="a7" source="t17" target="p18"></arc>
+  <arc id="a8" source="p18" target="t20"></arc>
+  <arc id="a9" source="t20" target="p31"></arc>
+  <arc id="a9" source="t20" target="p28"></arc>
+  <arc id="a10" source="p31" target="t10"></arc>
+  <arc id="a11" source="t10" target="p35"></arc>
+  <arc id="a12" source="p33" target="t24"></arc>
+  <arc id="a13" source="p30" target="t24"></arc>
+  <arc id="a14" source="t24" target="p25"></arc>
+  <arc id="a15" source="p25" target="t27"></arc>
+  <arc id="a16" source="t27" target="p32"></arc>
+  <arc id="a16" source="t27" target="p29"></arc>
+  <arc id="a17" source="p35" target="_to_"></arc>
+  <arc id="a18" source="p28" target="_to_"></arc>
+  <arc id="a19" source="_to_" target="omega"></arc>
+
+</page></net>
+</pnml>

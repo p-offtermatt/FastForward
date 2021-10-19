@@ -1,0 +1,250 @@
+place "i" init 1;
+place "o";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:InputCondition";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Split_Transaction Processing (gm3b)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Join_Transaction Processing (gm3b)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_and (gm58)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_and (gm58)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_xor (gm5f)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_xor (gm5f)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_or (gm5m)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_or (gm5m)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:OutputCondition";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b)*or (gm40)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm47)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm4p)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47)*Closing Operations (gm3t)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t)*xor (gm4e)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e)*xor (gm4p)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p)*Accounting (gm60)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60)*and (gm58)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*Join_Yes_and (gm58)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*xor (gm5f)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*Join_Yes_xor (gm5f)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*or (gm5m)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m)*Join_Yes_or (gm5m)";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):busy";
+place "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:busy";
+trans "*:Model.gm2d--0-----u--:Model.gm2d--0-----u--:start"~"*:Model.gm2d--0-----u--:Model.gm2d--0-----u--:start"
+    in "i"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:InputCondition"
+;
+trans "*:Model.gm2d--0-----u--:Model.gm2d--0-----u--:end"~"*:Model.gm2d--0-----u--:Model.gm2d--0-----u--:end"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:join:InputCondition"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:join:InputCondition"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:InputCondition"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:split:Split_Split_Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:split:Split_Split_Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split:busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Split_Transaction Processing (gm3b)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):join:Split_Split_Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):join:Split_Split_Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Split_Transaction Processing (gm3b)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):split:Split_Join_Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):split:Split_Join_Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_No_Transaction Processing (gm3b):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Join_Transaction Processing (gm3b)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):join:Split_Split_Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):join:Split_Split_Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Split_Transaction Processing (gm3b)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):split:Split_Join_Transaction Processing (gm3b):Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):split:Split_Join_Transaction Processing (gm3b):Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Join_Transaction Processing (gm3b)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:join:Split_Join_Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:join:Split_Join_Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Join_Transaction Processing (gm3b)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:split:Join_Split_and (gm58):Join_Split_xor (gm5f):Join_Split_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:split:Join_Split_and (gm58):Join_Split_xor (gm5f):Join_Split_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Skip:busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_and (gm58)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_xor (gm5f)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_or (gm5m)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):join:Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):join:Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Split_Yes_Transaction Processing (gm3b)*Transaction Processing (gm3b)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):split:Transaction Processing (gm3b)*or (gm40)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):split:Transaction Processing (gm3b)*or (gm40)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b)*or (gm40)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):join:Transaction Processing (gm3b)*or (gm40)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):join:Transaction Processing (gm3b)*or (gm40)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Transaction Processing (gm3b)*or (gm40)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm47)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm47)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm47)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm4p)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm4p)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm4p)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm47):or (gm40)*xor (gm4p)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):split:or (gm40)*xor (gm47):or (gm40)*xor (gm4p)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm47)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm4p)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):join:or (gm40)*xor (gm47)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):join:or (gm40)*xor (gm47)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm47)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):split:xor (gm47)*Closing Operations (gm3t)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):split:xor (gm47)*Closing Operations (gm3t)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47)*Closing Operations (gm3t)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):join:xor (gm47)*Closing Operations (gm3t)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):join:xor (gm47)*Closing Operations (gm3t)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm47)*Closing Operations (gm3t)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):split:Closing Operations (gm3t)*xor (gm4e)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):split:Closing Operations (gm3t)*xor (gm4e)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t)*xor (gm4e)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):join:Closing Operations (gm3t)*xor (gm4e)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):join:Closing Operations (gm3t)*xor (gm4e)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Closing Operations (gm3t)*xor (gm4e)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):split:xor (gm4e)*xor (gm4p)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):split:xor (gm4e)*xor (gm4p)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e)*xor (gm4p)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):join:or (gm40)*xor (gm4p)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):join:or (gm40)*xor (gm4p)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm40)*xor (gm4p)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):join:xor (gm4e)*xor (gm4p)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):join:xor (gm4e)*xor (gm4p)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4e)*xor (gm4p)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):split:xor (gm4p)*Accounting (gm60)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):split:xor (gm4p)*Accounting (gm60)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p)*Accounting (gm60)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):join:xor (gm4p)*Accounting (gm60)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):join:xor (gm4p)*Accounting (gm60)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm4p)*Accounting (gm60)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):split:Accounting (gm60)*and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):split:Accounting (gm60)*and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60)*and (gm58)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):join:Accounting (gm60)*and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):join:Accounting (gm60)*and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Accounting (gm60)*and (gm58)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):split:and (gm58)*Join_Yes_and (gm58):and (gm58)*xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):split:and (gm58)*Join_Yes_and (gm58):and (gm58)*xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*Join_Yes_and (gm58)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*xor (gm5f)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):join:and (gm58)*xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):join:and (gm58)*xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*xor (gm5f)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):split:xor (gm5f)*Join_Yes_xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):split:xor (gm5f)*Join_Yes_xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*Join_Yes_xor (gm5f)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):split:xor (gm5f)*or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):split:xor (gm5f)*or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*or (gm5m)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):join:xor (gm5f)*or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):join:xor (gm5f)*or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*or (gm5m)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):split:or (gm5m)*Join_Yes_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):split:or (gm5m)*Join_Yes_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m)*Join_Yes_or (gm5m)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):join:Join_Split_and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):join:Join_Split_and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_and (gm58)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):split:Join_Join_and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):split:Join_Join_and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_and (gm58):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_and (gm58)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):join:and (gm58)*Join_Yes_and (gm58):Join_Split_and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):join:and (gm58)*Join_Yes_and (gm58):Join_Split_and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:and (gm58)*Join_Yes_and (gm58)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_and (gm58)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):split:Join_Join_and (gm58)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):split:Join_Join_and (gm58)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_and (gm58):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_and (gm58)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):join:Join_Split_xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):join:Join_Split_xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_xor (gm5f)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):split:Join_Join_xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):split:Join_Join_xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_xor (gm5f):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_xor (gm5f)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):join:xor (gm5f)*Join_Yes_xor (gm5f):Join_Split_xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):join:xor (gm5f)*Join_Yes_xor (gm5f):Join_Split_xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:xor (gm5f)*Join_Yes_xor (gm5f)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_xor (gm5f)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):split:Join_Join_xor (gm5f)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):split:Join_Join_xor (gm5f)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_xor (gm5f):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_xor (gm5f)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):join:Join_Split_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):join:Join_Split_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_or (gm5m)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):split:Join_Join_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):split:Join_Join_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_No_or (gm5m):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_or (gm5m)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):join:or (gm5m)*Join_Yes_or (gm5m):Join_Split_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):join:or (gm5m)*Join_Yes_or (gm5m):Join_Split_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:or (gm5m)*Join_Yes_or (gm5m)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Split_or (gm5m)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):split:Join_Join_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):split:Join_Join_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Yes_or (gm5m):busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_or (gm5m)"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:join:Join_Join_and (gm58):Join_Join_xor (gm5f):Join_Join_or (gm5m)"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:join:Join_Join_and (gm58):Join_Join_xor (gm5f):Join_Join_or (gm5m)"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_and (gm58)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_xor (gm5f)"
+       "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Join_Join_or (gm5m)"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:busy"
+;
+trans "t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:split:OutputCondition"~"t:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:Output:busy"
+   out "p:Model.gm2d--0-----u--:Model.gm2d--0-----u--:OutputCondition"
+;
+

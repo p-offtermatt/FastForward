@@ -1,0 +1,238 @@
+place "i" init 1;
+place "o";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:InputCondition";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8g)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8g)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8t)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8t)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd9a)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd9a)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_and (bd9x)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_and (bd9x)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_Order Archiving (bd85)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_Order Archiving (bd85)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:OutputCondition";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g)*and (bd8g)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t)*and (bd8t)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a)*and (bd9a)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g)*Technical Order Completion (bd9q)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q)*and (bd8t)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t)*Order Settlement (bd75)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75)*and (bd9a)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a)*Business Order Completion (bd7n)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n)*and (bd9x)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Join_Yes_and (bd9x)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Order Archiving (bd85)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85)";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):busy";
+place "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:busy";
+trans "*:Model.bd6i--0-----u--:Model.bd6i--0-----u--:start"~"*:Model.bd6i--0-----u--:Model.bd6i--0-----u--:start"
+    in "i"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:InputCondition"
+;
+trans "*:Model.bd6i--0-----u--:Model.bd6i--0-----u--:end"~"*:Model.bd6i--0-----u--:Model.bd6i--0-----u--:end"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:join:InputCondition"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:join:InputCondition"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:InputCondition"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:split:Split_Split_and (bd8g):Split_Split_and (bd8t):Split_Split_and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:split:Split_Split_and (bd8g):Split_Split_and (bd8t):Split_Split_and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split:busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8g)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8t)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd9a)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):join:Split_Split_and (bd8g)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):join:Split_Split_and (bd8g)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8g)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):split:Split_Join_and (bd8g)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):split:Split_Join_and (bd8g)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8g):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8g)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):join:Split_Split_and (bd8g)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):join:Split_Split_and (bd8g)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8g)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):split:Split_Join_and (bd8g):Split_Yes_and (bd8g)*and (bd8g)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):split:Split_Join_and (bd8g):Split_Yes_and (bd8g)*and (bd8g)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8g)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g)*and (bd8g)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):join:Split_Split_and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):join:Split_Split_and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8t)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):split:Split_Join_and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):split:Split_Join_and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd8t):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8t)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):join:Split_Split_and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):join:Split_Split_and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd8t)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):split:Split_Join_and (bd8t):Split_Yes_and (bd8t)*and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):split:Split_Join_and (bd8t):Split_Yes_and (bd8t)*and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8t)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t)*and (bd8t)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):join:Split_Split_and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):join:Split_Split_and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd9a)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):split:Split_Join_and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):split:Split_Join_and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_No_and (bd9a):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd9a)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):join:Split_Split_and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):join:Split_Split_and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Split_and (bd9a)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):split:Split_Join_and (bd9a):Split_Yes_and (bd9a)*and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):split:Split_Join_and (bd9a):Split_Yes_and (bd9a)*and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd9a)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a)*and (bd9a)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:join:Split_Join_and (bd8g):Split_Join_and (bd8t):Split_Join_and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:join:Split_Join_and (bd8g):Split_Join_and (bd8t):Split_Join_and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8g)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd8t)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Join_and (bd9a)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:split:Join_Split_and (bd9x):Join_Split_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:split:Join_Split_and (bd9x):Join_Split_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Skip:busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_and (bd9x)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_Order Archiving (bd85)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):join:Split_Yes_and (bd8g)*and (bd8g)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):join:Split_Yes_and (bd8g)*and (bd8g)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8g)*and (bd8g)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):split:and (bd8g)*Technical Order Completion (bd9q)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):split:and (bd8g)*Technical Order Completion (bd9q)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g)*Technical Order Completion (bd9q)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):join:and (bd8g)*Technical Order Completion (bd9q)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):join:and (bd8g)*Technical Order Completion (bd9q)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8g)*Technical Order Completion (bd9q)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):split:Technical Order Completion (bd9q)*and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):split:Technical Order Completion (bd9q)*and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q)*and (bd8t)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):join:Split_Yes_and (bd8t)*and (bd8t):Technical Order Completion (bd9q)*and (bd8t)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):join:Split_Yes_and (bd8t)*and (bd8t):Technical Order Completion (bd9q)*and (bd8t)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd8t)*and (bd8t)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Technical Order Completion (bd9q)*and (bd8t)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):split:and (bd8t)*Order Settlement (bd75)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):split:and (bd8t)*Order Settlement (bd75)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t)*Order Settlement (bd75)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):join:and (bd8t)*Order Settlement (bd75)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):join:and (bd8t)*Order Settlement (bd75)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd8t)*Order Settlement (bd75)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):split:Order Settlement (bd75)*and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):split:Order Settlement (bd75)*and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75)*and (bd9a)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):join:Split_Yes_and (bd9a)*and (bd9a):Order Settlement (bd75)*and (bd9a)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):join:Split_Yes_and (bd9a)*and (bd9a):Order Settlement (bd75)*and (bd9a)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Split_Yes_and (bd9a)*and (bd9a)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Settlement (bd75)*and (bd9a)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):split:and (bd9a)*Business Order Completion (bd7n)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):split:and (bd9a)*Business Order Completion (bd7n)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a)*Business Order Completion (bd7n)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):join:and (bd9a)*Business Order Completion (bd7n)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):join:and (bd9a)*Business Order Completion (bd7n)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9a)*Business Order Completion (bd7n)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):split:Business Order Completion (bd7n)*and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):split:Business Order Completion (bd7n)*and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n)*and (bd9x)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):join:Business Order Completion (bd7n)*and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):join:Business Order Completion (bd7n)*and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Business Order Completion (bd7n)*and (bd9x)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):split:and (bd9x)*Join_Yes_and (bd9x):and (bd9x)*Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):split:and (bd9x)*Join_Yes_and (bd9x):and (bd9x)*Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Join_Yes_and (bd9x)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Order Archiving (bd85)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):join:and (bd9x)*Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):join:and (bd9x)*Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Order Archiving (bd85)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):split:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):split:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):join:Join_Split_and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):join:Join_Split_and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_and (bd9x)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):split:Join_Join_and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):split:Join_Join_and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_and (bd9x):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_and (bd9x)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):join:and (bd9x)*Join_Yes_and (bd9x):Join_Split_and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):join:and (bd9x)*Join_Yes_and (bd9x):Join_Split_and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:and (bd9x)*Join_Yes_and (bd9x)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_and (bd9x)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):split:Join_Join_and (bd9x)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):split:Join_Join_and (bd9x)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_and (bd9x):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_and (bd9x)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):join:Join_Split_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):join:Join_Split_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_Order Archiving (bd85)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):split:Join_Join_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):split:Join_Join_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_No_Order Archiving (bd85):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_Order Archiving (bd85)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):join:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85):Join_Split_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):join:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85):Join_Split_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Order Archiving (bd85)*Join_Yes_Order Archiving (bd85)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Split_Order Archiving (bd85)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):split:Join_Join_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):split:Join_Join_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Yes_Order Archiving (bd85):busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_Order Archiving (bd85)"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:join:Join_Join_and (bd9x):Join_Join_Order Archiving (bd85)"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:join:Join_Join_and (bd9x):Join_Join_Order Archiving (bd85)"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_and (bd9x)"
+       "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Join_Join_Order Archiving (bd85)"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:busy"
+;
+trans "t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:split:OutputCondition"~"t:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:split:OutputCondition"
+    in "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:Output:busy"
+   out "p:Model.bd6i--0-----u--:Model.bd6i--0-----u--:OutputCondition"
+;
+

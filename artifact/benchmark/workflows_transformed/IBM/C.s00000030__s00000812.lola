@@ -1,0 +1,72 @@
+PLACE
+alpha,loop.s00000821.inputCriterion.s00000257.used,process.s00000030##s00000812.input.s00000263,task.s00000813.inputCriterion.s00000257.used,task.s00000813.output.s00000264,task.s00000815.inputCriterion.s00000257.used,task.s00000815.output.s00000264,task.s00000819.inputCriterion.s00000257.used,task.s00000819.output.s00000264,task.s00000820.input.s00000263,task.s00000820.inputCriterion.s00000257.used,task.s00000820.output.s00000264;
+
+MARKING
+alpha: 1, loop.s00000821.inputCriterion.s00000257.used: 0, process.s00000030##s00000812.input.s00000263: 0, task.s00000813.inputCriterion.s00000257.used: 0, task.s00000813.output.s00000264: 0, task.s00000815.inputCriterion.s00000257.used: 0, task.s00000815.output.s00000264: 0, task.s00000819.inputCriterion.s00000257.used: 0, task.s00000819.output.s00000264: 0, task.s00000820.input.s00000263: 0, task.s00000820.inputCriterion.s00000257.used: 0, task.s00000820.output.s00000264: 0;
+
+TRANSITION loop.s00000821.inputCriterion.s00000257
+CONSUME task.s00000815.output.s00000264: 1;
+PRODUCE loop.s00000821.inputCriterion.s00000257.used: 1;
+
+
+
+TRANSITION loop.s00000821.outputCriterion.s00000258
+CONSUME loop.s00000821.inputCriterion.s00000257.used: 1;
+PRODUCE task.s00000820.input.s00000263: 1;
+
+
+
+TRANSITION process.s00000030##s00000812.inputCriterion.s00000257
+CONSUME alpha: 1;
+PRODUCE process.s00000030##s00000812.input.s00000263: 1;
+
+
+
+TRANSITION task.s00000813.inputCriterion.s00000257
+CONSUME process.s00000030##s00000812.input.s00000263: 1;
+PRODUCE task.s00000813.inputCriterion.s00000257.used: 1;
+
+
+
+TRANSITION task.s00000813.outputCriterion.s00000258
+CONSUME task.s00000813.inputCriterion.s00000257.used: 1;
+PRODUCE task.s00000813.output.s00000264: 1;
+
+
+
+TRANSITION task.s00000815.inputCriterion.s00000257
+CONSUME task.s00000819.output.s00000264: 1;
+PRODUCE task.s00000815.inputCriterion.s00000257.used: 1;
+
+
+
+TRANSITION task.s00000815.outputCriterion.s00000258
+CONSUME task.s00000815.inputCriterion.s00000257.used: 1;
+PRODUCE task.s00000815.output.s00000264: 1;
+
+
+
+TRANSITION task.s00000819.inputCriterion.s00000257
+CONSUME task.s00000813.output.s00000264: 1;
+PRODUCE task.s00000819.inputCriterion.s00000257.used: 1;
+
+
+
+TRANSITION task.s00000819.outputCriterion.s00000258
+CONSUME task.s00000819.inputCriterion.s00000257.used: 1;
+PRODUCE task.s00000819.output.s00000264: 1;
+
+
+
+TRANSITION task.s00000820.inputCriterion.s00000257
+CONSUME task.s00000820.input.s00000263: 1;
+PRODUCE task.s00000820.inputCriterion.s00000257.used: 1;
+
+
+
+TRANSITION task.s00000820.outputCriterion.s00000258
+CONSUME task.s00000820.inputCriterion.s00000257.used: 1;
+PRODUCE task.s00000820.output.s00000264: 1;
+
+
+

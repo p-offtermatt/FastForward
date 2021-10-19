@@ -1,0 +1,41 @@
+PLACE
+	p1, a1, a2, b1, b2, p2, a3, b3;
+MARKING
+	p1 : 1;
+TRANSITION s1
+	CONSUME
+		p1 : 1;
+	PRODUCE
+		a1 : 1,
+		b1 : 1,
+		p2 : 2;
+TRANSITION x1
+	CONSUME
+		a1 : 1;
+	PRODUCE
+		a2 : 1;
+TRANSITION y1
+	CONSUME
+		b1 : 1;
+	PRODUCE
+		b2 : 1;
+TRANSITION x2
+	CONSUME
+		a2 : 1;
+	PRODUCE
+		a1 : 1,
+		a3 : 1;
+TRANSITION y2
+	CONSUME
+		b2 : 1;
+	PRODUCE
+		b1 : 1,
+		b3 : 1;
+TRANSITION s2
+	CONSUME
+		p2 : 1,
+		a3 : 1,
+		b3 : 1;
+	PRODUCE
+		p1 : 1;
+

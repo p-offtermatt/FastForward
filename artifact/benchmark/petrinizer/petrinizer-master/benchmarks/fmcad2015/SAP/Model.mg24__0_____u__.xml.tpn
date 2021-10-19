@@ -1,0 +1,93 @@
+place "i" init 1;
+place "o";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:InputCondition";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Split_Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Join_Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Split_Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Join_Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:outputCondition";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p)";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):busy";
+place "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:busy";
+trans "*:Model.mg24--0-----u--:Model.mg24--0-----u--:start"~"*:Model.mg24--0-----u--:Model.mg24--0-----u--:start"
+    in "i"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:InputCondition"
+;
+trans "*:Model.mg24--0-----u--:Model.mg24--0-----u--:end"~"*:Model.mg24--0-----u--:Model.mg24--0-----u--:end"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:join:InputCondition"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:join:InputCondition"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:InputCondition"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:split:Split_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:split:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split:busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):join:Split_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):join:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):split:Split_Join_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):split:Split_Join_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_No_Infrastructure setup for personnel time recording (mg2p):busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Join_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):join:Split_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):join:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Split_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):split:Split_Join_Infrastructure setup for personnel time recording (mg2p):Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):split:Split_Join_Infrastructure setup for personnel time recording (mg2p):Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p):busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Join_Infrastructure setup for personnel time recording (mg2p)"
+       "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:join:Split_Join_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:join:Split_Join_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Join_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:split:Join_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:split:Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Skip:busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):join:Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):join:Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Split_Yes_Infrastructure setup for personnel time recording (mg2p)*Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):split:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):split:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p):busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):join:Join_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):join:Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):split:Join_Join_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):split:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_No_Infrastructure setup for personnel time recording (mg2p):busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):join:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p):Join_Split_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):join:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p):Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Infrastructure setup for personnel time recording (mg2p)*Join_Yes_Infrastructure setup for personnel time recording (mg2p)"
+       "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Split_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):split:Join_Join_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):split:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Yes_Infrastructure setup for personnel time recording (mg2p):busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:join:Join_Join_Infrastructure setup for personnel time recording (mg2p)"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:join:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Join_Join_Infrastructure setup for personnel time recording (mg2p)"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:busy"
+;
+trans "t:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:split:outputCondition"~"t:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:split:outputCondition"
+    in "p:Model.mg24--0-----u--:Model.mg24--0-----u--:Output:busy"
+   out "p:Model.mg24--0-----u--:Model.mg24--0-----u--:outputCondition"
+;
+

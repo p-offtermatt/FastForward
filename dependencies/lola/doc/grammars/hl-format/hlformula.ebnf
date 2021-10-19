@@ -1,0 +1,47 @@
+formula ::= 'FORMULA'? statepredicate ';'?
+
+statepredicate ::= '(' statepredicate ')'
+              | atomic_proposition
+              | 'NOT' statepredicate
+              | statepredicate boolean_operator statepredicate
+              | path_quantifier statepredicate
+              | unary_temporal_operator statepredicate
+              | '(' statepredicate binary_temporal_operator statepredicate ')'
+	      | quantifier type var_or_array ( , var_or_array )* ':' statepredicate /* type must be finite */
+
+quantifier ::= 'EXISTS' | 'FORALL'
+
+boolean_operator ::= 'AND' | 'OR' | 'XOR' | '->' | '<->'
+
+unary_temporal_operator ::= 'ALWAYS' | 'EVENTUALLY' | 'NEXTSTATE'
+                          | 'REACHABLE' | 'INVARIANT' | 'IMPOSSIBLE'
+
+binary_temporal_operator ::= 'UNTIL' | 'RELEASE'
+
+path_quantifier ::= 'ALLPATH' | 'EXPATH'
+
+atomic_proposition ::= term term_comparison_operator term
+                  | 'TRUE'
+                  | 'FALSE'
+                  | 'FIREABLE' '(' transition ')'
+                  | 'INITIAL'
+
+term_comparison_operator ::= '=' | '!=' | '>' | '>=' | '<' | '<='
+
+term ::= '(' term ')'
+    | place
+    | 'NUMBER'
+    | term '+' term
+    | term '-' term
+    | 'NUMBER' '*' term
+
+/* in the sequel: expression uses variables that are quantified such that */
+/* scope of quantification covers expression */
+place ::= 'IDENTIFIER' ( '.' '(' expression ')' )? /* without expression: a low level place */
+ /* with expression: a firing mode of a HL place */
+	/* without parentheses: obvious grammar conflict */
+
+
+transition ::= transition ( '.' '(' firing_mode+ ') )?
+
+firing_mode = 'IDENTIFIER' = expression ';'

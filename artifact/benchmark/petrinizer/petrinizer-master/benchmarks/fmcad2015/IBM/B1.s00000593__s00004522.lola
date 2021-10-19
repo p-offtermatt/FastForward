@@ -1,0 +1,39 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToTask.s00001063.input.s00000846, callToTask.s00001063.inputCriterion.s00000772.used, callToTask.s00001063.output.s00001064, callToTask.s00001063.output.s00001484, callToTask.s00001063.output.s00001485, callToTask.s00001063.output.s00001675, callToTask.s00001063.output.s00001677, merge.s00000815.activated, merge.s00000815.input.s00000783, merge.s00000815.input.s00000807, merge.s00000815.input.s00000819;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToTask.s00001063.inputCriterion.s00000772
+  CONSUME callToTask.s00001063.input.s00000846:1;
+  PRODUCE callToTask.s00001063.inputCriterion.s00000772.used:1;
+
+TRANSITION callToTask.s00001063.outputCriterion.s00000773
+  CONSUME callToTask.s00001063.inputCriterion.s00000772.used:1;
+  PRODUCE callToTask.s00001063.output.s00001064:1, callToTask.s00001063.output.s00001484:1, callToTask.s00001063.output.s00001485:1, callToTask.s00001063.output.s00001675:1, callToTask.s00001063.output.s00001677:1;
+
+TRANSITION merge.s00000815.activate.s00000816
+  CONSUME merge.s00000815.input.s00000783:1;
+  PRODUCE merge.s00000815.activated:1;
+
+TRANSITION merge.s00000815.activate.s00000817
+  CONSUME merge.s00000815.input.s00000807:1;
+  PRODUCE merge.s00000815.activated:1;
+
+TRANSITION merge.s00000815.activate.s00000818
+  CONSUME merge.s00000815.input.s00000819:1;
+  PRODUCE merge.s00000815.activated:1;
+
+TRANSITION merge.s00000815.fire.s00000824
+  CONSUME merge.s00000815.activated:1;
+  PRODUCE callToTask.s00001063.input.s00000846:1;
+
+TRANSITION process.s00000593##s00004522.inputCriterion.s00000772
+  CONSUME alpha:1;
+  PRODUCE merge.s00000815.input.s00000783:1, merge.s00000815.input.s00000807:1, merge.s00000815.input.s00000819:1;
+
+
+{ END OF FILE }

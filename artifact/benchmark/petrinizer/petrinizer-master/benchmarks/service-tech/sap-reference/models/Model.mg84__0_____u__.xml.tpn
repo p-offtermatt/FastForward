@@ -1,0 +1,113 @@
+place "i" init 1;
+place "o";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:InputCondition";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Split_and (mga5)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Join_and (mga5)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Split_or (mgaq)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Join_or (mgaq)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:outputCondition";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5)*and (mga5)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5)*Personnel shift planning - operative (mgaj)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj)*or (mgaq)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq)*Join_Yes_or (mgaq)";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):busy";
+place "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:busy";
+trans "*:Model.mg84--0-----u--:Model.mg84--0-----u--:start"~"*:Model.mg84--0-----u--:Model.mg84--0-----u--:start"
+    in "i"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:InputCondition"
+;
+trans "*:Model.mg84--0-----u--:Model.mg84--0-----u--:end"~"*:Model.mg84--0-----u--:Model.mg84--0-----u--:end"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:join:InputCondition"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:join:InputCondition"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:InputCondition"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:split:Split_Split_and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:split:Split_Split_and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split:busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Split_and (mga5)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):join:Split_Split_and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):join:Split_Split_and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Split_and (mga5)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):split:Split_Join_and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):split:Split_Join_and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_No_and (mga5):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Join_and (mga5)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):join:Split_Split_and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):join:Split_Split_and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Split_and (mga5)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):split:Split_Join_and (mga5):Split_Yes_and (mga5)*and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):split:Split_Join_and (mga5):Split_Yes_and (mga5)*and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Join_and (mga5)"
+       "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5)*and (mga5)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:join:Split_Join_and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:join:Split_Join_and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Join_and (mga5)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:split:Join_Split_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:split:Join_Split_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Skip:busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Split_or (mgaq)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):join:Split_Yes_and (mga5)*and (mga5)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):join:Split_Yes_and (mga5)*and (mga5)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Split_Yes_and (mga5)*and (mga5)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):split:and (mga5)*Personnel shift planning - operative (mgaj)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):split:and (mga5)*Personnel shift planning - operative (mgaj)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5)*Personnel shift planning - operative (mgaj)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):join:and (mga5)*Personnel shift planning - operative (mgaj)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):join:and (mga5)*Personnel shift planning - operative (mgaj)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:and (mga5)*Personnel shift planning - operative (mgaj)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):split:Personnel shift planning - operative (mgaj)*or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):split:Personnel shift planning - operative (mgaj)*or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj)*or (mgaq)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):join:Personnel shift planning - operative (mgaj)*or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):join:Personnel shift planning - operative (mgaj)*or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Personnel shift planning - operative (mgaj)*or (mgaq)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):split:or (mgaq)*Join_Yes_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):split:or (mgaq)*Join_Yes_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq)*Join_Yes_or (mgaq)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):join:Join_Split_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):join:Join_Split_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Split_or (mgaq)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):split:Join_Join_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):split:Join_Join_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_No_or (mgaq):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Join_or (mgaq)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):join:or (mgaq)*Join_Yes_or (mgaq):Join_Split_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):join:or (mgaq)*Join_Yes_or (mgaq):Join_Split_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:or (mgaq)*Join_Yes_or (mgaq)"
+       "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Split_or (mgaq)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):split:Join_Join_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):split:Join_Join_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Yes_or (mgaq):busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Join_or (mgaq)"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:join:Join_Join_or (mgaq)"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:join:Join_Join_or (mgaq)"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Join_Join_or (mgaq)"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:busy"
+;
+trans "t:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:split:outputCondition"~"t:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:split:outputCondition"
+    in "p:Model.mg84--0-----u--:Model.mg84--0-----u--:Output:busy"
+   out "p:Model.mg84--0-----u--:Model.mg84--0-----u--:outputCondition"
+;
+

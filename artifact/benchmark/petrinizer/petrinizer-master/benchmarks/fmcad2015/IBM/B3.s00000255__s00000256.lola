@@ -1,0 +1,47 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToProcess.s00001419.inputCriterion.s00001053.used, callToProcess.s00001419.output.s00001077, callToProcess.s00002639.inputCriterion.s00001053.used, callToProcess.s00002639.output.s00001077, callToTask.s00002694.input.s00001066, callToTask.s00002694.inputCriterion.s00001053.used, callToTask.s00002694.output.s00001054, callToTask.s00002804.inputCriterion.s00001053.used, callToTask.s00002804.output.s00001077;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToProcess.s00001419.inputCriterion.s00001053
+  CONSUME callToProcess.s00002639.output.s00001077:1;
+  PRODUCE callToProcess.s00001419.inputCriterion.s00001053.used:1;
+
+TRANSITION callToProcess.s00001419.outputCriterion.s00001055
+  CONSUME callToProcess.s00001419.inputCriterion.s00001053.used:1;
+  PRODUCE callToProcess.s00001419.output.s00001077:1;
+
+TRANSITION callToProcess.s00002639.inputCriterion.s00001053
+  CONSUME callToTask.s00002804.output.s00001077:1;
+  PRODUCE callToProcess.s00002639.inputCriterion.s00001053.used:1;
+
+TRANSITION callToProcess.s00002639.outputCriterion.s00001055
+  CONSUME callToProcess.s00002639.inputCriterion.s00001053.used:1;
+  PRODUCE callToProcess.s00002639.output.s00001077:1;
+
+TRANSITION callToTask.s00002694.inputCriterion.s00001053
+  CONSUME callToTask.s00002694.input.s00001066:1;
+  PRODUCE callToTask.s00002694.inputCriterion.s00001053.used:1;
+
+TRANSITION callToTask.s00002694.outputCriterion.s00001055
+  CONSUME callToTask.s00002694.inputCriterion.s00001053.used:1;
+  PRODUCE callToTask.s00002694.output.s00001054:1;
+
+TRANSITION callToTask.s00002804.inputCriterion.s00001053
+  CONSUME callToTask.s00002694.output.s00001054:1;
+  PRODUCE callToTask.s00002804.inputCriterion.s00001053.used:1;
+
+TRANSITION callToTask.s00002804.outputCriterion.s00001055
+  CONSUME callToTask.s00002804.inputCriterion.s00001053.used:1;
+  PRODUCE callToTask.s00002804.output.s00001077:1;
+
+TRANSITION process.s00000255##s00000256.inputCriterion.s00001053
+  CONSUME alpha:1;
+  PRODUCE callToTask.s00002694.input.s00001066:1;
+
+
+{ END OF FILE }

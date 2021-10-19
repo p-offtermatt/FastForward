@@ -1,0 +1,42 @@
+PLACE
+x_eq_0,q3,p2,q2,p3,q5,x_eq_1,q4,y_eq_1,p1,q1;
+
+MARKING
+q5: 1;
+
+TRANSITION t8
+CONSUME y_eq_1: 1, q5: 1;
+PRODUCE q3: 1;
+
+TRANSITION t1
+CONSUME p2: 1, x_eq_1: 1;
+PRODUCE p3: 1, x_eq_0: 1;
+
+TRANSITION t3
+CONSUME x_eq_0: 1, q3: 1;
+PRODUCE x_eq_0: 1, q1: 1;
+
+TRANSITION t7
+CONSUME q4: 1;
+PRODUCE y_eq_1: 1, q5: 1;
+
+TRANSITION t4
+CONSUME q1: 1;
+PRODUCE y_eq_1: 1, q2: 1;
+
+TRANSITION t2
+CONSUME p3: 1, y_eq_1: 1;
+PRODUCE p1: 1, y_eq_1: 1;
+
+TRANSITION t0
+CONSUME p1: 1, x_eq_0: 1;
+PRODUCE p2: 1, x_eq_1: 1;
+
+TRANSITION t6
+CONSUME x_eq_1: 1, q3: 1;
+PRODUCE x_eq_1: 1, q4: 1;
+
+TRANSITION t5
+CONSUME x_eq_1: 1, q2: 1;
+PRODUCE x_eq_1: 1, q5: 1;
+

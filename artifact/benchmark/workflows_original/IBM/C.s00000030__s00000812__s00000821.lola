@@ -1,0 +1,131 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, decision.s00000830.activated, join.s00000831.activated.s00000284, join.s00000831.activated.s00000286, join.s00000831.activated.s00000289, join.s00000831.input.s00000263, loop.s00000832.input.s00000285, loop.s00000832.inputCriterion.s00000257.used, merge.s00000320.activated, merge.s00000320.input.s00000290, process.s00000821.outputCriterion.s00000258_omega, task.s00000822.input.s00000263, task.s00000822.inputCriterion.s00000257.used, task.s00000822.output.s00000264, task.s00000822.output.s00000275, task.s00000823.inputCriterion.s00000257.used, task.s00000823.output.s00000264, task.s00000824.inputCriterion.s00000257.used, task.s00000824.output.s00000264, task.s00000824.output.s00000275, task.s00000824.output.s00000281, task.s00000825.inputCriterion.s00000257.used, task.s00000825.output.s00000264, task.s00000826.inputCriterion.s00000257.used, task.s00000826.output.s00000264, task.s00000827.inputCriterion.s00000257.used, task.s00000827.output.s00000264, task.s00000828.input.s00000263, task.s00000828.inputCriterion.s00000257.used, task.s00000828.output.s00000264, task.s00000829.input.s00000263, task.s00000829.inputCriterion.s00000257.used, task.s00000829.output.s00000264;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION decision.s00000830.activate.s00000271
+  CONSUME task.s00000822.output.s00000264:1;
+  PRODUCE decision.s00000830.activated:1;
+
+TRANSITION decision.s00000830.fire.s00000272
+  CONSUME decision.s00000830.activated:1;
+  PRODUCE task.s00000828.input.s00000263:1;
+
+TRANSITION decision.s00000830.fire.s00000274
+  CONSUME decision.s00000830.activated:1;
+  PRODUCE merge.s00000320.input.s00000290:1;
+
+TRANSITION join.s00000831.activate.s00000284
+  CONSUME join.s00000831.input.s00000263:1;
+  PRODUCE join.s00000831.activated.s00000284:1;
+
+TRANSITION join.s00000831.activate.s00000286
+  CONSUME task.s00000826.output.s00000264:1;
+  PRODUCE join.s00000831.activated.s00000286:1;
+
+TRANSITION join.s00000831.activate.s00000289
+  CONSUME task.s00000827.output.s00000264:1;
+  PRODUCE join.s00000831.activated.s00000289:1;
+
+TRANSITION join.s00000831.fire.s00000287
+  CONSUME join.s00000831.activated.s00000284:1, join.s00000831.activated.s00000286:1, join.s00000831.activated.s00000289:1;
+  PRODUCE task.s00000829.input.s00000263:1;
+
+TRANSITION loop.s00000832.inputCriterion.s00000257
+  CONSUME loop.s00000832.input.s00000285:1;
+  PRODUCE loop.s00000832.inputCriterion.s00000257.used:1;
+
+TRANSITION loop.s00000832.outputCriterion.s00000258
+  CONSUME loop.s00000832.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000822.input.s00000263:1;
+
+TRANSITION merge.s00000320.activate.s00000284
+  CONSUME task.s00000828.output.s00000264:1;
+  PRODUCE merge.s00000320.activated:1;
+
+TRANSITION merge.s00000320.activate.s00000286
+  CONSUME merge.s00000320.input.s00000290:1;
+  PRODUCE merge.s00000320.activated:1;
+
+TRANSITION merge.s00000320.fire.s00000287
+  CONSUME merge.s00000320.activated:1;
+  PRODUCE join.s00000831.input.s00000263:1;
+
+TRANSITION process.s00000821.inputCriterion.s00000257
+  CONSUME alpha:1;
+  PRODUCE loop.s00000832.input.s00000285:1;
+
+TRANSITION process.s00000821.outputCriterion.s00000258
+  CONSUME task.s00000829.output.s00000264:1;
+  PRODUCE process.s00000821.outputCriterion.s00000258_omega:1;
+
+TRANSITION task.s00000822.inputCriterion.s00000257
+  CONSUME task.s00000822.input.s00000263:1;
+  PRODUCE task.s00000822.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000822.outputCriterion.s00000258
+  CONSUME task.s00000822.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000822.output.s00000264:1, task.s00000822.output.s00000275:1;
+
+TRANSITION task.s00000823.inputCriterion.s00000257
+  CONSUME task.s00000822.output.s00000275:1;
+  PRODUCE task.s00000823.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000823.outputCriterion.s00000258
+  CONSUME task.s00000823.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000823.output.s00000264:1;
+
+TRANSITION task.s00000824.inputCriterion.s00000257
+  CONSUME task.s00000823.output.s00000264:1;
+  PRODUCE task.s00000824.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000824.outputCriterion.s00000258
+  CONSUME task.s00000824.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000824.output.s00000264:1, task.s00000824.output.s00000275:1, task.s00000824.output.s00000281:1;
+
+TRANSITION task.s00000825.inputCriterion.s00000257
+  CONSUME task.s00000824.output.s00000264:1;
+  PRODUCE task.s00000825.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000825.outputCriterion.s00000258
+  CONSUME task.s00000825.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000825.output.s00000264:1;
+
+TRANSITION task.s00000826.inputCriterion.s00000257
+  CONSUME task.s00000824.output.s00000275:1;
+  PRODUCE task.s00000826.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000826.outputCriterion.s00000258
+  CONSUME task.s00000826.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000826.output.s00000264:1;
+
+TRANSITION task.s00000827.inputCriterion.s00000257
+  CONSUME task.s00000824.output.s00000281:1;
+  PRODUCE task.s00000827.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000827.outputCriterion.s00000258
+  CONSUME task.s00000827.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000827.output.s00000264:1;
+
+TRANSITION task.s00000828.inputCriterion.s00000257
+  CONSUME task.s00000828.input.s00000263:1;
+  PRODUCE task.s00000828.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000828.outputCriterion.s00000258
+  CONSUME task.s00000828.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000828.output.s00000264:1;
+
+TRANSITION task.s00000829.inputCriterion.s00000257
+  CONSUME task.s00000829.input.s00000263:1;
+  PRODUCE task.s00000829.inputCriterion.s00000257.used:1;
+
+TRANSITION task.s00000829.outputCriterion.s00000258
+  CONSUME task.s00000829.inputCriterion.s00000257.used:1;
+  PRODUCE task.s00000829.output.s00000264:1;
+
+
+{ END OF FILE }

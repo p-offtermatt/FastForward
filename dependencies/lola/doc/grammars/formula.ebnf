@@ -1,0 +1,35 @@
+formula ::= 'FORMULA'? statepredicate ';'?
+
+statepredicate ::= '(' statepredicate ')'
+              | atomic_proposition
+              | 'NOT' statepredicate
+              | statepredicate boolean_operator statepredicate
+              | path_quantifier statepredicate
+              | unary_temporal_operator statepredicate
+              | '(' statepredicate binary_temporal_operator statepredicate ')'
+
+boolean_operator ::= 'AND' | 'OR' | 'XOR' | '->' | '<->'
+
+unary_temporal_operator ::= 'ALWAYS' | 'EVENTUALLY' | 'NEXTSTATE'
+                       | 'REACHABLE' | 'INVARIANT' | 'IMPOSSIBLE'         
+
+binary_temporal_operator ::= 'UNTIL' | 'RELEASE'
+
+path_quantifier ::= 'ALLPATH' | 'EXPATH'
+
+atomic_proposition ::= term term_comparison_operator term
+                  | 'TRUE'
+                  | 'FALSE'
+                  | 'FIREABLE' '(' 'IDENTIFIER' ')'
+                  | 'INITIAL'
+                  | 'DEADLOCK'
+
+term_comparison_operator ::= '=' | '!=' | '>' | '>=' | '<' | '<='
+
+term ::= '(' term ')'
+    | 'IDENTIFIER'
+    | 'NUMBER'
+    | term '+' term
+    | term '-' term
+    | 'NUMBER' '*' term
+    | 'oo'

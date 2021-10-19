@@ -1,0 +1,40 @@
+PLACE 'sigma,'m1,'m2,alpha,callToTask.s00001911.input.s00000807,callToTask.s00001911.inputCriterion.s00000772.used,callToTask.s00001911.output.s00000785,callToTask.s00001911.output.s00000849,process.s00000117##s00003188.input.s00000783,process.s00000117##s00003188.outputCriterion.s00000773_omega,'alpha,'callToTask.s00001911.input.s00000807,'callToTask.s00001911.inputCriterion.s00000772.used,'callToTask.s00001911.output.s00000785,'callToTask.s00001911.output.s00000849,'process.s00000117##s00003188.input.s00000783,'process.s00000117##s00003188.outputCriterion.s00000773_omega;
+
+MARKING 'alpha:1,'m1:1,alpha:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION callToTask.s00001911.inputCriterion.s00000772
+CONSUME 'callToTask.s00001911.input.s00000807:1,'process.s00000117##s00003188.input.s00000783:1,callToTask.s00001911.input.s00000807:1,process.s00000117##s00003188.input.s00000783:1,'m1:1;
+PRODUCE 'callToTask.s00001911.inputCriterion.s00000772.used:1,callToTask.s00001911.inputCriterion.s00000772.used:1,'m1:1;
+
+TRANSITION 'callToTask.s00001911.inputCriterion.s00000772
+CONSUME 'callToTask.s00001911.input.s00000807:1,'process.s00000117##s00003188.input.s00000783:1,'m2:1;
+PRODUCE 'callToTask.s00001911.inputCriterion.s00000772.used:1,'sigma:1,'m2:1;
+
+TRANSITION callToTask.s00001911.outputCriterion.s00000773
+CONSUME 'callToTask.s00001911.inputCriterion.s00000772.used:1,callToTask.s00001911.inputCriterion.s00000772.used:1,'m1:1;
+PRODUCE 'callToTask.s00001911.output.s00000785:1,'callToTask.s00001911.output.s00000849:1,callToTask.s00001911.output.s00000785:1,callToTask.s00001911.output.s00000849:1,'m1:1;
+
+TRANSITION 'callToTask.s00001911.outputCriterion.s00000773
+CONSUME 'callToTask.s00001911.inputCriterion.s00000772.used:1,'m2:1;
+PRODUCE 'callToTask.s00001911.output.s00000785:1,'callToTask.s00001911.output.s00000849:1,'sigma:1,'m2:1;
+
+TRANSITION process.s00000117##s00003188.inputCriterion.s00000772
+CONSUME 'alpha:1,alpha:1,'m1:1;
+PRODUCE 'callToTask.s00001911.input.s00000807:1,'process.s00000117##s00003188.input.s00000783:1,callToTask.s00001911.input.s00000807:1,process.s00000117##s00003188.input.s00000783:1,'m1:1;
+
+TRANSITION 'process.s00000117##s00003188.inputCriterion.s00000772
+CONSUME 'alpha:1,'m2:1;
+PRODUCE 'callToTask.s00001911.input.s00000807:1,'process.s00000117##s00003188.input.s00000783:1,'sigma:1,'m2:1;
+
+TRANSITION process.s00000117##s00003188.outputCriterion.s00000773
+CONSUME 'callToTask.s00001911.output.s00000785:1,callToTask.s00001911.output.s00000785:1,'m1:1;
+PRODUCE 'process.s00000117##s00003188.outputCriterion.s00000773_omega:1,process.s00000117##s00003188.outputCriterion.s00000773_omega:1,'m1:1;
+
+TRANSITION 'process.s00000117##s00003188.outputCriterion.s00000773
+CONSUME 'callToTask.s00001911.output.s00000785:1,'m2:1;
+PRODUCE 'process.s00000117##s00003188.outputCriterion.s00000773_omega:1,'sigma:1,'m2:1;
+

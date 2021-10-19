@@ -1,0 +1,40 @@
+PLACE 'sigma,'m1,'m2,alpha,callToProcess.s00001153.input.s00001127,callToProcess.s00001153.inputCriterion.s00001053.used,callToProcess.s00001153.output.s00001054,callToProcess.s00001153.output.s00001080,process.s00000475##s00003625.input.s00001052,process.s00000475##s00003625.outputCriterion.s00001055_omega,'alpha,'callToProcess.s00001153.input.s00001127,'callToProcess.s00001153.inputCriterion.s00001053.used,'callToProcess.s00001153.output.s00001054,'callToProcess.s00001153.output.s00001080,'process.s00000475##s00003625.input.s00001052,'process.s00000475##s00003625.outputCriterion.s00001055_omega;
+
+MARKING 'alpha:1,'m1:1,alpha:1;
+
+TRANSITION 'switch
+CONSUME 'm1:1;
+PRODUCE 'm2:1;
+
+TRANSITION callToProcess.s00001153.inputCriterion.s00001053
+CONSUME 'callToProcess.s00001153.input.s00001127:1,'process.s00000475##s00003625.input.s00001052:1,callToProcess.s00001153.input.s00001127:1,process.s00000475##s00003625.input.s00001052:1,'m1:1;
+PRODUCE 'callToProcess.s00001153.inputCriterion.s00001053.used:1,callToProcess.s00001153.inputCriterion.s00001053.used:1,'m1:1;
+
+TRANSITION 'callToProcess.s00001153.inputCriterion.s00001053
+CONSUME 'callToProcess.s00001153.input.s00001127:1,'process.s00000475##s00003625.input.s00001052:1,'m2:1;
+PRODUCE 'callToProcess.s00001153.inputCriterion.s00001053.used:1,'sigma:1,'m2:1;
+
+TRANSITION callToProcess.s00001153.outputCriterion.s00001055
+CONSUME 'callToProcess.s00001153.inputCriterion.s00001053.used:1,callToProcess.s00001153.inputCriterion.s00001053.used:1,'m1:1;
+PRODUCE 'callToProcess.s00001153.output.s00001054:1,'callToProcess.s00001153.output.s00001080:1,callToProcess.s00001153.output.s00001054:1,callToProcess.s00001153.output.s00001080:1,'m1:1;
+
+TRANSITION 'callToProcess.s00001153.outputCriterion.s00001055
+CONSUME 'callToProcess.s00001153.inputCriterion.s00001053.used:1,'m2:1;
+PRODUCE 'callToProcess.s00001153.output.s00001054:1,'callToProcess.s00001153.output.s00001080:1,'sigma:1,'m2:1;
+
+TRANSITION process.s00000475##s00003625.inputCriterion.s00001053
+CONSUME 'alpha:1,alpha:1,'m1:1;
+PRODUCE 'callToProcess.s00001153.input.s00001127:1,'process.s00000475##s00003625.input.s00001052:1,callToProcess.s00001153.input.s00001127:1,process.s00000475##s00003625.input.s00001052:1,'m1:1;
+
+TRANSITION 'process.s00000475##s00003625.inputCriterion.s00001053
+CONSUME 'alpha:1,'m2:1;
+PRODUCE 'callToProcess.s00001153.input.s00001127:1,'process.s00000475##s00003625.input.s00001052:1,'sigma:1,'m2:1;
+
+TRANSITION process.s00000475##s00003625.outputCriterion.s00001055
+CONSUME 'callToProcess.s00001153.output.s00001054:1,callToProcess.s00001153.output.s00001054:1,'m1:1;
+PRODUCE 'process.s00000475##s00003625.outputCriterion.s00001055_omega:1,process.s00000475##s00003625.outputCriterion.s00001055_omega:1,'m1:1;
+
+TRANSITION 'process.s00000475##s00003625.outputCriterion.s00001055
+CONSUME 'callToProcess.s00001153.output.s00001054:1,'m2:1;
+PRODUCE 'process.s00000475##s00003625.outputCriterion.s00001055_omega:1,'sigma:1,'m2:1;
+

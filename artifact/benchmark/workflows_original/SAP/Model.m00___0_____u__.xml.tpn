@@ -1,0 +1,136 @@
+place "i" init 1;
+place "o";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:InputCondition";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Split_Product Specification (m0l-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Join_Product Specification (m0l-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Split_and (m26-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Join_and (m26-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:outputCondition";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-)*and (m1z-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Specification of functions (m0z-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Technical detail specification (m1d-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-)*and (m26-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-)*Join_Yes_and (m26-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-)*and (m26-)";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split:busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Skip:busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):busy";
+place "p:Model.m00---0-----u--:Model.m00---0-----u--:Output:busy";
+trans "*:Model.m00---0-----u--:Model.m00---0-----u--:start"~"*:Model.m00---0-----u--:Model.m00---0-----u--:start"
+    in "i"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:InputCondition"
+;
+trans "*:Model.m00---0-----u--:Model.m00---0-----u--:end"~"*:Model.m00---0-----u--:Model.m00---0-----u--:end"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split:join:InputCondition"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split:join:InputCondition"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:InputCondition"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split:busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split:split:Split_Split_Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split:split:Split_Split_Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split:busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Split_Product Specification (m0l-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):join:Split_Split_Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):join:Split_Split_Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Split_Product Specification (m0l-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):split:Split_Join_Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):split:Split_Join_Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_No_Product Specification (m0l-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Join_Product Specification (m0l-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):join:Split_Split_Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):join:Split_Split_Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Split_Product Specification (m0l-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):split:Split_Join_Product Specification (m0l-):Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):split:Split_Join_Product Specification (m0l-):Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Join_Product Specification (m0l-)"
+       "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Skip:join:Split_Join_Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Skip:join:Split_Join_Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Join_Product Specification (m0l-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Skip:busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Skip:split:Join_Split_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Skip:split:Join_Split_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Skip:busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Split_and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):join:Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):join:Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Split_Yes_Product Specification (m0l-)*Product Specification (m0l-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):split:Product Specification (m0l-)*and (m1z-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):split:Product Specification (m0l-)*and (m1z-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-)*and (m1z-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):join:Product Specification (m0l-)*and (m1z-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):join:Product Specification (m0l-)*and (m1z-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Product Specification (m0l-)*and (m1z-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):split:and (m1z-)*Specification of functions (m0z-):and (m1z-)*Technical detail specification (m1d-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):split:and (m1z-)*Specification of functions (m0z-):and (m1z-)*Technical detail specification (m1d-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Specification of functions (m0z-)"
+       "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Technical detail specification (m1d-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):join:and (m1z-)*Specification of functions (m0z-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):join:and (m1z-)*Specification of functions (m0z-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Specification of functions (m0z-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):split:Specification of functions (m0z-)*and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):split:Specification of functions (m0z-)*and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-)*and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):join:Specification of functions (m0z-)*and (m26-):Technical detail specification (m1d-)*and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):join:Specification of functions (m0z-)*and (m26-):Technical detail specification (m1d-)*and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Specification of functions (m0z-)*and (m26-)"
+       "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-)*and (m26-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):split:and (m26-)*Join_Yes_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):split:and (m26-)*Join_Yes_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-)*Join_Yes_and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):join:and (m1z-)*Technical detail specification (m1d-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):join:and (m1z-)*Technical detail specification (m1d-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m1z-)*Technical detail specification (m1d-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):split:Technical detail specification (m1d-)*and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):split:Technical detail specification (m1d-)*and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Technical detail specification (m1d-)*and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):join:Join_Split_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):join:Join_Split_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Split_and (m26-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):split:Join_Join_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):split:Join_Join_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_No_and (m26-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Join_and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):join:and (m26-)*Join_Yes_and (m26-):Join_Split_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):join:and (m26-)*Join_Yes_and (m26-):Join_Split_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:and (m26-)*Join_Yes_and (m26-)"
+       "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Split_and (m26-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):split:Join_Join_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):split:Join_Join_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Yes_and (m26-):busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Join_and (m26-)"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Output:join:Join_Join_and (m26-)"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Output:join:Join_Join_and (m26-)"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Join_Join_and (m26-)"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:Output:busy"
+;
+trans "t:Model.m00---0-----u--:Model.m00---0-----u--:Output:split:outputCondition"~"t:Model.m00---0-----u--:Model.m00---0-----u--:Output:split:outputCondition"
+    in "p:Model.m00---0-----u--:Model.m00---0-----u--:Output:busy"
+   out "p:Model.m00---0-----u--:Model.m00---0-----u--:outputCondition"
+;
+

@@ -1,0 +1,22 @@
+net ::= 'PLACE' place_lists 'MARKING' marking_list? ';' transition+
+
+place_lists ::= ( capacity? place_list ';' )+
+
+capacity ::= 'SAFE' 'NUMBER'? ':'
+
+place_list ::= nodeident ( ',' nodeident )*
+
+nodeident ::= 'IDENTIFIER' | 'NUMBER'
+
+marking_list ::= marking ( ',' marking )*
+
+marking ::= nodeident ( ':' 'NUMBER' )?
+
+transition ::= 'TRANSITION' nodeident fairness?
+               'CONSUME' arc_list? ';' 'PRODUCE' arc_list? ';'
+
+fairness ::= ( 'STRONG' | 'WEAK' ) 'FAIR'
+
+arc_list ::= arc ( ',' arc )*
+
+arc ::= nodeident ( ':' 'NUMBER' )?

@@ -1,0 +1,40 @@
+const int N = 5;
+
+PLACE
+int(0,N-1) th, hl, ea, hr, fo; 
+
+MARKING th : all(int(0,N-1)),    
+	fo : all(int(0,N-1)); 
+
+TRANSITION tl STRONG FAIR
+
+	int(0,N-1) y;
+
+	CONSUME th : y, 
+		fo : y;
+	PRODUCE hl : y ;
+	  
+TRANSITION tr STRONG FAIR
+
+	int(0,N-1) y;
+
+	CONSUME hl : y, 
+	    	fo : (y+1) % N;
+	PRODUCE ea : y ;
+	  
+TRANSITION rl WEAK FAIR
+
+	int(0,N-1) y;
+
+	CONSUME ea : y;
+	PRODUCE hr : y, 
+		fo : y;
+	  
+TRANSITION rr WEAK FAIR
+
+	int(0,N-1) y; 
+
+	CONSUME hr : y;
+	PRODUCE th : y, 
+		fo : (y+1) % N;
+	  

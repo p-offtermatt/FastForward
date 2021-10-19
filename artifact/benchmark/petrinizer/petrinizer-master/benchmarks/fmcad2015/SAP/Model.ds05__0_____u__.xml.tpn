@@ -1,0 +1,166 @@
+place "i" init 1;
+place "o";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:InputCondition";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Shift Planning (ds1f)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Shift Planning (ds1f)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Capacity Leveling (ds29)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Capacity Leveling (ds29)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:OutputCondition";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t)*or (ds0j)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Shift Planning (ds1f)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Capacity Leveling (ds29)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29)";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):busy";
+place "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:busy";
+trans "*:Model.ds05--0-----u--:Model.ds05--0-----u--:start"~"*:Model.ds05--0-----u--:Model.ds05--0-----u--:start"
+    in "i"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:InputCondition"
+;
+trans "*:Model.ds05--0-----u--:Model.ds05--0-----u--:end"~"*:Model.ds05--0-----u--:Model.ds05--0-----u--:end"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:join:InputCondition"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:join:InputCondition"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:InputCondition"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:split:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:split:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split:busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):split:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):split:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_No_Planning Work in Internal Activities and Activity Elements (ds11):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Split_Planning Work in Internal Activities and Activity Elements (ds11)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):split:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11):Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):split:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11):Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:join:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:join:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Join_Planning Work in Internal Activities and Activity Elements (ds11)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:split:Join_Split_Shift Planning (ds1f):Join_Split_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:split:Join_Split_Shift Planning (ds1f):Join_Split_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Skip:busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Shift Planning (ds1f)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):join:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Split_Yes_Planning Work in Internal Activities and Activity Elements (ds11)*Planning Work in Internal Activities and Activity Elements (ds11)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):split:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):split:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):join:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):join:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Planning Work in Internal Activities and Activity Elements (ds11)*Capacity Evaluation (ds1t)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):split:Capacity Evaluation (ds1t)*or (ds0j)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):split:Capacity Evaluation (ds1t)*or (ds0j)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t)*or (ds0j)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):join:Capacity Evaluation (ds1t)*or (ds0j)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):join:Capacity Evaluation (ds1t)*or (ds0j)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Evaluation (ds1t)*or (ds0j)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Shift Planning (ds1f)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Shift Planning (ds1f):or (ds0j)*Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):split:or (ds0j)*Shift Planning (ds1f):or (ds0j)*Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Shift Planning (ds1f)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):join:or (ds0j)*Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):join:or (ds0j)*Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Shift Planning (ds1f)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):split:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):split:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):join:or (ds0j)*Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):join:or (ds0j)*Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:or (ds0j)*Capacity Leveling (ds29)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):split:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):split:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):join:Join_Split_Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):join:Join_Split_Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Shift Planning (ds1f)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):split:Join_Join_Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):split:Join_Join_Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Shift Planning (ds1f):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Shift Planning (ds1f)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):join:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f):Join_Split_Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):join:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f):Join_Split_Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Shift Planning (ds1f)*Join_Yes_Shift Planning (ds1f)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Shift Planning (ds1f)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):split:Join_Join_Shift Planning (ds1f)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):split:Join_Join_Shift Planning (ds1f)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Shift Planning (ds1f):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Shift Planning (ds1f)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):join:Join_Split_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):join:Join_Split_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Capacity Leveling (ds29)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):split:Join_Join_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):split:Join_Join_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_No_Capacity Leveling (ds29):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):join:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29):Join_Split_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):join:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29):Join_Split_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Capacity Leveling (ds29)*Join_Yes_Capacity Leveling (ds29)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Split_Capacity Leveling (ds29)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):split:Join_Join_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):split:Join_Join_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Yes_Capacity Leveling (ds29):busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Capacity Leveling (ds29)"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:join:Join_Join_Shift Planning (ds1f):Join_Join_Capacity Leveling (ds29)"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:join:Join_Join_Shift Planning (ds1f):Join_Join_Capacity Leveling (ds29)"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Shift Planning (ds1f)"
+       "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Join_Join_Capacity Leveling (ds29)"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:busy"
+;
+trans "t:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:split:OutputCondition"~"t:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:split:OutputCondition"
+    in "p:Model.ds05--0-----u--:Model.ds05--0-----u--:Output:busy"
+   out "p:Model.ds05--0-----u--:Model.ds05--0-----u--:OutputCondition"
+;
+

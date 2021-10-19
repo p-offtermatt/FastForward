@@ -1,0 +1,122 @@
+petri net "improved leader election 2" {
+    places {
+        s1a0 s1a1 s1a2 s1aH s1aP s1aD
+        s1max1 s1max2
+        s1left0 s1left1 s1left2
+        s1m1_n s1m1_1 s1m1_2
+        s1m2_n s1m2_1 s1m2_2
+
+        s2a0 s2a1 s2a2 s2aH s2aP s2aD
+        s2max1 s2max2
+        s2left0 s2left1 s2left2
+        s2m1_n s2m1_1 s2m1_2
+        s2m2_n s2m2_1 s2m2_2
+    }
+    transitions {
+        s1a0send1 s1a0send2
+
+        s1a1rec1max1 s1a1rec1max2left0 s1a1rec1max2left1 s1a1rec1max2left2
+        s1a1rec2max1left0 s1a1rec2max1left1 s1a1rec2max1left2 s1a1rec2max2
+
+        s1a2rec1left0 s1a2rec1left1 s1a2rec1max1left2 s1a2rec1max2left2
+        s1a2rec2left0 s1a2rec2left1 s1a2rec2left2
+
+        s1aPrec1_1 s1aPrec2_1 s1aPrec1_2 s1aPrec2_2
+
+        s1aDmax1left0 s1aDmax1left1 s1aDmax1left2 s1aDmax2left0 s1aDmax2left1 s1aDmax2left2
+
+        s2a0send1 s2a0send2
+
+        s2a1rec1max1 s2a1rec1max2left0 s2a1rec1max2left1 s2a1rec1max2left2
+        s2a1rec2max1left0 s2a1rec2max1left1 s2a1rec2max1left2 s2a1rec2max2
+
+        s2a2rec1left0 s2a2rec1left1 s2a2rec1max1left2 s2a2rec1max2left2
+        s2a2rec2left0 s2a2rec2left1 s2a2rec2left2
+
+        s2aPrec1_1 s2aPrec2_1 s2aPrec1_2 s2aPrec2_2
+
+        s2aDmax1left0 s2aDmax1left1 s2aDmax1left2 s2aDmax2left0 s2aDmax2left1 s2aDmax2left2
+
+        s1done s2done
+    }
+    arcs {
+        { s1a0 s1max1 s1m1_n } -> s1a0send1 -> { s1a1 s1max1 s1m1_1 }
+        { s1a0 s1max2 s1m1_n } -> s1a0send2 -> { s1a1 s1max2 s1m1_2 }
+
+        { s1a1 s1max1 s2m1_1 } -> s1a1rec1max1 -> { s1aH s1max1 s2m1_n }
+        { s1a1 s1max2 s1left0 s2m1_1 s1m2_n } -> s1a1rec1max2left0 -> { s1a2 s1max2 s1left1 s2m1_n s1m2_1 }
+        { s1a1 s1max2 s1left1 s2m1_1 s1m2_n } -> s1a1rec1max2left1 -> { s1a2 s1max2 s1left1 s2m1_n s1m2_1 }
+        { s1a1 s1max2 s1left2 s2m1_1 s1m2_n } -> s1a1rec1max2left2 -> { s1a2 s1max2 s1left1 s2m1_n s1m2_1 }
+        { s1a1 s1max1 s1left0 s2m1_2 s1m2_n } -> s1a1rec2max1left0 -> { s1a2 s1max1 s1left2 s2m1_n s1m2_2 }
+        { s1a1 s1max1 s1left1 s2m1_2 s1m2_n } -> s1a1rec2max1left1 -> { s1a2 s1max1 s1left2 s2m1_n s1m2_2 }
+        { s1a1 s1max1 s1left2 s2m1_2 s1m2_n } -> s1a1rec2max1left2 -> { s1a2 s1max1 s1left2 s2m1_n s1m2_2 }
+        { s1a1 s1max2 s2m1_2 } -> s1a1rec2max2 -> { s1aH s1max2 s2m1_n }
+
+        { s1a2 s1left0 s2m2_1 } -> s1a2rec1left0 -> { s1aP s1left0 s2m2_n }
+        { s1a2 s1left1 s2m2_1 } -> s1a2rec1left1 -> { s1aP s1left1 s2m2_n }
+        { s1a2 s1max1 s1left2 s2m2_1 s1m1_n } -> s1a2rec1max1left2 -> { s1a1 s1max2 s1left2 s2m2_n s1m1_2 }
+        { s1a2 s1max2 s1left2 s2m2_1 } -> s1a2rec1max2left2 -> { s1aP s1max2 s1left2 s2m2_n }
+        { s1a2 s1left0 s2m2_2 } -> s1a2rec2left0 -> { s1aP s1left0 s2m2_n }
+        { s1a2 s1left1 s2m2_2 } -> s1a2rec2left1 -> { s1aP s1left1 s2m2_n }
+        { s1a2 s1left2 s2m2_2 } -> s1a2rec2left2 -> { s1aP s1left2 s2m2_n }
+
+        { s1aP s2m1_1 s1m1_n } -> s1aPrec1_1 -> { s1aP s2m1_n s1m1_1 }
+        { s1aP s2m2_1 s1m2_n } -> s1aPrec2_1 -> { s1aP s2m2_n s1m2_1 }
+        { s1aP s2m1_2 s1m1_n } -> s1aPrec1_2 -> { s1aP s2m1_n s1m1_2 }
+        { s1aP s2m2_2 s1m2_n } -> s1aPrec2_2 -> { s1aP s2m2_n s1m2_2 }
+
+        { s1aD s1max1 s1left0 } -> s1aDmax1left0 -> { s1a0 s1max1 s1left0 }
+        { s1aD s1max1 s1left1 } -> s1aDmax1left1 -> { s1a0 s1max1 s1left0 }
+        { s1aD s1max1 s1left2 } -> s1aDmax1left2 -> { s1a0 s1max1 s1left0 }
+        { s1aD s1max2 s1left0 } -> s1aDmax2left0 -> { s1a0 s1max1 s1left0 }
+        { s1aD s1max2 s1left1 } -> s1aDmax2left1 -> { s1a0 s1max1 s1left0 }
+        { s1aD s1max2 s1left2 } -> s1aDmax2left2 -> { s1a0 s1max1 s1left0 }
+
+
+        { s2a0 s2max1 s2m1_n } -> s2a0send1 -> { s2a1 s2max1 s2m1_1 }
+        { s2a0 s2max2 s2m1_n } -> s2a0send2 -> { s2a1 s2max2 s2m1_2 }
+
+        { s2a1 s2max1 s1m1_1 } -> s2a1rec1max1 -> { s2aH s2max1 s1m1_n }
+        { s2a1 s2max2 s2left0 s1m1_1 s2m2_n } -> s2a1rec1max2left0 -> { s2a2 s2max2 s2left1 s1m1_n s2m2_1 }
+        { s2a1 s2max2 s2left1 s1m1_1 s2m2_n } -> s2a1rec1max2left1 -> { s2a2 s2max2 s2left1 s1m1_n s2m2_1 }
+        { s2a1 s2max2 s2left2 s1m1_1 s2m2_n } -> s2a1rec1max2left2 -> { s2a2 s2max2 s2left1 s1m1_n s2m2_1 }
+        { s2a1 s2max1 s2left0 s1m1_2 s2m2_n } -> s2a1rec2max1left0 -> { s2a2 s2max1 s2left2 s1m1_n s2m2_2 }
+        { s2a1 s2max1 s2left1 s1m1_2 s2m2_n } -> s2a1rec2max1left1 -> { s2a2 s2max1 s2left2 s1m1_n s2m2_2 }
+        { s2a1 s2max1 s2left2 s1m1_2 s2m2_n } -> s2a1rec2max1left2 -> { s2a2 s2max1 s2left2 s1m1_n s2m2_2 }
+        { s2a1 s2max2 s1m1_2 } -> s2a1rec2max2 -> { s2aH s2max2 s1m1_n }
+
+        { s2a2 s2left0 s1m2_1 } -> s2a2rec1left0 -> { s2aP s2left0 s1m2_n }
+        { s2a2 s2left1 s1m2_1 } -> s2a2rec1left1 -> { s2aP s2left1 s1m2_n }
+        { s2a2 s2max1 s2left2 s1m2_1 s2m1_n } -> s2a2rec1max1left2 -> { s2a1 s2max2 s2left2 s1m2_n s2m1_2 }
+        { s2a2 s2max2 s2left2 s1m2_1 } -> s2a2rec1max2left2 -> { s2aP s2max2 s2left2 s1m2_n }
+        { s2a2 s2left0 s1m2_2 } -> s2a2rec2left0 -> { s2aP s2left0 s1m2_n }
+        { s2a2 s2left1 s1m2_2 } -> s2a2rec2left1 -> { s2aP s2left1 s1m2_n }
+        { s2a2 s2left2 s1m2_2 } -> s2a2rec2left2 -> { s2aP s2left2 s1m2_n }
+
+        { s2aP s1m1_1 s2m1_n } -> s2aPrec1_1 -> { s2aP s1m1_n s2m1_1 }
+        { s2aP s1m2_1 s2m2_n } -> s2aPrec2_1 -> { s2aP s1m2_n s2m2_1 }
+        { s2aP s1m1_2 s2m1_n } -> s2aPrec1_2 -> { s2aP s1m1_n s2m1_2 }
+        { s2aP s1m2_2 s2m2_n } -> s2aPrec2_2 -> { s2aP s1m2_n s2m2_2 }
+
+        { s2aD s2max1 s2left0 } -> s2aDmax1left0 -> { s2a0 s2max2 s2left0 }
+        { s2aD s2max1 s2left1 } -> s2aDmax1left1 -> { s2a0 s2max2 s2left0 }
+        { s2aD s2max1 s2left2 } -> s2aDmax1left2 -> { s2a0 s2max2 s2left0 }
+        { s2aD s2max2 s2left0 } -> s2aDmax2left0 -> { s2a0 s2max2 s2left0 }
+        { s2aD s2max2 s2left1 } -> s2aDmax2left1 -> { s2a0 s2max2 s2left0 }
+        { s2aD s2max2 s2left2 } -> s2aDmax2left2 -> { s2a0 s2max2 s2left0 }
+
+
+        { s1aH s2aP } -> s1done -> { s1aD s2aD }
+        { s1aP s2aH } -> s2done -> { s1aD s2aD }
+    }
+    initial {
+        s1a0 s1max1 s1left0 s1m1_n s1m2_n
+        s2a0 s2max2 s2left0 s2m1_n s2m2_n
+    }
+}
+safety property "passive" {
+    s1aP >= 1 && s2aP >= 1
+}
+liveness property {
+    s1done = 0 && s2done = 0
+}

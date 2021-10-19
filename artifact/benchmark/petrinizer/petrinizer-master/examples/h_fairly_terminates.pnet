@@ -1,0 +1,71 @@
+/*
+Consider the following asynchronous program:
+
+x = true;
+
+h() {
+  if (x) {
+    post h();
+    post g();
+  }
+}
+
+g() {
+  x = false;
+}
+
+init: h()
+
+The Petri net in this file emulates the execution of the program.
+*/
+petri net "asynchronous program" {
+    places {
+        // State
+        x not_x
+
+        // Scheduler
+        scheduler
+
+        // Handlers
+        h g
+
+        // Pending instances
+        pending_h pending_g
+    }
+    transitions {
+        dh dg ht hf gt gf
+    }
+    arcs {
+        // Dispatch h
+        { scheduler, pending_h } -> dh -> h
+
+        // Dispatch g
+        { scheduler, pending_g } -> dg -> g
+
+        // Exit h if x == true
+        { h, x } -> ht -> { x, pending_h, pending_g, scheduler }
+
+        // Exit h if x == false
+        { h, not_x } -> hf -> { not_x, scheduler }
+
+        // Exit g if x == true
+        { g, x } -> gt -> { not_x, scheduler }
+
+        // Exit g if x == false
+        { g, not_x } -> gf -> { not_x, scheduler }
+    }
+    initial {
+        // Initially, x is true, there's one pending instance of h(),
+        // and the scheduler has control.
+        x pending_h scheduler
+    }
+}
+safety property {
+    x >= 1 && not_x >= 1
+}
+liveness property "fair termination" {
+    dh >= 1 && dg >= 1
+}
+liveness property "h dispatched" {
+    dh = 0
+}

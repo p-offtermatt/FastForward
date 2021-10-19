@@ -1,0 +1,251 @@
+place "i" init 1;
+place "o";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:InputCondition";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_Monitoring of Budget Planning (m452)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:OutputCondition";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g)*xor (m42g)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g)*Preparation of Budget Planning (m419)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419)*and (m439)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439)*Budget Planning (m41n)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452)*or (m44d)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):busy";
+place "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:busy";
+trans "*:Model.m40o--0-----u--:Model.m40o--0-----u--:start"~"*:Model.m40o--0-----u--:Model.m40o--0-----u--:start"
+    in "i"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:InputCondition"
+;
+trans "*:Model.m40o--0-----u--:Model.m40o--0-----u--:end"~"*:Model.m40o--0-----u--:Model.m40o--0-----u--:end"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:join:InputCondition"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:join:InputCondition"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:InputCondition"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:split:Split_Split_xor (m42g):Split_Split_and (m439):Split_Split_Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:split:Split_Split_xor (m42g):Split_Split_and (m439):Split_Split_Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split:busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_Monitoring of Budget Planning (m452)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):join:Split_Split_xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):join:Split_Split_xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):split:Split_Join_xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):split:Split_Join_xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):join:Split_Split_xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):join:Split_Split_xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):split:Split_Join_xor (m42g):Split_Yes_xor (m42g)*xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):split:Split_Join_xor (m42g):Split_Yes_xor (m42g)*xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g)*xor (m42g)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):join:Split_Split_and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):join:Split_Split_and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):split:Split_Join_and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):split:Split_Join_and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):join:Split_Split_and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):join:Split_Split_and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):join:Split_Split_Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):join:Split_Split_Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_Monitoring of Budget Planning (m452)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):join:Split_Split_Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):join:Split_Split_Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_Monitoring of Budget Planning (m452)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452):Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452):Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:join:Split_Join_xor (m42g):Split_Join_and (m439):Split_Join_Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:join:Split_Join_xor (m42g):Split_Join_and (m439):Split_Join_Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_xor (m42g)*xor (m42g)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:or (m44d)*xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:or (m44d)*xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):split:xor (m42g)*Preparation of Budget Planning (m419)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):split:xor (m42g)*Preparation of Budget Planning (m419)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g)*Preparation of Budget Planning (m419)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):join:xor (m42g)*Preparation of Budget Planning (m419)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):join:xor (m42g)*Preparation of Budget Planning (m419)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g)*Preparation of Budget Planning (m419)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):split:Preparation of Budget Planning (m419)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):split:Preparation of Budget Planning (m419)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):join:Split_Yes_and (m439)*and (m439):Preparation of Budget Planning (m419)*and (m439):or (m44d)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):join:Split_Yes_and (m439)*and (m439):Preparation of Budget Planning (m419)*and (m439):or (m44d)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Preparation of Budget Planning (m419)*and (m439)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):split:and (m439)*Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):split:and (m439)*Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439)*Budget Planning (m41n)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):join:and (m439)*Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):join:and (m439)*Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:and (m439)*Budget Planning (m41n)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):split:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):split:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):join:Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):join:Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_Monitoring of Budget Planning (m452)*Monitoring of Budget Planning (m452)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):split:Monitoring of Budget Planning (m452)*or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):split:Monitoring of Budget Planning (m452)*or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452)*or (m44d)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):join:Monitoring of Budget Planning (m452)*or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):join:Monitoring of Budget Planning (m452)*or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Monitoring of Budget Planning (m452)*or (m44d)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*xor (m42g)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):join:Join_Split_Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):join:Join_Split_Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):join:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n):Join_Split_Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):join:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n):Join_Split_Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Budget Planning (m41n)*Join_Yes_Budget Planning (m41n)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):join:Join_Split_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):join:Join_Split_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):split:Join_Join_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):split:Join_Join_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):join:or (m44d)*Join_Yes_or (m44d):Join_Split_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):join:or (m44d)*Join_Yes_or (m44d):Join_Split_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:join:Join_Join_Budget Planning (m41n):Join_Join_or (m44d)"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:join:Join_Join_Budget Planning (m41n):Join_Join_or (m44d)"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)"
+       "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:busy"
+;
+trans "t:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:split:OutputCondition"~"t:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:split:OutputCondition"
+    in "p:Model.m40o--0-----u--:Model.m40o--0-----u--:Output:busy"
+   out "p:Model.m40o--0-----u--:Model.m40o--0-----u--:OutputCondition"
+;
+

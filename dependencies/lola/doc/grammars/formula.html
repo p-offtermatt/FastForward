@@ -1,0 +1,404 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta content="Railroad Diagram Generator 1.35.837" name="generator"><style type="text/css" xml:space="preserve">
+    ::-moz-selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }
+    ::selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }      
+    .ebnf a
+    {
+      text-decoration: none;
+    }
+    .ebnf a:hover
+    {
+      color: #050400;
+      text-decoration: underline;
+    }    
+    .signature
+    {
+      color: #806600;
+      font-size: 11px;
+      text-align: right;
+    }
+    body
+    {
+      font: normal 12px Verdana, sans-serif;
+      color: #0F0C00;
+      background: #FFFCF0;
+    }
+    a:link, a:visited
+    {
+      color: #0F0C00;
+    }
+    a:link.signature, a:visited.signature
+    {
+      color: #806600;
+    }
+    a.button, #tabs li a
+    {
+      padding: 0.25em 0.5em;
+      border: 1px solid #806600;
+      background: #F1E8C6;
+      color: #806600;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.button:hover, #tabs li a:hover
+    {
+      color: #050400;
+      background: #FFF6D1;
+      border-color: #050400;       
+    }     
+    #tabs
+    {
+      padding: 3px 10px;
+      margin-left: 0;
+      margin-top: 58px;
+      border-bottom: 1px solid #0F0C00;
+    }  
+    #tabs li
+    {
+      list-style: none;
+      margin-left: 5px;
+      display: inline;
+    }
+    #tabs li a
+    {     
+      border-bottom: 1px solid #0F0C00;
+    }
+    #tabs li a.active
+    {
+      color: #0F0C00;
+      background: #FFFCF0;
+      border-color: #0F0C00;
+      border-bottom: 1px solid #FFFCF0;
+      outline: none;
+    }
+    #divs div
+    {
+      display: none;
+      overflow:auto;
+    }
+    #divs div.active
+    {
+      display: block;
+    }
+    #text
+    {
+      border-color: #806600;
+      background: #FFFEFA;
+      color: #050400;
+    }
+    .small
+    {
+      vertical-align: top;
+      text-align: right;
+      font-size: 9px;
+      font-weight: normal;
+      line-height: 120%;
+    }
+    td.small
+    {
+      padding-top: 0px;
+    }
+    .hidden
+    {
+      visibility: hidden;
+    }
+    td:hover .hidden 
+    {
+      visibility: visible;
+    }
+    div.download
+    {
+      display: none;
+      background: #FFFCF0;
+      position: absolute;
+      right: 34px;
+      top: 94px;
+      padding: 10px;
+      border: 1px dotted #0F0C00;
+    }
+    #divs div.ebnf, div.ebnf
+    {
+      display: block;
+      padding-left: 16px;
+      padding-top: 2px; 
+      padding-bottom: 2px; 
+      background: #FFF6D1;
+    }
+    table.palette
+    {
+      border-top: 1px solid #050400;
+      border-right: 1px solid #050400;
+      margin-bottom: 4px
+    }
+    td.palette
+    {
+      border-bottom: 1px solid #050400;
+      border-left: 1px solid #050400;
+    }
+    a.palette
+    {
+      padding: 2px 3px 2px 10px;
+      text-decoration: none;
+    }
+    .palette
+    {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ms-user-select: none;
+    }
+  </style></head>
+   <body style="">
+      
+      <p style="font-size: 14px; font-weight:bold"><a name="formula">formula:</a></p>
+      <img border="0" height="52" src="formula/formula.png" usemap="#formula.map" width="400"><map name="formula.map">
+         <area coords="175,1,287,33" href="#statepredicate" shape="rect" title="statepredicate"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#formula" shape="rect" title="formula">formula</a>  ::= 'FORMULA'? <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a> ';'?</pre></div>
+         
+      </p>
+      
+      <p>no references</p><br><p style="font-size: 14px; font-weight:bold"><a name="statepredicate">statepredicate:</a></p>
+      <img border="0" height="300" src="formula/statepredicate.png" usemap="#statepredicate.map" width="640"><map name="statepredicate.map">
+         <area coords="95,1,207,33" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="49,45,189,77" href="#atomic_proposition" shape="rect" title="atomic_proposition">
+         <area coords="117,89,229,121" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="49,133,161,165" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="181,133,315,165" href="#boolean_operator" shape="rect" title="boolean_operator">
+         <area coords="335,133,447,165" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="49,177,165,209" href="#path_quantifier" shape="rect" title="path_quantifier">
+         <area coords="185,177,297,209" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="49,221,231,253" href="#unary_temporal_operator" shape="rect" title="unary_temporal_operator">
+         <area coords="251,221,363,253" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="95,265,207,297" href="#statepredicate" shape="rect" title="statepredicate">
+         <area coords="227,265,413,297" href="#binary_temporal_operator" shape="rect" title="binary_temporal_operator">
+         <area coords="433,265,545,297" href="#statepredicate" shape="rect" title="statepredicate"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a>
+         ::= '(' <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a> ')'
+           | <a href="#atomic_proposition" shape="rect" title="atomic_proposition">atomic_proposition</a>
+           | 'NOT' <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a>
+           | <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a> <a href="#boolean_operator" shape="rect" title="boolean_operator">boolean_operator</a> <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a>
+           | <a href="#path_quantifier" shape="rect" title="path_quantifier">path_quantifier</a> <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a>
+           | <a href="#unary_temporal_operator" shape="rect" title="unary_temporal_operator">unary_temporal_operator</a> <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a>
+           | '(' <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a> <a href="#binary_temporal_operator" shape="rect" title="binary_temporal_operator">binary_temporal_operator</a> <a href="#statepredicate" shape="rect" title="statepredicate">statepredicate</a> ')'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#formula" title="formula">formula</a></li>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="boolean_operator">boolean_operator:</a></p>
+      <img border="0" height="212" src="formula/boolean_operator.png" width="146">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#boolean_operator" shape="rect" title="boolean_operator">boolean_operator</a>
+         ::= 'AND'
+           | 'OR'
+           | 'XOR'
+           | '-&gt;'
+           | '&lt;-&gt;'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="unary_temporal_operator">unary_temporal_operator:</a></p>
+      <img border="0" height="256" src="formula/unary_temporal_operator.png" width="206">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#unary_temporal_operator" shape="rect" title="unary_temporal_operator">unary_temporal_operator</a>
+         ::= 'ALWAYS'
+           | 'EVENTUALLY'
+           | 'NEXTSTATE'
+           | 'REACHABLE'
+           | 'INVARIANT'
+           | 'IMPOSSIBLE'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="binary_temporal_operator">binary_temporal_operator:</a></p>
+      <img border="0" height="80" src="formula/binary_temporal_operator.png" width="176">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#binary_temporal_operator" shape="rect" title="binary_temporal_operator">binary_temporal_operator</a>
+         ::= 'UNTIL'
+           | 'RELEASE'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="path_quantifier">path_quantifier:</a></p>
+      <img border="0" height="80" src="formula/path_quantifier.png" width="178">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#path_quantifier" shape="rect" title="path_quantifier">path_quantifier</a>
+         ::= 'ALLPATH'
+           | 'EXPATH'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="atomic_proposition">atomic_proposition:</a></p>
+      <img border="0" height="256" src="formula/atomic_proposition.png" usemap="#atomic_proposition.map" width="426"><map name="atomic_proposition.map">
+         <area coords="49,1,97,33" href="#term" shape="rect" title="term">
+         <area coords="117,1,309,33" href="#term_comparison_operator" shape="rect" title="term_comparison_operator">
+         <area coords="329,1,377,33" href="#term" shape="rect" title="term"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#atomic_proposition" shape="rect" title="atomic_proposition">atomic_proposition</a>
+         ::= <a href="#term" shape="rect" title="term">term</a> <a href="#term_comparison_operator" shape="rect" title="term_comparison_operator">term_comparison_operator</a> <a href="#term" shape="rect" title="term">term</a>
+           | 'TRUE'
+           | 'FALSE'
+           | 'FIREABLE' '(' 'IDENTIFIER' ')'
+           | 'INITIAL'
+           | 'DEADLOCK'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#statepredicate" title="statepredicate">statepredicate</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="term_comparison_operator">term_comparison_operator:</a></p>
+      <img border="0" height="256" src="formula/term_comparison_operator.png" width="138">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#term_comparison_operator" shape="rect" title="term_comparison_operator">term_comparison_operator</a>
+         ::= '='
+           | '!='
+           | '&gt;'
+           | '&gt;='
+           | '&lt;'
+           | '&lt;='</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#atomic_proposition" title="atomic_proposition">atomic_proposition</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="term">term:</a></p>
+      <img border="0" height="300" src="formula/term.png" usemap="#term.map" width="290"><map name="term.map">
+         <area coords="95,1,143,33" href="#term" shape="rect" title="term">
+         <area coords="49,133,97,165" href="#term" shape="rect" title="term">
+         <area coords="167,133,215,165" href="#term" shape="rect" title="term">
+         <area coords="49,177,97,209" href="#term" shape="rect" title="term">
+         <area coords="163,177,211,209" href="#term" shape="rect" title="term">
+         <area coords="193,221,241,253" href="#term" shape="rect" title="term"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#term" shape="rect" title="term">term</a>     ::= '(' <a href="#term" shape="rect" title="term">term</a> ')'
+           | 'IDENTIFIER'
+           | 'NUMBER'
+           | <a href="#term" shape="rect" title="term">term</a> '+' <a href="#term" shape="rect" title="term">term</a>
+           | <a href="#term" shape="rect" title="term">term</a> '-' <a href="#term" shape="rect" title="term">term</a>
+           | 'NUMBER' '*' <a href="#term" shape="rect" title="term">term</a>
+           | 'oo'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#atomic_proposition" title="atomic_proposition">atomic_proposition</a></li>
+            
+            <li><a href="#term" title="term">term</a></li>
+            
+         </ul>
+         
+      </p><br><hr>
+      
+      <p>
+         
+         <table border="0" class="signature">
+            
+            <tr>
+               
+               <td style="width: 100%">&nbsp;</td>
+               
+               <td valign="top">
+                  
+                  <nobr class="signature">... generated by <a class="signature" href="http://www.bottlecaps.de/rr/ui" name="Railroad-Diagram-Generator" target="_blank" title="http://www.bottlecaps.de/rr/ui">Railroad Diagram Generator</a></nobr>
+                  
+               </td>
+               
+               <td><a href="http://www.bottlecaps.de/rr/ui" name="Railroad-Diagram-Generator" target="_blank" title="http://www.bottlecaps.de/rr/ui">
+                     <img border="0" height="16" src="formula/rr-1.35.837.png" width="16"></a></td>
+               
+            </tr>
+            
+         </table>
+         
+      </p>
+      
+   </body>
+</html>

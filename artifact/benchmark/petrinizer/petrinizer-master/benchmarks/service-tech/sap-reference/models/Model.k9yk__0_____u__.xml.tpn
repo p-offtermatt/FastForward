@@ -1,0 +1,208 @@
+place "i" init 1;
+place "o";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:InputCondition";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Split_and (k9z0)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Join_and (k9z0)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Number ranges (k9zm)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Number ranges (k9zm)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Foreign currencies (ka00)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Foreign currencies (ka00)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Quantity Units (ka0e)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Quantity Units (ka0e)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_File names (ka0s)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_File names (ka0s)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:OutputCondition";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0)*and (k9z0)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Number ranges (k9zm)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Foreign currencies (ka00)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Quantity Units (ka0e)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*File names (ka0s)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s)*Join_Yes_File names (ka0s)";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):busy";
+place "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:busy";
+trans "*:Model.k9yk--0-----u--:Model.k9yk--0-----u--:start"~"*:Model.k9yk--0-----u--:Model.k9yk--0-----u--:start"
+    in "i"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:InputCondition"
+;
+trans "*:Model.k9yk--0-----u--:Model.k9yk--0-----u--:end"~"*:Model.k9yk--0-----u--:Model.k9yk--0-----u--:end"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:join:InputCondition"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:join:InputCondition"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:InputCondition"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:split:Split_Split_and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:split:Split_Split_and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split:busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Split_and (k9z0)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):join:Split_Split_and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):join:Split_Split_and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Split_and (k9z0)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):split:Split_Join_and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):split:Split_Join_and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_No_and (k9z0):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Join_and (k9z0)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):join:Split_Split_and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):join:Split_Split_and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Split_and (k9z0)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):split:Split_Join_and (k9z0):Split_Yes_and (k9z0)*and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):split:Split_Join_and (k9z0):Split_Yes_and (k9z0)*and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Join_and (k9z0)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0)*and (k9z0)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:join:Split_Join_and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:join:Split_Join_and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Join_and (k9z0)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:split:Join_Split_Number ranges (k9zm):Join_Split_Foreign currencies (ka00):Join_Split_Quantity Units (ka0e):Join_Split_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:split:Join_Split_Number ranges (k9zm):Join_Split_Foreign currencies (ka00):Join_Split_Quantity Units (ka0e):Join_Split_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Skip:busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Number ranges (k9zm)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Foreign currencies (ka00)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Quantity Units (ka0e)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_File names (ka0s)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):join:Split_Yes_and (k9z0)*and (k9z0)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):join:Split_Yes_and (k9z0)*and (k9z0)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Split_Yes_and (k9z0)*and (k9z0)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):split:and (k9z0)*Number ranges (k9zm):and (k9z0)*Foreign currencies (ka00):and (k9z0)*Quantity Units (ka0e):and (k9z0)*File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):split:and (k9z0)*Number ranges (k9zm):and (k9z0)*Foreign currencies (ka00):and (k9z0)*Quantity Units (ka0e):and (k9z0)*File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Number ranges (k9zm)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Foreign currencies (ka00)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Quantity Units (ka0e)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*File names (ka0s)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):join:and (k9z0)*Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):join:and (k9z0)*Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Number ranges (k9zm)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):split:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):split:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):join:and (k9z0)*Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):join:and (k9z0)*Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Foreign currencies (ka00)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):split:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):split:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):join:and (k9z0)*Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):join:and (k9z0)*Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*Quantity Units (ka0e)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):split:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):split:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):join:and (k9z0)*File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):join:and (k9z0)*File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:and (k9z0)*File names (ka0s)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):split:File names (ka0s)*Join_Yes_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):split:File names (ka0s)*Join_Yes_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s)*Join_Yes_File names (ka0s)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):join:Join_Split_Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):join:Join_Split_Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Number ranges (k9zm)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):split:Join_Join_Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):split:Join_Join_Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Number ranges (k9zm):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Number ranges (k9zm)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):join:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm):Join_Split_Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):join:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm):Join_Split_Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Number ranges (k9zm)*Join_Yes_Number ranges (k9zm)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Number ranges (k9zm)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):split:Join_Join_Number ranges (k9zm)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):split:Join_Join_Number ranges (k9zm)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Number ranges (k9zm):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Number ranges (k9zm)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):join:Join_Split_Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):join:Join_Split_Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Foreign currencies (ka00)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):split:Join_Join_Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):split:Join_Join_Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Foreign currencies (ka00):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Foreign currencies (ka00)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):join:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00):Join_Split_Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):join:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00):Join_Split_Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Foreign currencies (ka00)*Join_Yes_Foreign currencies (ka00)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Foreign currencies (ka00)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):split:Join_Join_Foreign currencies (ka00)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):split:Join_Join_Foreign currencies (ka00)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Foreign currencies (ka00):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Foreign currencies (ka00)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):join:Join_Split_Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):join:Join_Split_Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Quantity Units (ka0e)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):split:Join_Join_Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):split:Join_Join_Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_Quantity Units (ka0e):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Quantity Units (ka0e)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):join:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e):Join_Split_Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):join:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e):Join_Split_Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Quantity Units (ka0e)*Join_Yes_Quantity Units (ka0e)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_Quantity Units (ka0e)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):split:Join_Join_Quantity Units (ka0e)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):split:Join_Join_Quantity Units (ka0e)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_Quantity Units (ka0e):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Quantity Units (ka0e)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):join:Join_Split_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):join:Join_Split_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_File names (ka0s)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):split:Join_Join_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):split:Join_Join_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_No_File names (ka0s):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_File names (ka0s)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):join:File names (ka0s)*Join_Yes_File names (ka0s):Join_Split_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):join:File names (ka0s)*Join_Yes_File names (ka0s):Join_Split_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:File names (ka0s)*Join_Yes_File names (ka0s)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Split_File names (ka0s)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):split:Join_Join_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):split:Join_Join_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Yes_File names (ka0s):busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_File names (ka0s)"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:join:Join_Join_Number ranges (k9zm):Join_Join_Foreign currencies (ka00):Join_Join_Quantity Units (ka0e):Join_Join_File names (ka0s)"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:join:Join_Join_Number ranges (k9zm):Join_Join_Foreign currencies (ka00):Join_Join_Quantity Units (ka0e):Join_Join_File names (ka0s)"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Number ranges (k9zm)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Foreign currencies (ka00)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_Quantity Units (ka0e)"
+       "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Join_Join_File names (ka0s)"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:busy"
+;
+trans "t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:split:OutputCondition"~"t:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:split:OutputCondition"
+    in "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:Output:busy"
+   out "p:Model.k9yk--0-----u--:Model.k9yk--0-----u--:OutputCondition"
+;
+

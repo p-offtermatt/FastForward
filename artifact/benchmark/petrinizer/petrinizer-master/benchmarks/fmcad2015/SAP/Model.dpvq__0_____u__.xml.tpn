@@ -1,0 +1,93 @@
+place "i" init 1;
+place "o";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:InputCondition";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Split_Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Join_Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Split_Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Join_Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:outputCondition";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb)";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):busy";
+place "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:busy";
+trans "*:Model.dpvq--0-----u--:Model.dpvq--0-----u--:start"~"*:Model.dpvq--0-----u--:Model.dpvq--0-----u--:start"
+    in "i"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:InputCondition"
+;
+trans "*:Model.dpvq--0-----u--:Model.dpvq--0-----u--:end"~"*:Model.dpvq--0-----u--:Model.dpvq--0-----u--:end"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:join:InputCondition"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:join:InputCondition"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:InputCondition"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:split:Split_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:split:Split_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split:busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Split_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):join:Split_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):join:Split_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Split_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):split:Split_Join_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):split:Split_Join_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_No_Statistical Key Figure Planning (dpwb):busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Join_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):join:Split_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):join:Split_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Split_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):split:Split_Join_Statistical Key Figure Planning (dpwb):Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):split:Split_Join_Statistical Key Figure Planning (dpwb):Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb):busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Join_Statistical Key Figure Planning (dpwb)"
+       "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:join:Split_Join_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:join:Split_Join_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Join_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:split:Join_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:split:Join_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Skip:busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Split_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):join:Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):join:Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Split_Yes_Statistical Key Figure Planning (dpwb)*Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):split:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):split:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb):busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):join:Join_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):join:Join_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Split_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):split:Join_Join_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):split:Join_Join_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_No_Statistical Key Figure Planning (dpwb):busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Join_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):join:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb):Join_Split_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):join:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb):Join_Split_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Statistical Key Figure Planning (dpwb)*Join_Yes_Statistical Key Figure Planning (dpwb)"
+       "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Split_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):split:Join_Join_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):split:Join_Join_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Yes_Statistical Key Figure Planning (dpwb):busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Join_Statistical Key Figure Planning (dpwb)"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:join:Join_Join_Statistical Key Figure Planning (dpwb)"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:join:Join_Join_Statistical Key Figure Planning (dpwb)"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Join_Join_Statistical Key Figure Planning (dpwb)"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:busy"
+;
+trans "t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:split:outputCondition"~"t:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:split:outputCondition"
+    in "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:Output:busy"
+   out "p:Model.dpvq--0-----u--:Model.dpvq--0-----u--:outputCondition"
+;
+

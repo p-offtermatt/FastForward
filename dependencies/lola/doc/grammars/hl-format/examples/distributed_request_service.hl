@@ -1,0 +1,47 @@
+NET distributed_request_service
+
+const int U = 7; // number of users
+const int M = 5; // number of managers
+
+typedef struct
+	{
+		int(0,U-1) user;
+		int(0,M-1) manager;
+	} correlation;
+
+^correlation all_managers(int(0,U-1) x)
+{
+	^correlation result;
+	result = {};
+	for(int i:all(int(0,M-1)))
+	{
+		result += {x,i};
+	}
+}
+
+PLACE correlation X_ready_to_serve_Y, X_pending_for_Y, X_with_data_of_Y;
+      int(0,U-1) X_locally;
+
+MARKING X_ready_to_serve_Y: all_managers(0),
+	X_locally: all(int(0,U));
+
+TRANSITION t1
+int(0,U-1) x;
+int(0,M-1) y;
+
+CONSUME X_ready_to_serve_Y:{x,y}, X_pending_for_Y: {x,y};
+PRODUCE X_ready_to_serve_Y:{(x+1)%U,y}, X_with_data_of_Y: {x,y};
+
+TRANSITION t2
+int(0,U-1) x;
+
+CONSUME X_locally: x;
+PRODUCE X_pending_for_Y: all_managers(x);
+
+TRANSITION t3
+int(0,U-1) x;
+
+CONSUME X_with_data_of_Y: all_managers(x);
+PRODUCE X_locally: x;
+
+      

@@ -1,0 +1,228 @@
+place "i" init 1;
+place "o";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:InputCondition";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Split_Administration of Authorizations (k56r)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Join_Administration of Authorizations (k56r)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Customizing Settings (k57j)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Customizing Settings (k57j)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Copy of Dimensions (k57x)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Copy of Dimensions (k57x)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Delete transaction data (k58b)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Delete transaction data (k58b)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Transaction Data (k58p)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Transaction Data (k58p)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:OutputCondition";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r)*Setting up Translation (k575)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575)*and (k59t)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Customizing Settings (k57j)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Copy of Dimensions (k57x)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Delete transaction data (k58b)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Transaction Data (k58p)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p)";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):busy";
+place "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:busy";
+trans "*:Model.k54y--0-----u--:Model.k54y--0-----u--:start"~"*:Model.k54y--0-----u--:Model.k54y--0-----u--:start"
+    in "i"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:InputCondition"
+;
+trans "*:Model.k54y--0-----u--:Model.k54y--0-----u--:end"~"*:Model.k54y--0-----u--:Model.k54y--0-----u--:end"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:join:InputCondition"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:join:InputCondition"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:InputCondition"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:split:Split_Split_Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:split:Split_Split_Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split:busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Split_Administration of Authorizations (k56r)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):join:Split_Split_Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):join:Split_Split_Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Split_Administration of Authorizations (k56r)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):split:Split_Join_Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):split:Split_Join_Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_No_Administration of Authorizations (k56r):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Join_Administration of Authorizations (k56r)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):join:Split_Split_Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):join:Split_Split_Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Split_Administration of Authorizations (k56r)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):split:Split_Join_Administration of Authorizations (k56r):Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):split:Split_Join_Administration of Authorizations (k56r):Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Join_Administration of Authorizations (k56r)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:join:Split_Join_Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:join:Split_Join_Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Join_Administration of Authorizations (k56r)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:split:Join_Split_Transport of Customizing Settings (k57j):Join_Split_Copy of Dimensions (k57x):Join_Split_Delete transaction data (k58b):Join_Split_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:split:Join_Split_Transport of Customizing Settings (k57j):Join_Split_Copy of Dimensions (k57x):Join_Split_Delete transaction data (k58b):Join_Split_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Skip:busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Customizing Settings (k57j)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Copy of Dimensions (k57x)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Delete transaction data (k58b)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Transaction Data (k58p)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):join:Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):join:Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Split_Yes_Administration of Authorizations (k56r)*Administration of Authorizations (k56r)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):split:Administration of Authorizations (k56r)*Setting up Translation (k575)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):split:Administration of Authorizations (k56r)*Setting up Translation (k575)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r)*Setting up Translation (k575)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):join:Administration of Authorizations (k56r)*Setting up Translation (k575)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):join:Administration of Authorizations (k56r)*Setting up Translation (k575)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Administration of Authorizations (k56r)*Setting up Translation (k575)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):split:Setting up Translation (k575)*and (k59t)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):split:Setting up Translation (k575)*and (k59t)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575)*and (k59t)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):join:Setting up Translation (k575)*and (k59t)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):join:Setting up Translation (k575)*and (k59t)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Setting up Translation (k575)*and (k59t)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):split:and (k59t)*Transport of Customizing Settings (k57j):and (k59t)*Copy of Dimensions (k57x):and (k59t)*Delete transaction data (k58b):and (k59t)*Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):split:and (k59t)*Transport of Customizing Settings (k57j):and (k59t)*Copy of Dimensions (k57x):and (k59t)*Delete transaction data (k58b):and (k59t)*Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Customizing Settings (k57j)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Copy of Dimensions (k57x)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Delete transaction data (k58b)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Transaction Data (k58p)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):join:and (k59t)*Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):join:and (k59t)*Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Customizing Settings (k57j)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):split:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):split:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):join:and (k59t)*Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):join:and (k59t)*Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Copy of Dimensions (k57x)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):split:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):split:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):join:and (k59t)*Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):join:and (k59t)*Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Delete transaction data (k58b)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):split:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):split:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):join:and (k59t)*Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):join:and (k59t)*Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:and (k59t)*Transport of Transaction Data (k58p)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):split:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):split:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):join:Join_Split_Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):join:Join_Split_Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Customizing Settings (k57j)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):split:Join_Join_Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):split:Join_Join_Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Customizing Settings (k57j):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Customizing Settings (k57j)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):join:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j):Join_Split_Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):join:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j):Join_Split_Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Customizing Settings (k57j)*Join_Yes_Transport of Customizing Settings (k57j)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Customizing Settings (k57j)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):split:Join_Join_Transport of Customizing Settings (k57j)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):split:Join_Join_Transport of Customizing Settings (k57j)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Customizing Settings (k57j):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Customizing Settings (k57j)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):join:Join_Split_Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):join:Join_Split_Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Copy of Dimensions (k57x)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):split:Join_Join_Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):split:Join_Join_Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Copy of Dimensions (k57x):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Copy of Dimensions (k57x)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):join:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x):Join_Split_Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):join:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x):Join_Split_Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Copy of Dimensions (k57x)*Join_Yes_Copy of Dimensions (k57x)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Copy of Dimensions (k57x)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):split:Join_Join_Copy of Dimensions (k57x)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):split:Join_Join_Copy of Dimensions (k57x)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Copy of Dimensions (k57x):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Copy of Dimensions (k57x)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):join:Join_Split_Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):join:Join_Split_Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Delete transaction data (k58b)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):split:Join_Join_Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):split:Join_Join_Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Delete transaction data (k58b):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Delete transaction data (k58b)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):join:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b):Join_Split_Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):join:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b):Join_Split_Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Delete transaction data (k58b)*Join_Yes_Delete transaction data (k58b)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Delete transaction data (k58b)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):split:Join_Join_Delete transaction data (k58b)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):split:Join_Join_Delete transaction data (k58b)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Delete transaction data (k58b):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Delete transaction data (k58b)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):join:Join_Split_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):join:Join_Split_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Transaction Data (k58p)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):split:Join_Join_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):split:Join_Join_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_No_Transport of Transaction Data (k58p):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Transaction Data (k58p)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):join:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p):Join_Split_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):join:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p):Join_Split_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Transport of Transaction Data (k58p)*Join_Yes_Transport of Transaction Data (k58p)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Split_Transport of Transaction Data (k58p)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):split:Join_Join_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):split:Join_Join_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Yes_Transport of Transaction Data (k58p):busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Transaction Data (k58p)"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:join:Join_Join_Transport of Customizing Settings (k57j):Join_Join_Copy of Dimensions (k57x):Join_Join_Delete transaction data (k58b):Join_Join_Transport of Transaction Data (k58p)"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:join:Join_Join_Transport of Customizing Settings (k57j):Join_Join_Copy of Dimensions (k57x):Join_Join_Delete transaction data (k58b):Join_Join_Transport of Transaction Data (k58p)"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Customizing Settings (k57j)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Copy of Dimensions (k57x)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Delete transaction data (k58b)"
+       "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Join_Join_Transport of Transaction Data (k58p)"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:busy"
+;
+trans "t:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:split:OutputCondition"~"t:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:split:OutputCondition"
+    in "p:Model.k54y--0-----u--:Model.k54y--0-----u--:Output:busy"
+   out "p:Model.k54y--0-----u--:Model.k54y--0-----u--:OutputCondition"
+;
+

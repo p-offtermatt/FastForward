@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+import sys
+import json
+import os
+import subprocess
+
+def list_to_dict(l):
+    return dict(zip(map(str, range(len(l))), l))
+
+def dd(d1, d2, ctx=""):
+    #print "Changes in " + ctx
+    for k in d1:
+        if k not in d2:
+            print k + " removed from d2"
+    for k in d2:
+        if k not in d1:
+            print k + " added in d2"
+            continue
+        if d2[k] != d1[k]:
+            if type(d2[k]) not in (dict, list):
+                print k + " changed from " + str(d1[k]) + " to " + str(d2[k])
+            else:
+                if type(d1[k]) != type(d2[k]):
+                    print k + " changed to " + str(d2[k])
+                    continue
+                else:
+                    if type(d2[k]) == dict:
+                        dd(d1[k], d2[k], k)
+                        continue
+                    elif type(d2[k]) == list:
+                        dd(list_to_dict(d1[k]), list_to_dict(d2[k]), k)
+    #print "Done with changes in " + ctx
+    return
+
+if sys.argv[1] == "create":
+    result = dict()
+    result['call'] = dict()
+    result['call']['parameters'] = sys.argv[2:]
+    result['analysis'] = dict()
+
+    FILENAME = None
+    for x in sys.argv[2:]:
+        if x[0:7] == '--json=':
+            FILENAME = x[7:]
+
+    if FILENAME:
+        json.dump(result, open(FILENAME, "w"), indent=2)
+    else:
+        print json.dumps(result, indent=2)
+
+    sys.exit(0)
+
+
+FILENAMES = sys.argv[1:]
+
+devnull = open('/dev/null', 'w')
+
+for FILENAME in FILENAMES:
+    print "Processing " + FILENAME
+
+    # store old JSON data for later comparison
+    DATA_OLD = json.load(open(FILENAME))
+
+    CALL = ["lola"] + DATA_OLD['call']['parameters']
+    print " ".join(CALL)
+
+    #subprocess.call(CALL, stdout=devnull, stderr=devnull)
+    subprocess.call(CALL)
+
+    # make sure analysis result does not change
+    DATA_NEW = json.load(open(FILENAME))
+    dd(DATA_NEW['analysis'], DATA_OLD['analysis'])
+
+    print

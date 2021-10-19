@@ -1,0 +1,123 @@
+place "i" init 1;
+place "o";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:InputCondition";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Split_Customer inquiry processing (7p3-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Join_Customer inquiry processing (7p3-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Split_xor (7qs-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Join_xor (7qs-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:outputCondition";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-)*xor (7qs-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-)*Join_Yes_xor (7qs-)";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split:busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Skip:busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):busy";
+place "p:Model.7og---0-----u--:Model.7og---0-----u--:Output:busy";
+trans "*:Model.7og---0-----u--:Model.7og---0-----u--:start"~"*:Model.7og---0-----u--:Model.7og---0-----u--:start"
+    in "i"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:InputCondition"
+;
+trans "*:Model.7og---0-----u--:Model.7og---0-----u--:end"~"*:Model.7og---0-----u--:Model.7og---0-----u--:end"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split:join:InputCondition"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split:join:InputCondition"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:InputCondition"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split:busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split:split:Split_Split_Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split:split:Split_Split_Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split:busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Split_Customer inquiry processing (7p3-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):join:Split_Split_Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):join:Split_Split_Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Split_Customer inquiry processing (7p3-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):split:Split_Join_Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):split:Split_Join_Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_No_Customer inquiry processing (7p3-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Join_Customer inquiry processing (7p3-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):join:Split_Split_Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):join:Split_Split_Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Split_Customer inquiry processing (7p3-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):split:Split_Join_Customer inquiry processing (7p3-):Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):split:Split_Join_Customer inquiry processing (7p3-):Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Join_Customer inquiry processing (7p3-)"
+       "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Skip:join:Split_Join_Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Skip:join:Split_Join_Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Join_Customer inquiry processing (7p3-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Skip:busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Skip:split:Join_Split_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Skip:split:Join_Split_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Skip:busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Split_xor (7qs-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):join:Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):join:Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Split_Yes_Customer inquiry processing (7p3-)*Customer inquiry processing (7p3-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):split:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):split:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):join:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):join:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer inquiry processing (7p3-)*Customer Quotation Processing (7ph-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):split:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):split:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):join:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):join:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Customer Quotation Processing (7ph-)*Sales Order Processing (7pv-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):split:Sales Order Processing (7pv-)*xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):split:Sales Order Processing (7pv-)*xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-)*xor (7qs-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):join:Sales Order Processing (7pv-)*xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):join:Sales Order Processing (7pv-)*xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Sales Order Processing (7pv-)*xor (7qs-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):split:xor (7qs-)*Join_Yes_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):split:xor (7qs-)*Join_Yes_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-)*Join_Yes_xor (7qs-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):join:Join_Split_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):join:Join_Split_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Split_xor (7qs-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):split:Join_Join_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):split:Join_Join_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_No_xor (7qs-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Join_xor (7qs-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):join:xor (7qs-)*Join_Yes_xor (7qs-):Join_Split_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):join:xor (7qs-)*Join_Yes_xor (7qs-):Join_Split_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:xor (7qs-)*Join_Yes_xor (7qs-)"
+       "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Split_xor (7qs-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):split:Join_Join_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):split:Join_Join_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Yes_xor (7qs-):busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Join_xor (7qs-)"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Output:join:Join_Join_xor (7qs-)"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Output:join:Join_Join_xor (7qs-)"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Join_Join_xor (7qs-)"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:Output:busy"
+;
+trans "t:Model.7og---0-----u--:Model.7og---0-----u--:Output:split:outputCondition"~"t:Model.7og---0-----u--:Model.7og---0-----u--:Output:split:outputCondition"
+    in "p:Model.7og---0-----u--:Model.7og---0-----u--:Output:busy"
+   out "p:Model.7og---0-----u--:Model.7og---0-----u--:outputCondition"
+;
+

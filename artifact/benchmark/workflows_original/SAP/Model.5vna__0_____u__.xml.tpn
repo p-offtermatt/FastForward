@@ -1,0 +1,174 @@
+place "i" init 1;
+place "o";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:InputCondition";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_ ()";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_ ()";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5vnq)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5vnq)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Split_and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Join_and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:outputCondition";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ()* ()";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq)*and (5vnq)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh)*and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq)*Transportation Planning and Processing (5vo8)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8)*and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Join_Yes_and (5voh)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Shipment Cost Calculation and Settlement (5vox)";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):busy";
+place "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:busy";
+trans "*:Model.5vna--0-----u--:Model.5vna--0-----u--:start"~"*:Model.5vna--0-----u--:Model.5vna--0-----u--:start"
+    in "i"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:InputCondition"
+;
+trans "*:Model.5vna--0-----u--:Model.5vna--0-----u--:end"~"*:Model.5vna--0-----u--:Model.5vna--0-----u--:end"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:outputCondition"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ()* ()"
+   out "o"
+       "o"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:join:InputCondition"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:join:InputCondition"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:InputCondition"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:split:Split_Split_ ():Split_Split_and (5vnq):Split_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:split:Split_Split_ ():Split_Split_and (5vnq):Split_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split:busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_ ()"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5vnq)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():join:Split_Split_ ()"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():join:Split_Split_ ()"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_ ()"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():split:Split_Join_ ()"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():split:Split_Join_ ()"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_ ():busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_ ()"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():join:Split_Split_ ()"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():join:Split_Split_ ()"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_ ()"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ():busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_ ()"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_ ()* ()"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):join:Split_Split_and (5vnq)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):join:Split_Split_and (5vnq)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5vnq)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):split:Split_Join_and (5vnq)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):split:Split_Join_and (5vnq)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5vnq):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5vnq)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):join:Split_Split_and (5vnq)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):join:Split_Split_and (5vnq)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5vnq)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):split:Split_Join_and (5vnq):Split_Yes_and (5vnq)*and (5vnq)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):split:Split_Join_and (5vnq):Split_Yes_and (5vnq)*and (5vnq)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5vnq)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq)*and (5vnq)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):join:Split_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):join:Split_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):split:Split_Join_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):split:Split_Join_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_No_and (5voh):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):join:Split_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):join:Split_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Split_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):split:Split_Join_and (5voh):Split_Yes_and (5voh)*and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):split:Split_Join_and (5voh):Split_Yes_and (5voh)*and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5voh)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh)*and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:join:Split_Join_ ():Split_Join_and (5vnq):Split_Join_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:join:Split_Join_ ():Split_Join_and (5vnq):Split_Join_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_ ()"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5vnq)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Join_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:split:Join_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:split:Join_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Skip:busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Split_and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):join:Split_Yes_and (5vnq)*and (5vnq)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):join:Split_Yes_and (5vnq)*and (5vnq)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5vnq)*and (5vnq)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):split:and (5vnq)*Transportation Planning and Processing (5vo8)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):split:and (5vnq)*Transportation Planning and Processing (5vo8)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq)*Transportation Planning and Processing (5vo8)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):join:and (5vnq)*Transportation Planning and Processing (5vo8)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):join:and (5vnq)*Transportation Planning and Processing (5vo8)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5vnq)*Transportation Planning and Processing (5vo8)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):split:Transportation Planning and Processing (5vo8)*and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):split:Transportation Planning and Processing (5vo8)*and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8)*and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):join:Split_Yes_and (5voh)*and (5voh):Transportation Planning and Processing (5vo8)*and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):join:Split_Yes_and (5voh)*and (5voh):Transportation Planning and Processing (5vo8)*and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Split_Yes_and (5voh)*and (5voh)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Transportation Planning and Processing (5vo8)*and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):split:and (5voh)*Join_Yes_and (5voh):and (5voh)*Shipment Cost Calculation and Settlement (5vox)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):split:and (5voh)*Join_Yes_and (5voh):and (5voh)*Shipment Cost Calculation and Settlement (5vox)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Join_Yes_and (5voh)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Shipment Cost Calculation and Settlement (5vox)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):join:and (5voh)*Shipment Cost Calculation and Settlement (5vox)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):join:and (5voh)*Shipment Cost Calculation and Settlement (5vox)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Shipment Cost Calculation and Settlement (5vox)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):split"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):split"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Shipment Cost Calculation and Settlement (5vox):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):join:Join_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):join:Join_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Split_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):split:Join_Join_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):split:Join_Join_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_No_and (5voh):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Join_and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):join:and (5voh)*Join_Yes_and (5voh):Join_Split_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):join:and (5voh)*Join_Yes_and (5voh):Join_Split_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:and (5voh)*Join_Yes_and (5voh)"
+       "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Split_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):split:Join_Join_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):split:Join_Join_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Yes_and (5voh):busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Join_and (5voh)"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:join:Join_Join_and (5voh)"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:join:Join_Join_and (5voh)"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Join_Join_and (5voh)"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:busy"
+;
+trans "t:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:split:outputCondition"~"t:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:split:outputCondition"
+    in "p:Model.5vna--0-----u--:Model.5vna--0-----u--:Output:busy"
+   out "p:Model.5vna--0-----u--:Model.5vna--0-----u--:outputCondition"
+;
+

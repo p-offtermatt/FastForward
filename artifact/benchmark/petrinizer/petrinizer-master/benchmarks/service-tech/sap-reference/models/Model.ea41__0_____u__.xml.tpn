@@ -1,0 +1,236 @@
+place "i" init 1;
+place "o";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:InputCondition";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Split_Lowest Value: Market Price Analysis (ea4m)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Join_Lowest Value: Market Price Analysis (ea4m)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:OutputCondition";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*and (ea5w)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m)*and (ea6t)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest value: Products (ea77)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77)*or (ea7l)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l)*Join_Yes_or (ea7l)";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):busy";
+place "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:busy";
+trans "*:Model.ea41--0-----u--:Model.ea41--0-----u--:start"~"*:Model.ea41--0-----u--:Model.ea41--0-----u--:start"
+    in "i"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:InputCondition"
+;
+trans "*:Model.ea41--0-----u--:Model.ea41--0-----u--:end"~"*:Model.ea41--0-----u--:Model.ea41--0-----u--:end"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:join:InputCondition"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:join:InputCondition"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:InputCondition"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:split:Split_Split_Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:split:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split:busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):join:Split_Split_Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):join:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Join_Lowest Value: Market Price Analysis (ea4m)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):join:Split_Split_Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):join:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Split_Lowest Value: Market Price Analysis (ea4m)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m):Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m):Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Join_Lowest Value: Market Price Analysis (ea4m)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:join:Split_Join_Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:join:Split_Join_Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Join_Lowest Value: Market Price Analysis (ea4m)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:split:Join_Split_and (ea5b):Join_Split_Lowest Value: Price Variances (ea6f):Join_Split_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:split:Join_Split_and (ea5b):Join_Split_Lowest Value: Price Variances (ea6f):Join_Split_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Skip:busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):join:Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):join:Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_Yes_Lowest Value: Market Price Analysis (ea4m)*Lowest Value: Market Price Analysis (ea4m)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):split:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):split:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):join:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):join:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Market Price Analysis (ea4m)*and (ea5b)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):split:and (ea5b)*Join_Yes_and (ea5b):and (ea5b)*and (ea5w)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):split:and (ea5b)*Join_Yes_and (ea5b):and (ea5b)*and (ea5w)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*and (ea5w)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):join:and (ea5b)*and (ea5w)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):join:and (ea5b)*and (ea5w)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*and (ea5w)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):split:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52):and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):split:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52):and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):join:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):join:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Range of Coverage Determination (ea52)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):split:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):split:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):join:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m):Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):join:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m):Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Range of Coverage Determination (ea52)*and (ea6m)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):split:and (ea6m)*and (ea6t)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):split:and (ea6m)*and (ea6t)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m)*and (ea6t)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):join:and (ea6m)*and (ea6t)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):join:and (ea6m)*and (ea6t)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6m)*and (ea6t)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):split:and (ea6t)*Lowest Value: Price Variances (ea6f):and (ea6t)*Lowest value: Products (ea77)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):split:and (ea6t)*Lowest Value: Price Variances (ea6f):and (ea6t)*Lowest value: Products (ea77)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest value: Products (ea77)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):join:and (ea6t)*Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):join:and (ea6t)*Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):split:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):split:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):join:and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):join:and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5w)*Lowest Value: Determination of Mvt Rate (ea5p)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):split:Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):split:Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Determination of Mvt Rate (ea5p)*and (ea6m)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):join:and (ea6t)*Lowest value: Products (ea77)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):join:and (ea6t)*Lowest value: Products (ea77)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest value: Products (ea77)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):split:Lowest value: Products (ea77)*or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):split:Lowest value: Products (ea77)*or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77)*or (ea7l)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest value: Products (ea77)*or (ea7l)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):split:or (ea7l)*Join_Yes_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):split:or (ea7l)*Join_Yes_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l)*Join_Yes_or (ea7l)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):join:Join_Split_and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):join:Join_Split_and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):split:Join_Join_and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):split:Join_Join_and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):join:and (ea5b)*Join_Yes_and (ea5b):Join_Split_and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):join:and (ea5b)*Join_Yes_and (ea5b):Join_Split_and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):join:Join_Split_Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):join:Join_Split_Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):join:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f):Join_Split_Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):join:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f):Join_Split_Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Lowest Value: Price Variances (ea6f)*Join_Yes_Lowest Value: Price Variances (ea6f)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):join:Join_Split_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):join:Join_Split_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):split:Join_Join_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):split:Join_Join_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):join:or (ea7l)*Join_Yes_or (ea7l):Join_Split_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):join:or (ea7l)*Join_Yes_or (ea7l):Join_Split_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l)*Join_Yes_or (ea7l)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:join:Join_Join_and (ea5b):Join_Join_Lowest Value: Price Variances (ea6f):Join_Join_or (ea7l)"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:join:Join_Join_and (ea5b):Join_Join_Lowest Value: Price Variances (ea6f):Join_Join_or (ea7l)"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)"
+       "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:busy"
+;
+trans "t:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:split:OutputCondition"~"t:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:split:OutputCondition"
+    in "p:Model.ea41--0-----u--:Model.ea41--0-----u--:Output:busy"
+   out "p:Model.ea41--0-----u--:Model.ea41--0-----u--:OutputCondition"
+;
+

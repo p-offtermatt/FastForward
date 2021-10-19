@@ -1,0 +1,14 @@
+buechi { /* F G F s1 = 1  aka GF s1 =1 */ 
+zero:
+    TRUE => zero
+    TRUE => one,
+one:
+    s1 = 1 => one
+    s1 != 1 => two,
+two:
+    s1 = 1 => one
+    s2 = 0 => two,
+}
+accept { one  };
+
+
