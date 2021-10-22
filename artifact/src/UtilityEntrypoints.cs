@@ -452,6 +452,7 @@ namespace PetriTool
             NetParser netParser = ParserPicker.ChooseNetParser(options.netFilePath);
 
             (PetriNet net, Marking initialMarking) = netParser.ReadNet(options.netFilePath);
+            NetStatisticsEntry dataEntry = new NetStatisticsEntry();
 
             List<MarkingWithConstraints> targetMarkings;
             List<MarkingWithConstraints> targetMarkingsCopy;
@@ -469,176 +470,174 @@ namespace PetriTool
                 targetMarkings = null;
                 targetMarkingsCopy = null;
                 targetMarkingsCopy2 = null;
-
             }
 
-            NetStatisticsEntry dataEntry = new NetStatisticsEntry();
 
-            dataEntry.netFile = options.netFilePath;
-            dataEntry.formulaFile = options.formulaFilePath;
+            // dataEntry.netFile = options.netFilePath;
+            // dataEntry.formulaFile = options.formulaFilePath;
 
-            dataEntry.places = net.Places.Count;
-            dataEntry.transitions = net.Transitions.Count;
+            // dataEntry.places = net.Places.Count;
+            // dataEntry.transitions = net.Transitions.Count;
 
 
-            if (options.prune)
-            {
-                PetriNet netCopy = new PetriNet(net);
-                Marking initialMarkingCopy = new Marking(initialMarking);
+            // if (options.prune)
+            // {
+            //     PetriNet netCopy = new PetriNet(net);
+            //     Marking initialMarkingCopy = new Marking(initialMarking);
 
-                PetriNet netCopy2 = new PetriNet(net);
-                Marking initialMarkingCopy2 = new Marking(initialMarking);
-                Stopwatch forwardPruningWatch = Stopwatch.StartNew();
-                Pruning.Prune(null, ref netCopy, ref initialMarkingCopy, ref targetMarkingsCopy, forward: true, backward: false);
-                forwardPruningWatch.Stop();
-                dataEntry.timeTakenForwardPruning = forwardPruningWatch.ElapsedMilliseconds;
-                dataEntry.placesAfterForwardPruning = netCopy.Places.Count;
-                dataEntry.transitionsAfterForwardPruning = netCopy.Transitions.Count;
+            //     PetriNet netCopy2 = new PetriNet(net);
+            //     Marking initialMarkingCopy2 = new Marking(initialMarking);
+            //     Stopwatch forwardPruningWatch = Stopwatch.StartNew();
+            //     Pruning.Prune(null, ref netCopy, ref initialMarkingCopy, ref targetMarkingsCopy, forward: true, backward: false);
+            //     forwardPruningWatch.Stop();
+            //     dataEntry.timeTakenForwardPruning = forwardPruningWatch.ElapsedMilliseconds;
+            //     dataEntry.placesAfterForwardPruning = netCopy.Places.Count;
+            //     dataEntry.transitionsAfterForwardPruning = netCopy.Transitions.Count;
 
-                Stopwatch backwardPruningWatch = Stopwatch.StartNew();
-                if (!(targetMarkingsCopy2 is null))
-                {
-                    Pruning.Prune(null, ref netCopy2, ref initialMarkingCopy2, ref targetMarkingsCopy2, forward: false, backward: true);
-                }
-                backwardPruningWatch.Stop();
+            //     Stopwatch backwardPruningWatch = Stopwatch.StartNew();
+            //     if (!(targetMarkingsCopy2 is null))
+            //     {
+            //         Pruning.Prune(null, ref netCopy2, ref initialMarkingCopy2, ref targetMarkingsCopy2, forward: false, backward: true);
+            //     }
+            //     backwardPruningWatch.Stop();
 
-                dataEntry.timeTakenBackwardPruning = backwardPruningWatch.ElapsedMilliseconds;
-                dataEntry.placesAfterBackwardPruning = netCopy2.Places.Count;
-                dataEntry.transitionsAfterBackwardPruning = netCopy2.Transitions.Count;
+            //     dataEntry.timeTakenBackwardPruning = backwardPruningWatch.ElapsedMilliseconds;
+            //     dataEntry.placesAfterBackwardPruning = netCopy2.Places.Count;
+            //     dataEntry.transitionsAfterBackwardPruning = netCopy2.Transitions.Count;
 
-                Stopwatch pruningWatch = Stopwatch.StartNew();
-                if (targetMarkings is null)
-                {
-                    Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: false);
-                }
-                else
-                {
-                    Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: true);
-                }
-                pruningWatch.Stop();
-                dataEntry.timeTakenPruning = pruningWatch.ElapsedMilliseconds;
+            //     Stopwatch pruningWatch = Stopwatch.StartNew();
+            //     if (targetMarkings is null)
+            //     {
+            //         Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: false);
+            //     }
+            //     else
+            //     {
+            //         Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: true);
+            //     }
+            //     pruningWatch.Stop();
+            //     dataEntry.timeTakenPruning = pruningWatch.ElapsedMilliseconds;
 
-                dataEntry.placesAfterPruning = net.Places.Count();
-                dataEntry.transitionsAfterPruning = net.Transitions.Count();
+            //     dataEntry.placesAfterPruning = net.Places.Count();
+            //     dataEntry.transitionsAfterPruning = net.Transitions.Count();
 
-                dataEntry.fractionOfPlacesPruned = 1 - (double)dataEntry.placesAfterPruning / (double)dataEntry.places;
-                dataEntry.fractionOfTransitionsPruned = 1 - (double)dataEntry.transitionsAfterPruning / (double)dataEntry.transitions;
-            }
+            //     dataEntry.fractionOfPlacesPruned = 1 - (double)dataEntry.placesAfterPruning / (double)dataEntry.places;
+            //     dataEntry.fractionOfTransitionsPruned = 1 - (double)dataEntry.transitionsAfterPruning / (double)dataEntry.transitions;
+            // }
 
-            dataEntry.numberOfSelfLoops = net.Transitions.Where(
-                transition => transition.HasSelfLoop()
-            ).Count();
+            // dataEntry.numberOfSelfLoops = net.Transitions.Where(
+            //     transition => transition.HasSelfLoop()
+            // ).Count();
 
-            dataEntry.numberOfNiceSelfLoops = net.Transitions.Where(
-                transition => transition.HasNiceSelfLoop()
-            ).Count();
+            // dataEntry.numberOfNiceSelfLoops = net.Transitions.Where(
+            //     transition => transition.HasNiceSelfLoop()
+            // ).Count();
 
-            dataEntry.bioTransitions = net.Transitions.Where(
-                transition => transition.IsBio()
-            ).Count();
+            // dataEntry.bioTransitions = net.Transitions.Where(
+            //     transition => transition.IsBio()
+            // ).Count();
 
-            dataEntry.fractionOfBioTransitions = (double)dataEntry.bioTransitions / (double)dataEntry.transitionsAfterPruning;
+            // dataEntry.fractionOfBioTransitions = (double)dataEntry.bioTransitions / (double)dataEntry.transitionsAfterPruning;
 
-            IEnumerable<double> preSizes = net.Transitions.Select(transition => (double)transition.GetPrePlaces().Count);
+            // IEnumerable<double> preSizes = net.Transitions.Select(transition => (double)transition.GetPrePlaces().Count);
 
-            dataEntry.meanPre = Statistics.Mean(preSizes);
+            // dataEntry.meanPre = Statistics.Mean(preSizes);
 
-            // TODO there is also Statistics.FiveNumberSummary which gives these values,
-            // but appearantly deconstruction does not work with arrays, so use this
-            // more descriptive way now. this could be changed later
-            dataEntry.medianPre = Statistics.Median(preSizes);
-            dataEntry.minimalPre = Statistics.Minimum(preSizes);
-            dataEntry.maximalPre = Statistics.Maximum(preSizes);
-            dataEntry.firstQuartilePre = Statistics.LowerQuartile(preSizes);
-            dataEntry.thirdQuartilePre = Statistics.UpperQuartile(preSizes);
+            // // TODO there is also Statistics.FiveNumberSummary which gives these values,
+            // // but appearantly deconstruction does not work with arrays, so use this
+            // // more descriptive way now. this could be changed later
+            // dataEntry.medianPre = Statistics.Median(preSizes);
+            // dataEntry.minimalPre = Statistics.Minimum(preSizes);
+            // dataEntry.maximalPre = Statistics.Maximum(preSizes);
+            // dataEntry.firstQuartilePre = Statistics.LowerQuartile(preSizes);
+            // dataEntry.thirdQuartilePre = Statistics.UpperQuartile(preSizes);
 
-            IEnumerable<double> postSizes = net.Transitions.Select(transition => (double)transition.GetPostPlaces().Count);
+            // IEnumerable<double> postSizes = net.Transitions.Select(transition => (double)transition.GetPostPlaces().Count);
 
-            dataEntry.meanPost = Statistics.Mean(postSizes);
+            // dataEntry.meanPost = Statistics.Mean(postSizes);
 
-            dataEntry.medianPost = Statistics.Median(postSizes);
-            dataEntry.minimalPost = Statistics.Minimum(postSizes);
-            dataEntry.maximalPost = Statistics.Maximum(postSizes);
-            dataEntry.firstQuartilePost = Statistics.LowerQuartile(postSizes);
-            dataEntry.thirdQuartilePost = Statistics.UpperQuartile(postSizes);
+            // dataEntry.medianPost = Statistics.Median(postSizes);
+            // dataEntry.minimalPost = Statistics.Minimum(postSizes);
+            // dataEntry.maximalPost = Statistics.Maximum(postSizes);
+            // dataEntry.firstQuartilePost = Statistics.LowerQuartile(postSizes);
+            // dataEntry.thirdQuartilePost = Statistics.UpperQuartile(postSizes);
 
-            // IEnumerable<double> inDegs = net.Places.Select(place => (double)net.GetInDegree(place));
+            // // IEnumerable<double> inDegs = net.Places.Select(place => (double)net.GetInDegree(place));
 
-            // dataEntry.meanInDeg = Statistics.Mean(inDegs);
+            // // dataEntry.meanInDeg = Statistics.Mean(inDegs);
 
-            // dataEntry.medianInDeg = Statistics.Median(inDegs);
-            // dataEntry.minimalInDeg = Statistics.Minimum(inDegs);
-            // dataEntry.maximalInDeg = Statistics.Maximum(inDegs);
-            // dataEntry.firstQuartileInDeg = Statistics.LowerQuartile(inDegs);
-            // dataEntry.thirdQuartileInDeg = Statistics.UpperQuartile(inDegs);
+            // // dataEntry.medianInDeg = Statistics.Median(inDegs);
+            // // dataEntry.minimalInDeg = Statistics.Minimum(inDegs);
+            // // dataEntry.maximalInDeg = Statistics.Maximum(inDegs);
+            // // dataEntry.firstQuartileInDeg = Statistics.LowerQuartile(inDegs);
+            // // dataEntry.thirdQuartileInDeg = Statistics.UpperQuartile(inDegs);
 
-            // IEnumerable<double> outDeg = net.Places.Select(place => (double)net.GetOutDegree(place));
+            // // IEnumerable<double> outDeg = net.Places.Select(place => (double)net.GetOutDegree(place));
 
-            // dataEntry.meanOutDeg = Statistics.Mean(outDeg);
+            // // dataEntry.meanOutDeg = Statistics.Mean(outDeg);
 
-            // dataEntry.medianOutDeg = Statistics.Median(outDeg);
-            // dataEntry.minimalOutDeg = Statistics.Minimum(outDeg);
-            // dataEntry.maximalOutDeg = Statistics.Maximum(outDeg);
-            // dataEntry.firstQuartileOutDeg = Statistics.LowerQuartile(outDeg);
-            // dataEntry.thirdQuartileOutDeg = Statistics.UpperQuartile(outDeg);
+            // // dataEntry.medianOutDeg = Statistics.Median(outDeg);
+            // // dataEntry.minimalOutDeg = Statistics.Minimum(outDeg);
+            // // dataEntry.maximalOutDeg = Statistics.Maximum(outDeg);
+            // // dataEntry.firstQuartileOutDeg = Statistics.LowerQuartile(outDeg);
+            // // dataEntry.thirdQuartileOutDeg = Statistics.UpperQuartile(outDeg);
 
-            // Arc weights
-            IEnumerable<double> weights = net.GetArcWeights().Select(num => (double)num);
-            dataEntry.meanWeight = Statistics.Mean(weights);
-            dataEntry.medianWeight = Statistics.Median(weights);
-            dataEntry.minimalWeight = Statistics.Minimum(weights);
-            dataEntry.maximalWeight = Statistics.Maximum(weights);
-            dataEntry.firstQuartileWeight = Statistics.LowerQuartile(weights);
-            dataEntry.thirdQuartileWeight = Statistics.UpperQuartile(weights);
+            // // Arc weights
+            // IEnumerable<double> weights = net.GetArcWeights().Select(num => (double)num);
+            // dataEntry.meanWeight = Statistics.Mean(weights);
+            // dataEntry.medianWeight = Statistics.Median(weights);
+            // dataEntry.minimalWeight = Statistics.Minimum(weights);
+            // dataEntry.maximalWeight = Statistics.Maximum(weights);
+            // dataEntry.firstQuartileWeight = Statistics.LowerQuartile(weights);
+            // dataEntry.thirdQuartileWeight = Statistics.UpperQuartile(weights);
 
-            // Monotonicity
+            // // Monotonicity
 
-            if (options.monotonicityDegree != Int32.MinValue)
-            {
-                dataEntry.checkedMonotonicityDegree = options.monotonicityDegree.ToString();
-                List<Place> orderedPlaces = ComputeMonotonicPlaceOrderViaSMT(net, options.monotonicityDegree);
-                if (orderedPlaces is null)
-                {
-                    dataEntry.monotonicPlaceOrder = "Not monotonic";
-                    dataEntry.isMonotonic = false;
-                }
-                else
-                {
-                    dataEntry.monotonicPlaceOrder =
-                        "Monotonic:\n" +
-                        String.Join("\n", orderedPlaces.
-                            Select((Place place, int index) => place.Name + ": " + index.ToString())
-                        );
+            // if (options.monotonicityDegree != Int32.MinValue)
+            // {
+            //     dataEntry.checkedMonotonicityDegree = options.monotonicityDegree.ToString();
+            //     List<Place> orderedPlaces = ComputeMonotonicPlaceOrderViaSMT(net, options.monotonicityDegree);
+            //     if (orderedPlaces is null)
+            //     {
+            //         dataEntry.monotonicPlaceOrder = "Not monotonic";
+            //         dataEntry.isMonotonic = false;
+            //     }
+            //     else
+            //     {
+            //         dataEntry.monotonicPlaceOrder =
+            //             "Monotonic:\n" +
+            //             String.Join("\n", orderedPlaces.
+            //                 Select((Place place, int index) => place.Name + ": " + index.ToString())
+            //             );
 
-                    dataEntry.isMonotonic = true;
+            //         dataEntry.isMonotonic = true;
 
-                    if (!CheckNetAgainstPlaceOrder(net, orderedPlaces, options.monotonicityDegree))
-                    {
-                        throw new Exception("Got a place order, but net is not monotonic!");
-                    }
-                }
-            }
-            else
-            {
-                dataEntry.checkedMonotonicityDegree = "Not checked";
-            }
+            //         if (!CheckNetAgainstPlaceOrder(net, orderedPlaces, options.monotonicityDegree))
+            //         {
+            //             throw new Exception("Got a place order, but net is not monotonic!");
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     dataEntry.checkedMonotonicityDegree = "Not checked";
+            // }
 
-            // Checking for Marked Graph
+            // // Checking for Marked Graph
 
-            int markedGraphPlaces = net.ComputeNumberOfMarkedGraphPlaces();
-            dataEntry.numberOfMarkedGraphPlaces = markedGraphPlaces;
+            // int markedGraphPlaces = net.ComputeNumberOfMarkedGraphPlaces();
+            // dataEntry.numberOfMarkedGraphPlaces = markedGraphPlaces;
 
-            dataEntry.fractionOfMarkedGraphPlaces = net.Places.Count == 0 ? 1 : (double)markedGraphPlaces / (double)net.Places.Count;
+            // dataEntry.fractionOfMarkedGraphPlaces = net.Places.Count == 0 ? 1 : (double)markedGraphPlaces / (double)net.Places.Count;
 
-            dataEntry.isMarkedGraph = markedGraphPlaces == net.Places.Count;
+            // dataEntry.isMarkedGraph = markedGraphPlaces == net.Places.Count;
 
-            // Checking for State Machine
+            // // Checking for State Machine
 
-            int stateMachineTransitions = net.ComputeNumberOfStateMachineTransitions();
-            dataEntry.numberOfStateMachineTransitions = stateMachineTransitions;
+            // int stateMachineTransitions = net.ComputeNumberOfStateMachineTransitions();
+            // dataEntry.numberOfStateMachineTransitions = stateMachineTransitions;
 
-            dataEntry.fractionOfStateMachineTransitions = net.Transitions.Count == 0 ? 1 : (double)stateMachineTransitions / (double)net.Transitions.Count;
-            dataEntry.isStateMachineNet = stateMachineTransitions == net.Transitions.Count;
+            // dataEntry.fractionOfStateMachineTransitions = net.Transitions.Count == 0 ? 1 : (double)stateMachineTransitions / (double)net.Transitions.Count;
+            // dataEntry.isStateMachineNet = stateMachineTransitions == net.Transitions.Count;
 
             // Checking for workflow net
 
@@ -648,18 +647,26 @@ namespace PetriTool
             dataEntry.sourcePlaces = String.Join(", ", inputPlaceChoices.Select(o => o.ToString()));
             dataEntry.sinkPlaces = String.Join(", ", outputPlaceChoices.Select(o => o.ToString()));
 
-            // Checking for free-choice
+            // // Checking for free-choice
 
-            dataEntry.isFreeChoice = net.IsFreeChoice();
+            // dataEntry.isFreeChoice = net.IsFreeChoice();
 
             // Checking for integer boundedness
 
             var counterexample = GetIntegerBoundednessCounterexample(net);
 
-            dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : counterexample.ToString();
+            dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+
+            // Checking for integer boundedness in WF nets
+            if (isWF)
+            {
+
+                var wfBoundCounterexample = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
+
+                dataEntry.wfIntegerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+            }
 
             // Writing output
-
             Console.WriteLine(dataEntry.ToJSON());
             System.Environment.Exit(0);
         }

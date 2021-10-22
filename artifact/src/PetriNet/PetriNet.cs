@@ -475,5 +475,18 @@ namespace Petri
         {
             return this.Places.Where(place => this.GetPreSet(place).Count == 0);
         }
+
+        public PetriNet ShortCircuit(Place inputPlace, Place outputPlace)
+        {
+            PetriNet copy = new PetriNet(this);
+
+
+            UpdateTransition shortCircuitEdge = new UpdateTransition("shortCircuit",
+            new Dictionary<Place, int>() { { outputPlace, 1 } },
+            new Dictionary<Place, int>() { { inputPlace, 1 } });
+
+            copy.AddTransition(shortCircuitEdge);
+            return copy;
+        }
     }
 }

@@ -34,6 +34,10 @@ namespace Petri
 
             AddStrictlyGreaterMarkingConstraint(net.Places, model, finalMarkingVars, new Marking(), "final_marking_stricly_greater_than_zero");
 
+            GRBLinExpr objective = CreateVariableSumExpression(transitionVars);
+
+            model.SetObjective(objective, GRB.MINIMIZE);
+
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
             {

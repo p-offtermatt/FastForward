@@ -250,6 +250,9 @@ namespace Benchmark
 
         public string integerBoundednessCounterexample;
 
+        // Check Integer Boundedness with WF short-circuit edge
+        public string wfIntegerBoundednessCounterexample;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
