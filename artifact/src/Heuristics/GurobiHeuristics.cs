@@ -1,6 +1,5 @@
 #define GUROBI
 
-#if GUROBI
 using System;
 using System.Linq;
 using System.Collections;
@@ -360,7 +359,7 @@ namespace Petri
                     {
                         // Console.WriteLine(model.SolCount);
                         usedTransitions[i] = new HashSet<Transition>();
-                        distanceEstimations[i] = (float) model.ObjVal;
+                        distanceEstimations[i] = (float)model.ObjVal;
                         for (int solutionNumber = 0; solutionNumber < model.SolCount; solutionNumber++)
                         {
                             // Console.WriteLine("Solution Number: " + solutionNumber + " has obj val: " + model.PoolObjVal);
@@ -599,211 +598,6 @@ namespace Petri
             model.Parameters.LogToConsole = 0;
             model.Parameters.LogFile = "gurobi.log";
             return model;
-        }
-
-        public static IEnumerator<Tuple<Marking, float?>> GenerateReachableMarkingsViaUnrolling(
-            UnrollingBenchmarkEntry diagnostics,
-            List<Place> places,
-            List<Transition> transitions,
-            Marking initialMarking,
-            List<MarkingWithConstraints> targetMarkings,
-            Dictionary<Place, double> placeBounds,
-            int pathLengthBound,
-            Domains domain = Domains.Q)
-        {
-            diagnostics.pathLengthBound = pathLengthBound;
-            char gurobiDomain = EvaluateDomain(domain);
-            GRBModel model = InitializeModel();
-
-            // create variables
-            GRBVar[][] placeVariablesPerTimeStep = new GRBVar[pathLengthBound + 1][];
-            GRBVar[][] transitionVariablePerTimeStep = new GRBVar[pathLengthBound][];
-            for (int step = 0; step <= pathLengthBound; step++)
-            {
-                placeVariablesPerTimeStep[step] = GeneratePlaceMarkingVars(places, GRB.INTEGER, model, namePrefix: "marking_step_" + step.ToString() + "_", placeBounds);
-                for (int placeNumber = 0; placeNumber < places.Count; placeNumber++)
-                {
-                    Place place = places[placeNumber];
-                    GRBVar placeVar = placeVariablesPerTimeStep[step][placeNumber];
-                    model.AddConstr(placeVar >= (double)0, ("Place " + place.Name + " is >= 0 in step " + step.ToString()).Truncate(250));
-                }
-            }
-
-            // ensure initial marking is realized
-            InitializeMarkingConstraints(places, model, placeVariablesPerTimeStep[0], initialMarking, "Initial Marking Constraint ");
-
-            for (int step = 0; step < pathLengthBound; step++)
-            {
-                // create variables
-                transitionVariablePerTimeStep[step] = CreateTransitionTimesFiredVars(
-                    transitions,
-                    GRB.BINARY,
-                    model,
-                    ("step " + step.ToString() + " transition times fired_").Truncate(250));
-
-                // ensure exactly 1 transition is active in each step
-                // TODO: Could consider doing an SOS constraint instead of the sum=1 constraint
-                GRBLinExpr transitionSum = CreateVariableSumExpression(transitionVariablePerTimeStep[step]);
-                model.AddConstr(transitionSum, GRB.EQUAL, 1.0, ("transition sum step " + step.ToString() + " equals 1 constraint").Truncate(250));
-
-                for (int transitionNumber = 0; transitionNumber < transitions.Count; transitionNumber++)
-                {
-                    UpdateTransition transition = (UpdateTransition)transitions[transitionNumber];
-                    GRBVar transitionVar = transitionVariablePerTimeStep[step][transitionNumber];
-
-                    Dictionary<Place, int> pre = transition.Pre;
-                    Dictionary<Place, int> post = transition.Post;
-
-                    GRBVar[] previousStepPlaceVars = placeVariablesPerTimeStep[step];
-                    GRBVar[] nextStepPlaceVars = placeVariablesPerTimeStep[step + 1];
-
-                    foreach ((Place place, int value) in pre)
-                    {
-                        int placeIndex = places.IndexOf(place);
-                        GRBVar placeVar = previousStepPlaceVars[placeIndex];
-
-                        // Add constraint: pre of the transition is fulfilled
-                        model.AddGenConstrIndicator(
-                            transitionVar,
-                            1,
-                            new GRBLinExpr(placeVar),
-                            GRB.GREATER_EQUAL,
-                            (double)value,
-                            ("Pre Fulfilled: Transition "
-                                + transition.Name
-                                + " requires place "
-                                + place.Name
-                                + " to be greater than "
-                                + value.ToString()).Truncate(250));
-                    }
-
-                    foreach (Place place in places)
-                    {
-                        int placeIndex = places.IndexOf(place);
-                        int effect = post.GetValueOrDefault(place, 0) - pre.GetValueOrDefault(place, 0);
-
-                        // Add constraint: effect of the transition is realized
-                        model.AddGenConstrIndicator(
-                            transitionVar,
-                            1,
-                            nextStepPlaceVars[placeIndex] - previousStepPlaceVars[placeIndex],
-                            GRB.EQUAL,
-                            effect,
-                            ("effect of transition " + transition.Name + " on " + place.Name).Truncate(250)
-                        );
-                    }
-                }
-            }
-
-            // generate heuristic
-
-            // create transition vars for heuristic
-            GRBVar[] transitionTimesFiredInHeuristicVars = CreateTransitionTimesFiredVars(transitions, GRB.INTEGER, model);
-
-            // create final marking variables
-            GRBVar[] finalMarkingHeuristicVars = GeneratePlaceMarkingVars(places, GRB.INTEGER, model, namePrefix: "finalMarking_");
-
-            // create objective: minimize t1+t2+t3+...
-            GRBLinExpr optimizationObjective = CreateVariableSumExpression(transitionTimesFiredInHeuristicVars);
-
-            model.SetObjective(optimizationObjective, GRB.MINIMIZE);
-
-            // ensure last step of unrolling + transition multiplicities realized by heuristic = final marking
-            GenerateMarkingEquationConstraints(places, transitions, model, transitionTimesFiredInHeuristicVars, placeVariablesPerTimeStep[pathLengthBound], finalMarkingHeuristicVars);
-
-            // create indicator variables for targets: if targetIndicator[i] is 1, then final marking should satisfy targetMarkings[i]
-            GRBVar[] targetIndicators = new GRBVar[targetMarkings.Count];
-            for (int targetMarkingNumber = 0; targetMarkingNumber < targetMarkings.Count; targetMarkingNumber++)
-            {
-                MarkingWithConstraints targetMarking = targetMarkings[targetMarkingNumber];
-                targetIndicators[targetMarkingNumber] =
-                    model.AddVar(
-                        LowerBound,
-                        UpperBound,
-                        ObjectiveValue,
-                        GRB.BINARY,
-                        ("target marking #" + targetMarkingNumber.ToString() + " indicator variable").Truncate(250));
-
-                // add indicator constraint for each place: if variable is 1, final marking of place satisfies marking
-                for (int placeNumber = 0; placeNumber < places.Count; placeNumber++)
-                {
-                    Place place = places[placeNumber];
-                    int value = targetMarking.Marking.GetValueOrDefault(place, 0);
-                    GRBVar placeVar = finalMarkingHeuristicVars[placeNumber];
-
-                    ConstraintOperators constraint = targetMarking.Constraints.GetValueOrDefault(place, ConstraintOperators.GreaterEqual);
-                    model.AddGenConstrIndicator(
-                        targetIndicators[targetMarkingNumber],
-                        1,
-                        placeVar,
-                        constraint == ConstraintOperators.GreaterEqual ? GRB.GREATER_EQUAL : GRB.EQUAL,
-                        value,
-                        ("Place " + place.Name + " satisfies target marking #" + targetMarkingNumber + " if indicator variable is 1").Truncate(250));
-                }
-            }
-
-            // target indicators are binary, so if the sum is >= 1, then at least one of them is =1.
-            model.AddConstr(CreateVariableSumExpression(targetIndicators) >= 1, "At least one target satisfied constraint");
-
-
-            // search mode 2 means find the model.Parameters.PoolSolutions many best solutions
-            model.Parameters.PoolSearchMode = 2;
-
-            // how many solutions to find
-            model.Parameters.PoolSolutions = 1;
-
-            // the tolerance up to which we want the solutions to be optimal:
-            // in order for our approach to find shortest paths, set this to 0
-            // TODO: this could be enlargened later, to speed up the solver
-            model.Parameters.MIPGap = 0.0001;
-
-            model.Parameters.SolFiles = "/home/local/USHERBROOKE/offp3001/unrolling-solution";
-
-            model.Optimize();
-            model.Write("/home/local/USHERBROOKE/offp3001/unrolling.lp");
-
-
-            if (model.Status != GRB.Status.OPTIMAL)
-            {
-                throw new Exception("Gurobi did not find an optimal solution, check the model file for insights. Status is " + model.Status);
-            }
-
-            Marking unrolledMarking = ExtractMarking(places, model, placeVariablesPerTimeStep[pathLengthBound]);
-            unrolledMarking.RemovePlacesWithNoTokens();
-            diagnostics.bestUnrolledSolutionMarking = unrolledMarking.ToString();
-            diagnostics.bestUnrolledTransitionSequence =
-                String.Join(
-                    ", ",
-                    ExtractTransitionSequence(transitions, model, transitionVariablePerTimeStep).Select(transition => transition.Name)
-                );
-
-            diagnostics.heuristicTransitions =
-                String.Join(", ",
-                    ExtractTransitionMultiset(transitions, model, transitionTimesFiredInHeuristicVars).Select(t => t.Item1.Name + ": " + t.Item2.ToString()));
-
-            Marking heuristicFinalMarking = ExtractMarking(places, model, finalMarkingHeuristicVars);
-            heuristicFinalMarking.RemovePlacesWithNoTokens();
-            diagnostics.heuristicFinalMarking = heuristicFinalMarking.ToString();
-
-            diagnostics.bestUnrolledHeuristicValue = model.ObjVal;
-
-            // int numberOfSolutions = model.SolCount;
-
-
-            // for (int i = 0; i < numberOfSolutions; i++)
-            // {
-            //     if(i == 1){}
-            //     // sets the model to exhibit the ith solution
-            //     model.Parameters.SolutionNumber = i;
-
-            //     Console.WriteLine("Printing solution " + i.ToString());
-            //     Console.WriteLine("Obtained Marking: " + ExtractMarking(net, model, placeVariablesPerTimeStep[pathLengthBound]).ToString());
-            //     Console.WriteLine("Transition Sequence: \n" + String.Join("\n", ExtractTransitionSequence(net, model, transitionVariablePerTimeStep)));
-            // }
-
-            return null;
-            // TODO: finish implementation of ienumerable
-            throw new NotImplementedException();
         }
 
         private static HashSet<Tuple<Transition, double>> ExtractTransitionMultiset(List<Transition> transitions, GRBModel model, GRBVar[] transitionVars)
@@ -1163,4 +957,3 @@ namespace Petri
         }
     }
 }
-#endif
