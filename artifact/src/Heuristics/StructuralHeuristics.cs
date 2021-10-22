@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Utils;
 
 namespace Petri
 {
@@ -47,7 +48,7 @@ namespace Petri
             PetriNet net,
             Marking initialMarking,
             List<MarkingWithConstraints> targetMarkings,
-            GurobiHeuristics.Domains gurobiDomain)
+            GurobiConsts.Domains gurobiDomain)
         {
             Dictionary<Place, float?> computedHeuristics = new Dictionary<Place, float?>();
 

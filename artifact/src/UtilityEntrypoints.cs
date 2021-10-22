@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using Benchmark;
 using Statistics = MathNet.Numerics.Statistics.Statistics;
+using Utils;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -229,7 +230,7 @@ namespace PetriTool
 
             // Func<Marking, float?> heuristic = InitializeMarkingEquationHeuristic(net, targetMarkings, domain);
             Func<Marking, Tuple<IEnumerable<Transition>, float?>> heuristic =
-                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, Domains.N);
+                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.N);
 
             (IEnumerable<Transition> support, float? initialHeuristicValue) = heuristic(initialMarking);
             if (support == null)
@@ -345,6 +346,11 @@ namespace PetriTool
             {
                 return sortedPlaces;
             }
+        }
+
+        private static bool IsIntegerBounded(PetriNet net)
+        {
+            return false;
         }
 
         private static List<Place> ComputeMonotonicPlaceOrderViaSMT(PetriNet net, int degree)

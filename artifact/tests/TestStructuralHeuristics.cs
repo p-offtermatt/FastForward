@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Petri;
 using Xunit.Abstractions;
+using Utils;
 
 namespace Testing
 {
@@ -27,7 +28,7 @@ namespace Testing
 
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/leabasicapproach.formula"));
 
-            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiHeuristics.Domains.N);
+            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiConsts.Domains.N);
 
             foreach (Place place in net.Places)
             {
@@ -50,7 +51,7 @@ namespace Testing
 
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/leabasicapproach.formula"));
 
-            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiHeuristics.Domains.Q);
+            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiConsts.Domains.Q);
 
             foreach (Place place in net.Places)
             {
@@ -73,7 +74,7 @@ namespace Testing
 
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/manufacturing.formula"));
 
-            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiHeuristics.Domains.N);
+            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiConsts.Domains.N);
 
             HashSet<float?> scores = new HashSet<float?>();
 
@@ -101,7 +102,7 @@ namespace Testing
 
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/manufacturing.formula"));
 
-            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiHeuristics.Domains.Q);
+            Func<Marking, float?> structuralQReachabilityHeuristic = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net, initialMarking, targetMarkings, GurobiConsts.Domains.Q);
 
             HashSet<float?> scores = new HashSet<float?>();
 
