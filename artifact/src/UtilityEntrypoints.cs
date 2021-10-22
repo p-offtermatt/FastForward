@@ -348,9 +348,9 @@ namespace PetriTool
             }
         }
 
-        private static bool IsIntegerBounded(PetriNet net)
+        private static Dictionary<Transition, Double> GetIntegerBoundednessCounterexample(PetriNet net)
         {
-            return false;
+            return GurobiHeuristics.CheckIntegerUnboundedness(net);
         }
 
         private static List<Place> ComputeMonotonicPlaceOrderViaSMT(PetriNet net, int degree)
@@ -651,6 +651,12 @@ namespace PetriTool
             // Checking for free-choice
 
             dataEntry.isFreeChoice = net.IsFreeChoice();
+
+            // Checking for integer boundedness
+
+            var counterexample = GetIntegerBoundednessCounterexample(net);
+
+            dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : counterexample.ToString();
 
             // Writing output
 

@@ -246,6 +246,10 @@ namespace Benchmark
         public double firstQuartileWeight;
         public double thirdQuartileWeight;
 
+        // Integer Boundedness
+
+        public string integerBoundednessCounterexample;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);

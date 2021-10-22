@@ -15,10 +15,35 @@ namespace Petri
     public static class GurobiHeuristics
     {
 
-        // public static bool CheckIntegerUnboundedness(PetriNet net)
-        // {
+        public static Dictionary<Transition, double> CheckIntegerUnboundedness(PetriNet net)
+        {
+            //Check whether from zero marking, the zero marking can be covered
+            GRBModel model = InitializeModel();
 
-        // }
+            GRBVar[] transitionVars = CreateTransitionTimesFiredVars(net.Transitions, 'N', model,
+            "transitionTimesFired_");
+
+            GRBVar[] zeroMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "zeroMarking_");
+            GRBConstr[] zeroMarkingConstraint = InitializeMarkingConstraints(net.Places,
+                                                                               model,
+                                                                               zeroMarkingVars,
+                                                                               "zeroMarkingConstraint_");
+
+            GRBVar[] finalMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "finalMarking_");
+            GenerateMarkingEquationConstraints(net.Places, net.Transitions, model, transitionVars, zeroMarkingVars, finalMarkingVars);
+
+            AddStrictlyGreaterMarkingConstraint(net.Places, model, finalMarkingVars, new Marking(), "final_marking_stricly_greater_than_zero");
+
+            model.Optimize();
+            if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
+            {
+                return null;
+            }
+            else
+            {
+                return ExtractTransitionMultiset(net.Transitions, model, transitionVars);
+            }
+        }
 
 
         public static Func<Place, float?> InitializePlaceToStructuralQReachabilityDistance(
@@ -205,7 +230,7 @@ namespace Petri
                         {
                             // Console.WriteLine("Solution Number: " + solutionNumber + " has obj val: " + model.PoolObjVal);
                             model.Parameters.SolutionNumber = solutionNumber;
-                            HashSet<Tuple<Transition, double>> transitionMultiset = ExtractTransitionMultiset(transitions, model, transitionVars);
+                            Dictionary<Transition, double> transitionMultiset = ExtractTransitionMultiset(transitions, model, transitionVars);
                             // Console.WriteLine(String.Join("|", transitionMultiset.Select(tuple => tuple.Item1.Name + ": " + tuple.Item2)));
 
                             GRBVar[] finalMarkingVars = new GRBVar[places.Count];
@@ -219,7 +244,7 @@ namespace Petri
                             Marking finalMarking = ExtractMarking(places, model, finalMarkingVars);
                             // Console.WriteLine("Final Marking: " + finalMarking.ToString());
                             // Console.WriteLine("------------------------------------");
-                            usedTransitions[i].UnionWith(transitionMultiset.Select(x => x.Item1).ToHashSet());
+                            usedTransitions[i].UnionWith(transitionMultiset.Keys.ToHashSet());
                         }
                     }
                 }
@@ -441,10 +466,10 @@ namespace Petri
             return model;
         }
 
-        private static HashSet<Tuple<Transition, double>> ExtractTransitionMultiset(List<Transition> transitions, GRBModel model, GRBVar[] transitionVars)
+        private static Dictionary<Transition, double> ExtractTransitionMultiset(List<Transition> transitions, GRBModel model, GRBVar[] transitionVars)
         {
             double[] transitionMults = model.Get(GRB.DoubleAttr.Xn, transitionVars);
-            HashSet<Tuple<Transition, double>> result = new HashSet<Tuple<Transition, double>>();
+            Dictionary<Transition, double> result = new Dictionary<Transition, double>();
             for (int i = 0; i < transitions.Count; i++)
             {
                 double transitionMult = transitionMults[i];
@@ -452,7 +477,7 @@ namespace Petri
                 {
                     continue;
                 }
-                result.Add(new Tuple<Transition, double>(transitions[i], transitionMult));
+                result.Add(transitions[i], transitionMult);
             }
             return result;
         }
@@ -637,6 +662,44 @@ namespace Petri
             Marking marking = new Marking(places.ToDictionary(place => place, _ => 0));
             MarkingWithConstraints constrainedMarking = new MarkingWithConstraints(marking, constraints);
             return InitializeMarkingConstraints(places, model, markingVars, constrainedMarking, namePrefix);
+        }
+
+        private static void AddStrictlyGreaterMarkingConstraint(
+            List<Place> places,
+            GRBModel model,
+            GRBVar[] markingVars,
+            Marking marking,
+            string namePrefix)
+        {
+            GRBVar[] indicatorVariables = new GRBVar[places.Count];
+            for (int i = 0; i < places.Count; i++)
+            {
+                Place place = places[i];
+
+                GRBVar strictlyGreaterVar =
+                    model.AddVar(0, 1, ObjectiveValue, 'N', "strictly_greater_indicator_" + namePrefix + place.Name.Truncate(200));
+                indicatorVariables[i] = strictlyGreaterVar;
+
+                List<GRBVar> placeGreaterEqualVars = new List<GRBVar>(places.Count - 1);
+                for (int j = 0; j < places.Count; j++)
+                {
+                    Place checkedPlace = places[j];
+                    GRBVar greaterEqualVar =
+                        model.AddVar(0, 1, ObjectiveValue, 'N', place.Name.Truncate(200) + checkedPlace.Name.Truncate(200) + "_greaterequal");
+                    model.AddGenConstrIndicator(greaterEqualVar, '1', markingVars[j], '>', marking.GetValueOrDefault(checkedPlace, 0) + (i == j ? 1 : 0), checkedPlace.Name.Truncate(200) + "_grequal_marking_in_" + place.Name.Truncate(200) + "_greater");
+
+                    placeGreaterEqualVars.Add(greaterEqualVar);
+                }
+
+                model.AddGenConstrAnd(strictlyGreaterVar,
+                                      placeGreaterEqualVars.ToArray(),
+                                      namePrefix + "_marking_greater_" + place.Name.Truncate(200));
+
+            }
+            GRBVar orVariable = model.AddVar(0, 1, ObjectiveValue, 'N', ("any_stricly_greater_indicator_" + namePrefix).Truncate(400));
+
+            model.AddGenConstrOr(orVariable, indicatorVariables, namePrefix + "_any_place_strictly_covers?");
+            model.AddConstr(orVariable, '=', 1, namePrefix + "_or_is_true");
         }
 
         private static void GenerateMarkingEquationConstraints(List<Place> places,
