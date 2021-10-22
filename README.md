@@ -69,8 +69,8 @@ If the error persists, it can mean that dotnet does not have enough memory avail
 Some instances are too large for Z3 to solve.
 You can try running with a different heuristic not using Z3.
 
-# References
+# Links
 
-<a href="https://figshare.com/articles/software/FastForward_A_tool_for_reachability_in_Petri_nets_with_infinite_state_spaces_Artifact_for_the_TACAS21_Contribution_Directed_Reachability_for_Infinite-State_Systems_/13573592">Blondin M., Haase C., Offtermatt P.: Directed Reachability for Infinite-State Systems, TACAS21</a>
+<a href="https://figshare.com/articles/software/FastForward_A_tool_for_reachability_in_Petri_nets_with_infinite_state_spaces_Artifact_for_the_TACAS21_Contribution_Directed_Reachability_for_Infinite-State_Systems_/13573592">TACAS 21 paper</a>
 
-<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-72013-1_1">Blondin M., Haase C., Offtermatt P.: FastForward: A tool for reachability in Petri nets with infinite state spaces. Artifact for the TACAS21 Contribution "Directed Reachability for Infinite-State Systems" </a>
+<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-72013-1_1">TACAS 21 Artifact on Figshare</a>
