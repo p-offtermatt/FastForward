@@ -686,7 +686,7 @@ namespace Petri
                     Place checkedPlace = places[j];
                     GRBVar greaterEqualVar =
                         model.AddVar(0, 1, ObjectiveValue, 'N', place.Name.Truncate(200) + checkedPlace.Name.Truncate(200) + "_greaterequal");
-                    model.AddGenConstrIndicator(greaterEqualVar, '1', markingVars[j], '>', marking.GetValueOrDefault(checkedPlace, 0) + (i == j ? 1 : 0), checkedPlace.Name.Truncate(200) + "_grequal_marking_in_" + place.Name.Truncate(200) + "_greater");
+                    model.AddGenConstrIndicator(greaterEqualVar, 1, markingVars[j], '>', marking.GetValueOrDefault(checkedPlace, 0) + (i == j ? 1 : 0), checkedPlace.Name.Truncate(100) + "_grequal_marking_in_" + place.Name.Truncate(100) + "_greater");
 
                     placeGreaterEqualVars.Add(greaterEqualVar);
                 }
