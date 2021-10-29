@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.5e1y--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.5e1y--0-----u--:Model.5e1y--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_and (5e2x)"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_xor (5e2q)"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*Join_Yes_xor (5e2q)"/>
+    <CGraph Type="Place" Label="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*and (5e2x)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_and (5e2x):split:Join_Join_and (5e2x)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_xor (5e2q):split:Join_Join_xor (5e2q)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_and (5e2x):split:Join_Join_and (5e2x)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_xor (5e2q):split:Join_Join_xor (5e2q)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Split_No_Sending Samples and Advertising Materials (5e2j):split:Split_Join_Sending Samples and Advertising Materials (5e2j)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*Join_Yes_xor (5e2q)"/>
+    <CGraph Type="Transition" Label="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*and (5e2x)"/>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.5e1y--0-----u--:Model.5e1y--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*Join_Yes_xor (5e2q)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*Join_Yes_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*and (5e2x)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_and (5e2x):split:Join_Join_and (5e2x)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_and (5e2x):split:Join_Join_and (5e2x)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_xor (5e2q):split:Join_Join_xor (5e2q)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_xor (5e2q):split:Join_Join_xor (5e2q)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_and (5e2x):split:Join_Join_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_xor (5e2q)" Target="*:Model.5e1y--0-----u--:Model.5e1y--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Split_No_Sending Samples and Advertising Materials (5e2j):split:Split_Join_Sending Samples and Advertising Materials (5e2j)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_No_xor (5e2q):split:Join_Join_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*and (5e2x)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_and (5e2x):split:Join_Join_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*Join_Yes_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Split_No_Sending Samples and Advertising Materials (5e2j):split:Split_Join_Sending Samples and Advertising Materials (5e2j)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Split_No_Sending Samples and Advertising Materials (5e2j):split:Split_Join_Sending Samples and Advertising Materials (5e2j)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_and (5e2x):split:Join_Join_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*Join_Yes_xor (5e2q)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*Join_Yes_xor (5e2q)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*and (5e2x)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_and (5e2x)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q):split:xor (5e2q)*and (5e2x)" Target="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Split_xor (5e2q)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_xor (5e2q):split:Join_Join_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:xor (5e2q)*Join_Yes_xor (5e2q)" Target="t:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Yes_xor (5e2q):split:Join_Join_xor (5e2q)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.5e1y--0-----u--:Model.5e1y--0-----u--:Join_Join_and (5e2x)" Target="*:Model.5e1y--0-----u--:Model.5e1y--0-----u--:end">1</CArc>
+</CGraph>

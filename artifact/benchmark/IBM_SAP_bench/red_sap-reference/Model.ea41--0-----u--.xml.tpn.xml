@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.ea41--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.ea41--0-----u--:Model.ea41--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)"/>
+    <CGraph Type="Place" Label="p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):split:Join_Join_and (ea5b)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):split:Join_Join_or (ea7l)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)"/>
+    <CGraph Type="Transition" Label="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):split:Join_Join_and (ea5b)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):split:Join_Join_or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.ea41--0-----u--:Model.ea41--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_and (ea5b):split:Join_Join_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_Lowest Value: Price Variances (ea6f)" Target="*:Model.ea41--0-----u--:Model.ea41--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_and (ea5b)" Target="*:Model.ea41--0-----u--:Model.ea41--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Join_or (ea7l)" Target="*:Model.ea41--0-----u--:Model.ea41--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_No_or (ea7l):split:Join_Join_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_Lowest Value: Price Variances (ea6f):split:Join_Join_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea6t)*Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):busy" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Split_No_Lowest Value: Market Price Analysis (ea4m):split:Split_Join_Lowest Value: Market Price Analysis (ea4m)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="i" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_Lowest Value: Price Variances (ea6f)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_and (ea5b)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.ea41--0-----u--:Model.ea41--0-----u--:or (ea7l):join:Lowest value: Products (ea77)*or (ea7l)" Target="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:and (ea5b)*Join_Yes_and (ea5b)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_and (ea5b):split:Join_Join_and (ea5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Split_or (ea7l)" Target="t:Model.ea41--0-----u--:Model.ea41--0-----u--:Join_Yes_or (ea7l):split:Join_Join_or (ea7l)">1</CArc>
+</CGraph>

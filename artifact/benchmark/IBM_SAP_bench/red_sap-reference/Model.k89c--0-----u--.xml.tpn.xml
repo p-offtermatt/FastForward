@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.k89c--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_Join_or (k8dz)"/>
+    <CGraph Type="Place" Label="p:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea)*Transaction data (k8a1)"/>
+    <CGraph Type="Transition" Label="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)"/>
+    <CGraph Type="Transition" Label="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)"/>
+    <CGraph Type="Transition" Label="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_No_or (k8dz):split:Split_Join_or (k8dz)"/>
+    <CGraph Type="Transition" Label="t:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea):split:and (k8ea)*Transaction data (k8a1):and (k8ea)*Master data (k8ao)"/>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_No_or (k8dz):split:Split_Join_or (k8dz)" Target="p:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_Join_or (k8dz)">1</CArc>
+    <CArc Type="Arc" Label="arcId80" Source="t:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea):split:and (k8ea)*Transaction data (k8a1):and (k8ea)*Master data (k8ao)" Target="p:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea)*Transaction data (k8a1)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_Join_or (k8dz)" Target="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_Join_or (k8dz)" Target="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_No_or (k8dz):split:Split_Join_or (k8dz)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea)*Transaction data (k8a1)" Target="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="i" Target="t:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea):split:and (k8ea)*Transaction data (k8a1):and (k8ea)*Master data (k8ao)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.k89c--0-----u--:Model.k89c--0-----u--:and (k8ea):split:and (k8ea)*Transaction data (k8a1):and (k8ea)*Master data (k8ao)" Target="p:Model.k89c--0-----u--:Model.k89c--0-----u--:Split_Join_or (k8dz)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.k89c--0-----u--:Model.k89c--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (k8dq)" Target="o">1</CArc>
+</CGraph>

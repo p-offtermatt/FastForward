@@ -1,0 +1,156 @@
+place "i" init 1;
+place "o";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:InputCondition";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Split_xor (9l91)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Join_xor (9l91)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_or (9l98)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_or (9l98)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_and (9l72)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_and (9l72)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:OutputCondition";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91)*xor (9l91)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f)*or (9l98)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*Join_Yes_or (9l98)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*and (9l72)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72)*Join_Yes_and (9l72)";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):busy";
+place "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:busy";
+trans "*:Model.9l6o--0-----u--:Model.9l6o--0-----u--:start"~"*:Model.9l6o--0-----u--:Model.9l6o--0-----u--:start"
+    in "i"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:InputCondition"
+;
+trans "*:Model.9l6o--0-----u--:Model.9l6o--0-----u--:end"~"*:Model.9l6o--0-----u--:Model.9l6o--0-----u--:end"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:join:InputCondition"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:join:InputCondition"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:InputCondition"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:split:Split_Split_xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:split:Split_Split_xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split:busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Split_xor (9l91)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):join:Split_Split_xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):join:Split_Split_xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Split_xor (9l91)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):split:Split_Join_xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):split:Split_Join_xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_No_xor (9l91):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Join_xor (9l91)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):join:Split_Split_xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):join:Split_Split_xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Split_xor (9l91)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):split:Split_Join_xor (9l91):Split_Yes_xor (9l91)*xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):split:Split_Join_xor (9l91):Split_Yes_xor (9l91)*xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Join_xor (9l91)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91)*xor (9l91)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:join:Split_Join_xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:join:Split_Join_xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Join_xor (9l91)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:split:Join_Split_or (9l98):Join_Split_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:split:Join_Split_or (9l98):Join_Split_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Skip:busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_or (9l98)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):join:Split_Yes_xor (9l91)*xor (9l91)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):join:Split_Yes_xor (9l91)*xor (9l91)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Split_Yes_xor (9l91)*xor (9l91)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):split:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):split:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):join:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):join:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:xor (9l91)*Creation and Processing of Quality Notifications (9l8f)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):split:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):split:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):join:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):join:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Creation and Processing of Quality Notifications (9l8f)*or (9l98)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*Join_Yes_or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*Join_Yes_or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*Join_Yes_or (9l98)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*Join_Yes_or (9l98):or (9l98)*and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):split:or (9l98)*Join_Yes_or (9l98):or (9l98)*and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*Join_Yes_or (9l98)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):join:or (9l98)*and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):join:or (9l98)*and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*and (9l72)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):split:and (9l72)*Join_Yes_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):split:and (9l72)*Join_Yes_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72)*Join_Yes_and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):join:Join_Split_or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):join:Join_Split_or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_or (9l98)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):split:Join_Join_or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):split:Join_Join_or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_or (9l98):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_or (9l98)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):join:or (9l98)*Join_Yes_or (9l98):Join_Split_or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):join:or (9l98)*Join_Yes_or (9l98):Join_Split_or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:or (9l98)*Join_Yes_or (9l98)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_or (9l98)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):split:Join_Join_or (9l98)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):split:Join_Join_or (9l98)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_or (9l98):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_or (9l98)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):join:Join_Split_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):join:Join_Split_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_and (9l72)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):split:Join_Join_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):split:Join_Join_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_No_and (9l72):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):join:and (9l72)*Join_Yes_and (9l72):Join_Split_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):join:and (9l72)*Join_Yes_and (9l72):Join_Split_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:and (9l72)*Join_Yes_and (9l72)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Split_and (9l72)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):split:Join_Join_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):split:Join_Join_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Yes_and (9l72):busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_and (9l72)"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:join:Join_Join_or (9l98):Join_Join_and (9l72)"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:join:Join_Join_or (9l98):Join_Join_and (9l72)"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_or (9l98)"
+       "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Join_Join_and (9l72)"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:busy"
+;
+trans "t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:split:OutputCondition"~"t:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:split:OutputCondition"
+    in "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:Output:busy"
+   out "p:Model.9l6o--0-----u--:Model.9l6o--0-----u--:OutputCondition"
+;
+

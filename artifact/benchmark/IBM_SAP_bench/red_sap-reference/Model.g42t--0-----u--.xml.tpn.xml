@@ -1,0 +1,76 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.g42t--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.g42t--0-----u--:Model.g42t--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_and (g473)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g46e)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g47a)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:and (g473)*Join_Yes_and (g473)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447)*xor (g46w)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e)*Join_Yes_xor (g46e)"/>
+    <CGraph Type="Place" Label="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g47a):busy"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_and (g473):split:Join_Join_and (g473)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g46e):split:Join_Join_xor (g46e)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g47a):split:Join_Join_xor (g47a)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_and (g473):split:Join_Join_and (g473)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g46e):split:Join_Join_xor (g46e)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g47a):split:Join_Join_xor (g47a)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Split_No_Transaction Processing (g44l):split:Split_Join_Transaction Processing (g44l)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:or (g447)*xor (g46w)"/>
+    <CGraph Type="Transition" Label="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_and (g473):split:Join_Join_and (g473)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_and (g473):split:Join_Join_and (g473)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g46e):split:Join_Join_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g46e):split:Join_Join_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.g42t--0-----u--:Model.g42t--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g47a):split:Join_Join_xor (g47a)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g47a):split:Join_Join_xor (g47a)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447)*xor (g46w)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:or (g447)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e)*Join_Yes_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g46e):split:Join_Join_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e)*Join_Yes_xor (g46e)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g46e):split:Join_Join_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g47a):split:Join_Join_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_and (g473)" Target="*:Model.g42t--0-----u--:Model.g42t--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g46e)" Target="*:Model.g42t--0-----u--:Model.g42t--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Join_xor (g47a)" Target="*:Model.g42t--0-----u--:Model.g42t--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Split_No_Transaction Processing (g44l):split:Split_Join_Transaction Processing (g44l)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="i" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="i" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="i" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="i" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_and (g473):split:Join_Join_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g47a):busy" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_xor (g47a):split:Join_Join_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Split_No_Transaction Processing (g44l):split:Split_Join_Transaction Processing (g44l)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Split_No_Transaction Processing (g44l):split:Split_Join_Transaction Processing (g44l)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Split_No_Transaction Processing (g44l):split:Split_Join_Transaction Processing (g44l)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g46e):split:Join_Join_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_No_xor (g47a):split:Join_Join_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_72" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46e):split:xor (g46e)*Join_Yes_xor (g46e)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_74" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g46e)">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_xor (g47a)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Split_and (g473)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_and (g473):split:Join_Join_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:and (g473)*Join_Yes_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_86" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:or (g447):split:or (g447)*Closing Operations (g45l):or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g47a):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_88" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:and (g473)*Join_Yes_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_89" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:or (g447)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g47a):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.g42t--0-----u--:Model.g42t--0-----u--:and (g473)*Join_Yes_and (g473)" Target="t:Model.g42t--0-----u--:Model.g42t--0-----u--:Join_Yes_and (g473):split:Join_Join_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_91" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:and (g473)*Join_Yes_and (g473)">1</CArc>
+    <CArc Type="Arc" Label="ra_92" Source="t:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g46w):join:xor (g46e)*xor (g46w)" Target="p:Model.g42t--0-----u--:Model.g42t--0-----u--:xor (g47a):busy">1</CArc>
+</CGraph>

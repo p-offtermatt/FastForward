@@ -1,0 +1,62 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.exvr--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.exvr--0-----u--:Model.exvr--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)"/>
+    <CGraph Type="Place" Label="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):split:Join_Join_and (exw9)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):split:Join_Join_xor (exxm)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)"/>
+    <CGraph Type="Transition" Label="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):split:Join_Join_and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):split:Join_Join_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.exvr--0-----u--:Model.exvr--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId70" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*Join_Yes_xor (exxm)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_xor (exxm):split:Join_Join_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg)*Manual Clearing (exww)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_Manual Clearing (exww)" Target="*:Model.exvr--0-----u--:Model.exvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_and (exw9)" Target="*:Model.exvr--0-----u--:Model.exvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Join_xor (exxm)" Target="*:Model.exvr--0-----u--:Model.exvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm)*and (exw9)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="i" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_and (exw9):split:Join_Join_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Split_No_xor (exwg):split:Split_Join_xor (exwg)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exwg):split:xor (exwg)*Manual Clearing (exww)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_No_xor (exxm):split:Join_Join_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*Join_Yes_xor (exxm)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.exvr--0-----u--:Model.exvr--0-----u--:xor (exxm):split:xor (exxm)*and (exw9)" Target="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_xor (exxm)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_Manual Clearing (exww)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_Manual Clearing (exww):split:Join_Join_Manual Clearing (exww)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Split_and (exw9)" Target="t:Model.exvr--0-----u--:Model.exvr--0-----u--:Join_Yes_and (exw9):split:Join_Join_and (exw9)">1</CArc>
+</CGraph>

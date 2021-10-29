@@ -1,0 +1,80 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.1sct--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.1sct--0-----u--:Model.1sct--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)"/>
+    <CGraph Type="Place" Label="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):split:Join_Join_or (1seh)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):split:Split_Join_and (1sea)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:or (1seh)*or (1seq)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.1sct--0-----u--:Model.1sct--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):split:Split_Join_and (1sea)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="arcId66" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="arcId67" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId68" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId69" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId80" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):split:Join_Join_or (1seh)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:or (1seh)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)" Target="*:Model.1sct--0-----u--:Model.1sct--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)" Target="*:Model.1sct--0-----u--:Model.1sct--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):split:Split_Join_and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):split:Join_Join_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)" Target="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)" Target="t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)">1</CArc>
+</CGraph>

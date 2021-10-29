@@ -1,0 +1,203 @@
+place "i" init 1;
+place "o";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:InputCondition";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Split_Characteristics (jxv6)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Join_Characteristics (jxv6)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Split_Data slices (jxus)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Join_Data slices (jxus)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:outputCondition";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6)*Basic key figures (jxvk)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk)*Field groups (jxw9)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9)*Aspect (jxwy)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy)*Calculated Key Figures (jxxp)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp)*Comment tables (jxqb)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb)*Fixed Characteristics (jxqp)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp)*Summarization levels (jxrp)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0)*Validation (jxue)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue)*Data slices (jxus)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus)*Join_Yes_Data slices (jxus)";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):busy";
+place "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:busy";
+trans "*:Model.jxpf--0-----u--:Model.jxpf--0-----u--:start"~"*:Model.jxpf--0-----u--:Model.jxpf--0-----u--:start"
+    in "i"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:InputCondition"
+;
+trans "*:Model.jxpf--0-----u--:Model.jxpf--0-----u--:end"~"*:Model.jxpf--0-----u--:Model.jxpf--0-----u--:end"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:join:InputCondition"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:join:InputCondition"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:InputCondition"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:split:Split_Split_Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:split:Split_Split_Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split:busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Split_Characteristics (jxv6)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):join:Split_Split_Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):join:Split_Split_Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Split_Characteristics (jxv6)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):split:Split_Join_Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):split:Split_Join_Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_No_Characteristics (jxv6):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Join_Characteristics (jxv6)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):join:Split_Split_Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):join:Split_Split_Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Split_Characteristics (jxv6)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):split:Split_Join_Characteristics (jxv6):Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):split:Split_Join_Characteristics (jxv6):Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Join_Characteristics (jxv6)"
+       "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:join:Split_Join_Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:join:Split_Join_Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Join_Characteristics (jxv6)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:split:Join_Split_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:split:Join_Split_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Skip:busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Split_Data slices (jxus)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):join:Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):join:Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Split_Yes_Characteristics (jxv6)*Characteristics (jxv6)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):split:Characteristics (jxv6)*Basic key figures (jxvk)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):split:Characteristics (jxv6)*Basic key figures (jxvk)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6)*Basic key figures (jxvk)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):join:Characteristics (jxv6)*Basic key figures (jxvk)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):join:Characteristics (jxv6)*Basic key figures (jxvk)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Characteristics (jxv6)*Basic key figures (jxvk)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):split:Basic key figures (jxvk)*Field groups (jxw9)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):split:Basic key figures (jxvk)*Field groups (jxw9)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk)*Field groups (jxw9)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):join:Basic key figures (jxvk)*Field groups (jxw9)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):join:Basic key figures (jxvk)*Field groups (jxw9)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Basic key figures (jxvk)*Field groups (jxw9)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):split:Field groups (jxw9)*Aspect (jxwy)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):split:Field groups (jxw9)*Aspect (jxwy)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9)*Aspect (jxwy)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):join:Field groups (jxw9)*Aspect (jxwy)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):join:Field groups (jxw9)*Aspect (jxwy)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Field groups (jxw9)*Aspect (jxwy)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):split:Aspect (jxwy)*Calculated Key Figures (jxxp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):split:Aspect (jxwy)*Calculated Key Figures (jxxp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy)*Calculated Key Figures (jxxp)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):join:Aspect (jxwy)*Calculated Key Figures (jxxp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):join:Aspect (jxwy)*Calculated Key Figures (jxxp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Aspect (jxwy)*Calculated Key Figures (jxxp)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):split:Calculated Key Figures (jxxp)*Comment tables (jxqb)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):split:Calculated Key Figures (jxxp)*Comment tables (jxqb)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp)*Comment tables (jxqb)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):join:Calculated Key Figures (jxxp)*Comment tables (jxqb)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):join:Calculated Key Figures (jxxp)*Comment tables (jxqb)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Calculated Key Figures (jxxp)*Comment tables (jxqb)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):split:Comment tables (jxqb)*Fixed Characteristics (jxqp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):split:Comment tables (jxqb)*Fixed Characteristics (jxqp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb)*Fixed Characteristics (jxqp)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):join:Comment tables (jxqb)*Fixed Characteristics (jxqp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):join:Comment tables (jxqb)*Fixed Characteristics (jxqp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Comment tables (jxqb)*Fixed Characteristics (jxqp)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):split:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):split:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):join:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):join:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Fixed Characteristics (jxqp)*Summarization levels (jxrp)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):split:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):split:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):join:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):join:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Summarization levels (jxrp)*Currency Translation Types for Data Transfer and Planning Layouts (jxsp)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):split:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):split:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):join:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):join:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (jxsp)*Derivation (jxu0)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):split:Derivation (jxu0)*Validation (jxue)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):split:Derivation (jxu0)*Validation (jxue)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0)*Validation (jxue)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):join:Derivation (jxu0)*Validation (jxue)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):join:Derivation (jxu0)*Validation (jxue)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Derivation (jxu0)*Validation (jxue)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):split:Validation (jxue)*Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):split:Validation (jxue)*Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue)*Data slices (jxus)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):join:Validation (jxue)*Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):join:Validation (jxue)*Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Validation (jxue)*Data slices (jxus)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):split:Data slices (jxus)*Join_Yes_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):split:Data slices (jxus)*Join_Yes_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus)*Join_Yes_Data slices (jxus)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):join:Join_Split_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):join:Join_Split_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Split_Data slices (jxus)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):split:Join_Join_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):split:Join_Join_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_No_Data slices (jxus):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Join_Data slices (jxus)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):join:Data slices (jxus)*Join_Yes_Data slices (jxus):Join_Split_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):join:Data slices (jxus)*Join_Yes_Data slices (jxus):Join_Split_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Data slices (jxus)*Join_Yes_Data slices (jxus)"
+       "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Split_Data slices (jxus)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):split:Join_Join_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):split:Join_Join_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Yes_Data slices (jxus):busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Join_Data slices (jxus)"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:join:Join_Join_Data slices (jxus)"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:join:Join_Join_Data slices (jxus)"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Join_Join_Data slices (jxus)"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:busy"
+;
+trans "t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:split:outputCondition"~"t:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:split:outputCondition"
+    in "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:Output:busy"
+   out "p:Model.jxpf--0-----u--:Model.jxpf--0-----u--:outputCondition"
+;
+

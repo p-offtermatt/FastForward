@@ -1,0 +1,24 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B2/B2.s00000133__s00003598.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00003578.input.s00000950"/>
+    <CGraph Type="Transition" Label="decision.s00000999.fire.s00000991"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00000951"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00001122"/>
+    <CGraph Type="Place" Label="merge.s00000945.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000133##s00003598.output.s00001610"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId14" Source="decision.s00000999.fire.s00000991" Target="callToProcess.s00003578.input.s00000950">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="merge.s00000945.activate.s00001122" Target="merge.s00000945.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="merge.s00000945.activate.s00000951" Target="merge.s00000945.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="callToProcess.s00003578.input.s00000950" Target="decision.s00000999.fire.s00000991">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="callToProcess.s00003578.input.s00000950" Target="merge.s00000945.activate.s00000951">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="merge.s00000945.activate.s00000951" Target="process.s00000133##s00003598.output.s00001610">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="callToProcess.s00003578.input.s00000950" Target="merge.s00000945.activate.s00001122">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="alpha" Target="decision.s00000999.fire.s00000991">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="alpha" Target="merge.s00000945.activate.s00000951">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="alpha" Target="merge.s00000945.activate.s00001122">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="merge.s00000945.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="process.s00000133##s00003598.output.s00001610" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_37" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

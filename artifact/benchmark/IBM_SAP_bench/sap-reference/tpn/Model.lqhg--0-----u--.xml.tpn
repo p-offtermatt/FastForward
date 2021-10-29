@@ -1,0 +1,233 @@
+place "i" init 1;
+place "o";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:InputCondition";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Split_and (lqlr)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Join_and (lqlr)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_and (lqjc)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_and (lqjc)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_Employee Notification of Task Area (lqmg)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_Employee Notification of Task Area (lqmg)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:OutputCondition";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr)*and (lqlr)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz)*xor (lqmn)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*or (lqhu)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*xor (lql6)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu)*or (lqi1)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*and (lqjc)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*xor (lql6)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Join_Yes_and (lqjc)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Employee Notification of Task Area (lqmg)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6)*and (lqlr)";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):busy";
+place "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:busy";
+trans "*:Model.lqhg--0-----u--:Model.lqhg--0-----u--:start"~"*:Model.lqhg--0-----u--:Model.lqhg--0-----u--:start"
+    in "i"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:InputCondition"
+;
+trans "*:Model.lqhg--0-----u--:Model.lqhg--0-----u--:end"~"*:Model.lqhg--0-----u--:Model.lqhg--0-----u--:end"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:join:InputCondition"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:join:InputCondition"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:InputCondition"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:split:Split_Split_and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:split:Split_Split_and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split:busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Split_and (lqlr)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):join:Split_Split_and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):join:Split_Split_and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Split_and (lqlr)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):split:Split_Join_and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):split:Split_Join_and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_No_and (lqlr):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Join_and (lqlr)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):join:Split_Split_and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):join:Split_Split_and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Split_and (lqlr)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):split:Split_Join_and (lqlr):Split_Yes_and (lqlr)*and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):split:Split_Join_and (lqlr):Split_Yes_and (lqlr)*and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Join_and (lqlr)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr)*and (lqlr)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:join:Split_Join_and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:join:Split_Join_and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Join_and (lqlr)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:split:Join_Split_and (lqjc):Join_Split_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:split:Join_Split_and (lqjc):Join_Split_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Skip:busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_and (lqjc)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_Employee Notification of Task Area (lqmg)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):join:Split_Yes_and (lqlr)*and (lqlr):xor (lql6)*and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):join:Split_Yes_and (lqlr)*and (lqlr):xor (lql6)*and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Split_Yes_and (lqlr)*and (lqlr)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6)*and (lqlr)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):split:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):split:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):join:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):join:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqlr)*Preparation of Personnel Staff Planning (lqkh)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):split:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):split:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):join:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):join:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Preparation of Personnel Staff Planning (lqkh)*Personnel Staff Planning (lqkz)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):split:Personnel Staff Planning (lqkz)*xor (lqmn)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):split:Personnel Staff Planning (lqkz)*xor (lqmn)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz)*xor (lqmn)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):join:Personnel Staff Planning (lqkz)*xor (lqmn)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):join:Personnel Staff Planning (lqkz)*xor (lqmn)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Personnel Staff Planning (lqkz)*xor (lqmn)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):split:xor (lqmn)*or (lqhu)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):split:xor (lqmn)*or (lqhu)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*or (lqhu)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):split:xor (lqmn)*xor (lql6)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):split:xor (lqmn)*xor (lql6)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*xor (lql6)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):join:xor (lqmn)*or (lqhu)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):join:xor (lqmn)*or (lqhu)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*or (lqhu)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):split:or (lqhu)*or (lqi1)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):split:or (lqhu)*or (lqi1)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu)*or (lqi1)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):join:or (lqhu)*or (lqi1)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):join:or (lqhu)*or (lqi1)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqhu)*or (lqi1)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):split:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):split:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):join:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):join:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:or (lqi1)*Approval of Results of Personnel Staff Planning (lqlk)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):split:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):split:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):join:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):join:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Approval of Results of Personnel Staff Planning (lqlk)*xor (lqj5)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):split:xor (lqj5)*and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):split:xor (lqj5)*and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*and (lqjc)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):split:xor (lqj5)*xor (lql6)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):split:xor (lqj5)*xor (lql6)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*xor (lql6)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):join:xor (lqj5)*and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):join:xor (lqj5)*and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*and (lqjc)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):split:and (lqjc)*Join_Yes_and (lqjc):and (lqjc)*Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):split:and (lqjc)*Join_Yes_and (lqjc):and (lqjc)*Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Join_Yes_and (lqjc)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Employee Notification of Task Area (lqmg)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):join:and (lqjc)*Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):join:and (lqjc)*Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Employee Notification of Task Area (lqmg)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):split:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):split:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):join:xor (lqmn)*xor (lql6)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):join:xor (lqmn)*xor (lql6)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqmn)*xor (lql6)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):join:xor (lqj5)*xor (lql6)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):join:xor (lqj5)*xor (lql6)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lqj5)*xor (lql6)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):split:xor (lql6)*and (lqlr)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):split:xor (lql6)*and (lqlr)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:xor (lql6)*and (lqlr)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):join:Join_Split_and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):join:Join_Split_and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_and (lqjc)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):split:Join_Join_and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):split:Join_Join_and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_and (lqjc):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_and (lqjc)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):join:and (lqjc)*Join_Yes_and (lqjc):Join_Split_and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):join:and (lqjc)*Join_Yes_and (lqjc):Join_Split_and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:and (lqjc)*Join_Yes_and (lqjc)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_and (lqjc)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):split:Join_Join_and (lqjc)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):split:Join_Join_and (lqjc)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_and (lqjc):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_and (lqjc)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):join:Join_Split_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):join:Join_Split_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_Employee Notification of Task Area (lqmg)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):split:Join_Join_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):split:Join_Join_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_No_Employee Notification of Task Area (lqmg):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_Employee Notification of Task Area (lqmg)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):join:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg):Join_Split_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):join:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg):Join_Split_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Employee Notification of Task Area (lqmg)*Join_Yes_Employee Notification of Task Area (lqmg)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Split_Employee Notification of Task Area (lqmg)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):split:Join_Join_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):split:Join_Join_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Yes_Employee Notification of Task Area (lqmg):busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_Employee Notification of Task Area (lqmg)"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:join:Join_Join_and (lqjc):Join_Join_Employee Notification of Task Area (lqmg)"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:join:Join_Join_and (lqjc):Join_Join_Employee Notification of Task Area (lqmg)"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_and (lqjc)"
+       "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Join_Join_Employee Notification of Task Area (lqmg)"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:busy"
+;
+trans "t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:split:OutputCondition"~"t:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:split:OutputCondition"
+    in "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:Output:busy"
+   out "p:Model.lqhg--0-----u--:Model.lqhg--0-----u--:OutputCondition"
+;
+

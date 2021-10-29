@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.474u--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.474u--0-----u--:Model.474u--0-----u--:Split_Join_or (476k)"/>
+    <CGraph Type="Place" Label="p:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):busy"/>
+    <CGraph Type="Transition" Label="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_No_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)"/>
+    <CGraph Type="Transition" Label="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_Yes_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)"/>
+    <CGraph Type="Transition" Label="t:Model.474u--0-----u--:Model.474u--0-----u--:Split_No_or (476k):split:Split_Join_or (476k)"/>
+    <CGraph Type="Transition" Label="t:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):join:Process Order Processing with Process Control System (477x)*xor (478x)"/>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.474u--0-----u--:Model.474u--0-----u--:Split_No_or (476k):split:Split_Join_or (476k)" Target="p:Model.474u--0-----u--:Model.474u--0-----u--:Split_Join_or (476k)">1</CArc>
+    <CArc Type="Arc" Label="arcId70" Source="t:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):join:Process Order Processing with Process Control System (477x)*xor (478x)" Target="p:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.474u--0-----u--:Model.474u--0-----u--:Split_Join_or (476k)" Target="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_No_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.474u--0-----u--:Model.474u--0-----u--:Split_Join_or (476k)" Target="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_Yes_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="i" Target="t:Model.474u--0-----u--:Model.474u--0-----u--:Split_No_or (476k):split:Split_Join_or (476k)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):join:Process Order Processing with Process Control System (477x)*xor (478x)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):join:Process Order Processing with Process Control System (477x)*xor (478x)" Target="p:Model.474u--0-----u--:Model.474u--0-----u--:Split_Join_or (476k)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.474u--0-----u--:Model.474u--0-----u--:xor (478x):busy" Target="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_Yes_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_No_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.474u--0-----u--:Model.474u--0-----u--:Join_Yes_Process Message Processing and Transfer (479b):split:Join_Join_Process Message Processing and Transfer (479b)" Target="o">1</CArc>
+</CGraph>

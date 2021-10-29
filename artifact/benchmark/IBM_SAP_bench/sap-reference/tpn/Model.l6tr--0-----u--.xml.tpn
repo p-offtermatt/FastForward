@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:InputCondition";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Split_xor (l6u7)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Join_xor (l6u7)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:OutputCondition";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7)*xor (l6u7)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7)*Program Structuring (l6v5)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5)*xor (l6ui)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up)*Join_Yes_or (l6up)";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):busy";
+place "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:busy";
+trans "*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:start"~"*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:start"
+    in "i"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:InputCondition"
+;
+trans "*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end"~"*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:join:InputCondition"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:join:InputCondition"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:InputCondition"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:split:Split_Split_xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:split:Split_Split_xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split:busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Split_xor (l6u7)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):join:Split_Split_xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):join:Split_Split_xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Split_xor (l6u7)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Join_xor (l6u7)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):join:Split_Split_xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):join:Split_Split_xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Split_xor (l6u7)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):split:Split_Join_xor (l6u7):Split_Yes_xor (l6u7)*xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):split:Split_Join_xor (l6u7):Split_Yes_xor (l6u7)*xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Join_xor (l6u7)"
+       "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7)*xor (l6u7)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:join:Split_Join_xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:join:Split_Join_xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Join_xor (l6u7)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:split:Join_Split_xor (l6ui):Join_Split_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:split:Join_Split_xor (l6ui):Join_Split_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Skip:busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)"
+       "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):join:Split_Yes_xor (l6u7)*xor (l6u7)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):join:Split_Yes_xor (l6u7)*xor (l6u7)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_Yes_xor (l6u7)*xor (l6u7)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):split:xor (l6u7)*Program Structuring (l6v5)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):split:xor (l6u7)*Program Structuring (l6v5)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7)*Program Structuring (l6v5)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):join:xor (l6u7)*Program Structuring (l6v5)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):join:xor (l6u7)*Program Structuring (l6v5)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6u7)*Program Structuring (l6v5)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):split:Program Structuring (l6v5)*xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):split:Program Structuring (l6v5)*xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5)*xor (l6ui)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):join:Program Structuring (l6v5)*xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):join:Program Structuring (l6v5)*xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Program Structuring (l6v5)*xor (l6ui)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):join:xor (l6ui)*or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):join:xor (l6ui)*or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):split:or (l6up)*Join_Yes_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):split:or (l6up)*Join_Yes_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up)*Join_Yes_or (l6up)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):join:Join_Split_xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):join:Join_Split_xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):split:Join_Join_xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):split:Join_Join_xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):join:xor (l6ui)*Join_Yes_xor (l6ui):Join_Split_xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):join:xor (l6ui)*Join_Yes_xor (l6ui):Join_Split_xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)"
+       "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):join:Join_Split_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):join:Join_Split_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):split:Join_Join_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):split:Join_Join_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):join:or (l6up)*Join_Yes_or (l6up):Join_Split_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):join:or (l6up)*Join_Yes_or (l6up):Join_Split_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:or (l6up)*Join_Yes_or (l6up)"
+       "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:join:Join_Join_xor (l6ui):Join_Join_or (l6up)"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:join:Join_Join_xor (l6ui):Join_Join_or (l6up)"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)"
+       "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:busy"
+;
+trans "t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:split:OutputCondition"~"t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:split:OutputCondition"
+    in "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Output:busy"
+   out "p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:OutputCondition"
+;
+

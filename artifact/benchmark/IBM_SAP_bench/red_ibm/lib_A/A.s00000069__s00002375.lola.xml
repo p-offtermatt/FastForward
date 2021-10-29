@@ -1,0 +1,24 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000069__s00002375.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00001030.output.s00000919"/>
+    <CGraph Type="Place" Label="callToTask.s00001819.output.s00000867"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000733"/>
+    <CGraph Type="Transition" Label="merge.s00000742.activate.s00000733"/>
+    <CGraph Type="Place" Label="merge.s00000742.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId69" Source="merge.s00000742.activate.s00000733" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="merge.s00000730.activate.s00000731" Target="callToProcess.s00001030.output.s00000919">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="alpha" Target="merge.s00000730.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="alpha" Target="merge.s00000730.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="alpha" Target="merge.s00000742.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="callToProcess.s00001030.output.s00000919" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="callToTask.s00001819.output.s00000867" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="merge.s00000742.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="merge.s00000730.activate.s00000731" Target="callToTask.s00001819.output.s00000867">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="merge.s00000730.activate.s00000731" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="merge.s00000730.activate.s00000733" Target="callToTask.s00001819.output.s00000867">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="merge.s00000730.activate.s00000733" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="sa_5" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

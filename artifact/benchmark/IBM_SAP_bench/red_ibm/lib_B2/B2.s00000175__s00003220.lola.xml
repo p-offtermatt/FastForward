@@ -1,0 +1,22 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B2/B2.s00000175__s00003220.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Transition" Label="fork.s00001067.fire.s00000993"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00000946"/>
+    <CGraph Type="Place" Label="merge.s00000945.input.s00000952"/>
+    <CGraph Type="Transition" Label="merge.s00001066.activate.s00000946"/>
+    <CGraph Type="Transition" Label="merge.s00001120.activate.s00000948"/>
+    <CGraph Type="Place" Label="merge.s00001120.activated"/>
+    <CGraph Type="Place" Label="merge.s00001120.input.s00000985"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CArc Type="Arc" Label="arcId55" Source="merge.s00000945.input.s00000952" Target="merge.s00000945.activate.s00000946">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="merge.s00001120.activate.s00000948" Target="merge.s00001120.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId66" Source="fork.s00001067.fire.s00000993" Target="merge.s00001120.input.s00000985">1</CArc>
+    <CArc Type="Arc" Label="arcId67" Source="merge.s00001120.input.s00000985" Target="merge.s00001120.activate.s00000948">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="fork.s00001067.fire.s00000993" Target="merge.s00000945.input.s00000952">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="alpha" Target="fork.s00001067.fire.s00000993">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="fork.s00001067.fire.s00000993" Target="merge.s00001120.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="fork.s00001067.fire.s00000993" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="merge.s00000945.activate.s00000946" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="merge.s00001066.activate.s00000946" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="merge.s00001120.activated" Target="merge.s00001066.activate.s00000946">1</CArc>
+</CGraph>

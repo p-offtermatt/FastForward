@@ -1,0 +1,113 @@
+place "i" init 1;
+place "o";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:InputCondition";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Split_xor (m5kx)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Join_xor (m5kx)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Split_Implementation of Long-Term Incentives Program (m5kq)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Join_Implementation of Long-Term Incentives Program (m5kq)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:outputCondition";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx)*xor (m5kx)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq)";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):busy";
+place "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:busy";
+trans "*:Model.m5jn--0-----u--:Model.m5jn--0-----u--:start"~"*:Model.m5jn--0-----u--:Model.m5jn--0-----u--:start"
+    in "i"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:InputCondition"
+;
+trans "*:Model.m5jn--0-----u--:Model.m5jn--0-----u--:end"~"*:Model.m5jn--0-----u--:Model.m5jn--0-----u--:end"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:join:InputCondition"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:join:InputCondition"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:InputCondition"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:split:Split_Split_xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:split:Split_Split_xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split:busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Split_xor (m5kx)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):join:Split_Split_xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):join:Split_Split_xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Split_xor (m5kx)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):split:Split_Join_xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):split:Split_Join_xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_No_xor (m5kx):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Join_xor (m5kx)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):join:Split_Split_xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):join:Split_Split_xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Split_xor (m5kx)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):split:Split_Join_xor (m5kx):Split_Yes_xor (m5kx)*xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):split:Split_Join_xor (m5kx):Split_Yes_xor (m5kx)*xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Join_xor (m5kx)"
+       "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx)*xor (m5kx)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:join:Split_Join_xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:join:Split_Join_xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Join_xor (m5kx)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:split:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:split:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Skip:busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):join:Split_Yes_xor (m5kx)*xor (m5kx)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):join:Split_Yes_xor (m5kx)*xor (m5kx)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Split_Yes_xor (m5kx)*xor (m5kx)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):split:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):split:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):join:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):join:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:xor (m5kx)*Design of Long-Term Incentives Program (m5k8)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):split:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):split:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):join:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):join:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Design of Long-Term Incentives Program (m5k8)*Implementation of Long-Term Incentives Program (m5kq)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):split:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):split:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):join:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):join:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):split:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):split:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_No_Implementation of Long-Term Incentives Program (m5kq):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):join:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq):Join_Split_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):join:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq):Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Implementation of Long-Term Incentives Program (m5kq)*Join_Yes_Implementation of Long-Term Incentives Program (m5kq)"
+       "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Split_Implementation of Long-Term Incentives Program (m5kq)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):split:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):split:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Yes_Implementation of Long-Term Incentives Program (m5kq):busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:join:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:join:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Join_Join_Implementation of Long-Term Incentives Program (m5kq)"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:busy"
+;
+trans "t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:split:outputCondition"~"t:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:split:outputCondition"
+    in "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:Output:busy"
+   out "p:Model.m5jn--0-----u--:Model.m5jn--0-----u--:outputCondition"
+;
+

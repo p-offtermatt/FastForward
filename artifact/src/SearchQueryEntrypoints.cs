@@ -10,6 +10,7 @@ using System.IO;
 using MathNet.Numerics.Statistics;
 using CommandLine.Text;
 using HeuristicFrontier;
+using Utils;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -174,10 +175,10 @@ namespace PetriTool
 
 
             Func<Marking, Tuple<IEnumerable<Transition>, float?>> restrictionHeuristic =
-                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, Domains.N);
+                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.N);
 
             Func<IEnumerable<Transition>, Func<Marking, float?>> directionalHeuristicGen =
-                (restrictedTransitions) => InitializeMarkingEquationHeuristic(net.Places, restrictedTransitions.ToList(), targetMarkings, Domains.Q);
+                (restrictedTransitions) => InitializeMarkingEquationHeuristic(net.Places, restrictedTransitions.ToList(), targetMarkings, GurobiConsts.Domains.Q);
 
             Func<Marking, bool> targetEvaluationFunction =
                 marking => targetMarkings.Any(x => x.SatisfiedByMarking(marking));

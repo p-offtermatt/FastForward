@@ -1,0 +1,250 @@
+place "i" init 1;
+place "o";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:InputCondition";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Split_Transaction Processing (gh1c)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Join_Transaction Processing (gh1c)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_and (gh0k)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_and (gh0k)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_xor (gh3t)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_xor (gh3t)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_or (gh3m)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_or (gh3m)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:OutputCondition";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c)*or (gh1w)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh2l)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh33)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l)*Closing Operations (gh2c)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c)*xor (gh2s)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s)*xor (gh33)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33)*Accounting (gh0y)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y)*and (gh0k)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*Join_Yes_and (gh0k)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*xor (gh3t)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*Join_Yes_xor (gh3t)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*or (gh3m)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m)*Join_Yes_or (gh3m)";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):busy";
+place "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:busy";
+trans "*:Model.gh06--0-----u--:Model.gh06--0-----u--:start"~"*:Model.gh06--0-----u--:Model.gh06--0-----u--:start"
+    in "i"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:InputCondition"
+;
+trans "*:Model.gh06--0-----u--:Model.gh06--0-----u--:end"~"*:Model.gh06--0-----u--:Model.gh06--0-----u--:end"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:join:InputCondition"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:join:InputCondition"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:InputCondition"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:split:Split_Split_Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:split:Split_Split_Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split:busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Split_Transaction Processing (gh1c)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):join:Split_Split_Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):join:Split_Split_Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Split_Transaction Processing (gh1c)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):split:Split_Join_Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):split:Split_Join_Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_No_Transaction Processing (gh1c):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Join_Transaction Processing (gh1c)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):join:Split_Split_Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):join:Split_Split_Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Split_Transaction Processing (gh1c)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):split:Split_Join_Transaction Processing (gh1c):Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):split:Split_Join_Transaction Processing (gh1c):Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Join_Transaction Processing (gh1c)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:join:Split_Join_Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:join:Split_Join_Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Join_Transaction Processing (gh1c)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:split:Join_Split_and (gh0k):Join_Split_xor (gh3t):Join_Split_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:split:Join_Split_and (gh0k):Join_Split_xor (gh3t):Join_Split_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Skip:busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_and (gh0k)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_xor (gh3t)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_or (gh3m)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):join:Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):join:Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Split_Yes_Transaction Processing (gh1c)*Transaction Processing (gh1c)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):split:Transaction Processing (gh1c)*or (gh1w)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):split:Transaction Processing (gh1c)*or (gh1w)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c)*or (gh1w)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):join:Transaction Processing (gh1c)*or (gh1w)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):join:Transaction Processing (gh1c)*or (gh1w)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Transaction Processing (gh1c)*or (gh1w)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh2l)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh2l)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh2l)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh33)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh33)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh33)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh2l):or (gh1w)*xor (gh33)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):split:or (gh1w)*xor (gh2l):or (gh1w)*xor (gh33)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh2l)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh33)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):join:or (gh1w)*xor (gh2l)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):join:or (gh1w)*xor (gh2l)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh2l)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):split:xor (gh2l)*Closing Operations (gh2c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):split:xor (gh2l)*Closing Operations (gh2c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l)*Closing Operations (gh2c)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):join:xor (gh2l)*Closing Operations (gh2c)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):join:xor (gh2l)*Closing Operations (gh2c)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2l)*Closing Operations (gh2c)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):split:Closing Operations (gh2c)*xor (gh2s)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):split:Closing Operations (gh2c)*xor (gh2s)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c)*xor (gh2s)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):join:Closing Operations (gh2c)*xor (gh2s)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):join:Closing Operations (gh2c)*xor (gh2s)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Closing Operations (gh2c)*xor (gh2s)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):split:xor (gh2s)*xor (gh33)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):split:xor (gh2s)*xor (gh33)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s)*xor (gh33)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):join:or (gh1w)*xor (gh33)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):join:or (gh1w)*xor (gh33)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh1w)*xor (gh33)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):join:xor (gh2s)*xor (gh33)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):join:xor (gh2s)*xor (gh33)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh2s)*xor (gh33)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):split:xor (gh33)*Accounting (gh0y)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):split:xor (gh33)*Accounting (gh0y)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33)*Accounting (gh0y)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):join:xor (gh33)*Accounting (gh0y)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):join:xor (gh33)*Accounting (gh0y)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh33)*Accounting (gh0y)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):split:Accounting (gh0y)*and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):split:Accounting (gh0y)*and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y)*and (gh0k)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):join:Accounting (gh0y)*and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):join:Accounting (gh0y)*and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Accounting (gh0y)*and (gh0k)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):split:and (gh0k)*Join_Yes_and (gh0k):and (gh0k)*xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):split:and (gh0k)*Join_Yes_and (gh0k):and (gh0k)*xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*Join_Yes_and (gh0k)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*xor (gh3t)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):join:and (gh0k)*xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):join:and (gh0k)*xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*xor (gh3t)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):split:xor (gh3t)*Join_Yes_xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):split:xor (gh3t)*Join_Yes_xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*Join_Yes_xor (gh3t)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):split:xor (gh3t)*or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):split:xor (gh3t)*or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*or (gh3m)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):join:xor (gh3t)*or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):join:xor (gh3t)*or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*or (gh3m)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):split:or (gh3m)*Join_Yes_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):split:or (gh3m)*Join_Yes_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m)*Join_Yes_or (gh3m)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):join:Join_Split_and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):join:Join_Split_and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_and (gh0k)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):split:Join_Join_and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):split:Join_Join_and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_and (gh0k):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_and (gh0k)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):join:and (gh0k)*Join_Yes_and (gh0k):Join_Split_and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):join:and (gh0k)*Join_Yes_and (gh0k):Join_Split_and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:and (gh0k)*Join_Yes_and (gh0k)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_and (gh0k)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):split:Join_Join_and (gh0k)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):split:Join_Join_and (gh0k)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_and (gh0k):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_and (gh0k)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):join:Join_Split_xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):join:Join_Split_xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_xor (gh3t)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):split:Join_Join_xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):split:Join_Join_xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_xor (gh3t):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_xor (gh3t)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):join:xor (gh3t)*Join_Yes_xor (gh3t):Join_Split_xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):join:xor (gh3t)*Join_Yes_xor (gh3t):Join_Split_xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:xor (gh3t)*Join_Yes_xor (gh3t)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_xor (gh3t)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):split:Join_Join_xor (gh3t)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):split:Join_Join_xor (gh3t)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_xor (gh3t):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_xor (gh3t)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):join:Join_Split_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):join:Join_Split_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_or (gh3m)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):split:Join_Join_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):split:Join_Join_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_No_or (gh3m):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_or (gh3m)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):join:or (gh3m)*Join_Yes_or (gh3m):Join_Split_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):join:or (gh3m)*Join_Yes_or (gh3m):Join_Split_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:or (gh3m)*Join_Yes_or (gh3m)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Split_or (gh3m)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):split:Join_Join_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):split:Join_Join_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Yes_or (gh3m):busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_or (gh3m)"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:join:Join_Join_and (gh0k):Join_Join_xor (gh3t):Join_Join_or (gh3m)"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:join:Join_Join_and (gh0k):Join_Join_xor (gh3t):Join_Join_or (gh3m)"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_and (gh0k)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_xor (gh3t)"
+       "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Join_Join_or (gh3m)"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:busy"
+;
+trans "t:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:split:OutputCondition"~"t:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gh06--0-----u--:Model.gh06--0-----u--:Output:busy"
+   out "p:Model.gh06--0-----u--:Model.gh06--0-----u--:OutputCondition"
+;
+

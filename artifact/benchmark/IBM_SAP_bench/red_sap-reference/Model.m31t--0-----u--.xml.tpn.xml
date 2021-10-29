@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m31t--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_Join_xor (m32d)"/>
+    <CGraph Type="Place" Label="p:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_No_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)"/>
+    <CGraph Type="Transition" Label="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_Yes_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)"/>
+    <CGraph Type="Transition" Label="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_No_xor (m32d):split:Split_Join_xor (m32d)"/>
+    <CGraph Type="Transition" Label="t:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):join:Split_Yes_xor (m32d)*xor (m32d)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_No_xor (m32d):split:Split_Join_xor (m32d)" Target="p:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_Join_xor (m32d)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):join:Split_Yes_xor (m32d)*xor (m32d)" Target="p:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_Join_xor (m32d)" Target="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_Yes_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_No_xor (m32d):split:Split_Join_xor (m32d)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):join:Split_Yes_xor (m32d)*xor (m32d)" Target="p:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_Join_xor (m32d)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):join:Split_Yes_xor (m32d)*xor (m32d)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.m31t--0-----u--:Model.m31t--0-----u--:xor (m32d):busy" Target="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_Yes_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_No_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_Yes_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.m31t--0-----u--:Model.m31t--0-----u--:Split_Join_xor (m32d)" Target="t:Model.m31t--0-----u--:Model.m31t--0-----u--:Join_No_Creation of Specifications for Compensation Planning (m32r):split:Join_Join_Creation of Specifications for Compensation Planning (m32r)">1</CArc>
+</CGraph>

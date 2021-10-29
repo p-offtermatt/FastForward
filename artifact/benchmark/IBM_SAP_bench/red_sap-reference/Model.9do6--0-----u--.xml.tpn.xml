@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.9do6--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.9do6--0-----u--:Model.9do6--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_and (9dom)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dox)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dqb)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_and (9dom)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dox)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dqb)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:and (9dom)*Join_Yes_and (9dom)"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dox):busy"/>
+    <CGraph Type="Place" Label="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):busy"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_and (9dom):split:Join_Join_and (9dom)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dox):split:Join_Join_xor (9dox)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dqb):split:Join_Join_xor (9dqb)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_and (9dom):split:Join_Join_and (9dom)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dox):split:Join_Join_xor (9dox)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dqb):split:Join_Join_xor (9dqb)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Split_No_Confirmation of Picking (9dpd):split:Split_Join_Confirmation of Picking (9dpd)"/>
+    <CGraph Type="Transition" Label="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_and (9dom):split:Join_Join_and (9dom)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_and (9dom):split:Join_Join_and (9dom)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dox):split:Join_Join_xor (9dox)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dox):split:Join_Join_xor (9dox)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.9do6--0-----u--:Model.9do6--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dqb):split:Join_Join_xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dqb):split:Join_Join_xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dox)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dox):split:Join_Join_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dqb)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dqb):split:Join_Join_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_and (9dom)" Target="*:Model.9do6--0-----u--:Model.9do6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dox)" Target="*:Model.9do6--0-----u--:Model.9do6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Join_xor (9dqb)" Target="*:Model.9do6--0-----u--:Model.9do6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Split_No_Confirmation of Picking (9dpd):split:Split_Join_Confirmation of Picking (9dpd)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:and (9dom)*Join_Yes_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dox):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="i" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dox):busy" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dox):split:Join_Join_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):busy" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_xor (9dqb):split:Join_Join_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Split_No_Confirmation of Picking (9dpd):split:Split_Join_Confirmation of Picking (9dpd)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Split_No_Confirmation of Picking (9dpd):split:Split_Join_Confirmation of Picking (9dpd)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Split_No_Confirmation of Picking (9dpd):split:Split_Join_Confirmation of Picking (9dpd)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.9do6--0-----u--:Model.9do6--0-----u--:xor (9dqb):join:and (9dq0)*xor (9dqb)" Target="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_and (9dom)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_and (9dom):split:Join_Join_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dox)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dox):split:Join_Join_xor (9dox)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_xor (9dqb)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_No_xor (9dqb):split:Join_Join_xor (9dqb)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Split_and (9dom)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_and (9dom):split:Join_Join_and (9dom)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.9do6--0-----u--:Model.9do6--0-----u--:and (9dom)*Join_Yes_and (9dom)" Target="t:Model.9do6--0-----u--:Model.9do6--0-----u--:Join_Yes_and (9dom):split:Join_Join_and (9dom)">1</CArc>
+</CGraph>

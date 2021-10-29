@@ -1,0 +1,73 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gq9g--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gq9g--0-----u--:Model.gq9g--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_and (gqc9)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_or (gqb5)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_xor (gqa0)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_and (gqc9)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_or (gqb5)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_xor (gqa0)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_Posting Release (gqag)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_xor (gqc0)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Split_xor (gqc0)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:and (gqc9)*Join_Yes_and (gqc9)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Join_Yes_xor (gqa0)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Process Payment Request (gqbl)"/>
+    <CGraph Type="Place" Label="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):busy"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_and (gqc9):split:Join_Join_and (gqc9)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_or (gqb5):split:Join_Join_or (gqb5)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_xor (gqa0):split:Join_Join_xor (gqa0)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_and (gqc9):split:Join_Join_and (gqc9)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_or (gqb5):split:Join_Join_or (gqb5)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_xor (gqa0):split:Join_Join_xor (gqa0)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_Posting Release (gqag):split:Split_Join_Posting Release (gqag)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_xor (gqc0):split:Split_Join_xor (gqc0)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Join_Yes_xor (gqa0)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Process Payment Request (gqbl)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Posting Release (gqag)*xor (gqc0)"/>
+    <CGraph Type="Transition" Label="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Split_Yes_xor (gqc0)*xor (gqc0)"/>
+    <CArc Type="Arc" Label="arcId100" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Posting Release (gqag)*xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_xor (gqa0):split:Join_Join_xor (gqa0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_xor (gqa0):split:Join_Join_xor (gqa0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gq9g--0-----u--:Model.gq9g--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_and (gqc9):split:Join_Join_and (gqc9)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_Posting Release (gqag):split:Split_Join_Posting Release (gqag)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_Posting Release (gqag)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_xor (gqc0):split:Split_Join_xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_and (gqc9):split:Join_Join_and (gqc9)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_or (gqb5):split:Join_Join_or (gqb5)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_or (gqb5):split:Join_Join_or (gqb5)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Join_Yes_xor (gqa0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Join_Yes_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Process Payment Request (gqbl)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Process Payment Request (gqbl)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Split_Yes_xor (gqc0)*xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_and (gqc9)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_and (gqc9):split:Join_Join_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_and (gqc9)" Target="*:Model.gq9g--0-----u--:Model.gq9g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_or (gqb5)" Target="*:Model.gq9g--0-----u--:Model.gq9g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Join_xor (gqa0)" Target="*:Model.gq9g--0-----u--:Model.gq9g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_or (gqb5)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_or (gqb5):split:Join_Join_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_Posting Release (gqag)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_xor (gqc0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Skip:split:Join_Split_and (gqc9):Join_Split_xor (gqa0):Join_Split_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Split_xor (gqc0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_xor (gqc0):split:Split_Join_xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_Posting Release (gqag):split:Split_Join_Posting Release (gqag)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_No_Posting Release (gqag):split:Split_Join_Posting Release (gqag)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Split_xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_xor (gqa0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_No_xor (gqa0):split:Join_Join_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Posting Release (gqag)*xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_Posting Release (gqag)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="i" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Posting Release (gqag)*xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Posting Release (gqag)*xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Split_xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Split_Yes_xor (gqc0)*xor (gqc0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Join_xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Split_Split_xor (gqc0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):join:Split_Yes_xor (gqc0)*xor (gqc0)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_and (gqc9)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_and (gqc9):split:Join_Join_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Process Payment Request (gqbl)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_or (gqb5):split:Join_Join_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Join_Yes_xor (gqa0)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:and (gqc9)*Join_Yes_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Process Payment Request (gqbl)" Target="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:and (gqc9)*Join_Yes_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):busy" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Join_Yes_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqc0):busy" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0):split:xor (gqa0)*Process Payment Request (gqbl)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:and (gqc9)*Join_Yes_and (gqc9)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_and (gqc9):split:Join_Join_and (gqc9)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_or (gqb5)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_or (gqb5):split:Join_Join_or (gqb5)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Split_xor (gqa0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_xor (gqa0):split:Join_Join_xor (gqa0)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gq9g--0-----u--:Model.gq9g--0-----u--:xor (gqa0)*Join_Yes_xor (gqa0)" Target="t:Model.gq9g--0-----u--:Model.gq9g--0-----u--:Join_Yes_xor (gqa0):split:Join_Join_xor (gqa0)">1</CArc>
+</CGraph>

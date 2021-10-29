@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lp7---0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_Join_Specification (lps-)"/>
+    <CGraph Type="Place" Label="p:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_No_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)"/>
+    <CGraph Type="Transition" Label="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_Yes_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)"/>
+    <CGraph Type="Transition" Label="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_No_Specification (lps-):split:Split_Join_Specification (lps-)"/>
+    <CGraph Type="Transition" Label="t:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):join:Product Structure Management via CAD (lq6-)*xor (lta-)"/>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_No_Specification (lps-):split:Split_Join_Specification (lps-)" Target="p:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_Join_Specification (lps-)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):join:Product Structure Management via CAD (lq6-)*xor (lta-)" Target="p:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_Join_Specification (lps-)" Target="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_No_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_Join_Specification (lps-)" Target="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_Yes_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_No_Specification (lps-):split:Split_Join_Specification (lps-)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):busy" Target="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_Yes_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_No_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.lp7---0-----u--:Model.lp7---0-----u--:Join_Yes_Project Completion Activities (lrc-):split:Join_Join_Project Completion Activities (lrc-)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="i" Target="t:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):join:Product Structure Management via CAD (lq6-)*xor (lta-)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.lp7---0-----u--:Model.lp7---0-----u--:xor (lta-):join:Product Structure Management via CAD (lq6-)*xor (lta-)" Target="p:Model.lp7---0-----u--:Model.lp7---0-----u--:Split_Join_Specification (lps-)">1</CArc>
+</CGraph>

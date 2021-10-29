@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.32fe--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.32fe--0-----u--:Model.32fe--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_Difference Processing (32gd)"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_xor (32h8)"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Difference Processing (32gd)"/>
+    <CGraph Type="Place" Label="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Join_Yes_xor (32h8)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_xor (32h8):split:Join_Join_xor (32h8)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_xor (32h8):split:Join_Join_xor (32h8)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Split_No_Stock Placement Processing (32fz):split:Split_Join_Stock Placement Processing (32fz)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Difference Processing (32gd)"/>
+    <CGraph Type="Transition" Label="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Join_Yes_xor (32h8)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_xor (32h8):split:Join_Join_xor (32h8)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_xor (32h8):split:Join_Join_xor (32h8)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.32fe--0-----u--:Model.32fe--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Difference Processing (32gd)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Join_Yes_xor (32h8)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Join_Yes_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Join_Yes_xor (32h8)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_xor (32h8):split:Join_Join_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_Difference Processing (32gd)" Target="*:Model.32fe--0-----u--:Model.32fe--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Join_xor (32h8)" Target="*:Model.32fe--0-----u--:Model.32fe--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Split_No_Stock Placement Processing (32fz):split:Split_Join_Stock Placement Processing (32fz)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Join_Yes_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Split_No_Stock Placement Processing (32fz):split:Split_Join_Stock Placement Processing (32fz)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Split_No_Stock Placement Processing (32fz):split:Split_Join_Stock Placement Processing (32fz)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Difference Processing (32gd)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Difference Processing (32gd)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Join_Yes_xor (32h8)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8):split:xor (32h8)*Join_Yes_xor (32h8)" Target="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_No_xor (32h8):split:Join_Join_xor (32h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_Difference Processing (32gd)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:xor (32h8)*Difference Processing (32gd)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_Difference Processing (32gd):split:Join_Join_Difference Processing (32gd)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Split_xor (32h8)" Target="t:Model.32fe--0-----u--:Model.32fe--0-----u--:Join_Yes_xor (32h8):split:Join_Join_xor (32h8)">1</CArc>
+</CGraph>

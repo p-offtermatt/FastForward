@@ -1,0 +1,183 @@
+place "i" init 1;
+place "o";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:InputCondition";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_Key Date Valuation (gc2n)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_Key Date Valuation (gc2n)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_and (gc3p)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_and (gc3p)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc3e)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc3e)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc40)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc40)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:OutputCondition";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p)*and (gc3p)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n)*and (gc3e)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*Join_Yes_and (gc3e)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*and (gc3p)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p)*Realized Gains/ Losses (gc31)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31)*and (gc40)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40)*Join_Yes_and (gc40)";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):busy";
+place "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:busy";
+trans "*:Model.gc22--0-----u--:Model.gc22--0-----u--:start"~"*:Model.gc22--0-----u--:Model.gc22--0-----u--:start"
+    in "i"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:InputCondition"
+;
+trans "*:Model.gc22--0-----u--:Model.gc22--0-----u--:end"~"*:Model.gc22--0-----u--:Model.gc22--0-----u--:end"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:join:InputCondition"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:join:InputCondition"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:InputCondition"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:split:Split_Split_Key Date Valuation (gc2n):Split_Split_and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:split:Split_Split_Key Date Valuation (gc2n):Split_Split_and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split:busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_Key Date Valuation (gc2n)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_and (gc3p)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):join:Split_Split_Key Date Valuation (gc2n)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):join:Split_Split_Key Date Valuation (gc2n)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_Key Date Valuation (gc2n)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):split:Split_Join_Key Date Valuation (gc2n)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):split:Split_Join_Key Date Valuation (gc2n)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_Key Date Valuation (gc2n):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_Key Date Valuation (gc2n)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):join:Split_Split_Key Date Valuation (gc2n)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):join:Split_Split_Key Date Valuation (gc2n)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_Key Date Valuation (gc2n)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):split:Split_Join_Key Date Valuation (gc2n):Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):split:Split_Join_Key Date Valuation (gc2n):Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_Key Date Valuation (gc2n)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):join:Split_Split_and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):join:Split_Split_and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_and (gc3p)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):split:Split_Join_and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):split:Split_Join_and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_No_and (gc3p):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_and (gc3p)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):join:Split_Split_and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):join:Split_Split_and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Split_and (gc3p)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):split:Split_Join_and (gc3p):Split_Yes_and (gc3p)*and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):split:Split_Join_and (gc3p):Split_Yes_and (gc3p)*and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_and (gc3p)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p)*and (gc3p)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:join:Split_Join_Key Date Valuation (gc2n):Split_Join_and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:join:Split_Join_Key Date Valuation (gc2n):Split_Join_and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_Key Date Valuation (gc2n)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Join_and (gc3p)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:split:Join_Split_and (gc3e):Join_Split_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:split:Join_Split_and (gc3e):Join_Split_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Skip:busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc3e)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc40)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):join:Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):join:Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_Key Date Valuation (gc2n)*Key Date Valuation (gc2n)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):split:Key Date Valuation (gc2n)*and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):split:Key Date Valuation (gc2n)*and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n)*and (gc3e)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):join:Key Date Valuation (gc2n)*and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):join:Key Date Valuation (gc2n)*and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Key Date Valuation (gc2n)*and (gc3e)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):split:and (gc3e)*Join_Yes_and (gc3e):and (gc3e)*and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):split:and (gc3e)*Join_Yes_and (gc3e):and (gc3e)*and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*Join_Yes_and (gc3e)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*and (gc3p)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):join:Split_Yes_and (gc3p)*and (gc3p):and (gc3e)*and (gc3p)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):join:Split_Yes_and (gc3p)*and (gc3p):and (gc3e)*and (gc3p)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Split_Yes_and (gc3p)*and (gc3p)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*and (gc3p)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):split:and (gc3p)*Realized Gains/ Losses (gc31)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):split:and (gc3p)*Realized Gains/ Losses (gc31)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p)*Realized Gains/ Losses (gc31)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):join:and (gc3p)*Realized Gains/ Losses (gc31)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):join:and (gc3p)*Realized Gains/ Losses (gc31)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3p)*Realized Gains/ Losses (gc31)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):split:Realized Gains/ Losses (gc31)*and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):split:Realized Gains/ Losses (gc31)*and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31)*and (gc40)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):join:Realized Gains/ Losses (gc31)*and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):join:Realized Gains/ Losses (gc31)*and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Realized Gains/ Losses (gc31)*and (gc40)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):split:and (gc40)*Join_Yes_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):split:and (gc40)*Join_Yes_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40)*Join_Yes_and (gc40)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):join:Join_Split_and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):join:Join_Split_and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc3e)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):split:Join_Join_and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):split:Join_Join_and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc3e):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc3e)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):join:and (gc3e)*Join_Yes_and (gc3e):Join_Split_and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):join:and (gc3e)*Join_Yes_and (gc3e):Join_Split_and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc3e)*Join_Yes_and (gc3e)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc3e)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):split:Join_Join_and (gc3e)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):split:Join_Join_and (gc3e)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc3e):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc3e)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):join:Join_Split_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):join:Join_Split_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc40)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):split:Join_Join_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):split:Join_Join_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_No_and (gc40):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc40)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):join:and (gc40)*Join_Yes_and (gc40):Join_Split_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):join:and (gc40)*Join_Yes_and (gc40):Join_Split_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:and (gc40)*Join_Yes_and (gc40)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Split_and (gc40)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):split:Join_Join_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):split:Join_Join_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Yes_and (gc40):busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc40)"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:join:Join_Join_and (gc3e):Join_Join_and (gc40)"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:join:Join_Join_and (gc3e):Join_Join_and (gc40)"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc3e)"
+       "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Join_Join_and (gc40)"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:busy"
+;
+trans "t:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:split:OutputCondition"~"t:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:split:OutputCondition"
+    in "p:Model.gc22--0-----u--:Model.gc22--0-----u--:Output:busy"
+   out "p:Model.gc22--0-----u--:Model.gc22--0-----u--:OutputCondition"
+;
+

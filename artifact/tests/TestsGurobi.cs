@@ -6,6 +6,7 @@ using System.Linq;
 using Xunit.Abstractions;
 using System.Diagnostics;
 using System.Collections;
+using Utils;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 
@@ -84,7 +85,7 @@ namespace Testing
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/swimming_pool.formula"));
 
             Func<Marking, float?> heuristicFunction = GurobiHeuristics.InitializeMarkingEquationHeuristic(
-                net.Places, net.Transitions, targetMarkings, GurobiHeuristics.Domains.Q);
+                net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.Q);
 
             float expectedScore = 4;
             Assert.Equal(expectedScore, heuristicFunction(initialMarking));
@@ -101,7 +102,7 @@ namespace Testing
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(Utils.GetPathForTestfile("lola/pncsacover.formula"));
 
             Func<Marking, float?> heuristicFunction = GurobiHeuristics.InitializeMarkingEquationHeuristic(
-                net.Places, net.Transitions, targetMarkings, GurobiHeuristics.Domains.Q);
+                net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.Q);
 
             Stopwatch watch = Stopwatch.StartNew();
             heuristicFunction(initialMarking);
@@ -131,12 +132,12 @@ namespace Testing
 
                 double bound = 0;
 
-                bound = GetPlaceBoundsViaMarkingEquation(net.Places, net.Transitions, initialMarking, 0, Domains.Q).First().Value;
+                bound = GetPlaceBoundsViaMarkingEquation(net.Places, net.Transitions, initialMarking, 0, GurobiConsts.Domains.Q).First().Value;
                 Assert.Equal(1.0, bound);
 
                 for (int i = 2; i <= 30; i++)
                 {
-                    bound = GetPlaceBoundsViaMarkingEquation(net.Places, net.Transitions, initialMarking, i - 1, Domains.Q).First().Value;
+                    bound = GetPlaceBoundsViaMarkingEquation(net.Places, net.Transitions, initialMarking, i - 1, GurobiConsts.Domains.Q).First().Value;
                     Assert.Equal((double)i, bound);
                 }
             }

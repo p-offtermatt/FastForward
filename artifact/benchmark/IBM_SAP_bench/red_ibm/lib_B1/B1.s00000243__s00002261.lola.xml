@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B1/B1.s00000243__s00002261.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00002258.input.s00000819"/>
+    <CGraph Type="Place" Label="callToTask.s00002265.output.s00000796"/>
+    <CGraph Type="Transition" Label="callToTask.s00002265.outputCriterion.s00000773"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000784"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000243##s00002261.input.s00002264"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId20" Source="decision.s00000781.fire.s00000784" Target="callToProcess.s00002258.input.s00000819">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="callToTask.s00002265.outputCriterion.s00000773" Target="callToTask.s00002265.output.s00000796">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="callToProcess.s00002258.input.s00000819" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="callToTask.s00002265.output.s00000796" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="process.s00000243##s00002261.input.s00002264" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="alpha" Target="callToTask.s00002265.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="callToTask.s00002265.outputCriterion.s00000773" Target="process.s00000243##s00002261.input.s00002264">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="alpha" Target="decision.s00000781.fire.s00000784">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="decision.s00000781.fire.s00000784" Target="process.s00000243##s00002261.input.s00002264">1</CArc>
+    <CArc Type="Arc" Label="sa_1" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

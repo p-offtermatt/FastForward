@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using Benchmark;
 using Statistics = MathNet.Numerics.Statistics.Statistics;
+using Utils;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -229,7 +230,7 @@ namespace PetriTool
 
             // Func<Marking, float?> heuristic = InitializeMarkingEquationHeuristic(net, targetMarkings, domain);
             Func<Marking, Tuple<IEnumerable<Transition>, float?>> heuristic =
-                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, Domains.N);
+                InitializeMarkingEquationTransitionSupportComputation(net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.N);
 
             (IEnumerable<Transition> support, float? initialHeuristicValue) = heuristic(initialMarking);
             if (support == null)
@@ -347,6 +348,11 @@ namespace PetriTool
             }
         }
 
+        private static Dictionary<Transition, Double> GetIntegerBoundednessCounterexample(PetriNet net)
+        {
+            return GurobiHeuristics.CheckIntegerUnboundedness(net);
+        }
+
         private static List<Place> ComputeMonotonicPlaceOrderViaSMT(PetriNet net, int degree)
         {
             using (Context ctx = new Context(new Dictionary<string, string>
@@ -446,6 +452,7 @@ namespace PetriTool
             NetParser netParser = ParserPicker.ChooseNetParser(options.netFilePath);
 
             (PetriNet net, Marking initialMarking) = netParser.ReadNet(options.netFilePath);
+            NetStatisticsEntry dataEntry = new NetStatisticsEntry();
 
             List<MarkingWithConstraints> targetMarkings;
             List<MarkingWithConstraints> targetMarkingsCopy;
@@ -463,10 +470,8 @@ namespace PetriTool
                 targetMarkings = null;
                 targetMarkingsCopy = null;
                 targetMarkingsCopy2 = null;
-
             }
 
-            NetStatisticsEntry dataEntry = new NetStatisticsEntry();
 
             dataEntry.netFile = options.netFilePath;
             dataEntry.formulaFile = options.formulaFilePath;
@@ -475,63 +480,63 @@ namespace PetriTool
             dataEntry.transitions = net.Transitions.Count;
 
 
-            if (options.prune)
-            {
-                PetriNet netCopy = new PetriNet(net);
-                Marking initialMarkingCopy = new Marking(initialMarking);
+            // if (options.prune)
+            // {
+            //     PetriNet netCopy = new PetriNet(net);
+            //     Marking initialMarkingCopy = new Marking(initialMarking);
 
-                PetriNet netCopy2 = new PetriNet(net);
-                Marking initialMarkingCopy2 = new Marking(initialMarking);
-                Stopwatch forwardPruningWatch = Stopwatch.StartNew();
-                Pruning.Prune(null, ref netCopy, ref initialMarkingCopy, ref targetMarkingsCopy, forward: true, backward: false);
-                forwardPruningWatch.Stop();
-                dataEntry.timeTakenForwardPruning = forwardPruningWatch.ElapsedMilliseconds;
-                dataEntry.placesAfterForwardPruning = netCopy.Places.Count;
-                dataEntry.transitionsAfterForwardPruning = netCopy.Transitions.Count;
+            //     PetriNet netCopy2 = new PetriNet(net);
+            //     Marking initialMarkingCopy2 = new Marking(initialMarking);
+            //     Stopwatch forwardPruningWatch = Stopwatch.StartNew();
+            //     Pruning.Prune(null, ref netCopy, ref initialMarkingCopy, ref targetMarkingsCopy, forward: true, backward: false);
+            //     forwardPruningWatch.Stop();
+            //     dataEntry.timeTakenForwardPruning = forwardPruningWatch.ElapsedMilliseconds;
+            //     dataEntry.placesAfterForwardPruning = netCopy.Places.Count;
+            //     dataEntry.transitionsAfterForwardPruning = netCopy.Transitions.Count;
 
-                Stopwatch backwardPruningWatch = Stopwatch.StartNew();
-                if (!(targetMarkingsCopy2 is null))
-                {
-                    Pruning.Prune(null, ref netCopy2, ref initialMarkingCopy2, ref targetMarkingsCopy2, forward: false, backward: true);
-                }
-                backwardPruningWatch.Stop();
+            //     Stopwatch backwardPruningWatch = Stopwatch.StartNew();
+            //     if (!(targetMarkingsCopy2 is null))
+            //     {
+            //         Pruning.Prune(null, ref netCopy2, ref initialMarkingCopy2, ref targetMarkingsCopy2, forward: false, backward: true);
+            //     }
+            //     backwardPruningWatch.Stop();
 
-                dataEntry.timeTakenBackwardPruning = backwardPruningWatch.ElapsedMilliseconds;
-                dataEntry.placesAfterBackwardPruning = netCopy2.Places.Count;
-                dataEntry.transitionsAfterBackwardPruning = netCopy2.Transitions.Count;
+            //     dataEntry.timeTakenBackwardPruning = backwardPruningWatch.ElapsedMilliseconds;
+            //     dataEntry.placesAfterBackwardPruning = netCopy2.Places.Count;
+            //     dataEntry.transitionsAfterBackwardPruning = netCopy2.Transitions.Count;
 
-                Stopwatch pruningWatch = Stopwatch.StartNew();
-                if (targetMarkings is null)
-                {
-                    Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: false);
-                }
-                else
-                {
-                    Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: true);
-                }
-                pruningWatch.Stop();
-                dataEntry.timeTakenPruning = pruningWatch.ElapsedMilliseconds;
+            //     Stopwatch pruningWatch = Stopwatch.StartNew();
+            //     if (targetMarkings is null)
+            //     {
+            //         Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: false);
+            //     }
+            //     else
+            //     {
+            //         Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, forward: true, backward: true);
+            //     }
+            //     pruningWatch.Stop();
+            //     dataEntry.timeTakenPruning = pruningWatch.ElapsedMilliseconds;
 
-                dataEntry.placesAfterPruning = net.Places.Count();
-                dataEntry.transitionsAfterPruning = net.Transitions.Count();
+            //     dataEntry.placesAfterPruning = net.Places.Count();
+            //     dataEntry.transitionsAfterPruning = net.Transitions.Count();
 
-                dataEntry.fractionOfPlacesPruned = 1 - (double)dataEntry.placesAfterPruning / (double)dataEntry.places;
-                dataEntry.fractionOfTransitionsPruned = 1 - (double)dataEntry.transitionsAfterPruning / (double)dataEntry.transitions;
-            }
+            //     dataEntry.fractionOfPlacesPruned = 1 - (double)dataEntry.placesAfterPruning / (double)dataEntry.places;
+            //     dataEntry.fractionOfTransitionsPruned = 1 - (double)dataEntry.transitionsAfterPruning / (double)dataEntry.transitions;
+            // }
 
-            dataEntry.numberOfSelfLoops = net.Transitions.Where(
-                transition => transition.HasSelfLoop()
-            ).Count();
+            // dataEntry.numberOfSelfLoops = net.Transitions.Where(
+            //     transition => transition.HasSelfLoop()
+            // ).Count();
 
-            dataEntry.numberOfNiceSelfLoops = net.Transitions.Where(
-                transition => transition.HasNiceSelfLoop()
-            ).Count();
+            // dataEntry.numberOfNiceSelfLoops = net.Transitions.Where(
+            //     transition => transition.HasNiceSelfLoop()
+            // ).Count();
 
-            dataEntry.bioTransitions = net.Transitions.Where(
-                transition => transition.IsBio()
-            ).Count();
+            // dataEntry.bioTransitions = net.Transitions.Where(
+            //     transition => transition.IsBio()
+            // ).Count();
 
-            dataEntry.fractionOfBioTransitions = (double)dataEntry.bioTransitions / (double)dataEntry.transitionsAfterPruning;
+            // dataEntry.fractionOfBioTransitions = (double)dataEntry.bioTransitions / (double)dataEntry.transitionsAfterPruning;
 
             IEnumerable<double> preSizes = net.Transitions.Select(transition => (double)transition.GetPrePlaces().Count);
 
@@ -585,54 +590,54 @@ namespace PetriTool
             dataEntry.firstQuartileWeight = Statistics.LowerQuartile(weights);
             dataEntry.thirdQuartileWeight = Statistics.UpperQuartile(weights);
 
-            // Monotonicity
+            // // Monotonicity
 
-            if (options.monotonicityDegree != Int32.MinValue)
-            {
-                dataEntry.checkedMonotonicityDegree = options.monotonicityDegree.ToString();
-                List<Place> orderedPlaces = ComputeMonotonicPlaceOrderViaSMT(net, options.monotonicityDegree);
-                if (orderedPlaces is null)
-                {
-                    dataEntry.monotonicPlaceOrder = "Not monotonic";
-                    dataEntry.isMonotonic = false;
-                }
-                else
-                {
-                    dataEntry.monotonicPlaceOrder =
-                        "Monotonic:\n" +
-                        String.Join("\n", orderedPlaces.
-                            Select((Place place, int index) => place.Name + ": " + index.ToString())
-                        );
+            // if (options.monotonicityDegree != Int32.MinValue)
+            // {
+            //     dataEntry.checkedMonotonicityDegree = options.monotonicityDegree.ToString();
+            //     List<Place> orderedPlaces = ComputeMonotonicPlaceOrderViaSMT(net, options.monotonicityDegree);
+            //     if (orderedPlaces is null)
+            //     {
+            //         dataEntry.monotonicPlaceOrder = "Not monotonic";
+            //         dataEntry.isMonotonic = false;
+            //     }
+            //     else
+            //     {
+            //         dataEntry.monotonicPlaceOrder =
+            //             "Monotonic:\n" +
+            //             String.Join("\n", orderedPlaces.
+            //                 Select((Place place, int index) => place.Name + ": " + index.ToString())
+            //             );
 
-                    dataEntry.isMonotonic = true;
+            //         dataEntry.isMonotonic = true;
 
-                    if (!CheckNetAgainstPlaceOrder(net, orderedPlaces, options.monotonicityDegree))
-                    {
-                        throw new Exception("Got a place order, but net is not monotonic!");
-                    }
-                }
-            }
-            else
-            {
-                dataEntry.checkedMonotonicityDegree = "Not checked";
-            }
+            //         if (!CheckNetAgainstPlaceOrder(net, orderedPlaces, options.monotonicityDegree))
+            //         {
+            //             throw new Exception("Got a place order, but net is not monotonic!");
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     dataEntry.checkedMonotonicityDegree = "Not checked";
+            // }
 
-            // Checking for Marked Graph
+            // // Checking for Marked Graph
 
-            int markedGraphPlaces = net.ComputeNumberOfMarkedGraphPlaces();
-            dataEntry.numberOfMarkedGraphPlaces = markedGraphPlaces;
+            // int markedGraphPlaces = net.ComputeNumberOfMarkedGraphPlaces();
+            // dataEntry.numberOfMarkedGraphPlaces = markedGraphPlaces;
 
-            dataEntry.fractionOfMarkedGraphPlaces = net.Places.Count == 0 ? 1 : (double)markedGraphPlaces / (double)net.Places.Count;
+            // dataEntry.fractionOfMarkedGraphPlaces = net.Places.Count == 0 ? 1 : (double)markedGraphPlaces / (double)net.Places.Count;
 
-            dataEntry.isMarkedGraph = markedGraphPlaces == net.Places.Count;
+            // dataEntry.isMarkedGraph = markedGraphPlaces == net.Places.Count;
 
-            // Checking for State Machine
+            // // Checking for State Machine
 
-            int stateMachineTransitions = net.ComputeNumberOfStateMachineTransitions();
-            dataEntry.numberOfStateMachineTransitions = stateMachineTransitions;
+            // int stateMachineTransitions = net.ComputeNumberOfStateMachineTransitions();
+            // dataEntry.numberOfStateMachineTransitions = stateMachineTransitions;
 
-            dataEntry.fractionOfStateMachineTransitions = net.Transitions.Count == 0 ? 1 : (double)stateMachineTransitions / (double)net.Transitions.Count;
-            dataEntry.isStateMachineNet = stateMachineTransitions == net.Transitions.Count;
+            // dataEntry.fractionOfStateMachineTransitions = net.Transitions.Count == 0 ? 1 : (double)stateMachineTransitions / (double)net.Transitions.Count;
+            // dataEntry.isStateMachineNet = stateMachineTransitions == net.Transitions.Count;
 
             // Checking for workflow net
 
@@ -646,8 +651,22 @@ namespace PetriTool
 
             dataEntry.isFreeChoice = net.IsFreeChoice();
 
-            // Writing output
+            // // Checking for integer boundedness
 
+            // var counterexample = GetIntegerBoundednessCounterexample(net);
+
+            // dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+
+            // Checking for integer boundedness in WF nets
+            if (isWF)
+            {
+
+                var wfBoundCounterexample = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
+
+                dataEntry.wfIntegerBoundednessCounterexample = wfBoundCounterexample == null ? "None" : String.Join(";", wfBoundCounterexample);
+            }
+
+            // Writing output
             Console.WriteLine(dataEntry.ToJSON());
             System.Environment.Exit(0);
         }

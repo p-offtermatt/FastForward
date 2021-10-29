@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.aoot--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.aoot--0-----u--:Model.aoot--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_Capacity Dispatching and Leveling (aops)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_xor (aoq1)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_Capacity Dispatching and Leveling (aops)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_xor (aoq1)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_and (aoqn)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_or (aoqc)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Split_or (aoqc)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc)*or (aoqc)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):busy"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1)*Join_Yes_xor (aoq1)"/>
+    <CGraph Type="Place" Label="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):busy"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_xor (aoq1):split:Join_Join_xor (aoq1)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_xor (aoq1):split:Join_Join_xor (aoq1)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (aops):Join_Split_xor (aoq1)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_and (aoqn):split:Split_Join_and (aoqn)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_or (aoqc):split:Split_Join_or (aoqc)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc):split:Split_Join_or (aoqc):Split_Yes_or (aoqc)*or (aoqc)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc):xor (aoq1)*or (aoqc)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:xor (aoq1)*or (aoqc)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):join:Capacity Evaluation (aope)*xor (aoq1)"/>
+    <CGraph Type="Transition" Label="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):split:xor (aoq1)*Join_Yes_xor (aoq1)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_xor (aoq1):split:Join_Join_xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_xor (aoq1):split:Join_Join_xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.aoot--0-----u--:Model.aoot--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (aops):Join_Split_xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (aops):Join_Split_xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_and (aoqn):split:Split_Join_and (aoqn)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_and (aoqn)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_or (aoqc):split:Split_Join_or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc):split:Split_Join_or (aoqc):Split_Yes_or (aoqc)*or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc)*or (aoqc)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc):split:Split_Join_or (aoqc):Split_Yes_or (aoqc)*or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc)*or (aoqc)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc):xor (aoq1)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:xor (aoq1)*or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc):xor (aoq1)*or (aoqc)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):split:xor (aoq1)*Join_Yes_xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1)*Join_Yes_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):busy" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):split:xor (aoq1)*Join_Yes_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):join:Capacity Evaluation (aope)*xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1)*Join_Yes_xor (aoq1)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_xor (aoq1):split:Join_Join_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_Capacity Dispatching and Leveling (aops)" Target="*:Model.aoot--0-----u--:Model.aoot--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Join_xor (aoq1)" Target="*:Model.aoot--0-----u--:Model.aoot--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_and (aoqn)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (aops):Join_Split_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_or (aoqc)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (aops):Join_Split_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Split_or (aoqc)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_or (aoqc):split:Split_Join_or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_and (aoqn):split:Split_Join_and (aoqn)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_No_and (aoqn):split:Split_Join_and (aoqn)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Split_or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Split_or (aoqc)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Yes_or (aoqc):split:Split_Join_or (aoqc):Split_Yes_or (aoqc)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):join:Capacity Evaluation (aope)*xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):join:Capacity Evaluation (aope)*xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Join_and (aoqn)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):join:Capacity Evaluation (aope)*xor (aoq1)" Target="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Split_Split_or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):busy" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):busy" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:Split_Yes_or (aoqc)*or (aoqc):xor (aoq1)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:xor (aoq1):busy" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:or (aoqc):join:xor (aoq1)*or (aoqc)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_Capacity Dispatching and Leveling (aops)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_xor (aoq1)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_No_xor (aoq1):split:Join_Join_xor (aoq1)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_Capacity Dispatching and Leveling (aops)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_Capacity Dispatching and Leveling (aops):split:Join_Join_Capacity Dispatching and Leveling (aops)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Split_xor (aoq1)" Target="t:Model.aoot--0-----u--:Model.aoot--0-----u--:Join_Yes_xor (aoq1):split:Join_Join_xor (aoq1)">1</CArc>
+</CGraph>

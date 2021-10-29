@@ -1,0 +1,109 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m40o--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.m40o--0-----u--:Model.m40o--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)"/>
+    <CGraph Type="Place" Label="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):split:Join_Join_or (m44d)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):split:Split_Join_and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):split:Split_Join_xor (m42g)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)"/>
+    <CGraph Type="Transition" Label="t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="arcId110" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):split:Join_Join_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.m40o--0-----u--:Model.m40o--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):split:Split_Join_and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):split:Split_Join_xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId86" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId87" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId88" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId89" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_Budget Planning (m41n)" Target="*:Model.m40o--0-----u--:Model.m40o--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Join_or (m44d)" Target="*:Model.m40o--0-----u--:Model.m40o--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_and (m439)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Skip:split:Join_Split_Budget Planning (m41n):Join_Split_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_and (m439):split:Split_Join_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_xor (m42g):split:Split_Join_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_No_Monitoring of Budget Planning (m452):split:Split_Join_Monitoring of Budget Planning (m452)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439):split:Split_Join_and (m439):Split_Yes_and (m439)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):join:Split_Yes_xor (m42g)*xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_No_or (m44d):split:Join_Join_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Yes_and (m439)*and (m439)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*and (m439)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_Budget Planning (m41n)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="i" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Join_Monitoring of Budget Planning (m452)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_and (m439)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Split_or (m44d)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:Split_Split_xor (m42g)">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_Budget Planning (m41n):split:Join_Join_Budget Planning (m41n)">1</CArc>
+    <CArc Type="Arc" Label="ra_73" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*Join_Yes_or (m44d):or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_79" Source="t:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d):split:or (m44d)*xor (m42g):or (m44d)*and (m439)" Target="p:Model.m40o--0-----u--:Model.m40o--0-----u--:xor (m42g):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.m40o--0-----u--:Model.m40o--0-----u--:or (m44d)*Join_Yes_or (m44d)" Target="t:Model.m40o--0-----u--:Model.m40o--0-----u--:Join_Yes_or (m44d):split:Join_Join_or (m44d)">1</CArc>
+</CGraph>

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.7rr4--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_Join_and (7rrm)"/>
+    <CGraph Type="Place" Label="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):busy"/>
+    <CGraph Type="Transition" Label="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_No_xor (7rrv):split:Join_Join_xor (7rrv)"/>
+    <CGraph Type="Transition" Label="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_Yes_xor (7rrv):split:Join_Join_xor (7rrv)"/>
+    <CGraph Type="Transition" Label="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_No_and (7rrm):split:Split_Join_and (7rrm)"/>
+    <CGraph Type="Transition" Label="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):join:Backorder Processing (7rsb)*xor (7rrv)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_No_and (7rrm):split:Split_Join_and (7rrm)" Target="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_Join_and (7rrm)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):join:Backorder Processing (7rsb)*xor (7rrv)" Target="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_Join_and (7rrm)" Target="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_Yes_xor (7rrv):split:Join_Join_xor (7rrv)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_No_and (7rrm):split:Split_Join_and (7rrm)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="i" Target="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):join:Backorder Processing (7rsb)*xor (7rrv)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):join:Backorder Processing (7rsb)*xor (7rrv)" Target="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_Join_and (7rrm)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:xor (7rrv):busy" Target="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_Yes_xor (7rrv):split:Join_Join_xor (7rrv)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_No_xor (7rrv):split:Join_Join_xor (7rrv)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_Yes_xor (7rrv):split:Join_Join_xor (7rrv)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Split_Join_and (7rrm)" Target="t:Model.7rr4--0-----u--:Model.7rr4--0-----u--:Join_No_xor (7rrv):split:Join_Join_xor (7rrv)">1</CArc>
+</CGraph>

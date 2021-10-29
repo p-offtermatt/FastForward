@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.mi8f--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_Join_or (mi9d)"/>
+    <CGraph Type="Place" Label="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):busy"/>
+    <CGraph Type="Transition" Label="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_No_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)"/>
+    <CGraph Type="Transition" Label="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_Yes_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)"/>
+    <CGraph Type="Transition" Label="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_No_or (mi9d):split:Split_Join_or (mi9d)"/>
+    <CGraph Type="Transition" Label="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):join:Split_Yes_or (mi9d)*or (mi9d)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_No_or (mi9d):split:Split_Join_or (mi9d)" Target="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_Join_or (mi9d)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):join:Split_Yes_or (mi9d)*or (mi9d)" Target="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_Join_or (mi9d)" Target="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_Yes_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_No_or (mi9d):split:Split_Join_or (mi9d)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):join:Split_Yes_or (mi9d)*or (mi9d)" Target="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_Join_or (mi9d)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):join:Split_Yes_or (mi9d)*or (mi9d)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:or (mi9d):busy" Target="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_Yes_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_No_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_Yes_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Split_Join_or (mi9d)" Target="t:Model.mi8f--0-----u--:Model.mi8f--0-----u--:Join_No_Calculation of Net Remuneration (mi90):split:Join_Join_Calculation of Net Remuneration (mi90)">1</CArc>
+</CGraph>

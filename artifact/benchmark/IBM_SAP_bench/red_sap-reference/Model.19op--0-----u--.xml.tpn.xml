@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.19op--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.19op--0-----u--:Model.19op--0-----u--:Split_Join_Product Design (19pa)"/>
+    <CGraph Type="Place" Label="p:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo)*Design BOM - Material Master Processing (19po)"/>
+    <CGraph Type="Transition" Label="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_No_xor (19qz):split:Join_Join_xor (19qz)"/>
+    <CGraph Type="Transition" Label="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_Yes_xor (19qz):split:Join_Join_xor (19qz)"/>
+    <CGraph Type="Transition" Label="t:Model.19op--0-----u--:Model.19op--0-----u--:Split_No_Product Design (19pa):split:Split_Join_Product Design (19pa)"/>
+    <CGraph Type="Transition" Label="t:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo):split:and (19qo)*Design BOM - Material Master Processing (19po):and (19qo)*Design BOM - Material BOM Processing (19q2)"/>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.19op--0-----u--:Model.19op--0-----u--:Split_No_Product Design (19pa):split:Split_Join_Product Design (19pa)" Target="p:Model.19op--0-----u--:Model.19op--0-----u--:Split_Join_Product Design (19pa)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo):split:and (19qo)*Design BOM - Material Master Processing (19po):and (19qo)*Design BOM - Material BOM Processing (19q2)" Target="p:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo)*Design BOM - Material Master Processing (19po)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.19op--0-----u--:Model.19op--0-----u--:Split_Join_Product Design (19pa)" Target="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_No_xor (19qz):split:Join_Join_xor (19qz)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.19op--0-----u--:Model.19op--0-----u--:Split_Join_Product Design (19pa)" Target="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_Yes_xor (19qz):split:Join_Join_xor (19qz)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.19op--0-----u--:Model.19op--0-----u--:Split_No_Product Design (19pa):split:Split_Join_Product Design (19pa)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo):split:and (19qo)*Design BOM - Material Master Processing (19po):and (19qo)*Design BOM - Material BOM Processing (19q2)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo):split:and (19qo)*Design BOM - Material Master Processing (19po):and (19qo)*Design BOM - Material BOM Processing (19q2)" Target="p:Model.19op--0-----u--:Model.19op--0-----u--:Split_Join_Product Design (19pa)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.19op--0-----u--:Model.19op--0-----u--:and (19qo)*Design BOM - Material Master Processing (19po)" Target="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_Yes_xor (19qz):split:Join_Join_xor (19qz)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_No_xor (19qz):split:Join_Join_xor (19qz)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.19op--0-----u--:Model.19op--0-----u--:Join_Yes_xor (19qz):split:Join_Join_xor (19qz)" Target="o">1</CArc>
+</CGraph>

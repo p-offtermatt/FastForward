@@ -1,0 +1,76 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.eazz--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.eazz--0-----u--:Model.eazz--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.eazz--0-----u--:Model.eazz--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):busy"/>
+    <CGraph Type="Place" Label="p:Model.eazz--0-----u--:Model.eazz--0-----u--:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):join:Join_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):join:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16):Join_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:join:Join_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):join:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):split:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:join:Split_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:split:Join_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:split:Split_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)"/>
+    <CGraph Type="Transition" Label="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16):Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.eazz--0-----u--:Model.eazz--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Split_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):join:Join_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:split:Join_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Split_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):join:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16):Join_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):join:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16):Join_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:join:Join_Join_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):split:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):join:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16):Join_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):join:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.eazz--0-----u--:Model.eazz--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):split:Set Up Ledger (eb16)*Join_Yes_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:join:Split_Join_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:split:Join_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:join:InputCondition" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:split:Split_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16):Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Join_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Skip:join:Split_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:InputCondition" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Split_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_No_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Split_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split:split:Split_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Split_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16):Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Set Up Ledger (eb16):join:Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):join:Split_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Split_Yes_Set Up Ledger (eb16):split:Split_Join_Set Up Ledger (eb16):Split_Yes_Set Up Ledger (eb16)*Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:split:outputCondition" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:outputCondition" Target="*:Model.eazz--0-----u--:Model.eazz--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="*:Model.eazz--0-----u--:Model.eazz--0-----u--:start" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Join_Set Up Ledger (eb16)" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Output:join:Join_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Yes_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_Join_Set Up Ledger (eb16)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):join:Join_Split_Set Up Ledger (eb16)" Target="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="p:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):busy" Target="t:Model.eazz--0-----u--:Model.eazz--0-----u--:Join_No_Set Up Ledger (eb16):split:Join_Join_Set Up Ledger (eb16)">1</CArc>
+</CGraph>

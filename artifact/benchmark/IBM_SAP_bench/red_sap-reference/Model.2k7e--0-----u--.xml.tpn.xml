@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2k7e--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Join_Invoice Reversal (2k7z)"/>
+    <CGraph Type="Place" Label="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)"/>
+    <CGraph Type="Transition" Label="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_No_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)"/>
+    <CGraph Type="Transition" Label="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_Yes_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)"/>
+    <CGraph Type="Transition" Label="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_No_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z)"/>
+    <CGraph Type="Transition" Label="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z):Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z):Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)" Target="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Join_Invoice Reversal (2k7z)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_No_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z)" Target="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Join_Invoice Reversal (2k7z)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z):Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)" Target="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Join_Invoice Reversal (2k7z)" Target="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_No_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Join_Invoice Reversal (2k7z)" Target="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_Yes_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_No_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z):split:Split_Join_Invoice Reversal (2k7z):Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_No_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_Yes_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Split_Yes_Invoice Reversal (2k7z)*Invoice Reversal (2k7z)" Target="t:Model.2k7e--0-----u--:Model.2k7e--0-----u--:Join_Yes_Manual Clearing (2k8d):split:Join_Join_Manual Clearing (2k8d)">1</CArc>
+</CGraph>

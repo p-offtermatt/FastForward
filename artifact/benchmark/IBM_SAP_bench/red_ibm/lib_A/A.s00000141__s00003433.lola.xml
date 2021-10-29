@@ -1,0 +1,23 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000141__s00003433.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00001030.output.s00000919"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000733"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000735"/>
+    <CGraph Type="Place" Label="merge.s00000730.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000141##s00003433.output.s00001269"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId58" Source="merge.s00000730.activate.s00000735" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="merge.s00000730.activate.s00000731" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="merge.s00000730.activate.s00000733" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="merge.s00000730.activate.s00000731" Target="callToProcess.s00001030.output.s00000919">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="merge.s00000730.activate.s00000733" Target="process.s00000141##s00003433.output.s00001269">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="alpha" Target="merge.s00000730.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="alpha" Target="merge.s00000730.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="alpha" Target="merge.s00000730.activate.s00000735">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="callToProcess.s00001030.output.s00000919" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="merge.s00000730.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="process.s00000141##s00003433.output.s00001269" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_9" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

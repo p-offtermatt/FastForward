@@ -1,0 +1,33 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.co6p--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_Phrase Processing (cobx)"/>
+    <CGraph Type="Place" Label="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_and (cob1)"/>
+    <CGraph Type="Place" Label="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Split_and (cob1)"/>
+    <CGraph Type="Place" Label="p:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):busy"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_No_Report Shipping (co98):split:Join_Join_Report Shipping (co98)"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_Yes_Report Shipping (co98):split:Join_Join_Report Shipping (co98)"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_Phrase Processing (cobx):split:Split_Join_Phrase Processing (cobx)"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_and (cob1):split:Split_Join_and (cob1)"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:Phrase Set Processing (cocb)*xor (coag)"/>
+    <CGraph Type="Transition" Label="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:and (cobj)*xor (coag)"/>
+    <CArc Type="Arc" Label="arcId103" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:Phrase Set Processing (cocb)*xor (coag)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId105" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:and (cobj)*xor (coag)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_Phrase Processing (cobx):split:Split_Join_Phrase Processing (cobx)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_Phrase Processing (cobx)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_and (cob1):split:Split_Join_and (cob1)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_and (cob1)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_Phrase Processing (cobx)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_No_Report Shipping (co98):split:Join_Join_Report Shipping (co98)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_and (cob1)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_No_Report Shipping (co98):split:Join_Join_Report Shipping (co98)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_Phrase Processing (cobx)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_Yes_Report Shipping (co98):split:Join_Join_Report Shipping (co98)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_and (cob1)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_Yes_Report Shipping (co98):split:Join_Join_Report Shipping (co98)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Split_and (cob1)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_and (cob1):split:Split_Join_and (cob1)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_Phrase Processing (cobx):split:Split_Join_Phrase Processing (cobx)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_No_Phrase Processing (cobx):split:Split_Join_Phrase Processing (cobx)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Split_and (cob1)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:Phrase Set Processing (cocb)*xor (coag)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_Phrase Processing (cobx)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:Phrase Set Processing (cocb)*xor (coag)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:Phrase Set Processing (cocb)*xor (coag)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Split_and (cob1)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):busy" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_Yes_Report Shipping (co98):split:Join_Join_Report Shipping (co98)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_No_Report Shipping (co98):split:Join_Join_Report Shipping (co98)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:Join_Yes_Report Shipping (co98):split:Join_Join_Report Shipping (co98)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Split_and (cob1)" Target="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:and (cobj)*xor (coag)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.co6p--0-----u--:Model.co6p--0-----u--:xor (coag):join:and (cobj)*xor (coag)" Target="p:Model.co6p--0-----u--:Model.co6p--0-----u--:Split_Join_and (cob1)">1</CArc>
+</CGraph>

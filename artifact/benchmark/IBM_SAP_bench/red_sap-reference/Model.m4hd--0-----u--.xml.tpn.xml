@@ -1,0 +1,30 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m4hd--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)"/>
+    <CGraph Type="Place" Label="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)"/>
+    <CGraph Type="Place" Label="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)"/>
+    <CGraph Type="Place" Label="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):split:Join_Join_xor (m4jd)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):split:Split_Join_and (m4m2)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)"/>
+    <CGraph Type="Transition" Label="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)"/>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):split:Split_Join_and (m4m2)" Target="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)" Target="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)" Target="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="arcId67" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)" Target="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)" Target="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):split:Join_Join_xor (m4jd)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="i" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):split:Split_Join_and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):split:Join_Join_xor (m4jd)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)" Target="t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)">1</CArc>
+</CGraph>

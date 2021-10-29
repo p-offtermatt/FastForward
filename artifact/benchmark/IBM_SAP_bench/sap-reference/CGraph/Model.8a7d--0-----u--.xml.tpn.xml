@@ -1,0 +1,92 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.8a7d--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k)*xor (8a86)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Join_xor (8a86)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Split_xor (8a86)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Join_and (8a7v)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Split_and (8a7v)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v)*and (8a7v)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v)*Backorder Processing (8a8k)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):busy"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:outputCondition"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86)*Join_Yes_xor (8a86)"/>
+    <CGraph Type="Place" Label="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):busy"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):join:and (8a7v)*Backorder Processing (8a8k)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):split:Backorder Processing (8a8k)*xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):join:Join_Split_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):split:Join_Join_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):join:xor (8a86)*Join_Yes_xor (8a86):Join_Split_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):split:Join_Join_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:join:Join_Join_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:join:Split_Join_and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:split:Join_Split_xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:split:Split_Split_and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):join:Split_Split_and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):split:Split_Join_and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):join:Split_Split_and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):split:Split_Join_and (8a7v):Split_Yes_and (8a7v)*and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):join:Split_Yes_and (8a7v)*and (8a7v)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):split:and (8a7v)*Backorder Processing (8a8k)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):join:Backorder Processing (8a8k)*xor (8a86)"/>
+    <CGraph Type="Transition" Label="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):split:xor (8a86)*Join_Yes_xor (8a86)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Join_xor (8a86)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:join:Join_Join_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):split:Join_Join_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Join_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):join:Join_Split_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):split:Join_Join_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Split_xor (8a86)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_No_xor (8a86):join:Join_Split_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Split_xor (8a86)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):join:xor (8a86)*Join_Yes_xor (8a86):Join_Split_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:split:Join_Split_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Split_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):join:xor (8a86)*Join_Yes_xor (8a86):Join_Split_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):split:Join_Join_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:join:Join_Join_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:join:Split_Join_and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:split:Join_Split_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:split:Split_Split_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:join:InputCondition" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Join_and (8a7v)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Skip:join:Split_Join_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):split:Split_Join_and (8a7v):Split_Yes_and (8a7v)*and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Join_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):split:Split_Join_and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Join_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):join:Split_Split_and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):split:Split_Join_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k)*xor (8a86)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):join:Backorder Processing (8a8k)*xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:split:Split_Split_and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Split_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Split_and (8a7v)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_No_and (8a7v):join:Split_Split_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Split_and (8a7v)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):join:Split_Split_and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):split:Split_Join_and (8a7v):Split_Yes_and (8a7v)*and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v)*and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v)*and (8a7v)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):join:Split_Yes_and (8a7v)*and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):join:Split_Split_and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split_Yes_and (8a7v):split:Split_Join_and (8a7v):Split_Yes_and (8a7v)*and (8a7v)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v)*Backorder Processing (8a8k)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):join:and (8a7v)*Backorder Processing (8a8k)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):split:and (8a7v)*Backorder Processing (8a8k)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v)*Backorder Processing (8a8k)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):join:Split_Yes_and (8a7v)*and (8a7v)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):split:Backorder Processing (8a8k)*xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k)*xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:and (8a7v):split:and (8a7v)*Backorder Processing (8a8k)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Output:split:outputCondition" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:outputCondition" Target="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86)*Join_Yes_xor (8a86)" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):join:xor (8a86)*Join_Yes_xor (8a86):Join_Split_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):split:xor (8a86)*Join_Yes_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86)*Join_Yes_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):split:xor (8a86)*Join_Yes_xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):join:Backorder Processing (8a8k)*xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:xor (8a86):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):join:and (8a7v)*Backorder Processing (8a8k)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):busy" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Backorder Processing (8a8k):split:Backorder Processing (8a8k)*xor (8a86)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:InputCondition" Target="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="*:Model.8a7d--0-----u--:Model.8a7d--0-----u--:start" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Yes_xor (8a86):split:Join_Join_xor (8a86)" Target="p:Model.8a7d--0-----u--:Model.8a7d--0-----u--:Join_Join_xor (8a86)">1</CArc>
+</CGraph>

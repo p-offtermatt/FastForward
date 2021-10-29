@@ -1,0 +1,79 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gkss--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gkss--0-----u--:Model.gkss--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gktv)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkv4)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkvf)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gktv)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkv4)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkvf)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Accrual/ Deferral (gkto)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Key Date Valuation (gkub)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_and (gkvo)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_Key Date Valuation (gkub)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_and (gkvo)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo)*and (gkvo)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):busy"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*Join_Yes_and (gkvf)"/>
+    <CGraph Type="Place" Label="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*and (gkvo)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gktv):split:Join_Join_and (gktv)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkv4):split:Join_Join_and (gkv4)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkvf):split:Join_Join_and (gkvf)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gktv):split:Join_Join_and (gktv)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkv4):split:Join_Join_and (gkv4)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkvf):split:Join_Join_and (gkvf)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Accrual/ Deferral (gkto):split:Split_Join_Accrual/ Deferral (gkto)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Key Date Valuation (gkub):split:Split_Join_Key Date Valuation (gkub)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_and (gkvo):split:Split_Join_and (gkvo)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo):split:Split_Join_and (gkvo):Split_Yes_and (gkvo)*and (gkvo)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)"/>
+    <CGraph Type="Transition" Label="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf):split:and (gkvf)*Join_Yes_and (gkvf):and (gkvf)*and (gkvo)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gktv):split:Join_Join_and (gktv)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="arcId101" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf):split:and (gkvf)*Join_Yes_and (gkvf):and (gkvf)*and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkv4):split:Join_Join_and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkv4):split:Join_Join_and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkvf):split:Join_Join_and (gkvf)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkvf):split:Join_Join_and (gkvf)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gkss--0-----u--:Model.gkss--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Accrual/ Deferral (gkto):split:Split_Join_Accrual/ Deferral (gkto)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Accrual/ Deferral (gkto)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Key Date Valuation (gkub):split:Split_Join_Key Date Valuation (gkub)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Key Date Valuation (gkub)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo):split:Split_Join_and (gkvo):Split_Yes_and (gkvo)*and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_and (gkvo):split:Split_Join_and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="arcId88" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo):split:Split_Join_and (gkvo):Split_Yes_and (gkvo)*and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo)*and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gktv):split:Join_Join_and (gktv)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf):split:and (gkvf)*Join_Yes_and (gkvf):and (gkvf)*and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*Join_Yes_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkvf)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkvf):split:Join_Join_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*Join_Yes_and (gkvf)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkvf):split:Join_Join_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gktv)" Target="*:Model.gkss--0-----u--:Model.gkss--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkv4)" Target="*:Model.gkss--0-----u--:Model.gkss--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Join_and (gkvf)" Target="*:Model.gkss--0-----u--:Model.gkss--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Accrual/ Deferral (gkto)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Key Date Valuation (gkub)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_and (gkvo)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Skip:split:Join_Split_and (gkv4):Join_Split_and (gkvf):Join_Split_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_Key Date Valuation (gkub)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Key Date Valuation (gkub):split:Split_Join_Key Date Valuation (gkub)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_and (gkvo)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_and (gkvo):split:Split_Join_and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Accrual/ Deferral (gkto):split:Split_Join_Accrual/ Deferral (gkto)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gktv)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gktv):split:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Accrual/ Deferral (gkto):split:Split_Join_Accrual/ Deferral (gkto)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_Key Date Valuation (gkub)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_No_Accrual/ Deferral (gkto):split:Split_Join_Accrual/ Deferral (gkto)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Accrual/ Deferral (gkto)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_Key Date Valuation (gkub)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):join:Accrual/ Deferral (gkto)*and (gkv4)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkv4)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkv4):split:Join_Join_and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_and (gkvo)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo):split:Split_Join_and (gkvo):Split_Yes_and (gkvo)*and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkv4):busy" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkv4):split:Join_Join_and (gkv4)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Split_Key Date Valuation (gkub)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf):split:and (gkvf)*Join_Yes_and (gkvf):and (gkvf)*and (gkvo)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf):split:and (gkvf)*Join_Yes_and (gkvf):and (gkvf)*and (gkvo)" Target="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Join_Key Date Valuation (gkub)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkvf)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_No_and (gkvf):split:Join_Join_and (gkvf)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Split_Yes_and (gkvo)*and (gkvo)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gktv):split:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:and (gkvf)*and (gkvo)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gktv):split:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gktv)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gktv):split:Join_Join_and (gktv)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Split_and (gkv4)" Target="t:Model.gkss--0-----u--:Model.gkss--0-----u--:Join_Yes_and (gkv4):split:Join_Join_and (gkv4)">1</CArc>
+</CGraph>

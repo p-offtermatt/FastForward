@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.e8d2--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_and (e8ea)"/>
+    <CGraph Type="Place" Label="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_or (e8eh)"/>
+    <CGraph Type="Place" Label="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Split_or (e8eh)"/>
+    <CGraph Type="Place" Label="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea)*and (e8ea)"/>
+    <CGraph Type="Place" Label="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):busy"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_No_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_and (e8ea):split:Split_Join_and (e8ea)"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_or (e8eh):split:Split_Join_or (e8eh)"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea):split:Split_Join_and (e8ea):Split_Yes_and (e8ea)*and (e8ea)"/>
+    <CGraph Type="Transition" Label="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):join:Split_Yes_or (e8eh)*or (e8eh)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea):split:Split_Join_and (e8ea):Split_Yes_and (e8ea)*and (e8ea)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_and (e8ea)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_and (e8ea):split:Split_Join_and (e8ea)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_and (e8ea)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_or (e8eh):split:Split_Join_or (e8eh)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea):split:Split_Join_and (e8ea):Split_Yes_and (e8ea)*and (e8ea)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea)*and (e8ea)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):join:Split_Yes_or (e8eh)*or (e8eh)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_or (e8eh)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_No_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_and (e8ea)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_or (e8eh)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Split_or (e8eh)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_or (e8eh):split:Split_Join_or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_and (e8ea):split:Split_Join_and (e8ea)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_No_and (e8ea):split:Split_Join_and (e8ea)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Split_or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea):split:Split_Join_and (e8ea):Split_Yes_and (e8ea)*and (e8ea)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea):split:Split_Join_and (e8ea):Split_Yes_and (e8ea)*and (e8ea)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Split_or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):join:Split_Yes_or (e8eh)*or (e8eh)" Target="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Split_or (e8eh)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):join:Split_Yes_or (e8eh)*or (e8eh)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Yes_and (e8ea)*and (e8ea)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:or (e8eh):busy" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_No_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_Yes_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Split_Join_and (e8ea)" Target="t:Model.e8d2--0-----u--:Model.e8d2--0-----u--:Join_No_Balance Sheet Values by Account (e8ev):split:Join_Join_Balance Sheet Values by Account (e8ev)">1</CArc>
+</CGraph>

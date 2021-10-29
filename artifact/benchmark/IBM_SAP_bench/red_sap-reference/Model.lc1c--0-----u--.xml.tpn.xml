@@ -1,0 +1,45 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lc1c--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_and (lc3p)"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_xor (lc31)"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Split_xor (lc31)"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):busy"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):busy"/>
+    <CGraph Type="Place" Label="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_No_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_Yes_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_and (lc3p):split:Split_Join_and (lc3p)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_xor (lc31):split:Split_Join_xor (lc31)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):join:Split_Yes_and (lc3p)*and (lc3p)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:and (lc3p)*or (lc3w)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w):and (lc3p)*or (lc3w)"/>
+    <CGraph Type="Transition" Label="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):join:Split_Yes_xor (lc31)*xor (lc31)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_and (lc3p):split:Split_Join_and (lc3p)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_and (lc3p)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_xor (lc31):split:Split_Join_xor (lc31)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):join:Split_Yes_and (lc3p)*and (lc3p)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w):and (lc3p)*or (lc3w)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:and (lc3p)*or (lc3w)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId66" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):join:Split_Yes_xor (lc31)*xor (lc31)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_xor (lc31)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_No_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_and (lc3p)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_Yes_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_xor (lc31)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_Yes_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Split_xor (lc31)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_xor (lc31):split:Split_Join_xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_and (lc3p):split:Split_Join_and (lc3p)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_No_and (lc3p):split:Split_Join_and (lc3p)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Split_xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):join:Split_Yes_and (lc3p)*and (lc3p)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_and (lc3p)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):join:Split_Yes_and (lc3p)*and (lc3p)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):join:Split_Yes_and (lc3p)*and (lc3p)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Split_xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):join:Split_Yes_xor (lc31)*xor (lc31)" Target="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Split_xor (lc31)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):join:Split_Yes_xor (lc31)*xor (lc31)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):busy" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:and (lc3p)*or (lc3w)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:and (lc3p):busy" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w):and (lc3p)*or (lc3w)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):busy" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_Yes_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):busy" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:xor (lc31):busy" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:or (lc3w):join:xor (lc31)*or (lc3w):and (lc3p)*or (lc3w)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_No_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_Yes_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Split_Join_and (lc3p)" Target="t:Model.lc1c--0-----u--:Model.lc1c--0-----u--:Join_No_Acquisition of Leased Asset (lc1x):split:Join_Join_Acquisition of Leased Asset (lc1x)">1</CArc>
+</CGraph>

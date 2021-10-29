@@ -1,0 +1,40 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B3/B3.s00000763__s00005368.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToTask.s00005372.input.s00001066"/>
+    <CGraph Type="Place" Label="callToTask.s00005373.input.s00001066"/>
+    <CGraph Type="Transition" Label="decision.s00001126.fire.s00001073"/>
+    <CGraph Type="Transition" Label="decision.s00001126.fire.s00001075"/>
+    <CGraph Type="Place" Label="fork.s00001298.activated.s00001075"/>
+    <CGraph Type="Place" Label="fork.s00001298.activated.s00001078"/>
+    <CGraph Type="Place" Label="fork.s00001298.activated.s00001081"/>
+    <CGraph Type="Transition" Label="merge.s00001061.activate.s00001062"/>
+    <CGraph Type="Transition" Label="merge.s00001061.activate.s00001064"/>
+    <CGraph Type="Transition" Label="merge.s00001061.activate.s00001065"/>
+    <CGraph Type="Place" Label="merge.s00001061.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId129" Source="merge.s00001061.activate.s00001062" Target="merge.s00001061.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId130" Source="merge.s00001061.activate.s00001064" Target="merge.s00001061.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId132" Source="merge.s00001061.activate.s00001065" Target="merge.s00001061.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="decision.s00001126.fire.s00001075" Target="callToTask.s00005372.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="decision.s00001126.fire.s00001073" Target="callToTask.s00005373.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="callToTask.s00005372.input.s00001066" Target="merge.s00001061.activate.s00001064">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="fork.s00001298.activated.s00001078" Target="merge.s00001061.activate.s00001064">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="callToTask.s00005373.input.s00001066" Target="merge.s00001061.activate.s00001062">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="fork.s00001298.activated.s00001081" Target="merge.s00001061.activate.s00001062">1</CArc>
+    <CArc Type="Arc" Label="ra_72" Source="alpha" Target="decision.s00001126.fire.s00001073">1</CArc>
+    <CArc Type="Arc" Label="ra_74" Source="decision.s00001126.fire.s00001073" Target="fork.s00001298.activated.s00001075">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="decision.s00001126.fire.s00001073" Target="fork.s00001298.activated.s00001078">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="decision.s00001126.fire.s00001073" Target="fork.s00001298.activated.s00001081">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="alpha" Target="decision.s00001126.fire.s00001075">1</CArc>
+    <CArc Type="Arc" Label="ra_79" Source="decision.s00001126.fire.s00001075" Target="fork.s00001298.activated.s00001075">1</CArc>
+    <CArc Type="Arc" Label="ra_80" Source="decision.s00001126.fire.s00001075" Target="fork.s00001298.activated.s00001078">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="decision.s00001126.fire.s00001075" Target="fork.s00001298.activated.s00001081">1</CArc>
+    <CArc Type="Arc" Label="ra_82" Source="alpha" Target="merge.s00001061.activate.s00001065">1</CArc>
+    <CArc Type="Arc" Label="ra_84" Source="merge.s00001061.activate.s00001065" Target="fork.s00001298.activated.s00001075">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="merge.s00001061.activate.s00001065" Target="fork.s00001298.activated.s00001078">1</CArc>
+    <CArc Type="Arc" Label="ra_86" Source="merge.s00001061.activate.s00001065" Target="fork.s00001298.activated.s00001081">1</CArc>
+    <CArc Type="Arc" Label="ra_90" Source="fork.s00001298.activated.s00001075" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_91" Source="merge.s00001061.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_3" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

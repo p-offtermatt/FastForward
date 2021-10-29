@@ -1,0 +1,279 @@
+place "i" init 1;
+place "o";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:InputCondition";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Split_xor (84c0)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Join_xor (84c0)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84cl)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84cl)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84di)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84di)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84dp)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84dp)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84cy)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84cy)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84d5)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84d5)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:OutputCondition";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0)*xor (84c0)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0)*Stock Removal Processing (84b7)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7)*xor (84cl)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Join_Yes_xor (84cl)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Confirmation of Removal f. Storage (84bp)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp)*and (84di)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*Join_Yes_and (84di)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*xor (84dp)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Join_Yes_xor (84dp)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Difference Processing (84ce)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce)*and (84cy)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*Join_Yes_and (84cy)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*xor (84d5)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5)*Join_Yes_xor (84d5)";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split:busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Skip:busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):busy";
+place "p:Model.84am--0-----u--:Model.84am--0-----u--:Output:busy";
+trans "*:Model.84am--0-----u--:Model.84am--0-----u--:start"~"*:Model.84am--0-----u--:Model.84am--0-----u--:start"
+    in "i"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:InputCondition"
+;
+trans "*:Model.84am--0-----u--:Model.84am--0-----u--:end"~"*:Model.84am--0-----u--:Model.84am--0-----u--:end"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split:join:InputCondition"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split:join:InputCondition"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:InputCondition"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split:busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split:split:Split_Split_xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split:split:Split_Split_xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split:busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Split_xor (84c0)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):join:Split_Split_xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):join:Split_Split_xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Split_xor (84c0)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):split:Split_Join_xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):split:Split_Join_xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_No_xor (84c0):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Join_xor (84c0)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):join:Split_Split_xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):join:Split_Split_xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Split_xor (84c0)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):split:Split_Join_xor (84c0):Split_Yes_xor (84c0)*xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):split:Split_Join_xor (84c0):Split_Yes_xor (84c0)*xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Join_xor (84c0)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0)*xor (84c0)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Skip:join:Split_Join_xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Skip:join:Split_Join_xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Join_xor (84c0)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Skip:busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Skip:split:Join_Split_xor (84cl):Join_Split_and (84di):Join_Split_xor (84dp):Join_Split_and (84cy):Join_Split_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Skip:split:Join_Split_xor (84cl):Join_Split_and (84di):Join_Split_xor (84dp):Join_Split_and (84cy):Join_Split_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Skip:busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84cl)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84di)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84dp)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84cy)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84d5)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):join:Split_Yes_xor (84c0)*xor (84c0)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):join:Split_Yes_xor (84c0)*xor (84c0)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Split_Yes_xor (84c0)*xor (84c0)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):split:xor (84c0)*Stock Removal Processing (84b7)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):split:xor (84c0)*Stock Removal Processing (84b7)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0)*Stock Removal Processing (84b7)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):join:xor (84c0)*Stock Removal Processing (84b7)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):join:xor (84c0)*Stock Removal Processing (84b7)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84c0)*Stock Removal Processing (84b7)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):split:Stock Removal Processing (84b7)*xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):split:Stock Removal Processing (84b7)*xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7)*xor (84cl)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):join:Stock Removal Processing (84b7)*xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):join:Stock Removal Processing (84b7)*xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Stock Removal Processing (84b7)*xor (84cl)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):split:xor (84cl)*Join_Yes_xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):split:xor (84cl)*Join_Yes_xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Join_Yes_xor (84cl)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):split:xor (84cl)*Confirmation of Removal f. Storage (84bp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):split:xor (84cl)*Confirmation of Removal f. Storage (84bp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Confirmation of Removal f. Storage (84bp)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):join:xor (84cl)*Confirmation of Removal f. Storage (84bp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):join:xor (84cl)*Confirmation of Removal f. Storage (84bp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Confirmation of Removal f. Storage (84bp)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):split:Confirmation of Removal f. Storage (84bp)*and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):split:Confirmation of Removal f. Storage (84bp)*and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp)*and (84di)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):join:Confirmation of Removal f. Storage (84bp)*and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):join:Confirmation of Removal f. Storage (84bp)*and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Confirmation of Removal f. Storage (84bp)*and (84di)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):split:and (84di)*Join_Yes_and (84di):and (84di)*xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):split:and (84di)*Join_Yes_and (84di):and (84di)*xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*Join_Yes_and (84di)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*xor (84dp)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):join:and (84di)*xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):join:and (84di)*xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*xor (84dp)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):split:xor (84dp)*Join_Yes_xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):split:xor (84dp)*Join_Yes_xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Join_Yes_xor (84dp)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):split:xor (84dp)*Difference Processing (84ce)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):split:xor (84dp)*Difference Processing (84ce)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Difference Processing (84ce)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):join:xor (84dp)*Difference Processing (84ce)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):join:xor (84dp)*Difference Processing (84ce)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Difference Processing (84ce)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):split:Difference Processing (84ce)*and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):split:Difference Processing (84ce)*and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce)*and (84cy)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):join:Difference Processing (84ce)*and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):join:Difference Processing (84ce)*and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Difference Processing (84ce)*and (84cy)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):split:and (84cy)*Join_Yes_and (84cy):and (84cy)*xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):split:and (84cy)*Join_Yes_and (84cy):and (84cy)*xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*Join_Yes_and (84cy)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*xor (84d5)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):join:and (84cy)*xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):join:and (84cy)*xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*xor (84d5)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):split:xor (84d5)*Join_Yes_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):split:xor (84d5)*Join_Yes_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5)*Join_Yes_xor (84d5)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):join:Join_Split_xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):join:Join_Split_xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84cl)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):split:Join_Join_xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):split:Join_Join_xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84cl):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84cl)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):join:xor (84cl)*Join_Yes_xor (84cl):Join_Split_xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):join:xor (84cl)*Join_Yes_xor (84cl):Join_Split_xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84cl)*Join_Yes_xor (84cl)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84cl)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):split:Join_Join_xor (84cl)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):split:Join_Join_xor (84cl)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84cl):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84cl)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):join:Join_Split_and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):join:Join_Split_and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84di)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):split:Join_Join_and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):split:Join_Join_and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84di):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84di)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):join:and (84di)*Join_Yes_and (84di):Join_Split_and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):join:and (84di)*Join_Yes_and (84di):Join_Split_and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84di)*Join_Yes_and (84di)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84di)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):split:Join_Join_and (84di)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):split:Join_Join_and (84di)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84di):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84di)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):join:Join_Split_xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):join:Join_Split_xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84dp)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):split:Join_Join_xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):split:Join_Join_xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84dp):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84dp)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):join:xor (84dp)*Join_Yes_xor (84dp):Join_Split_xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):join:xor (84dp)*Join_Yes_xor (84dp):Join_Split_xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84dp)*Join_Yes_xor (84dp)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84dp)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):split:Join_Join_xor (84dp)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):split:Join_Join_xor (84dp)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84dp):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84dp)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):join:Join_Split_and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):join:Join_Split_and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84cy)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):split:Join_Join_and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):split:Join_Join_and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_and (84cy):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84cy)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):join:and (84cy)*Join_Yes_and (84cy):Join_Split_and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):join:and (84cy)*Join_Yes_and (84cy):Join_Split_and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:and (84cy)*Join_Yes_and (84cy)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_and (84cy)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):split:Join_Join_and (84cy)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):split:Join_Join_and (84cy)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_and (84cy):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84cy)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):join:Join_Split_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):join:Join_Split_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84d5)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):split:Join_Join_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):split:Join_Join_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_No_xor (84d5):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84d5)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):join:xor (84d5)*Join_Yes_xor (84d5):Join_Split_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):join:xor (84d5)*Join_Yes_xor (84d5):Join_Split_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:xor (84d5)*Join_Yes_xor (84d5)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Split_xor (84d5)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):split:Join_Join_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):split:Join_Join_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Yes_xor (84d5):busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84d5)"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Output:join:Join_Join_xor (84cl):Join_Join_and (84di):Join_Join_xor (84dp):Join_Join_and (84cy):Join_Join_xor (84d5)"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Output:join:Join_Join_xor (84cl):Join_Join_and (84di):Join_Join_xor (84dp):Join_Join_and (84cy):Join_Join_xor (84d5)"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84cl)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84di)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84dp)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_and (84cy)"
+       "p:Model.84am--0-----u--:Model.84am--0-----u--:Join_Join_xor (84d5)"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:Output:busy"
+;
+trans "t:Model.84am--0-----u--:Model.84am--0-----u--:Output:split:OutputCondition"~"t:Model.84am--0-----u--:Model.84am--0-----u--:Output:split:OutputCondition"
+    in "p:Model.84am--0-----u--:Model.84am--0-----u--:Output:busy"
+   out "p:Model.84am--0-----u--:Model.84am--0-----u--:OutputCondition"
+;
+

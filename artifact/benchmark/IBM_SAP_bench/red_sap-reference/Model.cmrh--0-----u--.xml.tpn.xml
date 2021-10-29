@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.cmrh--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)"/>
+    <CGraph Type="Place" Label="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):split:Join_Join_Information System (cmts)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)"/>
+    <CGraph Type="Transition" Label="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):split:Join_Join_Information System (cmts)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Information System (cmts)" Target="*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Join_Product Safety (cmuk)" Target="*:Model.cmrh--0-----u--:Model.cmrh--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Product Safety (cmuk)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Information System (cmts):split:Join_Join_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Split_No_Material Master (cmu6):split:Split_Join_Material Master (cmu6)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Information System (cmts)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss):split:xor (cmss)*Product Safety (cmuk)" Target="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_No_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Information System (cmts)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:xor (cmss)*Information System (cmts)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Information System (cmts):split:Join_Join_Information System (cmts)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Split_Product Safety (cmuk)" Target="t:Model.cmrh--0-----u--:Model.cmrh--0-----u--:Join_Yes_Product Safety (cmuk):split:Join_Join_Product Safety (cmuk)">1</CArc>
+</CGraph>

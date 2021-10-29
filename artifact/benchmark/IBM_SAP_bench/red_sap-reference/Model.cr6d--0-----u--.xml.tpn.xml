@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.cr6d--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_Join_Material Master (cr6y)"/>
+    <CGraph Type="Place" Label="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):busy"/>
+    <CGraph Type="Transition" Label="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_No_xor (cr85):split:Join_Join_xor (cr85)"/>
+    <CGraph Type="Transition" Label="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_Yes_xor (cr85):split:Join_Join_xor (cr85)"/>
+    <CGraph Type="Transition" Label="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_No_Material Master (cr6y):split:Split_Join_Material Master (cr6y)"/>
+    <CGraph Type="Transition" Label="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):join:Product Safety (cr7c)*xor (cr85)"/>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_No_Material Master (cr6y):split:Split_Join_Material Master (cr6y)" Target="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_Join_Material Master (cr6y)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):join:Product Safety (cr7c)*xor (cr85)" Target="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_Join_Material Master (cr6y)" Target="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_No_xor (cr85):split:Join_Join_xor (cr85)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_Join_Material Master (cr6y)" Target="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_Yes_xor (cr85):split:Join_Join_xor (cr85)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_No_Material Master (cr6y):split:Split_Join_Material Master (cr6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):join:Product Safety (cr7c)*xor (cr85)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):join:Product Safety (cr7c)*xor (cr85)" Target="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Split_Join_Material Master (cr6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.cr6d--0-----u--:Model.cr6d--0-----u--:xor (cr85):busy" Target="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_Yes_xor (cr85):split:Join_Join_xor (cr85)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_No_xor (cr85):split:Join_Join_xor (cr85)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.cr6d--0-----u--:Model.cr6d--0-----u--:Join_Yes_xor (cr85):split:Join_Join_xor (cr85)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,76 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.46ft--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.46ft--0-----u--:Model.46ft--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Batch Record Archiving (46gs)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Order Record Archiving (46ge)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Process Order Archiving / Deletion (46h8)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Batch Record Archiving (46gs)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Order Record Archiving (46ge)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Process Order Archiving / Deletion (46h8)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46hs)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46ii)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46j2)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46ii)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46j2)"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):busy"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):busy"/>
+    <CGraph Type="Place" Label="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):busy"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46hs):split:Split_Join_and (46hs)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46ii):split:Split_Join_and (46ii)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46j2):split:Split_Join_and (46j2)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):join:Split_Yes_and (46ii)*and (46ii)"/>
+    <CGraph Type="Transition" Label="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):join:Split_Yes_and (46j2)*and (46j2)"/>
+    <CArc Type="Arc" Label="arcId102" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):join:Split_Yes_and (46j2)*and (46j2)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Order Record Archiving (46ge)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Order Record Archiving (46ge)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.46ft--0-----u--:Model.46ft--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Order Record Archiving (46ge)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46hs):split:Split_Join_and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46hs)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46ii):split:Split_Join_and (46ii)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46j2):split:Split_Join_and (46j2)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):join:Split_Yes_and (46ii)*and (46ii)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Process Order Archiving / Deletion (46h8)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Batch Record Archiving (46gs)" Target="*:Model.46ft--0-----u--:Model.46ft--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Order Record Archiving (46ge)" Target="*:Model.46ft--0-----u--:Model.46ft--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Join_Process Order Archiving / Deletion (46h8)" Target="*:Model.46ft--0-----u--:Model.46ft--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46hs)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46ii)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46j2)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Skip:split:Join_Split_Process Order Archiving / Deletion (46h8):Join_Split_Order Record Archiving (46ge):Join_Split_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46ii)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46ii):split:Split_Join_and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46j2)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46j2):split:Split_Join_and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46hs):split:Split_Join_and (46hs)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Batch Record Archiving (46gs)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46hs):split:Split_Join_and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_No_and (46hs):split:Split_Join_and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46hs)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):join:Split_Yes_and (46hs)*and (46hs)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Order Record Archiving (46ge)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):join:Split_Yes_and (46ii)*and (46ii)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46ii)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):join:Split_Yes_and (46ii)*and (46ii)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):join:Split_Yes_and (46j2)*and (46j2)" Target="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Join_and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Split_Split_and (46j2)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):join:Split_Yes_and (46j2)*and (46j2)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46hs):busy" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46ii):busy" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:and (46j2):busy" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Process Order Archiving / Deletion (46h8)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_No_Process Order Archiving / Deletion (46h8):split:Join_Join_Process Order Archiving / Deletion (46h8)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Batch Record Archiving (46gs)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Batch Record Archiving (46gs):split:Join_Join_Batch Record Archiving (46gs)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Split_Order Record Archiving (46ge)" Target="t:Model.46ft--0-----u--:Model.46ft--0-----u--:Join_Yes_Order Record Archiving (46ge):split:Join_Join_Order Record Archiving (46ge)">1</CArc>
+</CGraph>

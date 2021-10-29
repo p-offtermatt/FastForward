@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.7btr--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_Join_Credit Control (7bup)"/>
+    <CGraph Type="Place" Label="p:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):busy"/>
+    <CGraph Type="Transition" Label="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_No_xor (7bu9):split:Join_Join_xor (7bu9)"/>
+    <CGraph Type="Transition" Label="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_Yes_xor (7bu9):split:Join_Join_xor (7bu9)"/>
+    <CGraph Type="Transition" Label="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_No_Credit Control (7bup):split:Split_Join_Credit Control (7bup)"/>
+    <CGraph Type="Transition" Label="t:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):join:Credit Control (7bup)*xor (7bu9)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_No_Credit Control (7bup):split:Split_Join_Credit Control (7bup)" Target="p:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_Join_Credit Control (7bup)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):join:Credit Control (7bup)*xor (7bu9)" Target="p:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_Join_Credit Control (7bup)" Target="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_Yes_xor (7bu9):split:Join_Join_xor (7bu9)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_No_Credit Control (7bup):split:Split_Join_Credit Control (7bup)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):join:Credit Control (7bup)*xor (7bu9)" Target="p:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_Join_Credit Control (7bup)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):join:Credit Control (7bup)*xor (7bu9)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.7btr--0-----u--:Model.7btr--0-----u--:xor (7bu9):busy" Target="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_Yes_xor (7bu9):split:Join_Join_xor (7bu9)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_No_xor (7bu9):split:Join_Join_xor (7bu9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_Yes_xor (7bu9):split:Join_Join_xor (7bu9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.7btr--0-----u--:Model.7btr--0-----u--:Split_Join_Credit Control (7bup)" Target="t:Model.7btr--0-----u--:Model.7btr--0-----u--:Join_No_xor (7bu9):split:Join_Join_xor (7bu9)">1</CArc>
+</CGraph>

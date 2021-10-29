@@ -1,0 +1,61 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B3/B3.s00000677__s00007223.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00001419.input.s00001052"/>
+    <CGraph Type="Place" Label="callToProcess.s00001419.input.s00001066"/>
+    <CGraph Type="Transition" Label="callToProcess.s00001419.inputCriterion.s00001053"/>
+    <CGraph Type="Place" Label="callToProcess.s00001419.inputCriterion.s00001053.used"/>
+    <CGraph Type="Place" Label="callToProcess.s00001419.output.s00001077"/>
+    <CGraph Type="Transition" Label="callToProcess.s00001419.outputCriterion.s00001055"/>
+    <CGraph Type="Place" Label="callToTask.s00001778.input.s00001066"/>
+    <CGraph Type="Transition" Label="callToTask.s00001778.inputCriterion.s00001053"/>
+    <CGraph Type="Place" Label="callToTask.s00001778.inputCriterion.s00001053.used"/>
+    <CGraph Type="Place" Label="callToTask.s00001778.output.s00001054"/>
+    <CGraph Type="Place" Label="callToTask.s00001778.output.s00001077"/>
+    <CGraph Type="Transition" Label="callToTask.s00001778.outputCriterion.s00001055"/>
+    <CGraph Type="Place" Label="callToTask.s00007111.input.s00001066"/>
+    <CGraph Type="Transition" Label="callToTask.s00007111.inputCriterion.s00001053"/>
+    <CGraph Type="Place" Label="callToTask.s00007111.inputCriterion.s00001053.used"/>
+    <CGraph Type="Place" Label="callToTask.s00007111.output.s00001054"/>
+    <CGraph Type="Place" Label="callToTask.s00007111.output.s00001077"/>
+    <CGraph Type="Transition" Label="callToTask.s00007111.outputCriterion.s00001055"/>
+    <CGraph Type="Transition" Label="join.s00001163.activate.s00001062"/>
+    <CGraph Type="Transition" Label="join.s00001163.activate.s00001064"/>
+    <CGraph Type="Place" Label="join.s00001163.activated.s00001062"/>
+    <CGraph Type="Place" Label="join.s00001163.activated.s00001064"/>
+    <CGraph Type="Transition" Label="join.s00001163.fire.s00001069"/>
+    <CGraph Type="Place" Label="process.s00000677##s00007223.input.s00001052"/>
+    <CGraph Type="Place" Label="process.s00000677##s00007223.input.s00001066"/>
+    <CGraph Type="Transition" Label="process.s00000677##s00007223.inputCriterion.s00001053"/>
+    <CArc Type="Arc" Label="arcId1" Source="alpha" Target="process.s00000677##s00007223.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="callToTask.s00001778.input.s00001066" Target="callToTask.s00001778.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="callToTask.s00001778.inputCriterion.s00001053.used" Target="callToTask.s00001778.outputCriterion.s00001055">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="callToTask.s00001778.inputCriterion.s00001053" Target="callToTask.s00001778.inputCriterion.s00001053.used">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="callToTask.s00001778.output.s00001054" Target="join.s00001163.activate.s00001062">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="callToTask.s00001778.outputCriterion.s00001055" Target="callToTask.s00001778.output.s00001054">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="callToTask.s00001778.output.s00001077" Target="join.s00001163.activate.s00001062">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="callToTask.s00001778.outputCriterion.s00001055" Target="callToTask.s00001778.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="callToTask.s00007111.input.s00001066" Target="callToTask.s00007111.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="process.s00000677##s00007223.inputCriterion.s00001053" Target="callToTask.s00007111.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="callToTask.s00007111.inputCriterion.s00001053.used" Target="callToTask.s00007111.outputCriterion.s00001055">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="join.s00001163.fire.s00001069" Target="callToProcess.s00001419.input.s00001052">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="callToTask.s00007111.inputCriterion.s00001053" Target="callToTask.s00007111.inputCriterion.s00001053.used">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="callToTask.s00007111.outputCriterion.s00001055" Target="callToTask.s00007111.output.s00001054">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="callToTask.s00007111.output.s00001054" Target="join.s00001163.activate.s00001064">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="callToTask.s00007111.output.s00001077" Target="join.s00001163.activate.s00001064">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="callToTask.s00007111.outputCriterion.s00001055" Target="callToTask.s00007111.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="join.s00001163.activate.s00001062" Target="join.s00001163.activated.s00001062">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="join.s00001163.activated.s00001062" Target="join.s00001163.fire.s00001069">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="join.s00001163.activated.s00001064" Target="join.s00001163.fire.s00001069">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="join.s00001163.activate.s00001064" Target="join.s00001163.activated.s00001064">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="process.s00000677##s00007223.inputCriterion.s00001053" Target="process.s00000677##s00007223.input.s00001052">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="callToProcess.s00001419.input.s00001052" Target="callToProcess.s00001419.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="process.s00000677##s00007223.input.s00001052" Target="callToTask.s00001778.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="process.s00000677##s00007223.inputCriterion.s00001053" Target="process.s00000677##s00007223.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="process.s00000677##s00007223.input.s00001066" Target="callToTask.s00007111.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="callToProcess.s00001419.input.s00001066" Target="callToProcess.s00001419.inputCriterion.s00001053">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="join.s00001163.fire.s00001069" Target="callToProcess.s00001419.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="callToProcess.s00001419.inputCriterion.s00001053.used" Target="callToProcess.s00001419.outputCriterion.s00001055">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="callToProcess.s00001419.inputCriterion.s00001053" Target="callToProcess.s00001419.inputCriterion.s00001053.used">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="callToProcess.s00001419.outputCriterion.s00001055" Target="callToProcess.s00001419.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="process.s00000677##s00007223.inputCriterion.s00001053" Target="callToTask.s00001778.input.s00001066">1</CArc>
+</CGraph>

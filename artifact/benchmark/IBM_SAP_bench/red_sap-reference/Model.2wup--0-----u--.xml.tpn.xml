@@ -1,0 +1,33 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2wup--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_Goods Receipt Processing (2wva)"/>
+    <CGraph Type="Place" Label="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_and (2wvz)"/>
+    <CGraph Type="Place" Label="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Split_and (2wvz)"/>
+    <CGraph Type="Place" Label="p:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):busy"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_No_xor (2ww8):split:Join_Join_xor (2ww8)"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_Yes_xor (2ww8):split:Join_Join_xor (2ww8)"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_Goods Receipt Processing (2wva):split:Split_Join_Goods Receipt Processing (2wva)"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_and (2wvz):split:Split_Join_and (2wvz)"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing (2wva)*xor (2ww8)"/>
+    <CGraph Type="Transition" Label="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing with Reference (2wvo)*xor (2ww8)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_Goods Receipt Processing (2wva):split:Split_Join_Goods Receipt Processing (2wva)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_Goods Receipt Processing (2wva)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_and (2wvz):split:Split_Join_and (2wvz)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_and (2wvz)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing (2wva)*xor (2ww8)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing with Reference (2wvo)*xor (2ww8)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_Goods Receipt Processing (2wva)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_No_xor (2ww8):split:Join_Join_xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_and (2wvz)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_No_xor (2ww8):split:Join_Join_xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_Goods Receipt Processing (2wva)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_Yes_xor (2ww8):split:Join_Join_xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_and (2wvz)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_Yes_xor (2ww8):split:Join_Join_xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Split_and (2wvz)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_and (2wvz):split:Split_Join_and (2wvz)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_Goods Receipt Processing (2wva):split:Split_Join_Goods Receipt Processing (2wva)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_No_Goods Receipt Processing (2wva):split:Split_Join_Goods Receipt Processing (2wva)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Split_and (2wvz)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing (2wva)*xor (2ww8)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_Goods Receipt Processing (2wva)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing (2wva)*xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing (2wva)*xor (2ww8)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Split_and (2wvz)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Split_and (2wvz)" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing with Reference (2wvo)*xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):join:Goods Receipt Processing with Reference (2wvo)*xor (2ww8)" Target="p:Model.2wup--0-----u--:Model.2wup--0-----u--:Split_Join_and (2wvz)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.2wup--0-----u--:Model.2wup--0-----u--:xor (2ww8):busy" Target="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_Yes_xor (2ww8):split:Join_Join_xor (2ww8)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_No_xor (2ww8):split:Join_Join_xor (2ww8)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.2wup--0-----u--:Model.2wup--0-----u--:Join_Yes_xor (2ww8):split:Join_Join_xor (2ww8)" Target="o">1</CArc>
+</CGraph>

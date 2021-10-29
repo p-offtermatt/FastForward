@@ -1,0 +1,200 @@
+place "i" init 1;
+place "o";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:InputCondition";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Work Breakdown Structure (dug7)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Work Breakdown Structure (dug7)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Networks (dugl)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Networks (dugl)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Easy Cost Planning (dugz)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Easy Cost Planning (dugz)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Split_or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Join_or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:outputCondition";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8)*Join_Yes_or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):busy";
+place "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:busy";
+trans "*:Model.dufm--0-----u--:Model.dufm--0-----u--:start"~"*:Model.dufm--0-----u--:Model.dufm--0-----u--:start"
+    in "i"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:InputCondition"
+;
+trans "*:Model.dufm--0-----u--:Model.dufm--0-----u--:end"~"*:Model.dufm--0-----u--:Model.dufm--0-----u--:end"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:join:InputCondition"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:join:InputCondition"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:InputCondition"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:split:Split_Split_Cost Planning in Work Breakdown Structure (dug7):Split_Split_Cost Planning in Networks (dugl):Split_Split_Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:split:Split_Split_Cost Planning in Work Breakdown Structure (dug7):Split_Split_Cost Planning in Networks (dugl):Split_Split_Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split:busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Networks (dugl)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Easy Cost Planning (dugz)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):join:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):join:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):split:Split_Join_Cost Planning in Work Breakdown Structure (dug7)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):split:Split_Join_Cost Planning in Work Breakdown Structure (dug7)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Work Breakdown Structure (dug7):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Work Breakdown Structure (dug7)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):join:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):join:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Work Breakdown Structure (dug7)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):split:Split_Join_Cost Planning in Work Breakdown Structure (dug7):Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):split:Split_Join_Cost Planning in Work Breakdown Structure (dug7):Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Work Breakdown Structure (dug7)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):join:Split_Split_Cost Planning in Networks (dugl)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):join:Split_Split_Cost Planning in Networks (dugl)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Networks (dugl)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):split:Split_Join_Cost Planning in Networks (dugl)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):split:Split_Join_Cost Planning in Networks (dugl)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Cost Planning in Networks (dugl):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Networks (dugl)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):join:Split_Split_Cost Planning in Networks (dugl)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):join:Split_Split_Cost Planning in Networks (dugl)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Cost Planning in Networks (dugl)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):split:Split_Join_Cost Planning in Networks (dugl):Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):split:Split_Join_Cost Planning in Networks (dugl):Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Networks (dugl)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):join:Split_Split_Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):join:Split_Split_Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Easy Cost Planning (dugz)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):split:Split_Join_Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):split:Split_Join_Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_No_Easy Cost Planning (dugz):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Easy Cost Planning (dugz)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):join:Split_Split_Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):join:Split_Split_Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Split_Easy Cost Planning (dugz)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):split:Split_Join_Easy Cost Planning (dugz):Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):split:Split_Join_Easy Cost Planning (dugz):Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Easy Cost Planning (dugz)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:join:Split_Join_Cost Planning in Work Breakdown Structure (dug7):Split_Join_Cost Planning in Networks (dugl):Split_Join_Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:join:Split_Join_Cost Planning in Work Breakdown Structure (dug7):Split_Join_Cost Planning in Networks (dugl):Split_Join_Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Work Breakdown Structure (dug7)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Cost Planning in Networks (dugl)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Join_Easy Cost Planning (dugz)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:split:Join_Split_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:split:Join_Split_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Skip:busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Split_or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):join:Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):join:Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Work Breakdown Structure (dug7)*Cost Planning in Work Breakdown Structure (dug7)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):split:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):split:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Networks (dugl)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Networks (dugl)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Cost Planning in Networks (dugl)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Cost Planning in Networks (dugl)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Easy Cost Planning (dugz)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Easy Cost Planning (dugz)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Networks (dugl)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Networks (dugl)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Cost Planning in Networks (dugl)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):join:Cost Planning in Work Breakdown Structure (dug7)*or (duh8):Cost Planning in Networks (dugl)*or (duh8):Easy Cost Planning (dugz)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Work Breakdown Structure (dug7)*or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):split:or (duh8)*Join_Yes_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):split:or (duh8)*Join_Yes_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8)*Join_Yes_or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):join:Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):join:Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Cost Planning in Networks (dugl)*Cost Planning in Networks (dugl)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):split:Cost Planning in Networks (dugl)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):split:Cost Planning in Networks (dugl)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Cost Planning in Networks (dugl)*or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):join:Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):join:Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Split_Yes_Easy Cost Planning (dugz)*Easy Cost Planning (dugz)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):split:Easy Cost Planning (dugz)*or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):split:Easy Cost Planning (dugz)*or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Easy Cost Planning (dugz)*or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):join:Join_Split_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):join:Join_Split_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Split_or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):split:Join_Join_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):split:Join_Join_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_No_or (duh8):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Join_or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):join:or (duh8)*Join_Yes_or (duh8):Join_Split_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):join:or (duh8)*Join_Yes_or (duh8):Join_Split_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:or (duh8)*Join_Yes_or (duh8)"
+       "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Split_or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):split:Join_Join_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):split:Join_Join_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Yes_or (duh8):busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Join_or (duh8)"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:join:Join_Join_or (duh8)"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:join:Join_Join_or (duh8)"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Join_Join_or (duh8)"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:busy"
+;
+trans "t:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:split:outputCondition"~"t:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:split:outputCondition"
+    in "p:Model.dufm--0-----u--:Model.dufm--0-----u--:Output:busy"
+   out "p:Model.dufm--0-----u--:Model.dufm--0-----u--:outputCondition"
+;
+

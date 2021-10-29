@@ -1,0 +1,63 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.1sgy--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)"/>
+    <CGraph Type="Place" Label="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):split:Join_Join_or (1shz)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):split:Split_Join_xor (1sie)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)"/>
+    <CGraph Type="Transition" Label="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):split:Split_Join_xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="arcId85" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):split:Join_Join_or (1shz)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)" Target="*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)" Target="*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):split:Join_Join_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):split:Split_Join_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="i" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="i" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="i" Target="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)" Target="p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)">1</CArc>
+</CGraph>

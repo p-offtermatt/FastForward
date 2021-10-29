@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.eqm0--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_Join_xor (eqmp)"/>
+    <CGraph Type="Place" Label="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):busy"/>
+    <CGraph Type="Transition" Label="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_No_xor (eqmw):split:Join_Join_xor (eqmw)"/>
+    <CGraph Type="Transition" Label="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_Yes_xor (eqmw):split:Join_Join_xor (eqmw)"/>
+    <CGraph Type="Transition" Label="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_No_xor (eqmp):split:Split_Join_xor (eqmp)"/>
+    <CGraph Type="Transition" Label="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):join:Check/ Bill of Exchange Payable (eqnz)*xor (eqmw)"/>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_No_xor (eqmp):split:Split_Join_xor (eqmp)" Target="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_Join_xor (eqmp)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):join:Check/ Bill of Exchange Payable (eqnz)*xor (eqmw)" Target="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_Join_xor (eqmp)" Target="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_No_xor (eqmw):split:Join_Join_xor (eqmw)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_Join_xor (eqmp)" Target="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_Yes_xor (eqmw):split:Join_Join_xor (eqmw)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_No_xor (eqmp):split:Split_Join_xor (eqmp)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):join:Check/ Bill of Exchange Payable (eqnz)*xor (eqmw)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):join:Check/ Bill of Exchange Payable (eqnz)*xor (eqmw)" Target="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Split_Join_xor (eqmp)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.eqm0--0-----u--:Model.eqm0--0-----u--:xor (eqmw):busy" Target="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_Yes_xor (eqmw):split:Join_Join_xor (eqmw)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_No_xor (eqmw):split:Join_Join_xor (eqmw)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.eqm0--0-----u--:Model.eqm0--0-----u--:Join_Yes_xor (eqmw):split:Join_Join_xor (eqmw)" Target="o">1</CArc>
+</CGraph>

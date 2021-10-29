@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.e68v--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_Join_Data Transfer (e69g)"/>
+    <CGraph Type="Place" Label="p:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):busy"/>
+    <CGraph Type="Transition" Label="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_No_xor (e69p):split:Join_Join_xor (e69p)"/>
+    <CGraph Type="Transition" Label="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_Yes_xor (e69p):split:Join_Join_xor (e69p)"/>
+    <CGraph Type="Transition" Label="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_No_Data Transfer (e69g):split:Split_Join_Data Transfer (e69g)"/>
+    <CGraph Type="Transition" Label="t:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):join:Data Transfer (e69g)*xor (e69p)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_No_Data Transfer (e69g):split:Split_Join_Data Transfer (e69g)" Target="p:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_Join_Data Transfer (e69g)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):join:Data Transfer (e69g)*xor (e69p)" Target="p:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_Join_Data Transfer (e69g)" Target="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_Yes_xor (e69p):split:Join_Join_xor (e69p)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_No_Data Transfer (e69g):split:Split_Join_Data Transfer (e69g)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):join:Data Transfer (e69g)*xor (e69p)" Target="p:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_Join_Data Transfer (e69g)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):join:Data Transfer (e69g)*xor (e69p)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.e68v--0-----u--:Model.e68v--0-----u--:xor (e69p):busy" Target="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_Yes_xor (e69p):split:Join_Join_xor (e69p)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_No_xor (e69p):split:Join_Join_xor (e69p)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_Yes_xor (e69p):split:Join_Join_xor (e69p)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.e68v--0-----u--:Model.e68v--0-----u--:Split_Join_Data Transfer (e69g)" Target="t:Model.e68v--0-----u--:Model.e68v--0-----u--:Join_No_xor (e69p):split:Join_Join_xor (e69p)">1</CArc>
+</CGraph>

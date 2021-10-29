@@ -1,0 +1,23 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.g0mo--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.g0mo--0-----u--:Model.g0mo--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ()* ()"/>
+    <CGraph Type="Transition" Label="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Output:join"/>
+    <CGraph Type="Transition" Label="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:split"/>
+    <CGraph Type="Transition" Label="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_No_ ():split:Split_Join_ ()"/>
+    <CGraph Type="Transition" Label="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"/>
+    <CArc Type="Arc" Label="arcId19" Source="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ()* ()" Target="*:Model.g0mo--0-----u--:Model.g0mo--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Output:join" Target="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:busy" Target="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:split">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="i" Target="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_No_ ():split:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="i" Target="t:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.g0mo--0-----u--:Model.g0mo--0-----u--:Output:busy" Target="*:Model.g0mo--0-----u--:Model.g0mo--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="*:Model.g0mo--0-----u--:Model.g0mo--0-----u--:end" Target="o_star">1</CArc>
+</CGraph>

@@ -1,0 +1,30 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lwqx--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)">1</CArc>
+</CGraph>

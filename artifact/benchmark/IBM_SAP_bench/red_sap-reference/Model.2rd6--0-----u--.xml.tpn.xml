@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2rd6--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_Pipeline Withdrawal (2rdr)"/>
+    <CGraph Type="Place" Label="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_and (2rfm)"/>
+    <CGraph Type="Place" Label="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Split_and (2rfm)"/>
+    <CGraph Type="Place" Label="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)"/>
+    <CGraph Type="Place" Label="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm)*and (2rfm)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_No_and (2rft):split:Join_Join_and (2rft)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_and (2rfm):split:Split_Join_and (2rfm)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr):Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)"/>
+    <CGraph Type="Transition" Label="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm):split:Split_Join_and (2rfm):Split_Yes_and (2rfm)*and (2rfm)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_Pipeline Withdrawal (2rdr)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr):Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_Pipeline Withdrawal (2rdr)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_and (2rfm):split:Split_Join_and (2rfm)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm):split:Split_Join_and (2rfm):Split_Yes_and (2rfm)*and (2rfm)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr):Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm):split:Split_Join_and (2rfm):Split_Yes_and (2rfm)*and (2rfm)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm)*and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_Pipeline Withdrawal (2rdr)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_No_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_and (2rfm)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_No_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_Pipeline Withdrawal (2rdr)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Join_and (2rfm)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Split_and (2rfm)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_and (2rfm):split:Split_Join_and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_No_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Split_and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr):Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr):split:Split_Join_Pipeline Withdrawal (2rdr):Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)" Target="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Split_and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Split_and (2rfm)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm):split:Split_Join_and (2rfm):Split_Yes_and (2rfm)*and (2rfm)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_Pipeline Withdrawal (2rdr)*Pipeline Withdrawal (2rdr)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Split_Yes_and (2rfm)*and (2rfm)" Target="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_No_and (2rft):split:Join_Join_and (2rft)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.2rd6--0-----u--:Model.2rd6--0-----u--:Join_Yes_and (2rft):split:Join_Join_and (2rft)" Target="o">1</CArc>
+</CGraph>

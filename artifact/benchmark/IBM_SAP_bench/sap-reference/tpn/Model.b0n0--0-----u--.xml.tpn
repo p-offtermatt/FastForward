@@ -1,0 +1,194 @@
+place "i" init 1;
+place "o";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:InputCondition";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_or (b0o5)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_or (b0o5)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_and (b0ow)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_and (b0ow)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_Capacity Dispatching and Leveling (b0ol)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_Capacity Dispatching and Leveling (b0ol)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_xor (b0ng)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_xor (b0ng)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:OutputCondition";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5)*or (b0o5)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow)*and (b0ow)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5)*Capacity Dispatching and Leveling (b0ol)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow)*Capacity Evaluation (b0ny)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny)*xor (b0ng)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*Join_Yes_xor (b0ng)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*or (b0o5)";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):busy";
+place "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:busy";
+trans "*:Model.b0n0--0-----u--:Model.b0n0--0-----u--:start"~"*:Model.b0n0--0-----u--:Model.b0n0--0-----u--:start"
+    in "i"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:InputCondition"
+;
+trans "*:Model.b0n0--0-----u--:Model.b0n0--0-----u--:end"~"*:Model.b0n0--0-----u--:Model.b0n0--0-----u--:end"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:join:InputCondition"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:join:InputCondition"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:InputCondition"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:split:Split_Split_or (b0o5):Split_Split_and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:split:Split_Split_or (b0o5):Split_Split_and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split:busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_or (b0o5)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_and (b0ow)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):join:Split_Split_or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):join:Split_Split_or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_or (b0o5)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):split:Split_Join_or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):split:Split_Join_or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_or (b0o5):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_or (b0o5)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):join:Split_Split_or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):join:Split_Split_or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_or (b0o5)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):split:Split_Join_or (b0o5):Split_Yes_or (b0o5)*or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):split:Split_Join_or (b0o5):Split_Yes_or (b0o5)*or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_or (b0o5)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5)*or (b0o5)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):join:Split_Split_and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):join:Split_Split_and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_and (b0ow)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):split:Split_Join_and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):split:Split_Join_and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_No_and (b0ow):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_and (b0ow)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):join:Split_Split_and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):join:Split_Split_and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Split_and (b0ow)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):split:Split_Join_and (b0ow):Split_Yes_and (b0ow)*and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):split:Split_Join_and (b0ow):Split_Yes_and (b0ow)*and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_and (b0ow)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow)*and (b0ow)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:join:Split_Join_or (b0o5):Split_Join_and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:join:Split_Join_or (b0o5):Split_Join_and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_or (b0o5)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Join_and (b0ow)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (b0ol):Join_Split_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (b0ol):Join_Split_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Skip:busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_Capacity Dispatching and Leveling (b0ol)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_xor (b0ng)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:Split_Yes_or (b0o5)*or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:Split_Yes_or (b0o5)*or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5)*or (b0o5)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:xor (b0ng)*or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:xor (b0ng)*or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*or (b0o5)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:Split_Yes_or (b0o5)*or (b0o5):xor (b0ng)*or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):join:Split_Yes_or (b0o5)*or (b0o5):xor (b0ng)*or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_or (b0o5)*or (b0o5)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*or (b0o5)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):split:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):split:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):join:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):join:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:or (b0o5)*Capacity Dispatching and Leveling (b0ol)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):split:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):split:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):join:Split_Yes_and (b0ow)*and (b0ow)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):join:Split_Yes_and (b0ow)*and (b0ow)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Split_Yes_and (b0ow)*and (b0ow)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):split:and (b0ow)*Capacity Evaluation (b0ny)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):split:and (b0ow)*Capacity Evaluation (b0ny)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow)*Capacity Evaluation (b0ny)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):join:and (b0ow)*Capacity Evaluation (b0ny)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):join:and (b0ow)*Capacity Evaluation (b0ny)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:and (b0ow)*Capacity Evaluation (b0ny)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):split:Capacity Evaluation (b0ny)*xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):split:Capacity Evaluation (b0ny)*xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny)*xor (b0ng)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):join:Capacity Evaluation (b0ny)*xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):join:Capacity Evaluation (b0ny)*xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Evaluation (b0ny)*xor (b0ng)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):split:xor (b0ng)*Join_Yes_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):split:xor (b0ng)*Join_Yes_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*Join_Yes_xor (b0ng)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):split:xor (b0ng)*or (b0o5)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):split:xor (b0ng)*or (b0o5)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*or (b0o5)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):join:Join_Split_Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):join:Join_Split_Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_Capacity Dispatching and Leveling (b0ol)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):split:Join_Join_Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):split:Join_Join_Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_Capacity Dispatching and Leveling (b0ol):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_Capacity Dispatching and Leveling (b0ol)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):join:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol):Join_Split_Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):join:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol):Join_Split_Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Capacity Dispatching and Leveling (b0ol)*Join_Yes_Capacity Dispatching and Leveling (b0ol)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_Capacity Dispatching and Leveling (b0ol)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):split:Join_Join_Capacity Dispatching and Leveling (b0ol)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):split:Join_Join_Capacity Dispatching and Leveling (b0ol)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b0ol):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_Capacity Dispatching and Leveling (b0ol)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):join:Join_Split_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):join:Join_Split_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_xor (b0ng)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):split:Join_Join_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):split:Join_Join_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_No_xor (b0ng):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_xor (b0ng)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):join:xor (b0ng)*Join_Yes_xor (b0ng):Join_Split_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):join:xor (b0ng)*Join_Yes_xor (b0ng):Join_Split_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:xor (b0ng)*Join_Yes_xor (b0ng)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Split_xor (b0ng)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):split:Join_Join_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):split:Join_Join_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Yes_xor (b0ng):busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_xor (b0ng)"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:join:Join_Join_Capacity Dispatching and Leveling (b0ol):Join_Join_xor (b0ng)"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:join:Join_Join_Capacity Dispatching and Leveling (b0ol):Join_Join_xor (b0ng)"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_Capacity Dispatching and Leveling (b0ol)"
+       "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Join_Join_xor (b0ng)"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:busy"
+;
+trans "t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:split:OutputCondition"~"t:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:split:OutputCondition"
+    in "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:Output:busy"
+   out "p:Model.b0n0--0-----u--:Model.b0n0--0-----u--:OutputCondition"
+;
+

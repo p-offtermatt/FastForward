@@ -1,0 +1,31 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000199__s00003773.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="endNode.s00000706.input.default"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000733"/>
+    <CGraph Type="Place" Label="merge.s00000730.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000742.activate.s00000733"/>
+    <CGraph Type="Transition" Label="merge.s00000742.activate.s00000735"/>
+    <CGraph Type="Place" Label="merge.s00000742.activated"/>
+    <CGraph Type="Place" Label="merge.s00000856.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId116" Source="merge.s00000730.activate.s00000731" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId118" Source="merge.s00000730.activate.s00000733" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId120" Source="merge.s00000742.activate.s00000735" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId121" Source="merge.s00000742.activate.s00000733" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="merge.s00000730.activate.s00000731" Target="endNode.s00000706.input.default">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="merge.s00000730.activated" Target="merge.s00000730.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="merge.s00000730.activate.s00000733" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="merge.s00000730.activate.s00000731" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="merge.s00000730.activated" Target="merge.s00000742.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="merge.s00000742.activate.s00000733" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="merge.s00000742.activate.s00000735" Target="endNode.s00000706.input.default">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="merge.s00000742.activate.s00000735" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="alpha" Target="merge.s00000730.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="alpha" Target="merge.s00000742.activate.s00000735">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="merge.s00000742.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="merge.s00000856.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_6" Source="endNode.s00000706.input.default" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_9" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

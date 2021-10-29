@@ -1,0 +1,113 @@
+place "i" init 1;
+place "o";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:InputCondition";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Split_or (4dem)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Join_or (4dem)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:outputCondition";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe)*or (4dem)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem)*Join_Yes_or (4dem)";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):busy";
+place "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:busy";
+trans "*:Model.4ddy--0-----u--:Model.4ddy--0-----u--:start"~"*:Model.4ddy--0-----u--:Model.4ddy--0-----u--:start"
+    in "i"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:InputCondition"
+;
+trans "*:Model.4ddy--0-----u--:Model.4ddy--0-----u--:end"~"*:Model.4ddy--0-----u--:Model.4ddy--0-----u--:end"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:join:InputCondition"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:join:InputCondition"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:InputCondition"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:split:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:split:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split:busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):join:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):join:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):split:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):split:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_No_Production Execution (with Run Schedule Quantities) (4df0):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):join:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):join:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Split_Production Execution (with Run Schedule Quantities) (4df0)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):split:Split_Join_Production Execution (with Run Schedule Quantities) (4df0):Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):split:Split_Join_Production Execution (with Run Schedule Quantities) (4df0):Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"
+       "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:join:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:join:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Join_Production Execution (with Run Schedule Quantities) (4df0)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:split:Join_Split_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:split:Join_Split_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Skip:busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Split_or (4dem)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):join:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):join:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Split_Yes_Production Execution (with Run Schedule Quantities) (4df0)*Production Execution (with Run Schedule Quantities) (4df0)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):split:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):split:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):join:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):join:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Production Execution (with Run Schedule Quantities) (4df0)*REM Backflush (4dfe)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):split:REM Backflush (4dfe)*or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):split:REM Backflush (4dfe)*or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe)*or (4dem)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):join:REM Backflush (4dfe)*or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):join:REM Backflush (4dfe)*or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:REM Backflush (4dfe)*or (4dem)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):split:or (4dem)*Join_Yes_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):split:or (4dem)*Join_Yes_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem)*Join_Yes_or (4dem)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):join:Join_Split_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):join:Join_Split_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Split_or (4dem)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):split:Join_Join_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):split:Join_Join_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_No_or (4dem):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Join_or (4dem)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):join:or (4dem)*Join_Yes_or (4dem):Join_Split_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):join:or (4dem)*Join_Yes_or (4dem):Join_Split_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:or (4dem)*Join_Yes_or (4dem)"
+       "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Split_or (4dem)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):split:Join_Join_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):split:Join_Join_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Yes_or (4dem):busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Join_or (4dem)"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:join:Join_Join_or (4dem)"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:join:Join_Join_or (4dem)"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Join_Join_or (4dem)"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:busy"
+;
+trans "t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:split:outputCondition"~"t:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:split:outputCondition"
+    in "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:Output:busy"
+   out "p:Model.4ddy--0-----u--:Model.4ddy--0-----u--:outputCondition"
+;
+

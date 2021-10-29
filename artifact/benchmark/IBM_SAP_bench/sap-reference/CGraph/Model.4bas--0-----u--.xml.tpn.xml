@@ -1,0 +1,124 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.4bas--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.4bas--0-----u--:Model.4bas--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.4bas--0-----u--:Model.4bas--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy"/>
+    <CGraph Type="Place" Label="p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):join:Join_Split_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):split:Join_Join_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):split:Join_Join_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):join:or (4bds)*Material Staging (4bed)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):split:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:join:Join_Join_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):join:and (4bba)*Processing of Master Production Schedule (4bc9)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):split:Processing of Master Production Schedule (4bc9)*or (4bbh)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):join:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):split:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:join:Split_Join_and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:split:Join_Split_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:split:Split_Split_and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):join:Split_Split_and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):split:Split_Join_and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):join:Split_Split_and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):join:Split_Yes_and (4bba)*and (4bba)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):split:and (4bba)*Processing of Master Production Schedule (4bc9)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):join:Production Execution and Actual Data Creation (4bbv)*and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):split:and (4bdz)*Join_Yes_and (4bdz)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):join:Processing of Master Production Schedule (4bc9)*or (4bbh)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):split:or (4bbh)*or (4bds)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):join:or (4bbh)*or (4bds)"/>
+    <CGraph Type="Transition" Label="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):split:or (4bds)*Material Staging (4bed)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.4bas--0-----u--:Model.4bas--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:split:Join_Split_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Split_and (4bdz)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):join:Join_Split_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):split:Join_Join_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):split:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):join:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):split:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):join:or (4bds)*Material Staging (4bed)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:join:Join_Join_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.4bas--0-----u--:Model.4bas--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):split:Processing of Master Production Schedule (4bc9)*or (4bbh)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9)*or (4bbh)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):join:Processing of Master Production Schedule (4bc9)*or (4bbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):join:and (4bba)*Processing of Master Production Schedule (4bc9)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):split:Processing of Master Production Schedule (4bc9)*or (4bbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):join:Production Execution and Actual Data Creation (4bbv)*and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):split:Production Execution and Actual Data Creation (4bbv)*and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv)*and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):split:Production Execution and Actual Data Creation (4bbv)*and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):join:Material Staging (4bed)*Production Execution and Actual Data Creation (4bbv)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Production Execution and Actual Data Creation (4bbv):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:split:Join_Split_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="*:Model.4bas--0-----u--:Model.4bas--0-----u--:start" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:join:Split_Join_and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:split:Split_Split_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:join:InputCondition" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):split:Split_Join_and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Join_and (4bba)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Skip:join:Split_Join_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):split:Split_Join_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):join:Split_Split_and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):join:Split_Split_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_No_and (4bba):join:Split_Split_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:InputCondition" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split:split:Split_Split_and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Split_and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):join:Split_Yes_and (4bba)*and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba)*and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):join:Split_Split_and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Split_Yes_and (4bba):split:Split_Join_and (4bba):Split_Yes_and (4bba)*and (4bba)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):split:and (4bba)*Processing of Master Production Schedule (4bc9)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba)*Processing of Master Production Schedule (4bc9)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Processing of Master Production Schedule (4bc9):join:and (4bba)*Processing of Master Production Schedule (4bc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):join:Split_Yes_and (4bba)*and (4bba)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bba):split:and (4bba)*Processing of Master Production Schedule (4bc9)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):join:and (4bdz)*Join_Yes_and (4bdz):Join_Split_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Yes_and (4bdz):split:Join_Join_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):split:and (4bdz)*Join_Yes_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz)*Join_Yes_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):split:and (4bdz)*Join_Yes_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):join:Production Execution and Actual Data Creation (4bbv)*and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:and (4bdz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):join:or (4bbh)*or (4bds)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):split:or (4bbh)*or (4bds)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh)*or (4bds)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):join:Processing of Master Production Schedule (4bc9)*or (4bbh)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bbh):split:or (4bbh)*or (4bds)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Material Staging (4bed):join:or (4bds)*Material Staging (4bed)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):split:or (4bds)*Material Staging (4bed)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds)*Material Staging (4bed)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):join:or (4bbh)*or (4bds)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):split:Join_Join_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:or (4bds):split:or (4bds)*Material Staging (4bed)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition" Target="*:Model.4bas--0-----u--:Model.4bas--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:split:outputCondition" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_Join_and (4bdz)" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Output:join:Join_Join_and (4bdz)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):join:Join_Split_and (4bdz)" Target="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="p:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):busy" Target="t:Model.4bas--0-----u--:Model.4bas--0-----u--:Join_No_and (4bdz):split:Join_Join_and (4bdz)">1</CArc>
+</CGraph>

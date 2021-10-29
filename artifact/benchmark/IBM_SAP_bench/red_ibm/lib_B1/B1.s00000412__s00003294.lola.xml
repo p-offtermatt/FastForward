@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B1/B1.s00000412__s00003294.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00000982.output.s00000785"/>
+    <CGraph Type="Place" Label="callToProcess.s00002100.output.s00000785"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000787"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000984"/>
+    <CGraph Type="Place" Label="endNode.s00000780.input.default"/>
+    <CGraph Type="Transition" Label="merge.s00000815.activate.s00000818"/>
+    <CGraph Type="Transition" Label="merge.s00000815.activate.s00000820"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000412##s00003294.output.s00001150"/>
+    <CGraph Type="Transition" Label="process.s00000412##s00003294.outputCriterion.s00000773"/>
+    <CGraph Type="Place" Label="process.s00000412##s00003294.outputCriterion.s00000773_omega"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId152" Source="decision.s00000781.fire.s00000984" Target="endNode.s00000780.input.default">1</CArc>
+    <CArc Type="Arc" Label="arcId162" Source="decision.s00000781.fire.s00000984" Target="process.s00000412##s00003294.output.s00001150">1</CArc>
+    <CArc Type="Arc" Label="arcId163" Source="process.s00000412##s00003294.output.s00001150" Target="process.s00000412##s00003294.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="arcId164" Source="process.s00000412##s00003294.outputCriterion.s00000773" Target="process.s00000412##s00003294.outputCriterion.s00000773_omega">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="callToProcess.s00002100.output.s00000785" Target="process.s00000412##s00003294.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="callToProcess.s00000982.output.s00000785" Target="process.s00000412##s00003294.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="ra_100" Source="merge.s00000815.activate.s00000818" Target="callToProcess.s00002100.output.s00000785">1</CArc>
+    <CArc Type="Arc" Label="ra_103" Source="merge.s00000815.activate.s00000820" Target="callToProcess.s00002100.output.s00000785">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="merge.s00000815.activate.s00000820" Target="callToProcess.s00000982.output.s00000785">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="alpha" Target="decision.s00000781.fire.s00000787">1</CArc>
+    <CArc Type="Arc" Label="ra_72" Source="alpha" Target="decision.s00000781.fire.s00000984">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="alpha" Target="merge.s00000815.activate.s00000818">1</CArc>
+    <CArc Type="Arc" Label="ra_86" Source="merge.s00000815.activate.s00000818" Target="endNode.s00000780.input.default">1</CArc>
+    <CArc Type="Arc" Label="ra_87" Source="alpha" Target="merge.s00000815.activate.s00000820">1</CArc>
+    <CArc Type="Arc" Label="ra_88" Source="merge.s00000815.activate.s00000820" Target="endNode.s00000780.input.default">1</CArc>
+    <CArc Type="Arc" Label="sa_18" Source="decision.s00000781.fire.s00000787" Target="endNode.s00000780.input.default">1</CArc>
+    <CArc Type="Arc" Label="sa_19" Source="decision.s00000781.fire.s00000787" Target="process.s00000412##s00003294.outputCriterion.s00000773_omega">1</CArc>
+    <CArc Type="Arc" Label="sa_25" Source="endNode.s00000780.input.default" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_26" Source="process.s00000412##s00003294.outputCriterion.s00000773_omega" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_27" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

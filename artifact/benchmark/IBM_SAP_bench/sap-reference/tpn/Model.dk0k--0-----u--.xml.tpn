@@ -1,0 +1,146 @@
+place "i" init 1;
+place "o";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:InputCondition";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Split_Budget Release (dk1t)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Join_Budget Release (dk1t)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_or (dk10)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_or (dk10)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_Budget Update (dk27)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_Budget Update (dk27)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:OutputCondition";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t)*or (dk10)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Join_Yes_or (dk10)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Budget Update (dk27)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27)*Join_Yes_Budget Update (dk27)";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):busy";
+place "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:busy";
+trans "*:Model.dk0k--0-----u--:Model.dk0k--0-----u--:start"~"*:Model.dk0k--0-----u--:Model.dk0k--0-----u--:start"
+    in "i"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:InputCondition"
+;
+trans "*:Model.dk0k--0-----u--:Model.dk0k--0-----u--:end"~"*:Model.dk0k--0-----u--:Model.dk0k--0-----u--:end"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:join:InputCondition"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:join:InputCondition"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:InputCondition"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:split:Split_Split_Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:split:Split_Split_Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split:busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Split_Budget Release (dk1t)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):join:Split_Split_Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):join:Split_Split_Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Split_Budget Release (dk1t)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):split:Split_Join_Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):split:Split_Join_Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_No_Budget Release (dk1t):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Join_Budget Release (dk1t)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):join:Split_Split_Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):join:Split_Split_Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Split_Budget Release (dk1t)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):split:Split_Join_Budget Release (dk1t):Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):split:Split_Join_Budget Release (dk1t):Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Join_Budget Release (dk1t)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:join:Split_Join_Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:join:Split_Join_Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Join_Budget Release (dk1t)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:split:Join_Split_or (dk10):Join_Split_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:split:Join_Split_or (dk10):Join_Split_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Skip:busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_or (dk10)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):join:Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):join:Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Split_Yes_Budget Release (dk1t)*Budget Release (dk1t)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):split:Budget Release (dk1t)*or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):split:Budget Release (dk1t)*or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t)*or (dk10)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):join:Budget Release (dk1t)*or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):join:Budget Release (dk1t)*or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Release (dk1t)*or (dk10)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Join_Yes_or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Join_Yes_or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Join_Yes_or (dk10)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Join_Yes_or (dk10):or (dk10)*Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):split:or (dk10)*Join_Yes_or (dk10):or (dk10)*Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Join_Yes_or (dk10)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):join:or (dk10)*Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):join:or (dk10)*Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Budget Update (dk27)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):split:Budget Update (dk27)*Join_Yes_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):split:Budget Update (dk27)*Join_Yes_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27)*Join_Yes_Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):join:Join_Split_or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):join:Join_Split_or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_or (dk10)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):split:Join_Join_or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):split:Join_Join_or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_or (dk10):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_or (dk10)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):join:or (dk10)*Join_Yes_or (dk10):Join_Split_or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):join:or (dk10)*Join_Yes_or (dk10):Join_Split_or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:or (dk10)*Join_Yes_or (dk10)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_or (dk10)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):split:Join_Join_or (dk10)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):split:Join_Join_or (dk10)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_or (dk10):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_or (dk10)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):join:Join_Split_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):join:Join_Split_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_Budget Update (dk27)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):split:Join_Join_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):split:Join_Join_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_No_Budget Update (dk27):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):join:Budget Update (dk27)*Join_Yes_Budget Update (dk27):Join_Split_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):join:Budget Update (dk27)*Join_Yes_Budget Update (dk27):Join_Split_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Budget Update (dk27)*Join_Yes_Budget Update (dk27)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Split_Budget Update (dk27)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):split:Join_Join_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):split:Join_Join_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Yes_Budget Update (dk27):busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_Budget Update (dk27)"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:join:Join_Join_or (dk10):Join_Join_Budget Update (dk27)"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:join:Join_Join_or (dk10):Join_Join_Budget Update (dk27)"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_or (dk10)"
+       "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Join_Join_Budget Update (dk27)"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:busy"
+;
+trans "t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:split:OutputCondition"~"t:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:split:OutputCondition"
+    in "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:Output:busy"
+   out "p:Model.dk0k--0-----u--:Model.dk0k--0-----u--:OutputCondition"
+;
+

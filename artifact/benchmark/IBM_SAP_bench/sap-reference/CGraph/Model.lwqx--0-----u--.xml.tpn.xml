@@ -1,0 +1,97 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lwqx--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Join_xor (lws4)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Split_xor (lws4)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk)*xor (lws4)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Split_and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx)*Recruitment Request Monitoring (lwrk)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):busy"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:outputCondition"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)"/>
+    <CGraph Type="Place" Label="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):join:Join_Split_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):join:xor (lws4)*Join_Yes_xor (lws4):Join_Split_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:join:Join_Join_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):join:and (lwrx)*Recruitment Request Monitoring (lwrk)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):split:Recruitment Request Monitoring (lwrk)*xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:join:Split_Join_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:split:Join_Split_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:split:Split_Split_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):join:Split_Split_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):join:Split_Split_and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):join:Split_Yes_and (lwrx)*and (lwrx):xor (lws4)*and (lwrx)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):split:and (lwrx)*Recruitment Request Monitoring (lwrk)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):join:Recruitment Request Monitoring (lwrk)*xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)"/>
+    <CGraph Type="Transition" Label="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:split:Join_Split_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Split_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Split_xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):join:xor (lws4)*Join_Yes_xor (lws4):Join_Split_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Split_xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):join:Join_Split_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):join:xor (lws4)*Join_Yes_xor (lws4):Join_Split_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:join:Join_Join_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):split:Recruitment Request Monitoring (lwrk)*xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk)*xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk)*xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):join:Recruitment Request Monitoring (lwrk)*xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):join:and (lwrx)*Recruitment Request Monitoring (lwrk)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):split:Recruitment Request Monitoring (lwrk)*xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:split:Join_Split_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:join:Split_Join_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:split:Split_Split_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:join:InputCondition" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Skip:join:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):join:Split_Split_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):split:Split_Join_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:start" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Split_and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_No_and (lwrx):join:Split_Split_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:split:Split_Split_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Split_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Split_and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):join:Split_Split_and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):join:Split_Yes_and (lwrx)*and (lwrx):xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):join:Split_Split_and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split_Yes_and (lwrx):split:Split_Join_and (lwrx):Split_Yes_and (lwrx)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx)*Recruitment Request Monitoring (lwrk)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Recruitment Request Monitoring (lwrk):join:and (lwrx)*Recruitment Request Monitoring (lwrk)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):split:and (lwrx)*Recruitment Request Monitoring (lwrk)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx)*Recruitment Request Monitoring (lwrk)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):join:Split_Yes_and (lwrx)*and (lwrx):xor (lws4)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:InputCondition" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):split:and (lwrx)*Recruitment Request Monitoring (lwrk)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:outputCondition" Target="*:Model.lwqx--0-----u--:Model.lwqx--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:split:outputCondition" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):join:xor (lws4)*Join_Yes_xor (lws4):Join_Split_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*Join_Yes_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:and (lwrx):join:Split_Yes_and (lwrx)*and (lwrx):xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):join:Recruitment Request Monitoring (lwrk)*xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*and (lwrx)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:xor (lws4):split:xor (lws4)*Join_Yes_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Yes_xor (lws4):split:Join_Join_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_Join_xor (lws4)" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Output:join:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):busy" Target="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):split:Join_Join_xor (lws4)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):join:Join_Split_xor (lws4)" Target="p:Model.lwqx--0-----u--:Model.lwqx--0-----u--:Join_No_xor (lws4):busy">1</CArc>
+</CGraph>

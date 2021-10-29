@@ -1,0 +1,98 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.5dvr--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Billing (5dz3)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Transport (5dye)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dx6)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dy0)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_xor (5dwz)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Billing (5dz3)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Transport (5dye)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dx6)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dy0)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_xor (5dwz)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_Sales Order (5dwe)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_and (5dyp)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp)*and (5dyp)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dx6)*Join_Yes_and (5dx6)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Billing (5dz3)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Join_Yes_and (5dy0)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*and (5dyp)"/>
+    <CGraph Type="Place" Label="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz)*Join_Yes_xor (5dwz)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Billing (5dz3):split:Join_Join_Billing (5dz3)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Transport (5dye):split:Join_Join_Transport (5dye)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dx6):split:Join_Join_and (5dx6)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dy0):split:Join_Join_and (5dy0)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_xor (5dwz):split:Join_Join_xor (5dwz)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Billing (5dz3):split:Join_Join_Billing (5dz3)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Transport (5dye):split:Join_Join_Transport (5dye)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dx6):split:Join_Join_and (5dx6)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dy0):split:Join_Join_and (5dy0)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_xor (5dwz):split:Join_Join_xor (5dwz)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_Sales Order (5dwe):split:Split_Join_Sales Order (5dwe)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_and (5dyp):split:Split_Join_and (5dyp)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp):split:Split_Join_and (5dyp):Split_Yes_and (5dyp)*and (5dyp)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)"/>
+    <CGraph Type="Transition" Label="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz):split:xor (5dwz)*Join_Yes_xor (5dwz)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Billing (5dz3):split:Join_Join_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Billing (5dz3):split:Join_Join_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="arcId110" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="arcId111" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Join_Yes_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="arcId113" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="arcId122" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz):split:xor (5dwz)*Join_Yes_xor (5dwz)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz)*Join_Yes_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Transport (5dye):split:Join_Join_Transport (5dye)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Transport (5dye):split:Join_Join_Transport (5dye)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dx6):split:Join_Join_and (5dx6)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dx6):split:Join_Join_and (5dx6)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dy0):split:Join_Join_and (5dy0)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dy0):split:Join_Join_and (5dy0)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_xor (5dwz):split:Join_Join_xor (5dwz)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_xor (5dwz):split:Join_Join_xor (5dwz)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_Sales Order (5dwe):split:Split_Join_Sales Order (5dwe)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_Sales Order (5dwe)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_and (5dyp):split:Split_Join_and (5dyp)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="arcId80" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp):split:Split_Join_and (5dyp):Split_Yes_and (5dyp)*and (5dyp)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="arcId96" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp):split:Split_Join_and (5dyp):Split_Yes_and (5dyp)*and (5dyp)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp)*and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Transport (5dye)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Transport (5dye):split:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dx6)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dx6):split:Join_Join_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dx6)*Join_Yes_and (5dx6)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dx6):split:Join_Join_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dy0)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dy0):split:Join_Join_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Join_Yes_and (5dy0)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_and (5dy0):split:Join_Join_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_xor (5dwz)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_xor (5dwz):split:Join_Join_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz)*Join_Yes_xor (5dwz)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_xor (5dwz):split:Join_Join_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Billing (5dz3)" Target="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_Transport (5dye)" Target="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dx6)" Target="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_and (5dy0)" Target="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Join_xor (5dwz)" Target="*:Model.5dvr--0-----u--:Model.5dvr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Billing (5dz3)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Billing (5dz3):split:Join_Join_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_Sales Order (5dwe)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_and (5dyp)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Skip:split:Join_Split_xor (5dwz):Join_Split_and (5dx6):Join_Split_and (5dy0):Join_Split_Transport (5dye):Join_Split_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_and (5dyp):split:Split_Join_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_Sales Order (5dwe):split:Split_Join_Sales Order (5dwe)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_No_Sales Order (5dwe):split:Split_Join_Sales Order (5dwe)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Transport (5dye)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_Transport (5dye):split:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp):split:Split_Join_and (5dyp):Split_Yes_and (5dyp)*and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dx6)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dx6):split:Join_Join_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dx6)*Join_Yes_and (5dx6)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Yes_and (5dyp)*and (5dyp)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Transport (5dye):split:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*and (5dyp)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Transport (5dye):split:Join_Join_Transport (5dye)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="i" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_Sales Order (5dwe)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0):split:and (5dy0)*Join_Yes_and (5dy0):and (5dy0)*and (5dyp):and (5dy0)*Billing (5dz3)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_and (5dy0)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_and (5dy0):split:Join_Join_and (5dy0)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="i" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz):split:xor (5dwz)*Join_Yes_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz):split:xor (5dwz)*Join_Yes_xor (5dwz)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Join_Sales Order (5dwe)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:xor (5dwz):split:xor (5dwz)*Join_Yes_xor (5dwz)" Target="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Split_Split_and (5dyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_xor (5dwz)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_No_xor (5dwz):split:Join_Join_xor (5dwz)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Split_Billing (5dz3)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Billing (5dz3):split:Join_Join_Billing (5dz3)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.5dvr--0-----u--:Model.5dvr--0-----u--:and (5dy0)*Billing (5dz3)" Target="t:Model.5dvr--0-----u--:Model.5dvr--0-----u--:Join_Yes_Billing (5dz3):split:Join_Join_Billing (5dz3)">1</CArc>
+</CGraph>

@@ -1,0 +1,72 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.9bjf--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_Transportation Planning and Processing (9blr)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_and (9bkd)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bk6)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bl2)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Join_Yes_and (9bkd)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Transportation Planning and Processing (9blr)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6)*Join_Yes_xor (9bk6)"/>
+    <CGraph Type="Place" Label="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):busy"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_and (9bkd):split:Join_Join_and (9bkd)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bk6):split:Join_Join_xor (9bk6)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bl2):split:Join_Join_xor (9bl2)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_and (9bkd):split:Join_Join_and (9bkd)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bk6):split:Join_Join_xor (9bk6)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bl2):split:Join_Join_xor (9bl2)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)"/>
+    <CGraph Type="Transition" Label="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_and (9bkd):split:Join_Join_and (9bkd)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_and (9bkd):split:Join_Join_and (9bkd)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bk6):split:Join_Join_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bk6):split:Join_Join_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bl2):split:Join_Join_xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bl2):split:Join_Join_xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId86" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6)*Join_Yes_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="arcId95" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Join_Yes_and (9bkd)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_and (9bkd):split:Join_Join_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bk6):split:Join_Join_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6)*Join_Yes_xor (9bk6)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bk6):split:Join_Join_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bl2):split:Join_Join_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_Transportation Planning and Processing (9blr)" Target="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_and (9bkd)" Target="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bk6)" Target="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Join_xor (9bl2)" Target="*:Model.9bjf--0-----u--:Model.9bjf--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Transportation Planning and Processing (9blr)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Join_Yes_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:and (9bkd)*Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_and (9bkd):split:Join_Join_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="i" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="i" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):busy" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_xor (9bl2):split:Join_Join_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bk6):split:Join_Join_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Split_No_xor (9bjx):split:Split_Join_xor (9bjx)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bk6):split:xor (9bk6)*Join_Yes_xor (9bk6)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bk6)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_No_xor (9bl2):split:Join_Join_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:xor (9bl2):join:and (9bkd)*xor (9bl2)" Target="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_xor (9bl2)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_Transportation Planning and Processing (9blr)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_Transportation Planning and Processing (9blr):split:Join_Join_Transportation Planning and Processing (9blr)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Split_and (9bkd)" Target="t:Model.9bjf--0-----u--:Model.9bjf--0-----u--:Join_Yes_and (9bkd):split:Join_Join_and (9bkd)">1</CArc>
+</CGraph>

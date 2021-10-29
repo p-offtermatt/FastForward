@@ -1,0 +1,66 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gh7g--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)"/>
+    <CGraph Type="Place" Label="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):split:Join_Join_and (gh7w)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):split:Join_Join_or (gh8o)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)"/>
+    <CGraph Type="Transition" Label="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):split:Join_Join_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):split:Join_Join_and (gh7w)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Netting Processing (gh9u)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_Netting Processing (gh9u)" Target="*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_and (gh7w)" Target="*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Join_or (gh8o)" Target="*:Model.gh7g--0-----u--:Model.gh7g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_and (gh7w):split:Join_Join_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_No_or (gh8o):split:Join_Join_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_Netting Processing (gh9u):split:Join_Join_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="i" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Split_No_Process Cash Flow (gh92):split:Split_Join_Process Cash Flow (gh92)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Join_Yes_or (gh8o):or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_Netting Processing (gh9u)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o):split:or (gh8o)*Netting Processing (gh9u)" Target="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_and (gh7w)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:and (gh7w)*Join_Yes_and (gh7w)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_and (gh7w):split:Join_Join_and (gh7w)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Split_or (gh8o)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gh7g--0-----u--:Model.gh7g--0-----u--:or (gh8o)*Join_Yes_or (gh8o)" Target="t:Model.gh7g--0-----u--:Model.gh7g--0-----u--:Join_Yes_or (gh8o):split:Join_Join_or (gh8o)">1</CArc>
+</CGraph>

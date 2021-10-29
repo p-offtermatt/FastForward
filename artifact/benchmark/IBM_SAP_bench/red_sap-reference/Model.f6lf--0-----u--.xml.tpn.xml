@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.f6lf--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_Join_or (f6lx)"/>
+    <CGraph Type="Place" Label="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):busy"/>
+    <CGraph Type="Transition" Label="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_No_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)"/>
+    <CGraph Type="Transition" Label="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_Yes_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)"/>
+    <CGraph Type="Transition" Label="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_No_or (f6lx):split:Split_Join_or (f6lx)"/>
+    <CGraph Type="Transition" Label="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):join:Split_Yes_or (f6lx)*or (f6lx)"/>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_No_or (f6lx):split:Split_Join_or (f6lx)" Target="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_Join_or (f6lx)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):join:Split_Yes_or (f6lx)*or (f6lx)" Target="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="i" Target="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_No_or (f6lx):split:Split_Join_or (f6lx)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):join:Split_Yes_or (f6lx)*or (f6lx)" Target="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_Join_or (f6lx)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):join:Split_Yes_or (f6lx)*or (f6lx)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:or (f6lx):busy" Target="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_Yes_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_No_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_Yes_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_Join_or (f6lx)" Target="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_No_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Split_Join_or (f6lx)" Target="t:Model.f6lf--0-----u--:Model.f6lf--0-----u--:Join_Yes_Status Analysis Liquidity Forecast (f6md):split:Join_Join_Status Analysis Liquidity Forecast (f6md)">1</CArc>
+</CGraph>

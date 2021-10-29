@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.4jca--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_Join_and (4jcu)"/>
+    <CGraph Type="Place" Label="p:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):busy"/>
+    <CGraph Type="Transition" Label="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_No_and (4jd1):split:Join_Join_and (4jd1)"/>
+    <CGraph Type="Transition" Label="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_Yes_and (4jd1):split:Join_Join_and (4jd1)"/>
+    <CGraph Type="Transition" Label="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_No_and (4jcu):split:Split_Join_and (4jcu)"/>
+    <CGraph Type="Transition" Label="t:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):join:Financial Document Master Processing (4jdf)*and (4jd1)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_No_and (4jcu):split:Split_Join_and (4jcu)" Target="p:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_Join_and (4jcu)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):join:Financial Document Master Processing (4jdf)*and (4jd1)" Target="p:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_Join_and (4jcu)" Target="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_Yes_and (4jd1):split:Join_Join_and (4jd1)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_No_and (4jcu):split:Split_Join_and (4jcu)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="i" Target="t:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):join:Financial Document Master Processing (4jdf)*and (4jd1)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="t:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):join:Financial Document Master Processing (4jdf)*and (4jd1)" Target="p:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_Join_and (4jcu)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.4jca--0-----u--:Model.4jca--0-----u--:and (4jd1):busy" Target="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_Yes_and (4jd1):split:Join_Join_and (4jd1)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_No_and (4jd1):split:Join_Join_and (4jd1)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_Yes_and (4jd1):split:Join_Join_and (4jd1)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.4jca--0-----u--:Model.4jca--0-----u--:Split_Join_and (4jcu)" Target="t:Model.4jca--0-----u--:Model.4jca--0-----u--:Join_No_and (4jd1):split:Join_Join_and (4jd1)">1</CArc>
+</CGraph>

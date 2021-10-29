@@ -1,0 +1,24 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000149__s00003574.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00003561.output.s00000848"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000733"/>
+    <CGraph Type="Place" Label="merge.s00000730.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000742.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000742.activate.s00000733"/>
+    <CGraph Type="Place" Label="merge.s00000742.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId87" Source="merge.s00000730.activate.s00000733" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId89" Source="merge.s00000742.activate.s00000731" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="merge.s00000742.activate.s00000733" Target="merge.s00000742.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="merge.s00000742.activate.s00000733" Target="callToProcess.s00003561.output.s00000848">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="merge.s00000742.activate.s00000731" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="alpha" Target="merge.s00000730.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="alpha" Target="merge.s00000742.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="alpha" Target="merge.s00000742.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="merge.s00000742.activate.s00000733" Target="merge.s00000730.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_80" Source="callToProcess.s00003561.output.s00000848" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="merge.s00000730.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_82" Source="merge.s00000742.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_10" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

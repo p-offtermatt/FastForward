@@ -1,0 +1,17 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_C/C.s00000042__s00001033.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Transition" Label="decision.s00001044.activate.s00000271"/>
+    <CGraph Type="Place" Label="decision.s00001044.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000937.activate.s00000289"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="process.s00000042##s00001033.inputCriterion.s00000892"/>
+    <CGraph Type="Transition" Label="task.s00001034.inputCriterion.s00000892"/>
+    <CGraph Type="Place" Label="task.s00001034.inputCriterion.s00000892.used"/>
+    <CGraph Type="Transition" Label="task.s00001034.outputCriterion.s00000894"/>
+    <CArc Type="Arc" Label="arcId1" Source="alpha" Target="process.s00000042##s00001033.inputCriterion.s00000892">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="task.s00001034.inputCriterion.s00000892.used" Target="task.s00001034.outputCriterion.s00000894">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="task.s00001034.inputCriterion.s00000892" Target="task.s00001034.inputCriterion.s00000892.used">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="decision.s00001044.activate.s00000271" Target="decision.s00001044.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="merge.s00000937.activate.s00000289" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="decision.s00001044.activated" Target="merge.s00000937.activate.s00000289">1</CArc>
+</CGraph>

@@ -1,0 +1,98 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lojl--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.lojl--0-----u--:Model.lojl--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_and (lok6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_or (lomo)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_and (lok6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_or (lomo)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_and (lot6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_xor (loq6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_xor (loq6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6)*and (lot6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (lok6)*Join_Yes_and (lok6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lopz)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lot6)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh)*or (lomo)"/>
+    <CGraph Type="Place" Label="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_and (lok6):split:Join_Join_and (lok6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_or (lomo):split:Join_Join_or (lomo)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_and (lok6):split:Join_Join_and (lok6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_or (lomo):split:Join_Join_or (lomo)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_and (lot6):split:Split_Join_and (lot6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_or (loph):split:Split_Join_or (loph)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_xor (loq6):split:Split_Join_xor (loq6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (lomh)*xor (lolz)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (los6)*xor (lolz)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh):split:xor (lomh)*or (lomo)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:Split_Yes_xor (loq6)*xor (loq6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:xor (los6)*xor (loq6)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (lojz)*xor (losz)"/>
+    <CGraph Type="Transition" Label="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (los6)*xor (losz)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_and (lok6):split:Join_Join_and (lok6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_and (lok6):split:Join_Join_and (lok6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_or (lomo):split:Join_Join_or (lomo)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="arcId122" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId123" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (lomh)*xor (lolz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId124" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (los6)*xor (lolz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId127" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh):split:xor (lomh)*or (lomo)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh)*or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_or (lomo):split:Join_Join_or (lomo)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="arcId150" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (lojz)*xor (losz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId151" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (los6)*xor (losz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.lojl--0-----u--:Model.lojl--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_and (lot6):split:Split_Join_and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_or (loph):split:Split_Join_or (loph)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_xor (loq6):split:Split_Join_xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6)*and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_and (lok6)" Target="*:Model.lojl--0-----u--:Model.lojl--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Join_or (lomo)" Target="*:Model.lojl--0-----u--:Model.lojl--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_and (lot6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_xor (loq6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Skip:split:Join_Split_and (lok6):Join_Split_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_or (loph):split:Split_Join_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_xor (loq6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_xor (loq6):split:Split_Join_xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_and (lot6):split:Split_Join_and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_and (lot6):split:Split_Join_and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_No_and (lot6):split:Split_Join_and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_and (lok6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_and (lok6):split:Join_Join_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="i" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6):split:Split_Join_and (lot6):Split_Yes_and (lot6)*and (lot6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:Split_Yes_xor (loq6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_or (lomo)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_No_or (lomo):split:Join_Join_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_xor (loq6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:Split_Yes_xor (loq6)*xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (lok6)*Join_Yes_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_and (lok6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_and (lok6):split:Join_Join_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh)*or (lomo)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_or (lomo):split:Join_Join_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6)*and (lot6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (lok6)*Join_Yes_and (lok6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_and (lok6):split:Join_Join_and (lok6)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lot6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Yes_and (lot6)*and (lot6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (lojz)*xor (losz)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lot6)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (lojz)*xor (losz)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lopz)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (lomh)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (lomh)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lopz)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh):split:xor (lomh)*or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Split_or (lomo)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:Join_Yes_or (lomo):split:Join_Join_or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):busy" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lomh):split:xor (lomh)*or (lomo)">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (los6)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:xor (los6)*xor (lolz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:xor (los6)*xor (loq6)">1</CArc>
+    <CArc Type="Arc" Label="ra_78" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:xor (los6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_79" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Split_or (loph)" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (los6)*xor (losz)">1</CArc>
+    <CArc Type="Arc" Label="ra_80" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (los6)*xor (losz)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:Split_Join_or (loph)">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):busy" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (lolz):join:and (lok6)*xor (lolz)">1</CArc>
+    <CArc Type="Arc" Label="ra_82" Source="p:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):busy" Target="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (losz):join:xor (lojz)*xor (losz)">1</CArc>
+    <CArc Type="Arc" Label="ra_84" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:Split_Yes_xor (loq6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lopz)">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:Split_Yes_xor (loq6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lot6)">1</CArc>
+    <CArc Type="Arc" Label="ra_87" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:xor (los6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lopz)">1</CArc>
+    <CArc Type="Arc" Label="ra_88" Source="t:Model.lojl--0-----u--:Model.lojl--0-----u--:xor (loq6):join:xor (los6)*xor (loq6)" Target="p:Model.lojl--0-----u--:Model.lojl--0-----u--:and (loqz)*and (lot6)">1</CArc>
+</CGraph>

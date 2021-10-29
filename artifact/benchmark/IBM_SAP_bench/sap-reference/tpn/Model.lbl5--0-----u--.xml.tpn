@@ -1,0 +1,234 @@
+place "i" init 1;
+place "o";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:InputCondition";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_and (lbmu)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Split_and (lbml)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Join_and (lbml)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:outputCondition";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt)*xor (lblt)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4)*xor (lbm4)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz)*or (lbnz)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt)*Depreciation Processing (lbn8)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8)*and (lbmu)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu)*xor (lbm4)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4)*Depreciation Posting (lbnm)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm)*and (lbml)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml)*Join_Yes_and (lbml)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz)*xor (lblt)";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):busy";
+place "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:busy";
+trans "*:Model.lbl5--0-----u--:Model.lbl5--0-----u--:start"~"*:Model.lbl5--0-----u--:Model.lbl5--0-----u--:start"
+    in "i"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:InputCondition"
+;
+trans "*:Model.lbl5--0-----u--:Model.lbl5--0-----u--:end"~"*:Model.lbl5--0-----u--:Model.lbl5--0-----u--:end"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:join:InputCondition"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:join:InputCondition"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:InputCondition"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:split:Split_Split_xor (lblt):Split_Split_xor (lbm4):Split_Split_and (lbmu):Split_Split_or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:split:Split_Split_xor (lblt):Split_Split_xor (lbm4):Split_Split_and (lbmu):Split_Split_or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split:busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_and (lbmu)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):join:Split_Split_xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):join:Split_Split_xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):split:Split_Join_xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):split:Split_Join_xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):join:Split_Split_xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):join:Split_Split_xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):split:Split_Join_xor (lblt):Split_Yes_xor (lblt)*xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):split:Split_Join_xor (lblt):Split_Yes_xor (lblt)*xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt)*xor (lblt)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):join:Split_Split_xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):join:Split_Split_xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):split:Split_Join_xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):split:Split_Join_xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):join:Split_Split_xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):join:Split_Split_xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):split:Split_Join_xor (lbm4):Split_Yes_xor (lbm4)*xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):split:Split_Join_xor (lbm4):Split_Yes_xor (lbm4)*xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4)*xor (lbm4)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):join:Split_Split_and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):join:Split_Split_and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_and (lbmu)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):join:Split_Split_and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):join:Split_Split_and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_and (lbmu)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):join:Split_Split_or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):join:Split_Split_or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):split:Split_Join_or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):split:Split_Join_or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):join:Split_Split_or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):join:Split_Split_or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):split:Split_Join_or (lbnz):Split_Yes_or (lbnz)*or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):split:Split_Join_or (lbnz):Split_Yes_or (lbnz)*or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz)*or (lbnz)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:join:Split_Join_xor (lblt):Split_Join_xor (lbm4):Split_Join_and (lbmu):Split_Join_or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:join:Split_Join_xor (lblt):Split_Join_xor (lbm4):Split_Join_and (lbmu):Split_Join_or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:split:Join_Split_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:split:Join_Split_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Skip:busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Split_and (lbml)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lblt)*xor (lblt)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz)*xor (lblt)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):split:xor (lblt)*Depreciation Processing (lbn8)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):split:xor (lblt)*Depreciation Processing (lbn8)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt)*Depreciation Processing (lbn8)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):join:xor (lblt)*Depreciation Processing (lbn8)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):join:xor (lblt)*Depreciation Processing (lbn8)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt)*Depreciation Processing (lbn8)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):split:Depreciation Processing (lbn8)*and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):split:Depreciation Processing (lbn8)*and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8)*and (lbmu)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):join:Split_Yes_and (lbmu)*and (lbmu):Depreciation Processing (lbn8)*and (lbmu)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):join:Split_Yes_and (lbmu)*and (lbmu):Depreciation Processing (lbn8)*and (lbmu)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Processing (lbn8)*and (lbmu)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):split:and (lbmu)*xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):split:and (lbmu)*xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu)*xor (lbm4)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_xor (lbm4)*xor (lbm4)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbmu)*xor (lbm4)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):split:xor (lbm4)*Depreciation Posting (lbnm)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):split:xor (lbm4)*Depreciation Posting (lbnm)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4)*Depreciation Posting (lbnm)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):join:xor (lbm4)*Depreciation Posting (lbnm)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):join:xor (lbm4)*Depreciation Posting (lbnm)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4)*Depreciation Posting (lbnm)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):split:Depreciation Posting (lbnm)*and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):split:Depreciation Posting (lbnm)*and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm)*and (lbml)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):join:Depreciation Posting (lbnm)*and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):join:Depreciation Posting (lbnm)*and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Depreciation Posting (lbnm)*and (lbml)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):split:and (lbml)*Join_Yes_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):split:and (lbml)*Join_Yes_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml)*Join_Yes_and (lbml)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):join:Split_Yes_or (lbnz)*or (lbnz)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):join:Split_Yes_or (lbnz)*or (lbnz)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_or (lbnz)*or (lbnz)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):split:or (lbnz)*xor (lblt)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):split:or (lbnz)*xor (lblt)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:or (lbnz)*xor (lblt)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):join:Join_Split_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):join:Join_Split_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Split_and (lbml)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Join_and (lbml)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):join:and (lbml)*Join_Yes_and (lbml):Join_Split_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):join:and (lbml)*Join_Yes_and (lbml):Join_Split_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:and (lbml)*Join_Yes_and (lbml)"
+       "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Split_and (lbml)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Join_and (lbml)"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:join:Join_Join_and (lbml)"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:join:Join_Join_and (lbml)"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Join_and (lbml)"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:busy"
+;
+trans "t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:split:outputCondition"~"t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:split:outputCondition"
+    in "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Output:busy"
+   out "p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:outputCondition"
+;
+

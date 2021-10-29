@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.mz1m--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_Join_Business Event Monitoring (mz2o)"/>
+    <CGraph Type="Place" Label="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):busy"/>
+    <CGraph Type="Transition" Label="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_No_or (mz22):split:Join_Join_or (mz22)"/>
+    <CGraph Type="Transition" Label="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_Yes_or (mz22):split:Join_Join_or (mz22)"/>
+    <CGraph Type="Transition" Label="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_No_Business Event Monitoring (mz2o):split:Split_Join_Business Event Monitoring (mz2o)"/>
+    <CGraph Type="Transition" Label="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):join:Business Event Monitoring (mz2o)*or (mz22)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_No_Business Event Monitoring (mz2o):split:Split_Join_Business Event Monitoring (mz2o)" Target="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_Join_Business Event Monitoring (mz2o)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):join:Business Event Monitoring (mz2o)*or (mz22)" Target="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_Join_Business Event Monitoring (mz2o)" Target="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_Yes_or (mz22):split:Join_Join_or (mz22)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_No_Business Event Monitoring (mz2o):split:Split_Join_Business Event Monitoring (mz2o)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):join:Business Event Monitoring (mz2o)*or (mz22)" Target="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_Join_Business Event Monitoring (mz2o)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):join:Business Event Monitoring (mz2o)*or (mz22)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:or (mz22):busy" Target="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_Yes_or (mz22):split:Join_Join_or (mz22)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_No_or (mz22):split:Join_Join_or (mz22)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_Yes_or (mz22):split:Join_Join_or (mz22)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Split_Join_Business Event Monitoring (mz2o)" Target="t:Model.mz1m--0-----u--:Model.mz1m--0-----u--:Join_No_or (mz22):split:Join_Join_or (mz22)">1</CArc>
+</CGraph>

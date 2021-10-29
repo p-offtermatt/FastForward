@@ -1,0 +1,38 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.km48--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.km48--0-----u--:Model.km48--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km4u)"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km58)"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km4u)"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km58)"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Join_Yes_and (km58)"/>
+    <CGraph Type="Place" Label="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Processing of Asset Acquisition (km6b)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km4u):split:Join_Join_and (km4u)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km58):split:Join_Join_and (km58)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km4u):split:Join_Join_and (km4u)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km58):split:Join_Join_and (km58)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:Split_No_and (km5j):split:Split_Join_and (km5j)"/>
+    <CGraph Type="Transition" Label="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km4u):split:Join_Join_and (km4u)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km58):split:Join_Join_and (km58)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km58):split:Join_Join_and (km58)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.km48--0-----u--:Model.km48--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Join_Yes_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Processing of Asset Acquisition (km6b)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km4u):split:Join_Join_and (km4u)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km4u)" Target="*:Model.km48--0-----u--:Model.km48--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Join_and (km58)" Target="*:Model.km48--0-----u--:Model.km48--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Split_No_and (km5j):split:Split_Join_and (km5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Processing of Asset Acquisition (km6b)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km4u):split:Join_Join_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km4u)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km4u):split:Join_Join_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Split_No_and (km5j):split:Split_Join_and (km5j)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:Split_No_and (km5j):split:Split_Join_and (km5j)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.km48--0-----u--:Model.km48--0-----u--:and (km58):split:and (km58)*Join_Yes_and (km58):and (km58)*Processing of Asset Acquisition (km6b)" Target="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km58)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_No_and (km58):split:Join_Join_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km4u)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km4u):split:Join_Join_and (km4u)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:Join_Split_and (km58)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km58):split:Join_Join_and (km58)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.km48--0-----u--:Model.km48--0-----u--:and (km58)*Join_Yes_and (km58)" Target="t:Model.km48--0-----u--:Model.km48--0-----u--:Join_Yes_and (km58):split:Join_Join_and (km58)">1</CArc>
+</CGraph>

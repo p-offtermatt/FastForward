@@ -1,0 +1,66 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.5kzj--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5kzz)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0j)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0s)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l1x)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5kzz)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0j)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0s)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l1x)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5kzz)*Join_Yes_and (5kzz)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0j)*Join_Yes_and (5l0j)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0s)*Join_Yes_and (5l0s)"/>
+    <CGraph Type="Place" Label="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):busy"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5kzz):split:Join_Join_and (5kzz)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0j):split:Join_Join_and (5l0j)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0s):split:Join_Join_and (5l0s)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l1x):split:Join_Join_and (5l1x)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5kzz):split:Join_Join_and (5kzz)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0j):split:Join_Join_and (5l0j)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0s):split:Join_Join_and (5l0s)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l1x):split:Join_Join_and (5l1x)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)"/>
+    <CGraph Type="Transition" Label="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)"/>
+    <CArc Type="Arc" Label="arcId101" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5kzz):split:Join_Join_and (5kzz)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5kzz):split:Join_Join_and (5kzz)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0j):split:Join_Join_and (5l0j)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0j):split:Join_Join_and (5l0j)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0s):split:Join_Join_and (5l0s)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0s):split:Join_Join_and (5l0s)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l1x):split:Join_Join_and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l1x):split:Join_Join_and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5kzz)*Join_Yes_and (5kzz)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5kzz):split:Join_Join_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0j)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0j):split:Join_Join_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0j)*Join_Yes_and (5l0j)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0j):split:Join_Join_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0s)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0s):split:Join_Join_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0s)*Join_Yes_and (5l0s)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l0s):split:Join_Join_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l1x)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l1x):split:Join_Join_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5kzz)" Target="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0j)" Target="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l0s)" Target="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Join_and (5l1x)" Target="*:Model.5kzj--0-----u--:Model.5kzj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="i" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0s)*Join_Yes_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="i" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5kzz)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5kzz):split:Join_Join_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5kzz)*Join_Yes_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l0j)*Join_Yes_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):busy" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5l1x):split:Join_Join_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Split_No_Delivery Processing (5l18):split:Split_Join_Delivery Processing (5l18)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5kzz)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0j)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0j):split:Join_Join_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0j)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:and (5l1x):join:Goods Issue Processing (5l34)*and (5l1x)" Target="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l0s)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l0s):split:Join_Join_and (5l0s)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5l1x)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_No_and (5l1x):split:Join_Join_and (5l1x)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Split_and (5kzz)" Target="t:Model.5kzj--0-----u--:Model.5kzj--0-----u--:Join_Yes_and (5kzz):split:Join_Join_and (5kzz)">1</CArc>
+</CGraph>

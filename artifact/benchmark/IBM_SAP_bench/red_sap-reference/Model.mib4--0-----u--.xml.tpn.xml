@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.mib4--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_Join_and (mibq)"/>
+    <CGraph Type="Place" Label="p:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):busy"/>
+    <CGraph Type="Transition" Label="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_No_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)"/>
+    <CGraph Type="Transition" Label="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_Yes_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)"/>
+    <CGraph Type="Transition" Label="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_No_and (mibq):split:Split_Join_and (mibq)"/>
+    <CGraph Type="Transition" Label="t:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):join:Split_Yes_and (mibq)*and (mibq)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_No_and (mibq):split:Split_Join_and (mibq)" Target="p:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_Join_and (mibq)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):join:Split_Yes_and (mibq)*and (mibq)" Target="p:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_Join_and (mibq)" Target="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_Yes_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_No_and (mibq):split:Split_Join_and (mibq)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):join:Split_Yes_and (mibq)*and (mibq)" Target="p:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_Join_and (mibq)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):join:Split_Yes_and (mibq)*and (mibq)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.mib4--0-----u--:Model.mib4--0-----u--:and (mibq):busy" Target="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_Yes_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_No_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_Yes_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.mib4--0-----u--:Model.mib4--0-----u--:Split_Join_and (mibq)" Target="t:Model.mib4--0-----u--:Model.mib4--0-----u--:Join_No_Calculation of Employment Tax (mic4):split:Join_Join_Calculation of Employment Tax (mic4)">1</CArc>
+</CGraph>

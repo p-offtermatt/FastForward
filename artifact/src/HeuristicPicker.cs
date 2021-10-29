@@ -7,8 +7,8 @@ using System.Linq;
 using System.Diagnostics;
 using Benchmark;
 using HeuristicFrontier;
+using Utils;
 #if GUROBI
-using static Petri.GurobiHeuristics;
 #endif
 
 namespace PetriTool
@@ -105,7 +105,7 @@ namespace PetriTool
                         net.Places,
                         net.Transitions,
                         targetMarkings,
-                        GurobiHeuristics.Domains.N);
+                        GurobiConsts.Domains.N);
 #else
                     Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
                     System.Environment.Exit(5);
@@ -114,7 +114,7 @@ namespace PetriTool
                 case ("qmarkingeqgurobi"):
 #if GUROBI
                     heuristicFunction = GurobiHeuristics.InitializeMarkingEquationHeuristic(
-                        net.Places, net.Transitions, targetMarkings, GurobiHeuristics.Domains.Q
+                        net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.Q
                     );
 #else
                     Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
@@ -135,7 +135,7 @@ namespace PetriTool
                     heuristicFunction = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net,
                                                                                                               initialMarking,
                                                                                                               targetMarkings,
-                                                                                                              GurobiHeuristics.Domains.Q);
+                                                                                                              GurobiConsts.Domains.Q);
 #else
                     Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
                     System.Environment.Exit(5);
@@ -146,7 +146,7 @@ namespace PetriTool
                     heuristicFunction = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net,
                                                                                                               initialMarking,
                                                                                                               targetMarkings,
-                                                                                                              GurobiHeuristics.Domains.N);
+                                                                                                              GurobiConsts.Domains.N);
 #else
                     Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
                     System.Environment.Exit(5);
@@ -213,7 +213,7 @@ namespace PetriTool
                         net.Places,
                         net.Transitions,
                         initialMarking,
-                        domain: GurobiHeuristics.Domains.N);
+                        domain: GurobiConsts.Domains.N);
                     break;
 #else
                 case ("qmarkingeqgurobi"):

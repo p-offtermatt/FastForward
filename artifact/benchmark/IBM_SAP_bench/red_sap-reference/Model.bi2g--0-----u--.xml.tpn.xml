@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.bi2g--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)"/>
+    <CGraph Type="Place" Label="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):split:Join_Join_xor (bi37)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):split:Split_Join_or (bi3i)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:xor (bi37)*or (bi3i)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)"/>
+    <CGraph Type="Transition" Label="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*Join_Yes_xor (bi37)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):split:Join_Join_xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):split:Split_Join_or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i)*or (bi3i)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:xor (bi37)*or (bi3i)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*Join_Yes_xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):split:xor (bi37)*Join_Yes_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37)*Join_Yes_xor (bi37)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_Capacity Dispatching and Leveling (bi4c)" Target="*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Join_xor (bi37)" Target="*:Model.bi2g--0-----u--:Model.bi2g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_or (bi3i)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Skip:split:Join_Split_xor (bi37):Join_Split_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_or (bi3i):split:Split_Join_or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_No_and (bi2y):split:Split_Join_and (bi2y)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Yes_or (bi3i):split:Split_Join_or (bi3i):Split_Yes_or (bi3i)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Join_and (bi2y)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):join:Capacity Evaluation (bi3y)*xor (bi37)" Target="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Split_Split_or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):busy" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:Split_Yes_or (bi3i)*or (bi3i):xor (bi37)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:xor (bi37):busy" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:or (bi3i):join:xor (bi37)*or (bi3i)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_No_xor (bi37):split:Join_Join_xor (bi37)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_Capacity Dispatching and Leveling (bi4c)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_Capacity Dispatching and Leveling (bi4c):split:Join_Join_Capacity Dispatching and Leveling (bi4c)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Split_xor (bi37)" Target="t:Model.bi2g--0-----u--:Model.bi2g--0-----u--:Join_Yes_xor (bi37):split:Join_Join_xor (bi37)">1</CArc>
+</CGraph>

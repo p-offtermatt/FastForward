@@ -1,0 +1,66 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.8r9o--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.8r9o--0-----u--:Model.8r9o--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_and (8rbv)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_xor (8rbo)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_and (8rbv)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_xor (8rbo)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_and (8rcn)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8rcg)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8red)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8rcg)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8red)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:and (8rbv)*Join_Yes_and (8rbv)"/>
+    <CGraph Type="Place" Label="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):busy"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_and (8rbv):split:Join_Join_and (8rbv)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_xor (8rbo):split:Join_Join_xor (8rbo)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_and (8rbv):split:Join_Join_and (8rbv)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_xor (8rbo):split:Join_Join_xor (8rbo)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_and (8rcn):split:Split_Join_and (8rcn)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8rcg):split:Split_Join_xor (8rcg)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8red):split:Split_Join_xor (8red)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):join:Physical Inventory (8rc9)*xor (8rbo)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:Split_Yes_xor (8rcg)*xor (8rcg)"/>
+    <CGraph Type="Transition" Label="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)"/>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.8r9o--0-----u--:Model.8r9o--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_and (8rcn):split:Split_Join_and (8rcn)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_and (8rcn)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8rcg):split:Split_Join_xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8red):split:Split_Join_xor (8red)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8red)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_and (8rbv):split:Join_Join_and (8rbv)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_and (8rbv):split:Join_Join_and (8rbv)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_xor (8rbo):split:Join_Join_xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_xor (8rbo):split:Join_Join_xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):join:Physical Inventory (8rc9)*xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_and (8rbv)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_and (8rbv):split:Join_Join_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_xor (8rbo)" Target="*:Model.8r9o--0-----u--:Model.8r9o--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_and (8rcn)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8rcg)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8red)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Skip:split:Join_Split_and (8rbv):Join_Split_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8rcg)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8rcg):split:Split_Join_xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8red)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_xor (8red):split:Split_Join_xor (8red)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_xor (8rbo)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_No_xor (8rbo):split:Join_Join_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_and (8rcn):split:Split_Join_and (8rcn)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_and (8rcn):split:Split_Join_and (8rcn)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_No_and (8rcn):split:Split_Join_and (8rcn)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8red)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_and (8rbv)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_and (8rbv):split:Join_Join_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:Split_Yes_xor (8rcg)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8rcg)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:Split_Yes_xor (8rcg)*xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:and (8rbv)*Join_Yes_and (8rbv)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_and (8rbv):split:Join_Join_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="i" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_and (8rcn)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8rcg)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8red)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):busy" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_xor (8rbo):split:Join_Join_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Split_xor (8rbo)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Yes_xor (8rbo):split:Join_Join_xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Split_xor (8red)" Target="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):join:Physical Inventory (8rc9)*xor (8rbo)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):join:Physical Inventory (8rc9)*xor (8rbo)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Split_Join_xor (8red)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:Split_Yes_xor (8rcg)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:and (8rbv)*Join_Yes_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:Split_Yes_xor (8rcg)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:and (8rbv)*Join_Yes_and (8rbv)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rcg):join:and (8rcn)*xor (8rcg)" Target="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:xor (8rbo):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.8r9o--0-----u--:Model.8r9o--0-----u--:Join_Join_and (8rbv)" Target="*:Model.8r9o--0-----u--:Model.8r9o--0-----u--:end">1</CArc>
+</CGraph>

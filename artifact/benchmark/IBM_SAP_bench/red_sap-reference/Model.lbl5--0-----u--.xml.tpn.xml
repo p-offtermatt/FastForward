@@ -1,0 +1,65 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lbl5--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy"/>
+    <CGraph Type="Place" Label="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):split:Split_Join_or (lbnz)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):split:Split_Join_xor (lblt)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):split:Split_Join_xor (lbm4)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)"/>
+    <CGraph Type="Transition" Label="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)"/>
+    <CArc Type="Arc" Label="arcId100" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):split:Split_Join_or (lbnz)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):split:Split_Join_xor (lblt)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):split:Split_Join_xor (lbm4)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId95" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_and (lbmu)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_or (lbnz):split:Split_Join_or (lbnz)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lblt):split:Split_Join_xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_xor (lbm4):split:Split_Join_xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_No_and (lbmu):split:Split_Join_and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="i" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu):split:Split_Join_and (lbmu):Split_Yes_and (lbmu)*and (lbmu)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lblt)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:Split_Yes_xor (lblt)*xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_xor (lbm4)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:Split_Yes_xor (lbm4)*xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Yes_and (lbmu)*and (lbmu)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Split_or (lbnz)" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):join:or (lbnz)*xor (lblt)" Target="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Split_Join_or (lbnz)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lblt):busy" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):join:and (lbmu)*xor (lbm4)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="p:Model.lbl5--0-----u--:Model.lbl5--0-----u--:xor (lbm4):busy" Target="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_No_and (lbml):split:Join_Join_and (lbml)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.lbl5--0-----u--:Model.lbl5--0-----u--:Join_Yes_and (lbml):split:Join_Join_and (lbml)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.g2hu--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_Join_xor (g2i8)"/>
+    <CGraph Type="Place" Label="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if)*Select and Assign Rollover Position (g2kv)"/>
+    <CGraph Type="Transition" Label="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_No_and (g2jq):split:Join_Join_and (g2jq)"/>
+    <CGraph Type="Transition" Label="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_Yes_and (g2jq):split:Join_Join_and (g2jq)"/>
+    <CGraph Type="Transition" Label="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_No_xor (g2i8):split:Split_Join_xor (g2i8)"/>
+    <CGraph Type="Transition" Label="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if):split:and (g2if)*Determine Rollover Conditions (g2kh):and (g2if)*Select and Assign Rollover Position (g2kv)"/>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_No_xor (g2i8):split:Split_Join_xor (g2i8)" Target="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_Join_xor (g2i8)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if):split:and (g2if)*Determine Rollover Conditions (g2kh):and (g2if)*Select and Assign Rollover Position (g2kv)" Target="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if)*Select and Assign Rollover Position (g2kv)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_Join_xor (g2i8)" Target="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_No_and (g2jq):split:Join_Join_and (g2jq)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_Join_xor (g2i8)" Target="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_Yes_and (g2jq):split:Join_Join_and (g2jq)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_No_xor (g2i8):split:Split_Join_xor (g2i8)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if)*Select and Assign Rollover Position (g2kv)" Target="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_Yes_and (g2jq):split:Join_Join_and (g2jq)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if):split:and (g2if)*Determine Rollover Conditions (g2kh):and (g2if)*Select and Assign Rollover Position (g2kv)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:and (g2if):split:and (g2if)*Determine Rollover Conditions (g2kh):and (g2if)*Select and Assign Rollover Position (g2kv)" Target="p:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Split_Join_xor (g2i8)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_No_and (g2jq):split:Join_Join_and (g2jq)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.g2hu--0-----u--:Model.g2hu--0-----u--:Join_Yes_and (g2jq):split:Join_Join_and (g2jq)" Target="o">1</CArc>
+</CGraph>

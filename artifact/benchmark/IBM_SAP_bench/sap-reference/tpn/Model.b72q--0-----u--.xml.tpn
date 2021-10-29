@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:InputCondition";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Split_xor (b738)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Join_xor (b738)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_xor (b73f)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_xor (b73f)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_and (b73m)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_and (b73m)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:OutputCondition";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738)*xor (b738)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738)*Goods Issue Processing (b746)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746)*xor (b73f)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*Join_Yes_xor (b73f)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*and (b73m)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m)*Join_Yes_and (b73m)";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):busy";
+place "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:busy";
+trans "*:Model.b72q--0-----u--:Model.b72q--0-----u--:start"~"*:Model.b72q--0-----u--:Model.b72q--0-----u--:start"
+    in "i"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:InputCondition"
+;
+trans "*:Model.b72q--0-----u--:Model.b72q--0-----u--:end"~"*:Model.b72q--0-----u--:Model.b72q--0-----u--:end"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:join:InputCondition"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:join:InputCondition"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:InputCondition"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:split:Split_Split_xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:split:Split_Split_xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split:busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Split_xor (b738)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):join:Split_Split_xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):join:Split_Split_xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Split_xor (b738)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):split:Split_Join_xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):split:Split_Join_xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_No_xor (b738):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Join_xor (b738)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):join:Split_Split_xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):join:Split_Split_xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Split_xor (b738)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):split:Split_Join_xor (b738):Split_Yes_xor (b738)*xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):split:Split_Join_xor (b738):Split_Yes_xor (b738)*xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Join_xor (b738)"
+       "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738)*xor (b738)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:join:Split_Join_xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:join:Split_Join_xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Join_xor (b738)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:split:Join_Split_xor (b73f):Join_Split_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:split:Join_Split_xor (b73f):Join_Split_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Skip:busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_xor (b73f)"
+       "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_and (b73m)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):join:Split_Yes_xor (b738)*xor (b738)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):join:Split_Yes_xor (b738)*xor (b738)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Split_Yes_xor (b738)*xor (b738)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):split:xor (b738)*Goods Issue Processing (b746)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):split:xor (b738)*Goods Issue Processing (b746)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738)*Goods Issue Processing (b746)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):join:xor (b738)*Goods Issue Processing (b746)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):join:xor (b738)*Goods Issue Processing (b746)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b738)*Goods Issue Processing (b746)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):split:Goods Issue Processing (b746)*xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):split:Goods Issue Processing (b746)*xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746)*xor (b73f)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):join:Goods Issue Processing (b746)*xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):join:Goods Issue Processing (b746)*xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Goods Issue Processing (b746)*xor (b73f)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):split:xor (b73f)*Join_Yes_xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):split:xor (b73f)*Join_Yes_xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*Join_Yes_xor (b73f)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):split:xor (b73f)*and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):split:xor (b73f)*and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*and (b73m)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):join:xor (b73f)*and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):join:xor (b73f)*and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*and (b73m)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):split:and (b73m)*Join_Yes_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):split:and (b73m)*Join_Yes_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m)*Join_Yes_and (b73m)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):join:Join_Split_xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):join:Join_Split_xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_xor (b73f)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):split:Join_Join_xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):split:Join_Join_xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_xor (b73f):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_xor (b73f)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):join:xor (b73f)*Join_Yes_xor (b73f):Join_Split_xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):join:xor (b73f)*Join_Yes_xor (b73f):Join_Split_xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:xor (b73f)*Join_Yes_xor (b73f)"
+       "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_xor (b73f)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):split:Join_Join_xor (b73f)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):split:Join_Join_xor (b73f)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_xor (b73f):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_xor (b73f)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):join:Join_Split_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):join:Join_Split_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_and (b73m)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):split:Join_Join_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):split:Join_Join_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_No_and (b73m):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_and (b73m)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):join:and (b73m)*Join_Yes_and (b73m):Join_Split_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):join:and (b73m)*Join_Yes_and (b73m):Join_Split_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:and (b73m)*Join_Yes_and (b73m)"
+       "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Split_and (b73m)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):split:Join_Join_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):split:Join_Join_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Yes_and (b73m):busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_and (b73m)"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:join:Join_Join_xor (b73f):Join_Join_and (b73m)"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:join:Join_Join_xor (b73f):Join_Join_and (b73m)"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_xor (b73f)"
+       "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Join_Join_and (b73m)"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:busy"
+;
+trans "t:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:split:OutputCondition"~"t:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:split:OutputCondition"
+    in "p:Model.b72q--0-----u--:Model.b72q--0-----u--:Output:busy"
+   out "p:Model.b72q--0-----u--:Model.b72q--0-----u--:OutputCondition"
+;
+

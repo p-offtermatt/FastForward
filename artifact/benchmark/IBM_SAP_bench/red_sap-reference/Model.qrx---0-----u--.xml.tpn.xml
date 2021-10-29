@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.qrx---0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_Join_and (qsf-)"/>
+    <CGraph Type="Place" Label="p:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-)*Project Progress Analysis (qt0-)"/>
+    <CGraph Type="Transition" Label="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_No_and (qsm-):split:Join_Join_and (qsm-)"/>
+    <CGraph Type="Transition" Label="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_Yes_and (qsm-):split:Join_Join_and (qsm-)"/>
+    <CGraph Type="Transition" Label="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_No_and (qsf-):split:Split_Join_and (qsf-)"/>
+    <CGraph Type="Transition" Label="t:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-):split:and (qsf-)*Project Progress Analysis (qt0-):and (qsf-)*Project Evaluation and Analysis (qte-)"/>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_No_and (qsf-):split:Split_Join_and (qsf-)" Target="p:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_Join_and (qsf-)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-):split:and (qsf-)*Project Progress Analysis (qt0-):and (qsf-)*Project Evaluation and Analysis (qte-)" Target="p:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-)*Project Progress Analysis (qt0-)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_Join_and (qsf-)" Target="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_No_and (qsm-):split:Join_Join_and (qsm-)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_Join_and (qsf-)" Target="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_Yes_and (qsm-):split:Join_Join_and (qsm-)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_No_and (qsf-):split:Split_Join_and (qsf-)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-):split:and (qsf-)*Project Progress Analysis (qt0-):and (qsf-)*Project Evaluation and Analysis (qte-)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-):split:and (qsf-)*Project Progress Analysis (qt0-):and (qsf-)*Project Evaluation and Analysis (qte-)" Target="p:Model.qrx---0-----u--:Model.qrx---0-----u--:Split_Join_and (qsf-)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.qrx---0-----u--:Model.qrx---0-----u--:and (qsf-)*Project Progress Analysis (qt0-)" Target="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_Yes_and (qsm-):split:Join_Join_and (qsm-)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_No_and (qsm-):split:Join_Join_and (qsm-)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.qrx---0-----u--:Model.qrx---0-----u--:Join_Yes_and (qsm-):split:Join_Join_and (qsm-)" Target="o">1</CArc>
+</CGraph>

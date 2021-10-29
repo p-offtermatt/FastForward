@@ -1,0 +1,238 @@
+place "i" init 1;
+place "o";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:InputCondition";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajm5)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajm5)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajme)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajme)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajnj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajnj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_and (ajos)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_and (ajos)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_Order Archiving (ajoj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_Order Archiving (ajoj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:OutputCondition";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5)*and (ajm5)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme)*and (ajme)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj)*and (ajnj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5)*Technical Order Completion (ajmu)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu)*and (ajme)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme)*Order Settlement (ajnc)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc)*and (ajnj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj)*Business Order Completion (ajo1)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1)*and (ajos)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Join_Yes_and (ajos)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Order Archiving (ajoj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj)";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):busy";
+place "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:busy";
+trans "*:Model.ajlf--0-----u--:Model.ajlf--0-----u--:start"~"*:Model.ajlf--0-----u--:Model.ajlf--0-----u--:start"
+    in "i"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:InputCondition"
+;
+trans "*:Model.ajlf--0-----u--:Model.ajlf--0-----u--:end"~"*:Model.ajlf--0-----u--:Model.ajlf--0-----u--:end"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:join:InputCondition"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:join:InputCondition"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:InputCondition"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:split:Split_Split_and (ajm5):Split_Split_and (ajme):Split_Split_and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:split:Split_Split_and (ajm5):Split_Split_and (ajme):Split_Split_and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split:busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajm5)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajme)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajnj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):join:Split_Split_and (ajm5)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):join:Split_Split_and (ajm5)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajm5)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):split:Split_Join_and (ajm5)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):split:Split_Join_and (ajm5)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajm5):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajm5)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):join:Split_Split_and (ajm5)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):join:Split_Split_and (ajm5)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajm5)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):split:Split_Join_and (ajm5):Split_Yes_and (ajm5)*and (ajm5)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):split:Split_Join_and (ajm5):Split_Yes_and (ajm5)*and (ajm5)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajm5)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5)*and (ajm5)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):join:Split_Split_and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):join:Split_Split_and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajme)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):split:Split_Join_and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):split:Split_Join_and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajme):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajme)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):join:Split_Split_and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):join:Split_Split_and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajme)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):split:Split_Join_and (ajme):Split_Yes_and (ajme)*and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):split:Split_Join_and (ajme):Split_Yes_and (ajme)*and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajme)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme)*and (ajme)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):join:Split_Split_and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):join:Split_Split_and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajnj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):split:Split_Join_and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):split:Split_Join_and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_No_and (ajnj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajnj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):join:Split_Split_and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):join:Split_Split_and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Split_and (ajnj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):split:Split_Join_and (ajnj):Split_Yes_and (ajnj)*and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):split:Split_Join_and (ajnj):Split_Yes_and (ajnj)*and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajnj)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj)*and (ajnj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:join:Split_Join_and (ajm5):Split_Join_and (ajme):Split_Join_and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:join:Split_Join_and (ajm5):Split_Join_and (ajme):Split_Join_and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajm5)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajme)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Join_and (ajnj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:split:Join_Split_and (ajos):Join_Split_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:split:Join_Split_and (ajos):Join_Split_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Skip:busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_and (ajos)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_Order Archiving (ajoj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):join:Split_Yes_and (ajm5)*and (ajm5)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):join:Split_Yes_and (ajm5)*and (ajm5)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajm5)*and (ajm5)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):split:and (ajm5)*Technical Order Completion (ajmu)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):split:and (ajm5)*Technical Order Completion (ajmu)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5)*Technical Order Completion (ajmu)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):join:and (ajm5)*Technical Order Completion (ajmu)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):join:and (ajm5)*Technical Order Completion (ajmu)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajm5)*Technical Order Completion (ajmu)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):split:Technical Order Completion (ajmu)*and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):split:Technical Order Completion (ajmu)*and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu)*and (ajme)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):join:Split_Yes_and (ajme)*and (ajme):Technical Order Completion (ajmu)*and (ajme)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):join:Split_Yes_and (ajme)*and (ajme):Technical Order Completion (ajmu)*and (ajme)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajme)*and (ajme)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Technical Order Completion (ajmu)*and (ajme)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):split:and (ajme)*Order Settlement (ajnc)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):split:and (ajme)*Order Settlement (ajnc)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme)*Order Settlement (ajnc)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):join:and (ajme)*Order Settlement (ajnc)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):join:and (ajme)*Order Settlement (ajnc)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajme)*Order Settlement (ajnc)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):split:Order Settlement (ajnc)*and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):split:Order Settlement (ajnc)*and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc)*and (ajnj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):join:Split_Yes_and (ajnj)*and (ajnj):Order Settlement (ajnc)*and (ajnj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):join:Split_Yes_and (ajnj)*and (ajnj):Order Settlement (ajnc)*and (ajnj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Split_Yes_and (ajnj)*and (ajnj)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Settlement (ajnc)*and (ajnj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):split:and (ajnj)*Business Order Completion (ajo1)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):split:and (ajnj)*Business Order Completion (ajo1)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj)*Business Order Completion (ajo1)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):join:and (ajnj)*Business Order Completion (ajo1)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):join:and (ajnj)*Business Order Completion (ajo1)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajnj)*Business Order Completion (ajo1)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):split:Business Order Completion (ajo1)*and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):split:Business Order Completion (ajo1)*and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1)*and (ajos)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):join:Business Order Completion (ajo1)*and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):join:Business Order Completion (ajo1)*and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Business Order Completion (ajo1)*and (ajos)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):split:and (ajos)*Join_Yes_and (ajos):and (ajos)*Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):split:and (ajos)*Join_Yes_and (ajos):and (ajos)*Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Join_Yes_and (ajos)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Order Archiving (ajoj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):join:and (ajos)*Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):join:and (ajos)*Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Order Archiving (ajoj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):split:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):split:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):join:Join_Split_and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):join:Join_Split_and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_and (ajos)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):split:Join_Join_and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):split:Join_Join_and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_and (ajos):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_and (ajos)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):join:and (ajos)*Join_Yes_and (ajos):Join_Split_and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):join:and (ajos)*Join_Yes_and (ajos):Join_Split_and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:and (ajos)*Join_Yes_and (ajos)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_and (ajos)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):split:Join_Join_and (ajos)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):split:Join_Join_and (ajos)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_and (ajos):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_and (ajos)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):join:Join_Split_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):join:Join_Split_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_Order Archiving (ajoj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):split:Join_Join_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):split:Join_Join_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_No_Order Archiving (ajoj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_Order Archiving (ajoj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):join:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj):Join_Split_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):join:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj):Join_Split_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Order Archiving (ajoj)*Join_Yes_Order Archiving (ajoj)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Split_Order Archiving (ajoj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):split:Join_Join_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):split:Join_Join_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Yes_Order Archiving (ajoj):busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_Order Archiving (ajoj)"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:join:Join_Join_and (ajos):Join_Join_Order Archiving (ajoj)"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:join:Join_Join_and (ajos):Join_Join_Order Archiving (ajoj)"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_and (ajos)"
+       "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Join_Join_Order Archiving (ajoj)"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:busy"
+;
+trans "t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:split:OutputCondition"~"t:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:split:OutputCondition"
+    in "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:Output:busy"
+   out "p:Model.ajlf--0-----u--:Model.ajlf--0-----u--:OutputCondition"
+;
+

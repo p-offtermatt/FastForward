@@ -1,0 +1,19 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B2/B2.s00000615__s00005186.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="fork.s00001293.activated.s00000993"/>
+    <CGraph Type="Place" Label="join.s00001294.input.s00000952"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00000946"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00000948"/>
+    <CGraph Type="Place" Label="merge.s00000945.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId144" Source="merge.s00000945.activate.s00000946" Target="merge.s00000945.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId145" Source="merge.s00000945.activate.s00000948" Target="merge.s00000945.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_107" Source="fork.s00001293.activated.s00000993" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_108" Source="join.s00001294.input.s00000952" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_109" Source="alpha" Target="merge.s00000945.activate.s00000948">1</CArc>
+    <CArc Type="Arc" Label="ra_110" Source="merge.s00000945.activate.s00000948" Target="join.s00001294.input.s00000952">1</CArc>
+    <CArc Type="Arc" Label="ra_87" Source="merge.s00000945.activated" Target="merge.s00000945.activate.s00000946">1</CArc>
+    <CArc Type="Arc" Label="ra_88" Source="merge.s00000945.activate.s00000946" Target="fork.s00001293.activated.s00000993">1</CArc>
+    <CArc Type="Arc" Label="sa_17" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

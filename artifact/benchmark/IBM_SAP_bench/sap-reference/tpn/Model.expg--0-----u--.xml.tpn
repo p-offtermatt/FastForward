@@ -1,0 +1,146 @@
+place "i" init 1;
+place "o";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:InputCondition";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_or (expu)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_or (expu)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_xor (exq1)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_xor (exq1)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Split_General Ledger Planning (exqh)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Join_General Ledger Planning (exqh)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:outputCondition";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu)*or (expu)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1)*xor (exq1)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu)*General Ledger Planning (exqh)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1)*or (expu)";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split:busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Skip:busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):busy";
+place "p:Model.expg--0-----u--:Model.expg--0-----u--:Output:busy";
+trans "*:Model.expg--0-----u--:Model.expg--0-----u--:start"~"*:Model.expg--0-----u--:Model.expg--0-----u--:start"
+    in "i"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:InputCondition"
+;
+trans "*:Model.expg--0-----u--:Model.expg--0-----u--:end"~"*:Model.expg--0-----u--:Model.expg--0-----u--:end"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split:join:InputCondition"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split:join:InputCondition"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:InputCondition"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split:busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split:split:Split_Split_or (expu):Split_Split_xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split:split:Split_Split_or (expu):Split_Split_xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split:busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_or (expu)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_xor (exq1)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):join:Split_Split_or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):join:Split_Split_or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_or (expu)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):split:Split_Join_or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):split:Split_Join_or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_or (expu):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_or (expu)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):join:Split_Split_or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):join:Split_Split_or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_or (expu)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):split:Split_Join_or (expu):Split_Yes_or (expu)*or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):split:Split_Join_or (expu):Split_Yes_or (expu)*or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_or (expu)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu)*or (expu)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):join:Split_Split_xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):join:Split_Split_xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_xor (exq1)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):split:Split_Join_xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):split:Split_Join_xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_No_xor (exq1):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_xor (exq1)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):join:Split_Split_xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):join:Split_Split_xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Split_xor (exq1)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):split:Split_Join_xor (exq1):Split_Yes_xor (exq1)*xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):split:Split_Join_xor (exq1):Split_Yes_xor (exq1)*xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_xor (exq1)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1)*xor (exq1)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Skip:join:Split_Join_or (expu):Split_Join_xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Skip:join:Split_Join_or (expu):Split_Join_xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_or (expu)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Join_xor (exq1)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Skip:busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Skip:split:Join_Split_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Skip:split:Join_Split_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Skip:busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Split_General Ledger Planning (exqh)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:Split_Yes_or (expu)*or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:Split_Yes_or (expu)*or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu)*or (expu)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:xor (exq1)*or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:xor (exq1)*or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1)*or (expu)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:Split_Yes_or (expu)*or (expu):xor (exq1)*or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):join:Split_Yes_or (expu)*or (expu):xor (exq1)*or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_or (expu)*or (expu)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1)*or (expu)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):split:or (expu)*General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):split:or (expu)*General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu)*General Ledger Planning (exqh)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):join:or (expu)*General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):join:or (expu)*General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:or (expu)*General Ledger Planning (exqh)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):split:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):split:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):join:Split_Yes_xor (exq1)*xor (exq1)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):join:Split_Yes_xor (exq1)*xor (exq1)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Split_Yes_xor (exq1)*xor (exq1)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):split:xor (exq1)*or (expu)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):split:xor (exq1)*or (expu)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:xor (exq1)*or (expu)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):join:Join_Split_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):join:Join_Split_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Split_General Ledger Planning (exqh)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):split:Join_Join_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):split:Join_Join_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_No_General Ledger Planning (exqh):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Join_General Ledger Planning (exqh)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):join:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh):Join_Split_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):join:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh):Join_Split_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:General Ledger Planning (exqh)*Join_Yes_General Ledger Planning (exqh)"
+       "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Split_General Ledger Planning (exqh)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):split:Join_Join_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):split:Join_Join_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Yes_General Ledger Planning (exqh):busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Join_General Ledger Planning (exqh)"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Output:join:Join_Join_General Ledger Planning (exqh)"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Output:join:Join_Join_General Ledger Planning (exqh)"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Join_Join_General Ledger Planning (exqh)"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:Output:busy"
+;
+trans "t:Model.expg--0-----u--:Model.expg--0-----u--:Output:split:outputCondition"~"t:Model.expg--0-----u--:Model.expg--0-----u--:Output:split:outputCondition"
+    in "p:Model.expg--0-----u--:Model.expg--0-----u--:Output:busy"
+   out "p:Model.expg--0-----u--:Model.expg--0-----u--:outputCondition"
+;
+

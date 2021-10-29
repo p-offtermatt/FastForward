@@ -1,0 +1,62 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.kex6--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.kex6--0-----u--:Model.kex6--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Retirement (kezl)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_and (key6)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Retirement (kezl)"/>
+    <CGraph Type="Place" Label="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Transfer Within a Client (kf03)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Retirement (kezl):split:Join_Join_Retirement (kezl)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_and (key6):split:Join_Join_and (key6)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Retirement (kezl):split:Join_Join_Retirement (kezl)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_and (key6):split:Join_Join_and (key6)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Split_No_xor (kf0a):split:Split_Join_xor (kf0a)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)"/>
+    <CGraph Type="Transition" Label="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Retirement (kezl):split:Join_Join_Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Retirement (kezl):split:Join_Join_Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_and (key6):split:Join_Join_and (key6)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_and (key6):split:Join_Join_and (key6)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.kex6--0-----u--:Model.kex6--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="arcId84" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Transfer Within a Client (kf03)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_and (key6):split:Join_Join_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Processing of Asset Acquisition (kf1s)" Target="*:Model.kex6--0-----u--:Model.kex6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_Retirement (kezl)" Target="*:Model.kex6--0-----u--:Model.kex6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Join_and (key6)" Target="*:Model.kex6--0-----u--:Model.kex6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Processing of Asset Acquisition (kf1s)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Retirement (kezl)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Retirement (kezl):split:Join_Join_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Split_No_xor (kf0a):split:Split_Join_xor (kf0a)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z)*Transfer Within a Client (kf03)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_and (key6):split:Join_Join_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="i" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_Retirement (kezl):split:Join_Join_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="i" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Split_No_xor (kf0a):split:Split_Join_xor (kf0a)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Split_No_xor (kf0a):split:Split_Join_xor (kf0a)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Split_No_xor (kf0a):split:Split_Join_xor (kf0a)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_No_and (key6):split:Join_Join_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Processing of Asset Acquisition (kf1s)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Retirement (kezl)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.kex6--0-----u--:Model.kex6--0-----u--:xor (kf1z):split:xor (kf1z)*Transfer Within a Client (kf03)" Target="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_and (key6)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Processing of Asset Acquisition (kf1s)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Processing of Asset Acquisition (kf1s):split:Join_Join_Processing of Asset Acquisition (kf1s)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Split_Retirement (kezl)" Target="t:Model.kex6--0-----u--:Model.kex6--0-----u--:Join_Yes_Retirement (kezl):split:Join_Join_Retirement (kezl)">1</CArc>
+</CGraph>

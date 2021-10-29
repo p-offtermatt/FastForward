@@ -1,0 +1,48 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.agcd--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.agcd--0-----u--:Model.agcd--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_or (agdq)"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Place" Label="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Join_Yes_or (agdq)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_or (agdq):split:Join_Join_or (agdq)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_or (agdq):split:Join_Join_or (agdq)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Split_No_Front Office (agef):split:Split_Join_Front Office (agef)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Evaluations (Call Center) (aget)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq)"/>
+    <CGraph Type="Transition" Label="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_or (agdq):split:Join_Join_or (agdq)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_or (agdq):split:Join_Join_or (agdq)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.agcd--0-----u--:Model.agcd--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Join_Yes_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Join_Yes_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Join_Yes_or (agdq)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_or (agdq):split:Join_Join_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_Evaluations (Call Center) (aget)" Target="*:Model.agcd--0-----u--:Model.agcd--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Join_or (agdq)" Target="*:Model.agcd--0-----u--:Model.agcd--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Split_No_Front Office (agef):split:Split_Join_Front Office (agef)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Split_No_Front Office (agef):split:Split_Join_Front Office (agef)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Split_No_Front Office (agef):split:Split_Join_Front Office (agef)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq):split:or (agdq)*Join_Yes_or (agdq):or (agdq)*Evaluations (Call Center) (aget)" Target="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_No_or (agdq):split:Join_Join_or (agdq)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_Evaluations (Call Center) (aget)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:or (agdq)*Evaluations (Call Center) (aget)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_Evaluations (Call Center) (aget):split:Join_Join_Evaluations (Call Center) (aget)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Split_or (agdq)" Target="t:Model.agcd--0-----u--:Model.agcd--0-----u--:Join_Yes_or (agdq):split:Join_Join_or (agdq)">1</CArc>
+</CGraph>

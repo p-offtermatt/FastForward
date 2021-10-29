@@ -1,0 +1,151 @@
+place "i" init 1;
+place "o";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:InputCondition";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxih)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxih)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxio)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxio)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Split_Implementation of Personnel Development System (lxj2)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Join_Implementation of Personnel Development System (lxj2)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:outputCondition";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih)*xor (lxih)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio)*xor (lxio)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih)*Design of Personnel Development System (lxia)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia)*xor (lxio)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio)*Implementation of Personnel Development System (lxj2)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2)";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):busy";
+place "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:busy";
+trans "*:Model.lxhj--0-----u--:Model.lxhj--0-----u--:start"~"*:Model.lxhj--0-----u--:Model.lxhj--0-----u--:start"
+    in "i"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:InputCondition"
+;
+trans "*:Model.lxhj--0-----u--:Model.lxhj--0-----u--:end"~"*:Model.lxhj--0-----u--:Model.lxhj--0-----u--:end"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:join:InputCondition"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:join:InputCondition"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:InputCondition"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:split:Split_Split_xor (lxih):Split_Split_xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:split:Split_Split_xor (lxih):Split_Split_xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split:busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxih)"
+       "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxio)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):join:Split_Split_xor (lxih)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):join:Split_Split_xor (lxih)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxih)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):split:Split_Join_xor (lxih)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):split:Split_Join_xor (lxih)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxih):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxih)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):join:Split_Split_xor (lxih)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):join:Split_Split_xor (lxih)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxih)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):split:Split_Join_xor (lxih):Split_Yes_xor (lxih)*xor (lxih)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):split:Split_Join_xor (lxih):Split_Yes_xor (lxih)*xor (lxih)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxih)"
+       "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih)*xor (lxih)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):join:Split_Split_xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):join:Split_Split_xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxio)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):split:Split_Join_xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):split:Split_Join_xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_No_xor (lxio):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxio)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):join:Split_Split_xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):join:Split_Split_xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Split_xor (lxio)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):split:Split_Join_xor (lxio):Split_Yes_xor (lxio)*xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):split:Split_Join_xor (lxio):Split_Yes_xor (lxio)*xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxio)"
+       "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio)*xor (lxio)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:join:Split_Join_xor (lxih):Split_Join_xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:join:Split_Join_xor (lxih):Split_Join_xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxih)"
+       "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Join_xor (lxio)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:split:Join_Split_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:split:Join_Split_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Skip:busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Split_Implementation of Personnel Development System (lxj2)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):join:Split_Yes_xor (lxih)*xor (lxih)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):join:Split_Yes_xor (lxih)*xor (lxih)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxih)*xor (lxih)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):split:xor (lxih)*Design of Personnel Development System (lxia)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):split:xor (lxih)*Design of Personnel Development System (lxia)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih)*Design of Personnel Development System (lxia)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):join:xor (lxih)*Design of Personnel Development System (lxia)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):join:xor (lxih)*Design of Personnel Development System (lxia)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxih)*Design of Personnel Development System (lxia)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):split:Design of Personnel Development System (lxia)*xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):split:Design of Personnel Development System (lxia)*xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia)*xor (lxio)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):join:Split_Yes_xor (lxio)*xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):join:Split_Yes_xor (lxio)*xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Split_Yes_xor (lxio)*xor (lxio)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):join:Design of Personnel Development System (lxia)*xor (lxio)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):join:Design of Personnel Development System (lxia)*xor (lxio)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Design of Personnel Development System (lxia)*xor (lxio)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):split:xor (lxio)*Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):split:xor (lxio)*Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio)*Implementation of Personnel Development System (lxj2)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):join:xor (lxio)*Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):join:xor (lxio)*Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:xor (lxio)*Implementation of Personnel Development System (lxj2)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):split:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):split:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):join:Join_Split_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):join:Join_Split_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Split_Implementation of Personnel Development System (lxj2)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):split:Join_Join_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):split:Join_Join_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_No_Implementation of Personnel Development System (lxj2):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Join_Implementation of Personnel Development System (lxj2)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):join:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2):Join_Split_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):join:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2):Join_Split_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Implementation of Personnel Development System (lxj2)*Join_Yes_Implementation of Personnel Development System (lxj2)"
+       "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Split_Implementation of Personnel Development System (lxj2)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):split:Join_Join_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):split:Join_Join_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Yes_Implementation of Personnel Development System (lxj2):busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Join_Implementation of Personnel Development System (lxj2)"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:join:Join_Join_Implementation of Personnel Development System (lxj2)"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:join:Join_Join_Implementation of Personnel Development System (lxj2)"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Join_Join_Implementation of Personnel Development System (lxj2)"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:busy"
+;
+trans "t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:split:outputCondition"~"t:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:split:outputCondition"
+    in "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:Output:busy"
+   out "p:Model.lxhj--0-----u--:Model.lxhj--0-----u--:outputCondition"
+;
+

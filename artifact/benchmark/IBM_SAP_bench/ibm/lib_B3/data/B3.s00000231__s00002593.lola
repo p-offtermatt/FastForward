@@ -1,0 +1,43 @@
+{ Petri net created by UML2oWFN 2.11 }
+
+PLACE
+  alpha, callToTask.s00002585.inputCriterion.s00001053.used, callToTask.s00002585.output.s00001054, callToTask.s00002585.output.s00001077, callToTask.s00002594.inputCriterion.s00001053.used, callToTask.s00002594.output.s00001054, callToTask.s00002594.output.s00001077, callToTask.s00002595.input.s00001066, callToTask.s00002595.inputCriterion.s00001053.used, callToTask.s00002595.output.s00001054, callToTask.s00002595.output.s00001077, process.s00000231##s00002593.input.s00001052, process.s00000231##s00002593.outputCriterion.s00001055_omega;
+
+MARKING
+  alpha:1;
+
+
+TRANSITION callToTask.s00002585.inputCriterion.s00001053
+  CONSUME callToTask.s00002595.output.s00001054:1, callToTask.s00002595.output.s00001077:1;
+  PRODUCE callToTask.s00002585.inputCriterion.s00001053.used:1;
+
+TRANSITION callToTask.s00002585.outputCriterion.s00001055
+  CONSUME callToTask.s00002585.inputCriterion.s00001053.used:1;
+  PRODUCE callToTask.s00002585.output.s00001054:1, callToTask.s00002585.output.s00001077:1;
+
+TRANSITION callToTask.s00002594.inputCriterion.s00001053
+  CONSUME callToTask.s00002585.output.s00001054:1, callToTask.s00002585.output.s00001077:1;
+  PRODUCE callToTask.s00002594.inputCriterion.s00001053.used:1;
+
+TRANSITION callToTask.s00002594.outputCriterion.s00001055
+  CONSUME callToTask.s00002594.inputCriterion.s00001053.used:1;
+  PRODUCE callToTask.s00002594.output.s00001054:1, callToTask.s00002594.output.s00001077:1;
+
+TRANSITION callToTask.s00002595.inputCriterion.s00001053
+  CONSUME callToTask.s00002595.input.s00001066:1, process.s00000231##s00002593.input.s00001052:1;
+  PRODUCE callToTask.s00002595.inputCriterion.s00001053.used:1;
+
+TRANSITION callToTask.s00002595.outputCriterion.s00001055
+  CONSUME callToTask.s00002595.inputCriterion.s00001053.used:1;
+  PRODUCE callToTask.s00002595.output.s00001054:1, callToTask.s00002595.output.s00001077:1;
+
+TRANSITION process.s00000231##s00002593.inputCriterion.s00001053
+  CONSUME alpha:1;
+  PRODUCE callToTask.s00002595.input.s00001066:1, process.s00000231##s00002593.input.s00001052:1;
+
+TRANSITION process.s00000231##s00002593.outputCriterion.s00001055
+  CONSUME callToTask.s00002594.output.s00001054:1;
+  PRODUCE process.s00000231##s00002593.outputCriterion.s00001055_omega:1;
+
+
+{ END OF FILE }
