@@ -1,0 +1,24 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B3/B3.s00000159__s00002001.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00001996.input.s00001066"/>
+    <CGraph Type="Place" Label="callToProcess.s00001996.output.s00001083"/>
+    <CGraph Type="Transition" Label="decision.s00001123.activate.s00001072"/>
+    <CGraph Type="Place" Label="decision.s00001123.activated"/>
+    <CGraph Type="Transition" Label="decision.s00001123.fire.s00001073"/>
+    <CGraph Type="Transition" Label="decision.s00001123.fire.s00001078"/>
+    <CGraph Type="Place" Label="endNode.s00001400.input.default"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId20" Source="decision.s00001123.activated" Target="decision.s00001123.fire.s00001078">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="decision.s00001123.activate.s00001072" Target="decision.s00001123.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="decision.s00001123.activated" Target="decision.s00001123.fire.s00001073">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="decision.s00001123.fire.s00001078" Target="endNode.s00001400.input.default">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="decision.s00001123.fire.s00001073" Target="callToProcess.s00001996.input.s00001066">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="callToProcess.s00001996.input.s00001066" Target="decision.s00001123.activate.s00001072">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="decision.s00001123.activate.s00001072" Target="callToProcess.s00001996.output.s00001083">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="alpha" Target="decision.s00001123.activate.s00001072">1</CArc>
+    <CArc Type="Arc" Label="sa_13" Source="callToProcess.s00001996.output.s00001083" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_15" Source="endNode.s00001400.input.default" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_16" Source="t_star" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="sa_7" Source="decision.s00001123.fire.s00001078" Target="callToProcess.s00001996.output.s00001083">1</CArc>
+</CGraph>

@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.mi2b--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_and (mi2z)"/>
+    <CGraph Type="Place" Label="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_or (mi3k)"/>
+    <CGraph Type="Place" Label="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Split_or (mi3k)"/>
+    <CGraph Type="Place" Label="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z)*and (mi2z)"/>
+    <CGraph Type="Place" Label="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):busy"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_No_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_and (mi2z):split:Split_Join_and (mi2z)"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_or (mi3k):split:Split_Join_or (mi3k)"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z):split:Split_Join_and (mi2z):Split_Yes_and (mi2z)*and (mi2z)"/>
+    <CGraph Type="Transition" Label="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):join:Split_Yes_or (mi3k)*or (mi3k)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_and (mi2z):split:Split_Join_and (mi2z)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_and (mi2z)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z):split:Split_Join_and (mi2z):Split_Yes_and (mi2z)*and (mi2z)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_and (mi2z)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_or (mi3k):split:Split_Join_or (mi3k)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z):split:Split_Join_and (mi2z):Split_Yes_and (mi2z)*and (mi2z)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z)*and (mi2z)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):join:Split_Yes_or (mi3k)*or (mi3k)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_or (mi3k)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_No_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_and (mi2z)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_or (mi3k)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Split_or (mi3k)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_or (mi3k):split:Split_Join_or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_and (mi2z):split:Split_Join_and (mi2z)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_No_and (mi2z):split:Split_Join_and (mi2z)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Split_or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z):split:Split_Join_and (mi2z):Split_Yes_and (mi2z)*and (mi2z)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z):split:Split_Join_and (mi2z):Split_Yes_and (mi2z)*and (mi2z)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Split_or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):join:Split_Yes_or (mi3k)*or (mi3k)" Target="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Split_or (mi3k)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):join:Split_Yes_or (mi3k)*or (mi3k)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Yes_and (mi2z)*and (mi2z)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:or (mi3k):busy" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_No_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_Yes_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Split_Join_and (mi2z)" Target="t:Model.mi2b--0-----u--:Model.mi2b--0-----u--:Join_No_Calculation of Payment Amounts (mi3d):split:Join_Join_Calculation of Payment Amounts (mi3d)">1</CArc>
+</CGraph>

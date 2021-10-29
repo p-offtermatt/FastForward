@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m5rc--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_Join_and (m5rs)"/>
+    <CGraph Type="Place" Label="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_No_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)"/>
+    <CGraph Type="Transition" Label="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_Yes_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)"/>
+    <CGraph Type="Transition" Label="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_No_and (m5rs):split:Split_Join_and (m5rs)"/>
+    <CGraph Type="Transition" Label="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):join:Split_Yes_and (m5rs)*and (m5rs)"/>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_No_and (m5rs):split:Split_Join_and (m5rs)" Target="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_Join_and (m5rs)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):join:Split_Yes_and (m5rs)*and (m5rs)" Target="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_Join_and (m5rs)" Target="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_Yes_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_No_and (m5rs):split:Split_Join_and (m5rs)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):join:Split_Yes_and (m5rs)*and (m5rs)" Target="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_Join_and (m5rs)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):join:Split_Yes_and (m5rs)*and (m5rs)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:and (m5rs):busy" Target="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_Yes_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_No_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_Yes_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Split_Join_and (m5rs)" Target="t:Model.m5rc--0-----u--:Model.m5rc--0-----u--:Join_No_Entry of Sales Order for Long-Term Incentives (m5s6):split:Join_Join_Entry of Sales Order for Long-Term Incentives (m5s6)">1</CArc>
+</CGraph>

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.mi5q--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_Join_and (mi6a)"/>
+    <CGraph Type="Place" Label="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):busy"/>
+    <CGraph Type="Transition" Label="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_No_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)"/>
+    <CGraph Type="Transition" Label="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_Yes_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)"/>
+    <CGraph Type="Transition" Label="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_No_and (mi6a):split:Split_Join_and (mi6a)"/>
+    <CGraph Type="Transition" Label="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):join:Split_Yes_and (mi6a)*and (mi6a)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_No_and (mi6a):split:Split_Join_and (mi6a)" Target="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_Join_and (mi6a)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):join:Split_Yes_and (mi6a)*and (mi6a)" Target="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_Join_and (mi6a)" Target="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_Yes_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_No_and (mi6a):split:Split_Join_and (mi6a)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):join:Split_Yes_and (mi6a)*and (mi6a)" Target="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_Join_and (mi6a)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):join:Split_Yes_and (mi6a)*and (mi6a)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:and (mi6a):busy" Target="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_Yes_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_No_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_Yes_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Split_Join_and (mi6a)" Target="t:Model.mi5q--0-----u--:Model.mi5q--0-----u--:Join_No_Garnishment of Wages (mi6o):split:Join_Join_Garnishment of Wages (mi6o)">1</CArc>
+</CGraph>

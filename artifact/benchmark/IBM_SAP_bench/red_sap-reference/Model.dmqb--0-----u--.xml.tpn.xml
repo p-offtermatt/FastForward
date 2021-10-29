@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.dmqb--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_Join_Budget Allocation (dmr9)"/>
+    <CGraph Type="Place" Label="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):busy"/>
+    <CGraph Type="Transition" Label="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_No_or (dmqv):split:Join_Join_or (dmqv)"/>
+    <CGraph Type="Transition" Label="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_Yes_or (dmqv):split:Join_Join_or (dmqv)"/>
+    <CGraph Type="Transition" Label="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_No_Budget Allocation (dmr9):split:Split_Join_Budget Allocation (dmr9)"/>
+    <CGraph Type="Transition" Label="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):join:Budget Allocation (dmr9)*or (dmqv)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_No_Budget Allocation (dmr9):split:Split_Join_Budget Allocation (dmr9)" Target="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_Join_Budget Allocation (dmr9)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):join:Budget Allocation (dmr9)*or (dmqv)" Target="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_Join_Budget Allocation (dmr9)" Target="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_Yes_or (dmqv):split:Join_Join_or (dmqv)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_No_Budget Allocation (dmr9):split:Split_Join_Budget Allocation (dmr9)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):join:Budget Allocation (dmr9)*or (dmqv)" Target="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_Join_Budget Allocation (dmr9)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):join:Budget Allocation (dmr9)*or (dmqv)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:or (dmqv):busy" Target="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_Yes_or (dmqv):split:Join_Join_or (dmqv)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_No_or (dmqv):split:Join_Join_or (dmqv)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_Yes_or (dmqv):split:Join_Join_or (dmqv)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Split_Join_Budget Allocation (dmr9)" Target="t:Model.dmqb--0-----u--:Model.dmqb--0-----u--:Join_No_or (dmqv):split:Join_Join_or (dmqv)">1</CArc>
+</CGraph>

@@ -1,0 +1,24 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B3/B3.s00000867__s00006514.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToTask.s00002122.output.s00001077"/>
+    <CGraph Type="Place" Label="fork.s00001071.activated.s00001075"/>
+    <CGraph Type="Transition" Label="fork.s00001071.fire.s00001073"/>
+    <CGraph Type="Transition" Label="merge.s00001061.activate.s00001064"/>
+    <CGraph Type="Transition" Label="merge.s00001061.activate.s00001065"/>
+    <CGraph Type="Place" Label="merge.s00001061.input.s00001068"/>
+    <CGraph Type="Place" Label="merge.s00001061.input.s00001128"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId32" Source="merge.s00001061.input.s00001068" Target="merge.s00001061.activate.s00001065">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="merge.s00001061.input.s00001128" Target="merge.s00001061.activate.s00001064">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="fork.s00001071.fire.s00001073" Target="merge.s00001061.input.s00001128">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="alpha" Target="fork.s00001071.fire.s00001073">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="fork.s00001071.fire.s00001073" Target="merge.s00001061.input.s00001068">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="fork.s00001071.fire.s00001073" Target="callToTask.s00002122.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="merge.s00001061.activate.s00001064" Target="callToTask.s00002122.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="merge.s00001061.activate.s00001065" Target="callToTask.s00002122.output.s00001077">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="callToTask.s00002122.output.s00001077" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="fork.s00001071.activated.s00001075" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="fork.s00001071.fire.s00001073" Target="fork.s00001071.activated.s00001075">1</CArc>
+    <CArc Type="Arc" Label="sa_2" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

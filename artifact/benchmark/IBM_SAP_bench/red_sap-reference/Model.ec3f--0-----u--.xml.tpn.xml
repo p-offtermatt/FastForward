@@ -1,0 +1,105 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.ec3f--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.ec3f--0-----u--:Model.ec3f--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Data Transfer (ec99)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Integration Interface (ec8i)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_xor (ec47)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Data Transfer (ec99)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Integration Interface (ec8i)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_xor (ec47)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_or (ec9g)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec3t)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec5p)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec6i)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec3t)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec5p)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec6i)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):busy"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):busy"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):busy"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):busy"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i)*and (ec40)"/>
+    <CGraph Type="Place" Label="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):busy"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_xor (ec47):split:Join_Join_xor (ec47)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_xor (ec47):split:Join_Join_xor (ec47)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec3t):split:Split_Join_xor (ec3t)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec5p):split:Split_Join_xor (ec5p)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec6i):split:Split_Join_xor (ec6i)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w):xor (ec6i)*or (ec5w)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec6i)*or (ec5w)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):join:Split_Yes_xor (ec3t)*xor (ec3t)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):join:Split_Yes_xor (ec5p)*xor (ec5p)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):join:Split_Yes_xor (ec6i)*xor (ec6i)"/>
+    <CGraph Type="Transition" Label="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):split:xor (ec6i)*and (ec40)"/>
+    <CArc Type="Arc" Label="arcId109" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w):xor (ec6i)*or (ec5w)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId111" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec6i)*or (ec5w)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId112" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId115" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId119" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):join:Split_Yes_xor (ec3t)*xor (ec3t)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId129" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):join:Split_Yes_xor (ec5p)*xor (ec5p)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId131" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):split:xor (ec6i)*and (ec40)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i)*and (ec40)">1</CArc>
+    <CArc Type="Arc" Label="arcId135" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):join:Split_Yes_xor (ec6i)*xor (ec6i)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId136" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):split:xor (ec6i)*and (ec40)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.ec3f--0-----u--:Model.ec3f--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_xor (ec47):split:Join_Join_xor (ec47)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_xor (ec47):split:Join_Join_xor (ec47)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_or (ec9g)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec3t):split:Split_Join_xor (ec3t)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec5p):split:Split_Join_xor (ec5p)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="arcId65" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec6i):split:Split_Join_xor (ec6i)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Data Transfer (ec99)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Integration Interface (ec8i)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_xor (ec47)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_xor (ec47):split:Join_Join_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Data Transfer (ec99)" Target="*:Model.ec3f--0-----u--:Model.ec3f--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_Integration Interface (ec8i)" Target="*:Model.ec3f--0-----u--:Model.ec3f--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Join_xor (ec47)" Target="*:Model.ec3f--0-----u--:Model.ec3f--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_or (ec9g)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec3t)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec5p)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec6i)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Skip:split:Join_Split_xor (ec47):Join_Split_Integration Interface (ec8i):Join_Split_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec3t)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec3t):split:Split_Join_xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec5p)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec5p):split:Split_Join_xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec6i)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_xor (ec6i):split:Split_Join_xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_No_or (ec9g):split:Split_Join_or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_or (ec9g)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="i" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):join:Split_Yes_or (ec9g)*or (ec9g)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):join:Split_Yes_xor (ec3t)*xor (ec3t)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec3t)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):join:Split_Yes_xor (ec3t)*xor (ec3t)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):join:Split_Yes_xor (ec5p)*xor (ec5p)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec5p)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):join:Split_Yes_xor (ec5p)*xor (ec5p)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):join:Split_Yes_xor (ec6i)*xor (ec6i)" Target="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Join_xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Split_Split_xor (ec6i)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):join:Split_Yes_xor (ec6i)*xor (ec6i)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec9g):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec3t):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_xor (ec47):split:Join_Join_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i)*and (ec40)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Yes_xor (ec47):split:Join_Join_xor (ec47)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec5p):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w):xor (ec6i)*or (ec5w)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec5p)*or (ec5w):xor (ec6i)*or (ec5w)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:xor (ec6i):busy" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:or (ec5w):join:xor (ec6i)*or (ec5w)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Data Transfer (ec99)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Data Transfer (ec99):split:Join_Join_Data Transfer (ec99)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_Integration Interface (ec8i)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_Integration Interface (ec8i):split:Join_Join_Integration Interface (ec8i)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_Split_xor (ec47)" Target="t:Model.ec3f--0-----u--:Model.ec3f--0-----u--:Join_No_xor (ec47):split:Join_Join_xor (ec47)">1</CArc>
+</CGraph>

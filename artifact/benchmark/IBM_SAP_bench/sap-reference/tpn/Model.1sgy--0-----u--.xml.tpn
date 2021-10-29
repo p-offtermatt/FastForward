@@ -1,0 +1,227 @@
+place "i" init 1;
+place "o";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:InputCondition";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_and (1shc)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:OutputCondition";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc)*and (1shc)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie)*xor (1sie)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc)*and (1shj)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Single-Item (1siw)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Interactive (1sjc)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw)*and (1shs)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs)*or (1shz)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*xor (1sie)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc)*and (1shs)";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):busy";
+place "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:busy";
+trans "*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:start"~"*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:start"
+    in "i"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:InputCondition"
+;
+trans "*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end"~"*:Model.1sgy--0-----u--:Model.1sgy--0-----u--:end"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:join:InputCondition"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:join:InputCondition"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:InputCondition"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:split:Split_Split_and (1shc):Split_Split_xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:split:Split_Split_and (1shc):Split_Split_xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split:busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_and (1shc)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):join:Split_Split_and (1shc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):join:Split_Split_and (1shc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_and (1shc)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):split:Split_Join_and (1shc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_and (1shc):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):join:Split_Split_and (1shc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):join:Split_Split_and (1shc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_and (1shc)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):split:Split_Join_and (1shc):Split_Yes_and (1shc)*and (1shc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):split:Split_Join_and (1shc):Split_Yes_and (1shc)*and (1shc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc)*and (1shc)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):join:Split_Split_xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):join:Split_Split_xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):split:Split_Join_xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):split:Split_Join_xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_No_xor (1sie):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):join:Split_Split_xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):join:Split_Split_xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Split_xor (1sie)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):split:Split_Join_xor (1sie):Split_Yes_xor (1sie)*xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):split:Split_Join_xor (1sie):Split_Yes_xor (1sie)*xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie)*xor (1sie)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:join:Split_Join_and (1shc):Split_Join_xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:join:Split_Join_and (1shc):Split_Join_xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_and (1shc)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Join_xor (1sie)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:split:Join_Split_or (1shz):Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Skip:busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):join:Split_Yes_and (1shc)*and (1shc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):join:Split_Yes_and (1shc)*and (1shc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_and (1shc)*and (1shc)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):split:and (1shc)*and (1shj)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):split:and (1shc)*and (1shj)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc)*and (1shj)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):join:and (1shc)*and (1shj)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):join:and (1shc)*and (1shj)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shc)*and (1shj)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):split:and (1shj)*Master Production Scheduling - Single-Item (1siw):and (1shj)*Master Production Scheduling - Interactive (1sjc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):split:and (1shj)*Master Production Scheduling - Single-Item (1siw):and (1shj)*Master Production Scheduling - Interactive (1sjc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Single-Item (1siw)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Interactive (1sjc)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):join:and (1shj)*Master Production Scheduling - Single-Item (1siw)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):join:and (1shj)*Master Production Scheduling - Single-Item (1siw)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Single-Item (1siw)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):split:Master Production Scheduling - Single-Item (1siw)*and (1shs)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):split:Master Production Scheduling - Single-Item (1siw)*and (1shs)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw)*and (1shs)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):join:Master Production Scheduling - Single-Item (1siw)*and (1shs):Master Production Scheduling - Interactive (1sjc)*and (1shs)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):join:Master Production Scheduling - Single-Item (1siw)*and (1shs):Master Production Scheduling - Interactive (1sjc)*and (1shs)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Single-Item (1siw)*and (1shs)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc)*and (1shs)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):split:and (1shs)*or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):split:and (1shs)*or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs)*or (1shz)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):join:and (1shs)*or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):join:and (1shs)*or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shs)*or (1shz)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*xor (1sie)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):split:or (1shz)*Join_Yes_or (1shz):or (1shz)*xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*xor (1sie)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:Split_Yes_xor (1sie)*xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Split_Yes_xor (1sie)*xor (1sie)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:or (1shz)*xor (1sie)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):join:or (1shz)*xor (1sie)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*xor (1sie)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):split:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):split:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):join:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):join:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:xor (1sie)*Master Production Scheduling - Evaluation (1sjq)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):split:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):split:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):join:and (1shj)*Master Production Scheduling - Interactive (1sjc)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):join:and (1shj)*Master Production Scheduling - Interactive (1sjc)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:and (1shj)*Master Production Scheduling - Interactive (1sjc)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):split:Master Production Scheduling - Interactive (1sjc)*and (1shs)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):split:Master Production Scheduling - Interactive (1sjc)*and (1shs)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Interactive (1sjc)*and (1shs)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):join:Join_Split_or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):join:Join_Split_or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):split:Join_Join_or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):split:Join_Join_or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_or (1shz):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):join:or (1shz)*Join_Yes_or (1shz):Join_Split_or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):join:or (1shz)*Join_Yes_or (1shz):Join_Split_or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:or (1shz)*Join_Yes_or (1shz)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_or (1shz)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):split:Join_Join_or (1shz)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_or (1shz):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):join:Join_Split_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):join:Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_No_Master Production Scheduling - Evaluation (1sjq):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):join:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq):Join_Split_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):join:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq):Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Master Production Scheduling - Evaluation (1sjq)*Join_Yes_Master Production Scheduling - Evaluation (1sjq)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Split_Master Production Scheduling - Evaluation (1sjq)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):split:Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Yes_Master Production Scheduling - Evaluation (1sjq):busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:join:Join_Join_or (1shz):Join_Join_Master Production Scheduling - Evaluation (1sjq)"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:join:Join_Join_or (1shz):Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_or (1shz)"
+       "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Join_Join_Master Production Scheduling - Evaluation (1sjq)"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:busy"
+;
+trans "t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:split:OutputCondition"~"t:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:split:OutputCondition"
+    in "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:Output:busy"
+   out "p:Model.1sgy--0-----u--:Model.1sgy--0-----u--:OutputCondition"
+;
+

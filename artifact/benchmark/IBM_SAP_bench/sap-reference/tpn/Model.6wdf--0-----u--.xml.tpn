@@ -1,0 +1,284 @@
+place "i" init 1;
+place "o";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:InputCondition";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Schedule Line (Schedule Agreement) (6wh5)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Schedule Line (Schedule Agreement) (6wh5)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Release Order (6whj)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Release Order (6whj)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Purchase Order Processing (6whx)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Purchase Order Processing (6whx)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_and (6wgl)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_and (6wgl)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_Transmission of Shipping Notifications (6wf6)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_Transmission of Shipping Notifications (6wf6)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:OutputCondition";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj)*Release Order (6whj)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0)*xor (6wga)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Join_Yes_and (6wgl)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Transmission of Shipping Notifications (6wf6)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj)*xor (6wfz)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz)*Release of Purchase Orders (6wee)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes)*xor (6wga)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx)*xor (6wfz)";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):busy";
+place "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:busy";
+trans "*:Model.6wdf--0-----u--:Model.6wdf--0-----u--:start"~"*:Model.6wdf--0-----u--:Model.6wdf--0-----u--:start"
+    in "i"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:InputCondition"
+;
+trans "*:Model.6wdf--0-----u--:Model.6wdf--0-----u--:end"~"*:Model.6wdf--0-----u--:Model.6wdf--0-----u--:end"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:join:InputCondition"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:join:InputCondition"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:InputCondition"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:split:Split_Split_Schedule Line (Schedule Agreement) (6wh5):Split_Split_Release Order (6whj):Split_Split_Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:split:Split_Split_Schedule Line (Schedule Agreement) (6wh5):Split_Split_Release Order (6whj):Split_Split_Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split:busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Release Order (6whj)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Purchase Order Processing (6whx)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):join:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):join:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):split:Split_Join_Schedule Line (Schedule Agreement) (6wh5)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):split:Split_Join_Schedule Line (Schedule Agreement) (6wh5)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Schedule Line (Schedule Agreement) (6wh5):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Schedule Line (Schedule Agreement) (6wh5)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):join:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):join:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Schedule Line (Schedule Agreement) (6wh5)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):split:Split_Join_Schedule Line (Schedule Agreement) (6wh5):Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):split:Split_Join_Schedule Line (Schedule Agreement) (6wh5):Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Schedule Line (Schedule Agreement) (6wh5)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):join:Split_Split_Release Order (6whj)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):join:Split_Split_Release Order (6whj)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Release Order (6whj)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):split:Split_Join_Release Order (6whj)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):split:Split_Join_Release Order (6whj)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Release Order (6whj):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Release Order (6whj)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):join:Split_Split_Release Order (6whj)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):join:Split_Split_Release Order (6whj)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Release Order (6whj)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):split:Split_Join_Release Order (6whj):Split_Yes_Release Order (6whj)*Release Order (6whj)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):split:Split_Join_Release Order (6whj):Split_Yes_Release Order (6whj)*Release Order (6whj)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Release Order (6whj)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj)*Release Order (6whj)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):join:Split_Split_Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):join:Split_Split_Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Purchase Order Processing (6whx)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):split:Split_Join_Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):split:Split_Join_Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_No_Purchase Order Processing (6whx):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Purchase Order Processing (6whx)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):join:Split_Split_Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):join:Split_Split_Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Split_Purchase Order Processing (6whx)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):split:Split_Join_Purchase Order Processing (6whx):Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):split:Split_Join_Purchase Order Processing (6whx):Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Purchase Order Processing (6whx)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:join:Split_Join_Schedule Line (Schedule Agreement) (6wh5):Split_Join_Release Order (6whj):Split_Join_Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:join:Split_Join_Schedule Line (Schedule Agreement) (6wh5):Split_Join_Release Order (6whj):Split_Join_Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Schedule Line (Schedule Agreement) (6wh5)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Release Order (6whj)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Join_Purchase Order Processing (6whx)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:split:Join_Split_and (6wgl):Join_Split_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:split:Join_Split_and (6wgl):Join_Split_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Skip:busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_and (6wgl)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_Transmission of Shipping Notifications (6wf6)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):join:Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):join:Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Schedule Line (Schedule Agreement) (6wh5)*Schedule Line (Schedule Agreement) (6wh5)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):split:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):split:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):join:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):join:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Schedule Line (Schedule Agreement) (6wh5)*Transmission of Scheduling Agreements (6we0)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):split:Transmission of Scheduling Agreements (6we0)*xor (6wga)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):split:Transmission of Scheduling Agreements (6we0)*xor (6wga)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0)*xor (6wga)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):join:Transmission of Scheduling Agreements (6we0)*xor (6wga)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):join:Transmission of Scheduling Agreements (6we0)*xor (6wga)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Scheduling Agreements (6we0)*xor (6wga)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):join:Transmission of Purchase Orders (6wes)*xor (6wga)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):join:Transmission of Purchase Orders (6wes)*xor (6wga)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes)*xor (6wga)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):split:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):split:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):join:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):join:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wga)*Delivery and Acknowledgment Expediter (6wfk)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):split:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):split:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):join:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):join:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Delivery and Acknowledgment Expediter (6wfk)*Shipping Notification/ Confirmation Processing (6wib)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):split:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):split:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):join:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):join:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Shipping Notification/ Confirmation Processing (6wib)*and (6wgl)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):split:and (6wgl)*Join_Yes_and (6wgl):and (6wgl)*Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):split:and (6wgl)*Join_Yes_and (6wgl):and (6wgl)*Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Join_Yes_and (6wgl)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Transmission of Shipping Notifications (6wf6)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):join:and (6wgl)*Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):join:and (6wgl)*Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Transmission of Shipping Notifications (6wf6)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):split:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):split:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):join:Split_Yes_Release Order (6whj)*Release Order (6whj)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):join:Split_Yes_Release Order (6whj)*Release Order (6whj)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Release Order (6whj)*Release Order (6whj)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):split:Release Order (6whj)*xor (6wfz)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):split:Release Order (6whj)*xor (6wfz)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj)*xor (6wfz)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):join:Release Order (6whj)*xor (6wfz)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):join:Release Order (6whj)*xor (6wfz)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release Order (6whj)*xor (6wfz)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):join:Purchase Order Processing (6whx)*xor (6wfz)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):join:Purchase Order Processing (6whx)*xor (6wfz)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx)*xor (6wfz)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):split:xor (6wfz)*Release of Purchase Orders (6wee)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):split:xor (6wfz)*Release of Purchase Orders (6wee)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz)*Release of Purchase Orders (6wee)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):join:xor (6wfz)*Release of Purchase Orders (6wee)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):join:xor (6wfz)*Release of Purchase Orders (6wee)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:xor (6wfz)*Release of Purchase Orders (6wee)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):split:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):split:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):join:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):join:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Release of Purchase Orders (6wee)*Transmission of Purchase Orders (6wes)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):split:Transmission of Purchase Orders (6wes)*xor (6wga)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):split:Transmission of Purchase Orders (6wes)*xor (6wga)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Purchase Orders (6wes)*xor (6wga)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):join:Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):join:Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Split_Yes_Purchase Order Processing (6whx)*Purchase Order Processing (6whx)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):split:Purchase Order Processing (6whx)*xor (6wfz)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):split:Purchase Order Processing (6whx)*xor (6wfz)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Purchase Order Processing (6whx)*xor (6wfz)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):join:Join_Split_and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):join:Join_Split_and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_and (6wgl)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):split:Join_Join_and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):split:Join_Join_and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_and (6wgl):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_and (6wgl)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):join:and (6wgl)*Join_Yes_and (6wgl):Join_Split_and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):join:and (6wgl)*Join_Yes_and (6wgl):Join_Split_and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:and (6wgl)*Join_Yes_and (6wgl)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_and (6wgl)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):split:Join_Join_and (6wgl)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):split:Join_Join_and (6wgl)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_and (6wgl):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_and (6wgl)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):join:Join_Split_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):join:Join_Split_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_Transmission of Shipping Notifications (6wf6)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):split:Join_Join_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):split:Join_Join_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_No_Transmission of Shipping Notifications (6wf6):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_Transmission of Shipping Notifications (6wf6)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):join:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6):Join_Split_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):join:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6):Join_Split_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Transmission of Shipping Notifications (6wf6)*Join_Yes_Transmission of Shipping Notifications (6wf6)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Split_Transmission of Shipping Notifications (6wf6)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):split:Join_Join_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):split:Join_Join_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Yes_Transmission of Shipping Notifications (6wf6):busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_Transmission of Shipping Notifications (6wf6)"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:join:Join_Join_and (6wgl):Join_Join_Transmission of Shipping Notifications (6wf6)"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:join:Join_Join_and (6wgl):Join_Join_Transmission of Shipping Notifications (6wf6)"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_and (6wgl)"
+       "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Join_Join_Transmission of Shipping Notifications (6wf6)"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:busy"
+;
+trans "t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:split:OutputCondition"~"t:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:split:OutputCondition"
+    in "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:Output:busy"
+   out "p:Model.6wdf--0-----u--:Model.6wdf--0-----u--:OutputCondition"
+;
+

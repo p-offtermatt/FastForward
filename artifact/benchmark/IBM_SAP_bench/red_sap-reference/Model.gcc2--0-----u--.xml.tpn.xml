@@ -1,0 +1,73 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gcc2--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gcc2--0-----u--:Model.gcc2--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_and (gce2)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_or (gce9)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_xor (gcdv)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_and (gce2)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_or (gce9)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_xor (gcdv)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_Posting Release (gcet)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_xor (gcdo)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Split_xor (gcdo)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:and (gce2)*Join_Yes_and (gce2)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):busy"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Join_Yes_xor (gcdv)"/>
+    <CGraph Type="Place" Label="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Process Payment Request (gcd1)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_and (gce2):split:Join_Join_and (gce2)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_or (gce9):split:Join_Join_or (gce9)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_xor (gcdv):split:Join_Join_xor (gcdv)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_and (gce2):split:Join_Join_and (gce2)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_or (gce9):split:Join_Join_or (gce9)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_xor (gcdv):split:Join_Join_xor (gcdv)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_Posting Release (gcet):split:Split_Join_Posting Release (gcet)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_xor (gcdo):split:Split_Join_xor (gcdo)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Posting Release (gcet)*xor (gcdo)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Split_Yes_xor (gcdo)*xor (gcdo)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Join_Yes_xor (gcdv)"/>
+    <CGraph Type="Transition" Label="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Process Payment Request (gcd1)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_or (gce9):split:Join_Join_or (gce9)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_xor (gcdv):split:Join_Join_xor (gcdv)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_xor (gcdv):split:Join_Join_xor (gcdv)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gcc2--0-----u--:Model.gcc2--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_Posting Release (gcet):split:Split_Join_Posting Release (gcet)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_Posting Release (gcet)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_and (gce2):split:Join_Join_and (gce2)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_xor (gcdo):split:Split_Join_xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_and (gce2):split:Join_Join_and (gce2)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_or (gce9):split:Join_Join_or (gce9)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Split_Yes_xor (gcdo)*xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Posting Release (gcet)*xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId95" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Join_Yes_xor (gcdv)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Join_Yes_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="arcId96" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Process Payment Request (gcd1)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Process Payment Request (gcd1)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_and (gce2)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_and (gce2):split:Join_Join_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_and (gce2)" Target="*:Model.gcc2--0-----u--:Model.gcc2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_or (gce9)" Target="*:Model.gcc2--0-----u--:Model.gcc2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Join_xor (gcdv)" Target="*:Model.gcc2--0-----u--:Model.gcc2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_or (gce9)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_or (gce9):split:Join_Join_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_Posting Release (gcet)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_xor (gcdo)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Skip:split:Join_Split_and (gce2):Join_Split_xor (gcdv):Join_Split_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Split_xor (gcdo)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_xor (gcdo):split:Split_Join_xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_Posting Release (gcet):split:Split_Join_Posting Release (gcet)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_No_Posting Release (gcet):split:Split_Join_Posting Release (gcet)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Split_xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_xor (gcdv)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_No_xor (gcdv):split:Join_Join_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Posting Release (gcet)*xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_Posting Release (gcet)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="i" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Posting Release (gcet)*xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Posting Release (gcet)*xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Split_xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Split_Yes_xor (gcdo)*xor (gcdo)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Join_xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Split_Split_xor (gcdo)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):join:Split_Yes_xor (gcdo)*xor (gcdo)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_and (gce2)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_and (gce2):split:Join_Join_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Process Payment Request (gcd1)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_or (gce9):split:Join_Join_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):busy" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Join_Yes_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Join_Yes_xor (gcdv)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:and (gce2)*Join_Yes_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdo):busy" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Process Payment Request (gcd1)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv):split:xor (gcdv)*Process Payment Request (gcd1)" Target="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:and (gce2)*Join_Yes_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:and (gce2)*Join_Yes_and (gce2)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_and (gce2):split:Join_Join_and (gce2)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_or (gce9)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_or (gce9):split:Join_Join_or (gce9)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Split_xor (gcdv)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_xor (gcdv):split:Join_Join_xor (gcdv)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gcc2--0-----u--:Model.gcc2--0-----u--:xor (gcdv)*Join_Yes_xor (gcdv)" Target="t:Model.gcc2--0-----u--:Model.gcc2--0-----u--:Join_Yes_xor (gcdv):split:Join_Join_xor (gcdv)">1</CArc>
+</CGraph>

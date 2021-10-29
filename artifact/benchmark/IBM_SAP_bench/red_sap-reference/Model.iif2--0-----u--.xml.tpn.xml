@@ -1,0 +1,38 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.iif2--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.iif2--0-----u--:Model.iif2--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_xor (iikm)"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_Settlement of Manufacturing Order to Inventory (iigf)"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_xor (iikm)"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:and (iilf)*Settlement of Manufacturing Order to Inventory (iigf)"/>
+    <CGraph Type="Place" Label="p:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):busy"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_xor (iikm):split:Join_Join_xor (iikm)"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_xor (iikm):split:Join_Join_xor (iikm)"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Split_No_Template Allocation (Manufacturing Order) (iilt):split:Split_Join_Template Allocation (Manufacturing Order) (iilt)"/>
+    <CGraph Type="Transition" Label="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="arcId104" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_xor (iikm):split:Join_Join_xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_xor (iikm):split:Join_Join_xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.iif2--0-----u--:Model.iif2--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)" Target="*:Model.iif2--0-----u--:Model.iif2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Join_xor (iikm)" Target="*:Model.iif2--0-----u--:Model.iif2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:and (iilf)*Settlement of Manufacturing Order to Inventory (iigf)" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Split_No_Template Allocation (Manufacturing Order) (iilt):split:Split_Join_Template Allocation (Manufacturing Order) (iilt)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_Settlement of Manufacturing Order to Inventory (iigf)" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_xor (iikm)" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_No_xor (iikm):split:Join_Join_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_Settlement of Manufacturing Order to Inventory (iigf)" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_Settlement of Manufacturing Order to Inventory (iigf):split:Join_Join_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="i" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:and (iilf)*Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):busy" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_xor (iikm):split:Join_Join_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Split_No_Template Allocation (Manufacturing Order) (iilt):split:Split_Join_Template Allocation (Manufacturing Order) (iilt)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Split_No_Template Allocation (Manufacturing Order) (iilt):split:Split_Join_Template Allocation (Manufacturing Order) (iilt)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_Settlement of Manufacturing Order to Inventory (iigf)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.iif2--0-----u--:Model.iif2--0-----u--:xor (iikm):join:Product Cost Analysis in Product Cost by Order (iiix)*xor (iikm)" Target="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_xor (iikm)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Split_xor (iikm)" Target="t:Model.iif2--0-----u--:Model.iif2--0-----u--:Join_Yes_xor (iikm):split:Join_Join_xor (iikm)">1</CArc>
+</CGraph>

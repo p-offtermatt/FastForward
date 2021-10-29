@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.g7vi--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_Join_Process Interest Rate Adjustment (g7xa)"/>
+    <CGraph Type="Place" Label="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):busy"/>
+    <CGraph Type="Transition" Label="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_No_xor (g7xz):split:Join_Join_xor (g7xz)"/>
+    <CGraph Type="Transition" Label="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_Yes_xor (g7xz):split:Join_Join_xor (g7xz)"/>
+    <CGraph Type="Transition" Label="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_No_Process Interest Rate Adjustment (g7xa):split:Split_Join_Process Interest Rate Adjustment (g7xa)"/>
+    <CGraph Type="Transition" Label="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):join:Create Manually (g7w3)*xor (g7xz)"/>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_No_Process Interest Rate Adjustment (g7xa):split:Split_Join_Process Interest Rate Adjustment (g7xa)" Target="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_Join_Process Interest Rate Adjustment (g7xa)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):join:Create Manually (g7w3)*xor (g7xz)" Target="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_Join_Process Interest Rate Adjustment (g7xa)" Target="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_No_xor (g7xz):split:Join_Join_xor (g7xz)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_Join_Process Interest Rate Adjustment (g7xa)" Target="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_Yes_xor (g7xz):split:Join_Join_xor (g7xz)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_No_Process Interest Rate Adjustment (g7xa):split:Split_Join_Process Interest Rate Adjustment (g7xa)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):join:Create Manually (g7w3)*xor (g7xz)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):join:Create Manually (g7w3)*xor (g7xz)" Target="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Split_Join_Process Interest Rate Adjustment (g7xa)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.g7vi--0-----u--:Model.g7vi--0-----u--:xor (g7xz):busy" Target="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_Yes_xor (g7xz):split:Join_Join_xor (g7xz)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_No_xor (g7xz):split:Join_Join_xor (g7xz)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.g7vi--0-----u--:Model.g7vi--0-----u--:Join_Yes_xor (g7xz):split:Join_Join_xor (g7xz)" Target="o">1</CArc>
+</CGraph>

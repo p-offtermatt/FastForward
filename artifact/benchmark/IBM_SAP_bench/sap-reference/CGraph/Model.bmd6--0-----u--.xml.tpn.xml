@@ -1,0 +1,100 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.bmd6--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy"/>
+    <CGraph Type="Place" Label="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):join:Join_Split_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):split:Join_Join_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):split:Join_Join_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:join:Join_Join_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:join:Split_Join_and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:split:Join_Split_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:split:Split_Split_and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):join:Split_Split_and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):split:Split_Join_and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):join:Split_Split_and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):join:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):split:Worklist Generation (bmep)*and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):join:and (bmf0)*Worklist Prerequisite (bmeb)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):split:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):join:Worklist Generation (bmep)*and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):split:and (bmdm)*Join_Yes_and (bmdm)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):join:Split_Yes_and (bmf0)*and (bmf0)"/>
+    <CGraph Type="Transition" Label="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):split:and (bmf0)*Worklist Prerequisite (bmeb)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:split:Join_Split_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):join:Join_Split_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Split_and (bmdm)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):split:Join_Join_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:join:Join_Join_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:join:Split_Join_and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:split:Join_Split_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:join:InputCondition" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:split:Split_Split_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):split:Split_Join_and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Skip:join:Split_Join_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Join_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):split:Split_Join_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):join:Split_Split_and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):join:Split_Split_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_No_and (bmf0):join:Split_Split_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:split:Split_Split_and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Split_and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:start" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0)*and (bmf0)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):join:Split_Yes_and (bmf0)*and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):split:Split_Join_and (bmf0):Split_Yes_and (bmf0)*and (bmf0)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):join:Split_Split_and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split_Yes_and (bmf0):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):join:Worklist Generation (bmep)*and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):split:Worklist Generation (bmep)*and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep)*and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):join:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):split:Worklist Generation (bmep)*and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Generation (bmep):join:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):split:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):join:and (bmf0)*Worklist Prerequisite (bmeb)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:InputCondition" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):split:Worklist Prerequisite (bmeb)*Worklist Generation (bmep)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):join:and (bmdm)*Join_Yes_and (bmdm):Join_Split_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):split:and (bmdm)*Join_Yes_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm)*Join_Yes_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):split:and (bmdm)*Join_Yes_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):join:Worklist Generation (bmep)*and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmdm):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):split:and (bmf0)*Worklist Prerequisite (bmeb)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0)*Worklist Prerequisite (bmeb)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Worklist Prerequisite (bmeb):join:and (bmf0)*Worklist Prerequisite (bmeb)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):join:Split_Yes_and (bmf0)*and (bmf0)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:and (bmf0):split:and (bmf0)*Worklist Prerequisite (bmeb)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition" Target="*:Model.bmd6--0-----u--:Model.bmd6--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):split:Join_Join_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:split:outputCondition" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Output:join:Join_Join_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Yes_and (bmdm):split:Join_Join_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_Join_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy" Target="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):split:Join_Join_and (bmdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):join:Join_Split_and (bmdm)" Target="p:Model.bmd6--0-----u--:Model.bmd6--0-----u--:Join_No_and (bmdm):busy">1</CArc>
+</CGraph>

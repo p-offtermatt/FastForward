@@ -1,0 +1,58 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.ey8p--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.ey8p--0-----u--:Model.ey8p--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_Balance Analysis (eya8)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_General Ledger Line item Analysis (ey9n)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_Balance Analysis (eya8)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_General Ledger Line item Analysis (ey9n)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_ ()"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_xor (eyah)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ()* ()"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*Balance Analysis (eya8)"/>
+    <CGraph Type="Place" Label="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*General Ledger Line item Analysis (ey9n)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Skip:split:Join_Split_General Ledger Line item Analysis (ey9n):Join_Split_Balance Analysis (eya8)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_ ():split:Split_Join_ ()"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_xor (eyah):split:Split_Join_xor (eyah)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*Balance Analysis (eya8)"/>
+    <CGraph Type="Transition" Label="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*General Ledger Line item Analysis (ey9n)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.ey8p--0-----u--:Model.ey8p--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Skip:split:Join_Split_General Ledger Line item Analysis (ey9n):Join_Split_Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Skip:split:Join_Split_General Ledger Line item Analysis (ey9n):Join_Split_Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_xor (eyah):split:Split_Join_xor (eyah)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ()* ()" Target="*:Model.ey8p--0-----u--:Model.ey8p--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId65" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="arcId68" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*General Ledger Line item Analysis (ey9n)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*General Ledger Line item Analysis (ey9n)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_Balance Analysis (eya8)" Target="*:Model.ey8p--0-----u--:Model.ey8p--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Join_General Ledger Line item Analysis (ey9n)" Target="*:Model.ey8p--0-----u--:Model.ey8p--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_ ()" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Skip:split:Join_Split_General Ledger Line item Analysis (ey9n):Join_Split_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_xor (eyah)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Skip:split:Join_Split_General Ledger Line item Analysis (ey9n):Join_Split_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_xor (eyah):split:Split_Join_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_ ():split:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*Balance Analysis (eya8)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Split_xor (eyah)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah):split:xor (eyah)*General Ledger Line item Analysis (ey9n)" Target="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Split_Join_xor (eyah)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_Balance Analysis (eya8)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_General Ledger Line item Analysis (ey9n)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_No_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_Balance Analysis (eya8)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:xor (eyah)*Balance Analysis (eya8)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_Balance Analysis (eya8):split:Join_Join_Balance Analysis (eya8)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Split_General Ledger Line item Analysis (ey9n)" Target="t:Model.ey8p--0-----u--:Model.ey8p--0-----u--:Join_Yes_General Ledger Line item Analysis (ey9n):split:Join_Join_General Ledger Line item Analysis (ey9n)">1</CArc>
+</CGraph>

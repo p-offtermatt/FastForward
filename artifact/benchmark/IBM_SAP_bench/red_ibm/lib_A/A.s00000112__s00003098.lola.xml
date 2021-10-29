@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000112__s00003098.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToTask.s00002581.output.s00000918"/>
+    <CGraph Type="Transition" Label="callToTask.s00002581.outputCriterion.s00000704"/>
+    <CGraph Type="Place" Label="callToTask.s00003104.output.s00000713"/>
+    <CGraph Type="Place" Label="callToTask.s00003104.output.s00001263"/>
+    <CGraph Type="Transition" Label="callToTask.s00003104.outputCriterion.s00000704"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId12" Source="callToTask.s00002581.outputCriterion.s00000704" Target="callToTask.s00002581.output.s00000918">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="callToTask.s00003104.outputCriterion.s00000704" Target="callToTask.s00003104.output.s00000713">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="callToTask.s00003104.outputCriterion.s00000704" Target="callToTask.s00003104.output.s00001263">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="alpha" Target="callToTask.s00002581.outputCriterion.s00000704">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="alpha" Target="callToTask.s00003104.outputCriterion.s00000704">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="callToTask.s00002581.output.s00000918" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="callToTask.s00003104.output.s00001263" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="callToTask.s00002581.outputCriterion.s00000704" Target="callToTask.s00003104.output.s00000713">1</CArc>
+    <CArc Type="Arc" Label="sa_3" Source="callToTask.s00003104.output.s00000713" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_5" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

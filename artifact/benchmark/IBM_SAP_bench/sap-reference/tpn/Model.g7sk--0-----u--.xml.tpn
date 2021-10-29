@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:InputCondition";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Split_Interest Accrual/ Deferral (g7t5)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Join_Interest Accrual/ Deferral (g7t5)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Split_and (g7te)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Join_and (g7te)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:outputCondition";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5)*and (g7te)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te)*Join_Yes_and (g7te)";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):busy";
+place "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:busy";
+trans "*:Model.g7sk--0-----u--:Model.g7sk--0-----u--:start"~"*:Model.g7sk--0-----u--:Model.g7sk--0-----u--:start"
+    in "i"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:InputCondition"
+;
+trans "*:Model.g7sk--0-----u--:Model.g7sk--0-----u--:end"~"*:Model.g7sk--0-----u--:Model.g7sk--0-----u--:end"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:join:InputCondition"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:join:InputCondition"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:InputCondition"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:split:Split_Split_Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:split:Split_Split_Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split:busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Split_Interest Accrual/ Deferral (g7t5)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):join:Split_Split_Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):join:Split_Split_Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Split_Interest Accrual/ Deferral (g7t5)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):split:Split_Join_Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):split:Split_Join_Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_No_Interest Accrual/ Deferral (g7t5):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Join_Interest Accrual/ Deferral (g7t5)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):join:Split_Split_Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):join:Split_Split_Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Split_Interest Accrual/ Deferral (g7t5)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):split:Split_Join_Interest Accrual/ Deferral (g7t5):Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):split:Split_Join_Interest Accrual/ Deferral (g7t5):Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Join_Interest Accrual/ Deferral (g7t5)"
+       "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:join:Split_Join_Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:join:Split_Join_Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Join_Interest Accrual/ Deferral (g7t5)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:split:Join_Split_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:split:Join_Split_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Skip:busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Split_and (g7te)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):join:Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):join:Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Split_Yes_Interest Accrual/ Deferral (g7t5)*Interest Accrual/ Deferral (g7t5)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):split:Interest Accrual/ Deferral (g7t5)*and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):split:Interest Accrual/ Deferral (g7t5)*and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5)*and (g7te)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):join:Interest Accrual/ Deferral (g7t5)*and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):join:Interest Accrual/ Deferral (g7t5)*and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Interest Accrual/ Deferral (g7t5)*and (g7te)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):split:and (g7te)*Join_Yes_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):split:and (g7te)*Join_Yes_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te)*Join_Yes_and (g7te)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):join:Join_Split_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):join:Join_Split_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Split_and (g7te)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):split:Join_Join_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):split:Join_Join_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_No_and (g7te):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Join_and (g7te)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):join:and (g7te)*Join_Yes_and (g7te):Join_Split_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):join:and (g7te)*Join_Yes_and (g7te):Join_Split_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:and (g7te)*Join_Yes_and (g7te)"
+       "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Split_and (g7te)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):split:Join_Join_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):split:Join_Join_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Yes_and (g7te):busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Join_and (g7te)"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:join:Join_Join_and (g7te)"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:join:Join_Join_and (g7te)"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Join_Join_and (g7te)"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:busy"
+;
+trans "t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:split:outputCondition"~"t:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:split:outputCondition"
+    in "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:Output:busy"
+   out "p:Model.g7sk--0-----u--:Model.g7sk--0-----u--:outputCondition"
+;
+

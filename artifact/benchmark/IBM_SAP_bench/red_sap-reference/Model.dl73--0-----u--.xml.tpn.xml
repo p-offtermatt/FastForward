@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.dl73--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_Join_xor (dl8y)"/>
+    <CGraph Type="Place" Label="p:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):busy"/>
+    <CGraph Type="Transition" Label="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_No_or (dl7x):split:Join_Join_or (dl7x)"/>
+    <CGraph Type="Transition" Label="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_Yes_or (dl7x):split:Join_Join_or (dl7x)"/>
+    <CGraph Type="Transition" Label="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_No_xor (dl8y):split:Split_Join_xor (dl8y)"/>
+    <CGraph Type="Transition" Label="t:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):join:Split_Yes_xor (dl8y)*xor (dl8y)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_No_xor (dl8y):split:Split_Join_xor (dl8y)" Target="p:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_Join_xor (dl8y)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):join:Split_Yes_xor (dl8y)*xor (dl8y)" Target="p:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_Join_xor (dl8y)" Target="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_Yes_or (dl7x):split:Join_Join_or (dl7x)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_No_xor (dl8y):split:Split_Join_xor (dl8y)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):join:Split_Yes_xor (dl8y)*xor (dl8y)" Target="p:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_Join_xor (dl8y)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):join:Split_Yes_xor (dl8y)*xor (dl8y)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.dl73--0-----u--:Model.dl73--0-----u--:xor (dl8y):busy" Target="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_Yes_or (dl7x):split:Join_Join_or (dl7x)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_No_or (dl7x):split:Join_Join_or (dl7x)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_Yes_or (dl7x):split:Join_Join_or (dl7x)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.dl73--0-----u--:Model.dl73--0-----u--:Split_Join_xor (dl8y)" Target="t:Model.dl73--0-----u--:Model.dl73--0-----u--:Join_No_or (dl7x):split:Join_Join_or (dl7x)">1</CArc>
+</CGraph>

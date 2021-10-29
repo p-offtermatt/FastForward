@@ -1,0 +1,59 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.fx----0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.fx----0-----u--:Model.fx----0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_Project Planning (gw--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_xor (iz--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_Project Planning (gw--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_xor (iz--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Non-Order-Specific Trigger (i3--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Order-Specific Trigger (gi--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Split_Order-Specific Trigger (gi--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):busy"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Join_Yes_xor (iz--)"/>
+    <CGraph Type="Place" Label="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Project Planning (gw--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_Project Planning (gw--):split:Join_Join_Project Planning (gw--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_xor (iz--):split:Join_Join_xor (iz--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_Project Planning (gw--):split:Join_Join_Project Planning (gw--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_xor (iz--):split:Join_Join_xor (iz--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Skip:split:Join_Split_xor (iz--):Join_Split_Project Planning (gw--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Non-Order-Specific Trigger (i3--):split:Split_Join_Non-Order-Specific Trigger (i3--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Order-Specific Trigger (gi--):split:Split_Join_Order-Specific Trigger (gi--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Non-Order-Specific Trigger (i3--)*xor (he--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Order-Specific Trigger (gi--)*xor (he--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Join_Yes_xor (iz--)"/>
+    <CGraph Type="Transition" Label="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Project Planning (gw--)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_xor (iz--):split:Join_Join_xor (iz--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Skip:split:Join_Split_xor (iz--):Join_Split_Project Planning (gw--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Skip:split:Join_Split_xor (iz--):Join_Split_Project Planning (gw--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.fx----0-----u--:Model.fx----0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Non-Order-Specific Trigger (i3--):split:Split_Join_Non-Order-Specific Trigger (i3--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Non-Order-Specific Trigger (i3--)">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Order-Specific Trigger (gi--):split:Split_Join_Order-Specific Trigger (gi--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Order-Specific Trigger (gi--)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_Project Planning (gw--):split:Join_Join_Project Planning (gw--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_Project Planning (gw--):split:Join_Join_Project Planning (gw--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Order-Specific Trigger (gi--)*xor (he--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Non-Order-Specific Trigger (i3--)*xor (he--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Join_Yes_xor (iz--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Join_Yes_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Project Planning (gw--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_xor (iz--):split:Join_Join_xor (iz--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_Project Planning (gw--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_Project Planning (gw--):split:Join_Join_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_Project Planning (gw--)" Target="*:Model.fx----0-----u--:Model.fx----0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Join_xor (iz--)" Target="*:Model.fx----0-----u--:Model.fx----0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Project Planning (gw--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_Project Planning (gw--):split:Join_Join_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Non-Order-Specific Trigger (i3--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Skip:split:Join_Split_xor (iz--):Join_Split_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Order-Specific Trigger (gi--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Skip:split:Join_Split_xor (iz--):Join_Split_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_xor (iz--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_No_xor (iz--):split:Join_Join_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Split_Order-Specific Trigger (gi--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Order-Specific Trigger (gi--):split:Split_Join_Order-Specific Trigger (gi--)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Non-Order-Specific Trigger (i3--):split:Split_Join_Non-Order-Specific Trigger (i3--)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:Split_No_Non-Order-Specific Trigger (i3--):split:Split_Join_Non-Order-Specific Trigger (i3--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Split_Order-Specific Trigger (gi--)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Non-Order-Specific Trigger (i3--)*xor (he--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Non-Order-Specific Trigger (i3--)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Non-Order-Specific Trigger (i3--)*xor (he--)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Non-Order-Specific Trigger (i3--)*xor (he--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Split_Order-Specific Trigger (gi--)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_Project Planning (gw--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_Project Planning (gw--):split:Join_Join_Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Order-Specific Trigger (gi--)*xor (he--)" Target="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Join_Order-Specific Trigger (gi--)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Split_Split_Order-Specific Trigger (gi--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):join:Order-Specific Trigger (gi--)*xor (he--)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):busy" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Join_Yes_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (he--):busy" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--):split:xor (iz--)*Project Planning (gw--)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:Join_Split_xor (iz--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_xor (iz--):split:Join_Join_xor (iz--)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.fx----0-----u--:Model.fx----0-----u--:xor (iz--)*Join_Yes_xor (iz--)" Target="t:Model.fx----0-----u--:Model.fx----0-----u--:Join_Yes_xor (iz--):split:Join_Join_xor (iz--)">1</CArc>
+</CGraph>

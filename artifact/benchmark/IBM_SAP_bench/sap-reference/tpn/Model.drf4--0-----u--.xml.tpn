@@ -1,0 +1,150 @@
+place "i" init 1;
+place "o";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:InputCondition";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:OutputCondition";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3)";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):busy";
+place "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:busy";
+trans "*:Model.drf4--0-----u--:Model.drf4--0-----u--:start"~"*:Model.drf4--0-----u--:Model.drf4--0-----u--:start"
+    in "i"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:InputCondition"
+;
+trans "*:Model.drf4--0-----u--:Model.drf4--0-----u--:end"~"*:Model.drf4--0-----u--:Model.drf4--0-----u--:end"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:join:InputCondition"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:join:InputCondition"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:InputCondition"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:split:Split_Split_External Activity Planning (drfp):Split_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:split:Split_Split_External Activity Planning (drfp):Split_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split:busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):join:Split_Split_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):join:Split_Split_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_External Activity Planning (drfp)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):split:Split_Join_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):split:Split_Join_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_External Activity Planning (drfp):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_External Activity Planning (drfp)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):join:Split_Split_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):join:Split_Split_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_External Activity Planning (drfp)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):split:Split_Join_External Activity Planning (drfp):Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):split:Split_Join_External Activity Planning (drfp):Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):join:Split_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):join:Split_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):split:Split_Join_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):split:Split_Join_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_No_Subcontracted Services Planning (drg3):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):join:Split_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):join:Split_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Split_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):split:Split_Join_Subcontracted Services Planning (drg3):Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):split:Split_Join_Subcontracted Services Planning (drg3):Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_Subcontracted Services Planning (drg3)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:join:Split_Join_External Activity Planning (drfp):Split_Join_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:join:Split_Join_External Activity Planning (drfp):Split_Join_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Join_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:split:Join_Split_External Activity Planning (drfp):Join_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:split:Join_Split_External Activity Planning (drfp):Join_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Skip:busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):join:Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):join:Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_External Activity Planning (drfp)*External Activity Planning (drfp)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):split:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):split:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):join:Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):join:Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Split_Yes_Subcontracted Services Planning (drg3)*Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):split:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):split:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):join:Join_Split_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):join:Join_Split_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_External Activity Planning (drfp)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):split:Join_Join_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):split:Join_Join_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_External Activity Planning (drfp):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_External Activity Planning (drfp)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):join:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp):Join_Split_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):join:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp):Join_Split_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:External Activity Planning (drfp)*Join_Yes_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_External Activity Planning (drfp)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):split:Join_Join_External Activity Planning (drfp)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):split:Join_Join_External Activity Planning (drfp)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_External Activity Planning (drfp):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_External Activity Planning (drfp)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):join:Join_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):join:Join_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):split:Join_Join_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):split:Join_Join_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_No_Subcontracted Services Planning (drg3):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):join:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3):Join_Split_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):join:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3):Join_Split_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Subcontracted Services Planning (drg3)*Join_Yes_Subcontracted Services Planning (drg3)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Split_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):split:Join_Join_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):split:Join_Join_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Yes_Subcontracted Services Planning (drg3):busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_Subcontracted Services Planning (drg3)"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:join:Join_Join_External Activity Planning (drfp):Join_Join_Subcontracted Services Planning (drg3)"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:join:Join_Join_External Activity Planning (drfp):Join_Join_Subcontracted Services Planning (drg3)"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_External Activity Planning (drfp)"
+       "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Join_Join_Subcontracted Services Planning (drg3)"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:busy"
+;
+trans "t:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:split:OutputCondition"~"t:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:split:OutputCondition"
+    in "p:Model.drf4--0-----u--:Model.drf4--0-----u--:Output:busy"
+   out "p:Model.drf4--0-----u--:Model.drf4--0-----u--:OutputCondition"
+;
+

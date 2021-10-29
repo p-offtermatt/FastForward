@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.l7f4--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)"/>
+    <CGraph Type="Place" Label="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)"/>
+    <CGraph Type="Place" Label="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)"/>
+    <CGraph Type="Place" Label="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)"/>
+    <CGraph Type="Place" Label="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):split:Split_Join_xor (l7g0)"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)"/>
+    <CGraph Type="Transition" Label="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)"/>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):split:Split_Join_xor (l7g0)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):split:Split_Join_xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)" Target="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)" Target="t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)">1</CArc>
+</CGraph>

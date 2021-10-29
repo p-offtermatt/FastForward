@@ -1,0 +1,25 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_A/A.s00000110__s00002684.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToService.s00002693.output.s00001057"/>
+    <CGraph Type="Place" Label="callToTask.s00002471.output.s00002121"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000730.activate.s00000733"/>
+    <CGraph Type="Transition" Label="merge.s00000856.activate.s00000731"/>
+    <CGraph Type="Transition" Label="merge.s00000856.activate.s00000733"/>
+    <CGraph Type="Place" Label="merge.s00000856.activated"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId91" Source="merge.s00000856.activate.s00000731" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="merge.s00000856.activate.s00000733" Target="merge.s00000856.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="merge.s00000730.activate.s00000733" Target="callToService.s00002693.output.s00001057">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="callToTask.s00002471.output.s00002121" Target="merge.s00000730.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="callToTask.s00002471.output.s00002121" Target="merge.s00000856.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="merge.s00000856.activate.s00000731" Target="callToService.s00002693.output.s00001057">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="callToTask.s00002471.output.s00002121" Target="merge.s00000856.activate.s00000733">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="alpha" Target="merge.s00000730.activate.s00000731">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="callToService.s00002693.output.s00001057" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="merge.s00000856.activated" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="merge.s00000730.activate.s00000731" Target="callToTask.s00002471.output.s00002121">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="merge.s00000730.activate.s00000733" Target="callToTask.s00002471.output.s00002121">1</CArc>
+    <CArc Type="Arc" Label="sa_5" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

@@ -1,0 +1,138 @@
+place "i" init 1;
+place "o";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:InputCondition";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_xor (ks28)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_xor (ks28)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_and (ks2l)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_and (ks2l)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Split_Budget Update [Capital Investment Project] (ks1x)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Join_Budget Update [Capital Investment Project] (ks1x)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:outputCondition";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28)*xor (ks28)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l)*and (ks2l)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28)*and (ks2l)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x)";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):busy";
+place "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:busy";
+trans "*:Model.ks1c--0-----u--:Model.ks1c--0-----u--:start"~"*:Model.ks1c--0-----u--:Model.ks1c--0-----u--:start"
+    in "i"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:InputCondition"
+;
+trans "*:Model.ks1c--0-----u--:Model.ks1c--0-----u--:end"~"*:Model.ks1c--0-----u--:Model.ks1c--0-----u--:end"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:join:InputCondition"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:join:InputCondition"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:InputCondition"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:split:Split_Split_xor (ks28):Split_Split_and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:split:Split_Split_xor (ks28):Split_Split_and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split:busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_xor (ks28)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_and (ks2l)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):join:Split_Split_xor (ks28)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):join:Split_Split_xor (ks28)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_xor (ks28)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):split:Split_Join_xor (ks28)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):split:Split_Join_xor (ks28)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_xor (ks28):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_xor (ks28)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):join:Split_Split_xor (ks28)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):join:Split_Split_xor (ks28)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_xor (ks28)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):split:Split_Join_xor (ks28):Split_Yes_xor (ks28)*xor (ks28)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):split:Split_Join_xor (ks28):Split_Yes_xor (ks28)*xor (ks28)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_xor (ks28)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28)*xor (ks28)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):join:Split_Split_and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):join:Split_Split_and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_and (ks2l)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):split:Split_Join_and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):split:Split_Join_and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_No_and (ks2l):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_and (ks2l)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):join:Split_Split_and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):join:Split_Split_and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Split_and (ks2l)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):split:Split_Join_and (ks2l):Split_Yes_and (ks2l)*and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):split:Split_Join_and (ks2l):Split_Yes_and (ks2l)*and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_and (ks2l)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l)*and (ks2l)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:join:Split_Join_xor (ks28):Split_Join_and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:join:Split_Join_xor (ks28):Split_Join_and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_xor (ks28)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Join_and (ks2l)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:split:Join_Split_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:split:Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Skip:busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):join:Split_Yes_xor (ks28)*xor (ks28)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):join:Split_Yes_xor (ks28)*xor (ks28)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_xor (ks28)*xor (ks28)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):split:xor (ks28)*and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):split:xor (ks28)*and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28)*and (ks2l)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):join:Split_Yes_and (ks2l)*and (ks2l):xor (ks28)*and (ks2l)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):join:Split_Yes_and (ks2l)*and (ks2l):xor (ks28)*and (ks2l)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Split_Yes_and (ks2l)*and (ks2l)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:xor (ks28)*and (ks2l)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):split:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):split:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):join:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):join:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:and (ks2l)*Budget Update [Capital Investment Project] (ks1x)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):split:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):split:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):join:Join_Split_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):join:Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):split:Join_Join_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):split:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_No_Budget Update [Capital Investment Project] (ks1x):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):join:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x):Join_Split_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):join:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x):Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Budget Update [Capital Investment Project] (ks1x)*Join_Yes_Budget Update [Capital Investment Project] (ks1x)"
+       "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Split_Budget Update [Capital Investment Project] (ks1x)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):split:Join_Join_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):split:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Yes_Budget Update [Capital Investment Project] (ks1x):busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:join:Join_Join_Budget Update [Capital Investment Project] (ks1x)"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:join:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Join_Join_Budget Update [Capital Investment Project] (ks1x)"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:busy"
+;
+trans "t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:split:outputCondition"~"t:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:split:outputCondition"
+    in "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:Output:busy"
+   out "p:Model.ks1c--0-----u--:Model.ks1c--0-----u--:outputCondition"
+;
+

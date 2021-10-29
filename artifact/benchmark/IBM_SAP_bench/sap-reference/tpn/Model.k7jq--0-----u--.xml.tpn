@@ -1,0 +1,173 @@
+place "i" init 1;
+place "o";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:InputCondition";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Split_and (k7om)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Join_and (k7om)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Split_Maintain calculation formulas for basic key figures (k7ob)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Join_Maintain calculation formulas for basic key figures (k7ob)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:outputCondition";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om)*and (k7om)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om)*Create planning layout (k7p0)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0)*Maintain planner profiles (k7pe)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob)";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):busy";
+place "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:busy";
+trans "*:Model.k7jq--0-----u--:Model.k7jq--0-----u--:start"~"*:Model.k7jq--0-----u--:Model.k7jq--0-----u--:start"
+    in "i"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:InputCondition"
+;
+trans "*:Model.k7jq--0-----u--:Model.k7jq--0-----u--:end"~"*:Model.k7jq--0-----u--:Model.k7jq--0-----u--:end"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:join:InputCondition"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:join:InputCondition"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:InputCondition"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:split:Split_Split_and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:split:Split_Split_and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split:busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Split_and (k7om)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):join:Split_Split_and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):join:Split_Split_and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Split_and (k7om)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):split:Split_Join_and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):split:Split_Join_and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_No_and (k7om):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Join_and (k7om)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):join:Split_Split_and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):join:Split_Split_and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Split_and (k7om)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):split:Split_Join_and (k7om):Split_Yes_and (k7om)*and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):split:Split_Join_and (k7om):Split_Yes_and (k7om)*and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Join_and (k7om)"
+       "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om)*and (k7om)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:join:Split_Join_and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:join:Split_Join_and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Join_and (k7om)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:split:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:split:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Skip:busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):join:Split_Yes_and (k7om)*and (k7om)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):join:Split_Yes_and (k7om)*and (k7om)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Split_Yes_and (k7om)*and (k7om)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):split:and (k7om)*Create planning layout (k7p0)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):split:and (k7om)*Create planning layout (k7p0)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om)*Create planning layout (k7p0)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):join:and (k7om)*Create planning layout (k7p0)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):join:and (k7om)*Create planning layout (k7p0)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:and (k7om)*Create planning layout (k7p0)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):split:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):split:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):join:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):join:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create planning layout (k7p0)*Maintain planner profiles (k7pe)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):split:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):split:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):join:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):join:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain planner profiles (k7pe)*Create Distribution Key (k7ps)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):split:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):split:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):join:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):join:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Create Distribution Key (k7ps)*Change Revaluation Factor (k7kb)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):split:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):split:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):join:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):join:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Change Revaluation Factor (k7kb)*Maintain forecast profiles (k7l0)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):split:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):split:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):join:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):join:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain forecast profiles (k7l0)*Maintain weighting group (k7mb)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):split:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):split:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):join:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):join:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain weighting group (k7mb)*Object-Dependent Parameters (k7nb)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):split:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):split:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):join:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):join:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Object-Dependent Parameters (k7nb)*Maintain calculation formulas for basic key figures (k7ob)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):split:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):split:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):join:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):join:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):split:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):split:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_No_Maintain calculation formulas for basic key figures (k7ob):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):join:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob):Join_Split_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):join:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob):Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Maintain calculation formulas for basic key figures (k7ob)*Join_Yes_Maintain calculation formulas for basic key figures (k7ob)"
+       "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Split_Maintain calculation formulas for basic key figures (k7ob)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):split:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):split:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Yes_Maintain calculation formulas for basic key figures (k7ob):busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:join:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:join:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Join_Join_Maintain calculation formulas for basic key figures (k7ob)"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:busy"
+;
+trans "t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:split:outputCondition"~"t:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:split:outputCondition"
+    in "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:Output:busy"
+   out "p:Model.k7jq--0-----u--:Model.k7jq--0-----u--:outputCondition"
+;
+

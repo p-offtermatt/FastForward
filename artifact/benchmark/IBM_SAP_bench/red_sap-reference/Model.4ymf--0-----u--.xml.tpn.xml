@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.4ymf--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_Join_and (4ymx)"/>
+    <CGraph Type="Place" Label="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):busy"/>
+    <CGraph Type="Transition" Label="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_No_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)"/>
+    <CGraph Type="Transition" Label="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_Yes_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)"/>
+    <CGraph Type="Transition" Label="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_No_and (4ymx):split:Split_Join_and (4ymx)"/>
+    <CGraph Type="Transition" Label="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):join:Split_Yes_and (4ymx)*and (4ymx)"/>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_No_and (4ymx):split:Split_Join_and (4ymx)" Target="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_Join_and (4ymx)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):join:Split_Yes_and (4ymx)*and (4ymx)" Target="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="i" Target="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_No_and (4ymx):split:Split_Join_and (4ymx)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):join:Split_Yes_and (4ymx)*and (4ymx)" Target="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_Join_and (4ymx)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):join:Split_Yes_and (4ymx)*and (4ymx)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:and (4ymx):busy" Target="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_Yes_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_No_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_Yes_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_Join_and (4ymx)" Target="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_No_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Split_Join_and (4ymx)" Target="t:Model.4ymf--0-----u--:Model.4ymf--0-----u--:Join_Yes_Transportation Planning and Processing (4ynm):split:Join_Join_Transportation Planning and Processing (4ynm)">1</CArc>
+</CGraph>

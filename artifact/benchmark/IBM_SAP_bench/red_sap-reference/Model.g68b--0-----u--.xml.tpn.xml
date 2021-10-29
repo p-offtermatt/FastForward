@@ -1,0 +1,78 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.g68b--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.g68b--0-----u--:Model.g68b--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_Netting Processing (g6cq)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_or (g6dx)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_Netting Processing (g6cq)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_or (g6dx)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_and (g6d4)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4)*and (g6d4)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx)*and (g6d4)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Join_Yes_or (g6dx)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Netting Processing (g6cq)"/>
+    <CGraph Type="Place" Label="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_or (g6dx):split:Join_Join_or (g6dx)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_or (g6dx):split:Join_Join_or (g6dx)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Skip:split:Join_Split_or (g6dx):Join_Split_Netting Processing (g6cq)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_and (g6d4):split:Split_Join_and (g6d4)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_xor (g6ax):split:Split_Join_xor (g6ax)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4):split:Split_Join_and (g6d4):Split_Yes_and (g6d4)*and (g6d4)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4):or (g6cx)*xor (g6dm)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*xor (g6dm)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx):or (g6dx)*Netting Processing (g6cq)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Netting Processing (g6cq)"/>
+    <CGraph Type="Transition" Label="t:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):join:Notice (g6ca)*xor (g6dm)"/>
+    <CArc Type="Arc" Label="arcId101" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx):or (g6dx)*Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Join_Yes_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="arcId102" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="arcId104" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx):or (g6dx)*Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="arcId141" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):join:Notice (g6ca)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Skip:split:Join_Split_or (g6dx):Join_Split_Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Skip:split:Join_Split_or (g6dx):Join_Split_Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.g68b--0-----u--:Model.g68b--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_and (g6d4):split:Split_Join_and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4):split:Split_Join_and (g6d4):Split_Yes_and (g6d4)*and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="arcId64" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_xor (g6ax):split:Split_Join_xor (g6ax)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4):split:Split_Join_and (g6d4):Split_Yes_and (g6d4)*and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4)*and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_or (g6dx):split:Join_Join_or (g6dx)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="arcId89" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4):or (g6cx)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx)*and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_or (g6dx):split:Join_Join_or (g6dx)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx)*and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Join_Yes_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_Netting Processing (g6cq)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_Netting Processing (g6cq)" Target="*:Model.g68b--0-----u--:Model.g68b--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Join_or (g6dx)" Target="*:Model.g68b--0-----u--:Model.g68b--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_or (g6dx)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_No_or (g6dx):split:Join_Join_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_and (g6d4)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Skip:split:Join_Split_or (g6dx):Join_Split_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Skip:split:Join_Split_or (g6dx):Join_Split_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_xor (g6ax):split:Split_Join_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_Netting Processing (g6cq)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_and (g6d4):split:Split_Join_and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_No_and (g6d4):split:Split_Join_and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4):split:Split_Join_and (g6d4):Split_Yes_and (g6d4)*and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4):split:Split_Join_and (g6d4):Split_Yes_and (g6d4)*and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Yes_and (g6d4)*and (g6d4)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):join:Notice (g6ca)*xor (g6dm)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx)*and (g6d4)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):join:Notice (g6ca)*xor (g6dm)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Split_or (g6dx)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_or (g6dx):split:Join_Join_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Join_Yes_or (g6dx)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_or (g6dx):split:Join_Join_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Join_Yes_or (g6dx):or (g6dx)*Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx):split:or (g6dx)*Netting Processing (g6cq)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4):or (g6cx)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:xor (g6dm):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_74" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4)">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4):or (g6cx)*xor (g6dm)">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*and (g6d4):or (g6cx)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_78" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Split_xor (g6ax)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*xor (g6dm)">1</CArc>
+    <CArc Type="Arc" Label="ra_79" Source="t:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6cx):split:or (g6cx)*xor (g6dm)" Target="p:Model.g68b--0-----u--:Model.g68b--0-----u--:Split_Join_xor (g6ax)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.g68b--0-----u--:Model.g68b--0-----u--:or (g6dx)*Netting Processing (g6cq)" Target="t:Model.g68b--0-----u--:Model.g68b--0-----u--:Join_Yes_Netting Processing (g6cq):split:Join_Join_Netting Processing (g6cq)">1</CArc>
+</CGraph>

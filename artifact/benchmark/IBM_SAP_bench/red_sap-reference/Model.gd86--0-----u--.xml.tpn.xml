@@ -1,0 +1,103 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gd86--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_and (gdc4)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_or (gdco)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdbh)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdcb)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_and (gdc4)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_or (gdco)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdbh)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdcb)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Exotic Currency Options (gddm)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Standard Currency Options (gdao)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Split_Transaction Processing for Standard Currency Options (gdao)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:and (gdc4)*Join_Yes_and (gdc4)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo)*xor (gdbx)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh)*Join_Yes_xor (gdbh)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*Join_Yes_xor (gdcb)"/>
+    <CGraph Type="Place" Label="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*or (gdco)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_and (gdc4):split:Join_Join_and (gdc4)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_or (gdco):split:Join_Join_or (gdco)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdbh):split:Join_Join_xor (gdbh)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdcb):split:Join_Join_xor (gdcb)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_and (gdc4):split:Join_Join_and (gdc4)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_or (gdco):split:Join_Join_or (gdco)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdbh):split:Join_Join_xor (gdbh)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdcb):split:Join_Join_xor (gdcb)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Exotic Currency Options (gddm):split:Split_Join_Transaction Processing for Exotic Currency Options (gddm)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Standard Currency Options (gdao):split:Split_Join_Transaction Processing for Standard Currency Options (gdao)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*Closing Operations (gd9d):or (gdbo)*xor (gdbx)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*xor (gdbx)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Exotic Currency Options (gddm)*xor (gdba)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Standard Currency Options (gdao)*xor (gdba)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh):split:xor (gdbh)*Join_Yes_xor (gdbh)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:or (gdbo)*xor (gdbx)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:xor (gdbh)*xor (gdbx)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*Join_Yes_xor (gdcb)"/>
+    <CGraph Type="Transition" Label="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*or (gdco)"/>
+    <CArc Type="Arc" Label="arcId102" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo)*xor (gdbx)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:or (gdbo)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="arcId103" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*xor (gdbx)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="arcId104" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*Closing Operations (gd9d):or (gdbo)*xor (gdbx)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="arcId115" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Exotic Currency Options (gddm)*xor (gdba)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId116" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Standard Currency Options (gdao)*xor (gdba)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId118" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh):split:xor (gdbh)*Join_Yes_xor (gdbh)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh)*Join_Yes_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_and (gdc4):split:Join_Join_and (gdc4)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="arcId130" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:xor (gdbh)*xor (gdbx)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId131" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:or (gdbo)*xor (gdbx)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId135" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*Join_Yes_xor (gdcb)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*Join_Yes_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="arcId136" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_and (gdc4):split:Join_Join_and (gdc4)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_or (gdco):split:Join_Join_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_or (gdco):split:Join_Join_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdbh):split:Join_Join_xor (gdbh)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdbh):split:Join_Join_xor (gdbh)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdcb):split:Join_Join_xor (gdcb)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdcb):split:Join_Join_xor (gdcb)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Exotic Currency Options (gddm):split:Split_Join_Transaction Processing for Exotic Currency Options (gddm)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Exotic Currency Options (gddm)">1</CArc>
+    <CArc Type="Arc" Label="arcId64" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Standard Currency Options (gdao):split:Split_Join_Transaction Processing for Standard Currency Options (gdao)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Standard Currency Options (gdao)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:and (gdc4)*Join_Yes_and (gdc4)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_and (gdc4):split:Join_Join_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_or (gdco)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_or (gdco):split:Join_Join_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdbh)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdbh):split:Join_Join_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh)*Join_Yes_xor (gdbh)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdbh):split:Join_Join_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdcb)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdcb):split:Join_Join_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*Join_Yes_xor (gdcb)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_xor (gdcb):split:Join_Join_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_and (gdc4)" Target="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_or (gdco)" Target="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdbh)" Target="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Join_xor (gdcb)" Target="*:Model.gd86--0-----u--:Model.gd86--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Exotic Currency Options (gddm)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Standard Currency Options (gdao)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Skip:split:Join_Split_xor (gdbh):Join_Split_and (gdc4):Join_Split_xor (gdcb):Join_Split_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Split_Transaction Processing for Standard Currency Options (gdao)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Standard Currency Options (gdao):split:Split_Join_Transaction Processing for Standard Currency Options (gdao)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Exotic Currency Options (gddm):split:Split_Join_Transaction Processing for Exotic Currency Options (gddm)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_No_Transaction Processing for Exotic Currency Options (gddm):split:Split_Join_Transaction Processing for Exotic Currency Options (gddm)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Split_Transaction Processing for Standard Currency Options (gdao)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="i" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Exotic Currency Options (gddm)*xor (gdba)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Exotic Currency Options (gddm)*xor (gdba)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Exotic Currency Options (gddm)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Exotic Currency Options (gddm)*xor (gdba)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Split_Transaction Processing for Standard Currency Options (gdao)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Split_Transaction Processing for Standard Currency Options (gdao)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Standard Currency Options (gdao)*xor (gdba)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):join:Transaction Processing for Standard Currency Options (gdao)*xor (gdba)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Split_Join_Transaction Processing for Standard Currency Options (gdao)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_and (gdc4)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_and (gdc4):split:Join_Join_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb)*or (gdco)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_or (gdco):split:Join_Join_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_or (gdco)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_or (gdco):split:Join_Join_or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*Closing Operations (gd9d):or (gdbo)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbh):split:xor (gdbh)*Join_Yes_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdba):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):join:xor (gdbh)*xor (gdbx)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*Join_Yes_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*Join_Yes_xor (gdcb)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:and (gdc4)*Join_Yes_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*or (gdco)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdbh)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdbh):split:Join_Join_xor (gdbh)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdcb):split:xor (gdcb)*or (gdco)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:and (gdc4)*Join_Yes_and (gdc4)">1</CArc>
+    <CArc Type="Arc" Label="ra_74" Source="t:Model.gd86--0-----u--:Model.gd86--0-----u--:or (gdbo):split:or (gdbo)*Closing Operations (gd9d):or (gdbo)*xor (gdbx)" Target="p:Model.gd86--0-----u--:Model.gd86--0-----u--:xor (gdbx):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_xor (gdcb)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_No_xor (gdcb):split:Join_Join_xor (gdcb)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Split_and (gdc4)" Target="t:Model.gd86--0-----u--:Model.gd86--0-----u--:Join_Yes_and (gdc4):split:Join_Join_and (gdc4)">1</CArc>
+</CGraph>

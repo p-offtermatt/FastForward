@@ -1,0 +1,73 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gl74--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gl74--0-----u--:Model.gl74--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_and (gl7i)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_or (gl8a)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_xor (gl7x)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_and (gl7i)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_or (gl8a)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_xor (gl7x)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_Posting Release (gl8x)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_xor (gl8h)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Split_xor (gl8h)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:and (gl7i)*Join_Yes_and (gl7i)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Join_Yes_xor (gl7x)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Process Payment Request (gl9p)"/>
+    <CGraph Type="Place" Label="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):busy"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_and (gl7i):split:Join_Join_and (gl7i)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_or (gl8a):split:Join_Join_or (gl8a)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_xor (gl7x):split:Join_Join_xor (gl7x)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_and (gl7i):split:Join_Join_and (gl7i)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_or (gl8a):split:Join_Join_or (gl8a)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_xor (gl7x):split:Join_Join_xor (gl7x)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_Posting Release (gl8x):split:Split_Join_Posting Release (gl8x)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_xor (gl8h):split:Split_Join_xor (gl8h)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Join_Yes_xor (gl7x)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Process Payment Request (gl9p)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Posting Release (gl8x)*xor (gl8h)"/>
+    <CGraph Type="Transition" Label="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Split_Yes_xor (gl8h)*xor (gl8h)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_or (gl8a):split:Join_Join_or (gl8a)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="arcId100" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Posting Release (gl8x)*xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_xor (gl7x):split:Join_Join_xor (gl7x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_xor (gl7x):split:Join_Join_xor (gl7x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gl74--0-----u--:Model.gl74--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_and (gl7i):split:Join_Join_and (gl7i)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_Posting Release (gl8x):split:Split_Join_Posting Release (gl8x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_Posting Release (gl8x)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_xor (gl8h):split:Split_Join_xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_and (gl7i):split:Join_Join_and (gl7i)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_or (gl8a):split:Join_Join_or (gl8a)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Join_Yes_xor (gl7x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Join_Yes_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Process Payment Request (gl9p)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Process Payment Request (gl9p)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Split_Yes_xor (gl8h)*xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_and (gl7i)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_and (gl7i):split:Join_Join_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_and (gl7i)" Target="*:Model.gl74--0-----u--:Model.gl74--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_or (gl8a)" Target="*:Model.gl74--0-----u--:Model.gl74--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Join_xor (gl7x)" Target="*:Model.gl74--0-----u--:Model.gl74--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_or (gl8a)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_or (gl8a):split:Join_Join_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_Posting Release (gl8x)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_xor (gl8h)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Skip:split:Join_Split_and (gl7i):Join_Split_xor (gl7x):Join_Split_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Split_xor (gl8h)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_xor (gl8h):split:Split_Join_xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_Posting Release (gl8x):split:Split_Join_Posting Release (gl8x)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_No_Posting Release (gl8x):split:Split_Join_Posting Release (gl8x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Split_xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_xor (gl7x)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_No_xor (gl7x):split:Join_Join_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Posting Release (gl8x)*xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_Posting Release (gl8x)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="i" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Posting Release (gl8x)*xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Posting Release (gl8x)*xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Split_xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Split_Yes_xor (gl8h)*xor (gl8h)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Join_xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Split_Split_xor (gl8h)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):join:Split_Yes_xor (gl8h)*xor (gl8h)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_and (gl7i)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_and (gl7i):split:Join_Join_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Process Payment Request (gl9p)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_or (gl8a):split:Join_Join_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Join_Yes_xor (gl7x)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:and (gl7i)*Join_Yes_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Process Payment Request (gl9p)" Target="p:Model.gl74--0-----u--:Model.gl74--0-----u--:and (gl7i)*Join_Yes_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):busy" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Join_Yes_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl8h):busy" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x):split:xor (gl7x)*Process Payment Request (gl9p)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:and (gl7i)*Join_Yes_and (gl7i)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_and (gl7i):split:Join_Join_and (gl7i)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_or (gl8a)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_or (gl8a):split:Join_Join_or (gl8a)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Split_xor (gl7x)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_xor (gl7x):split:Join_Join_xor (gl7x)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gl74--0-----u--:Model.gl74--0-----u--:xor (gl7x)*Join_Yes_xor (gl7x)" Target="t:Model.gl74--0-----u--:Model.gl74--0-----u--:Join_Yes_xor (gl7x):split:Join_Join_xor (gl7x)">1</CArc>
+</CGraph>

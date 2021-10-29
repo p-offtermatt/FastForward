@@ -1,0 +1,46 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.kg4m--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Closing of Insurance Contract (kg5b)"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Index Series (kg5y)"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_xor (kg5k)"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_Index Series (kg5y)"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_xor (kg5k)"/>
+    <CGraph Type="Place" Label="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):busy"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_No_xor (kg6y):split:Join_Join_xor (kg6y)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Closing of Insurance Contract (kg5b):split:Split_Join_Closing of Insurance Contract (kg5b)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Index Series (kg5y):split:Split_Join_Index Series (kg5y)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_xor (kg5k):split:Split_Join_xor (kg5k)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Index Series (kg5y)*xor (kg6r)"/>
+    <CGraph Type="Transition" Label="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Revaluation (kg6g)*xor (kg6r)"/>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Closing of Insurance Contract (kg5b):split:Split_Join_Closing of Insurance Contract (kg5b)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Closing of Insurance Contract (kg5b)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Index Series (kg5y):split:Split_Join_Index Series (kg5y)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Index Series (kg5y)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_xor (kg5k):split:Split_Join_xor (kg5k)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_xor (kg5k)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Index Series (kg5y)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Revaluation (kg6g)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId80" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Closing of Insurance Contract (kg5b)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_No_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Index Series (kg5y)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_No_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_xor (kg5k)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_No_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Closing of Insurance Contract (kg5b)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Index Series (kg5y)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_xor (kg5k)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_Index Series (kg5y)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Index Series (kg5y):split:Split_Join_Index Series (kg5y)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_xor (kg5k)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_xor (kg5k):split:Split_Join_xor (kg5k)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Closing of Insurance Contract (kg5b):split:Split_Join_Closing of Insurance Contract (kg5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Closing of Insurance Contract (kg5b):split:Split_Join_Closing of Insurance Contract (kg5b)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_Index Series (kg5y)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_No_Closing of Insurance Contract (kg5b):split:Split_Join_Closing of Insurance Contract (kg5b)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_xor (kg5k)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Closing of Insurance Contract (kg5b)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_Index Series (kg5y)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Closing of Insurance Contract (kg5b)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_xor (kg5k)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Index Series (kg5y)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_Index Series (kg5y)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_Index Series (kg5y)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Index Series (kg5y)*xor (kg6r)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Split_xor (kg5k)" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Revaluation (kg6g)*xor (kg6r)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):join:Revaluation (kg6g)*xor (kg6r)" Target="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Split_Join_xor (kg5k)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.kg4m--0-----u--:Model.kg4m--0-----u--:xor (kg6r):busy" Target="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_No_xor (kg6y):split:Join_Join_xor (kg6y)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.kg4m--0-----u--:Model.kg4m--0-----u--:Join_Yes_xor (kg6y):split:Join_Join_xor (kg6y)" Target="o">1</CArc>
+</CGraph>

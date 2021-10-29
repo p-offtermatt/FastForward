@@ -1,0 +1,33 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.lp0i--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp10)"/>
+    <CGraph Type="Place" Label="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp1i)"/>
+    <CGraph Type="Place" Label="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Split_xor (lp1i)"/>
+    <CGraph Type="Place" Label="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):busy"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_No_and (lp1p):split:Join_Join_and (lp1p)"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_Yes_and (lp1p):split:Join_Join_and (lp1p)"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp10):split:Split_Join_xor (lp10)"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp1i):split:Split_Join_xor (lp1i)"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Design of Provisions for Personnel Staff and Change Planning (lp23)*xor (lp1i)"/>
+    <CGraph Type="Transition" Label="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Split_Yes_xor (lp1i)*xor (lp1i)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp10):split:Split_Join_xor (lp10)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp10)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp1i):split:Split_Join_xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="arcId66" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Split_Yes_xor (lp1i)*xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId67" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Design of Provisions for Personnel Staff and Change Planning (lp23)*xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp10)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_No_and (lp1p):split:Join_Join_and (lp1p)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp1i)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_No_and (lp1p):split:Join_Join_and (lp1p)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp10)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_Yes_and (lp1p):split:Join_Join_and (lp1p)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp1i)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_Yes_and (lp1p):split:Join_Join_and (lp1p)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Split_xor (lp1i)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp1i):split:Split_Join_xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp10):split:Split_Join_xor (lp10)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_No_xor (lp10):split:Split_Join_xor (lp10)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Split_xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Split_Yes_xor (lp1i)*xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Split_xor (lp1i)" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Split_Yes_xor (lp1i)*xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="i" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Design of Provisions for Personnel Staff and Change Planning (lp23)*xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Design of Provisions for Personnel Staff and Change Planning (lp23)*xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Join_xor (lp10)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):join:Design of Provisions for Personnel Staff and Change Planning (lp23)*xor (lp1i)" Target="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Split_Split_xor (lp1i)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.lp0i--0-----u--:Model.lp0i--0-----u--:xor (lp1i):busy" Target="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_Yes_and (lp1p):split:Join_Join_and (lp1p)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_No_and (lp1p):split:Join_Join_and (lp1p)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.lp0i--0-----u--:Model.lp0i--0-----u--:Join_Yes_and (lp1p):split:Join_Join_and (lp1p)" Target="o">1</CArc>
+</CGraph>

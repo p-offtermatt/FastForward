@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.4bgy--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.4bgy--0-----u--:Model.4bgy--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_Sequencing (4bjg)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_or (4bir)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_Sequencing (4bjg)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_or (4bir)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_Sequencing (4bjg)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_and (4bjp)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Split_and (4bjp)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)"/>
+    <CGraph Type="Place" Label="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):busy"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_or (4bir):split:Join_Join_or (4bir)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_or (4bir):split:Join_Join_or (4bir)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Skip:split:Join_Split_Sequencing (4bjg):Join_Split_or (4bir)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_and (4bjp):split:Split_Join_and (4bjp)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg):Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)"/>
+    <CGraph Type="Transition" Label="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):join:Production Planning in the Planning Table (4bik)*or (4bir)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_or (4bir):split:Join_Join_or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Skip:split:Join_Split_Sequencing (4bjg):Join_Split_or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Skip:split:Join_Split_Sequencing (4bjg):Join_Split_or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.4bgy--0-----u--:Model.4bgy--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg):Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_and (4bjp):split:Split_Join_and (4bjp)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_and (4bjp)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg):Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="arcId71" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):join:Production Planning in the Planning Table (4bik)*or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_or (4bir):split:Join_Join_or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_Sequencing (4bjg)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_or (4bir)" Target="*:Model.4bgy--0-----u--:Model.4bgy--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_Sequencing (4bjg)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Skip:split:Join_Split_Sequencing (4bjg):Join_Split_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_and (4bjp)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Skip:split:Join_Split_Sequencing (4bjg):Join_Split_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Split_and (4bjp)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_and (4bjp):split:Split_Join_and (4bjp)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_or (4bir)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_No_or (4bir):split:Join_Join_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_No_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Split_and (4bjp)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg):Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Yes_Sequencing (4bjg):split:Split_Join_Sequencing (4bjg):Split_Yes_Sequencing (4bjg)*Sequencing (4bjg)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Split_and (4bjp)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_Sequencing (4bjg)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_Sequencing (4bjg):split:Join_Join_Sequencing (4bjg)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Split_and (4bjp)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):join:Production Planning in the Planning Table (4bik)*or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):join:Production Planning in the Planning Table (4bik)*or (4bir)" Target="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Split_Join_and (4bjp)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:or (4bir):busy" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_or (4bir):split:Join_Join_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Split_or (4bir)" Target="t:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Yes_or (4bir):split:Join_Join_or (4bir)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.4bgy--0-----u--:Model.4bgy--0-----u--:Join_Join_Sequencing (4bjg)" Target="*:Model.4bgy--0-----u--:Model.4bgy--0-----u--:end">1</CArc>
+</CGraph>

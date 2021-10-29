@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.n0z8--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.n0z8--0-----u--:Model.n0z8--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_or (n11m)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_xor (n11f)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_or (n11m)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_xor (n11f)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_and (n0zo)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_xor (n118)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Split_xor (n118)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo)*and (n0zo)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*Join_Yes_or (n11m)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*xor (n11f)"/>
+    <CGraph Type="Place" Label="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):busy"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_or (n11m):split:Join_Join_or (n11m)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_xor (n11f):split:Join_Join_xor (n11f)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_or (n11m):split:Join_Join_or (n11m)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_xor (n11f):split:Join_Join_xor (n11f)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Skip:split:Join_Split_or (n11m):Join_Split_xor (n11f)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_and (n0zo):split:Split_Join_and (n0zo)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_xor (n118):split:Split_Join_xor (n118)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo):split:Split_Join_and (n0zo):Split_Yes_and (n0zo)*and (n0zo)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m):or (n11m)*xor (n11f)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*xor (n11f)"/>
+    <CGraph Type="Transition" Label="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):join:Split_Yes_xor (n118)*xor (n118)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_or (n11m):split:Join_Join_or (n11m)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_or (n11m):split:Join_Join_or (n11m)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_xor (n11f):split:Join_Join_xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_xor (n11f):split:Join_Join_xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.n0z8--0-----u--:Model.n0z8--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Skip:split:Join_Split_or (n11m):Join_Split_xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Skip:split:Join_Split_or (n11m):Join_Split_xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo):split:Split_Join_and (n0zo):Split_Yes_and (n0zo)*and (n0zo)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_and (n0zo)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_and (n0zo):split:Split_Join_and (n0zo)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_and (n0zo)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_xor (n118):split:Split_Join_xor (n118)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo):split:Split_Join_and (n0zo):Split_Yes_and (n0zo)*and (n0zo)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo)*and (n0zo)">1</CArc>
+    <CArc Type="Arc" Label="arcId69" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*Join_Yes_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="arcId71" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m):or (n11m)*xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*Join_Yes_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m):or (n11m)*xor (n11f)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):join:Split_Yes_xor (n118)*xor (n118)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_or (n11m)" Target="*:Model.n0z8--0-----u--:Model.n0z8--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Join_xor (n11f)" Target="*:Model.n0z8--0-----u--:Model.n0z8--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_and (n0zo)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Skip:split:Join_Split_or (n11m):Join_Split_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_xor (n118)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Skip:split:Join_Split_or (n11m):Join_Split_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Split_xor (n118)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_xor (n118):split:Split_Join_xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_and (n0zo):split:Split_Join_and (n0zo)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_No_and (n0zo):split:Split_Join_and (n0zo)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Split_xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo):split:Split_Join_and (n0zo):Split_Yes_and (n0zo)*and (n0zo)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo):split:Split_Join_and (n0zo):Split_Yes_and (n0zo)*and (n0zo)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Split_xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):join:Split_Yes_xor (n118)*xor (n118)" Target="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Join_xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Split_xor (n118)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):join:Split_Yes_xor (n118)*xor (n118)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo)*and (n0zo)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo)*and (n0zo)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m):or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Split_Yes_and (n0zo)*and (n0zo)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):busy" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):busy" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*Join_Yes_or (n11m):or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:xor (n118):busy" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m):split:or (n11m)*xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*xor (n11f)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_xor (n11f):split:Join_Join_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_or (n11m)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_or (n11m):split:Join_Join_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_xor (n11f)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_No_xor (n11f):split:Join_Join_xor (n11f)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_or (n11m)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_or (n11m):split:Join_Join_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:or (n11m)*Join_Yes_or (n11m)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_or (n11m):split:Join_Join_or (n11m)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Split_xor (n11f)" Target="t:Model.n0z8--0-----u--:Model.n0z8--0-----u--:Join_Yes_xor (n11f):split:Join_Join_xor (n11f)">1</CArc>
+</CGraph>

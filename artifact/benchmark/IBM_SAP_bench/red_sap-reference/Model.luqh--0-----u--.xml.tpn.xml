@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.luqh--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_Join_Personnel Selection (lur2)"/>
+    <CGraph Type="Place" Label="p:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):busy"/>
+    <CGraph Type="Transition" Label="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_No_xor (lur9):split:Join_Join_xor (lur9)"/>
+    <CGraph Type="Transition" Label="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_Yes_xor (lur9):split:Join_Join_xor (lur9)"/>
+    <CGraph Type="Transition" Label="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_No_Personnel Selection (lur2):split:Split_Join_Personnel Selection (lur2)"/>
+    <CGraph Type="Transition" Label="t:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):join:Personnel Selection (lur2)*xor (lur9)"/>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_No_Personnel Selection (lur2):split:Split_Join_Personnel Selection (lur2)" Target="p:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_Join_Personnel Selection (lur2)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):join:Personnel Selection (lur2)*xor (lur9)" Target="p:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_Join_Personnel Selection (lur2)" Target="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_Yes_xor (lur9):split:Join_Join_xor (lur9)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_No_Personnel Selection (lur2):split:Split_Join_Personnel Selection (lur2)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):join:Personnel Selection (lur2)*xor (lur9)" Target="p:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_Join_Personnel Selection (lur2)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):join:Personnel Selection (lur2)*xor (lur9)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.luqh--0-----u--:Model.luqh--0-----u--:xor (lur9):busy" Target="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_Yes_xor (lur9):split:Join_Join_xor (lur9)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_No_xor (lur9):split:Join_Join_xor (lur9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_Yes_xor (lur9):split:Join_Join_xor (lur9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.luqh--0-----u--:Model.luqh--0-----u--:Split_Join_Personnel Selection (lur2)" Target="t:Model.luqh--0-----u--:Model.luqh--0-----u--:Join_No_xor (lur9):split:Join_Join_xor (lur9)">1</CArc>
+</CGraph>

@@ -1,0 +1,66 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.gm9n--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.gm9n--0-----u--:Model.gm9n--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_Netting Processing (gmb7)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_and (gmbt)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_or (gma1)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:and (gmbt)*Join_Yes_and (gmbt)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Join_Yes_or (gma1)"/>
+    <CGraph Type="Place" Label="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Netting Processing (gmb7)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_and (gmbt):split:Join_Join_and (gmbt)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_or (gma1):split:Join_Join_or (gma1)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_and (gmbt):split:Join_Join_and (gmbt)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_or (gma1):split:Join_Join_or (gma1)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Split_No_Process Commercial Paper (gmaf):split:Split_Join_Process Commercial Paper (gmaf)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)"/>
+    <CGraph Type="Transition" Label="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_and (gmbt):split:Join_Join_and (gmbt)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_or (gma1):split:Join_Join_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_or (gma1):split:Join_Join_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.gm9n--0-----u--:Model.gm9n--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Join_Yes_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Join_Yes_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_and (gmbt):split:Join_Join_and (gmbt)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Netting Processing (gmb7)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_Netting Processing (gmb7)" Target="*:Model.gm9n--0-----u--:Model.gm9n--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_and (gmbt)" Target="*:Model.gm9n--0-----u--:Model.gm9n--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Join_or (gma1)" Target="*:Model.gm9n--0-----u--:Model.gm9n--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_and (gmbt):split:Join_Join_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Split_No_Process Commercial Paper (gmaf):split:Split_Join_Process Commercial Paper (gmaf)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_No_or (gma1):split:Join_Join_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:and (gmbt)*Join_Yes_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="i" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:and (gmbt)*Join_Yes_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_Netting Processing (gmb7):split:Join_Join_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="i" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:and (gmbt)*Join_Yes_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Split_No_Process Commercial Paper (gmaf):split:Split_Join_Process Commercial Paper (gmaf)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Split_No_Process Commercial Paper (gmaf):split:Split_Join_Process Commercial Paper (gmaf)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Split_No_Process Commercial Paper (gmaf):split:Split_Join_Process Commercial Paper (gmaf)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Join_Yes_or (gma1):or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_Netting Processing (gmb7)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1):split:or (gma1)*Netting Processing (gmb7)" Target="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_and (gmbt)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_and (gmbt):split:Join_Join_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:and (gmbt)*Join_Yes_and (gmbt)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_and (gmbt):split:Join_Join_and (gmbt)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Split_or (gma1)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_or (gma1):split:Join_Join_or (gma1)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.gm9n--0-----u--:Model.gm9n--0-----u--:or (gma1)*Join_Yes_or (gma1)" Target="t:Model.gm9n--0-----u--:Model.gm9n--0-----u--:Join_Yes_or (gma1):split:Join_Join_or (gma1)">1</CArc>
+</CGraph>

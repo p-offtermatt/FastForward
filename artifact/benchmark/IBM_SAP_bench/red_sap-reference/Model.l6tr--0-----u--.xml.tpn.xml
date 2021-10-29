@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.l6tr--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)"/>
+    <CGraph Type="Place" Label="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):split:Join_Join_or (l6up)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):split:Join_Join_xor (l6ui)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)"/>
+    <CGraph Type="Transition" Label="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):split:Join_Join_or (l6up)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):split:Join_Join_xor (l6ui)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_or (l6up):split:Join_Join_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_xor (l6ui)" Target="*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_No_xor (l6ui):split:Join_Join_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*or (l6up)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_or (l6up):split:Join_Join_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Split_No_xor (l6u7):split:Split_Join_xor (l6u7)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*Join_Yes_xor (l6ui)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_or (l6up)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui):split:xor (l6ui)*or (l6up)" Target="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Split_xor (l6ui)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:xor (l6ui)*Join_Yes_xor (l6ui)" Target="t:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Yes_xor (l6ui):split:Join_Join_xor (l6ui)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.l6tr--0-----u--:Model.l6tr--0-----u--:Join_Join_or (l6up)" Target="*:Model.l6tr--0-----u--:Model.l6tr--0-----u--:end">1</CArc>
+</CGraph>

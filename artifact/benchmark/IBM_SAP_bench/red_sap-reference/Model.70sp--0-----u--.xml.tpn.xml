@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.70sp--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_Join_Credit Control (70th)"/>
+    <CGraph Type="Place" Label="p:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):busy"/>
+    <CGraph Type="Transition" Label="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_No_xor (70t3):split:Join_Join_xor (70t3)"/>
+    <CGraph Type="Transition" Label="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_Yes_xor (70t3):split:Join_Join_xor (70t3)"/>
+    <CGraph Type="Transition" Label="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_No_Credit Control (70th):split:Split_Join_Credit Control (70th)"/>
+    <CGraph Type="Transition" Label="t:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):join:Credit Control (70th)*xor (70t3)"/>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_No_Credit Control (70th):split:Split_Join_Credit Control (70th)" Target="p:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_Join_Credit Control (70th)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):join:Credit Control (70th)*xor (70t3)" Target="p:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_Join_Credit Control (70th)" Target="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_Yes_xor (70t3):split:Join_Join_xor (70t3)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_No_Credit Control (70th):split:Split_Join_Credit Control (70th)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="t:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):join:Credit Control (70th)*xor (70t3)" Target="p:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_Join_Credit Control (70th)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):join:Credit Control (70th)*xor (70t3)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.70sp--0-----u--:Model.70sp--0-----u--:xor (70t3):busy" Target="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_Yes_xor (70t3):split:Join_Join_xor (70t3)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_No_xor (70t3):split:Join_Join_xor (70t3)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_Yes_xor (70t3):split:Join_Join_xor (70t3)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.70sp--0-----u--:Model.70sp--0-----u--:Split_Join_Credit Control (70th)" Target="t:Model.70sp--0-----u--:Model.70sp--0-----u--:Join_No_xor (70t3):split:Join_Join_xor (70t3)">1</CArc>
+</CGraph>

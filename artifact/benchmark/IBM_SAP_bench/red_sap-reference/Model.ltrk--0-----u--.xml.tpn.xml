@@ -1,0 +1,35 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.ltrk--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (ltry)"/>
+    <CGraph Type="Place" Label="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (lttp)"/>
+    <CGraph Type="Place" Label="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Split_and (lttp)"/>
+    <CGraph Type="Place" Label="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry)*and (ltry)"/>
+    <CGraph Type="Place" Label="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):busy"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_No_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (ltry):split:Split_Join_and (ltry)"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (lttp):split:Split_Join_and (lttp)"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry):split:Split_Join_and (ltry):Split_Yes_and (ltry)*and (ltry)"/>
+    <CGraph Type="Transition" Label="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):join:Split_Yes_and (lttp)*and (lttp)"/>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry):split:Split_Join_and (ltry):Split_Yes_and (ltry)*and (ltry)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (ltry)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (ltry):split:Split_Join_and (ltry)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (ltry)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (lttp):split:Split_Join_and (lttp)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry):split:Split_Join_and (ltry):Split_Yes_and (ltry)*and (ltry)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry)*and (ltry)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):join:Split_Yes_and (lttp)*and (lttp)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (ltry)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_No_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (lttp)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_No_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (ltry)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (lttp)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Split_and (lttp)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (lttp):split:Split_Join_and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (ltry):split:Split_Join_and (ltry)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_No_and (ltry):split:Split_Join_and (ltry)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Split_and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry):split:Split_Join_and (ltry):Split_Yes_and (ltry)*and (ltry)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry):split:Split_Join_and (ltry):Split_Yes_and (ltry)*and (ltry)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Split_and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):join:Split_Yes_and (lttp)*and (lttp)" Target="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Join_and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Split_and (lttp)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):join:Split_Yes_and (lttp)*and (lttp)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Split_Yes_and (ltry)*and (ltry)" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.ltrk--0-----u--:Model.ltrk--0-----u--:and (lttp):busy" Target="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_No_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.ltrk--0-----u--:Model.ltrk--0-----u--:Join_Yes_Application Retraction Confirmation (ltsq):split:Join_Join_Application Retraction Confirmation (ltsq)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,33 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m11m--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12j)"/>
+    <CGraph Type="Place" Label="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12q)"/>
+    <CGraph Type="Place" Label="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Split_xor (m12q)"/>
+    <CGraph Type="Place" Label="p:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_No_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_Yes_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12j):split:Split_Join_xor (m12j)"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12q):split:Split_Join_xor (m12q)"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Design of Personnel Appraisal System (m134)*xor (m12q)"/>
+    <CGraph Type="Transition" Label="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Split_Yes_xor (m12q)*xor (m12q)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12j):split:Split_Join_xor (m12j)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12j)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12q):split:Split_Join_xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Design of Personnel Appraisal System (m134)*xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Split_Yes_xor (m12q)*xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12j)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_No_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12q)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_No_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12j)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_Yes_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12q)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_Yes_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Split_xor (m12q)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12q):split:Split_Join_xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12j):split:Split_Join_xor (m12j)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_No_xor (m12j):split:Split_Join_xor (m12j)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Split_xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Split_Yes_xor (m12q)*xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Split_xor (m12q)" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Split_Yes_xor (m12q)*xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Design of Personnel Appraisal System (m134)*xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Design of Personnel Appraisal System (m134)*xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Join_xor (m12j)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):join:Design of Personnel Appraisal System (m134)*xor (m12q)" Target="p:Model.m11m--0-----u--:Model.m11m--0-----u--:Split_Split_xor (m12q)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.m11m--0-----u--:Model.m11m--0-----u--:xor (m12q):busy" Target="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_Yes_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_No_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.m11m--0-----u--:Model.m11m--0-----u--:Join_Yes_Implementation of Personnel Appraisal System (m13i):split:Join_Join_Implementation of Personnel Appraisal System (m13i)" Target="o">1</CArc>
+</CGraph>

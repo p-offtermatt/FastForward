@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.hct3--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.hct3--0-----u--:Model.hct3--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_and (hcxc)"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_xor (hcw3)"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Join_Yes_xor (hcw3)"/>
+    <CGraph Type="Place" Label="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Price Marking (hcvw)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_and (hcxc):split:Join_Join_and (hcxc)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_xor (hcw3):split:Join_Join_xor (hcw3)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_and (hcxc):split:Join_Join_and (hcxc)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_xor (hcw3):split:Join_Join_xor (hcw3)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Split_No_or (hcyp):split:Split_Join_or (hcyp)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Join_Yes_xor (hcw3)"/>
+    <CGraph Type="Transition" Label="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Price Marking (hcvw)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_and (hcxc):split:Join_Join_and (hcxc)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_xor (hcw3):split:Join_Join_xor (hcw3)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_xor (hcw3):split:Join_Join_xor (hcw3)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.hct3--0-----u--:Model.hct3--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Join_Yes_xor (hcw3)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Join_Yes_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="arcId84" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Price Marking (hcvw)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Price Marking (hcvw)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_and (hcxc):split:Join_Join_and (hcxc)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_and (hcxc)" Target="*:Model.hct3--0-----u--:Model.hct3--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Join_xor (hcw3)" Target="*:Model.hct3--0-----u--:Model.hct3--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Split_No_or (hcyp):split:Split_Join_or (hcyp)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_and (hcxc):split:Join_Join_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Price Marking (hcvw)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_and (hcxc):split:Join_Join_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_No_xor (hcw3):split:Join_Join_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_and (hcxc):split:Join_Join_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Split_No_or (hcyp):split:Split_Join_or (hcyp)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Split_No_or (hcyp):split:Split_Join_or (hcyp)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="i" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Join_Yes_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Join_Yes_xor (hcw3)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Join_Yes_xor (hcw3)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="i" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Price Marking (hcvw)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Price Marking (hcvw)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_and (hcxc)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3):split:xor (hcw3)*Price Marking (hcvw)" Target="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Split_xor (hcw3)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_xor (hcw3):split:Join_Join_xor (hcw3)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.hct3--0-----u--:Model.hct3--0-----u--:xor (hcw3)*Join_Yes_xor (hcw3)" Target="t:Model.hct3--0-----u--:Model.hct3--0-----u--:Join_Yes_xor (hcw3):split:Join_Join_xor (hcw3)">1</CArc>
+</CGraph>

@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.4ar4--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.4ar4--0-----u--:Model.4ar4--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_Capacity Dispatching and Leveling (4asw)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_xor (4arv)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_Capacity Dispatching and Leveling (4asw)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_xor (4arv)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4aro)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4as2)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Split_or (4as2)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2)*or (4as2)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):busy"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv)*Join_Yes_xor (4arv)"/>
+    <CGraph Type="Place" Label="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):busy"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_xor (4arv):split:Join_Join_xor (4arv)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_xor (4arv):split:Join_Join_xor (4arv)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Skip:split:Join_Split_xor (4arv):Join_Split_Capacity Dispatching and Leveling (4asw)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4aro):split:Split_Join_or (4aro)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4as2):split:Split_Join_or (4as2)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2):split:Split_Join_or (4as2):Split_Yes_or (4as2)*or (4as2)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2):xor (4arv)*or (4as2)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:xor (4arv)*or (4as2)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):join:Capacity Evaluation (4asi)*xor (4arv)"/>
+    <CGraph Type="Transition" Label="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):split:xor (4arv)*Join_Yes_xor (4arv)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_xor (4arv):split:Join_Join_xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_xor (4arv):split:Join_Join_xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.4ar4--0-----u--:Model.4ar4--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Skip:split:Join_Split_xor (4arv):Join_Split_Capacity Dispatching and Leveling (4asw)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Skip:split:Join_Split_xor (4arv):Join_Split_Capacity Dispatching and Leveling (4asw)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4aro):split:Split_Join_or (4aro)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4aro)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2):split:Split_Join_or (4as2):Split_Yes_or (4as2)*or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4as2):split:Split_Join_or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2)*or (4as2)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2)*or (4as2)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2):xor (4arv)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2):split:Split_Join_or (4as2):Split_Yes_or (4as2)*or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:xor (4arv)*or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2):xor (4arv)*or (4as2)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):split:xor (4arv)*Join_Yes_xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv)*Join_Yes_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):busy" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):split:xor (4arv)*Join_Yes_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):join:Capacity Evaluation (4asi)*xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv)*Join_Yes_xor (4arv)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_xor (4arv):split:Join_Join_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_Capacity Dispatching and Leveling (4asw)" Target="*:Model.4ar4--0-----u--:Model.4ar4--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Join_xor (4arv)" Target="*:Model.4ar4--0-----u--:Model.4ar4--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4aro)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Skip:split:Join_Split_xor (4arv):Join_Split_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4as2)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Skip:split:Join_Split_xor (4arv):Join_Split_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Split_or (4as2)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4as2):split:Split_Join_or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4aro):split:Split_Join_or (4aro)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_No_or (4aro):split:Split_Join_or (4aro)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Split_or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Split_or (4as2)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Yes_or (4as2):split:Split_Join_or (4as2):Split_Yes_or (4as2)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):join:Capacity Evaluation (4asi)*xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):join:Capacity Evaluation (4asi)*xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Join_or (4aro)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):join:Capacity Evaluation (4asi)*xor (4arv)" Target="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Split_Split_or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):busy" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):busy" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:Split_Yes_or (4as2)*or (4as2):xor (4arv)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:xor (4arv):busy" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:or (4as2):join:xor (4arv)*or (4as2)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_Capacity Dispatching and Leveling (4asw)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_xor (4arv)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_No_xor (4arv):split:Join_Join_xor (4arv)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_Capacity Dispatching and Leveling (4asw)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_Capacity Dispatching and Leveling (4asw):split:Join_Join_Capacity Dispatching and Leveling (4asw)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Split_xor (4arv)" Target="t:Model.4ar4--0-----u--:Model.4ar4--0-----u--:Join_Yes_xor (4arv):split:Join_Join_xor (4arv)">1</CArc>
+</CGraph>

@@ -1,0 +1,103 @@
+place "i" init 1;
+place "o";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:InputCondition";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Split_Material Master (cthy)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Join_Material Master (cthy)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Split_Dangerous Goods (ctii)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Join_Dangerous Goods (ctii)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:outputCondition";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy)*Material Master (cthy)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy)*Dangerous Goods (ctii)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii)";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):busy";
+place "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:busy";
+trans "*:Model.cthd--0-----u--:Model.cthd--0-----u--:start"~"*:Model.cthd--0-----u--:Model.cthd--0-----u--:start"
+    in "i"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:InputCondition"
+;
+trans "*:Model.cthd--0-----u--:Model.cthd--0-----u--:end"~"*:Model.cthd--0-----u--:Model.cthd--0-----u--:end"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:join:InputCondition"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:join:InputCondition"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:InputCondition"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:split:Split_Split_Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:split:Split_Split_Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split:busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Split_Material Master (cthy)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):join:Split_Split_Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):join:Split_Split_Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Split_Material Master (cthy)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):split:Split_Join_Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):split:Split_Join_Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_No_Material Master (cthy):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Join_Material Master (cthy)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):join:Split_Split_Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):join:Split_Split_Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Split_Material Master (cthy)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):split:Split_Join_Material Master (cthy):Split_Yes_Material Master (cthy)*Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):split:Split_Join_Material Master (cthy):Split_Yes_Material Master (cthy)*Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Join_Material Master (cthy)"
+       "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy)*Material Master (cthy)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:join:Split_Join_Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:join:Split_Join_Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Join_Material Master (cthy)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:split:Join_Split_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:split:Join_Split_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Skip:busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Split_Dangerous Goods (ctii)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):join:Split_Yes_Material Master (cthy)*Material Master (cthy)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):join:Split_Yes_Material Master (cthy)*Material Master (cthy)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Split_Yes_Material Master (cthy)*Material Master (cthy)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):split:Material Master (cthy)*Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):split:Material Master (cthy)*Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy)*Dangerous Goods (ctii)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):join:Material Master (cthy)*Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):join:Material Master (cthy)*Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Material Master (cthy)*Dangerous Goods (ctii)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):split:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):split:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):join:Join_Split_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):join:Join_Split_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Split_Dangerous Goods (ctii)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):split:Join_Join_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):split:Join_Join_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_No_Dangerous Goods (ctii):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Join_Dangerous Goods (ctii)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):join:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii):Join_Split_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):join:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii):Join_Split_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Dangerous Goods (ctii)*Join_Yes_Dangerous Goods (ctii)"
+       "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Split_Dangerous Goods (ctii)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):split:Join_Join_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):split:Join_Join_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Yes_Dangerous Goods (ctii):busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Join_Dangerous Goods (ctii)"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:join:Join_Join_Dangerous Goods (ctii)"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:join:Join_Join_Dangerous Goods (ctii)"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Join_Join_Dangerous Goods (ctii)"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:busy"
+;
+trans "t:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:split:outputCondition"~"t:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:split:outputCondition"
+    in "p:Model.cthd--0-----u--:Model.cthd--0-----u--:Output:busy"
+   out "p:Model.cthd--0-----u--:Model.cthd--0-----u--:outputCondition"
+;
+

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m6az--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_Join_and (m6c9)"/>
+    <CGraph Type="Place" Label="p:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_No_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)"/>
+    <CGraph Type="Transition" Label="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_Yes_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)"/>
+    <CGraph Type="Transition" Label="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_No_and (m6c9):split:Split_Join_and (m6c9)"/>
+    <CGraph Type="Transition" Label="t:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):join:Split_Yes_and (m6c9)*and (m6c9)"/>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_No_and (m6c9):split:Split_Join_and (m6c9)" Target="p:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_Join_and (m6c9)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):join:Split_Yes_and (m6c9)*and (m6c9)" Target="p:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_Join_and (m6c9)" Target="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_No_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_Join_and (m6c9)" Target="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_Yes_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_No_and (m6c9):split:Split_Join_and (m6c9)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="t:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):join:Split_Yes_and (m6c9)*and (m6c9)" Target="p:Model.m6az--0-----u--:Model.m6az--0-----u--:Split_Join_and (m6c9)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="i" Target="t:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):join:Split_Yes_and (m6c9)*and (m6c9)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.m6az--0-----u--:Model.m6az--0-----u--:and (m6c9):busy" Target="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_Yes_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_No_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.m6az--0-----u--:Model.m6az--0-----u--:Join_Yes_Employee Notification of Forfeiture (m6by):split:Join_Join_Employee Notification of Forfeiture (m6by)" Target="o">1</CArc>
+</CGraph>

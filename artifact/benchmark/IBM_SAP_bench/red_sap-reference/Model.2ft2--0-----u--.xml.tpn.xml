@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2ft2--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.2ft2--0-----u--:Model.2ft2--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Invoice Verification (2fv9)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Shipping (2fvy)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_and (2fu2)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Invoice Verification (2fv9)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Shipping (2fvy)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_and (2fu2)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu2)*Join_Yes_and (2fu2)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Invoice Verification (2fv9)"/>
+    <CGraph Type="Place" Label="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Warehouse (2fwq)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Shipping (2fvy):split:Join_Join_Shipping (2fvy)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_and (2fu2):split:Join_Join_and (2fu2)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Shipping (2fvy):split:Join_Join_Shipping (2fvy)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_and (2fu2):split:Join_Join_and (2fu2)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Split_No_Quality Notification (2fwc):split:Split_Join_Quality Notification (2fwc)"/>
+    <CGraph Type="Transition" Label="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Shipping (2fvy):split:Join_Join_Shipping (2fvy)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Shipping (2fvy):split:Join_Join_Shipping (2fvy)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_and (2fu2):split:Join_Join_and (2fu2)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_and (2fu2):split:Join_Join_and (2fu2)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.2ft2--0-----u--:Model.2ft2--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Warehouse (2fwq)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_and (2fu2)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_and (2fu2):split:Join_Join_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu2)*Join_Yes_and (2fu2)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_and (2fu2):split:Join_Join_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Invoice Verification (2fv9)" Target="*:Model.2ft2--0-----u--:Model.2ft2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_Shipping (2fvy)" Target="*:Model.2ft2--0-----u--:Model.2ft2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Join_and (2fu2)" Target="*:Model.2ft2--0-----u--:Model.2ft2--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Split_No_Quality Notification (2fwc):split:Split_Join_Quality Notification (2fwc)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Invoice Verification (2fv9)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Warehouse (2fwq)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Shipping (2fvy):split:Join_Join_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="i" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu2)*Join_Yes_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Shipping (2fvy)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_Shipping (2fvy):split:Join_Join_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Split_No_Quality Notification (2fwc):split:Split_Join_Quality Notification (2fwc)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Split_No_Quality Notification (2fwc):split:Split_Join_Quality Notification (2fwc)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Split_No_Quality Notification (2fwc):split:Split_Join_Quality Notification (2fwc)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Shipping (2fvy)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9):split:and (2fu9)*Invoice Verification (2fv9):and (2fu9)*Warehouse (2fwq)" Target="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_and (2fu2)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_No_and (2fu2):split:Join_Join_and (2fu2)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Invoice Verification (2fv9)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:and (2fu9)*Invoice Verification (2fv9)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Invoice Verification (2fv9):split:Join_Join_Invoice Verification (2fv9)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Split_Shipping (2fvy)" Target="t:Model.2ft2--0-----u--:Model.2ft2--0-----u--:Join_Yes_Shipping (2fvy):split:Join_Join_Shipping (2fvy)">1</CArc>
+</CGraph>

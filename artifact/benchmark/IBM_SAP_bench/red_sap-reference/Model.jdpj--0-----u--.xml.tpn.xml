@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.jdpj--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)"/>
+    <CGraph Type="Place" Label="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):split:Join_Join_and (jdsk)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):split:Join_Join_xor (jdrd)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)"/>
+    <CGraph Type="Transition" Label="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):split:Join_Join_and (jdsk)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):split:Join_Join_xor (jdrd)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="arcId96" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_and (jdsk)" Target="*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Join_xor (jdrd)" Target="*:Model.jdpj--0-----u--:Model.jdpj--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_and (jdsk):split:Join_Join_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Price Marking (jdte)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_No_xor (jdrd):split:Join_Join_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Split_No_Preparation for Costing (jdqj):split:Split_Join_Preparation for Costing (jdqj)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_and (jdsk):split:Join_Join_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="i" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Join_Yes_xor (jdrd)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="i" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_and (jdsk)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd):split:xor (jdrd)*Price Marking (jdte)" Target="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Split_xor (jdrd)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.jdpj--0-----u--:Model.jdpj--0-----u--:xor (jdrd)*Join_Yes_xor (jdrd)" Target="t:Model.jdpj--0-----u--:Model.jdpj--0-----u--:Join_Yes_xor (jdrd):split:Join_Join_xor (jdrd)">1</CArc>
+</CGraph>

@@ -1,0 +1,203 @@
+place "i" init 1;
+place "o";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:InputCondition";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Split_Characteristics (k96p)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Join_Characteristics (k96p)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Split_Data slices (k9bp)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Join_Data slices (k9bp)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:outputCondition";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p)*Characteristics (k96p)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p)*Basic key figures (k973)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973)*Field groups (k97h)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h)*Aspect (k97v)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v)*Calculated Key Figures (k989)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989)*Comment tables (k98t)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t)*Fixed Characteristics (k99b)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b)*Summarization levels (k99t)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av)*Validation (k9bb)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb)*Data slices (k9bp)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp)*Join_Yes_Data slices (k9bp)";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split:busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Skip:busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):busy";
+place "p:Model.k964--0-----u--:Model.k964--0-----u--:Output:busy";
+trans "*:Model.k964--0-----u--:Model.k964--0-----u--:start"~"*:Model.k964--0-----u--:Model.k964--0-----u--:start"
+    in "i"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:InputCondition"
+;
+trans "*:Model.k964--0-----u--:Model.k964--0-----u--:end"~"*:Model.k964--0-----u--:Model.k964--0-----u--:end"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split:join:InputCondition"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split:join:InputCondition"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:InputCondition"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split:busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split:split:Split_Split_Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split:split:Split_Split_Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split:busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Split_Characteristics (k96p)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):join:Split_Split_Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):join:Split_Split_Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Split_Characteristics (k96p)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):split:Split_Join_Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):split:Split_Join_Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_No_Characteristics (k96p):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Join_Characteristics (k96p)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):join:Split_Split_Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):join:Split_Split_Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Split_Characteristics (k96p)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):split:Split_Join_Characteristics (k96p):Split_Yes_Characteristics (k96p)*Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):split:Split_Join_Characteristics (k96p):Split_Yes_Characteristics (k96p)*Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Join_Characteristics (k96p)"
+       "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p)*Characteristics (k96p)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Skip:join:Split_Join_Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Skip:join:Split_Join_Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Join_Characteristics (k96p)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Skip:busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Skip:split:Join_Split_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Skip:split:Join_Split_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Skip:busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Split_Data slices (k9bp)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):join:Split_Yes_Characteristics (k96p)*Characteristics (k96p)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):join:Split_Yes_Characteristics (k96p)*Characteristics (k96p)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Split_Yes_Characteristics (k96p)*Characteristics (k96p)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):split:Characteristics (k96p)*Basic key figures (k973)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):split:Characteristics (k96p)*Basic key figures (k973)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p)*Basic key figures (k973)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):join:Characteristics (k96p)*Basic key figures (k973)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):join:Characteristics (k96p)*Basic key figures (k973)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Characteristics (k96p)*Basic key figures (k973)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):split:Basic key figures (k973)*Field groups (k97h)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):split:Basic key figures (k973)*Field groups (k97h)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973)*Field groups (k97h)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):join:Basic key figures (k973)*Field groups (k97h)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):join:Basic key figures (k973)*Field groups (k97h)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Basic key figures (k973)*Field groups (k97h)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):split:Field groups (k97h)*Aspect (k97v)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):split:Field groups (k97h)*Aspect (k97v)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h)*Aspect (k97v)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):join:Field groups (k97h)*Aspect (k97v)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):join:Field groups (k97h)*Aspect (k97v)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Field groups (k97h)*Aspect (k97v)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):split:Aspect (k97v)*Calculated Key Figures (k989)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):split:Aspect (k97v)*Calculated Key Figures (k989)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v)*Calculated Key Figures (k989)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):join:Aspect (k97v)*Calculated Key Figures (k989)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):join:Aspect (k97v)*Calculated Key Figures (k989)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Aspect (k97v)*Calculated Key Figures (k989)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):split:Calculated Key Figures (k989)*Comment tables (k98t)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):split:Calculated Key Figures (k989)*Comment tables (k98t)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989)*Comment tables (k98t)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):join:Calculated Key Figures (k989)*Comment tables (k98t)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):join:Calculated Key Figures (k989)*Comment tables (k98t)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Calculated Key Figures (k989)*Comment tables (k98t)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):split:Comment tables (k98t)*Fixed Characteristics (k99b)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):split:Comment tables (k98t)*Fixed Characteristics (k99b)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t)*Fixed Characteristics (k99b)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):join:Comment tables (k98t)*Fixed Characteristics (k99b)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):join:Comment tables (k98t)*Fixed Characteristics (k99b)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Comment tables (k98t)*Fixed Characteristics (k99b)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):split:Fixed Characteristics (k99b)*Summarization levels (k99t)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):split:Fixed Characteristics (k99b)*Summarization levels (k99t)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b)*Summarization levels (k99t)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):join:Fixed Characteristics (k99b)*Summarization levels (k99t)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):join:Fixed Characteristics (k99b)*Summarization levels (k99t)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Fixed Characteristics (k99b)*Summarization levels (k99t)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):split:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):split:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):join:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):join:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Summarization levels (k99t)*Currency Translation Types for Data Transfer and Planning Layouts (k9ab)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):split:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):split:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):join:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):join:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Currency Translation Types for Data Transfer and Planning Layouts (k9ab)*Derivation (k9av)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):split:Derivation (k9av)*Validation (k9bb)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):split:Derivation (k9av)*Validation (k9bb)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av)*Validation (k9bb)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):join:Derivation (k9av)*Validation (k9bb)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):join:Derivation (k9av)*Validation (k9bb)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Derivation (k9av)*Validation (k9bb)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):split:Validation (k9bb)*Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):split:Validation (k9bb)*Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb)*Data slices (k9bp)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):join:Validation (k9bb)*Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):join:Validation (k9bb)*Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Validation (k9bb)*Data slices (k9bp)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):split:Data slices (k9bp)*Join_Yes_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):split:Data slices (k9bp)*Join_Yes_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp)*Join_Yes_Data slices (k9bp)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):join:Join_Split_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):join:Join_Split_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Split_Data slices (k9bp)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):split:Join_Join_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):split:Join_Join_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_No_Data slices (k9bp):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Join_Data slices (k9bp)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):join:Data slices (k9bp)*Join_Yes_Data slices (k9bp):Join_Split_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):join:Data slices (k9bp)*Join_Yes_Data slices (k9bp):Join_Split_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Data slices (k9bp)*Join_Yes_Data slices (k9bp)"
+       "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Split_Data slices (k9bp)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):split:Join_Join_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):split:Join_Join_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Yes_Data slices (k9bp):busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Join_Data slices (k9bp)"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Output:join:Join_Join_Data slices (k9bp)"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Output:join:Join_Join_Data slices (k9bp)"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Join_Join_Data slices (k9bp)"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:Output:busy"
+;
+trans "t:Model.k964--0-----u--:Model.k964--0-----u--:Output:split:outputCondition"~"t:Model.k964--0-----u--:Model.k964--0-----u--:Output:split:outputCondition"
+    in "p:Model.k964--0-----u--:Model.k964--0-----u--:Output:busy"
+   out "p:Model.k964--0-----u--:Model.k964--0-----u--:outputCondition"
+;
+

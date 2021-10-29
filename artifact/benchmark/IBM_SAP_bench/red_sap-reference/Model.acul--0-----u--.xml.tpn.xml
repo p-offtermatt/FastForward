@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.acul--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.acul--0-----u--:Model.acul--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_and (acvl)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acve)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acvs)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_and (acvl)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acve)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acvs)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:and (acvl)*Join_Yes_and (acvl)"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acve):busy"/>
+    <CGraph Type="Place" Label="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):busy"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_and (acvl):split:Join_Join_and (acvl)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acve):split:Join_Join_xor (acve)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acvs):split:Join_Join_xor (acvs)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_and (acvl):split:Join_Join_and (acvl)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acve):split:Join_Join_xor (acve)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acvs):split:Join_Join_xor (acvs)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:Split_No_Confirmation of Picking (acw6):split:Split_Join_Confirmation of Picking (acw6)"/>
+    <CGraph Type="Transition" Label="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_and (acvl):split:Join_Join_and (acvl)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_and (acvl):split:Join_Join_and (acvl)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acve):split:Join_Join_xor (acve)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acve):split:Join_Join_xor (acve)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acvs):split:Join_Join_xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.acul--0-----u--:Model.acul--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acvs):split:Join_Join_xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="arcId81" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acve)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acve):split:Join_Join_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acvs)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acvs):split:Join_Join_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_and (acvl)" Target="*:Model.acul--0-----u--:Model.acul--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acve)" Target="*:Model.acul--0-----u--:Model.acul--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Join_xor (acvs)" Target="*:Model.acul--0-----u--:Model.acul--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="i" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Split_No_Confirmation of Picking (acw6):split:Split_Join_Confirmation of Picking (acw6)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:and (acvl)*Join_Yes_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="i" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acve):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acve):busy" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acve):split:Join_Join_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):busy" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_xor (acvs):split:Join_Join_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Split_No_Confirmation of Picking (acw6):split:Split_Join_Confirmation of Picking (acw6)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Split_No_Confirmation of Picking (acw6):split:Split_Join_Confirmation of Picking (acw6)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:Split_No_Confirmation of Picking (acw6):split:Split_Join_Confirmation of Picking (acw6)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.acul--0-----u--:Model.acul--0-----u--:xor (acvs):join:and (acvl)*xor (acvs)" Target="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_and (acvl)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_and (acvl):split:Join_Join_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acve)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acve):split:Join_Join_xor (acve)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_xor (acvs)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_No_xor (acvs):split:Join_Join_xor (acvs)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:Join_Split_and (acvl)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_and (acvl):split:Join_Join_and (acvl)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.acul--0-----u--:Model.acul--0-----u--:and (acvl)*Join_Yes_and (acvl)" Target="t:Model.acul--0-----u--:Model.acul--0-----u--:Join_Yes_and (acvl):split:Join_Join_and (acvl)">1</CArc>
+</CGraph>

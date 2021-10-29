@@ -1,0 +1,95 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.afas--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.afas--0-----u--:Model.afas--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_Notification Archiving (afd0)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_and (afb6)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_or (afdm)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_Notification Archiving (afd0)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_and (afb6)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_or (afdm)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_and (afbq)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq)*and (afbq)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)"/>
+    <CGraph Type="Place" Label="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_and (afb6):split:Join_Join_and (afb6)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_or (afdm):split:Join_Join_or (afdm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_and (afb6):split:Join_Join_and (afb6)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_or (afdm):split:Join_Join_or (afdm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_and (afbq):split:Split_Join_and (afbq)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_or (afd9):split:Split_Join_or (afd9)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq):split:Split_Join_and (afbq):Split_Yes_and (afbq)*and (afbq)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*Notification Printing (afcm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Notification Printing (afcm)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq)"/>
+    <CGraph Type="Transition" Label="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)"/>
+    <CArc Type="Arc" Label="arcId100" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="arcId101" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId102" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId104" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId105" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_or (afdm):split:Join_Join_or (afdm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_or (afdm):split:Join_Join_or (afdm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.afas--0-----u--:Model.afas--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq):split:Split_Join_and (afbq):Split_Yes_and (afbq)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_and (afbq):split:Split_Join_and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_or (afd9):split:Split_Join_or (afd9)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="arcId71" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq):split:Split_Join_and (afbq):Split_Yes_and (afbq)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_and (afb6):split:Join_Join_and (afb6)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_and (afb6):split:Join_Join_and (afb6)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId94" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="arcId98" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_Notification Archiving (afd0)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_Notification Archiving (afd0)" Target="*:Model.afas--0-----u--:Model.afas--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_and (afb6)" Target="*:Model.afas--0-----u--:Model.afas--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Join_or (afdm)" Target="*:Model.afas--0-----u--:Model.afas--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_and (afb6)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_and (afb6):split:Join_Join_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_and (afbq)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Skip:split:Join_Split_Notification Archiving (afd0):Join_Split_or (afdm):Join_Split_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_or (afd9):split:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_and (afbq):split:Split_Join_and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_No_and (afbq):split:Split_Join_and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_or (afdm)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_No_or (afdm):split:Join_Join_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq):split:Split_Join_and (afbq):Split_Yes_and (afbq)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq):split:Split_Join_and (afbq):Split_Yes_and (afbq)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Notification Printing (afcm)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_and (afb6):split:Join_Join_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Yes_and (afbq)*and (afbq)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_Notification Archiving (afd0)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*and (afbq)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_Notification Archiving (afd0):split:Join_Join_Notification Archiving (afd0)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Join_Yes_or (afdm):or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Split_or (afd9)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm):split:or (afdm)*and (afbq):or (afdm)*Notification Printing (afcm)" Target="p:Model.afas--0-----u--:Model.afas--0-----u--:Split_Join_or (afd9)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_and (afb6)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_and (afb6):split:Join_Join_and (afb6)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:Join_Split_or (afdm)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_or (afdm):split:Join_Join_or (afdm)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.afas--0-----u--:Model.afas--0-----u--:or (afdm)*Join_Yes_or (afdm)" Target="t:Model.afas--0-----u--:Model.afas--0-----u--:Join_Yes_or (afdm):split:Join_Join_or (afdm)">1</CArc>
+</CGraph>

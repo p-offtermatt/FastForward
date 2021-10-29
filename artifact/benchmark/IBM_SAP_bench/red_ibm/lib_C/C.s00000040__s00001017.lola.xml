@@ -1,0 +1,38 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_C/C.s00000040__s00001017.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Transition" Label="merge.s00000319.activate.s00000284"/>
+    <CGraph Type="Place" Label="merge.s00000319.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000320.activate.s00000289"/>
+    <CGraph Type="Transition" Label="merge.s00000320.activate.s00000448"/>
+    <CGraph Type="Place" Label="merge.s00000320.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000446.activate.s00000286"/>
+    <CGraph Type="Transition" Label="merge.s00000446.activate.s00000289"/>
+    <CGraph Type="Place" Label="merge.s00000446.activated"/>
+    <CGraph Type="Transition" Label="merge.s00000936.activate.s00000286"/>
+    <CGraph Type="Transition" Label="merge.s00000938.activate.s00000284"/>
+    <CGraph Type="Transition" Label="merge.s00000938.activate.s00000286"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="task.s00001015.output.s00000264"/>
+    <CGraph Type="Transition" Label="task.s00001015.outputCriterion.s00000258"/>
+    <CArc Type="Arc" Label="arcId219" Source="task.s00001015.outputCriterion.s00000258" Target="task.s00001015.output.s00000264">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="merge.s00000319.activate.s00000284" Target="merge.s00000319.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="merge.s00000320.activate.s00000289" Target="merge.s00000320.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="merge.s00000320.activate.s00000448" Target="merge.s00000320.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="merge.s00000446.activate.s00000289" Target="merge.s00000446.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId65" Source="merge.s00000446.activate.s00000286" Target="merge.s00000446.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_111" Source="task.s00001015.output.s00000264" Target="merge.s00000446.activate.s00000286">1</CArc>
+    <CArc Type="Arc" Label="ra_117" Source="merge.s00000319.activated" Target="task.s00001015.outputCriterion.s00000258">1</CArc>
+    <CArc Type="Arc" Label="ra_118" Source="task.s00001015.outputCriterion.s00000258" Target="merge.s00000446.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_123" Source="merge.s00000320.activated" Target="merge.s00000320.activate.s00000448">1</CArc>
+    <CArc Type="Arc" Label="ra_124" Source="merge.s00000320.activate.s00000448" Target="merge.s00000319.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_125" Source="merge.s00000320.activated" Target="merge.s00000446.activate.s00000289">1</CArc>
+    <CArc Type="Arc" Label="ra_126" Source="merge.s00000446.activate.s00000289" Target="merge.s00000319.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_134" Source="merge.s00000936.activate.s00000286" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="ra_138" Source="merge.s00000446.activated" Target="merge.s00000936.activate.s00000286">1</CArc>
+    <CArc Type="Arc" Label="ra_139" Source="merge.s00000446.activated" Target="merge.s00000938.activate.s00000286">1</CArc>
+    <CArc Type="Arc" Label="ra_141" Source="merge.s00000938.activate.s00000284" Target="merge.s00000320.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_143" Source="merge.s00000938.activate.s00000286" Target="merge.s00000320.activated">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="alpha" Target="merge.s00000938.activate.s00000284">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="merge.s00000320.activated" Target="merge.s00000319.activate.s00000284">1</CArc>
+    <CArc Type="Arc" Label="ra_94" Source="task.s00001015.output.s00000264" Target="merge.s00000320.activate.s00000289">1</CArc>
+</CGraph>

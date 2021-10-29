@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.f9sw--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.f9sw--0-----u--:Model.f9sw--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Payment Advices (f9tz)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Value Dates (f9th)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Payment Advices (f9tz)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Value Dates (f9th)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_Compare Value Dates (f9th)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_or (f9u8)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Split_or (f9u8)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)"/>
+    <CGraph Type="Place" Label="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):busy"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Skip:split:Join_Split_Compare Value Dates (f9th):Join_Split_Compare Payment Advices (f9tz)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_or (f9u8):split:Split_Join_or (f9u8)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th):Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)"/>
+    <CGraph Type="Transition" Label="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):join:Split_Yes_or (f9u8)*or (f9u8)"/>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.f9sw--0-----u--:Model.f9sw--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Skip:split:Join_Split_Compare Value Dates (f9th):Join_Split_Compare Payment Advices (f9tz)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Skip:split:Join_Split_Compare Value Dates (f9th):Join_Split_Compare Payment Advices (f9tz)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th):Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_or (f9u8):split:Split_Join_or (f9u8)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th):Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="arcId67" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):join:Split_Yes_or (f9u8)*or (f9u8)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Payment Advices (f9tz)" Target="*:Model.f9sw--0-----u--:Model.f9sw--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Join_Compare Value Dates (f9th)" Target="*:Model.f9sw--0-----u--:Model.f9sw--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_Compare Value Dates (f9th)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Skip:split:Join_Split_Compare Value Dates (f9th):Join_Split_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_or (f9u8)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Skip:split:Join_Split_Compare Value Dates (f9th):Join_Split_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Split_or (f9u8)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_or (f9u8):split:Split_Join_or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_No_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Split_or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th):Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Yes_Compare Value Dates (f9th):split:Split_Join_Compare Value Dates (f9th):Split_Yes_Compare Value Dates (f9th)*Compare Value Dates (f9th)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Split_or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):join:Split_Yes_or (f9u8)*or (f9u8)" Target="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Join_or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Split_Split_or (f9u8)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):join:Split_Yes_or (f9u8)*or (f9u8)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:or (f9u8):busy" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Payment Advices (f9tz)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Value Dates (f9th)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_No_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Payment Advices (f9tz)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Payment Advices (f9tz):split:Join_Join_Compare Payment Advices (f9tz)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Split_Compare Value Dates (f9th)" Target="t:Model.f9sw--0-----u--:Model.f9sw--0-----u--:Join_Yes_Compare Value Dates (f9th):split:Join_Join_Compare Value Dates (f9th)">1</CArc>
+</CGraph>

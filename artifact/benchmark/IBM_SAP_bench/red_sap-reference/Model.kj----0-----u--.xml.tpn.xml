@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.kj----0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.kj----0-----u--:Model.kj----0-----u--:Split_Join_and (kx--)"/>
+    <CGraph Type="Place" Label="p:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--)*Reference Project Search (li--)"/>
+    <CGraph Type="Transition" Label="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_No_xor (my--):split:Join_Join_xor (my--)"/>
+    <CGraph Type="Transition" Label="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_Yes_xor (my--):split:Join_Join_xor (my--)"/>
+    <CGraph Type="Transition" Label="t:Model.kj----0-----u--:Model.kj----0-----u--:Split_No_and (kx--):split:Split_Join_and (kx--)"/>
+    <CGraph Type="Transition" Label="t:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--):split:and (kx--)*Reference Project Search (li--):and (kx--)*Analysis of Competition (ly--)"/>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.kj----0-----u--:Model.kj----0-----u--:Split_No_and (kx--):split:Split_Join_and (kx--)" Target="p:Model.kj----0-----u--:Model.kj----0-----u--:Split_Join_and (kx--)">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="t:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--):split:and (kx--)*Reference Project Search (li--):and (kx--)*Analysis of Competition (ly--)" Target="p:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--)*Reference Project Search (li--)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.kj----0-----u--:Model.kj----0-----u--:Split_Join_and (kx--)" Target="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_No_xor (my--):split:Join_Join_xor (my--)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.kj----0-----u--:Model.kj----0-----u--:Split_Join_and (kx--)" Target="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_Yes_xor (my--):split:Join_Join_xor (my--)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.kj----0-----u--:Model.kj----0-----u--:Split_No_and (kx--):split:Split_Join_and (kx--)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--):split:and (kx--)*Reference Project Search (li--):and (kx--)*Analysis of Competition (ly--)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--):split:and (kx--)*Reference Project Search (li--):and (kx--)*Analysis of Competition (ly--)" Target="p:Model.kj----0-----u--:Model.kj----0-----u--:Split_Join_and (kx--)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.kj----0-----u--:Model.kj----0-----u--:and (kx--)*Reference Project Search (li--)" Target="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_Yes_xor (my--):split:Join_Join_xor (my--)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_No_xor (my--):split:Join_Join_xor (my--)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.kj----0-----u--:Model.kj----0-----u--:Join_Yes_xor (my--):split:Join_Join_xor (my--)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.smx---0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.smx---0-----u--:Model.smx---0-----u--:Split_Join_and (ssh-)"/>
+    <CGraph Type="Place" Label="p:Model.smx---0-----u--:Model.smx---0-----u--:and (st9-)*Integrated Product and Process Data Processing - EWB (snw-)"/>
+    <CGraph Type="Transition" Label="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_No_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)"/>
+    <CGraph Type="Transition" Label="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_Yes_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)"/>
+    <CGraph Type="Transition" Label="t:Model.smx---0-----u--:Model.smx---0-----u--:Split_No_and (ssh-):split:Split_Join_and (ssh-)"/>
+    <CGraph Type="Transition" Label="t:Model.smx---0-----u--:Model.smx---0-----u--:xor (sux-):join:WBS BOM Processing (sp2-)*xor (sux-)"/>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.smx---0-----u--:Model.smx---0-----u--:Split_No_and (ssh-):split:Split_Join_and (ssh-)" Target="p:Model.smx---0-----u--:Model.smx---0-----u--:Split_Join_and (ssh-)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.smx---0-----u--:Model.smx---0-----u--:Split_Join_and (ssh-)" Target="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_No_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.smx---0-----u--:Model.smx---0-----u--:Split_Join_and (ssh-)" Target="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_Yes_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="i" Target="t:Model.smx---0-----u--:Model.smx---0-----u--:Split_No_and (ssh-):split:Split_Join_and (ssh-)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="p:Model.smx---0-----u--:Model.smx---0-----u--:and (st9-)*Integrated Product and Process Data Processing - EWB (snw-)" Target="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_Yes_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)">1</CArc>
+    <CArc Type="Arc" Label="ra_73" Source="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_No_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="t:Model.smx---0-----u--:Model.smx---0-----u--:Join_Yes_Product description using Configuration Management (sqr-):split:Join_Join_Product description using Configuration Management (sqr-)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="t:Model.smx---0-----u--:Model.smx---0-----u--:xor (sux-):join:WBS BOM Processing (sp2-)*xor (sux-)" Target="p:Model.smx---0-----u--:Model.smx---0-----u--:and (st9-)*Integrated Product and Process Data Processing - EWB (snw-)">1</CArc>
+    <CArc Type="Arc" Label="ra_83" Source="i" Target="t:Model.smx---0-----u--:Model.smx---0-----u--:xor (sux-):join:WBS BOM Processing (sp2-)*xor (sux-)">1</CArc>
+    <CArc Type="Arc" Label="ra_84" Source="t:Model.smx---0-----u--:Model.smx---0-----u--:xor (sux-):join:WBS BOM Processing (sp2-)*xor (sux-)" Target="p:Model.smx---0-----u--:Model.smx---0-----u--:Split_Join_and (ssh-)">1</CArc>
+</CGraph>

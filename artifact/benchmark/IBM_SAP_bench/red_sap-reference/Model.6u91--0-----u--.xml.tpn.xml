@@ -1,0 +1,85 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.6u91--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.6u91--0-----u--:Model.6u91--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_Invoice Release (6uc7)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_and (6u9s)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_Invoice Release (6uc7)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_and (6u9s)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6u9j)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6uac)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_xor (6uci)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6u9j)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6uac)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_xor (6uci)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j)*and (6u9j)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac)*and (6uac)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:and (6u9s)*Join_Yes_and (6u9s)"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):busy"/>
+    <CGraph Type="Place" Label="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):busy"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_and (6u9s):split:Join_Join_and (6u9s)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_and (6u9s):split:Join_Join_and (6u9s)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6u9j):split:Split_Join_and (6u9j)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6uac):split:Split_Join_and (6uac)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_xor (6uci):split:Split_Join_xor (6uci)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j):split:Split_Join_and (6u9j):Split_Yes_and (6u9j)*and (6u9j)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac):split:Split_Join_and (6uac):Split_Yes_and (6uac)*and (6uac)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:xor (6ua1)*xor (6uaj)"/>
+    <CGraph Type="Transition" Label="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):join:Split_Yes_xor (6uci)*xor (6uci)"/>
+    <CArc Type="Arc" Label="arcId122" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId123" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:xor (6ua1)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId126" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):join:Split_Yes_xor (6uci)*xor (6uci)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.6u91--0-----u--:Model.6u91--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_and (6u9s):split:Join_Join_and (6u9s)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_and (6u9s):split:Join_Join_and (6u9s)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j):split:Split_Join_and (6u9j):Split_Yes_and (6u9j)*and (6u9j)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6u9j):split:Split_Join_and (6u9j)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6uac):split:Split_Join_and (6uac)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac):split:Split_Join_and (6uac):Split_Yes_and (6uac)*and (6uac)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_xor (6uci):split:Split_Join_xor (6uci)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="arcId85" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j):split:Split_Join_and (6u9j):Split_Yes_and (6u9j)*and (6u9j)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j)*and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="arcId89" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac):split:Split_Join_and (6uac):Split_Yes_and (6uac)*and (6uac)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac)*and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_and (6u9s)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_and (6u9s):split:Join_Join_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_Invoice Release (6uc7)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_and (6u9s)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_and (6u9s):split:Join_Join_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:and (6u9s)*Join_Yes_and (6u9s)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_and (6u9s):split:Join_Join_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_Invoice Release (6uc7)" Target="*:Model.6u91--0-----u--:Model.6u91--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Join_and (6u9s)" Target="*:Model.6u91--0-----u--:Model.6u91--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6u9j)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_and (6uac)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_xor (6uci)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Skip:split:Join_Split_Invoice Release (6uc7):Join_Split_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6u9j)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6u9j):split:Split_Join_and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6uac)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_and (6uac):split:Split_Join_and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_xor (6uci)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_xor (6uci):split:Split_Join_xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_No_Evaluated Receipt Settlement (ERS) (6ubf):split:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6u9j)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j):split:Split_Join_and (6u9j):Split_Yes_and (6u9j)*and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6uac)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac):split:Split_Join_and (6uac):Split_Yes_and (6uac)*and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):join:Split_Yes_xor (6uci)*xor (6uci)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_xor (6uci)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):join:Split_Yes_xor (6uci)*xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:and (6u9s)*Join_Yes_and (6u9s)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="i" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Join_Evaluated Receipt Settlement (ERS) (6ubf)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6u9j)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_and (6uac)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:and (6u9s)*xor (6uaj)" Target="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Split_xor (6uci)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6uac)*and (6uac)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Split_Yes_and (6u9j)*and (6u9j)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:xor (6ua1)*xor (6uaj)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):busy" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Yes_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uci):busy" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:xor (6uaj):join:xor (6ua1)*xor (6uaj)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_Split_Invoice Release (6uc7)" Target="t:Model.6u91--0-----u--:Model.6u91--0-----u--:Join_No_Invoice Release (6uc7):split:Join_Join_Invoice Release (6uc7)">1</CArc>
+</CGraph>

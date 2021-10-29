@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.b7s7--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.b7s7--0-----u--:Model.b7s7--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_Capacity Dispatching and Leveling (b7u3)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_xor (b7sy)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_Capacity Dispatching and Leveling (b7u3)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_xor (b7sy)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_and (b7sp)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_or (b7t9)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Split_or (b7t9)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9)*or (b7t9)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):busy"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy)*Join_Yes_xor (b7sy)"/>
+    <CGraph Type="Place" Label="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):busy"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_xor (b7sy):split:Join_Join_xor (b7sy)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_xor (b7sy):split:Join_Join_xor (b7sy)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Skip:split:Join_Split_xor (b7sy):Join_Split_Capacity Dispatching and Leveling (b7u3)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_and (b7sp):split:Split_Join_and (b7sp)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_or (b7t9):split:Split_Join_or (b7t9)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9):split:Split_Join_or (b7t9):Split_Yes_or (b7t9)*or (b7t9)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9):xor (b7sy)*or (b7t9)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:xor (b7sy)*or (b7t9)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):join:Capacity Evaluation (b7tn)*xor (b7sy)"/>
+    <CGraph Type="Transition" Label="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):split:xor (b7sy)*Join_Yes_xor (b7sy)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_xor (b7sy):split:Join_Join_xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_xor (b7sy):split:Join_Join_xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.b7s7--0-----u--:Model.b7s7--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Skip:split:Join_Split_xor (b7sy):Join_Split_Capacity Dispatching and Leveling (b7u3)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Skip:split:Join_Split_xor (b7sy):Join_Split_Capacity Dispatching and Leveling (b7u3)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_and (b7sp):split:Split_Join_and (b7sp)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_and (b7sp)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_or (b7t9):split:Split_Join_or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9):split:Split_Join_or (b7t9):Split_Yes_or (b7t9)*or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9)*or (b7t9)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9):split:Split_Join_or (b7t9):Split_Yes_or (b7t9)*or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9)*or (b7t9)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9):xor (b7sy)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="arcId72" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9):xor (b7sy)*or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId74" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:xor (b7sy)*or (b7t9)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):split:xor (b7sy)*Join_Yes_xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy)*Join_Yes_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):busy" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):split:xor (b7sy)*Join_Yes_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):join:Capacity Evaluation (b7tn)*xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy)*Join_Yes_xor (b7sy)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_xor (b7sy):split:Join_Join_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_Capacity Dispatching and Leveling (b7u3)" Target="*:Model.b7s7--0-----u--:Model.b7s7--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Join_xor (b7sy)" Target="*:Model.b7s7--0-----u--:Model.b7s7--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_and (b7sp)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Skip:split:Join_Split_xor (b7sy):Join_Split_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_or (b7t9)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Skip:split:Join_Split_xor (b7sy):Join_Split_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Split_or (b7t9)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_or (b7t9):split:Split_Join_or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_and (b7sp):split:Split_Join_and (b7sp)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_No_and (b7sp):split:Split_Join_and (b7sp)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Split_or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Split_or (b7t9)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Yes_or (b7t9):split:Split_Join_or (b7t9):Split_Yes_or (b7t9)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="i" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):join:Capacity Evaluation (b7tn)*xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):join:Capacity Evaluation (b7tn)*xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Join_and (b7sp)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):join:Capacity Evaluation (b7tn)*xor (b7sy)" Target="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Split_Split_or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):busy" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):busy" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:Split_Yes_or (b7t9)*or (b7t9):xor (b7sy)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:xor (b7sy):busy" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:or (b7t9):join:xor (b7sy)*or (b7t9)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_Capacity Dispatching and Leveling (b7u3)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_xor (b7sy)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_No_xor (b7sy):split:Join_Join_xor (b7sy)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_Capacity Dispatching and Leveling (b7u3)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_Capacity Dispatching and Leveling (b7u3):split:Join_Join_Capacity Dispatching and Leveling (b7u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Split_xor (b7sy)" Target="t:Model.b7s7--0-----u--:Model.b7s7--0-----u--:Join_Yes_xor (b7sy):split:Join_Join_xor (b7sy)">1</CArc>
+</CGraph>

@@ -1,0 +1,212 @@
+place "i" init 1;
+place "o";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:InputCondition";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1se1)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:OutputCondition";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1)*and (1se1)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea)*Master Production Scheduling (1sde)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde)*or (1seh)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq)*Material Requirements Planning (1sf4)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4)";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):busy";
+place "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:busy";
+trans "*:Model.1sct--0-----u--:Model.1sct--0-----u--:start"~"*:Model.1sct--0-----u--:Model.1sct--0-----u--:start"
+    in "i"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:InputCondition"
+;
+trans "*:Model.1sct--0-----u--:Model.1sct--0-----u--:end"~"*:Model.1sct--0-----u--:Model.1sct--0-----u--:end"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:join:InputCondition"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:join:InputCondition"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:InputCondition"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:split:Split_Split_and (1se1):Split_Split_and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:split:Split_Split_and (1se1):Split_Split_and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split:busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1se1)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):join:Split_Split_and (1se1)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):join:Split_Split_and (1se1)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1se1)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):split:Split_Join_and (1se1)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1se1):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):join:Split_Split_and (1se1)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):join:Split_Split_and (1se1)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1se1)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):split:Split_Join_and (1se1):Split_Yes_and (1se1)*and (1se1)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):split:Split_Join_and (1se1):Split_Yes_and (1se1)*and (1se1)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1)*and (1se1)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):join:Split_Split_and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):join:Split_Split_and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):split:Split_Join_and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):split:Split_Join_and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_No_and (1sea):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):join:Split_Split_and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):join:Split_Split_and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Split_and (1sea)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):split:Split_Join_and (1sea):Split_Yes_and (1sea)*and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:join:Split_Join_and (1se1):Split_Join_and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:join:Split_Join_and (1se1):Split_Join_and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1se1)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Join_and (1sea)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:split:Join_Split_or (1seh):Join_Split_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Skip:busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):join:Split_Yes_and (1se1)*and (1se1)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):join:Split_Yes_and (1se1)*and (1se1)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1se1)*and (1se1)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):split:and (1se1)*and (1sea):and (1se1)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):join:Split_Yes_and (1sea)*and (1sea):and (1se1)*and (1sea)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):join:Split_Yes_and (1sea)*and (1sea):and (1se1)*and (1sea)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Split_Yes_and (1sea)*and (1sea)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*and (1sea)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):split:and (1sea)*Master Production Scheduling (1sde)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):split:and (1sea)*Master Production Scheduling (1sde)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea)*Master Production Scheduling (1sde)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):join:and (1sea)*Master Production Scheduling (1sde)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):join:and (1sea)*Master Production Scheduling (1sde)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1sea)*Master Production Scheduling (1sde)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):split:Master Production Scheduling (1sde)*or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):split:Master Production Scheduling (1sde)*or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde)*or (1seh)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):join:Master Production Scheduling (1sde)*or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):join:Master Production Scheduling (1sde)*or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Master Production Scheduling (1sde)*or (1seh)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):split:or (1seh)*Join_Yes_or (1seh):or (1seh)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:or (1seh)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:or (1seh)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):join:and (1se1)*or (1seq):or (1seh)*or (1seq)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:and (1se1)*or (1seq)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*or (1seq)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):split:or (1seq)*Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):split:or (1seq)*Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq)*Material Requirements Planning (1sf4)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):join:or (1seq)*Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):join:or (1seq)*Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seq)*Material Requirements Planning (1sf4)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):split:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):split:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):join:Join_Split_or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):join:Join_Split_or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):split:Join_Join_or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):split:Join_Join_or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_or (1seh):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):join:or (1seh)*Join_Yes_or (1seh):Join_Split_or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):join:or (1seh)*Join_Yes_or (1seh):Join_Split_or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:or (1seh)*Join_Yes_or (1seh)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_or (1seh)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):split:Join_Join_or (1seh)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_or (1seh):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):join:Join_Split_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):join:Join_Split_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_No_Material Requirements Planning (1sf4):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):join:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4):Join_Split_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):join:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4):Join_Split_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Material Requirements Planning (1sf4)*Join_Yes_Material Requirements Planning (1sf4)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Split_Material Requirements Planning (1sf4)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):split:Join_Join_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Yes_Material Requirements Planning (1sf4):busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:join:Join_Join_or (1seh):Join_Join_Material Requirements Planning (1sf4)"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:join:Join_Join_or (1seh):Join_Join_Material Requirements Planning (1sf4)"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_or (1seh)"
+       "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Join_Join_Material Requirements Planning (1sf4)"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:busy"
+;
+trans "t:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:split:OutputCondition"~"t:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:split:OutputCondition"
+    in "p:Model.1sct--0-----u--:Model.1sct--0-----u--:Output:busy"
+   out "p:Model.1sct--0-----u--:Model.1sct--0-----u--:OutputCondition"
+;
+

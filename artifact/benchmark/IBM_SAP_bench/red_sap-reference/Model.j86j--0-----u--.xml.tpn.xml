@@ -1,0 +1,39 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.j86j--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Creation of Proposal for Profit Planning (j8bv)"/>
+    <CGraph Type="Place" Label="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Valuation of Sales Planning (j8b8)"/>
+    <CGraph Type="Place" Label="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Split_Valuation of Sales Planning (j8b8)"/>
+    <CGraph Type="Place" Label="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k)*xor (j8a2)"/>
+    <CGraph Type="Place" Label="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):busy"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_No_and (j8bh):split:Join_Join_and (j8bh)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_Yes_and (j8bh):split:Join_Join_and (j8bh)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Creation of Proposal for Profit Planning (j8bv):split:Split_Join_Creation of Proposal for Profit Planning (j8bv)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Valuation of Sales Planning (j8b8):split:Split_Join_Valuation of Sales Planning (j8b8)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Valuation of Sales Planning (j8b8)*xor (j89k)"/>
+    <CGraph Type="Transition" Label="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):join:xor (j89k)*xor (j8a2)"/>
+    <CArc Type="Arc" Label="arcId51" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Creation of Proposal for Profit Planning (j8bv):split:Split_Join_Creation of Proposal for Profit Planning (j8bv)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Creation of Proposal for Profit Planning (j8bv)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Valuation of Sales Planning (j8b8):split:Split_Join_Valuation of Sales Planning (j8b8)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Valuation of Sales Planning (j8b8)">1</CArc>
+    <CArc Type="Arc" Label="arcId86" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k)*xor (j8a2)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):join:xor (j89k)*xor (j8a2)">1</CArc>
+    <CArc Type="Arc" Label="arcId94" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):join:xor (j89k)*xor (j8a2)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Creation of Proposal for Profit Planning (j8bv)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_No_and (j8bh):split:Join_Join_and (j8bh)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Valuation of Sales Planning (j8b8)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_No_and (j8bh):split:Join_Join_and (j8bh)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Creation of Proposal for Profit Planning (j8bv)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_Yes_and (j8bh):split:Join_Join_and (j8bh)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Valuation of Sales Planning (j8b8)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_Yes_and (j8bh):split:Join_Join_and (j8bh)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Split_Valuation of Sales Planning (j8b8)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Valuation of Sales Planning (j8b8):split:Split_Join_Valuation of Sales Planning (j8b8)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Creation of Proposal for Profit Planning (j8bv):split:Split_Join_Creation of Proposal for Profit Planning (j8bv)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_No_Creation of Proposal for Profit Planning (j8bv):split:Split_Join_Creation of Proposal for Profit Planning (j8bv)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Split_Valuation of Sales Planning (j8b8)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Creation of Proposal for Profit Planning (j8bv)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Split_Valuation of Sales Planning (j8b8)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Split_Valuation of Sales Planning (j8b8)" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Valuation of Sales Planning (j8b8)*xor (j89k)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Valuation of Sales Planning (j8b8)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:Split_Join_Valuation of Sales Planning (j8b8)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_No_and (j8bh):split:Join_Join_and (j8bh)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_Yes_and (j8bh):split:Join_Join_and (j8bh)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k)*xor (j8a2)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Creation of Proposal for Profit Planning (j8bv)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Valuation of Sales Planning (j8b8)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k)*xor (j8a2)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="t:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j89k):join:Valuation of Sales Planning (j8b8)*xor (j89k)" Target="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="p:Model.j86j--0-----u--:Model.j86j--0-----u--:xor (j8a2):busy" Target="t:Model.j86j--0-----u--:Model.j86j--0-----u--:Join_Yes_and (j8bh):split:Join_Join_and (j8bh)">1</CArc>
+</CGraph>

@@ -1,0 +1,39 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.422x--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.422x--0-----u--:Model.422x--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Join_Join_Production Order Execution (424e)"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_ ()"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_Production Order Release (423i)"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Split_Production Order Release (423i)"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ()* ()"/>
+    <CGraph Type="Place" Label="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i)*Production Order Release (423i)"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_No_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_Yes_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_ ():split:Split_Join_ ()"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_Production Order Release (423i):split:Split_Join_Production Order Release (423i)"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"/>
+    <CGraph Type="Transition" Label="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i):split:Split_Join_Production Order Release (423i):Split_Yes_Production Order Release (423i)*Production Order Release (423i)"/>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.422x--0-----u--:Model.422x--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_Production Order Release (423i):split:Split_Join_Production Order Release (423i)" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i):split:Split_Join_Production Order Release (423i):Split_Yes_Production Order Release (423i)*Production Order Release (423i)" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ()* ()" Target="*:Model.422x--0-----u--:Model.422x--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i):split:Split_Join_Production Order Release (423i):Split_Yes_Production Order Release (423i)*Production Order Release (423i)" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i)*Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_Yes_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_No_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i)*Production Order Release (423i)" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_Yes_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_ ()" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_No_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_Production Order Release (423i)" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_No_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_ ()" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_Yes_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Join_Production Order Release (423i)" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Join_Yes_Production Order Execution (424e):split:Join_Join_Production Order Execution (424e)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Split_Production Order Release (423i)" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_Production Order Release (423i):split:Split_Join_Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="i" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_ ():split:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Split_Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Split_Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Split_Split_Production Order Release (423i)" Target="t:Model.422x--0-----u--:Model.422x--0-----u--:Split_Yes_Production Order Release (423i):split:Split_Join_Production Order Release (423i):Split_Yes_Production Order Release (423i)*Production Order Release (423i)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.422x--0-----u--:Model.422x--0-----u--:Join_Join_Production Order Execution (424e)" Target="*:Model.422x--0-----u--:Model.422x--0-----u--:end">1</CArc>
+</CGraph>

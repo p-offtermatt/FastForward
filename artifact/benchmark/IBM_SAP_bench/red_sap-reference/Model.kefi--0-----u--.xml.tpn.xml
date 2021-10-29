@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.kefi--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy"/>
+    <CGraph Type="Place" Label="p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):split:Split_Join_or (kefw)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):split:Split_Join_xor (kei1)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)"/>
+    <CGraph Type="Transition" Label="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)"/>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):split:Split_Join_or (kefw)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):split:Split_Join_xor (kei1)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)">1</CArc>
+    <CArc Type="Arc" Label="arcId71" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_and (kegs)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_or (kefw):split:Split_Join_or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_xor (kei1):split:Split_Join_xor (kei1)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="i" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_No_and (kegs):split:Split_Join_and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs):split:Split_Join_and (kegs):Split_Yes_and (kegs)*and (kegs)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_or (kefw)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):join:Split_Yes_or (kefw)*or (kefw)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Yes_and (kegs)*and (kegs)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:or (kefw):busy" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Mass Retirement (keh6)*xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):busy" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Split_xor (kei1)" Target="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:xor (kehh):join:Retirement (kega)*xor (kehh)" Target="p:Model.kefi--0-----u--:Model.kefi--0-----u--:Split_Join_xor (kei1)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_No_xor (kehh):split:Join_Join_xor (kehh)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.kefi--0-----u--:Model.kefi--0-----u--:Join_Yes_xor (kehh):split:Join_Join_xor (kehh)" Target="o">1</CArc>
+</CGraph>

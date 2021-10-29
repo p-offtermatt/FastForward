@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.3t2p--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.3t2p--0-----u--:Model.3t2p--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_Capacity Dispatching and Leveling (3t4b)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_xor (3t33)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_Capacity Dispatching and Leveling (3t4b)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_xor (3t33)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3a)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3j)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Split_or (3t3j)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a)*or (3t3a)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):busy"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33)*Join_Yes_xor (3t33)"/>
+    <CGraph Type="Place" Label="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):busy"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_xor (3t33):split:Join_Join_xor (3t33)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_xor (3t33):split:Join_Join_xor (3t33)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (3t4b):Join_Split_xor (3t33)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3a):split:Split_Join_or (3t3a)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3j):split:Split_Join_or (3t3j)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a):split:Split_Join_or (3t3a):Split_Yes_or (3t3a)*or (3t3a)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a):xor (3t33)*or (3t3a)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:xor (3t33)*or (3t3a)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):join:Capacity Evaluation (3t3x)*xor (3t33)"/>
+    <CGraph Type="Transition" Label="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):split:xor (3t33)*Join_Yes_xor (3t33)"/>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_xor (3t33):split:Join_Join_xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_xor (3t33):split:Join_Join_xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.3t2p--0-----u--:Model.3t2p--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (3t4b):Join_Split_xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (3t4b):Join_Split_xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a):split:Split_Join_or (3t3a):Split_Yes_or (3t3a)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3a):split:Split_Join_or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3j):split:Split_Join_or (3t3j)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3j)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a):split:Split_Join_or (3t3a):Split_Yes_or (3t3a)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a)*or (3t3a)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a)*or (3t3a)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a):xor (3t33)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="arcId69" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:xor (3t33)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId70" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId71" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a):xor (3t33)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId76" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):split:xor (3t33)*Join_Yes_xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33)*Join_Yes_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="arcId82" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):busy" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):split:xor (3t33)*Join_Yes_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="arcId83" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):join:Capacity Evaluation (3t3x)*xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33)*Join_Yes_xor (3t33)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_xor (3t33):split:Join_Join_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_Capacity Dispatching and Leveling (3t4b)" Target="*:Model.3t2p--0-----u--:Model.3t2p--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Join_xor (3t33)" Target="*:Model.3t2p--0-----u--:Model.3t2p--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3a)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (3t4b):Join_Split_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3j)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Skip:split:Join_Split_Capacity Dispatching and Leveling (3t4b):Join_Split_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Split_or (3t3j)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3j):split:Split_Join_or (3t3j)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3a):split:Split_Join_or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_No_or (3t3a):split:Split_Join_or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Split_or (3t3j)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a):split:Split_Join_or (3t3a):Split_Yes_or (3t3a)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Yes_or (3t3a):split:Split_Join_or (3t3a):Split_Yes_or (3t3a)*or (3t3a)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Split_or (3t3j)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):busy" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Split_or (3t3j)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):join:Capacity Evaluation (3t3x)*xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):join:Capacity Evaluation (3t3x)*xor (3t33)" Target="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Split_Join_or (3t3j)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):busy" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:Split_Yes_or (3t3a)*or (3t3a):xor (3t33)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:xor (3t33):busy" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:or (3t3a):join:xor (3t33)*or (3t3a)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_Capacity Dispatching and Leveling (3t4b)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_xor (3t33)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_No_xor (3t33):split:Join_Join_xor (3t33)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_Capacity Dispatching and Leveling (3t4b)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_Capacity Dispatching and Leveling (3t4b):split:Join_Join_Capacity Dispatching and Leveling (3t4b)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Split_xor (3t33)" Target="t:Model.3t2p--0-----u--:Model.3t2p--0-----u--:Join_Yes_xor (3t33):split:Join_Join_xor (3t33)">1</CArc>
+</CGraph>

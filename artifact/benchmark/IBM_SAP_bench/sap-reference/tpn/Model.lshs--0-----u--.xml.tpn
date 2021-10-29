@@ -1,0 +1,148 @@
+place "i" init 1;
+place "o";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:InputCondition";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Split_and (lsio)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Join_and (lsio)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_and (lsia)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_and (lsia)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_xor (lsih)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_xor (lsih)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:OutputCondition";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio)*and (lsio)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio)*Employee leaving (lsj2)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2)*and (lsia)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*Join_Yes_and (lsia)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*xor (lsih)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih)*Join_Yes_xor (lsih)";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):busy";
+place "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:busy";
+trans "*:Model.lshs--0-----u--:Model.lshs--0-----u--:start"~"*:Model.lshs--0-----u--:Model.lshs--0-----u--:start"
+    in "i"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:InputCondition"
+;
+trans "*:Model.lshs--0-----u--:Model.lshs--0-----u--:end"~"*:Model.lshs--0-----u--:Model.lshs--0-----u--:end"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:join:InputCondition"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:join:InputCondition"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:InputCondition"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:split:Split_Split_and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:split:Split_Split_and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split:busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Split_and (lsio)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):join:Split_Split_and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):join:Split_Split_and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Split_and (lsio)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):split:Split_Join_and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):split:Split_Join_and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_No_and (lsio):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Join_and (lsio)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):join:Split_Split_and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):join:Split_Split_and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Split_and (lsio)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):split:Split_Join_and (lsio):Split_Yes_and (lsio)*and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):split:Split_Join_and (lsio):Split_Yes_and (lsio)*and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Join_and (lsio)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio)*and (lsio)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:join:Split_Join_and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:join:Split_Join_and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Join_and (lsio)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:split:Join_Split_and (lsia):Join_Split_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:split:Join_Split_and (lsia):Join_Split_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Skip:busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_and (lsia)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_xor (lsih)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):join:Split_Yes_and (lsio)*and (lsio)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):join:Split_Yes_and (lsio)*and (lsio)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Split_Yes_and (lsio)*and (lsio)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):split:and (lsio)*Employee leaving (lsj2)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):split:and (lsio)*Employee leaving (lsj2)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio)*Employee leaving (lsj2)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):join:and (lsio)*Employee leaving (lsj2)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):join:and (lsio)*Employee leaving (lsj2)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsio)*Employee leaving (lsj2)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):split:Employee leaving (lsj2)*and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):split:Employee leaving (lsj2)*and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2)*and (lsia)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):join:Employee leaving (lsj2)*and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):join:Employee leaving (lsj2)*and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Employee leaving (lsj2)*and (lsia)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):split:and (lsia)*Join_Yes_and (lsia):and (lsia)*xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):split:and (lsia)*Join_Yes_and (lsia):and (lsia)*xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*Join_Yes_and (lsia)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*xor (lsih)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):join:and (lsia)*xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):join:and (lsia)*xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*xor (lsih)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):split:xor (lsih)*Join_Yes_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):split:xor (lsih)*Join_Yes_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih)*Join_Yes_xor (lsih)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):join:Join_Split_and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):join:Join_Split_and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_and (lsia)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):split:Join_Join_and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):split:Join_Join_and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_and (lsia):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_and (lsia)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):join:and (lsia)*Join_Yes_and (lsia):Join_Split_and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):join:and (lsia)*Join_Yes_and (lsia):Join_Split_and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:and (lsia)*Join_Yes_and (lsia)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_and (lsia)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):split:Join_Join_and (lsia)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):split:Join_Join_and (lsia)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_and (lsia):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_and (lsia)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):join:Join_Split_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):join:Join_Split_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_xor (lsih)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):split:Join_Join_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):split:Join_Join_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_No_xor (lsih):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_xor (lsih)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):join:xor (lsih)*Join_Yes_xor (lsih):Join_Split_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):join:xor (lsih)*Join_Yes_xor (lsih):Join_Split_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:xor (lsih)*Join_Yes_xor (lsih)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Split_xor (lsih)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):split:Join_Join_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):split:Join_Join_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Yes_xor (lsih):busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_xor (lsih)"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:join:Join_Join_and (lsia):Join_Join_xor (lsih)"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:join:Join_Join_and (lsia):Join_Join_xor (lsih)"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_and (lsia)"
+       "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Join_Join_xor (lsih)"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:busy"
+;
+trans "t:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:split:OutputCondition"~"t:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:split:OutputCondition"
+    in "p:Model.lshs--0-----u--:Model.lshs--0-----u--:Output:busy"
+   out "p:Model.lshs--0-----u--:Model.lshs--0-----u--:OutputCondition"
+;
+

@@ -1,0 +1,207 @@
+place "i" init 1;
+place "o";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:InputCondition";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Split_and (m4m2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Split_xor (m4jd)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Join_xor (m4jd)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:outputCondition";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2)*Delegation of Need for Budget Planning (m4kb)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3)*xor (m4ik)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*xor (m4jk)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*Approval of Budget Plan (m4lh)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh)*xor (m4jd)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*xor (m4jk)";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):busy";
+place "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:busy";
+trans "*:Model.m4hd--0-----u--:Model.m4hd--0-----u--:start"~"*:Model.m4hd--0-----u--:Model.m4hd--0-----u--:start"
+    in "i"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:InputCondition"
+;
+trans "*:Model.m4hd--0-----u--:Model.m4hd--0-----u--:end"~"*:Model.m4hd--0-----u--:Model.m4hd--0-----u--:end"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:join:InputCondition"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:join:InputCondition"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:InputCondition"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:split:Split_Split_and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:split:Split_Split_and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split:busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Split_and (m4m2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):join:Split_Split_and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):join:Split_Split_and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Split_and (m4m2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):split:Split_Join_and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):split:Split_Join_and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_No_and (m4m2):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):join:Split_Split_and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):join:Split_Split_and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Split_and (m4m2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):split:Split_Join_and (m4m2):Split_Yes_and (m4m2)*and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)"
+       "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:join:Split_Join_and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:join:Split_Join_and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Join_and (m4m2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:split:Join_Split_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:split:Join_Split_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Skip:busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Split_xor (m4jd)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):join:Split_Yes_and (m4m2)*and (m4m2):xor (m4ik)*and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):join:Split_Yes_and (m4m2)*and (m4m2):xor (m4ik)*and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Split_Yes_and (m4m2)*and (m4m2)"
+       "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):split:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):split:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):join:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):join:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:and (m4m2)*Delegation of Need for Budget Planning (m4kb)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):split:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):split:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):join:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):join:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need for Budget Planning (m4kb)*xor (m4i2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):join:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):join:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):split:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):split:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):join:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):join:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4i2)*Creation / Correction of Budget Plan (m4kp)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):split:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):split:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):join:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):join:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Creation / Correction of Budget Plan (m4kp)*Budget Plan Consolidation (m4l3)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):split:Budget Plan Consolidation (m4l3)*xor (m4ik)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):split:Budget Plan Consolidation (m4l3)*xor (m4ik)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3)*xor (m4ik)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):join:Budget Plan Consolidation (m4l3)*xor (m4ik)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):join:Budget Plan Consolidation (m4l3)*xor (m4ik)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Budget Plan Consolidation (m4l3)*xor (m4ik)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*xor (m4jk)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*xor (m4jk)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*xor (m4jk)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*Approval of Budget Plan (m4lh)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*Approval of Budget Plan (m4lh)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*Approval of Budget Plan (m4lh)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):split:xor (m4ik)*and (m4m2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*and (m4m2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):join:xor (m4ik)*xor (m4jk)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):join:xor (m4ik)*xor (m4jk)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*xor (m4jk)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):join:xor (m4jd)*xor (m4jk)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):join:xor (m4jd)*xor (m4jk)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*xor (m4jk)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):split:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):split:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):join:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):join:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jk)*Delegation of Need to Correct Budget Plan (m4lv)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):split:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):split:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Delegation of Need to Correct Budget Plan (m4lv)*xor (m4i2)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):join:xor (m4ik)*Approval of Budget Plan (m4lh)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):join:xor (m4ik)*Approval of Budget Plan (m4lh)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4ik)*Approval of Budget Plan (m4lh)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):split:Approval of Budget Plan (m4lh)*xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):split:Approval of Budget Plan (m4lh)*xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh)*xor (m4jd)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):join:Approval of Budget Plan (m4lh)*xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):join:Approval of Budget Plan (m4lh)*xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Approval of Budget Plan (m4lh)*xor (m4jd)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*Join_Yes_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*xor (m4jk)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):split:xor (m4jd)*xor (m4jk)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*xor (m4jk)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):join:Join_Split_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):join:Join_Split_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Split_xor (m4jd)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):split:Join_Join_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):split:Join_Join_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_No_xor (m4jd):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Join_xor (m4jd)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):join:xor (m4jd)*Join_Yes_xor (m4jd):Join_Split_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):join:xor (m4jd)*Join_Yes_xor (m4jd):Join_Split_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:xor (m4jd)*Join_Yes_xor (m4jd)"
+       "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Split_xor (m4jd)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):split:Join_Join_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Yes_xor (m4jd):busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Join_xor (m4jd)"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:join:Join_Join_xor (m4jd)"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:join:Join_Join_xor (m4jd)"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Join_Join_xor (m4jd)"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:busy"
+;
+trans "t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:split:outputCondition"~"t:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:split:outputCondition"
+    in "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:Output:busy"
+   out "p:Model.m4hd--0-----u--:Model.m4hd--0-----u--:outputCondition"
+;
+

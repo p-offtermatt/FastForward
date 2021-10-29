@@ -1,0 +1,73 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.dwdy--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.dwdy--0-----u--:Model.dwdy--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_and (dwg1)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_and (dwg1)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwfu)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwja)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwmk)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwja)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwmk)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu)*and (dwfu)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk)*and (dwmk)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Join_Yes_and (dwg1)"/>
+    <CGraph Type="Place" Label="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):busy"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_and (dwg1):split:Join_Join_and (dwg1)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_and (dwg1):split:Join_Join_and (dwg1)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwfu):split:Split_Join_and (dwfu)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwja):split:Split_Join_and (dwja)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwmk):split:Split_Join_and (dwmk)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk):split:Split_Join_and (dwmk):Split_Yes_and (dwmk)*and (dwmk)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)"/>
+    <CGraph Type="Transition" Label="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):join:Split_Yes_and (dwja)*and (dwja)"/>
+    <CArc Type="Arc" Label="arcId102" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):join:Split_Yes_and (dwja)*and (dwja)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.dwdy--0-----u--:Model.dwdy--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_and (dwg1):split:Join_Join_and (dwg1)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_and (dwg1):split:Join_Join_and (dwg1)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwfu)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwfu):split:Split_Join_and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwfu)">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwja):split:Split_Join_and (dwja)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwmk):split:Split_Join_and (dwmk)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk):split:Split_Join_and (dwmk):Split_Yes_and (dwmk)*and (dwmk)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu)*and (dwfu)">1</CArc>
+    <CArc Type="Arc" Label="arcId85" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk):split:Split_Join_and (dwmk):Split_Yes_and (dwmk)*and (dwmk)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk)*and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="arcId95" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Join_Yes_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_Information System [Funds Management] (dwjo)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_and (dwg1)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_No_and (dwg1):split:Join_Join_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_Information System [Funds Management] (dwjo)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Information System [Funds Management] (dwjo)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_Information System [Funds Management] (dwjo):split:Join_Join_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Split_and (dwg1)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_and (dwg1):split:Join_Join_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1)*Join_Yes_and (dwg1)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Yes_and (dwg1):split:Join_Join_and (dwg1)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_Information System [Funds Management] (dwjo)" Target="*:Model.dwdy--0-----u--:Model.dwdy--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Join_Join_and (dwg1)" Target="*:Model.dwdy--0-----u--:Model.dwdy--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwfu)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwja)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwmk)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Skip:split:Join_Split_and (dwg1):Join_Split_Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwja)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwja):split:Split_Join_and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwmk)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwmk):split:Split_Join_and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="i" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwfu):split:Split_Join_and (dwfu)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwfu):split:Split_Join_and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_No_and (dwfu):split:Split_Join_and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu):split:Split_Join_and (dwfu):Split_Yes_and (dwfu)*and (dwfu)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):join:Split_Yes_and (dwja)*and (dwja)" Target="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Join_and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwja)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):join:Split_Yes_and (dwja)*and (dwja)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Split_and (dwmk)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk):split:Split_Join_and (dwmk):Split_Yes_and (dwmk)*and (dwmk)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwfu)*and (dwfu)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:Split_Yes_and (dwmk)*and (dwmk)" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="p:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwja):busy" Target="t:Model.dwdy--0-----u--:Model.dwdy--0-----u--:and (dwg1):split:and (dwg1)*Join_Yes_and (dwg1):and (dwg1)*Information System [Funds Management] (dwjo)">1</CArc>
+</CGraph>

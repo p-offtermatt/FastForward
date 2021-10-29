@@ -1,0 +1,39 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B1/B1.s00000483__s00003604.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="callToProcess.s00003594.input.s00000807"/>
+    <CGraph Type="Place" Label="callToProcess.s00003594.output.s00000788"/>
+    <CGraph Type="Place" Label="callToProcess.s00003594.output.s00001171"/>
+    <CGraph Type="Transition" Label="decision.s00000781.activate.s00000782"/>
+    <CGraph Type="Place" Label="decision.s00000781.activated"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000784"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000787"/>
+    <CGraph Type="Transition" Label="decision.s00000781.fire.s00000984"/>
+    <CGraph Type="Place" Label="endNode.s00001241.input.default"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000483##s00003604.output.s00001044"/>
+    <CGraph Type="Transition" Label="process.s00000483##s00003604.outputCriterion.s00000773"/>
+    <CGraph Type="Place" Label="process.s00000483##s00003604.outputCriterion.s00000773_omega"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId19" Source="callToProcess.s00003594.output.s00000788" Target="process.s00000483##s00003604.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="decision.s00000781.activated" Target="decision.s00000781.fire.s00000784">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="decision.s00000781.activated" Target="decision.s00000781.fire.s00000787">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="decision.s00000781.activate.s00000782" Target="decision.s00000781.activated">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="decision.s00000781.activated" Target="decision.s00000781.fire.s00000984">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="decision.s00000781.fire.s00000787" Target="endNode.s00001241.input.default">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="decision.s00000781.fire.s00000787" Target="process.s00000483##s00003604.output.s00001044">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="process.s00000483##s00003604.output.s00001044" Target="process.s00000483##s00003604.outputCriterion.s00000773">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="process.s00000483##s00003604.outputCriterion.s00000773" Target="process.s00000483##s00003604.outputCriterion.s00000773_omega">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="decision.s00000781.fire.s00000984" Target="callToProcess.s00003594.input.s00000807">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="callToProcess.s00003594.input.s00000807" Target="decision.s00000781.activate.s00000782">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="decision.s00000781.activate.s00000782" Target="callToProcess.s00003594.output.s00000788">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="decision.s00000781.activate.s00000782" Target="callToProcess.s00003594.output.s00001171">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="alpha" Target="decision.s00000781.activate.s00000782">1</CArc>
+    <CArc Type="Arc" Label="sa_11" Source="decision.s00000781.fire.s00000784" Target="endNode.s00001241.input.default">1</CArc>
+    <CArc Type="Arc" Label="sa_12" Source="decision.s00000781.fire.s00000784" Target="process.s00000483##s00003604.outputCriterion.s00000773_omega">1</CArc>
+    <CArc Type="Arc" Label="sa_17" Source="callToProcess.s00003594.output.s00001171" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_19" Source="endNode.s00001241.input.default" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_20" Source="process.s00000483##s00003604.outputCriterion.s00000773_omega" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_21" Source="t_star" Target="o_star">1</CArc>
+    <CArc Type="Arc" Label="sa_8" Source="decision.s00000781.fire.s00000784" Target="callToProcess.s00003594.output.s00001171">1</CArc>
+    <CArc Type="Arc" Label="sa_9" Source="decision.s00000781.fire.s00000787" Target="callToProcess.s00003594.output.s00001171">1</CArc>
+</CGraph>

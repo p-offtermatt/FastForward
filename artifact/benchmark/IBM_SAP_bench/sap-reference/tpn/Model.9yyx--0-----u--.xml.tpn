@@ -1,0 +1,193 @@
+place "i" init 1;
+place "o";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:InputCondition";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Split_Confirmation of Picking (9z0o)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Join_Confirmation of Picking (9z0o)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9yzm)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9yzm)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_and (9yzx)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_and (9yzx)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9z06)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9z06)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:OutputCondition";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o)*and (9yzd)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*xor (9yzm)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*Difference Processing During Picking (9z12)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm)*Join_Yes_xor (9yzm)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12)*and (9yzx)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*Join_Yes_and (9yzx)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*xor (9z06)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06)*Join_Yes_xor (9z06)";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):busy";
+place "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:busy";
+trans "*:Model.9yyx--0-----u--:Model.9yyx--0-----u--:start"~"*:Model.9yyx--0-----u--:Model.9yyx--0-----u--:start"
+    in "i"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:InputCondition"
+;
+trans "*:Model.9yyx--0-----u--:Model.9yyx--0-----u--:end"~"*:Model.9yyx--0-----u--:Model.9yyx--0-----u--:end"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:OutputCondition"
+   out "o"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:join:InputCondition"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:join:InputCondition"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:InputCondition"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:split:Split_Split_Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:split:Split_Split_Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split:busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Split_Confirmation of Picking (9z0o)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):join:Split_Split_Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):join:Split_Split_Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Split_Confirmation of Picking (9z0o)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):split:Split_Join_Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):split:Split_Join_Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_No_Confirmation of Picking (9z0o):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Join_Confirmation of Picking (9z0o)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):join:Split_Split_Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):join:Split_Split_Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Split_Confirmation of Picking (9z0o)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):split:Split_Join_Confirmation of Picking (9z0o):Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):split:Split_Join_Confirmation of Picking (9z0o):Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Join_Confirmation of Picking (9z0o)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:join:Split_Join_Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:join:Split_Join_Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Join_Confirmation of Picking (9z0o)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:split:Join_Split_xor (9yzm):Join_Split_and (9yzx):Join_Split_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:split:Join_Split_xor (9yzm):Join_Split_and (9yzx):Join_Split_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Skip:busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9yzm)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_and (9yzx)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9z06)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):join:Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):join:Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Split_Yes_Confirmation of Picking (9z0o)*Confirmation of Picking (9z0o)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):split:Confirmation of Picking (9z0o)*and (9yzd)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):split:Confirmation of Picking (9z0o)*and (9yzd)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o)*and (9yzd)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):join:Confirmation of Picking (9z0o)*and (9yzd)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):join:Confirmation of Picking (9z0o)*and (9yzd)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Confirmation of Picking (9z0o)*and (9yzd)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):split:and (9yzd)*xor (9yzm):and (9yzd)*Difference Processing During Picking (9z12)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):split:and (9yzd)*xor (9yzm):and (9yzd)*Difference Processing During Picking (9z12)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*xor (9yzm)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*Difference Processing During Picking (9z12)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):join:and (9yzd)*xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):join:and (9yzd)*xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*xor (9yzm)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):split:xor (9yzm)*Join_Yes_xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):split:xor (9yzm)*Join_Yes_xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm)*Join_Yes_xor (9yzm)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):join:and (9yzd)*Difference Processing During Picking (9z12)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):join:and (9yzd)*Difference Processing During Picking (9z12)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzd)*Difference Processing During Picking (9z12)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):split:Difference Processing During Picking (9z12)*and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):split:Difference Processing During Picking (9z12)*and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12)*and (9yzx)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):join:Difference Processing During Picking (9z12)*and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):join:Difference Processing During Picking (9z12)*and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Difference Processing During Picking (9z12)*and (9yzx)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):split:and (9yzx)*Join_Yes_and (9yzx):and (9yzx)*xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):split:and (9yzx)*Join_Yes_and (9yzx):and (9yzx)*xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*Join_Yes_and (9yzx)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*xor (9z06)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):join:and (9yzx)*xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):join:and (9yzx)*xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*xor (9z06)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):split:xor (9z06)*Join_Yes_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):split:xor (9z06)*Join_Yes_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06)*Join_Yes_xor (9z06)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):join:Join_Split_xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):join:Join_Split_xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9yzm)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):split:Join_Join_xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):split:Join_Join_xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9yzm):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9yzm)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):join:xor (9yzm)*Join_Yes_xor (9yzm):Join_Split_xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):join:xor (9yzm)*Join_Yes_xor (9yzm):Join_Split_xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9yzm)*Join_Yes_xor (9yzm)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9yzm)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):split:Join_Join_xor (9yzm)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):split:Join_Join_xor (9yzm)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9yzm):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9yzm)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):join:Join_Split_and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):join:Join_Split_and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_and (9yzx)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):split:Join_Join_and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):split:Join_Join_and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_and (9yzx):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_and (9yzx)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):join:and (9yzx)*Join_Yes_and (9yzx):Join_Split_and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):join:and (9yzx)*Join_Yes_and (9yzx):Join_Split_and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:and (9yzx)*Join_Yes_and (9yzx)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_and (9yzx)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):split:Join_Join_and (9yzx)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):split:Join_Join_and (9yzx)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_and (9yzx):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_and (9yzx)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):join:Join_Split_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):join:Join_Split_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9z06)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):split:Join_Join_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):split:Join_Join_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_No_xor (9z06):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9z06)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):join:xor (9z06)*Join_Yes_xor (9z06):Join_Split_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):join:xor (9z06)*Join_Yes_xor (9z06):Join_Split_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:xor (9z06)*Join_Yes_xor (9z06)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Split_xor (9z06)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):split:Join_Join_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):split:Join_Join_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Yes_xor (9z06):busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9z06)"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:join:Join_Join_xor (9yzm):Join_Join_and (9yzx):Join_Join_xor (9z06)"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:join:Join_Join_xor (9yzm):Join_Join_and (9yzx):Join_Join_xor (9z06)"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9yzm)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_and (9yzx)"
+       "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Join_Join_xor (9z06)"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:busy"
+;
+trans "t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:split:OutputCondition"~"t:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:split:OutputCondition"
+    in "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:Output:busy"
+   out "p:Model.9yyx--0-----u--:Model.9yyx--0-----u--:OutputCondition"
+;
+

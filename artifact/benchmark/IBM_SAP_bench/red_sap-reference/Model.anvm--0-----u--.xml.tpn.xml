@@ -1,0 +1,42 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.anvm--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.anvm--0-----u--:Model.anvm--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_and (anwv)"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_xor (anwo)"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*Join_Yes_xor (anwo)"/>
+    <CGraph Type="Place" Label="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*and (anwv)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_and (anwv):split:Join_Join_and (anwv)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_xor (anwo):split:Join_Join_xor (anwo)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_and (anwv):split:Join_Join_and (anwv)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_xor (anwo):split:Join_Join_xor (anwo)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Split_No_xor (anx2):split:Split_Join_xor (anx2)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*Join_Yes_xor (anwo)"/>
+    <CGraph Type="Transition" Label="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*and (anwv)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_and (anwv):split:Join_Join_and (anwv)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_xor (anwo):split:Join_Join_xor (anwo)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_xor (anwo):split:Join_Join_xor (anwo)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.anvm--0-----u--:Model.anvm--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*Join_Yes_xor (anwo)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*Join_Yes_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*and (anwv)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_and (anwv):split:Join_Join_and (anwv)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_and (anwv)" Target="*:Model.anvm--0-----u--:Model.anvm--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Join_xor (anwo)" Target="*:Model.anvm--0-----u--:Model.anvm--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Split_No_xor (anx2):split:Split_Join_xor (anx2)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*and (anwv)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_and (anwv):split:Join_Join_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*Join_Yes_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_and (anwv):split:Join_Join_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Split_No_xor (anx2):split:Split_Join_xor (anx2)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Split_No_xor (anx2):split:Split_Join_xor (anx2)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*Join_Yes_xor (anwo)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*Join_Yes_xor (anwo)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*and (anwv)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo):split:xor (anwo)*and (anwv)" Target="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_No_xor (anwo):split:Join_Join_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_and (anwv)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_and (anwv):split:Join_Join_and (anwv)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Split_xor (anwo)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_xor (anwo):split:Join_Join_xor (anwo)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.anvm--0-----u--:Model.anvm--0-----u--:xor (anwo)*Join_Yes_xor (anwo)" Target="t:Model.anvm--0-----u--:Model.anvm--0-----u--:Join_Yes_xor (anwo):split:Join_Join_xor (anwo)">1</CArc>
+</CGraph>

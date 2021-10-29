@@ -1,0 +1,103 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.cnx7--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy"/>
+    <CGraph Type="Place" Label="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):join:Join_Split_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):split:Join_Join_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):split:Join_Join_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:join:Join_Join_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):join:and (cnxp)*Report Search Using Report Information System (cnyo)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):split:Report Search Using Report Information System (cnyo)*and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:join:Split_Join_and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:split:Join_Split_and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:split:Split_Split_and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):join:Split_Split_and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):split:Split_Join_and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):join:Split_Split_and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):join:and (cnxp)*Substance Search Using Substance Information System (cnya)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):split:Substance Search Using Substance Information System (cnya)*and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):join:Split_Yes_and (cnxp)*and (cnxp)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)"/>
+    <CGraph Type="Transition" Label="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):split:and (cnxw)*Join_Yes_and (cnxw)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:split:Join_Split_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Split_and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):join:Join_Split_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):split:Join_Join_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:join:Join_Join_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):split:Report Search Using Report Information System (cnyo)*and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo)*and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):join:and (cnxp)*Report Search Using Report Information System (cnyo)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):split:Report Search Using Report Information System (cnyo)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:split:Join_Split_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:join:Split_Join_and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:join:InputCondition" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:split:Split_Split_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Skip:join:Split_Join_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):split:Split_Join_and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Join_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):split:Split_Join_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):join:Split_Split_and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:start" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:split:Split_Split_and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_No_and (cnxp):join:Split_Split_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Split_and (cnxp)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):join:Split_Split_and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp)*and (cnxp)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):join:Split_Yes_and (cnxp)*and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):join:Split_Split_and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split_Yes_and (cnxp):split:Split_Join_and (cnxp):Split_Yes_and (cnxp)*and (cnxp)">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):split:Substance Search Using Substance Information System (cnya)*and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):join:and (cnxp)*Substance Search Using Substance Information System (cnya)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:InputCondition" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):split:Substance Search Using Substance Information System (cnya)*and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Report Search Using Report Information System (cnyo):join:and (cnxp)*Report Search Using Report Information System (cnyo)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Report Search Using Report Information System (cnyo)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp)*Substance Search Using Substance Information System (cnya)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Substance Search Using Substance Information System (cnya):join:and (cnxp)*Substance Search Using Substance Information System (cnya)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):join:Split_Yes_and (cnxp)*and (cnxp)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxp):split:and (cnxp)*Substance Search Using Substance Information System (cnya):and (cnxp)*Report Search Using Report Information System (cnyo)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):join:and (cnxw)*Join_Yes_and (cnxw):Join_Split_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):split:and (cnxw)*Join_Yes_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw)*Join_Yes_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):join:Substance Search Using Substance Information System (cnya)*and (cnxw):Report Search Using Report Information System (cnyo)*and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Yes_and (cnxw):split:Join_Join_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:and (cnxw):split:and (cnxw)*Join_Yes_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition" Target="*:Model.cnx7--0-----u--:Model.cnx7--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:split:outputCondition" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):split:Join_Join_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_Join_and (cnxw)" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Output:join:Join_Join_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy" Target="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):split:Join_Join_and (cnxw)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):join:Join_Split_and (cnxw)" Target="p:Model.cnx7--0-----u--:Model.cnx7--0-----u--:Join_No_and (cnxw):busy">1</CArc>
+</CGraph>

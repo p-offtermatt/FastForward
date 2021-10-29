@@ -1,0 +1,103 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.khe0--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_Unit-of-Production Depreciation (khkc)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_and (khl1)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_or (khee)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgf)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgz)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khkj)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_and (khl1)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_or (khee)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgf)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgz)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khkj)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1)*and (khl1)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee)*or (khee)"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):busy"/>
+    <CGraph Type="Place" Label="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):busy"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_and (khl1):split:Split_Join_and (khl1)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_or (khee):split:Split_Join_or (khee)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgf):split:Split_Join_xor (khgf)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgz):split:Split_Join_xor (khgz)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khkj):split:Split_Join_xor (khkj)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1):split:Split_Join_and (khl1):Split_Yes_and (khl1)*and (khl1)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee):split:Split_Join_or (khee):Split_Yes_or (khee)*or (khee)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Manual Depreciation Planning (khj3)*or (khee)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee):Manual Depreciation Planning (khj3)*or (khee)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):join:Split_Yes_xor (khgf)*xor (khgf)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Split_Yes_xor (khgz)*xor (khgz)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:and (khl1)*xor (khgz)"/>
+    <CGraph Type="Transition" Label="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):join:Split_Yes_xor (khkj)*xor (khkj)"/>
+    <CArc Type="Arc" Label="arcId131" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):join:Split_Yes_xor (khgf)*xor (khgf)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId135" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId136" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Split_Yes_xor (khgz)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId137" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:and (khl1)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId141" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):join:Split_Yes_xor (khkj)*xor (khkj)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_Unit-of-Production Depreciation (khkc)">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1):split:Split_Join_and (khl1):Split_Yes_and (khl1)*and (khl1)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_and (khl1):split:Split_Join_and (khl1)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee):split:Split_Join_or (khee):Split_Yes_or (khee)*or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_or (khee)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_or (khee):split:Split_Join_or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_or (khee)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgf):split:Split_Join_xor (khgf)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgz):split:Split_Join_xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khkj):split:Split_Join_xor (khkj)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="arcId86" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1):split:Split_Join_and (khl1):Split_Yes_and (khl1)*and (khl1)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1)*and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="arcId90" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee):split:Split_Join_or (khee):Split_Yes_or (khee)*or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="arcId91" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee)*or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="arcId92" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee)*or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee):Manual Depreciation Planning (khj3)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_Unit-of-Production Depreciation (khkc)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_and (khl1)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgf)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgz)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khkj)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_Unit-of-Production Depreciation (khkc)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_and (khl1)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgf)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgz)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khkj)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_and (khl1)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_and (khl1):split:Split_Join_and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_or (khee):split:Split_Join_or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgf)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgf):split:Split_Join_xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgz)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khgz):split:Split_Join_xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khkj)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_xor (khkj):split:Split_Join_xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="i" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_No_Unit-of-Production Depreciation (khkc):split:Split_Join_Unit-of-Production Depreciation (khkc)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_and (khl1)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1):split:Split_Join_and (khl1):Split_Yes_and (khl1)*and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_or (khee)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_or (khee):split:Split_Join_or (khee):Split_Yes_or (khee)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):join:Split_Yes_xor (khgf)*xor (khgf)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgf)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):join:Split_Yes_xor (khgf)*xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Split_Yes_xor (khgz)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgz)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Split_Yes_xor (khgz)*xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):join:Split_Yes_xor (khkj)*xor (khkj)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khkj)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):join:Split_Yes_xor (khkj)*xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="i" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Join_Unit-of-Production Depreciation (khkc)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_and (khl1)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgf)">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_72" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:Unit-of-Production Depreciation (khkc)*xor (khgz)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Split_xor (khkj)">1</CArc>
+    <CArc Type="Arc" Label="ra_76" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:Split_Yes_and (khl1)*and (khl1)" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:and (khl1)*xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_80" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):join:and (khl1)*xor (khgz)">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgz):busy" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)">1</CArc>
+    <CArc Type="Arc" Label="ra_82" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):busy" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Manual Depreciation Planning (khj3)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_83" Source="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khkj):busy" Target="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee):Manual Depreciation Planning (khj3)*or (khee)">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_No_and (khic):split:Join_Join_and (khic)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_87" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:Join_Yes_and (khic):split:Join_Join_and (khic)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_89" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Manual Depreciation Planning (khj3)*or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_91" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_93" Source="t:Model.khe0--0-----u--:Model.khe0--0-----u--:or (khee):join:Split_Yes_or (khee)*or (khee):Manual Depreciation Planning (khj3)*or (khee)" Target="p:Model.khe0--0-----u--:Model.khe0--0-----u--:xor (khgf):busy">1</CArc>
+</CGraph>

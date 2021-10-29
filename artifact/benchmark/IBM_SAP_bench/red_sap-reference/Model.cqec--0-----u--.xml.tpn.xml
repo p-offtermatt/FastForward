@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.cqec--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_Join_and (cqew)"/>
+    <CGraph Type="Place" Label="p:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew)*Substance Report Processing (cqg9)"/>
+    <CGraph Type="Transition" Label="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_No_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)"/>
+    <CGraph Type="Transition" Label="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_Yes_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)"/>
+    <CGraph Type="Transition" Label="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_No_and (cqew):split:Split_Join_and (cqew)"/>
+    <CGraph Type="Transition" Label="t:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew):split:and (cqew)*Processing of Substance Report Generation Variants (cqfh):and (cqew)*Document Template Processing (cqfv):and (cqew)*Substance Report Processing (cqg9)"/>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_No_and (cqew):split:Split_Join_and (cqew)" Target="p:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_Join_and (cqew)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew):split:and (cqew)*Processing of Substance Report Generation Variants (cqfh):and (cqew)*Document Template Processing (cqfv):and (cqew)*Substance Report Processing (cqg9)" Target="p:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew)*Substance Report Processing (cqg9)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_Join_and (cqew)" Target="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_No_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_Join_and (cqew)" Target="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_Yes_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_No_and (cqew):split:Split_Join_and (cqew)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew):split:and (cqew)*Processing of Substance Report Generation Variants (cqfh):and (cqew)*Document Template Processing (cqfv):and (cqew)*Substance Report Processing (cqg9)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew):split:and (cqew)*Processing of Substance Report Generation Variants (cqfh):and (cqew)*Document Template Processing (cqfv):and (cqew)*Substance Report Processing (cqg9)" Target="p:Model.cqec--0-----u--:Model.cqec--0-----u--:Split_Join_and (cqew)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.cqec--0-----u--:Model.cqec--0-----u--:and (cqew)*Substance Report Processing (cqg9)" Target="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_Yes_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_No_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.cqec--0-----u--:Model.cqec--0-----u--:Join_Yes_Report Shipping (cqgn):split:Join_Join_Report Shipping (cqgn)" Target="o">1</CArc>
+</CGraph>

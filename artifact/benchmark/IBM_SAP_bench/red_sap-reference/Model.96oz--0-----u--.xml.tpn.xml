@@ -1,0 +1,73 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.96oz--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.96oz--0-----u--:Model.96oz--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)"/>
+    <CGraph Type="Place" Label="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):split:Join_Join_and (96se)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):split:Split_Join_and (96qa)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):split:Split_Join_and (96rr)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)"/>
+    <CGraph Type="Transition" Label="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):split:Join_Join_and (96se)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.96oz--0-----u--:Model.96oz--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):split:Split_Join_and (96qa)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):split:Split_Join_and (96rr)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="arcId73" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="arcId87" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId98" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Order Archiving (96uc)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_Order Archiving (96uc)" Target="*:Model.96oz--0-----u--:Model.96oz--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Join_and (96se)" Target="*:Model.96oz--0-----u--:Model.96oz--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96qa)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96rr)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Skip:split:Join_Split_and (96se):Join_Split_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96qa):split:Split_Join_and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96rr):split:Split_Join_and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_No_and (96pf):split:Split_Join_and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Join_and (96pf)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="i" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):join:Split_Yes_and (96pf)*and (96pf)" Target="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96qa)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa):split:Split_Join_and (96qa):Split_Yes_and (96qa)*and (96qa)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Split_and (96rr)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr):split:Split_Join_and (96rr):Split_Yes_and (96rr)*and (96rr)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_No_and (96se):split:Join_Join_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96qa)*and (96qa)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Split_Yes_and (96rr)*and (96rr)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96pf):busy" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se):split:and (96se)*Join_Yes_and (96se):and (96se)*Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_Order Archiving (96uc)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_Order Archiving (96uc):split:Join_Join_Order Archiving (96uc)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Split_and (96se)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.96oz--0-----u--:Model.96oz--0-----u--:and (96se)*Join_Yes_and (96se)" Target="t:Model.96oz--0-----u--:Model.96oz--0-----u--:Join_Yes_and (96se):split:Join_Join_and (96se)">1</CArc>
+</CGraph>

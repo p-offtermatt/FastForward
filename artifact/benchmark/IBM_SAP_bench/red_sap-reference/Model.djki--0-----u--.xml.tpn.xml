@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.djki--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.djki--0-----u--:Model.djki--0-----u--:Split_Join_or (djm2)"/>
+    <CGraph Type="Place" Label="p:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):busy"/>
+    <CGraph Type="Transition" Label="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_No_or (djm9):split:Join_Join_or (djm9)"/>
+    <CGraph Type="Transition" Label="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_Yes_or (djm9):split:Join_Join_or (djm9)"/>
+    <CGraph Type="Transition" Label="t:Model.djki--0-----u--:Model.djki--0-----u--:Split_No_or (djm2):split:Split_Join_or (djm2)"/>
+    <CGraph Type="Transition" Label="t:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):join:Project Release (djlr)*or (djm9)"/>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.djki--0-----u--:Model.djki--0-----u--:Split_No_or (djm2):split:Split_Join_or (djm2)" Target="p:Model.djki--0-----u--:Model.djki--0-----u--:Split_Join_or (djm2)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):join:Project Release (djlr)*or (djm9)" Target="p:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.djki--0-----u--:Model.djki--0-----u--:Split_Join_or (djm2)" Target="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_Yes_or (djm9):split:Join_Join_or (djm9)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="i" Target="t:Model.djki--0-----u--:Model.djki--0-----u--:Split_No_or (djm2):split:Split_Join_or (djm2)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="i" Target="t:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):join:Project Release (djlr)*or (djm9)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="t:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):join:Project Release (djlr)*or (djm9)" Target="p:Model.djki--0-----u--:Model.djki--0-----u--:Split_Join_or (djm2)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.djki--0-----u--:Model.djki--0-----u--:or (djm9):busy" Target="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_Yes_or (djm9):split:Join_Join_or (djm9)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_No_or (djm9):split:Join_Join_or (djm9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_Yes_or (djm9):split:Join_Join_or (djm9)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.djki--0-----u--:Model.djki--0-----u--:Split_Join_or (djm2)" Target="t:Model.djki--0-----u--:Model.djki--0-----u--:Join_No_or (djm9):split:Join_Join_or (djm9)">1</CArc>
+</CGraph>

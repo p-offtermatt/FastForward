@@ -1,0 +1,19 @@
+<CGraph Type="WorkFlow" Label="ibm/lib_B2/B2.s00000285__s00004838.lola">
+    <CGraph Type="Place" Label="alpha"/>
+    <CGraph Type="Place" Label="fork.s00001067.activated.s00000993"/>
+    <CGraph Type="Transition" Label="fork.s00001067.fire.s00000991"/>
+    <CGraph Type="Transition" Label="merge.s00000945.activate.s00000946"/>
+    <CGraph Type="Place" Label="o_star"/>
+    <CGraph Type="Place" Label="process.s00000285##s00004838.input.s00000936"/>
+    <CGraph Type="Place" Label="process.s00000285##s00004838.outputCriterion.s00000939_omega"/>
+    <CGraph Type="Transition" Label="t_star"/>
+    <CArc Type="Arc" Label="arcId56" Source="process.s00000285##s00004838.input.s00000936" Target="merge.s00000945.activate.s00000946">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="fork.s00001067.fire.s00000991" Target="fork.s00001067.activated.s00000993">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="alpha" Target="fork.s00001067.fire.s00000991">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="fork.s00001067.fire.s00000991" Target="process.s00000285##s00004838.input.s00000936">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="fork.s00001067.fire.s00000991" Target="process.s00000285##s00004838.outputCriterion.s00000939_omega">1</CArc>
+    <CArc Type="Arc" Label="ra_33" Source="merge.s00000945.activate.s00000946" Target="process.s00000285##s00004838.outputCriterion.s00000939_omega">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="fork.s00001067.activated.s00000993" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_1" Source="process.s00000285##s00004838.outputCriterion.s00000939_omega" Target="t_star">1</CArc>
+    <CArc Type="Arc" Label="sa_2" Source="t_star" Target="o_star">1</CArc>
+</CGraph>

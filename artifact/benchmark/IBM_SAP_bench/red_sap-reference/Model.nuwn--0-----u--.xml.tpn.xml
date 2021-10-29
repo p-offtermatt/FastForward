@@ -1,0 +1,32 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.nuwn--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):busy"/>
+    <CGraph Type="Place" Label="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)"/>
+    <CGraph Type="Place" Label="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf)*Non-cash payment (store) (nuz8)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_No_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_Yes_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):split"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_No_xor (nv1b):split:Split_Join_xor (nv1b)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8):or (nuzf)*POS sales audit (nv14)"/>
+    <CGraph Type="Transition" Label="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*POS sales audit (nv14)"/>
+    <CArc Type="Arc" Label="arcId22" Source="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):busy" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):split">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_No_xor (nv1b):split:Split_Join_xor (nv1b)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf)*Non-cash payment (store) (nuz8)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8):or (nuzf)*POS sales audit (nv14)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf)*Non-cash payment (store) (nuz8)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_No_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_Yes_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="i" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_No_xor (nv1b):split:Split_Join_xor (nv1b)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="i" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8):or (nuzf)*POS sales audit (nv14)">1</CArc>
+    <CArc Type="Arc" Label="ra_30" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8):or (nuzf)*POS sales audit (nv14)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="i" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*POS sales audit (nv14)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*POS sales audit (nv14)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Split_Join_xor (nv1b)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_No_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_Yes_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*Non-cash payment (store) (nuz8):or (nuzf)*POS sales audit (nv14)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf):split:or (nuzf)*POS sales audit (nv14)" Target="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:POS sales audit (nv14):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.nuwn--0-----u--:Model.nuwn--0-----u--:or (nuzf)*Non-cash payment (store) (nuz8)" Target="t:Model.nuwn--0-----u--:Model.nuwn--0-----u--:Join_Yes_Non-cash payment (store) (nuz8):split:Join_Join_Non-cash payment (store) (nuz8)">1</CArc>
+</CGraph>

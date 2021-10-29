@@ -1,0 +1,39 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2n6s--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.2n6s--0-----u--:Model.2n6s--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Join_xor (2n83)"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_ ()"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_RFQ/Quotation (2n8s)"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Split_RFQ/Quotation (2n8s)"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ()* ()"/>
+    <CGraph Type="Place" Label="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):busy"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_No_xor (2n83):split:Join_Join_xor (2n83)"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Yes_xor (2n83):split:Join_Join_xor (2n83)"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_ ():split:Split_Join_ ()"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_RFQ/Quotation (2n8s):split:Split_Join_RFQ/Quotation (2n8s)"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()"/>
+    <CGraph Type="Transition" Label="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):join:RFQ/Quotation (2n8s)*xor (2n83)"/>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.2n6s--0-----u--:Model.2n6s--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_RFQ/Quotation (2n8s):split:Split_Join_RFQ/Quotation (2n8s)" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_RFQ/Quotation (2n8s)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ()* ()" Target="*:Model.2n6s--0-----u--:Model.2n6s--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_No_xor (2n83):split:Join_Join_xor (2n83)" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):join:RFQ/Quotation (2n8s)*xor (2n83)" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Yes_xor (2n83):split:Join_Join_xor (2n83)" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_RFQ/Quotation (2n8s)" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_No_xor (2n83):split:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_ ()" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Yes_xor (2n83):split:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_RFQ/Quotation (2n8s)" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Yes_xor (2n83):split:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Split_RFQ/Quotation (2n8s)" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_RFQ/Quotation (2n8s):split:Split_Join_RFQ/Quotation (2n8s)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="i" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_ ():split:Split_Join_ ()">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_No_ ():split:Split_Join_ ()" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Split_RFQ/Quotation (2n8s)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Split_RFQ/Quotation (2n8s)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):join:RFQ/Quotation (2n8s)*xor (2n83)" Target="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_RFQ/Quotation (2n8s)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Split_RFQ/Quotation (2n8s)" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):join:RFQ/Quotation (2n8s)*xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Join_xor (2n83)" Target="*:Model.2n6s--0-----u--:Model.2n6s--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:xor (2n83):busy" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_Yes_xor (2n83):split:Join_Join_xor (2n83)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Split_Join_ ()" Target="t:Model.2n6s--0-----u--:Model.2n6s--0-----u--:Join_No_xor (2n83):split:Join_Join_xor (2n83)">1</CArc>
+</CGraph>

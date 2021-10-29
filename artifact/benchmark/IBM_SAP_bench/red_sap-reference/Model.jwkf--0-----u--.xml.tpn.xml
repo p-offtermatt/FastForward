@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.jwkf--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_Join_or (jwno)"/>
+    <CGraph Type="Place" Label="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6)*Transaction data (jwpr)"/>
+    <CGraph Type="Transition" Label="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)"/>
+    <CGraph Type="Transition" Label="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)"/>
+    <CGraph Type="Transition" Label="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_No_or (jwno):split:Split_Join_or (jwno)"/>
+    <CGraph Type="Transition" Label="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6):split:and (jwp6)*Transaction data (jwpr):and (jwp6)*Master data (jwqr)"/>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_No_or (jwno):split:Split_Join_or (jwno)" Target="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_Join_or (jwno)">1</CArc>
+    <CArc Type="Arc" Label="arcId75" Source="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6):split:and (jwp6)*Transaction data (jwpr):and (jwp6)*Master data (jwqr)" Target="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6)*Transaction data (jwpr)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_Join_or (jwno)" Target="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_Join_or (jwno)" Target="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="i" Target="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_No_or (jwno):split:Split_Join_or (jwno)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6)*Transaction data (jwpr)" Target="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="i" Target="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6):split:and (jwp6)*Transaction data (jwpr):and (jwp6)*Master data (jwqr)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:and (jwp6):split:and (jwp6)*Transaction data (jwpr):and (jwp6)*Master data (jwqr)" Target="p:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Split_Join_or (jwno)">1</CArc>
+    <CArc Type="Arc" Label="ra_45" Source="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_No_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.jwkf--0-----u--:Model.jwkf--0-----u--:Join_Yes_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv):split:Join_Join_Repeatability of Data Transfer (Automation/ Scheduling) (jwmv)" Target="o">1</CArc>
+</CGraph>

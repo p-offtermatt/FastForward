@@ -1,0 +1,67 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.8w3g--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.8w3g--0-----u--:Model.8w3g--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_and (8w6d)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_or (8w64)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_and (8w6d)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_or (8w64)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_and (8w5q)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5j)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5x)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5j)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5x)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:and (8w6d)*Join_Yes_and (8w6d)"/>
+    <CGraph Type="Place" Label="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:or (8w64):busy"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_and (8w6d):split:Join_Join_and (8w6d)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_or (8w64):split:Join_Join_or (8w64)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_and (8w6d):split:Join_Join_and (8w6d)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_or (8w64):split:Join_Join_or (8w64)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_and (8w5q):split:Split_Join_and (8w5q)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5j):split:Split_Join_xor (8w5j)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5x):split:Split_Join_xor (8w5x)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:Split_Yes_xor (8w5j)*xor (8w5j)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)"/>
+    <CGraph Type="Transition" Label="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5x):join:Split_Yes_xor (8w5x)*xor (8w5x)"/>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_or (8w64):split:Join_Join_or (8w64)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.8w3g--0-----u--:Model.8w3g--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_and (8w5q):split:Split_Join_and (8w5q)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_and (8w5q)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5j):split:Split_Join_xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5x):split:Split_Join_xor (8w5x)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_and (8w6d):split:Join_Join_and (8w6d)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_and (8w6d):split:Join_Join_and (8w6d)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_or (8w64):split:Join_Join_or (8w64)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_1" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_and (8w6d)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_and (8w6d):split:Join_Join_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_or (8w64)" Target="*:Model.8w3g--0-----u--:Model.8w3g--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_and (8w5q)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5j)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5x)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Skip:split:Join_Split_and (8w6d):Join_Split_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_2" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_or (8w64)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_No_or (8w64):split:Join_Join_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5j)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5j):split:Split_Join_xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5x)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_xor (8w5x):split:Split_Join_xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_and (8w5q):split:Split_Join_and (8w5q)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_and (8w5q):split:Split_Join_and (8w5q)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_No_and (8w5q):split:Split_Join_and (8w5q)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_and (8w6d)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_and (8w6d):split:Join_Join_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:Split_Yes_xor (8w5j)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5j)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:Split_Yes_xor (8w5j)*xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5x):join:Split_Yes_xor (8w5x)*xor (8w5x)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5x)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5x):join:Split_Yes_xor (8w5x)*xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:and (8w6d)*Join_Yes_and (8w6d)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_and (8w6d):split:Join_Join_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="i" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Join_and (8w5q)">1</CArc>
+    <CArc Type="Arc" Label="ra_42" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5j)">1</CArc>
+    <CArc Type="Arc" Label="ra_43" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Split_Split_xor (8w5x)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:or (8w64):busy" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_or (8w64):split:Join_Join_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Split_or (8w64)" Target="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Yes_or (8w64):split:Join_Join_or (8w64)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:Split_Yes_xor (8w5j)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:and (8w6d)*Join_Yes_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:Split_Yes_xor (8w5j)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:or (8w64):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:and (8w6d)*Join_Yes_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5j):join:and (8w5q)*xor (8w5j)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:or (8w64):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5x):join:Split_Yes_xor (8w5x)*xor (8w5x)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:and (8w6d)*Join_Yes_and (8w6d)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="t:Model.8w3g--0-----u--:Model.8w3g--0-----u--:xor (8w5x):join:Split_Yes_xor (8w5x)*xor (8w5x)" Target="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:or (8w64):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.8w3g--0-----u--:Model.8w3g--0-----u--:Join_Join_and (8w6d)" Target="*:Model.8w3g--0-----u--:Model.8w3g--0-----u--:end">1</CArc>
+</CGraph>

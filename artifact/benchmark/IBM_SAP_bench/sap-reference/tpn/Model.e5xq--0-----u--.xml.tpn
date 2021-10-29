@@ -1,0 +1,93 @@
+place "i" init 1;
+place "o";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:InputCondition";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Split_Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Join_Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Split_Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Join_Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:outputCondition";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb)";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):busy";
+place "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:busy";
+trans "*:Model.e5xq--0-----u--:Model.e5xq--0-----u--:start"~"*:Model.e5xq--0-----u--:Model.e5xq--0-----u--:start"
+    in "i"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:InputCondition"
+;
+trans "*:Model.e5xq--0-----u--:Model.e5xq--0-----u--:end"~"*:Model.e5xq--0-----u--:Model.e5xq--0-----u--:end"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:join:InputCondition"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:join:InputCondition"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:InputCondition"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:split:Split_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:split:Split_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split:busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Split_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):join:Split_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):join:Split_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Split_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):split:Split_Join_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):split:Split_Join_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_No_Standardizing Entries (e5yb):busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Join_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):join:Split_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):join:Split_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Split_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):split:Split_Join_Standardizing Entries (e5yb):Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):split:Split_Join_Standardizing Entries (e5yb):Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb):busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Join_Standardizing Entries (e5yb)"
+       "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:join:Split_Join_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:join:Split_Join_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Join_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:split:Join_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:split:Join_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Skip:busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Split_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):join:Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):join:Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Split_Yes_Standardizing Entries (e5yb)*Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):split:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):split:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb):busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):join:Join_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):join:Join_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Split_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):split:Join_Join_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):split:Join_Join_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_No_Standardizing Entries (e5yb):busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Join_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):join:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb):Join_Split_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):join:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb):Join_Split_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Standardizing Entries (e5yb)*Join_Yes_Standardizing Entries (e5yb)"
+       "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Split_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):split:Join_Join_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):split:Join_Join_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Yes_Standardizing Entries (e5yb):busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Join_Standardizing Entries (e5yb)"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:join:Join_Join_Standardizing Entries (e5yb)"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:join:Join_Join_Standardizing Entries (e5yb)"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Join_Join_Standardizing Entries (e5yb)"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:busy"
+;
+trans "t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:split:outputCondition"~"t:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:split:outputCondition"
+    in "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:Output:busy"
+   out "p:Model.e5xq--0-----u--:Model.e5xq--0-----u--:outputCondition"
+;
+

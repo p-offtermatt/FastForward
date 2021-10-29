@@ -1,0 +1,227 @@
+place "i" init 1;
+place "o";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:InputCondition";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Write-up (kgoi)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Write-up (kgoi)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_xor (kgqx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_xor (kgqx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Settlement of Asset under Construction (kgrx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Settlement of Asset under Construction (kgrx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Post-capitalization (kgsb)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Post-capitalization (kgsb)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Split_xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Join_xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:outputCondition";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi)*Write-up (kgoi)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx)*xor (kgqx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi)*xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf)*Join_Yes_xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx)*Reposting (kgow)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow)*xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx)*xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb)*xor (kgrf)";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):busy";
+place "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:busy";
+trans "*:Model.kgnx--0-----u--:Model.kgnx--0-----u--:start"~"*:Model.kgnx--0-----u--:Model.kgnx--0-----u--:start"
+    in "i"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:InputCondition"
+;
+trans "*:Model.kgnx--0-----u--:Model.kgnx--0-----u--:end"~"*:Model.kgnx--0-----u--:Model.kgnx--0-----u--:end"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:join:InputCondition"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:join:InputCondition"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:InputCondition"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:split:Split_Split_Write-up (kgoi):Split_Split_xor (kgqx):Split_Split_Settlement of Asset under Construction (kgrx):Split_Split_Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:split:Split_Split_Write-up (kgoi):Split_Split_xor (kgqx):Split_Split_Settlement of Asset under Construction (kgrx):Split_Split_Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split:busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Write-up (kgoi)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_xor (kgqx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Settlement of Asset under Construction (kgrx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Post-capitalization (kgsb)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):join:Split_Split_Write-up (kgoi)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):join:Split_Split_Write-up (kgoi)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Write-up (kgoi)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):split:Split_Join_Write-up (kgoi)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):split:Split_Join_Write-up (kgoi)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Write-up (kgoi):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Write-up (kgoi)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):join:Split_Split_Write-up (kgoi)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):join:Split_Split_Write-up (kgoi)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Write-up (kgoi)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):split:Split_Join_Write-up (kgoi):Split_Yes_Write-up (kgoi)*Write-up (kgoi)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):split:Split_Join_Write-up (kgoi):Split_Yes_Write-up (kgoi)*Write-up (kgoi)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Write-up (kgoi)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi)*Write-up (kgoi)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):join:Split_Split_xor (kgqx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):join:Split_Split_xor (kgqx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_xor (kgqx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):split:Split_Join_xor (kgqx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):split:Split_Join_xor (kgqx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_xor (kgqx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_xor (kgqx)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):join:Split_Split_xor (kgqx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):join:Split_Split_xor (kgqx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_xor (kgqx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):split:Split_Join_xor (kgqx):Split_Yes_xor (kgqx)*xor (kgqx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):split:Split_Join_xor (kgqx):Split_Yes_xor (kgqx)*xor (kgqx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_xor (kgqx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx)*xor (kgqx)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):join:Split_Split_Settlement of Asset under Construction (kgrx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):join:Split_Split_Settlement of Asset under Construction (kgrx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Settlement of Asset under Construction (kgrx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):split:Split_Join_Settlement of Asset under Construction (kgrx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):split:Split_Join_Settlement of Asset under Construction (kgrx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Settlement of Asset under Construction (kgrx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Settlement of Asset under Construction (kgrx)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):join:Split_Split_Settlement of Asset under Construction (kgrx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):join:Split_Split_Settlement of Asset under Construction (kgrx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Settlement of Asset under Construction (kgrx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):split:Split_Join_Settlement of Asset under Construction (kgrx):Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):split:Split_Join_Settlement of Asset under Construction (kgrx):Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Settlement of Asset under Construction (kgrx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):join:Split_Split_Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):join:Split_Split_Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Post-capitalization (kgsb)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):split:Split_Join_Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):split:Split_Join_Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_No_Post-capitalization (kgsb):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Post-capitalization (kgsb)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):join:Split_Split_Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):join:Split_Split_Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Split_Post-capitalization (kgsb)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):split:Split_Join_Post-capitalization (kgsb):Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):split:Split_Join_Post-capitalization (kgsb):Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Post-capitalization (kgsb)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:join:Split_Join_Write-up (kgoi):Split_Join_xor (kgqx):Split_Join_Settlement of Asset under Construction (kgrx):Split_Join_Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:join:Split_Join_Write-up (kgoi):Split_Join_xor (kgqx):Split_Join_Settlement of Asset under Construction (kgrx):Split_Join_Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Write-up (kgoi)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_xor (kgqx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Settlement of Asset under Construction (kgrx)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Join_Post-capitalization (kgsb)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:split:Join_Split_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:split:Join_Split_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Skip:busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Split_xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):join:Split_Yes_Write-up (kgoi)*Write-up (kgoi)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):join:Split_Yes_Write-up (kgoi)*Write-up (kgoi)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Write-up (kgoi)*Write-up (kgoi)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):split:Write-up (kgoi)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):split:Write-up (kgoi)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi)*xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Write-up (kgoi)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Write-up (kgoi)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Write-up (kgoi)*xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Reposting (kgow)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Reposting (kgow)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow)*xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Settlement of Asset under Construction (kgrx)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Settlement of Asset under Construction (kgrx)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx)*xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Post-capitalization (kgsb)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):join:Post-capitalization (kgsb)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb)*xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):split:xor (kgrf)*Join_Yes_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):split:xor (kgrf)*Join_Yes_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf)*Join_Yes_xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):join:Split_Yes_xor (kgqx)*xor (kgqx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):join:Split_Yes_xor (kgqx)*xor (kgqx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_xor (kgqx)*xor (kgqx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):split:xor (kgqx)*Reposting (kgow)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):split:xor (kgqx)*Reposting (kgow)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx)*Reposting (kgow)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):join:xor (kgqx)*Reposting (kgow)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):join:xor (kgqx)*Reposting (kgow)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgqx)*Reposting (kgow)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):split:Reposting (kgow)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):split:Reposting (kgow)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Reposting (kgow)*xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):join:Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):join:Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Settlement of Asset under Construction (kgrx)*Settlement of Asset under Construction (kgrx)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):split:Settlement of Asset under Construction (kgrx)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):split:Settlement of Asset under Construction (kgrx)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Settlement of Asset under Construction (kgrx)*xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):join:Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):join:Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Split_Yes_Post-capitalization (kgsb)*Post-capitalization (kgsb)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):split:Post-capitalization (kgsb)*xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):split:Post-capitalization (kgsb)*xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Post-capitalization (kgsb)*xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):join:Join_Split_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):join:Join_Split_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Split_xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):split:Join_Join_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):split:Join_Join_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_No_xor (kgrf):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Join_xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):join:xor (kgrf)*Join_Yes_xor (kgrf):Join_Split_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):join:xor (kgrf)*Join_Yes_xor (kgrf):Join_Split_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:xor (kgrf)*Join_Yes_xor (kgrf)"
+       "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Split_xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):split:Join_Join_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):split:Join_Join_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Yes_xor (kgrf):busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Join_xor (kgrf)"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:join:Join_Join_xor (kgrf)"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:join:Join_Join_xor (kgrf)"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Join_Join_xor (kgrf)"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:busy"
+;
+trans "t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:split:outputCondition"~"t:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:split:outputCondition"
+    in "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:Output:busy"
+   out "p:Model.kgnx--0-----u--:Model.kgnx--0-----u--:outputCondition"
+;
+

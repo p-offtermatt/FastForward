@@ -1,0 +1,111 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.m2sp--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.m2sp--0-----u--:Model.m2sp--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_and (m2x3)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_or (m2uw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_and (m2x3)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_or (m2uw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_and (m2xw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_xor (m2u3)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw)*and (m2xw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy"/>
+    <CGraph Type="Place" Label="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_and (m2x3):split:Join_Join_and (m2x3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_or (m2uw):split:Join_Join_or (m2uw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_and (m2x3):split:Join_Join_and (m2x3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_or (m2uw):split:Join_Join_or (m2uw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_Compensation Planning Check (m2va):split:Split_Join_Compensation Planning Check (m2va)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_and (m2xw):split:Split_Join_and (m2xw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_xor (m2u3):split:Split_Join_xor (m2u3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw):split:Split_Join_and (m2xw):Split_Yes_and (m2xw)*and (m2xw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):join:Split_Yes_xor (m2u3)*xor (m2u3)"/>
+    <CGraph Type="Transition" Label="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):join:and (m2xw)*xor (m2vh)"/>
+    <CArc Type="Arc" Label="arcId120" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):join:Split_Yes_xor (m2u3)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId124" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):join:and (m2xw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_and (m2x3):split:Join_Join_and (m2x3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_and (m2x3):split:Join_Join_and (m2x3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.m2sp--0-----u--:Model.m2sp--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_or (m2uw):split:Join_Join_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_or (m2uw):split:Join_Join_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_Compensation Planning Check (m2va):split:Split_Join_Compensation Planning Check (m2va)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw):split:Split_Join_and (m2xw):Split_Yes_and (m2xw)*and (m2xw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_and (m2xw):split:Split_Join_and (m2xw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_xor (m2u3):split:Split_Join_xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw):split:Split_Join_and (m2xw):Split_Yes_and (m2xw)*and (m2xw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw)*and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="arcId93" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId94" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId96" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_or (m2uw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_or (m2uw):split:Join_Join_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw)*Join_Yes_or (m2uw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_or (m2uw):split:Join_Join_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_and (m2x3)" Target="*:Model.m2sp--0-----u--:Model.m2sp--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Join_or (m2uw)" Target="*:Model.m2sp--0-----u--:Model.m2sp--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_and (m2xw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_xor (m2u3)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Skip:split:Join_Split_and (m2x3):Join_Split_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_and (m2xw):split:Split_Join_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_xor (m2u3):split:Split_Join_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_Compensation Planning Check (m2va):split:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_Compensation Planning Check (m2va):split:Split_Join_Compensation Planning Check (m2va)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_No_Compensation Planning Check (m2va):split:Split_Join_Compensation Planning Check (m2va)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw):split:Split_Join_and (m2xw):Split_Yes_and (m2xw)*and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):join:Split_Yes_xor (m2u3)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):join:Split_Yes_xor (m2u3)*xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Yes_and (m2xw)*and (m2xw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):join:and (m2xw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_47" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_53" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_58" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_59" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_60" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_61" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_62" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_63" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_64" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_65" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_66" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_67" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_68" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_69" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_and (m2x3)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_and (m2x3):split:Join_Join_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="ra_70" Source="i" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_71" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Join_Compensation Planning Check (m2va)">1</CArc>
+    <CArc Type="Arc" Label="ra_72" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_and (m2xw)">1</CArc>
+    <CArc Type="Arc" Label="ra_73" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Split_Split_xor (m2u3)">1</CArc>
+    <CArc Type="Arc" Label="ra_74" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):join:and (m2xw)*xor (m2vh)">1</CArc>
+    <CArc Type="Arc" Label="ra_75" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_and (m2x3):split:Join_Join_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="ra_77" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_79" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_or (m2uw)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_No_or (m2uw):split:Join_Join_or (m2uw)">1</CArc>
+    <CArc Type="Arc" Label="ra_81" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_83" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2u3):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_85" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_87" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*Join_Yes_or (m2uw):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_89" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2u3):or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Split_and (m2x3)" Target="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:Join_Yes_and (m2x3):split:Join_Join_and (m2x3)">1</CArc>
+    <CArc Type="Arc" Label="ra_91" Source="t:Model.m2sp--0-----u--:Model.m2sp--0-----u--:or (m2uw):split:or (m2uw)*xor (m2vh)" Target="p:Model.m2sp--0-----u--:Model.m2sp--0-----u--:xor (m2vh):busy">1</CArc>
+</CGraph>

@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.18wm--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_Join_and (18yh)"/>
+    <CGraph Type="Place" Label="p:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh)*Material Search (18xs)"/>
+    <CGraph Type="Transition" Label="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_No_xor (18x0):split:Join_Join_xor (18x0)"/>
+    <CGraph Type="Transition" Label="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_Yes_xor (18x0):split:Join_Join_xor (18x0)"/>
+    <CGraph Type="Transition" Label="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_No_and (18yh):split:Split_Join_and (18yh)"/>
+    <CGraph Type="Transition" Label="t:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh):split:and (18yh)*Find Object (18xe):and (18yh)*Material Search (18xs):and (18yh)*Document Search (18y6)"/>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_No_and (18yh):split:Split_Join_and (18yh)" Target="p:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_Join_and (18yh)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh):split:and (18yh)*Find Object (18xe):and (18yh)*Material Search (18xs):and (18yh)*Document Search (18y6)" Target="p:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh)*Material Search (18xs)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_Join_and (18yh)" Target="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_No_xor (18x0):split:Join_Join_xor (18x0)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_Join_and (18yh)" Target="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_Yes_xor (18x0):split:Join_Join_xor (18x0)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_No_and (18yh):split:Split_Join_and (18yh)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="i" Target="t:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh):split:and (18yh)*Find Object (18xe):and (18yh)*Material Search (18xs):and (18yh)*Document Search (18y6)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="t:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh):split:and (18yh)*Find Object (18xe):and (18yh)*Material Search (18xs):and (18yh)*Document Search (18y6)" Target="p:Model.18wm--0-----u--:Model.18wm--0-----u--:Split_Join_and (18yh)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.18wm--0-----u--:Model.18wm--0-----u--:and (18yh)*Material Search (18xs)" Target="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_Yes_xor (18x0):split:Join_Join_xor (18x0)">1</CArc>
+    <CArc Type="Arc" Label="ra_34" Source="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_No_xor (18x0):split:Join_Join_xor (18x0)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="t:Model.18wm--0-----u--:Model.18wm--0-----u--:Join_Yes_xor (18x0):split:Join_Join_xor (18x0)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,123 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.25my--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.25my--0-----u--:Model.25my--0-----u--:end"/>
+    <CGraph Type="Transition" Label="*:Model.25my--0-----u--:Model.25my--0-----u--:start"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe)*xor (25np)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os)*xor (25np)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:InputCondition"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Join_xor (25np)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Split_xor (25np)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Output:busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Skip:busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split:busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_and (25ng)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_and (25ng)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng)*and (25ng)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng)*Goods Receipt Processing with Reference (25os)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):busy"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:outputCondition"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np)*Join_Yes_xor (25np)"/>
+    <CGraph Type="Place" Label="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):busy"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):join:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):split:Goods Receipt Processing (25oe)*xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):join:and (25ng)*Goods Receipt Processing with Reference (25os)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):split:Goods Receipt Processing with Reference (25os)*xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):join:Join_Split_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):split:Join_Join_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):join:xor (25np)*Join_Yes_xor (25np):Join_Split_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):split:Join_Join_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:join:Join_Join_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:split:outputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:join:Split_Join_and (25ng):Split_Join_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:split:Join_Split_xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:join:InputCondition"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:split:Split_Split_and (25ng):Split_Split_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):join:Split_Split_and (25ng)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):split:Split_Join_and (25ng)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe):Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):join:Split_Split_and (25ng)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):split:Split_Join_and (25ng):Split_Yes_and (25ng)*and (25ng)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):join:Split_Yes_and (25ng)*and (25ng)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):split:and (25ng)*Goods Receipt Processing with Reference (25os)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing (25oe)*xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing with Reference (25os)*xor (25np)"/>
+    <CGraph Type="Transition" Label="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):split:xor (25np)*Join_Yes_xor (25np)"/>
+    <CArc Type="Arc" Label="arcId1" Source="i" Target="*:Model.25my--0-----u--:Model.25my--0-----u--:start">1</CArc>
+    <CArc Type="Arc" Label="arcId10" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):join:and (25ng)*Goods Receipt Processing with Reference (25os)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:InputCondition" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:join:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="*:Model.25my--0-----u--:Model.25my--0-----u--:start" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:InputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Join_xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:join:Join_Join_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):split:Join_Join_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Join_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):split:Join_Join_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Join_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):split:Join_Join_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId17" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):join:Join_Split_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId18" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:split:Join_Split_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Split_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Split_xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):join:xor (25np)*Join_Yes_xor (25np):Join_Split_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.25my--0-----u--:Model.25my--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId20" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Split_xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_No_xor (25np):join:Join_Split_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId21" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):split:Join_Join_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):join:xor (25np)*Join_Yes_xor (25np):Join_Split_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId23" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:join:Join_Join_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Output:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId24" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Output:busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:split:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId25" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:join:Split_Join_and (25ng):Split_Join_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Skip:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Skip:busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:split:Join_Split_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId27" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split:busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:split:Split_Split_and (25ng):Split_Split_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId28" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:join:InputCondition" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split:busy">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId3" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):split:Goods Receipt Processing (25oe)*xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe)*xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId30" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_Goods Receipt Processing (25oe)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:join:Split_Join_and (25ng):Split_Join_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe):Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId32" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):split:Split_Join_and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):split:Split_Join_and (25ng):Split_Yes_and (25ng)*and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Join_and (25ng)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Skip:join:Split_Join_and (25ng):Split_Join_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId35" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId36" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId37" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):join:Split_Split_and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId38" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):split:Split_Join_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId39" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_Goods Receipt Processing (25oe)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId4" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe)*xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing (25oe)*xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId40" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:split:Split_Split_and (25ng):Split_Split_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId41" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_Goods Receipt Processing (25oe)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_and (25ng)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_No_and (25ng):join:Split_Split_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_and (25ng)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):join:Split_Split_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split:split:Split_Split_and (25ng):Split_Split_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Split_and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId45" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe):Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):join:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId47" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):join:Split_Split_Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId48" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_Goods Receipt Processing (25oe):split:Split_Join_Goods Receipt Processing (25oe):Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):split:Split_Join_and (25ng):Split_Yes_and (25ng)*and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng)*and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId5" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):split:Goods Receipt Processing (25oe)*xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng)*and (25ng)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):join:Split_Yes_and (25ng)*and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):join:Split_Split_and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Split_Yes_and (25ng):split:Split_Join_and (25ng):Split_Yes_and (25ng)*and (25ng)">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng)*Goods Receipt Processing with Reference (25os)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):join:and (25ng)*Goods Receipt Processing with Reference (25os)">1</CArc>
+    <CArc Type="Arc" Label="arcId54" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):split:and (25ng)*Goods Receipt Processing with Reference (25os)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng)*Goods Receipt Processing with Reference (25os)">1</CArc>
+    <CArc Type="Arc" Label="arcId55" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):join:Split_Yes_and (25ng)*and (25ng)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId56" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:and (25ng):split:and (25ng)*Goods Receipt Processing with Reference (25os)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Output:split:outputCondition" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:outputCondition">1</CArc>
+    <CArc Type="Arc" Label="arcId58" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:outputCondition" Target="*:Model.25my--0-----u--:Model.25my--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):split:xor (25np)*Join_Yes_xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np)*Join_Yes_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId6" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):join:Split_Yes_Goods Receipt Processing (25oe)*Goods Receipt Processing (25oe)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing (25oe):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId60" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np)*Join_Yes_xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Join_Yes_xor (25np):join:xor (25np)*Join_Yes_xor (25np):Join_Split_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing with Reference (25os)*xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId62" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):split:xor (25np)*Join_Yes_xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId63" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing (25oe)*xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId7" Source="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):split:Goods Receipt Processing with Reference (25os)*xor (25np)" Target="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os)*xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId8" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os)*xor (25np)" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:xor (25np):join:Goods Receipt Processing with Reference (25os)*xor (25np)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="p:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):busy" Target="t:Model.25my--0-----u--:Model.25my--0-----u--:Goods Receipt Processing with Reference (25os):split:Goods Receipt Processing with Reference (25os)*xor (25np)">1</CArc>
+</CGraph>

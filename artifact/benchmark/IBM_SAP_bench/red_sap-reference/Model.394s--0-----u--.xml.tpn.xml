@@ -1,0 +1,20 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.394s--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.394s--0-----u--:Model.394s--0-----u--:Split_Join_Purchase Requisition Processing (395l)"/>
+    <CGraph Type="Place" Label="p:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):busy"/>
+    <CGraph Type="Transition" Label="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_No_xor (396a):split:Join_Join_xor (396a)"/>
+    <CGraph Type="Transition" Label="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_Yes_xor (396a):split:Join_Join_xor (396a)"/>
+    <CGraph Type="Transition" Label="t:Model.394s--0-----u--:Model.394s--0-----u--:Split_No_Purchase Requisition Processing (395l):split:Split_Join_Purchase Requisition Processing (395l)"/>
+    <CGraph Type="Transition" Label="t:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):join:Release Purchase Requisition (396o)*xor (396a)"/>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.394s--0-----u--:Model.394s--0-----u--:Split_No_Purchase Requisition Processing (395l):split:Split_Join_Purchase Requisition Processing (395l)" Target="p:Model.394s--0-----u--:Model.394s--0-----u--:Split_Join_Purchase Requisition Processing (395l)">1</CArc>
+    <CArc Type="Arc" Label="arcId49" Source="t:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):join:Release Purchase Requisition (396o)*xor (396a)" Target="p:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.394s--0-----u--:Model.394s--0-----u--:Split_Join_Purchase Requisition Processing (395l)" Target="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_No_xor (396a):split:Join_Join_xor (396a)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.394s--0-----u--:Model.394s--0-----u--:Split_Join_Purchase Requisition Processing (395l)" Target="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_Yes_xor (396a):split:Join_Join_xor (396a)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="i" Target="t:Model.394s--0-----u--:Model.394s--0-----u--:Split_No_Purchase Requisition Processing (395l):split:Split_Join_Purchase Requisition Processing (395l)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="t:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):join:Release Purchase Requisition (396o)*xor (396a)" Target="p:Model.394s--0-----u--:Model.394s--0-----u--:Split_Join_Purchase Requisition Processing (395l)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="i" Target="t:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):join:Release Purchase Requisition (396o)*xor (396a)">1</CArc>
+    <CArc Type="Arc" Label="ra_23" Source="p:Model.394s--0-----u--:Model.394s--0-----u--:xor (396a):busy" Target="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_Yes_xor (396a):split:Join_Join_xor (396a)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_No_xor (396a):split:Join_Join_xor (396a)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.394s--0-----u--:Model.394s--0-----u--:Join_Yes_xor (396a):split:Join_Join_xor (396a)" Target="o">1</CArc>
+</CGraph>

@@ -1,0 +1,60 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.2ork--0-----u--.xml.tpn">
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_and (2otv)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_or (2ouv)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Split_or (2ouv)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv)*or (2ouv)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):busy"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)"/>
+    <CGraph Type="Place" Label="p:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):busy"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_No_or (2ouo):split:Join_Join_or (2ouo)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_Yes_or (2ouo):split:Join_Join_or (2ouo)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_and (2otv):split:Split_Join_and (2otv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_or (2ouv):split:Split_Join_or (2ouv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv):split:Split_Join_or (2ouv):Split_Yes_or (2ouv)*or (2ouv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):join:Split_Yes_and (2otv)*and (2otv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo):Transmission of Scheduling Agreements (2otb)*or (2ouo)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Scheduling Agreements (2otb)*or (2ouo)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Scheduling Agreement Processing (2os5)*or (2ouv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv)"/>
+    <CGraph Type="Transition" Label="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv):Scheduling Agreement Processing (2os5)*or (2ouv)"/>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_and (2otv):split:Split_Join_and (2otv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_and (2otv)">1</CArc>
+    <CArc Type="Arc" Label="arcId33" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv):split:Split_Join_or (2ouv):Split_Yes_or (2ouv)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="arcId34" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_or (2ouv):split:Split_Join_or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="arcId50" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv)*or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv):Scheduling Agreement Processing (2os5)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="arcId51" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv)*or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="arcId52" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv):split:Split_Join_or (2ouv):Split_Yes_or (2ouv)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="arcId68" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):join:Split_Yes_and (2otv)*and (2otv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId77" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Scheduling Agreements (2otb)*or (2ouo)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId78" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo):Transmission of Scheduling Agreements (2otb)*or (2ouo)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId79" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):busy">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_and (2otv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_No_or (2ouo):split:Join_Join_or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_14" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_No_or (2ouo):split:Join_Join_or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_and (2otv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_Yes_or (2ouo):split:Join_Join_or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_Yes_or (2ouo):split:Join_Join_or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Split_or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_or (2ouv):split:Split_Join_or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_and (2otv):split:Split_Join_and (2otv)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_No_and (2otv):split:Split_Join_and (2otv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Split_or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):join:Split_Yes_and (2otv)*and (2otv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Join_and (2otv)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="i" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):join:Split_Yes_and (2otv)*and (2otv)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):join:Split_Yes_and (2otv)*and (2otv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Split_or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Split_or (2ouv)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Split_Yes_or (2ouv):split:Split_Join_or (2ouv):Split_Yes_or (2ouv)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_31" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_32" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo):Transmission of Scheduling Agreements (2otb)*or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_35" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Contracts (2osx)*or (2ouo):Transmission of Scheduling Agreements (2otb)*or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_36" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):join:Transmission of Scheduling Agreements (2otb)*or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_37" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):busy" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Scheduling Agreement Processing (2os5)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_38" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2otv):busy" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv):Scheduling Agreement Processing (2os5)*or (2ouv)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouo):busy" Target="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_Yes_or (2ouo):split:Join_Join_or (2ouo)">1</CArc>
+    <CArc Type="Arc" Label="ra_44" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_No_or (2ouo):split:Join_Join_or (2ouo)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_46" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:Join_Yes_or (2ouo):split:Join_Join_or (2ouo)" Target="o">1</CArc>
+    <CArc Type="Arc" Label="ra_48" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Scheduling Agreement Processing (2os5)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Scheduling Agreement Processing (2os5)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)">1</CArc>
+    <CArc Type="Arc" Label="ra_54" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv):Scheduling Agreement Processing (2os5)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Contracts (2osx)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.2ork--0-----u--:Model.2ork--0-----u--:or (2ouv):join:Split_Yes_or (2ouv)*or (2ouv):Scheduling Agreement Processing (2os5)*or (2ouv)" Target="p:Model.2ork--0-----u--:Model.2ork--0-----u--:and (2ouh)*Transmission of Scheduling Agreements (2otb)">1</CArc>
+</CGraph>

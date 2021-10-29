@@ -1,0 +1,138 @@
+place "i" init 1;
+place "o";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:InputCondition";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_and (l7gk)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Split_Fiscal Year Change for Program (l7fp)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Join_Fiscal Year Change for Program (l7fp)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:outputCondition";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0)*xor (l7g0)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0)*and (l7gk)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk)*Fiscal Year Change for Program (l7fp)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp)";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):busy";
+place "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:busy";
+trans "*:Model.l7f4--0-----u--:Model.l7f4--0-----u--:start"~"*:Model.l7f4--0-----u--:Model.l7f4--0-----u--:start"
+    in "i"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:InputCondition"
+;
+trans "*:Model.l7f4--0-----u--:Model.l7f4--0-----u--:end"~"*:Model.l7f4--0-----u--:Model.l7f4--0-----u--:end"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:outputCondition"
+   out "o"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:join:InputCondition"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:join:InputCondition"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:InputCondition"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:split:Split_Split_xor (l7g0):Split_Split_and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:split:Split_Split_xor (l7g0):Split_Split_and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split:busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_and (l7gk)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):join:Split_Split_xor (l7g0)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):join:Split_Split_xor (l7g0)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):split:Split_Join_xor (l7g0)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):split:Split_Join_xor (l7g0)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_xor (l7g0):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):join:Split_Split_xor (l7g0)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):join:Split_Split_xor (l7g0)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_xor (l7g0)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):split:Split_Join_xor (l7g0):Split_Yes_xor (l7g0)*xor (l7g0)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):split:Split_Join_xor (l7g0):Split_Yes_xor (l7g0)*xor (l7g0)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0)*xor (l7g0)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):join:Split_Split_and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):join:Split_Split_and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_and (l7gk)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):split:Split_Join_and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_No_and (l7gk):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):join:Split_Split_and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):join:Split_Split_and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Split_and (l7gk)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):split:Split_Join_and (l7gk):Split_Yes_and (l7gk)*and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:join:Split_Join_xor (l7g0):Split_Join_and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:join:Split_Join_xor (l7g0):Split_Join_and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_xor (l7g0)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Join_and (l7gk)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:split:Join_Split_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:split:Join_Split_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Skip:busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Split_Fiscal Year Change for Program (l7fp)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):join:Split_Yes_xor (l7g0)*xor (l7g0)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_xor (l7g0)*xor (l7g0)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):split:xor (l7g0)*and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):split:xor (l7g0)*and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0)*and (l7gk)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):join:Split_Yes_and (l7gk)*and (l7gk):xor (l7g0)*and (l7gk)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):join:Split_Yes_and (l7gk)*and (l7gk):xor (l7g0)*and (l7gk)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Split_Yes_and (l7gk)*and (l7gk)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:xor (l7g0)*and (l7gk)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):split:and (l7gk)*Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):split:and (l7gk)*Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk)*Fiscal Year Change for Program (l7fp)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):join:and (l7gk)*Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):join:and (l7gk)*Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:and (l7gk)*Fiscal Year Change for Program (l7fp)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):split:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):split:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):join:Join_Split_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):join:Join_Split_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Split_Fiscal Year Change for Program (l7fp)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_No_Fiscal Year Change for Program (l7fp):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Join_Fiscal Year Change for Program (l7fp)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):join:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp):Join_Split_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):join:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp):Join_Split_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Fiscal Year Change for Program (l7fp)*Join_Yes_Fiscal Year Change for Program (l7fp)"
+       "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Split_Fiscal Year Change for Program (l7fp)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):split:Join_Join_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Yes_Fiscal Year Change for Program (l7fp):busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Join_Fiscal Year Change for Program (l7fp)"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:join:Join_Join_Fiscal Year Change for Program (l7fp)"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:join:Join_Join_Fiscal Year Change for Program (l7fp)"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Join_Join_Fiscal Year Change for Program (l7fp)"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:busy"
+;
+trans "t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:split:outputCondition"~"t:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:split:outputCondition"
+    in "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:Output:busy"
+   out "p:Model.l7f4--0-----u--:Model.l7f4--0-----u--:outputCondition"
+;
+

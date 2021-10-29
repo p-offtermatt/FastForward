@@ -1,0 +1,52 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.f6bx--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"/>
+    <CGraph Type="Place" Label="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):split:Split_Join_or (f6d9)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)"/>
+    <CGraph Type="Transition" Label="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)"/>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="arcId13" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="arcId19" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId22" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="arcId42" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="arcId46" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):split:Split_Join_or (f6d9)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="arcId68" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Create Planned Items (f6ck)" Target="*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_12" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Join_Process Planned Items (f6d2)" Target="*:Model.f6bx--0-----u--:Model.f6bx--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_15" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_Create Planned Items (f6ck)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="ra_16" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Skip:split:Join_Split_Create Planned Items (f6ck):Join_Split_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_or (f6d9):split:Split_Join_or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="i" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_No_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="ra_24" Source="i" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck):split:Split_Join_Create Planned Items (f6ck):Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)" Target="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Join_or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Split_or (f6d9)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):join:Split_Yes_or (f6d9)*or (f6d9)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:or (f6d9):busy" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_No_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Create Planned Items (f6ck)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Split_Yes_Create Planned Items (f6ck)*Create Planned Items (f6ck)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Create Planned Items (f6ck):split:Join_Join_Create Planned Items (f6ck)">1</CArc>
+    <CArc Type="Arc" Label="ra_7" Source="p:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Split_Process Planned Items (f6d2)" Target="t:Model.f6bx--0-----u--:Model.f6bx--0-----u--:Join_Yes_Process Planned Items (f6d2):split:Join_Join_Process Planned Items (f6d2)">1</CArc>
+</CGraph>

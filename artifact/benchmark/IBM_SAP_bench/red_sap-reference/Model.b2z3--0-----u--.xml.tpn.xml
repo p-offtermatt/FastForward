@@ -1,0 +1,87 @@
+<CGraph Type="WorkFlow" Label="sap-reference/Model.b2z3--0-----u--.xml.tpn">
+    <CGraph Type="Transition" Label="*:Model.b2z3--0-----u--:Model.b2z3--0-----u--:end"/>
+    <CGraph Type="Place" Label="i"/>
+    <CGraph Type="Place" Label="o"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_Order Archiving (b32a)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b2zs)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b31w)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_Order Archiving (b32a)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b2zs)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b31w)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):busy"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b2zj)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b30r)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b31w)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b30r)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b31w)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w)*and (b31w)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Join_Yes_and (b2zs)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Order Archiving (b32a)"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):busy"/>
+    <CGraph Type="Place" Label="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b31w)*Join_Yes_and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b2zs):split:Join_Join_and (b2zs)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b31w):split:Join_Join_and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b2zs):split:Join_Join_and (b2zs)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b31w):split:Join_Join_and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):join:and (b31w)*Order Settlement (b315)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):split"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b2zj):split:Split_Join_and (b2zj)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b30r):split:Split_Join_and (b30r)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b31w):split:Split_Join_and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w):split:Split_Join_and (b31w):Split_Yes_and (b31w)*and (b31w)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)"/>
+    <CGraph Type="Transition" Label="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):join:Split_Yes_and (b30r)*and (b30r)"/>
+    <CArc Type="Arc" Label="arcId105" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):join:Split_Yes_and (b30r)*and (b30r)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId11" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="arcId12" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b2zs):split:Join_Join_and (b2zs)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="arcId14" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b2zs):split:Join_Join_and (b2zs)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="arcId15" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b31w):split:Join_Join_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId16" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b31w):split:Join_Join_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId2" Source="*:Model.b2z3--0-----u--:Model.b2z3--0-----u--:end" Target="o">1</CArc>
+    <CArc Type="Arc" Label="arcId26" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="arcId29" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="arcId31" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId43" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):join:and (b31w)*Order Settlement (b315)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):busy">1</CArc>
+    <CArc Type="Arc" Label="arcId44" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):busy" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):split">1</CArc>
+    <CArc Type="Arc" Label="arcId53" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b2zj):split:Split_Join_and (b2zj)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b2zj)">1</CArc>
+    <CArc Type="Arc" Label="arcId57" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b30r):split:Split_Join_and (b30r)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="arcId59" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b31w):split:Split_Join_and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId61" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w):split:Split_Join_and (b31w):Split_Yes_and (b31w)*and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId85" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w):split:Split_Join_and (b31w):Split_Yes_and (b31w)*and (b31w)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w)*and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="arcId9" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="arcId97" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Join_Yes_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="arcId99" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="ra_10" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b31w):split:Join_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_11" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b31w)*Join_Yes_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b31w):split:Join_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_13" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Order Archiving (b32a)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="ra_17" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_Order Archiving (b32a)" Target="*:Model.b2z3--0-----u--:Model.b2z3--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_18" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b2zs)" Target="*:Model.b2z3--0-----u--:Model.b2z3--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_19" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Join_and (b31w)" Target="*:Model.b2z3--0-----u--:Model.b2z3--0-----u--:end">1</CArc>
+    <CArc Type="Arc" Label="ra_20" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b2zj)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_21" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b30r)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_22" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Skip:split:Join_Split_and (b2zs):Join_Split_Order Archiving (b32a):Join_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_25" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b30r)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b30r):split:Split_Join_and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="ra_26" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b31w):split:Split_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_27" Source="i" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b2zj):split:Split_Join_and (b2zj)">1</CArc>
+    <CArc Type="Arc" Label="ra_28" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b2zj):split:Split_Join_and (b2zj)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="ra_29" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_No_and (b2zj):split:Split_Join_and (b2zj)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_3" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_Order Archiving (b32a)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="ra_39" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):join:Split_Yes_and (b30r)*and (b30r)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="ra_4" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b2zs)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b2zs):split:Join_Join_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="ra_40" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b30r)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):join:Split_Yes_and (b30r)*and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="ra_41" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w):split:Split_Join_and (b31w):Split_Yes_and (b31w)*and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_49" Source="i" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="ra_5" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_No_and (b31w):split:Join_Join_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_50" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Join_and (b2zj)">1</CArc>
+    <CArc Type="Arc" Label="ra_51" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b30r)">1</CArc>
+    <CArc Type="Arc" Label="ra_52" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs):split:and (b2zs)*Join_Yes_and (b2zs):and (b2zs)*Order Archiving (b32a)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Split_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_55" Source="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):join:and (b31w)*Order Settlement (b315)" Target="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b31w)*Join_Yes_and (b31w)">1</CArc>
+    <CArc Type="Arc" Label="ra_56" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Split_Yes_and (b31w)*and (b31w)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):join:and (b31w)*Order Settlement (b315)">1</CArc>
+    <CArc Type="Arc" Label="ra_57" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b30r):busy" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Order Settlement (b315):join:and (b31w)*Order Settlement (b315)">1</CArc>
+    <CArc Type="Arc" Label="ra_6" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_Order Archiving (b32a)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_Order Archiving (b32a):split:Join_Join_Order Archiving (b32a)">1</CArc>
+    <CArc Type="Arc" Label="ra_8" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Split_and (b2zs)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b2zs):split:Join_Join_and (b2zs)">1</CArc>
+    <CArc Type="Arc" Label="ra_9" Source="p:Model.b2z3--0-----u--:Model.b2z3--0-----u--:and (b2zs)*Join_Yes_and (b2zs)" Target="t:Model.b2z3--0-----u--:Model.b2z3--0-----u--:Join_Yes_and (b2zs):split:Join_Join_and (b2zs)">1</CArc>
+</CGraph>
