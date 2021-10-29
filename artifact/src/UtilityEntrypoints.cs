@@ -473,11 +473,11 @@ namespace PetriTool
             }
 
 
-            // dataEntry.netFile = options.netFilePath;
-            // dataEntry.formulaFile = options.formulaFilePath;
+            dataEntry.netFile = options.netFilePath;
+            dataEntry.formulaFile = options.formulaFilePath;
 
-            // dataEntry.places = net.Places.Count;
-            // dataEntry.transitions = net.Transitions.Count;
+            dataEntry.places = net.Places.Count;
+            dataEntry.transitions = net.Transitions.Count;
 
 
             // if (options.prune)
@@ -538,57 +538,57 @@ namespace PetriTool
 
             // dataEntry.fractionOfBioTransitions = (double)dataEntry.bioTransitions / (double)dataEntry.transitionsAfterPruning;
 
-            // IEnumerable<double> preSizes = net.Transitions.Select(transition => (double)transition.GetPrePlaces().Count);
+            IEnumerable<double> preSizes = net.Transitions.Select(transition => (double)transition.GetPrePlaces().Count);
 
-            // dataEntry.meanPre = Statistics.Mean(preSizes);
+            dataEntry.meanPre = Statistics.Mean(preSizes);
 
-            // // TODO there is also Statistics.FiveNumberSummary which gives these values,
-            // // but appearantly deconstruction does not work with arrays, so use this
-            // // more descriptive way now. this could be changed later
-            // dataEntry.medianPre = Statistics.Median(preSizes);
-            // dataEntry.minimalPre = Statistics.Minimum(preSizes);
-            // dataEntry.maximalPre = Statistics.Maximum(preSizes);
-            // dataEntry.firstQuartilePre = Statistics.LowerQuartile(preSizes);
-            // dataEntry.thirdQuartilePre = Statistics.UpperQuartile(preSizes);
+            // TODO there is also Statistics.FiveNumberSummary which gives these values,
+            // but appearantly deconstruction does not work with arrays, so use this
+            // more descriptive way now. this could be changed later
+            dataEntry.medianPre = Statistics.Median(preSizes);
+            dataEntry.minimalPre = Statistics.Minimum(preSizes);
+            dataEntry.maximalPre = Statistics.Maximum(preSizes);
+            dataEntry.firstQuartilePre = Statistics.LowerQuartile(preSizes);
+            dataEntry.thirdQuartilePre = Statistics.UpperQuartile(preSizes);
 
-            // IEnumerable<double> postSizes = net.Transitions.Select(transition => (double)transition.GetPostPlaces().Count);
+            IEnumerable<double> postSizes = net.Transitions.Select(transition => (double)transition.GetPostPlaces().Count);
 
-            // dataEntry.meanPost = Statistics.Mean(postSizes);
+            dataEntry.meanPost = Statistics.Mean(postSizes);
 
-            // dataEntry.medianPost = Statistics.Median(postSizes);
-            // dataEntry.minimalPost = Statistics.Minimum(postSizes);
-            // dataEntry.maximalPost = Statistics.Maximum(postSizes);
-            // dataEntry.firstQuartilePost = Statistics.LowerQuartile(postSizes);
-            // dataEntry.thirdQuartilePost = Statistics.UpperQuartile(postSizes);
+            dataEntry.medianPost = Statistics.Median(postSizes);
+            dataEntry.minimalPost = Statistics.Minimum(postSizes);
+            dataEntry.maximalPost = Statistics.Maximum(postSizes);
+            dataEntry.firstQuartilePost = Statistics.LowerQuartile(postSizes);
+            dataEntry.thirdQuartilePost = Statistics.UpperQuartile(postSizes);
 
-            // // IEnumerable<double> inDegs = net.Places.Select(place => (double)net.GetInDegree(place));
+            // IEnumerable<double> inDegs = net.Places.Select(place => (double)net.GetInDegree(place));
 
-            // // dataEntry.meanInDeg = Statistics.Mean(inDegs);
+            // dataEntry.meanInDeg = Statistics.Mean(inDegs);
 
-            // // dataEntry.medianInDeg = Statistics.Median(inDegs);
-            // // dataEntry.minimalInDeg = Statistics.Minimum(inDegs);
-            // // dataEntry.maximalInDeg = Statistics.Maximum(inDegs);
-            // // dataEntry.firstQuartileInDeg = Statistics.LowerQuartile(inDegs);
-            // // dataEntry.thirdQuartileInDeg = Statistics.UpperQuartile(inDegs);
+            // dataEntry.medianInDeg = Statistics.Median(inDegs);
+            // dataEntry.minimalInDeg = Statistics.Minimum(inDegs);
+            // dataEntry.maximalInDeg = Statistics.Maximum(inDegs);
+            // dataEntry.firstQuartileInDeg = Statistics.LowerQuartile(inDegs);
+            // dataEntry.thirdQuartileInDeg = Statistics.UpperQuartile(inDegs);
 
-            // // IEnumerable<double> outDeg = net.Places.Select(place => (double)net.GetOutDegree(place));
+            // IEnumerable<double> outDeg = net.Places.Select(place => (double)net.GetOutDegree(place));
 
-            // // dataEntry.meanOutDeg = Statistics.Mean(outDeg);
+            // dataEntry.meanOutDeg = Statistics.Mean(outDeg);
 
-            // // dataEntry.medianOutDeg = Statistics.Median(outDeg);
-            // // dataEntry.minimalOutDeg = Statistics.Minimum(outDeg);
-            // // dataEntry.maximalOutDeg = Statistics.Maximum(outDeg);
-            // // dataEntry.firstQuartileOutDeg = Statistics.LowerQuartile(outDeg);
-            // // dataEntry.thirdQuartileOutDeg = Statistics.UpperQuartile(outDeg);
+            // dataEntry.medianOutDeg = Statistics.Median(outDeg);
+            // dataEntry.minimalOutDeg = Statistics.Minimum(outDeg);
+            // dataEntry.maximalOutDeg = Statistics.Maximum(outDeg);
+            // dataEntry.firstQuartileOutDeg = Statistics.LowerQuartile(outDeg);
+            // dataEntry.thirdQuartileOutDeg = Statistics.UpperQuartile(outDeg);
 
-            // // Arc weights
-            // IEnumerable<double> weights = net.GetArcWeights().Select(num => (double)num);
-            // dataEntry.meanWeight = Statistics.Mean(weights);
-            // dataEntry.medianWeight = Statistics.Median(weights);
-            // dataEntry.minimalWeight = Statistics.Minimum(weights);
-            // dataEntry.maximalWeight = Statistics.Maximum(weights);
-            // dataEntry.firstQuartileWeight = Statistics.LowerQuartile(weights);
-            // dataEntry.thirdQuartileWeight = Statistics.UpperQuartile(weights);
+            // Arc weights
+            IEnumerable<double> weights = net.GetArcWeights().Select(num => (double)num);
+            dataEntry.meanWeight = Statistics.Mean(weights);
+            dataEntry.medianWeight = Statistics.Median(weights);
+            dataEntry.minimalWeight = Statistics.Minimum(weights);
+            dataEntry.maximalWeight = Statistics.Maximum(weights);
+            dataEntry.firstQuartileWeight = Statistics.LowerQuartile(weights);
+            dataEntry.thirdQuartileWeight = Statistics.UpperQuartile(weights);
 
             // // Monotonicity
 
@@ -647,15 +647,15 @@ namespace PetriTool
             dataEntry.sourcePlaces = String.Join(", ", inputPlaceChoices.Select(o => o.ToString()));
             dataEntry.sinkPlaces = String.Join(", ", outputPlaceChoices.Select(o => o.ToString()));
 
-            // // Checking for free-choice
+            // Checking for free-choice
 
-            // dataEntry.isFreeChoice = net.IsFreeChoice();
+            dataEntry.isFreeChoice = net.IsFreeChoice();
 
-            // Checking for integer boundedness
+            // // Checking for integer boundedness
 
-            var counterexample = GetIntegerBoundednessCounterexample(net);
+            // var counterexample = GetIntegerBoundednessCounterexample(net);
 
-            dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+            // dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
 
             // Checking for integer boundedness in WF nets
             if (isWF)
@@ -663,7 +663,7 @@ namespace PetriTool
 
                 var wfBoundCounterexample = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
 
-                dataEntry.wfIntegerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+                dataEntry.wfIntegerBoundednessCounterexample = wfBoundCounterexample == null ? "None" : String.Join(";", wfBoundCounterexample);
             }
 
             // Writing output
