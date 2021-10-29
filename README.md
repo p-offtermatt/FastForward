@@ -3,8 +3,8 @@
 </div>
 
 
-This is the FastForward tool,
-a verification tool for Petri nets.
+This is FastForward,
+a tool for reachability and coverability in Petri nets.
 
 ## Installation
 
