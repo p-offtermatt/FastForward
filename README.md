@@ -46,6 +46,8 @@ Make sure you have the following installed on your machine:
 <i> Optional dependencies: </i>
 <li>
 <i>If you want to run with heuristics using the Gurobi solver: </i><br> The newest version of <a href="https://www.gurobi.com/">Gurobi</a> (an academic license is available for employees at degree-granting institutions)
+  An installation of Gurobi will provide you with the file gurobi90.netstandard20.dll. Copy this file to the folders 'artifact/src/gurobi'
+  and 'artifact/tests/gurobi' to enable compiling with Gurobi.
 </li>
 <li>
 <i>If you want to run with heuristics using Z3:</i><br>
