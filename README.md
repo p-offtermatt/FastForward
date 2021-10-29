@@ -73,6 +73,6 @@ You can try running with a different heuristic not using Z3.
 
 # Links
 
-<a href="https://figshare.com/articles/software/FastForward_A_tool_for_reachability_in_Petri_nets_with_infinite_state_spaces_Artifact_for_the_TACAS21_Contribution_Directed_Reachability_for_Infinite-State_Systems_/13573592">Blondin M., Haase C., Offtermatt P. (2021) Directed Reachability for Infinite-State Systems. In: Groote J.F., Larsen K.G. (eds) Tools and Algorithms for the Construction and Analysis of Systems. TACAS 2021. Lecture Notes in Computer Science, vol 12652. Springer, Cham. https://doi.org/10.1007/978-3-030-72013-1_1</a>
+<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-72013-1_1">Blondin M., Haase C., Offtermatt P. (2021) Directed Reachability for Infinite-State Systems. In: Groote J.F., Larsen K.G. (eds) Tools and Algorithms for the Construction and Analysis of Systems. TACAS 2021. Lecture Notes in Computer Science, vol 12652. Springer, Cham. https://doi.org/10.1007/978-3-030-72013-1_1</a>
 
-<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-72013-1_1">TACAS 21 Artifact on Figshare</a>
+<a href="https://figshare.com/articles/software/FastForward_A_tool_for_reachability_in_Petri_nets_with_infinite_state_spaces_Artifact_for_the_TACAS21_Contribution_Directed_Reachability_for_Infinite-State_Systems_/13573592">Artifact on figshare</a>
