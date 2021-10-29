@@ -36,7 +36,7 @@ namespace Petri
 
             GRBLinExpr objective = CreateVariableSumExpression(transitionVars);
 
-            model.SetObjective(objective, GRB.MINIMIZE);
+            // model.SetObjective(objective, GRB.MINIMIZE);
 
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
@@ -241,7 +241,7 @@ namespace Petri
                             for (int placeIndex = 0; placeIndex < places.Count; placeIndex++)
                             {
                                 Place place = places[placeIndex];
-                                String varname = "finalMarkingAfterTransfers_" + place.Name;
+                                String varname = "finalMarkingAfterTransfers_" + place.Name.Truncate(100);
                                 GRBVar placeVar = model.GetVarByName(varname);
                                 finalMarkingVars[placeIndex] = placeVar;
                             }
@@ -587,7 +587,7 @@ namespace Petri
                     placeMarkingVars[i],
                     '=',
                     0,
-                    (initial ? "_initialMarkingConstraint" : "_finalMarkingConstraint") + place.Name.Truncate(200));
+                    (initial ? "_initialMarkingConstraint" : "_finalMarkingConstraint") + place.Name.Truncate(100));
                 initialMarkingConstraints[i] = initialMarkingConstraint;
             }
             return initialMarkingConstraints;
@@ -632,7 +632,7 @@ namespace Petri
                 char sense = marking.Constraints.GetValueOrDefault(place, ConstraintOperators.GreaterEqual) == ConstraintOperators.Equal ? GRB.EQUAL : GRB.GREATER_EQUAL;
                 GRBLinExpr leftHandSide = new GRBLinExpr(placeVar, 1d);
                 GRBLinExpr rightHandSide = new GRBLinExpr(tokenAmount);
-                GRBConstr constr = model.AddConstr(leftHandSide, sense, rightHandSide, namePrefix + place.Name);
+                GRBConstr constr = model.AddConstr(leftHandSide, sense, rightHandSide, namePrefix + place.Name.Truncate(100));
                 constraints[i] = constr;
             }
             return constraints;
@@ -681,7 +681,7 @@ namespace Petri
                 Place place = places[i];
 
                 GRBVar strictlyGreaterVar =
-                    model.AddVar(0, 1, ObjectiveValue, 'N', "strictly_greater_indicator_" + namePrefix + place.Name.Truncate(200));
+                    model.AddVar(0, 1, ObjectiveValue, 'N', "strictly_greater_indicator_" + namePrefix + place.Name.Truncate(100));
                 indicatorVariables[i] = strictlyGreaterVar;
 
                 List<GRBVar> placeGreaterEqualVars = new List<GRBVar>(places.Count - 1);
@@ -689,7 +689,7 @@ namespace Petri
                 {
                     Place checkedPlace = places[j];
                     GRBVar greaterEqualVar =
-                        model.AddVar(0, 1, ObjectiveValue, 'N', place.Name.Truncate(200) + checkedPlace.Name.Truncate(200) + "_greaterequal");
+                        model.AddVar(0, 1, ObjectiveValue, 'N', place.Name.Truncate(100) + checkedPlace.Name.Truncate(100) + "_greaterequal");
                     model.AddGenConstrIndicator(greaterEqualVar, 1, markingVars[j], '>', marking.GetValueOrDefault(checkedPlace, 0) + (i == j ? 1 : 0), checkedPlace.Name.Truncate(100) + "_grequal_marking_in_" + place.Name.Truncate(100) + "_greater");
 
                     placeGreaterEqualVars.Add(greaterEqualVar);
@@ -697,7 +697,7 @@ namespace Petri
 
                 model.AddGenConstrAnd(strictlyGreaterVar,
                                       placeGreaterEqualVars.ToArray(),
-                                      namePrefix + "_marking_greater_" + place.Name.Truncate(200));
+                                      namePrefix + "_marking_greater_" + place.Name.Truncate(100));
 
             }
             GRBVar orVariable = model.AddVar(0, 1, ObjectiveValue, 'N', ("any_stricly_greater_indicator_" + namePrefix).Truncate(400));
@@ -751,7 +751,7 @@ namespace Petri
                 GRBLinExpr rhs = new GRBLinExpr();
                 rhs.AddTerm(1.0, finalMarkingVars[i]);
 
-                GRBConstr markingEqConstraint = model.AddConstr(placeEquationLHS, '=', rhs, namePrefix + place.Name.Truncate(200));
+                GRBConstr markingEqConstraint = model.AddConstr(placeEquationLHS, '=', rhs, namePrefix + place.Name.Truncate(100));
 
             }
         }
@@ -800,7 +800,7 @@ namespace Petri
                     placeEquationLHS,
                     sense,
                     rhs,
-                    "markingEquationConstraint_" + place.Name.Truncate(200));
+                    "markingEquationConstraint_" + place.Name.Truncate(100));
             }
         }
 
@@ -820,7 +820,7 @@ namespace Petri
                                                              placeUpperBound,
                                                              ObjectiveValue,
                                                              gurobiDomain,
-                                                             namePrefix + place.Name.Truncate(200));
+                                                             namePrefix + place.Name.Truncate(100));
                 initialMarkingVars[i] = placeInitialMarkingVar;
             }
             return initialMarkingVars;
