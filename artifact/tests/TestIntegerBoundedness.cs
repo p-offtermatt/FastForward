@@ -39,5 +39,26 @@ namespace Testing
 
             Assert.True(expected == result, filepath + ", " + expected.ToString());
         }
+
+        [Theory]
+        [InlineData("integer-boundedness/bounded_not-wf-bounded.lola", true, false)]
+        public void TestWFBoundedness(string filepath, bool boundedNet, bool boundedWFNet)
+        {
+            LolaParser parser = new LolaParser();
+            Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
+            PetriNet net = input.Item1;
+
+            var result = GurobiHeuristics.CheckIntegerUnboundedness(net) == null;
+
+            Assert.True(boundedNet == result, filepath + ", " + boundedNet.ToString());
+
+            var (isWF, sources, sinks) = net.IsWorkflowNet();
+
+            Assert.True(isWF);
+
+            var resultWF = GurobiHeuristics.CheckIntegerUnboundedness(net.ShortCircuit(sources.First(), sinks.First())) == null;
+            Assert.True(boundedWFNet == resultWF, filepath + ", " + boundedWFNet.ToString());
+
+        }
     }
 }
