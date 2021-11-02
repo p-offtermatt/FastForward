@@ -26,7 +26,7 @@ namespace Petri
                 int i = 0;
                 foreach (Transition t in net.Transitions)
                 {
-                    transitionVars[i] = model.AddVar(0, Utils.GurobiConsts.UpperBound, 1, GRB.CONTINUOUS, "transitionVariable_" + t.Name.Truncate(100));
+                    transitionVars[i] = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "transitionVariable_" + t.Name.Truncate(100));
                     i += 1;
                 }
             }
