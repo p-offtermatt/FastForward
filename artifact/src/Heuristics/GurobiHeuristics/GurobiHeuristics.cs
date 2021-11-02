@@ -20,23 +20,64 @@ namespace Petri
             //Check whether from zero marking, the zero marking can be covered
             GRBModel model = InitializeModel();
 
-            GRBVar[] transitionVars = CreateTransitionTimesFiredVars(net.Transitions, 'N', model,
-            "transitionTimesFired_");
+            GRBVar[] transitionVars = new GRBVar[net.Transitions.Count];
 
-            GRBVar[] zeroMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "zeroMarking_");
-            GRBConstr[] zeroMarkingConstraint = InitializeMarkingConstraints(net.Places,
-                                                                               model,
-                                                                               zeroMarkingVars,
-                                                                               "zeroMarkingConstraint_");
+            {
+                int i = 0;
+                foreach (Transition t in net.Transitions)
+                {
+                    transitionVars[i] = model.AddVar(0, Utils.GurobiConsts.UpperBound, 1, GRB.CONTINUOUS, "transitionVariable_" + t.Name.Truncate(100));
+                    i += 1;
+                }
+            }
 
-            GRBVar[] finalMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "finalMarking_");
-            GenerateMarkingEquationConstraints(net.Places, net.Transitions, model, transitionVars, zeroMarkingVars, finalMarkingVars);
+            GRBVar[] placeCoveredIndicators = new GRBVar[net.Places.Count];
 
-            AddStrictlyGreaterMarkingConstraint(net.Places, model, finalMarkingVars, new Marking(), "final_marking_stricly_greater_than_zero");
+            {
+                int i = 0;
+                foreach (Place p in net.Places)
+                {
+                    GRBLinExpr placeEffect = new GRBLinExpr();
+                    int j = 0;
+                    foreach (UpdateTransition t in net.Transitions)
+                    {
+                        int effect = t.Post.GetValueOrDefault(p, 0) - t.Pre.GetValueOrDefault(p, 0);
+                        if (effect != 0)
+                        {
+                            placeEffect.AddTerm(effect, transitionVars[j]);
+                        };
+                        j += 1;
+                    }
 
-            GRBLinExpr objective = CreateVariableSumExpression(transitionVars);
+                    model.AddConstr(placeEffect, GRB.GREATER_EQUAL, 0, "placeEffectNonnegative_" + p.Name.Truncate(200));
 
-            // model.SetObjective(objective, GRB.MINIMIZE);
+                    GRBVar indicatorVar = model.AddVar(0, 1, 0, GRB.BINARY, "placeGreaterZeroVar_" + p.Name.Truncate(200));
+                    placeCoveredIndicators[i] = indicatorVar;
+                    model.AddGenConstrIndicator(indicatorVar, 1, placeEffect, GRB.GREATER_EQUAL, 1, "placeEffectPositive_" + p.Name.Truncate(200));
+                    i += 1;
+                }
+            }
+
+            GRBVar anyPlaceCovered = model.AddVar(0, 1, 0, GRB.BINARY, "AnyPlaceCovered");
+
+            model.AddGenConstrOr(anyPlaceCovered, placeCoveredIndicators, "AnyPlaceCoveredConstraint");
+            model.AddConstr(anyPlaceCovered, GRB.EQUAL, 1, "AnyPlaceCovered_Activated");
+
+            // GRBVar[] zeroMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "zeroMarking_");
+            // GRBConstr[] zeroMarkingConstraint = InitializeMarkingConstraints(net.Places,
+            //                                                                    model,
+            //                                                                    zeroMarkingVars,
+            //                                                                    "zeroMarkingConstraint_");
+
+            // GRBVar[] finalMarkingVars = GeneratePlaceMarkingVars(net.Places, 'N', model, namePrefix: "finalMarking_");
+            // GenerateMarkingEquationConstraints(net.Places, net.Transitions, model, transitionVars, zeroMarkingVars, finalMarkingVars);
+
+            // AddStrictlyGreaterMarkingConstraint(net.Places, model, finalMarkingVars, new Marking(), "final_marking_stricly_greater_than_zero");
+
+            // GRBLinExpr objective = CreateVariableSumExpression(transitionVars);
+
+            model.ModelSense = GRB.MINIMIZE;
+            // // model.SetObjective(objective, GRB.MINIMIZE);
 
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
