@@ -664,6 +664,9 @@ namespace PetriTool
                 var wfBoundCounterexample = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
 
                 dataEntry.wfIntegerBoundednessCounterexample = wfBoundCounterexample == null ? "None" : String.Join(";", wfBoundCounterexample);
+                dataEntry.wfIntegerBoundednessCounterexampleSupportSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Where(pair => pair.Value > 0).Count();
+                dataEntry.wfIntegerBoundednessCounterexampleImageSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Sum(pair => pair.Value);
+
             }
 
             // Writing output
