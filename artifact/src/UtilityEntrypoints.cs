@@ -644,8 +644,8 @@ namespace PetriTool
             var (isWF, inputPlaceChoices, outputPlaceChoices) = net.IsWorkflowNet();
             dataEntry.isWorkflowNet = isWF;
 
-            dataEntry.sourcePlaces = String.Join(", ", inputPlaceChoices.Select(o => o.ToString()));
-            dataEntry.sinkPlaces = String.Join(", ", outputPlaceChoices.Select(o => o.ToString()));
+            dataEntry.sourcePlaces = inputPlaceChoices == null ? "None" : String.Join(", ", inputPlaceChoices.Select(o => o.ToString()));
+            dataEntry.sinkPlaces = outputPlaceChoices == null ? "None" : String.Join(", ", outputPlaceChoices.Select(o => o.ToString()));
 
             // Checking for free-choice
 
