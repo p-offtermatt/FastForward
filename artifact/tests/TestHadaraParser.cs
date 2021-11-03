@@ -28,6 +28,7 @@ namespace Testing
         [InlineData("hadara/D.xml", 8, 7, 26)]
         [InlineData("hadara/E.xml", 8, 6, 19)]
         [InlineData("hadara/F.xml", 7, 6, 18)]
+        [InlineData("hadara/DataSet1-1.xml", 206, 165, 554)]
         public void TestNetStats(string filepath, int numPlaces, int numTransitions, int sumArcWeights)
         {
             HadaraParser parser = new HadaraParser();
