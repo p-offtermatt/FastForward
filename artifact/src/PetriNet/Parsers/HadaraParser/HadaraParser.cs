@@ -20,7 +20,6 @@ namespace Petri
 
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ConformanceLevel = ConformanceLevel.Fragment;
-            XmlDocument netDoc = null;
             List<Place> places = new List<Place>();
             Dictionary<String, UpdateTransition> transitions = new Dictionary<string, UpdateTransition>();
 
