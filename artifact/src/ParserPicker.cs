@@ -41,6 +41,10 @@ namespace PetriTool
             {
                 result = new BinaryTTSParser();
             }
+            else if (filepath.EndsWith(".xml"))
+            {
+                result = new HadaraParser();
+            }
             else
             {
                 throw new FormatException("Could not determine format of net file " + filepath + "! Make sure the ending is correct");
