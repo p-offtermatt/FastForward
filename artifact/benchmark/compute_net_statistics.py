@@ -15,7 +15,8 @@ timeout_time = 600
 
 def compute_statistics(sample_name, lola_file, formula_file, output_file, prune, monotonicity, first):
     command = f"dotnet fastforward/fastforward.dll statistics {lola_file} " \
-        f"{formula_file} " + (" -p" if prune else "") + (" -m " + str(monotonicity) if monotonicity is not None else "")
+        f"{formula_file} " + (" -p" if prune else "") + (" -m " +
+                                                         str(monotonicity) if monotonicity is not None else "")
     print(f"Computing statistics for net " + sample_name)
     result = benchmark_utils.call_fastforward_helper(command, timeout_time)
     result["sampleName"] = sample_name
@@ -33,8 +34,8 @@ if __name__ == "__main__":
 
     parser.add_argument("-p", "--prune", action='store_true')
 
-    parser.add_argument("-m", "--monotonicityDegree", type=int, default=None, required=False)
-
+    parser.add_argument("-m", "--monotonicityDegree",
+                        type=int, default=None, required=False)
 
     args = parser.parse_args()
 
@@ -50,38 +51,26 @@ if __name__ == "__main__":
                 print("---- " + filename + " ----")
                 if filename.endswith(".lola"):
                     filename_without_ending = filename[:-len(".lola")]
-
-                    compute_statistics(sample_name=filename_without_ending,
-                                    lola_file=f"{benchmark_suite}{filename_without_ending}.lola",
-                                    formula_file=f"{benchmark_suite}{filename_without_ending}.formula",
-                                    output_file=output_file,
-                                    first=first,
-                                    monotonicity=args.monotonicityDegree,
-                                    prune=args.prune)
-                    first = False
-                if filename.endswith(".xml.tpn"):
+                    formula_name = filename_without_ending + ".formula"
+                elif filename.endswith(".xml.tpn"):
                     filename_without_ending = filename[:-len(".xml.tpn")]
-
-                    compute_statistics(sample_name=filename_without_ending,
-                                    lola_file=f"{benchmark_suite}{filename_without_ending}.xml.tpn",
-                                    formula_file=f"{benchmark_suite}{filename_without_ending}.formula",
-                                    output_file=output_file,
-                                    first=first,
-                                    monotonicity=args.monotonicityDegree,
-                                    prune=args.prune)
-                    first = False
-
-                if filename.endswith(".pnml"):
+                    formula_name = filename_without_ending + ".formula"
+                elif filename.endswith(".pnml"):
                     filename_without_ending = filename[:-len(".pnml")]
+                    formula_name = filename_without_ending + ".formula"
+                elif filename.endswith(".xml"):
+                    # Hadara File format, see https://github.com/LoW12/Hadara-AdSimul
+                    filename_without_ending = filename[:-len(".xml")]
+                    formula_name = filename_without_ending + ".formula"
 
-                    compute_statistics(sample_name=filename_without_ending,
-                                    lola_file=f"{benchmark_suite}{filename_without_ending}.pnml",
-                                    formula_file=f"{benchmark_suite}{filename_without_ending}.formula",
-                                    output_file=output_file,
-                                    first=first,
-                                    monotonicity=args.monotonicityDegree,
-                                    prune=args.prune)
-                    first = False
+                compute_statistics(sample_name=filename_without_ending,
+                                   lola_file=f"{benchmark_suite}{filename}",
+                                   formula_file=f"{benchmark_suite}{formula_name}",
+                                   output_file=output_file,
+                                   first=first,
+                                   monotonicity=args.monotonicityDegree,
+                                   prune=args.prune)
+                first = False
 
         output_file.write("]")
         output_file.flush()
