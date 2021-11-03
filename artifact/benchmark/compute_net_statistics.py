@@ -63,7 +63,7 @@ if __name__ == "__main__":
                     filename_without_ending = filename[:-len(".xml")]
                     formula_name = filename_without_ending + ".formula"
 
-                compute_statistics(sample_name=filename_without_ending,
+                compute_statistics(sample_name=filename,
                                    lola_file=f"{benchmark_suite}{filename}",
                                    formula_file=f"{benchmark_suite}{formula_name}",
                                    output_file=output_file,
