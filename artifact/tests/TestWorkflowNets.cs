@@ -46,6 +46,18 @@ namespace Testing
         [InlineData("workflow_tests/A.s00000104__s00002819.lola", false)]
         [InlineData("workflow_tests/B3.s00000169__s00002052.lola", false)]
         [InlineData("workflow_tests/B1.s00000125__s00001157.lola", false)]
+        [InlineData("hadara/A.xml", true)]
+        [InlineData("hadara/B.xml", true)]
+        [InlineData("hadara/C.xml", true)]
+        [InlineData("hadara/D.xml", true)]
+        [InlineData("hadara/E.xml", true)]
+        [InlineData("hadara/F.xml", true)]
+        [InlineData("hadara/G.xml", true)]
+        [InlineData("hadara/H.xml", true)]
+        [InlineData("hadara/I.xml", true)]
+        [InlineData("hadara/J.xml", true)]
+        [InlineData("hadara/L.xml", true)]
+        [InlineData("hadara/M.xml", true)]
         public void TestIsWorkflowNet(string filepath, bool expected)
         {
             LolaParser parser = new LolaParser();
