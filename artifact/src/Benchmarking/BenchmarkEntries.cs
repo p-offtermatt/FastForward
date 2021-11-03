@@ -256,6 +256,7 @@ namespace Benchmark
         public int wfIntegerBoundednessCounterexampleSupportSize;
         public double wfIntegerBoundednessCounterexampleImageSize;
 
+        public double timeForWFIntegerBoundednessCounterexample;
 
         public string ToJSON()
         {

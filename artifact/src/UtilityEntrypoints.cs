@@ -661,7 +661,13 @@ namespace PetriTool
             if (isWF)
             {
 
+                Stopwatch watch = Stopwatch.StartNew();
+
                 var wfBoundCounterexample = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
+
+                watch.Stop();
+
+                dataEntry.timeForWFIntegerBoundednessCounterexample = watch.ElapsedMilliseconds;
 
                 dataEntry.wfIntegerBoundednessCounterexample = wfBoundCounterexample == null ? "None" : String.Join(";", wfBoundCounterexample);
                 dataEntry.wfIntegerBoundednessCounterexampleSupportSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Where(pair => pair.Value > 0).Count();
