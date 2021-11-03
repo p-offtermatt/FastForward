@@ -673,11 +673,14 @@ namespace PetriTool
                 dataEntry.wfIntegerBoundednessCounterexampleSupportSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Where(pair => pair.Value > 0).Count();
                 dataEntry.wfIntegerBoundednessCounterexampleImageSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Sum(pair => pair.Value);
 
-                // Checking for continuous soundness
-                var (isSound, counterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
+                if (wfBoundCounterexample == null)
+                {
+                    // Checking for continuous soundness
+                    var (isSound, counterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
 
-                dataEntry.isContinuousSound = isSound;
-                dataEntry.continuousSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                    dataEntry.isContinuousSound = isSound;
+                    dataEntry.continuousSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                }
             }
 
             // Writing output
