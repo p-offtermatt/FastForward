@@ -167,7 +167,7 @@ namespace Petri
                     Z3Heuristics.GenerateMarkingConstraint(ctx, net, finalMarking, markingVariableName: "final_");
 
                 BoolExpr initialMarkingConstraint =
-                    Z3Heuristics.GenerateMarkingConstraint(ctx, net, initialMarking, markingVariableName: "initial_");
+                    Z3Heuristics.GenerateMarkingConstraint(ctx, net, initialPlaceMarking, markingVariableName: "initial_");
 
                 Marking marking = new Marking();
                 Constraints constraints = new Constraints();

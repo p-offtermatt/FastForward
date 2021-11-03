@@ -258,6 +258,11 @@ namespace Benchmark
 
         public double timeForWFIntegerBoundednessCounterexample;
 
+        // Continuous Soundness
+        public bool isContinuousSound;
+
+        public string continuousSoundnessCounterexample;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
