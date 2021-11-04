@@ -16,7 +16,7 @@ using static Petri.GurobiHeuristics;
 
 namespace PetriTool
 {
-    class ParserPicker
+    public class ParserPicker
     {
         public static NetParser ChooseNetParser(string filepath)
         {

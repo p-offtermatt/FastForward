@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Petri;
 using Xunit.Abstractions;
+using PetriTool;
 
 namespace Testing
 {
@@ -60,7 +61,7 @@ namespace Testing
         [InlineData("hadara/M.xml", true)]
         public void TestIsWorkflowNet(string filepath, bool expected)
         {
-            LolaParser parser = new LolaParser();
+            NetParser parser = ParserPicker.ChooseNetParser(filepath);
             Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
             PetriNet net = input.Item1;
 
