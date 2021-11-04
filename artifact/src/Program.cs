@@ -63,7 +63,7 @@ namespace PetriTool
             var parser = new CommandLine.Parser(with => with.HelpWriter = null);
 
             var parserResult = parser
-                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, AStarUnityFrontierOptions, BestFirstUnityFrontierOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions>(args);
+                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, AStarUnityFrontierOptions, BestFirstUnityFrontierOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions>(args);
             parserResult.WithParsed<AStarQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<BestFirstQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<WitnessCheckOptions>(UtilityEntrypoints.WitnessCheck)
@@ -76,8 +76,9 @@ namespace PetriTool
                 .WithParsed<BestFirstUnityFrontierOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<SaturationSearchOptions>(SearchQueryEntryPoints.SaturationSearch)
                 .WithParsed<WFTransformationOptions>(UtilityEntrypoints.TransformToWFNet)
-                .WithParsed<ContinuousSoundnessOptions>(GeneralizedSoundness.VerifyContinuousSoundness)
-                .WithNotParsed(errs => DisplayHelp(parserResult));
+                .WithParsed<ContinuousSoundnessOptions>(SoundnessChecker.VerifyContinuousSoundness)
+                .WithParsed<SoundnessOptions>(SoundnessChecker.VerifySoundness)
+                .WithNotParsed((_) => DisplayHelp(parserResult));
 #endif
             System.Environment.Exit(0);
         }

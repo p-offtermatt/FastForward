@@ -317,4 +317,15 @@ namespace PetriTool
     public class ContinuousSoundnessOptions : NetFilepathOption
     {
     }
+
+    [Verb("soundness", HelpText = @"Checks whether the net is k-sound for a given range of indices.")]
+    public class SoundnessOptions : NetFilepathOption
+    {
+        [Option("start_index", Default = 1, HelpText = "The smallest index i for which to check i-soundness. Defaults to 1.")]
+        public int startIndex { get; set; }
+
+        [Option("stop_index", Default = 1, HelpText = @"The largest index i for which to check i-soundness. 
+If 0, checks up to infinity, but may stop early if invariants determine there exists no i for which the net is sound. Defaults to 0.")]
+        public int stopIndex { get; set; }
+    }
 }
