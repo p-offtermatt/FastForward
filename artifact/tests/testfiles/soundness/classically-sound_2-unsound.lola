@@ -1,0 +1,29 @@
+PLACE
+a,b,c,d,e,f,final;
+
+MARKING
+a: 1;
+
+TRANSITION t1
+CONSUME a: 1;
+PRODUCE b: 1, c: 1, e: 1;
+
+TRANSITION t2
+CONSUME a: 1;
+PRODUCE c: 1, d:1, f: 1;
+
+TRANSITION t3
+CONSUME c: 1, f: 1;
+PRODUCE e: 1;
+
+TRANSITION t4
+CONSUME c:1, e: 1;
+PRODUCE f: 1;
+
+TRANSITION t5
+CONSUME b: 1, f: 1;
+PRODUCE final: 1;
+
+TRANSITION t6
+CONSUME d: 1, e: 1;
+PRODUCE final: 1;
