@@ -314,7 +314,7 @@ namespace PetriTool
     }
 
     [Verb("continuous-sound", HelpText = @"Checks whether the net is (generalized) continuous sound.")]
-    public class VerifyContinuousSoundnessOptions : NetFilepathOption
+    public class ContinuousSoundnessOptions : NetFilepathOption
     {
     }
 }
