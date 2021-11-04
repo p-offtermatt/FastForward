@@ -2,7 +2,7 @@
   <h1>FastForward&nbsp;</h1>
 </div>
 
-![](https://github.com/p-offtermatt/FastForward/blob/master/FastForwardLogo.png)
+![](https://github.com/p-offtermatt/FastForward/blob/master/FastForwardLogo.svg)
 
 FastForward is a tool for efficiently (semi-)deciding the reachability and coverability problems in Petri nets. It relies on computationally lightweight over-approximations of Petri nets as distance oracles in infinite graph exploration algorithms such as A* and greedy best-first search. In particular, FastForward can prove unreachability with minimal witnesses.
 
