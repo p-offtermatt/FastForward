@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Soundness
 {
-    public static class GeneralizedSoundness
+    public static class Soundness
     {
-        public static void VerifyContinuousSoundness(VerifyContinuousSoundnessOptions options)
+        public static void VerifyContinuousSoundness(ContinuousSoundnessOptions options)
         {
             SoundnessBenchmarkEntry benchmarkEntry = new SoundnessBenchmarkEntry();
 
