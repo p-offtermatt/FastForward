@@ -8,6 +8,8 @@ def print_statistics(entries):
     print("Printing statistics...")
     totalTimes = pandas.Series(numpy.array(
         [entry["wallTime"]/1000 for entry in entries if "error" not in entry]))
+    nonWorkflowNets = pandas.Series(numpy.array([entry for entry in entries if "error" not in entry and
+                                                 not entry["isWorkflowNet"]]))
     unboundedTimes = pandas.Series(numpy.array(
         [entry["timeForWFIntegerBoundednessCounterexample"]/1000
          for entry in entries if
@@ -19,6 +21,12 @@ def print_statistics(entries):
          "error" not in entry and
          entry["isWorkflowNet"] == True
          and entry["wfIntegerBoundednessCounterexample"] == "None"]))
+    boundedAndSoundTimes = pandas.Series(numpy.array(
+        [entry["timeForWFIntegerBoundednessCounterexample"]/1000 for entry in entries if "error" not in entry and entry["wfIntegerBoundednessCounterexample"] == "None"
+         and not entry["isContinuousSound"]]))
+
+    print("Non-workflow nets")
+    print(len(nonWorkflowNets))
     print("Total times, in seconds")
     print(totalTimes.describe())
 
@@ -27,6 +35,9 @@ def print_statistics(entries):
 
     print("Times for bounded instances, in seconds")
     print(boundedTimes.describe())
+
+    print("Times for bounded and not continuously sound instances, in seconds")
+    print(boundedAndSoundTimes.describe())
 
 
 if __name__ == "__main__":
