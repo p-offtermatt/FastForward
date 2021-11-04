@@ -8,6 +8,10 @@ def print_statistics(entries):
     print("Printing statistics...")
     totalTimes = pandas.Series(numpy.array(
         [entry["wallTime"]/1000 for entry in entries if "error" not in entry]))
+    numPlaces = pandas.Series(numpy.array(
+        [entry["places"] for entry in entries if "error" not in entry]))
+    numTransitions = pandas.Series(numpy.array(
+        [entry["transitions"] for entry in entries if "error" not in entry]))
     nonWorkflowNets = pandas.Series(numpy.array([entry for entry in entries if "error" not in entry and
                                                  not entry["isWorkflowNet"]]))
     unboundedTimes = pandas.Series(numpy.array(
@@ -27,6 +31,10 @@ def print_statistics(entries):
 
     print("Non-workflow nets")
     print(len(nonWorkflowNets))
+    print("NumPlaces")
+    print(numPlaces.describe())
+    print("NumPlaces")
+    print(numTransitions.describe())
     print("Total times, in seconds")
     print(totalTimes.describe())
 
