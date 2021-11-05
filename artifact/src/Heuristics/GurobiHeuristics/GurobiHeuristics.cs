@@ -176,10 +176,13 @@ namespace Petri
         }
 
         public static Func<Marking, float?> InitializeMarkingEquationHeuristic(
-            List<Place> places, List<Transition> transitions, List<MarkingWithConstraints> targetMarkings, Domains domain = Domains.Q
-            )
+            List<Place> places,
+            List<Transition> transitions,
+            List<MarkingWithConstraints> targetMarkings,
+            Domains domain = Domains.Q,
+            bool optimizeSize = true)
         {
-            (GRBModel[] targetsToModels, GRBConstr[][] targetsToInitialConstraints, GRBVar[][] targetsToTransitionVars) = GenerateModelsForTargets(places, transitions, targetMarkings, domain);
+            (GRBModel[] targetsToModels, GRBConstr[][] targetsToInitialConstraints, GRBVar[][] targetsToTransitionVars) = GenerateModelsForTargets(places, transitions, targetMarkings, domain, optimizeSize);
 
             Marking prevMarking = new Marking();
 
@@ -368,7 +371,7 @@ namespace Petri
             }
         }
 
-        private static Tuple<GRBModel[], GRBConstr[][], GRBVar[][]> GenerateModelsForTargets(List<Place> places, List<Transition> transitions, List<MarkingWithConstraints> targetMarkings, Domains domain)
+        private static Tuple<GRBModel[], GRBConstr[][], GRBVar[][]> GenerateModelsForTargets(List<Place> places, List<Transition> transitions, List<MarkingWithConstraints> targetMarkings, Domains domain, bool optimizeLength = true)
         {
             GRBModel[] targetsToModels = new GRBModel[targetMarkings.Count];
             GRBConstr[][] targetsToInitialConstraints = new GRBConstr[targetMarkings.Count][];
@@ -386,7 +389,7 @@ namespace Petri
             return new Tuple<GRBModel[], GRBConstr[][], GRBVar[][]>(targetsToModels, targetsToInitialConstraints, targetsToTransitionVars);
         }
 
-        private static Tuple<GRBModel, GRBConstr[], GRBVar[]> GenerateMarkingEquationModel(List<Place> places, List<Transition> transitions, MarkingWithConstraints targetMarking, Domains domain)
+        private static Tuple<GRBModel, GRBConstr[], GRBVar[]> GenerateMarkingEquationModel(List<Place> places, List<Transition> transitions, MarkingWithConstraints targetMarking, Domains domain, bool optimizeLength = true)
         {
             char gurobiDomain = EvaluateDomain(domain);
             GRBModel model = InitializeModel();
@@ -399,10 +402,13 @@ namespace Petri
 
             List<TransferTransition> transferTransitions = transitions.Where(t => t is TransferTransition).Cast<TransferTransition>().ToList();
 
-            // create objective: minimize t1+t2+t3+...
-            GRBLinExpr optimizationObjective = CreateVariableSumExpression(transitionTimesFiredVars);
+            if (optimizeLength)
+            {
+                // create objective: minimize t1+t2+t3+...
+                GRBLinExpr optimizationObjective = CreateVariableSumExpression(transitionTimesFiredVars);
 
-            model.SetObjective(optimizationObjective, GRB.MINIMIZE);
+                model.SetObjective(optimizationObjective, GRB.MINIMIZE);
+            }
 
             // create place constraints and vars:
             GRBVar[] initialMarkingVars = GeneratePlaceMarkingVars(places, gurobiDomain, model, namePrefix: "initialMarking_");
