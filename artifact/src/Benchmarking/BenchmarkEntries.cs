@@ -70,6 +70,10 @@ namespace Benchmark
     {
         public bool isContinuousSound { set; get; }
 
+        public bool isSound { set; get; }
+
+        public int soundNumber;
+
         public string counterexampleMarking { set; get; }
 
         public string ToJSON()
