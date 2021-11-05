@@ -221,6 +221,17 @@ namespace Petri
             return new MarkingWithConstraints(marking, constraints);
         }
 
+        public static MarkingWithConstraints AsReachability(Marking marking, PetriNet net)
+        {
+            //add explicit constraints for each place
+            foreach (Place place in net.Places)
+            {
+                marking[place] = marking.GetValueOrDefault(place, 0);
+            }
+            Constraints constraints = new Constraints(marking.ToDictionary(kvPair => kvPair.Key, kvPair => ConstraintOperators.Equal));
+            return new MarkingWithConstraints(marking, constraints);
+        }
+
         public string ToTTS_PN(Dictionary<Place, int> placesToCounterNumDict, bool initialMarking) => this.Marking.ToTTS_PN(placesToCounterNumDict, initialMarking);
 
         public override int GetHashCode()
