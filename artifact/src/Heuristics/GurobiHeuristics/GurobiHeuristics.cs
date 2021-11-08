@@ -23,10 +23,10 @@ namespace Petri
         {
             GRBModel model = InitializeModel();
 
-            GRBVar[] effectVars = GeneratePlaceMarkingVars(places, 'Q', model, "effect_");
+            GRBVar[] effectVars = GeneratePlaceMarkingVars(places, GRB.CONTINUOUS, model, "effect_");
             InitializeMarkingConstraints(places, model, effectVars, finalMarking - initialMarking, "effect_");
 
-            GRBVar[] farkasVars = GeneratePlaceMarkingVars(places, 'Q', model, "farkas_");
+            GRBVar[] farkasVars = GeneratePlaceMarkingVars(places, GRB.CONTINUOUS, model, "farkas_");
 
             GenerateMarkingEquationUnreachabilityConstraint(places, transitions, effectVars, farkasVars, model);
 
@@ -42,7 +42,7 @@ namespace Petri
                 Dictionary<Place, double> result = new Dictionary<Place, double>();
                 for (int i = 0; i < places.Count; i++)
                 {
-                    result[places[i]] = (int)farkasVars[i].Xn;
+                    result[places[i]] = (int)farkasVars[i].X;
                 }
                 return result;
             }
