@@ -151,6 +151,27 @@ namespace Petri
             return obj1.Covers(obj2);
         }
 
+        public static Marking operator -(Marking obj1, Marking obj2)
+        {
+            Marking result = new Marking();
+            foreach (Place place in obj1.Keys)
+            {
+                result[place] = obj1[place] - obj2.GetValueOrDefault(place, 0);
+            }
+
+            foreach (Place place in obj2.Keys)
+            {
+                if (obj1.ContainsKey(place))
+                {
+                    //already added place in the first loop
+                    continue;
+                }
+                // place not in obj1, so subtract from 0
+                result[place] = -obj2[place];
+            }
+            return result;
+        }
+
         // Returns 
         public float SquaredEuclideanDistance(MarkingWithConstraints other)
         {
