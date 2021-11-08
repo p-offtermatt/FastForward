@@ -15,6 +15,77 @@ namespace Petri
     public static class GurobiHeuristics
     {
 
+        // Gurobi does not allow <X constraints;
+        // instead, test for <=X-ZEROEPS
+        private const double ZEROEPS = 0.0000000001;
+
+        public static Dictionary<Place, double> CheckUnreachability(List<Place> places, List<Transition> transitions, Marking initialMarking, Marking finalMarking)
+        {
+            GRBModel model = InitializeModel();
+
+            GRBVar[] effectVars = GeneratePlaceMarkingVars(places, 'Q', model, "effect_");
+            InitializeMarkingConstraints(places, model, effectVars, finalMarking - initialMarking, "effect_");
+
+            GRBVar[] farkasVars = GeneratePlaceMarkingVars(places, 'Q', model, "farkas_");
+
+            GenerateMarkingEquationUnreachabilityConstraint(places, transitions, effectVars, farkasVars, model);
+
+            model.Optimize();
+
+            if (model.Status == GRB.Status.INFEASIBLE)
+            {
+                return null;
+            }
+            else
+            {
+
+                Dictionary<Place, double> result = new Dictionary<Place, double>();
+                for (int i = 0; i < places.Count; i++)
+                {
+                    result[places[i]] = (int)farkasVars[i].Xn;
+                }
+                return result;
+            }
+        }
+
+        // Uses Farkas Lemma to generate constraints that are satisfied if and only if initialMarking cannot reach targetMarking.
+        public static void GenerateMarkingEquationUnreachabilityConstraint(List<Place> places, List<Transition> transitions,
+        GRBVar[] placeEffectVars, GRBVar[] placeFarkasVars, GRBModel model)
+        {
+            foreach (UpdateTransition transition in transitions)
+            {
+                Dictionary<Place, int> effects = transition.GetPrePostDifference();
+                GRBLinExpr effectSum = new GRBLinExpr();
+
+                for (int i = 0; i < places.Count; i++)
+                {
+                    Place place = places[i];
+                    int effect = effects.GetValueOrDefault(place, 0);
+                    if (effect == 0)
+                    { continue; }
+
+                    GRBVar placeFarkasVar = placeFarkasVars[i];
+
+                    effectSum.AddTerm(effect, placeFarkasVar);
+                }
+
+                model.AddConstr(effectSum, '>', 0, "farkas_first_constraint_" + transition.Name.Truncate(200));
+            }
+
+            GRBQuadExpr placeSum = new GRBQuadExpr();
+
+            for (int i = 0; i < places.Count; i++)
+            {
+                Place place = places[i];
+                GRBVar placeFarkasVar = placeFarkasVars[i];
+                GRBVar placeEffectVar = placeEffectVars[i];
+
+                placeSum.AddTerm(1, placeFarkasVar, placeEffectVar);
+            }
+
+            model.AddQConstr(placeSum, '<', 0 - ZEROEPS, "farkas_second_constraint");
+        }
+
         public static Dictionary<Transition, double> CheckIntegerUnboundedness(PetriNet net)
         {
             //Check whether from zero marking, the zero marking can be covered
@@ -678,8 +749,7 @@ namespace Petri
                 int tokenAmount = marking.Marking.GetValueOrDefault(place, 0);
                 char sense = marking.Constraints.GetValueOrDefault(place, ConstraintOperators.GreaterEqual) == ConstraintOperators.Equal ? GRB.EQUAL : GRB.GREATER_EQUAL;
                 GRBLinExpr leftHandSide = new GRBLinExpr(placeVar, 1d);
-                GRBLinExpr rightHandSide = new GRBLinExpr(tokenAmount);
-                GRBConstr constr = model.AddConstr(leftHandSide, sense, rightHandSide, namePrefix + place.Name.Truncate(100));
+                GRBConstr constr = model.AddConstr(leftHandSide, sense, tokenAmount, namePrefix + place.Name.Truncate(100));
                 constraints[i] = constr;
             }
             return constraints;
