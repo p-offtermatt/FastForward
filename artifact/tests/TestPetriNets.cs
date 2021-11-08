@@ -20,6 +20,46 @@ namespace Testing
         }
 
         [Fact]
+        public void TestMarkingSubtraction()
+        {
+            Place p1 = new Place("p1");
+            Place p2 = new Place("p2");
+            Place p3 = new Place("p3");
+            Place p4 = new Place("p4");
+
+            Marking m1 = new Marking()
+                {
+                    {p1, 1},
+                    {p2, 4},
+                    {p3, 5},
+                    {p4, 0}
+                }
+            ;
+
+            Marking m2 = new Marking()
+                {
+                    {p1, 1},
+                    {p2, -1},
+                    {p3, 0},
+                    {p4, 2}
+                }
+            ;
+
+            Marking expected = new Marking()
+                {
+                    {p1, 0},
+                    {p2, 5},
+                    {p3, 5},
+                    {p4, -2}
+                }
+            ;
+
+            Assert.Equal(expected, m1 - m2);
+
+
+        }
+
+        [Fact]
         public void TestMarkedPlaces()
         {
             List<Place> expectedPlaces = new List<Place>(new Place[] {new Place("x0"),
