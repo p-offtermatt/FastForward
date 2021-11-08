@@ -15,9 +15,57 @@ namespace Petri
     public static class GurobiHeuristics
     {
 
+        public static Marking CheckMarkingEquationUnsoundness(PetriNet net, Place initialPlace, Place finalPlace)
+        {
+            GRBModel model = InitializeModel();
+
+            // Allow solving nonconvex problems
+            model.Parameters.NonConvex = 2;
+
+            GRBVar[] initialMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "initialMarking_");
+            GRBVar[] intermediateMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "intermediateMarking_");
+            GRBVar[] finalMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "finalMarking_");
+            GRBVar[] farkasVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "farkasVar_");
+
+            Marking initialMarking = new Marking() { { initialPlace, 1 } };
+            Marking finalMarking = new Marking() { { finalPlace, 1 } };
+
+            InitializeMarkingConstraints(net.Places, model, initialMarkingVars, initialMarking, "initialMarkingConstr_");
+            InitializeMarkingConstraints(net.Places, model, finalMarkingVars, finalMarking, "finalMarkingConstr_");
+
+            InitializeMarkingConstraints(net.Places, model, intermediateMarkingVars, MarkingWithConstraints.AsCoverability(new Marking()), "intermediateMarking_nonnegative_");
+
+            GRBVar[] effectVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "effect_");
+            for (int i = 0; i < net.Places.Count; i++)
+            {
+                model.AddConstr(intermediateMarkingVars[i] + effectVars[i] - finalMarkingVars[i], '=', 0, "effect_matches");
+            }
+
+            GRBVar[] transitionVars = CreateTransitionTimesFiredVars(net.Transitions, GRB.CONTINUOUS, model);
+
+
+
+            GenerateMarkingEquationConstraints(net.Places, net.Transitions, model, transitionVars, initialMarkingVars, intermediateMarkingVars, "reachMarkingEquation_");
+
+            GenerateMarkingEquationUnreachabilityConstraint(net.Places, net.Transitions, effectVars, farkasVars, model);
+
+            model.Optimize();
+            model.Write("../../../gurobi.lp");
+            model.Write("../../../gurobi.sol");
+
+            if (model.Status == GRB.Status.INFEASIBLE)
+            {
+                return null;
+            }
+            else
+            {
+                return ExtractMarking(net.Places, model, intermediateMarkingVars);
+            }
+        }
+
         // Gurobi does not allow <X constraints;
         // instead, test for <=X-ZEROEPS
-        private const double ZEROEPS = 0.0000000001;
+        private const double ZEROEPS = 0.1;
 
         public static Dictionary<Place, double> CheckUnreachability(List<Place> places, List<Transition> transitions, Marking initialMarking, Marking finalMarking)
         {
@@ -32,7 +80,8 @@ namespace Petri
 
             model.Optimize();
 
-            if (model.Status == GRB.Status.INFEASIBLE)
+
+            if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
             {
                 return null;
             }
