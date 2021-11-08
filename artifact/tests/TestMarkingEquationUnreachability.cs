@@ -23,6 +23,8 @@ namespace Testing
 
         [Theory]
         [InlineData("unreachability/n1.lola", "unreachability/n1.formula", false)]
+        [InlineData("unreachability/n1.lola", "unreachability/y1.formula", true)]
+
         public void TestUnreachability(string netfilepath, string formulafilepath, bool reachableExpected)
         {
             FullParser parser = ParserPicker.ChooseFullParser(netfilepath, formulafilepath);
@@ -31,6 +33,8 @@ namespace Testing
             Marking target = parser.ReadFormula(Utils.GetPathForTestfile(formulafilepath)).First().Marking;
 
             Dictionary<Place, double> result = GurobiHeuristics.CheckUnreachability(net.Places, net.Transitions, initialMarking, target);
+
+            output.WriteLine(result == null ? "null" : String.Join("; ", result));
 
             Assert.Equal(result == null, reachableExpected);
         }
