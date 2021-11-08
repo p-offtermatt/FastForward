@@ -23,44 +23,50 @@ if __name__ == "__main__":
             first = False
             path = entry.path
             print("----" + path + "----")
-            if(path.endswith(".lola")):
-                path_prefix = path[:-len(".lola")]
-                folder_prefix, filename = path_prefix.rsplit("/", 1)
+            if path.endswith(".lola"):
+                ending = ".lola"
+            elif path.endswith(".xml"):
+                ending = ".xml"
+            else:
+                continue
 
-                command = f"dotnet fastforward/fastforward.dll continuous-sound {path_prefix}.lola"
-                process = Popen(command.split(" "), stdout=PIPE,
-                                stderr=PIPE, preexec_fn=benchmark_utils.limit_virtual_memory)
-                try:
-                    print(command)
-                    execution_time = time.time()
-                    result, stderr = process.communicate(timeout=timeout_time)
-                    result_obj = json.loads(result)
-                except CalledProcessError:
-                    execution_time = time.time() - execution_time
-                    process.kill()
-                    result, stderr = process.communicate()
+            path_prefix = path[:-len(ending)]
+            folder_prefix, filename = path_prefix.rsplit("/", 1)
 
-                    result_obj = {"error": stderr.decode(
-                        "utf-8").replace("\"", "'")}
-                except TimeoutExpired:
-                    execution_time = time.time() - execution_time
-                    result_obj = {"error": "timeout"}
-                    process.kill()
-                    result, stderr = process.communicate(timeout=timeout_time)
+            command = f"dotnet fastforward/fastforward.dll soundness {path_prefix}{ending} --start_index 1 --stop_index 4"
+            process = Popen(command.split(" "), stdout=PIPE,
+                            stderr=PIPE, preexec_fn=benchmark_utils.limit_virtual_memory)
+            try:
+                print(command)
+                execution_time = time.time()
+                result, stderr = process.communicate(timeout=timeout_time)
+                result_obj = json.loads(result)
+            except CalledProcessError:
+                execution_time = time.time() - execution_time
+                process.kill()
+                result, stderr = process.communicate()
 
-                    print("Timeout!")
-                except json.JSONDecodeError as e:
-                    process.kill()
-                    print("Encountered an error:")
-                    print(e.msg)
-                    print(stderr.decode("utf-8"))
-                    print(result.decode("utf-8"))
-                    result_obj = {"error": repr(
-                        e) + ", " + stderr.decode("utf-8".replace("\"", "'"))}
-                result_obj["file"] = path
+                result_obj = {"error": stderr.decode(
+                    "utf-8").replace("\"", "'")}
+            except TimeoutExpired:
+                execution_time = time.time() - execution_time
+                result_obj = {"error": "timeout"}
+                process.kill()
+                result, stderr = process.communicate(timeout=timeout_time)
 
-                output_file.write(json.dumps(result_obj))
-                output_file.flush()
+                print("Timeout!")
+            except json.JSONDecodeError as e:
+                process.kill()
+                print("Encountered an error:")
+                print(e.msg)
+                print(stderr.decode("utf-8"))
+                print(result.decode("utf-8"))
+                result_obj = {"error": repr(
+                    e) + ", " + stderr.decode("utf-8".replace("\"", "'"))}
+            result_obj["file"] = path
+
+            output_file.write(json.dumps(result_obj))
+            output_file.flush()
 
         output_file.write("]")
         output_file.flush()
