@@ -22,9 +22,9 @@ namespace Testing
         }
 
         [Theory]
-        // [InlineData("soundness/1-unsound_2-sound.lola", true)]
-        // [InlineData("soundness/trivial_sound.lola", true)]
-        // [InlineData("soundness/trivial_unsound.lola", false)]
+        [InlineData("soundness/1-unsound_2-sound.lola", true)]
+        [InlineData("soundness/trivial_sound.lola", true)]
+        [InlineData("soundness/trivial_unsound.lola", false)]
         [InlineData("soundness/trivial_sound2.lola", true)]
         public void TestSoundness(string netfilepath, bool sound)
         {
