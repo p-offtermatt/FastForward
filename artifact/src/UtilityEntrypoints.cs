@@ -673,13 +673,30 @@ namespace PetriTool
                 dataEntry.wfIntegerBoundednessCounterexampleSupportSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Where(pair => pair.Value > 0).Count();
                 dataEntry.wfIntegerBoundednessCounterexampleImageSize = wfBoundCounterexample == null ? 0 : wfBoundCounterexample.Sum(pair => pair.Value);
 
-                if (wfBoundCounterexample == null)
+                if (wfBoundCounterexample == null && options.checkContinuousSoundness)
                 {
                     // Checking for continuous soundness
+                    watch = Stopwatch.StartNew();
                     var (isSound, counterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
+                    watch.Stop();
+                    dataEntry.timeForContinuousSoundness = watch.ElapsedMilliseconds;
 
                     dataEntry.isContinuousSound = isSound;
                     dataEntry.continuousSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                }
+
+                if (wfBoundCounterexample == null && options.checkIntegerSoundness)
+                {
+                    // Checking for integer soundness
+                    watch = Stopwatch.StartNew();
+
+                    // (in/out)putPlaceChoices.First() guaranteed to return unique place since net is a WF net
+                    var counterexample = GurobiHeuristics.CheckMarkingEquationUnsoundness(net, inputPlaceChoices.First(), outputPlaceChoices.First());
+                    watch.Stop();
+                    dataEntry.timeForIntegerSoundness = watch.ElapsedMilliseconds;
+
+                    dataEntry.isIntegerSound = counterexample == null;
+                    dataEntry.integerSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
             }
 

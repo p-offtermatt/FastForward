@@ -284,6 +284,11 @@ namespace PetriTool
         [Option('m', "--monotonic", HelpText = "If set, will check for monotonicity with respect to a given degree.")]
         public int monotonicityDegree { get; set; } = Int32.MinValue;
 
+        [Option("--int-sound", HelpText = "If present and assuming that the net is a workflow net, checks integer soundness")]
+        public bool checkIntegerSoundness {get; set;} = false;
+
+        [Option("--cont-sound", HelpText = "If present and assuming that the net is a workflow net, checks continuous soundness")]
+        public bool checkContSoundness {get; set;} = false;
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]

@@ -267,6 +267,15 @@ namespace Benchmark
 
         public string continuousSoundnessCounterexample;
 
+        public long timeForContinuousSoundness;
+
+        // Integer Soundness
+        public bool isIntegerSound;
+
+        public string integerSoundnessCounterexample;
+
+        public long timeForIntegerSoundness;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
