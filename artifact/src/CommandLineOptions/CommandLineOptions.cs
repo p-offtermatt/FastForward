@@ -277,18 +277,18 @@ namespace PetriTool
         [Value(1, MetaName = "formula-inputfile", HelpText = "The path to a file containing a formula in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed. If no file is given, only the net will be parsed. Depending on the chosen output format, this might not be possible.", Required = false)]
         public string formulaFilePath { get; set; }
 
-        [Option('p', "--prune", HelpText = "Get statistics about pruning if flag is given, otherwise only get statistics about net itself.")]
+        [Option('p', "prune", HelpText = "Get statistics about pruning if flag is given, otherwise only get statistics about net itself.")]
         public bool prune { get; set; } = false;
 
 
-        [Option('m', "--monotonic", HelpText = "If set, will check for monotonicity with respect to a given degree.")]
+        [Option('m', "monotonic", HelpText = "If set, will check for monotonicity with respect to a given degree.")]
         public int monotonicityDegree { get; set; } = Int32.MinValue;
 
-        [Option("--int-sound", HelpText = "If present and assuming that the net is a workflow net, checks integer soundness")]
-        public bool checkIntegerSoundness {get; set;} = false;
+        [Option("int-sound", HelpText = "If present and assuming that the net is a workflow net, checks integer soundness")]
+        public bool checkIntegerSoundness { get; set; } = false;
 
-        [Option("--cont-sound", HelpText = "If present and assuming that the net is a workflow net, checks continuous soundness")]
-        public bool checkContSoundness {get; set;} = false;
+        [Option("cont-sound", HelpText = "If present and assuming that the net is a workflow net, checks continuous soundness")]
+        public bool checkContinuousSoundness { get; set; } = false;
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]
