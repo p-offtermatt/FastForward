@@ -21,9 +21,10 @@ namespace Petri
 
             // Allow solving nonconvex problems
             model.Parameters.NonConvex = 2;
+            model.Parameters.FeasibilityTol = 0.000000001;
 
             GRBVar[] initialMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "initialMarking_");
-            GRBVar[] intermediateMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "intermediateMarking_");
+            GRBVar[] intermediateMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.INTEGER, model, "intermediateMarking_");
             GRBVar[] finalMarkingVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "finalMarking_");
             GRBVar[] farkasVars = GeneratePlaceMarkingVars(net.Places, GRB.CONTINUOUS, model, "farkasVar_");
 
@@ -50,8 +51,6 @@ namespace Petri
             GenerateMarkingEquationUnreachabilityConstraint(net.Places, net.Transitions, effectVars, farkasVars, model);
 
             model.Optimize();
-            model.Write("../../../gurobi.lp");
-            model.Write("../../../gurobi.sol");
 
             if (model.Status == GRB.Status.INFEASIBLE)
             {
@@ -65,7 +64,7 @@ namespace Petri
 
         // Gurobi does not allow <X constraints;
         // instead, test for <=X-ZEROEPS
-        private const double ZEROEPS = 0.1;
+        private const double ZEROEPS = 1;
 
         public static Dictionary<Place, double> CheckUnreachability(List<Place> places, List<Transition> transitions, Marking initialMarking, Marking finalMarking)
         {
