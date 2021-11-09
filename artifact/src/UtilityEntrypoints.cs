@@ -682,7 +682,7 @@ namespace PetriTool
                     dataEntry.timeForContinuousSoundness = watch.ElapsedMilliseconds;
 
                     dataEntry.isContinuousSound = isSound;
-                    dataEntry.continuousSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                    dataEntry.continuousSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
 
                 if (wfBoundCounterexample == null && options.checkIntegerSoundness)
@@ -696,7 +696,7 @@ namespace PetriTool
                     dataEntry.timeForIntegerSoundness = watch.ElapsedMilliseconds;
 
                     dataEntry.isIntegerSound = counterexample == null;
-                    dataEntry.integerSoundnessCounterexample = String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                    dataEntry.integerSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
             }
 
