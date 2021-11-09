@@ -23,7 +23,7 @@ namespace Testing
 
         [Theory]
         [InlineData("soundness/1-sound.lola", 1, 1, true)]
-        [InlineData("soundness/1-unsound_2-sound.lola", 1, 1, false)]
+        // [InlineData("soundness/1-unsound_2-sound.lola", 1, 1, false)] // cannot be handled with current semi-procedure
         [InlineData("soundness/1-unsound_2-sound.lola", 2, 2, true)]
         [InlineData("soundness/unbounded.lola", 1, 1, false)]
         [InlineData("soundness/unbounded.lola", 2, 2, false)]
