@@ -13,10 +13,9 @@ import argparse
 timeout_time = 600
 
 
-def compute_statistics(sample_name, lola_file, formula_file, output_file, prune, monotonicity, first):
+def compute_statistics(sample_name, lola_file, formula_file, output_file, args, first):
     command = f"dotnet fastforward/fastforward.dll statistics {lola_file} " \
-        f"{formula_file} " + (" -p" if prune else "") + (" -m " +
-                                                         str(monotonicity) if monotonicity is not None else "")
+        f"{formula_file} " + args
     print(f"Computing statistics for net " + sample_name)
     result = benchmark_utils.call_fastforward_helper(command, timeout_time)
     result["sampleName"] = sample_name
@@ -32,10 +31,7 @@ if __name__ == "__main__":
                         help="One or more directories that contain the input files.")
     parser.add_argument("-o", "--outputfile", type=str, required=True)
 
-    parser.add_argument("-p", "--prune", action='store_true')
-
-    parser.add_argument("-m", "--monotonicityDegree",
-                        type=int, default=None, required=False)
+    parser.add_argument("-args", type=str, required=False, help="Flags to give to the call to FastForward. Should be enclosed in quotes. See documentation of FastForward to see options.")
 
     args = parser.parse_args()
 
@@ -68,8 +64,7 @@ if __name__ == "__main__":
                                    formula_file=f"{benchmark_suite}{formula_name}",
                                    output_file=output_file,
                                    first=first,
-                                   monotonicity=args.monotonicityDegree,
-                                   prune=args.prune)
+                                   args=args.args)
                 first = False
 
         output_file.write("]")
