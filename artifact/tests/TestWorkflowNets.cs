@@ -53,12 +53,13 @@ namespace Testing
         [InlineData("hadara/D.xml", true)]
         [InlineData("hadara/E.xml", true)]
         [InlineData("hadara/F.xml", true)]
-        [InlineData("hadara/G.xml", true)]
-        [InlineData("hadara/H.xml", true)]
-        [InlineData("hadara/I.xml", true)]
-        [InlineData("hadara/J.xml", true)]
-        [InlineData("hadara/L.xml", true)]
-        [InlineData("hadara/M.xml", true)]
+        [InlineData("hadara/G.xml", false)]
+        [InlineData("hadara/H.xml", false)]
+        [InlineData("hadara/I.xml", false)]
+        [InlineData("hadara/J.xml", false)]
+        [InlineData("hadara/L.xml", false)]
+        [InlineData("hadara/M.xml", false)]
+        [InlineData("workflow_tests/Model.lcn5--0-----u--.xml.tpn.xml", false)]
         public void TestIsWorkflowNet(string filepath, bool expected)
         {
             NetParser parser = ParserPicker.ChooseNetParser(filepath);
