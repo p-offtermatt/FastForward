@@ -29,7 +29,7 @@ namespace Testing
         [InlineData("soundness/unbounded.lola", 2, 2, false)]
         [InlineData("soundness/classically-sound_2-unsound.lola", 1, 1, true)]
         [InlineData("soundness/classically-sound_2-unsound.lola", 2, 2, false)]
-        public void TestIsWorkflowNet(string filepath, int startIndex, int stopIndex, bool expected)
+        public void TestIsSound(string filepath, int startIndex, int stopIndex, bool expected)
         {
             NetParser parser = ParserPicker.ChooseNetParser(filepath);
             Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
