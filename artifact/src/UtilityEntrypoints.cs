@@ -67,22 +67,87 @@ namespace PetriTool
             Place initial = sources.First();
             Place final = sinks.First();
 
-            Marking initialMarking = new Marking();
-            initialMarking[initial] = 1;
+            string formulaString = "";
+            string netString = "";
 
-            Marking finalMarking = new Marking();
-            finalMarking[final] = 1;
-
-            string formulaString = options.translationMode switch
+            switch (options.translationMode)
             {
-                PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
-                PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking).ToLola(),
-                PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net).ToLola()
-            };
+                case WorkflowTranslation.Soundness:
+                case WorkflowTranslation.Coverability:
+                case WorkflowTranslation.Reachability:
+                    {
+                        Marking initialMarking = new Marking();
+                        initialMarking[initial] = 1;
+
+                        Marking finalMarking = new Marking();
+                        finalMarking[final] = 1;
+                        formulaString = options.translationMode switch
+                        {
+                            PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
+                            PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking).ToLola(),
+                            PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net).ToLola()
+                        };
+
+                        netString = net.ToLola(initialMarking);
+                        break;
+                    }
+
+                case WorkflowTranslation.StructuralReachability:
+                    {
+                        // reduces structural reachability/coverability to Petri net reachability/coverability
+                        // by adding auxiliary places; see Fig 1 of Structural soundness of workflow nets is decidable;
+                        // e.g. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.66.1432&rep=rep1&type=pdf
+
+                        Place p1 = net.AddNewPlace("aux_p1");
+                        Place p2 = net.AddNewPlace("aux_p2");
+                        Place p3 = net.AddNewPlace("aux_p3");
+
+                        UpdateTransition r1 = new UpdateTransition("r1");
+                        r1.AddPlaceToPre(p1, 1);
+
+                        r1.AddPlaceToPost(initial, 1);
+                        r1.AddPlaceToPost(p1, 1);
+                        r1.AddPlaceToPost(p2, 1);
+
+                        net.AddTransition(r1);
+
+
+                        UpdateTransition r2 = new UpdateTransition("r2");
+                        r2.AddPlaceToPre(p1, 1);
+                        r2.AddPlaceToPre(p2, 1);
+
+                        r2.AddPlaceToPost(p2, 1);
+                        r2.AddPlaceToPost(p3, 1);
+
+                        net.AddTransition(r2);
+
+
+                        UpdateTransition r3 = new UpdateTransition("r3");
+                        r3.AddPlaceToPre(p2, 1);
+                        r3.AddPlaceToPre(final, 1);
+                        r3.AddPlaceToPre(p3, 1);
+
+                        r3.AddPlaceToPost(p3, 1);
+
+                        net.AddTransition(r3);
+
+                        Marking initialMarking = new Marking();
+                        initialMarking[p1] = 1;
+
+                        netString = net.ToLola(initialMarking);
+
+                        Marking finalMarking = new Marking();
+                        finalMarking[p3] = 1;
+
+                        formulaString = MarkingWithConstraints.AsReachability(finalMarking, net).ToLola();
+                        break;
+                    }
+            }
+
 
             using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
             {
-                file.Write(net.ToLola(initialMarking));
+                file.Write(netString);
             }
             using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
             {

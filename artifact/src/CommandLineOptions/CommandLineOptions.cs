@@ -82,17 +82,38 @@ namespace PetriTool
         }
     }
 
+    /// <summary>
+    /// Governs the translation to a workflow net. Depending on the option chosen,
+    /// the formula and/or the net may be modified.
+    /// </summary>
     public enum WorkflowTranslation
     {
+        /// <summary>
+        /// From initial:1, is final:1 *coverable*?
+        /// </summary>
         Coverability,
+
+        /// <summary>
+        /// Is the net 1-sound?
+        /// </summary>
         Soundness,
-        Reachability
+
+        /// <summary>
+        /// From initial:1, is final:1 *reachable*?
+        /// </summary>
+        Reachability,
+        
+        /// <summary>
+        /// Does there exist k such that from initial:k, final:k is *reachable*?
+        /// </summary>
+        StructuralReachability
     }
 
     [Verb("translate-wf",
         HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
     public class TranslateWFOptions : NetFilepathOption, OutputPathOptions
     {
+
         public string outputFilePath { get; set; }
 
         [Option('m', "mode",
