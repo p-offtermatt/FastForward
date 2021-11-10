@@ -21,7 +21,7 @@ namespace Petri
             return String.Join(" AND \n",
                                 this.Marking.Keys.Select(
                                     place =>
-                                        place.ToString() + " " + (this.Constraints[place] == ConstraintOperators.Equal ? "=" : ">=") + " " + this.Marking[place].ToString()));
+                                        PetriNetUtils.EscapeCharsLola(place.ToString()) + " " + (this.Constraints[place] == ConstraintOperators.Equal ? "=" : ">=") + " " + this.Marking[place].ToString()));
         }
 
         /// <summary>
