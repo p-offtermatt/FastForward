@@ -15,6 +15,10 @@ def print_statistics(entries):
     print(f"Non-timeout-runs: {len(entries)}")
     print("----------------------------------------")
 
+    entries = [entry for entry in entries if "error" not in entry or not entry["error"] == "memout"]
+    print(f"Non-memout-runs: {len(entries)}")
+    print("----------------------------------------")
+
     sound_entries = pandas.Series([entry["wallTime"]/1000 for entry in entries if entry["lola_special_commentary"]["analysis"]["result"]])
     print(f"Sound entries:")
     print(sound_entries.describe())
