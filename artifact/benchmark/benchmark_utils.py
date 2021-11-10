@@ -42,7 +42,12 @@ def call_fastforward_helper(command, timeout_time):
 
         process.kill()
         execution_time = time.time() - execution_time
-        result_obj = json.loads(result)
+
+        if result:
+            result_obj = json.loads(result)
+        else:
+            print("empty output!")
+            result_obj = {}
     except CalledProcessError:
         execution_time = time.time() - execution_time
         process.kill()
@@ -62,7 +67,8 @@ def call_fastforward_helper(command, timeout_time):
         print(e.msg)
         print(stderr.decode("utf-8"))
         print(result.decode("utf-8"))
-        result_obj = {"error": repr(e) + ", " + stderr.decode("utf-8".replace("\"", "'"))}
+        result_obj = {"error": repr(
+            e) + ", " + stderr.decode("utf-8".replace("\"", "'"))}
 
     result_obj["wallTime"] = execution_time * 1000
     return result_obj
@@ -172,6 +178,7 @@ def call_lola(lola_file, formula_file, timeout_time):
 
     result_obj["wallTime"] = execution_time * 1000
     return result_obj
+
 
 def call_icover(spec_file, timeout):
     command = f"python2 icover/main.py --pre --omega {spec_file} limit"
