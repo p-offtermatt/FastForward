@@ -18,6 +18,8 @@ if __name__ == "__main__":
     parser.add_argument('benchmark_suites', nargs="+",
                         help="One or more directories that contain the input files.")
     parser.add_argument("-o", "--outdir", type=str, required=True)
+    parser.add_argument("-args", type=str, required=False,
+                       help="Any extra arguments that should be added to the command for FastForward.s")
 
     args = parser.parse_args()
 
@@ -37,7 +39,7 @@ if __name__ == "__main__":
             else:
                 continue
 
-            command = f"dotnet fastforward/fastforward.dll translate-wf {benchmark_suite}{filename} -o {args.outdir}{filename_without_ending}"
+            command = f"dotnet fastforward/fastforward.dll translate-wf {benchmark_suite}{filename} -o {args.outdir}{filename_without_ending} {args.args}"
             benchmark_utils.call_fastforward_helper(command, timeout_time)
 
     print("Done!")
