@@ -270,7 +270,7 @@ if __name__ == "__main__":
         "Kosaraju"
     ]
 
-    parser.add_argument("-t", "--tools", type=str, nargs="+", required=True, help="A space separated list of tools that should be run. Possible options: " + " ".join(tool_options))
+    parser.add_argument("-t", "--tools", choices=tool_options, nargs="+", required=True, help="A space separated list of tools that should be run")
 
     parser.add_argument("-to", "--timeout", type=int, required=True, help="The timeout in seconds.")
 
