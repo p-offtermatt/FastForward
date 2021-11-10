@@ -51,6 +51,40 @@ namespace PetriTool
                 file.Write(lolaOutput);
             }
         }
+
+        public static void TranslateWFNetToLola(TranslateWFOptions options)
+        {
+            NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
+            (PetriNet net, _) = parser.ReadNet(options.netFilePath);
+
+            (bool isWF, IEnumerable<Place> sources, IEnumerable<Place> sinks) = net.IsWorkflowNet();
+
+            if (!isWF)
+            {
+                throw new WorkflowException("Not a workflow net! Sources: " + String.Join(", ", sources) + "; Sinks: " + String.Join(", ", sinks));
+            }
+
+            Place initial = sources.First();
+            Place final = sinks.First();
+
+            Marking initialMarking = new Marking();
+            initialMarking[initial] = 1;
+
+            Marking finalMarking = new Marking();
+            finalMarking[final] = 1;
+
+            string formulaString = finalMarking.ToLolaLivenessPredicate(net);
+
+            using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
+            {
+                file.Write(net.ToLola(initialMarking));
+            }
+            using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
+            {
+                file.Write(formulaString);
+            }
+        }
+
         public static void Translate(TranslationOptions options)
         {
             SearchBenchmarkEntry entry = new SearchBenchmarkEntry();

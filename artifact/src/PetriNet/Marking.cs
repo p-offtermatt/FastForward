@@ -245,5 +245,17 @@ namespace Petri
 
             return builder.ToString();
         }
+
+        /// <summary>
+        /// Returns a string representing this marking as a liveness predicate for use as an input formula to LoLA.
+        /// For example, if this marking is M, then the formula expresses AGEF P (for all reachable markings, M is reachable).
+        /// </summary>
+        /// <param name="net">The Petri net the predicate should be over; needed to know the complete list of places.</param>
+        /// <returns></returns>
+        public String ToLolaLivenessPredicate(PetriNet net)
+        {
+            return "AGEF " + String.Join(" AND ",
+                net.Places.Select(place => PetriNetUtils.EscapeCharsLola(place.Name) + " = " + this.GetValueOrDefault(place, 0).ToString()));
+        }
     }
 }

@@ -82,6 +82,13 @@ namespace PetriTool
         }
     }
 
+    [Verb("translate-wf",
+        HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
+    public class TranslateWFOptions : NetFilepathOption, OutputPathOptions
+    {
+        public string outputFilePath { get; set; }
+    }
+
     [Verb("add-indicator-places", HelpText = "Add indicator places that ensure each token from the input is used.")]
     public class AddIndicatorPlacesOptions : NetFilepathOption, FormuleFilepathOptions
     {
@@ -220,11 +227,14 @@ namespace PetriTool
         public string witness { get; set; }
     }
 
-    public interface OutputFormatOptions
+    public interface OutputFormatOptions : OutputPathOptions
     {
         [Option('f', "output-format", HelpText = "The format to which to write the output.", Required = true)]
         public OutputFormat outputFormat { get; set; }
+    }
 
+    public interface OutputPathOptions
+    {
         [Option('o', "output-path", HelpText = "The filepath that the output should be written to. The extension is chose automatically. If the chosen format uses multiple files to represent e.g. nets and targets, all necessary files will be written with the same filename, but different extensions.", Required = true)]
         public string outputFilePath { get; set; }
     }
