@@ -254,8 +254,8 @@ namespace Petri
         /// <returns></returns>
         public String ToLolaLivenessPredicate(PetriNet net)
         {
-            return "AGEF " + String.Join(" AND ",
-                net.Places.Select(place => PetriNetUtils.EscapeCharsLola(place.Name) + " = " + this.GetValueOrDefault(place, 0).ToString()));
+            return "AGEF (" + String.Join(" AND ",
+                net.Places.Select(place => PetriNetUtils.EscapeCharsLola(place.Name) + " = " + this.GetValueOrDefault(place, 0).ToString())) + ")";
         }
     }
 }

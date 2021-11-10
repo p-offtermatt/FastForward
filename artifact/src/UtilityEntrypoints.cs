@@ -84,8 +84,8 @@ namespace PetriTool
                         formulaString = options.translationMode switch
                         {
                             PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
-                            PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking).ToLola(),
-                            PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net).ToLola()
+                            PetriTool.WorkflowTranslation.Coverability => "EF (" + MarkingWithConstraints.AsCoverability(finalMarking).ToLola() + ")",
+                            PetriTool.WorkflowTranslation.Reachability => "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")"
                         };
 
                         netString = net.ToLola(initialMarking);
@@ -139,7 +139,7 @@ namespace PetriTool
                         Marking finalMarking = new Marking();
                         finalMarking[p3] = 1;
 
-                        formulaString = MarkingWithConstraints.AsReachability(finalMarking, net).ToLola();
+                        formulaString = "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")";
                         break;
                     }
             }
