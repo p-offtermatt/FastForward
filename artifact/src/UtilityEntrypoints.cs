@@ -73,7 +73,12 @@ namespace PetriTool
             Marking finalMarking = new Marking();
             finalMarking[final] = 1;
 
-            string formulaString = finalMarking.ToLolaLivenessPredicate(net);
+            string formulaString = options.translationMode switch
+            {
+                PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
+                PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking).ToLola(),
+                PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net).ToLola()
+            };
 
             using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
             {

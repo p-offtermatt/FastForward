@@ -82,11 +82,23 @@ namespace PetriTool
         }
     }
 
+    public enum WorkflowTranslation
+    {
+        Coverability,
+        Soundness,
+        Reachability
+    }
+
     [Verb("translate-wf",
         HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
     public class TranslateWFOptions : NetFilepathOption, OutputPathOptions
     {
         public string outputFilePath { get; set; }
+
+        [Option('m', "mode",
+            HelpText = "Whether to write a formula to check soundness, reachability (of final place), or coverability (of final place)",
+            Required = true)]
+        public WorkflowTranslation translationMode { get; set; }
     }
 
     [Verb("add-indicator-places", HelpText = "Add indicator places that ensure each token from the input is used.")]
