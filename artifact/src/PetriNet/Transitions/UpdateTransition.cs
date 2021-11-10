@@ -17,6 +17,12 @@ namespace Petri
             this.Post = Post;
         }
 
+        public UpdateTransition(string Name) : base(Name)
+        {
+            this.Pre = new Dictionary<Place, int>();
+            this.Post = new Dictionary<Place, int>();
+        }
+
         public override HashSet<Place> GetPrePlaces()
         {
             return this.Pre.Where(kvPair => kvPair.Value > 0).Select(kvPair => kvPair.Key).ToHashSet();
