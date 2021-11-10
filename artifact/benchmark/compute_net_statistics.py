@@ -58,6 +58,8 @@ if __name__ == "__main__":
                     # Hadara File format, see https://github.com/LoW12/Hadara-AdSimul
                     filename_without_ending = filename[:-len(".xml")]
                     formula_name = filename_without_ending + ".formula"
+                else:
+                    continue
 
                 compute_statistics(sample_name=filename,
                                    lola_file=f"{benchmark_suite}{filename}",
