@@ -151,6 +151,16 @@ namespace Petri
             return obj1.Covers(obj2);
         }
 
+        public static bool operator >(Marking obj1, Marking obj2)
+        {
+            return obj1 >= obj2 && !obj1.Equals(obj2);
+        }
+
+        public static bool operator <(Marking obj1, Marking obj2)
+        {
+            return obj1 <= obj2 && !obj1.Equals(obj2);
+        }
+
         public static Marking operator -(Marking obj1, Marking obj2)
         {
             Marking result = new Marking();
