@@ -55,8 +55,46 @@ namespace Testing
             ;
 
             Assert.Equal(expected, m1 - m2);
+        }
 
+        [Theory]
+        [InlineData(1, 2, 3, 4, 5, 6, 7, 8, true, false)]
+        [InlineData(1, 2, 3, 4, 5, 6, 7, 8, false, false)]
+        [InlineData(2, 3, 4, 5, 1, 2, 3, 4, true, true)]
+        [InlineData(2, 2, 3, 4, 1, 2, 3, 4, true, true)]
+        [InlineData(1, 2, 3, 4, 1, 2, 3, 4, true, false)]
+        [InlineData(1, 2, 3, 4, 1, 2, 3, 4, false, true)]
+        [InlineData(0, 2, 3, 4, 1, 2, 3, 4, true, false)]
+        [InlineData(0, 2, 3, 4, 1, 2, 3, 4, false, false)]
+        public void TestM1GreaterM2(int m1p1, int m1p2, int m1p3, int m1p4, int m2p1, int m2p2, int m2p3, int m2p4, bool strict, bool expected)
+        {
+            Place p1 = new Place("p1");
+            Place p2 = new Place("p2");
+            Place p3 = new Place("p3");
+            Place p4 = new Place("p4");
 
+            Marking m1 = new Marking();
+            m1[p1] = m1p1;
+            m1[p2] = m1p2;
+            m1[p3] = m1p3;
+            m1[p4] = m1p4;
+
+            Marking m2 = new Marking();
+            m2[p1] = m2p1;
+            m2[p2] = m2p2;
+            m2[p3] = m2p3;
+            m2[p4] = m2p4;
+
+            if (strict)
+            {
+                Assert.Equal(expected, m1 > m2);
+                Assert.Equal(!expected, m1 <= m2);
+            }
+            else
+            {
+                Assert.Equal(expected, m1 >= m2);
+                Assert.Equal(!expected, m1 < m2);
+            }
         }
 
         [Fact]
