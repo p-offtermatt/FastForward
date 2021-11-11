@@ -61,7 +61,7 @@ namespace PetriTool
 
     public class NetFilepathOption
     {
-        [Value(0, MetaName = "net-file", HelpText = "The path to a file that contains the Petri Net system. Currently supports .lola, .pnml, .pnet and .tts formats.",
+        [Value(0, MetaName = "net-file", HelpText = "The path to a file that contains the Petri Net system. Currently supports .lola, .pnml, .pnet, .tts and Hadara (.xml) [see https://github.com/LoW12/Hadara-AdSimul] formats.",
             Required = true)]
         public string netFilePath { get; set; }
 
@@ -102,7 +102,7 @@ namespace PetriTool
         /// From initial:1, is final:1 *reachable*?
         /// </summary>
         Reachability,
-        
+
         /// <summary>
         /// Does there exist k such that from initial:k, final:k is *reachable*?
         /// </summary>
@@ -251,12 +251,12 @@ namespace PetriTool
     [Verb("witness-check", HelpText = "Tests whether a given witness is actually a witness for the given net and target.")]
     public class WitnessCheckOptions : NetFilepathOption, FormuleFilepathOptions
     {
-        [Value(1, MetaName = "formula-file",
-            HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola).",
-            Required = true)]
+        [Option('f', "formula",
+            HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola). If not given, simply prints marking reached at the end of the witness trace.",
+            Required = false)]
         public string formulaFilePath { get; set; }
 
-        [Value(2, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
+        [Value(1, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
         public string witness { get; set; }
     }
 
