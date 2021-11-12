@@ -122,6 +122,12 @@ namespace PetriTool
         public WorkflowTranslation translationMode { get; set; }
     }
 
+    public class TranslateUnsoundnessToReachabilityOptions : NetFilepathOption, OutputPathOptions, WitnessOptions
+    {
+        public string outputFilePath { get; set; }
+        public string witness { get; set; }
+    }
+
     [Verb("add-indicator-places", HelpText = "Add indicator places that ensure each token from the input is used.")]
     public class AddIndicatorPlacesOptions : NetFilepathOption, FormuleFilepathOptions
     {
@@ -248,15 +254,19 @@ namespace PetriTool
         public bool competitiveMode { get; set; }
     }
 
+    public interface WitnessOptions
+    {
+        [Value(1, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
+        public string witness { get; set; }
+    }
+
     [Verb("witness-check", HelpText = "Tests whether a given witness is actually a witness for the given net and target.")]
-    public class WitnessCheckOptions : NetFilepathOption, FormuleFilepathOptions
+    public class WitnessCheckOptions : NetFilepathOption, FormuleFilepathOptions, WitnessOptions
     {
         [Option('f', "formula",
             HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola). If not given, simply prints marking reached at the end of the witness trace.",
             Required = false)]
         public string formulaFilePath { get; set; }
-
-        [Value(1, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
         public string witness { get; set; }
     }
 

@@ -355,12 +355,26 @@ namespace PetriTool
         public static void WitnessCheck(WitnessCheckOptions options)
         {
             SearchBenchmarkEntry entry = new SearchBenchmarkEntry();
-            Console.WriteLine("Running witness check with net " + options.netFilePath + ", formula " + options.formulaFilePath + ", witness: " + options.witness);
+            Console.WriteLine("Running witness check with net " + options.netFilePath + ", formula " + options.formulaFilePath == null ? "null" : options.formulaFilePath + ", witness: " + options.witness);
 
-            FullParser parser = ParserPicker.ChooseFullParser(options.netFilePath, options.formulaFilePath);
+            NetParser netParser = null;
 
-            (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
-            List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(options.formulaFilePath);
+            List<MarkingWithConstraints> targetMarkings = null;
+
+            if (options.formulaFilePath != null)
+            {
+                FullParser parser = ParserPicker.ChooseFullParser(options.netFilePath, options.formulaFilePath);
+                targetMarkings = parser.ReadFormula(options.formulaFilePath);
+                netParser = parser;
+            }
+            else
+            {
+                NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
+                targetMarkings = new List<MarkingWithConstraints>();
+                netParser = parser;
+            }
+
+            (PetriNet net, Marking initialMarking) = netParser.ReadNet(options.netFilePath);
 
             Console.WriteLine("Initial Marking is " + initialMarking.ToString());
 
