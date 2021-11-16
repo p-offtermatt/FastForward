@@ -52,7 +52,7 @@ namespace PetriTool
             }
         }
 
-        public static void TranslateWFNetToLola(TranslateWFOptions options)
+        public static void TranslateWFNet(TranslateWFOptions options)
         {
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, _) = parser.ReadNet(options.netFilePath);
@@ -67,12 +67,18 @@ namespace PetriTool
             Place initial = sources.First();
             Place final = sinks.First();
 
-            string formulaString = "";
-            string netString = "";
+            List<MarkingWithConstraints> resultTargetMarkings = null;
+            PetriNet resultNet = null;
 
             switch (options.translationMode)
             {
                 case WorkflowTranslation.Soundness:
+                    if (options.outputFormat != OutputFormat.Lola)
+                    {
+                        throw new NotSupportedException("Only LoLA format supports checking soundness!");
+                    }
+                    // cannot fall through, so simply goto right case label after doing additional check.
+                    goto case WorkflowTranslation.Reachability;
                 case WorkflowTranslation.Coverability:
                 case WorkflowTranslation.Reachability:
                     {
@@ -81,14 +87,24 @@ namespace PetriTool
 
                         Marking finalMarking = new Marking();
                         finalMarking[final] = 1;
-                        formulaString = options.translationMode switch
+
+                        MarkingWithConstraints finalMarkingWithConstraints = options.translationMode switch
                         {
-                            PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
-                            PetriTool.WorkflowTranslation.Coverability => "EF (" + MarkingWithConstraints.AsCoverability(finalMarking).ToLola() + ")",
-                            PetriTool.WorkflowTranslation.Reachability => "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")"
+                            // just wraps finalMarking in marking with constraints; constraints will be ignored for soundness later
+                            PetriTool.WorkflowTranslation.Soundness => MarkingWithConstraints.AsCoverability(finalMarking),
+                            PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking),
+                            PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net)
                         };
 
-                        netString = net.ToLola(initialMarking);
+                        resultTargetMarkings = new List<MarkingWithConstraints>() { finalMarkingWithConstraints };
+                        // formulaString = options.translationMode switch
+                        // {
+                        //     PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
+                        //     PetriTool.WorkflowTranslation.Coverability => "EF (" + MarkingWithConstraints.AsCoverability(finalMarking).ToLola() + ")",
+                        //     PetriTool.WorkflowTranslation.Reachability => "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")"
+                        // };
+
+                        resultNet = net;
                         break;
                     }
 
@@ -134,12 +150,12 @@ namespace PetriTool
                         Marking initialMarking = new Marking();
                         initialMarking[p1] = 1;
 
-                        netString = net.ToLola(initialMarking);
+                        resultNet = net;
 
                         Marking finalMarking = new Marking();
                         finalMarking[p3] = 1;
 
-                        formulaString = "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")";
+                        resultTargetMarkings = new List<MarkingWithConstraints>() { MarkingWithConstraints.AsReachability(finalMarking, net) };
                         break;
                     }
             }

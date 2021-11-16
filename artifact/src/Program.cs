@@ -78,7 +78,7 @@ namespace PetriTool
                 .WithParsed<WFTransformationOptions>(UtilityEntrypoints.TransformToWFNet)
                 .WithParsed<ContinuousSoundnessOptions>(SoundnessChecker.VerifyContinuousSoundness)
                 .WithParsed<SoundnessOptions>(SoundnessChecker.VerifySoundness)
-                .WithParsed<TranslateWFOptions>(UtilityEntrypoints.TranslateWFNetToLola)
+                .WithParsed<TranslateWFOptions>(UtilityEntrypoints.TranslateWFNet)
                 .WithNotParsed((_) => DisplayHelp(parserResult));
 #endif
             System.Environment.Exit(0);

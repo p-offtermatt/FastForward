@@ -111,13 +111,14 @@ namespace PetriTool
 
     [Verb("translate-wf",
         HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
-    public class TranslateWFOptions : NetFilepathOption, OutputPathOptions
+    public class TranslateWFOptions : NetFilepathOption, OutputFormatOptions
     {
 
         public string outputFilePath { get; set; }
+        public OutputFormat outputFormat { get; set; }
 
         [Option('m', "mode",
-            HelpText = "Whether to write a formula to check soundness, reachability (of final place), or coverability (of final place)",
+            HelpText = "Whether to write a formula to check soundness, reachability (of final place), or coverability (of final place). Only lola format supports soundness.",
             Required = true)]
         public WorkflowTranslation translationMode { get; set; }
     }
