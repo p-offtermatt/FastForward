@@ -162,6 +162,13 @@ namespace PetriTool
                     }
             }
 
+
+            FileInfo fi = new FileInfo(options.outputFilePath);
+            if (!fi.Directory.Exists)
+            {
+                System.IO.Directory.CreateDirectory(fi.DirectoryName);
+            }
+
             switch (options.outputFormat)
             {
                 case OutputFormat.Lola:
