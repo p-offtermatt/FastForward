@@ -70,6 +70,8 @@ namespace PetriTool
             List<MarkingWithConstraints> resultTargetMarkings = null;
             PetriNet resultNet = null;
 
+            Marking initialMarking = null;
+
             switch (options.translationMode)
             {
                 case WorkflowTranslation.Soundness:
@@ -82,7 +84,7 @@ namespace PetriTool
                 case WorkflowTranslation.Coverability:
                 case WorkflowTranslation.Reachability:
                     {
-                        Marking initialMarking = new Marking();
+                        initialMarking = new Marking();
                         initialMarking[initial] = 1;
 
                         Marking finalMarking = new Marking();
@@ -147,7 +149,7 @@ namespace PetriTool
 
                         net.AddTransition(r3);
 
-                        Marking initialMarking = new Marking();
+                        initialMarking = new Marking();
                         initialMarking[p1] = 1;
 
                         resultNet = net;
@@ -160,14 +162,48 @@ namespace PetriTool
                     }
             }
 
-
-            using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
+            switch (options.outputFormat)
             {
-                file.Write(netString);
-            }
-            using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
-            {
-                file.Write(formulaString);
+                case OutputFormat.Lola:
+                    {
+                        using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
+                        {
+                            file.Write(resultNet.ToLola(initialMarking));
+                        }
+                        using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
+                        {
+                            file.Write(MarkingWithConstraints.ListToLola(resultTargetMarkings));
+                        }
+                        return;
+                    }
+                case OutputFormat.Dotspec:
+                    {
+                        using (StreamWriter file = new StreamWriter(options.outputFilePath + ".spec", append: false))
+                        {
+                            file.Write(resultNet.ToDotspec(initialMarking, resultTargetMarkings));
+                        }
+                        return;
+                    }
+                case OutputFormat.TTS:
+                    {
+                        if (resultTargetMarkings.Count > 1)
+                        {
+                            throw new ArgumentException(".tts format expects a single target marking, but the translation resulted in multiple!");
+                        }
+                        using (StreamWriter file = new StreamWriter(options.outputFilePath + ".tts", append: false))
+                        {
+                            file.Write(resultNet.ToTTS_PN());
+                        }
+                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".prop"))
+                        {
+                            writer.Write(resultTargetMarkings.First().ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: false));
+                        }
+                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".init"))
+                        {
+                            writer.Write(initialMarking.ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: true));
+                        }
+                        return;
+                    }
             }
         }
 
@@ -362,7 +398,7 @@ namespace PetriTool
 
                 Console.WriteLine("{ \"transitionSupport\": \"" + String.Join(", ", support.Select(transition => transition.Name)) + "\"}");
             }
-# else
+#else
             Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this method! See the README for more information.");
             System.Environment.Exit(5);
 #endif
