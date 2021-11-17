@@ -194,11 +194,11 @@ namespace PetriTool
                         {
                             file.Write(resultNet.ToTTS_PN());
                         }
-                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".prop"))
+                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".prop", append: false))
                         {
                             writer.Write(resultTargetMarkings.First().ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: false));
                         }
-                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".init"))
+                        using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".init", append: false))
                         {
                             writer.Write(initialMarking.ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: true));
                         }
