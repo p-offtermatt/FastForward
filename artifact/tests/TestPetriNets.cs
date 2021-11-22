@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Petri;
 using System.Linq;
 using Xunit.Abstractions;
+using PetriTool;
 
 namespace Testing
 {
@@ -55,6 +56,24 @@ namespace Testing
             ;
 
             Assert.Equal(expected, m1 - m2);
+        }
+
+        [Theory]
+        [InlineData("remove-uncoverable-transitions/1.lola", "r1 r2 r3")]
+        public void TestRemoveUncoverableTransitions(string net_filepath, string space_separated_expected_removed_transitionnames)
+        {
+            NetParser parser = new LolaParser();
+            (PetriNet net, Marking initialMarking) = parser.ReadNet(Utils.GetPathForTestfile(net_filepath));
+            PetriNet modifiedNet = UtilityEntrypoints.RemoveUncoverableTransitions(net, initialMarking);
+
+            string[] expectedRemovedTransitionNames = space_separated_expected_removed_transitionnames.Split(" ");
+            Array.Sort(expectedRemovedTransitionNames);
+
+            string[] actualRemovedTransitionNames =
+                net.Transitions.Where(transition => !modifiedNet.Transitions.Contains(transition)).Select(transition => transition.Name).ToArray();
+            Array.Sort(actualRemovedTransitionNames);
+
+            Assert.Equal(expectedRemovedTransitionNames, actualRemovedTransitionNames);
         }
 
         [Theory]
@@ -1062,6 +1081,4 @@ namespace Testing
 
         }
     }
-
-
 }

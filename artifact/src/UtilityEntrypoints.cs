@@ -14,7 +14,7 @@ using Microsoft.Z3;
 
 namespace PetriTool
 {
-    class UtilityEntrypoints
+    public class UtilityEntrypoints
     {
         public static void TransformToWFNet(WFTransformationOptions options)
         {
@@ -50,6 +50,67 @@ namespace PetriTool
             {
                 file.Write(lolaOutput);
             }
+        }
+
+        /// <summary>
+        /// If the options specify, then this methods 
+        /// removes transitions whose postsets can never be enabled from the initial marking.
+        /// This is achieved by checking coverability using a-star plus the marking equation over Q in Gurobi.
+        /// If options do no specify that, then the method simply returns the input net.
+        /// Does not modify the input net, but rather returns a copy of it.
+        /// </summary>
+        /// <returns></returns>
+        public static PetriNet RemoveUncoverableTransitions(RemoveUncoverableTransitionsOptions options, PetriNet net, Marking initialMarking)
+        {
+            if (!options.removeUncoverableTransitions)
+            {
+                return net;
+            }
+
+            return RemoveUncoverableTransitions(net, initialMarking);
+        }
+
+        public static PetriNet RemoveUncoverableTransitions(PetriNet original_net, Marking initialMarking)
+        {
+            // copy net to avoid modifying the input net
+            PetriNet net = new PetriNet(original_net);
+
+            HashSet<Transition> uncheckedTransitions = net.Transitions.ToHashSet();
+            UpdateTransition transitionToCheck;
+
+            Constraints constraints = new Constraints();
+            foreach (Place place in net.Places)
+            {
+                constraints[place] = ConstraintOperators.GreaterEqual;
+            }
+            MarkingWithConstraints targetMarking = new MarkingWithConstraints(new Marking(), new Constraints());
+            while ((transitionToCheck = (UpdateTransition)uncheckedTransitions.FirstOrDefault()) != null)
+            {
+                uncheckedTransitions.Remove(transitionToCheck);
+
+                foreach (Place place in net.Places)
+                {
+                    targetMarking.Marking[place] = transitionToCheck.Pre.GetValueOrDefault(place, 0);
+                }
+
+                var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
+                    net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
+                List<Transition> path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarking, heuristic);
+                if (path == null)
+                {
+                    net.RemoveTransition(transitionToCheck);
+                }
+                else
+                {
+                    foreach (Transition checkedTransition in path)
+                    {
+                        uncheckedTransitions.Remove(checkedTransition);
+                    }
+                    uncheckedTransitions.Remove(transitionToCheck);
+                }
+            }
+
+            return net;
         }
 
         public static void TranslateWFNet(TranslateWFOptions options)

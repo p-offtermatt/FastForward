@@ -250,6 +250,19 @@ namespace Petri
         }
 
         /// <summary>
+        /// Removes a given transition from the net.
+        /// </summary>
+        /// <param name="transition"The transition to remove.></param>
+        public void RemoveTransition(Transition transition)
+        {
+            this.Transitions.Remove(transition);
+
+            // Clear cached post and presets; will need to be recomputed
+            PlacesToPostsets.Clear();
+            PlacesToPresets.Clear();
+        }
+
+        /// <summary>
         ///  Returns a string representation of this net in the .tts format.
         /// </summary>
         /// <param name="initialMarking"></param>

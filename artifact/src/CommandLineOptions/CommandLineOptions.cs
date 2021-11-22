@@ -289,8 +289,14 @@ namespace PetriTool
         public string formulaFilePath { get; set; }
     }
 
+    public interface RemoveUncoverableTransitionsOptions
+    {
+        [Option("remove-uncoverable-transitions", HelpText = "If enabled, performs one coverability check per transition in order to remove transitions that cannot be covered, so cannot be useful.", Required = false, Default = false)]
+        public bool removeUncoverableTransitions { get; set; }
+    }
+
     [Verb("translate", HelpText = "Translates nets and formulas from and to the different formats supported by this tool. Note: The output file extension is chosen automatically.")]
-    public class TranslationOptions : NetFilepathOption, OutputFormatOptions, FormuleFilepathOptions
+    public class TranslationOptions : NetFilepathOption, OutputFormatOptions, FormuleFilepathOptions, RemoveUncoverableTransitionsOptions
     {
 
         [Value(1, MetaName = "net-inputfile", HelpText = "The path to a file containing a net in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed.", Required = true)]
@@ -320,6 +326,8 @@ namespace PetriTool
             Required = false,
             Default = false)]
         public bool transformWFNet { get; set; }
+
+        public bool removeUncoverableTransitions { get; set; }
     }
 
     [Verb("statistics", HelpText = "Computes several metrics of a given Petri net.")]

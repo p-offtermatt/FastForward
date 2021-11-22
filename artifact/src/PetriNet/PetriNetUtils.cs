@@ -191,6 +191,13 @@ namespace Petri
         }
 
         public static List<Transition> PetriNetAStar(PetriNet net, Marking initialMarking,
+            MarkingWithConstraints targetMarking, Func<Marking, float?> heuristic,
+            Func<Marking, bool> reachabilityCheck = null, SearchBenchmarkEntry diagnostics = null)
+        {
+            return PetriNetAStar(net, initialMarking, new List<MarkingWithConstraints>() { targetMarking }, heuristic, reachabilityCheck, diagnostics);
+        }
+
+        public static List<Transition> PetriNetAStar(PetriNet net, Marking initialMarking,
             List<MarkingWithConstraints> targetMarkings, Func<Marking, float?> heuristic,
             Func<Marking, bool> reachabilityCheck = null, SearchBenchmarkEntry diagnostics = null)
         {
