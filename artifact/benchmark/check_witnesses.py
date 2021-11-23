@@ -25,9 +25,12 @@ if __name__ == "__main__":
             if witness == "unreachable":
                 continue
 
-            command = f"dotnet fastforward/fastforward.dll witness-check {entry['netFile']} {entry['targetFile']} \"{witness}\""
+            command = f"dotnet fastforward/fastforward.dll witness-check {entry['netFile']} -f {entry['targetFile']} \"{witness}\""
+            # command = f"dotnet fastforward/fastforward.dll witness-check {entry['netFile']} \"{witness}\""
             process = subprocess.run(
-                command, shell=True, stdout=subprocess.PIPE)
+                command, shell=True,
+                 stdout=subprocess.PIPE
+                 )
 
             stdout = process.stdout.decode()
 
