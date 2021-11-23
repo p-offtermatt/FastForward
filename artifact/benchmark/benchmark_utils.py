@@ -28,8 +28,9 @@ def limit_virtual_memory():
 
 
 def limit_memory_and_set_sid():
-    limit_virtual_memory()
-    os.setsid()
+    pass
+    # limit_virtual_memory()
+    # os.setsid()
 
 
 def call_fastforward_helper(command, timeout_time):
