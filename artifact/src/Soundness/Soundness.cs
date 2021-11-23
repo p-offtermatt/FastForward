@@ -10,6 +10,57 @@ namespace Soundness
 {
     public static class SoundnessChecker
     {
+        /// <summary>
+        ///  Verifies soundness by checking whether for each transition t fireable from i: k,
+        /// it holds that t^-1 can be expressed by the other transitions of the net (including the short circuit transition)-
+        /// Utilizes Gurobi.
+        /// </summary>
+        public static void VerifySoundnessViaTransition(SoundnessReverseTransitionOptions options)
+        {
+            SoundnessViaTransitionBenchmarkEntry entry = new SoundnessViaTransitionBenchmarkEntry();
+            entry.checkedIndex = options.index;
+            Stopwatch queryWatch = Stopwatch.StartNew();
+
+            NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
+            (PetriNet net, Marking marking) = parser.ReadNet(options.netFilePath);
+
+            entry.numberOfPlaces = net.Places.Count();
+            entry.numberOfTransitions = net.Transitions.Count();
+
+            (bool isWF, IEnumerable<Place> sources, IEnumerable<Place> sinks) = net.IsWorkflowNet();
+            if (!isWF)
+            {
+                throw new NotAWorkflowNetException("Net is not a workflow net! Sources: "
+                + String.Join("; ", sources) + "\n Sinks: " + String.Join("; ", sinks));
+            }
+
+            Place initial = sources.First();
+            Marking initialMarking = new Marking();
+            initialMarking[initial] = options.index;
+
+            Stopwatch watch = Stopwatch.StartNew();
+            net = UtilityEntrypoints.RemoveUncoverableTransitions(net, initialMarking);
+            watch.Stop();
+            entry.timeForRemovingUncoverableTransitions = watch.ElapsedMilliseconds;
+
+            Place final = sinks.First();
+            net = net.ShortCircuit(initial, final);
+
+            watch.Restart();
+            (bool result, Transition transition) = GurobiHeuristics.CheckTransitionExpressibility(net);
+            watch.Stop();
+            entry.timeForCheckingTransitionExpression = watch.ElapsedMilliseconds;
+
+            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
+            entry.allTransitionsExpressible = result;
+            if (!result)
+            {
+                entry.counterexampleTransition = transition.Name;
+            }
+
+            Console.WriteLine(entry.ToJSON());
+        }
+
         public static void VerifyContinuousSoundness(ContinuousSoundnessOptions options)
         {
             SoundnessBenchmarkEntry benchmarkEntry = new SoundnessBenchmarkEntry();

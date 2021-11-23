@@ -395,4 +395,11 @@ namespace PetriTool
 If 0, checks up to infinity, but may stop early if invariants determine there exists no i for which the net is sound. Defaults to 0.")]
         public int stopIndex { get; set; }
     }
+
+    [Verb("soundness-reverseTransitions", HelpText = @"Checks whether the net is k-sound by checking whether for each t coverable from k tokens in i, the effect of t^-1 can be expressed by other transitions of the short-circuit net.")]
+    public class SoundnessReverseTransitionOptions : NetFilepathOption
+    {
+        [Option('k', Default = 1, HelpText = "The index k for which to check k-soundness.")]
+        public int index { get; set; }
+    }
 }

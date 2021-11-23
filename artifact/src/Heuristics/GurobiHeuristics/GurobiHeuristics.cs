@@ -62,6 +62,56 @@ namespace Petri
             }
         }
 
+        /// <summary>
+        /// Checks whether for each transition t of the input net, the effect of -t can be expressed by the other transitions of the net.
+        /// </summary>
+        /// <param name="net"></param>
+        /// <returns>Returns a tuple containing the boolean analysis result and the first transition that was found not to be reverse-expressible
+        /// (or null  if no such transition exists).</returns>
+        public static (bool, Transition) CheckTransitionExpressibility(PetriNet net)
+        {
+            GRBModel model = InitializeModel();
+
+            GRBVar[] transitionVars = CreateTransitionTimesFiredVars(net.Transitions, GRB.INTEGER, model);
+            GRBConstr[] targetEffectConstraints = new GRBConstr[net.Places.Count];
+
+            for (int i = 0; i < net.Places.Count; i++)
+            {
+                Place place = net.Places[i];
+                GRBLinExpr expr = new GRBLinExpr();
+
+                for (int j = 0; j < net.Transitions.Count; j++)
+                {
+                    GRBVar transitionVar = transitionVars[j];
+                    UpdateTransition transition = (UpdateTransition)net.Transitions[j];
+                    int transitionEffect = transition.GetPrePostDifference().GetValueOrDefault(place);
+                    expr.AddTerm(transitionEffect, transitionVar);
+                }
+
+                // left hand side will be modified later
+                targetEffectConstraints[i] = model.AddConstr(expr, '=', 0, place.Name.Truncate(200) + "_effect");
+            }
+
+            foreach (UpdateTransition transition in net.Transitions)
+            {
+                for (int i = 0; i < net.Places.Count; i++)
+                {
+                    Place place = net.Places[i];
+                    targetEffectConstraints[i].Set(GRB.DoubleAttr.RHS, -transition.GetPrePostDifference().GetValueOrDefault(place, 0));
+                }
+
+                model.Optimize();
+                // model.Write("../../../out.lp");
+                // model.Write("../../../out.sol");
+
+                if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
+                {
+                    return (false, transition);
+                }
+            }
+            return (true, null);
+        }
+
         // Gurobi does not allow <X constraints;
         // instead, test for <=X-ZEROEPS
         private const double ZEROEPS = 1;

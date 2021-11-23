@@ -82,6 +82,22 @@ namespace Benchmark
         }
     }
 
+    public class SoundnessViaTransitionBenchmarkEntry : BenchmarkEntry
+    {
+
+        public int checkedIndex { set; get; }
+        public bool allTransitionsExpressible { set; get; }
+        public string counterexampleTransition { set; get; }
+
+        public long timeForRemovingUncoverableTransitions;
+        public long timeForCheckingTransitionExpression;
+
+        public string ToJSON()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+    }
+
     public class LoopFindingBenchmarkEntry : SearchBenchmarkEntry
     {
         public long timeFindingHandle { set; get; } = 0;
