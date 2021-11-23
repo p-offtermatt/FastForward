@@ -70,7 +70,7 @@ namespace Testing
             net = net.ShortCircuit(initial, final);
 
 
-            (bool transitionsExpressible, Transition counterexample) = GurobiHeuristics.CheckTransitionExpressibility(net);
+            (bool transitionsExpressible, Transition counterexample) = SoundnessChecker.CheckTransitionExpressibility(net);
 
             Assert.Equal(expected, transitionsExpressible);
 

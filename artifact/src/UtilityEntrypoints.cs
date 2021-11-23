@@ -78,31 +78,16 @@ namespace PetriTool
             HashSet<Transition> uncheckedTransitions = net.Transitions.ToHashSet();
             UpdateTransition transitionToCheck;
 
-            Constraints constraints = new Constraints();
-            foreach (Place place in net.Places)
-            {
-                constraints[place] = ConstraintOperators.GreaterEqual;
-            }
-            MarkingWithConstraints targetMarking = new MarkingWithConstraints(new Marking(), new Constraints());
             while ((transitionToCheck = (UpdateTransition)uncheckedTransitions.FirstOrDefault()) != null)
             {
-                uncheckedTransitions.Remove(transitionToCheck);
-
-                foreach (Place place in net.Places)
-                {
-                    targetMarking.Marking[place] = transitionToCheck.Pre.GetValueOrDefault(place, 0);
-                }
-
-                var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
-                    net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
-                List<Transition> path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarking, heuristic);
-                if (path == null)
+                (bool isCoverable, IEnumerable<Transition> usedTransitions) = CheckTransitionCoverable(net, initialMarking, transitionToCheck);
+                if (!isCoverable)
                 {
                     net.RemoveTransition(transitionToCheck);
                 }
                 else
                 {
-                    foreach (Transition checkedTransition in path)
+                    foreach (Transition checkedTransition in usedTransitions)
                     {
                         uncheckedTransitions.Remove(checkedTransition);
                     }
@@ -111,6 +96,29 @@ namespace PetriTool
             }
 
             return net;
+        }
+
+        public static (bool isCoverable, IEnumerable<Transition> usedTransitions) CheckTransitionCoverable(PetriNet net, Marking initialMarking, UpdateTransition transitionToCheck)
+        {
+            MarkingWithConstraints targetMarking = new MarkingWithConstraints(new Marking(), new Constraints());
+            foreach (Place place in net.Places)
+            {
+                targetMarking.Marking[place] = transitionToCheck.Pre.GetValueOrDefault(place, 0);
+            }
+
+            var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
+                net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
+
+            List<Transition> path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarking, heuristic);
+
+            if (path == null)
+            {
+                return (false, null);
+            }
+            else
+            {
+                return (true, path);
+            }
         }
 
         public static void TranslateWFNet(TranslateWFOptions options)

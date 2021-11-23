@@ -63,12 +63,13 @@ namespace Petri
         }
 
         /// <summary>
-        /// Checks whether for each transition t of the input net, the effect of -t can be expressed by the other transitions of the net.
+        /// Returns a function that checks whether for a given transition t of the input net
+        /// the effect of -t can be expressed by the other transitions of the net.
         /// </summary>
         /// <param name="net"></param>
         /// <returns>Returns a tuple containing the boolean analysis result and the first transition that was found not to be reverse-expressible
         /// (or null  if no such transition exists).</returns>
-        public static (bool, Transition) CheckTransitionExpressibility(PetriNet net)
+        public static Func<UpdateTransition, bool> InitializeTransitionExpressibilityChecker(PetriNet net)
         {
             GRBModel model = InitializeModel();
 
@@ -92,7 +93,7 @@ namespace Petri
                 targetEffectConstraints[i] = model.AddConstr(expr, '=', 0, place.Name.Truncate(200) + "_effect");
             }
 
-            foreach (UpdateTransition transition in net.Transitions)
+            bool CheckTransitionExpressibility(UpdateTransition transition)
             {
                 for (int i = 0; i < net.Places.Count; i++)
                 {
@@ -106,10 +107,15 @@ namespace Petri
 
                 if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
                 {
-                    return (false, transition);
+                    return false;
+                }
+                else
+                {
+                    return true;
                 }
             }
-            return (true, null);
+
+            return CheckTransitionExpressibility;
         }
 
         // Gurobi does not allow <X constraints;
@@ -677,12 +683,12 @@ namespace Petri
         public static GRBModel InitializeModel()
         {
             GRBEnv env = new GRBEnv(true);
-            env.LogFile = "gurobi_env.log";
+            // env.LogFile = "gurobi_env.log";
             env.LogToConsole = 0;
             env.Start();
             GRBModel model = new GRBModel(env);
             model.Parameters.LogToConsole = 0;
-            model.Parameters.LogFile = "gurobi.log";
+            // model.Parameters.LogFile = "gurobi.log";
             return model;
         }
 

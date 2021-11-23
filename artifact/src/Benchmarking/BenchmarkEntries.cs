@@ -89,6 +89,10 @@ namespace Benchmark
         public bool allTransitionsExpressible { set; get; }
         public string counterexampleTransition { set; get; }
 
+        public int numberOfCoverableTransitions { set; get; }
+
+        public string uncoverableTransitions { set; get; }
+
         public long timeForRemovingUncoverableTransitions;
         public long timeForCheckingTransitionExpression;
 

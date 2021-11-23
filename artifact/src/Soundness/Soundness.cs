@@ -38,27 +38,46 @@ namespace Soundness
             Marking initialMarking = new Marking();
             initialMarking[initial] = options.index;
 
-            Stopwatch watch = Stopwatch.StartNew();
-            net = UtilityEntrypoints.RemoveUncoverableTransitions(net, initialMarking);
-            watch.Stop();
-            entry.timeForRemovingUncoverableTransitions = watch.ElapsedMilliseconds;
+            // will be updated later if a counterexample is encountered
+            entry.allTransitionsExpressible = true;
 
-            Place final = sinks.First();
-            net = net.ShortCircuit(initial, final);
+            HashSet<Transition> coverableTransitions = new HashSet<Transition>();
 
-            watch.Restart();
-            (bool result, Transition transition) = GurobiHeuristics.CheckTransitionExpressibility(net);
-            watch.Stop();
-            entry.timeForCheckingTransitionExpression = watch.ElapsedMilliseconds;
-
-            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
-            entry.allTransitionsExpressible = result;
-            if (!result)
+            Func<UpdateTransition, bool> expressibilityChecker = GurobiHeuristics.InitializeTransitionExpressibilityChecker(net);
+            foreach (UpdateTransition transitionToCheck in net.Transitions)
             {
-                entry.counterexampleTransition = transition.Name;
+                bool expressible = expressibilityChecker(transitionToCheck);
+
+                if (!expressible)
+                {
+                    (bool isCoverable, IEnumerable<Transition> usedTransitions) = UtilityEntrypoints.CheckTransitionCoverable(net, initialMarking, transitionToCheck);
+                    if (isCoverable)
+                    {
+                        entry.allTransitionsExpressible = false;
+
+                        queryWatch.Stop();
+                        entry.counterexampleTransition = transitionToCheck.Name;
+                        break;
+                    }
+                }
             }
+            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
             Console.WriteLine(entry.ToJSON());
+        }
+
+        public static (bool, Transition) CheckTransitionExpressibility(PetriNet net)
+        {
+            Func<UpdateTransition, bool> transitionCheck = GurobiHeuristics.InitializeTransitionExpressibilityChecker(net);
+
+            foreach (UpdateTransition transition in net.Transitions)
+            {
+                if (!transitionCheck(transition))
+                {
+                    return (false, transition);
+                }
+            }
+            return (true, null);
         }
 
         public static void VerifyContinuousSoundness(ContinuousSoundnessOptions options)
