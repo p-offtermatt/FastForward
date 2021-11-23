@@ -366,6 +366,17 @@ namespace Petri
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Returns a string representation of this Petri Net, together with
+        /// its given initial marking, in the .pnml format.
+        /// </summary>
+        /// <param name="initialMarking">A marking.</param>
+        /// <returns>A string representation, fit to be written to a .pnml file.</returns>
+        public string ToPNML(Marking initialMarking)
+        {
+            throw new NotImplementedException();
+        }
+
         public int ComputeNumberOfStateMachineTransitions()
         {
             return this.Transitions.Where(transition => transition.IsStateMachineTransition()).Count();
