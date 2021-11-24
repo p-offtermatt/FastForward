@@ -7,6 +7,7 @@ using System.IO;
 using Benchmark;
 using Statistics = MathNet.Numerics.Statistics.Statistics;
 using Utils;
+using System.Text.RegularExpressions;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -333,11 +334,23 @@ namespace PetriTool
                         writer.Write(initialMarking.ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: true));
                     }
                     break;
+                case (OutputFormat.PNML):
+                    WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
+                    break;
                 default:
                     Console.WriteLine("Could not understand file format \"" + options.outputFormat + "\"");
                     System.Environment.Exit(3);
                     break;
             }
+        }
+
+        public static void WritePNMLToFile(string filepath, PetriNet net, Marking initialMarking)
+        {
+            string netName = filepath.Split("/").Last();
+            Regex discardNonAlphanums = new Regex("[^a-zA-Z0-9 -]");
+            netName = discardNonAlphanums.Replace(netName, "");
+
+            net.ToPNML(initialMarking, netName, filepath);
         }
 
         public static void RemovePlace(RemovePlaceOptions options)

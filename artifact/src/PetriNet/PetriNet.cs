@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace Petri
 {
@@ -372,9 +373,113 @@ namespace Petri
         /// </summary>
         /// <param name="initialMarking">A marking.</param>
         /// <returns>A string representation, fit to be written to a .pnml file.</returns>
-        public string ToPNML(Marking initialMarking)
+        public void ToPNML(Marking initialMarking, string netName, string filepath)
         {
-            throw new NotImplementedException();
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.Encoding = Encoding.ASCII;
+
+            XmlWriter writer = XmlTextWriter.Create(filepath, settings);
+            WriteNet(initialMarking, netName, writer);
+            writer.Close();
+        }
+
+        private void WriteNet(Marking initialMarking, string netName, XmlWriter writer)
+        {
+            writer.WriteStartDocument();
+
+            writer.WriteStartElement("pnml");
+            writer.WriteStartElement("net");
+            writer.WriteAttributeString("id", netName);
+            writer.WriteAttributeString("type",
+                "http://www.pnml.org/version-2009/grammar/ptnet");
+            WriteName(writer, netName);
+            writer.WriteStartElement("page");
+            writer.WriteAttributeString("id", "page0");
+            WriteName(writer, "DefaultPage");
+
+            WritePlaces(writer, initialMarking);
+            WriteTransitions(writer);
+            WriteArcs(writer);
+
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+        }
+
+        private void WriteArcs(XmlWriter writer)
+        {
+            foreach (UpdateTransition transition in Transitions)
+            {
+                foreach (Place place in transition.GetPrePlaces())
+                {
+                    WriteArc(writer, place, transition, transition.Pre[place]);
+                }
+                foreach (Place place in transition.GetPostPlaces())
+                {
+                    WriteArc(writer, transition, place, transition.Post[place]);
+                }
+            }
+        }
+
+        private void WriteTransitions(XmlWriter writer)
+        {
+            foreach (Transition transition in Transitions)
+            {
+                writer.WriteStartElement("transition");
+                writer.WriteAttributeString("id", transition.Name);
+                WriteName(writer, transition.Name);
+                writer.WriteEndElement();
+            }
+        }
+
+        private void WritePlaces(XmlWriter writer, Marking initialMarking)
+        {
+            foreach (Place place in Places)
+            {
+                WritePlace(writer, place, initialMarking.GetValueOrDefault(place, 0));
+            }
+        }
+
+        private static void WriteArc(
+            XmlWriter writer,
+            Node source,
+            Node target,
+            int weight)
+        {
+            writer.WriteStartElement("arc");
+            writer.WriteAttributeString("id",
+                                    source.Name + "_to_" + target.Name);
+            writer.WriteAttributeString("source", source.Name);
+            writer.WriteAttributeString("target", target.Name);
+            writer.WriteStartElement("inscription");
+            writer.WriteStartElement("text");
+            writer.WriteString(weight.ToString());
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+        }
+
+        private static void WritePlace(XmlWriter writer, Place place, int numTokens)
+        {
+            writer.WriteStartElement("place");
+            writer.WriteAttributeString("id", place.Name);
+            writer.WriteStartElement("initialMarking");
+            writer.WriteStartElement("text");
+            writer.WriteString(numTokens.ToString());
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+        }
+
+        private void WriteName(XmlWriter writer, string name)
+        {
+            writer.WriteStartElement("name");
+            writer.WriteStartElement("text");
+            writer.WriteString(name);
+            writer.WriteEndElement();
+            writer.WriteEndElement();
         }
 
         public int ComputeNumberOfStateMachineTransitions()

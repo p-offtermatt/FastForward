@@ -10,5 +10,6 @@ namespace PetriTool
         Lola,
         TTS,
         Dotspec,
+        PNML
     }
 }
