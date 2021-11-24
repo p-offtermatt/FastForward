@@ -50,7 +50,7 @@ namespace Testing
         [InlineData("soundness/trivial_sound2.lola", 1, true, null)]
         [InlineData("soundness/1-sound.lola", 1, true, null)]
         [InlineData("soundness/classically-sound_2-unsound.lola", 1, true, null)]
-        public void TestSoundnessViaTransition(string filepath, int index, bool expected, string faultyTransition)
+        public void TestTransitionExpressibility(string filepath, int index, bool expected, string faultyTransition)
         {
             NetParser parser = ParserPicker.ChooseNetParser(filepath);
             Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
@@ -71,6 +71,42 @@ namespace Testing
 
 
             (bool transitionsExpressible, Transition counterexample) = SoundnessChecker.CheckTransitionExpressibility(net);
+
+            Assert.Equal(expected, transitionsExpressible);
+
+            if (!expected)
+            {
+                Assert.Equal(faultyTransition, counterexample.Name);
+            }
+        }
+
+        [Theory]
+        [InlineData("transition-expression/1.lola", 1, false, "t1")]
+        [InlineData("transition-expression/2.lola", 1, false, "t1")]
+        [InlineData("soundness/trivial_sound.lola", 1, true, null)]
+        [InlineData("soundness/trivial_sound2.lola", 1, true, null)]
+        [InlineData("soundness/1-sound.lola", 1, true, null)]
+        [InlineData("soundness/classically-sound_2-unsound.lola", 1, true, null)]
+        public void TestSoundnessViaTransition(string filepath, int index, bool expected, string faultyTransition)
+        {
+            NetParser parser = ParserPicker.ChooseNetParser(filepath);
+            Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
+            PetriNet net = input.Item1;
+
+            (bool isWF, IEnumerable<Place> source, IEnumerable<Place> sink) = net.IsWorkflowNet();
+
+            Assert.True(isWF);
+
+            Place initial = source.First();
+            Marking initialMarking = new Marking();
+            initialMarking[initial] = index;
+
+            Place final = sink.First();
+
+            net = net.ShortCircuit(initial, final);
+
+
+            (bool transitionsExpressible, Transition counterexample) = SoundnessChecker.CheckAllCoverableTransitionsExpressible(net, initialMarking);
 
             Assert.Equal(expected, transitionsExpressible);
 

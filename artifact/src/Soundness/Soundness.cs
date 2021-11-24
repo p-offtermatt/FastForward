@@ -19,7 +19,6 @@ namespace Soundness
         {
             SoundnessViaTransitionBenchmarkEntry entry = new SoundnessViaTransitionBenchmarkEntry();
             entry.checkedIndex = options.index;
-            Stopwatch queryWatch = Stopwatch.StartNew();
 
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, Marking marking) = parser.ReadNet(options.netFilePath);
@@ -34,13 +33,35 @@ namespace Soundness
                 + String.Join("; ", sources) + "\n Sinks: " + String.Join("; ", sinks));
             }
 
+
             Place initial = sources.First();
             Marking initialMarking = new Marking();
             initialMarking[initial] = options.index;
 
+            Place final = sinks.First();
+
+            net = net.ShortCircuit(initial, final);
+
             // will be updated later if a counterexample is encountered
             entry.allTransitionsExpressible = true;
 
+            Stopwatch queryWatch = Stopwatch.StartNew();
+            (bool result, Transition counterexample) = CheckAllCoverableTransitionsExpressible(net, initialMarking);
+            queryWatch.Stop();
+
+            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
+            entry.allTransitionsExpressible = result;
+            entry.counterexampleTransition = counterexample.Name;
+
+            Console.WriteLine(entry.ToJSON());
+        }
+
+        /// <summary>
+        /// Checks whether all transitions in the input net that are *not* reverse-expressible are also *not* coverable from the initial marking.
+        /// </summary>
+        /// <returns>A tuple containing the analysis results, and if it is false, which transition is the counterexample.</returns>
+        public static (bool result, Transition counterexample) CheckAllCoverableTransitionsExpressible(PetriNet net, Marking initialMarking)
+        {
             HashSet<Transition> coverableTransitions = new HashSet<Transition>();
 
             Func<UpdateTransition, bool> expressibilityChecker = GurobiHeuristics.InitializeTransitionExpressibilityChecker(net);
@@ -53,17 +74,12 @@ namespace Soundness
                     (bool isCoverable, IEnumerable<Transition> usedTransitions) = UtilityEntrypoints.CheckTransitionCoverable(net, initialMarking, transitionToCheck);
                     if (isCoverable)
                     {
-                        entry.allTransitionsExpressible = false;
+                        return (false, transitionToCheck);
 
-                        queryWatch.Stop();
-                        entry.counterexampleTransition = transitionToCheck.Name;
-                        break;
                     }
                 }
             }
-            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
-
-            Console.WriteLine(entry.ToJSON());
+            return (true, null);
         }
 
         public static (bool, Transition) CheckTransitionExpressibility(PetriNet net)
