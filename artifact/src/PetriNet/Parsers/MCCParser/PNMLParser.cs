@@ -73,9 +73,8 @@ namespace Petri
                 int weight;
                 if (inscriptionNode != null)
                 {
-                    weight = Int32.Parse(inscriptionNode
-                                        .SelectSingleNode(".//def:text", xmlnsManager)
-                                        .Value);
+                    var textNode = inscriptionNode.SelectSingleNode(".//def:text", xmlnsManager);
+                    weight = Int32.Parse(textNode.InnerText);
                 }
                 else
                 {
