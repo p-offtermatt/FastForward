@@ -7,8 +7,6 @@ namespace Petri
     public abstract class Transition : Node
     {
 
-        public readonly string Name;
-
         // store the length of the name separately, to avoid recomputing it in order to speed up equality checks
         protected readonly int NameLength;
 

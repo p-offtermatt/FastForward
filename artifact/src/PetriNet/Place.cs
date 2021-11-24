@@ -4,8 +4,7 @@ namespace Petri
 {
     public class Place : Node
     {
-        public string Name;
-        
+
         private int HashCode;
 
         public Place(string Name)
