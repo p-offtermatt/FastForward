@@ -988,7 +988,11 @@ namespace Testing
 
         [Theory]
         [InlineData("lola/basicME.lola")]
-        public void TestOutputAndRead(string filename)
+        [InlineData("lola/A.s00000021__s00000698.lola")]
+        [InlineData("lola/pingpong.lola")]
+        [InlineData("lola/manufacturing.lola")]
+        [InlineData("lola/xml23.lola")]
+        public void TestPNMLOutputAndReparse(string filename)
         {
             LolaParser parser = new LolaParser();
             string filepath = Utils.GetPathForTestfile(filename);
@@ -1003,9 +1007,9 @@ namespace Testing
             PNMLParser pnml_parser = new PNMLParser();
             (PetriNet readNet, Marking readInitialMarking) = pnml_parser.ReadNet(outputFilepath);
 
-            Assert.Equal(net, readNet);
+            Assert.True(net.Equals(readNet));
 
-            Assert.Equal(initialMarking, readInitialMarking);
+            Assert.True(initialMarking.Equals(readInitialMarking));
         }
     }
 
