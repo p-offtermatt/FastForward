@@ -51,7 +51,7 @@ namespace Soundness
 
             entry.timeInQuery = queryWatch.ElapsedMilliseconds;
             entry.allTransitionsExpressible = result;
-            entry.counterexampleTransition = counterexample.Name;
+            entry.counterexampleTransition = counterexample == null ? null : counterexample.Name;
 
             Console.WriteLine(entry.ToJSON());
         }
