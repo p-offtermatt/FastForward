@@ -5,6 +5,7 @@ using Petri;
 using System.Linq;
 using Xunit.Abstractions;
 using PetriTool;
+using System.Text.RegularExpressions;
 
 namespace Testing
 {
@@ -766,6 +767,33 @@ namespace Testing
             Assert.False(m4 <= m1);
             Assert.True(m4 <= m3);
         }
+
+        [Fact]
+        public void TestMarkingEquality()
+        {
+            Place p1 = new Place("p1");
+            Place p2 = new Place("p2");
+            Place p3 = new Place("p3");
+            Place p4 = new Place("p4");
+            Place p5 = new Place("p5");
+
+            Marking m1 = new Marking();
+            m1[p1] = 1;
+            m1[p2] = 1;
+            m1[p3] = 1;
+
+            Marking m2 = new Marking();
+            m2[p1] = 1;
+            m2[p2] = 1;
+            m2[p3] = 1;
+            m2[p4] = 0;
+            m2[p5] = 0;
+
+            Assert.Equal(m1.GetHashCode(), m2.GetHashCode());
+
+            Assert.True(m1.Equals(m2));
+            Assert.True(m2.Equals(m1));
+        }
     }
 
     public class TestLolaOutput
@@ -946,6 +974,38 @@ namespace Testing
             Assert.Single(aritficialTransitions);
             Assert.True(aritficialTransitions.First().Name == "t_l0");
 
+        }
+    }
+
+    public class TestPNMLOutput
+    {
+        private readonly ITestOutputHelper output;
+
+        public TestPNMLOutput(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
+        [Theory]
+        [InlineData("lola/basicME.lola")]
+        public void TestOutputAndRead(string filename)
+        {
+            LolaParser parser = new LolaParser();
+            string filepath = Utils.GetPathForTestfile(filename);
+            (PetriNet net, Marking initialMarking) = parser.ReadNet(filepath);
+
+            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+            filename = rgx.Replace(filename, "");
+
+            string outputFilepath = "net.pnml";
+            UtilityEntrypoints.WritePNMLToFile(outputFilepath, net, initialMarking);
+
+            PNMLParser pnml_parser = new PNMLParser();
+            (PetriNet readNet, Marking readInitialMarking) = pnml_parser.ReadNet(outputFilepath);
+
+            Assert.Equal(net, readNet);
+
+            Assert.Equal(initialMarking, readInitialMarking);
         }
     }
 
