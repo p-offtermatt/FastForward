@@ -55,14 +55,13 @@ class LolaHandler(AbstractToolHandler):
 
 class FastForwardHandler(AbstractToolHandler):
 
-    def __init__(self, method_name, heuristic, do_pruning, competitive):
+    def __init__(self, method_name, args, do_pruning):
         self.method_name = method_name
-        self.heuristic = heuristic
+        self.args = args
         self.do_pruning = do_pruning
-        self.competitive = competitive
 
     def get_tool_name(self):
-        return "FastForward_" + self.method_name + self.heuristic + ("+Pruning" if self.do_pruning else "") + ("+Competitive" if self.competitive else "")
+        return "FastForward_" + self.method_name + self.args + ("+Pruning" if self.do_pruning else "")
 
     def get_net_extensions(self):
         return [".lola", ".spec", ".tts"]
@@ -71,7 +70,7 @@ class FastForwardHandler(AbstractToolHandler):
         return [".formula", ".spec", ".prop"]
 
     def run(self, net_file, target_file, timeout_time):
-        return utils.call_fastforward(self.method_name, net_file, target_file, self.do_pruning, self.heuristic, "", timeout_time, self.competitive)
+        return utils.call_fastforward(self.method_name, net_file, target_file, self.do_pruning, self.args, timeout_time)
 
 
 class BFCHandler(AbstractToolHandler):

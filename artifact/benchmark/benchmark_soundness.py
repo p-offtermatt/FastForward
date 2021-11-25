@@ -18,9 +18,6 @@ if __name__ == "__main__":
         output_file.flush()
         first = True
         for entry in os.scandir(folder_name):
-            if not first:
-                output_file.write(",\n")
-            first = False
             path = entry.path
             print("----" + path + "----")
             if path.endswith(".lola"):
@@ -30,10 +27,14 @@ if __name__ == "__main__":
             else:
                 continue
 
+            if not first:
+                output_file.write(",\n")
+            first = False
+
             path_prefix = path[:-len(ending)]
             folder_prefix, filename = path_prefix.rsplit("/", 1)
 
-            command = f"dotnet fastforward/fastforward.dll soundness {path_prefix}{ending} --start_index 1 --stop_index 4"
+            command = f"dotnet fastforward/fastforward.dll soundness-reverseTransitions {path_prefix}{ending} -k 1"
             process = Popen(command.split(" "), stdout=PIPE,
                             stderr=PIPE, preexec_fn=benchmark_utils.limit_virtual_memory)
             try:

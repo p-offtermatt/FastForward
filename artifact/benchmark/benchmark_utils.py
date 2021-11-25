@@ -75,17 +75,10 @@ def call_fastforward_helper(command, timeout_time):
     return result_obj
 
 
-def call_fastforward(method_name, lola_file, formula_file, pruning, heuristic, extra_options, timeout_time, competitive=False):
-    heuristic_block = ""
-    if heuristic != "":
-        heuristic_block = f"-h {heuristic}"
-    if not competitive:
-        command = f"dotnet fastforward/fastforward.dll {method_name} {lola_file} " \
-            f"{formula_file} {heuristic_block} {extra_options}" + \
-            (" -p" if pruning else "")
-    else:
-        command = f"dotnet fastforward-competitive/fastforward.dll {method_name} {heuristic} {lola_file} " \
-            f"{formula_file}" + (" prune" if pruning else "")
+def call_fastforward(method_name, lola_file, formula_file, pruning, extra_options, timeout_time):
+    command = f"dotnet fastforward/fastforward.dll {method_name} {lola_file} " \
+        f"{formula_file} {extra_options}" + \
+        (" -p" if pruning else "")
     result_obj = call_fastforward_helper(command, timeout_time)
     return result_obj
 

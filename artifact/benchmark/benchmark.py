@@ -21,6 +21,9 @@ def generate_handlers(mode, tool_list):
     if "LoLA" in tool_list:
         result.append(tool_handler.LolaHandler())
 
+    if "FF-soundness" in tool_list:
+        result.append(tool_handler.FastForwardHandler("continuous-sound"))
+
     if "ICover" in tool_list:
         result.append(tool_handler.ICoverHandler())
 
@@ -32,92 +35,80 @@ def generate_handlers(mode, tool_list):
 
     if "FF-astar-euclidean" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "euclidean", True, False))
+                            "a-star", "-h euclidean", True))
     if "FF-astar-euclidean-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "euclidean", False, False))
+                            "a-star", "-h euclidean", False))
 
     if "FF-GBFS-euclidean" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "euclidean", True, False))
+                            "best-first", "-h euclidean", True))
     if "FF-GBFS-euclidean-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "euclidean", False, False))
+                            "best-first", "-h euclidean", False))
 
     if "FF-astar-qmarkingeq" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "QMarkingEQGurobi", True, False))
+                            "a-star", "-h QMarkingEQGurobi", True))
     if "FF-astar-qmarkingeq-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "QMarkingEQGurobi", False, False))
+                            "a-star", "-h QMarkingEQGurobi", False))
 
     if "FF-GBFS-qmarkingeq" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "QMarkingEQGurobi", True, False))
+                            "best-first", "-h QMarkingEQGurobi", True))
     if "FF-GBFS-qmarkingeq-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "QMarkingEQGurobi", False, False))
+                            "best-first", "-h QMarkingEQGurobi", False))
 
     if "FF-Dijkstra" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "zero", True, False))
+                            "a-star", "-h zero", True))
 
     if "FF-Dijkstra-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "zero", False, False))
+                            "a-star", "-h zero", False))
 
     if "FF-GBFS-nmarkingeq" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "NMarkingEQGurobi", True, False))
+                            "best-first", "-h NMarkingEQGurobi", True))
 
     if "FF-astar-nmarkingeq" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "NMarkingEQGurobi", True, False))
+                            "a-star", "-h NMarkingEQGurobi", True))
 
     if "FF-astar-qreachability" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "qReachability", True, False))
+                            "a-star", "-h qReachability", True))
 
     if "FF-saturation-search" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "saturation-search", "", True, False))
+                            "saturation-search", "", True))
     
 
     if "FF-GBFS-qreachability" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "qReachability", False, False))
+                            "best-first", "-h qReachability", False))
     
     if "FF-GBFS-nmarkingeq-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "NMarkingEQGurobi", False, False))
+                            "best-first", "-h NMarkingEQGurobi", False))
 
     if "FF-astar-nmarkingeq-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "NMarkingEQGurobi", False, False))
+                            "a-star", "-h NMarkingEQGurobi", False))
 
     if "FF-astar-qreachability-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "a-star", "qReachability", False, False))
+                            "a-star", "-h qReachability", False))
 
     if "FF-GBFS-qreachability-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "qReachability", True, False))
+                            "best-first", "-h qReachability", True))
 
     if "FF-GBFS-nmarkingeq-nopruning" in tool_list:
         result.append(tool_handler.FastForwardHandler(
-                            "best-first", "NMarkingEQGurobi", False, False))
-    if "FF-UnityFrontier-AStar-QMarkingEQ" in tool_list:
-        result.append(tool_handler.FastForwardHandler(
-                            "a-star-unity-frontier", "QMarkingEQGurobi", True, False))
-    if "FF-UnityFrontier-BestFirst-QMarkingEQ" in tool_list:
-        result.append(tool_handler.FastForwardHandler(
-                            "best-first-unity-frontier", "QMarkingEQGurobi", True, False))
-    if "FF-UnityFrontier-AStar-NMarkingEQ" in tool_list:
-        result.append(tool_handler.FastForwardHandler(
-                            "a-star-unity-frontier", "NMarkingEQGurobi", True, False))
-    if "FF-UnityFrontier-BestFirst-NMarkingEQ" in tool_list:
-        result.append(tool_handler.FastForwardHandler(
-                            "best-first-unity-frontier", "NMarkingEQGurobi", True, False))
+                            "best-first", "-h NMarkingEQGurobi", False))
     if "Kosaraju" in tool_list:
         result.append(tool_handler.KosarajuHandler(mode == "cover"))
 
@@ -192,9 +183,13 @@ def run_on_benchmark_suite(tool_handlers, benchmark_suite, output_file, rand, be
             if net_file is None:
                 print(
                     f"Could not find net file for tool {tool_name} and filename {full_filename}")
-            elif target_file is None:
+                continue
+            
+            if target_file is None:
                 print(
                     f"Could not find target file for tool {tool_name} and filename {full_filename}")
+                print("Trying to run without target file.")
+                target_file = ""
             else:
                 print(
                     f"Running {tool_name} on net file {net_file}, target file {target_file}")
@@ -252,7 +247,6 @@ if __name__ == "__main__":
         "FF-GBFS-nmarkingeq",
         "FF-astar-qreachability",
         "FF-GBFS-qreachability",
-        # TODO: No-pruning
         "FF-astar-euclidean",
         "FF-astar-euclidean-nopruning",
         "FF-GBFS-euclidean",
@@ -263,10 +257,6 @@ if __name__ == "__main__":
         "FF-GBFS-qreachability-nopruning",
         "FF-Dijkstra",
         "FF-Dijkstra-nopruning",
-        "FF-UnityFrontier-BestFirst-QMarkingEQ",
-        "FF-UnityFrontier-AStar-QMarkingEQ",
-        "FF-UnityFrontier-BestFirst-NMarkingEQ",
-        "FF-UnityFrontier-AStar-NMarkingEQ",
         "Kosaraju"
     ]
 
