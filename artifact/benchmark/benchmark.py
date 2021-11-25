@@ -21,6 +21,9 @@ def generate_handlers(mode, tool_list):
     if "LoLA" in tool_list:
         result.append(tool_handler.LolaHandler())
 
+    if "Woflan" in tool_list:
+        result.append(tool_handler.WoflanHandler())
+
     if "FF-soundness" in tool_list:
         result.append(tool_handler.FastForwardHandler("continuous-sound"))
 
@@ -190,22 +193,22 @@ def run_on_benchmark_suite(tool_handlers, benchmark_suite, output_file, rand, be
                     f"Could not find target file for tool {tool_name} and filename {full_filename}")
                 print("Trying to run without target file.")
                 target_file = ""
-            else:
-                print(
-                    f"Running {tool_name} on net file {net_file}, target file {target_file}")
-                result = handler.run(net_file,
-                                     target_file,
-                                     timeout)
-                result["sampleName"] = filename
-                result["netFile"] = net_file
-                result["targetFile"] = target_file
-                result["methodName"] = handler.get_tool_name()
+            
+            print(
+                f"Running {tool_name} on net file {net_file}, target file {target_file}")
+            result = handler.run(net_file,
+                                    target_file,
+                                    timeout)
+            result["sampleName"] = filename
+            result["netFile"] = net_file
+            result["targetFile"] = target_file
+            result["methodName"] = handler.get_tool_name()
 
-                output_file.write(
-                    ("," if not first else "") + json.dumps(result))
-                output_file.write("\n")
-                output_file.flush()
-                first = False
+            output_file.write(
+                ("," if not first else "") + json.dumps(result))
+            output_file.write("\n")
+            output_file.flush()
+            first = False
     return first
 
 
@@ -235,6 +238,7 @@ if __name__ == "__main__":
 
     tool_options = [
         "LoLA",
+        "Woflan",
         "Bfc",
         "ICover",
         "MIST",

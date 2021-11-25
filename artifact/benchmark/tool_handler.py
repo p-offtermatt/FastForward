@@ -117,6 +117,20 @@ class ICoverHandler(AbstractToolHandler):
     def run(self, net_file, target_file, timeout):
         return utils.call_icover(net_file, timeout)
 
+class WoflanHandler(AbstractToolHandler):
+
+    def get_tool_name(self):
+        return "Woflan"
+
+    def get_net_extensions(self):
+        return [".pnml"]
+
+    def get_target_extensions(self):
+        return []
+
+    def run(self, net_file, target_file, timeout):
+        return utils.call_woflan(net_file, timeout)
+
 
 class MISTHandler(AbstractToolHandler):
     def get_tool_name(self):
