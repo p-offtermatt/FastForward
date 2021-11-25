@@ -70,8 +70,8 @@ def print_statistics(entries):
         entry.pop("timeForFormulaParsing", None)
 
 
-    ff_entries.sort(key=lambda entry: entry["wallTime"])
-    print("\n".join(str(entry) for entry in ff_entries[-10:]))
+    lola_entries.sort(key=lambda entry: entry["wallTime"])
+    print("\n".join(str(entry["sampleName"]) for entry in lola_entries[-10:]))
     # print("\n".join([str(round(entry["wallTime"]/1000, 5)) + ": " + str(entry["netFile"].split("/")[1]) for entry in entries]))
 
     # print("Times for sound instances, in seconds")

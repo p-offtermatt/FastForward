@@ -8,6 +8,7 @@ def print_statistics(entries):
     print("Printing statistics...")
     print("Number of entries")
     print(len(entries))
+    entries = [entry for entry in entries if "error" not in entry]
     places = pandas.Series(numpy.array(
         [entry["numberOfPlaces"] for entry in entries if "error" not in entry]))
     print("Places...")
@@ -18,12 +19,17 @@ def print_statistics(entries):
     print("Transitions...")
     print(transitions.describe())
 
+    someUncoverableTransitions = [
+        entry for entry in entries if entry["numberOfTransitions"] != entry["numberOfCoverableTransitions"]]
+    print("Entries with uncoverable transitions: ")
+    print(len(someUncoverableTransitions))
+
     totalTimes = pandas.Series(numpy.array(
         [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry]))
     soundTimes = pandas.Series(numpy.array(
-        [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry and entry["isSound"]]))
+        [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry and entry["allTransitionsExpressible"]]))
     unsoundTimes = pandas.Series(numpy.array(
-        [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry and not entry["isSound"]]))
+        [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry and not entry["allTransitionsExpressible"]]))
     print("Total times, in seconds")
     print(totalTimes.describe())
 
@@ -32,6 +38,9 @@ def print_statistics(entries):
 
     print("Times for unsound instances, in seconds")
     print(unsoundTimes.describe())
+
+    entries.sort(key=lambda entry: entry["timeInQuery"])
+    print([(entry["file"], entry["timeInQuery"]) for entry in entries[-10:]])
 
 
 if __name__ == "__main__":
