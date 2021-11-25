@@ -83,6 +83,14 @@ def call_fastforward(method_name, lola_file, formula_file, pruning, extra_option
     result_obj = call_fastforward_helper(command, timeout_time)
     return result_obj
 
+import psutil
+
+def kill(proc_pid):
+    process = psutil.Process(proc_pid)
+    for proc in process.children(recursive=True):
+        proc.kill()
+    process.kill()
+
 def call_woflan(net_file, timeout_time):
     prom_home = os.getenv("PROM_HOME")
     if prom_home is None:
@@ -92,8 +100,8 @@ def call_woflan(net_file, timeout_time):
     copyfile(net_file, prom_net_file)
 
     command = f"sh ProM_CLI.sh -f call_woflan.java"
-    process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory, cwd=prom_home)
     print(command)
+    process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory, cwd=prom_home)
     result_obj = {}
     try:
         stdout, stderr = process.communicate(timeout=timeout_time)
@@ -109,6 +117,7 @@ def call_woflan(net_file, timeout_time):
     except TimeoutExpired:
         result_obj["error"] = "timeout"
         print("TIMEOUT!")
+        kill(process.pid)
     except Exception as e:
         print("Encountered error:")
         print(e)
