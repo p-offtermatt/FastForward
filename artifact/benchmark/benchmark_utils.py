@@ -107,7 +107,7 @@ def call_woflan(net_file, timeout_time):
         stdout, stderr = process.communicate(timeout=timeout_time)
         result_string = stdout.decode('utf-8')
         woflan_time = re.search(r"Total Woflan time .*\n([0-9\.]*)", result_string, re.MULTILINE).group(1)
-        result_obj["wallTime"] = woflan_time
+        result_obj["wallTime"] = float(woflan_time)
 
         diagnosis__result = re.search(r"Woflan diagnosis of net .*\n((.*\n)*)End of Woflan diagnosis", result_string, re.MULTILINE).group(1)
         result_obj["diagnosisResult"] = diagnosis__result
