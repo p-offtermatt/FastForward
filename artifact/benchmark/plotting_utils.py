@@ -111,6 +111,25 @@ def entry_fits_consensus(must_be_reachable, entry, consensus_data):
     return (fitting_entry["consensus"] == "reachable" if must_be_reachable else fitting_entry["consensus"] != "reachable")
 
 
+def strip_common_extensions(string):
+    changed = True
+    while changed:
+        new_string = string
+        new_string = removesuffix(new_string, ".lola")
+        new_string = removesuffix(new_string, ".pnml")
+        new_string = removesuffix(new_string, ".xml")
+        new_string = removesuffix(new_string, ".spec")
+        new_string = removesuffix(new_string, ".tts")
+
+        changed = new_string != string
+        string = new_string
+    return string
+
+def removesuffix(s, suf):
+    if suf and s.endswith(suf):
+        return s[:-len(suf)]
+    return s
+
 def read_json_from_file(filepath):
     with open(filepath, 'r') as json_file:
         print("Reading input from " + json_file.name)
