@@ -10,13 +10,13 @@
 \pgfplotsset{compat=1.3}
  
 \begin{document}
- 
-\foreach \i in {reachability.tex, coverability.tex, comparisons.tex, paths.tex, heuristic-pruning.tex, safety.tex} {%
-    \edef\FileName{\i}% 
-    \IfFileExists{\FileName}{%
-       \input{\FileName}% 
-    } 
-}
 
-  
-\end{document} 
+\foreach \i in {free-choice.tex, struct-sound.tex, gen-sound.tex} {%
+        \edef\FileName{\i}% 
+        \IfFileExists{\FileName}{%
+            \input{\FileName}% 
+        }
+    }
+
+
+\end{document}
