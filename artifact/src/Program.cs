@@ -63,7 +63,7 @@ namespace PetriTool
             var parser = new CommandLine.Parser(with => with.HelpWriter = null);
 
             var parserResult = parser
-                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, AStarUnityFrontierOptions, BestFirstUnityFrontierOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions>(args);
+                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions>(args);
             parserResult.WithParsed<AStarQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<BestFirstQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<WitnessCheckOptions>(UtilityEntrypoints.WitnessCheck)
@@ -72,8 +72,6 @@ namespace PetriTool
                 .WithParsed<CalculateHeuristicSupportOptions>(UtilityEntrypoints.CalculateHeuristicSupport)
                 .WithParsed<ComputeNetStatisticsOptions>(UtilityEntrypoints.ComputeNetStatistics)
                 .WithParsed<GenerateInstanceOptions>(UtilityEntrypoints.GenerateInstance)
-                .WithParsed<AStarUnityFrontierOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
-                .WithParsed<BestFirstUnityFrontierOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<SaturationSearchOptions>(SearchQueryEntryPoints.SaturationSearch)
                 .WithParsed<WFTransformationOptions>(UtilityEntrypoints.TransformToWFNet)
                 .WithParsed<ContinuousSoundnessOptions>(SoundnessChecker.VerifyContinuousSoundness)

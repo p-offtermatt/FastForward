@@ -92,61 +92,35 @@ namespace PetriTool
                 }
 
                 List<Transition> path = null;
-                if (typeof(UnityFrontierOptions).IsAssignableFrom(options.GetType()))
-                {
-                    HeuristicFrontier<Marking> frontier = HeuristicPicker.ChooseHeuristicFrontier(
-                                                        options,
-                                                        net,
-                                                        targetMarkings
-                                                );
 
+
+                Func<Marking, float?> heuristicFunction = null;
+
+                if (options is AStarQueryOptions || options is BestFirstQueryOptions)
+                {
+                    heuristicFunction = HeuristicPicker.ChooseForwardHeuristic(benchmarkEntry, options, net, initialMarking, targetMarkings);
+                }
+
+
+                {
                     Stopwatch watch = Stopwatch.StartNew();
                     switch (options)
                     {
-                        case AStarUnityFrontierOptions queryOptions:
-                            path = PetriNetUtils.UnityFrontierSearch(net, initialMarking, targetMarkings, frontier, PetriNetUtils.DistanceSuccessorFunction,
+                        case AStarQueryOptions queryOptions:
+                            path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarkings, heuristicFunction,
                             diagnostics: benchmarkEntry);
                             break;
-                        case BestFirstUnityFrontierOptions queryOptions:
-                            path = PetriNetUtils.UnityFrontierSearch(net, initialMarking, targetMarkings, frontier, PetriNetUtils.BestFirstSuccessorFunction,
-                            diagnostics: benchmarkEntry);
+                        case BestFirstQueryOptions queryOptions:
+                            path = PetriNetUtils.PetriNetBestFirstSearch(net, initialMarking, targetMarkings, heuristicFunction,
+                                diagnostics: benchmarkEntry);
                             break;
                         default:
                             throw new NotImplementedException("Handling for options " + options + " is not implemented.");
                     }
                     watch.Stop();
                     benchmarkEntry.timeInAlgorithm = watch.ElapsedMilliseconds;
-
                 }
-                else
-                {
-                    Func<Marking, float?> heuristicFunction = null;
 
-                    if (options is AStarQueryOptions || options is BestFirstQueryOptions)
-                    {
-                        heuristicFunction = HeuristicPicker.ChooseForwardHeuristic(benchmarkEntry, options, net, initialMarking, targetMarkings);
-                    }
-
-
-                    {
-                        Stopwatch watch = Stopwatch.StartNew();
-                        switch (options)
-                        {
-                            case AStarQueryOptions queryOptions:
-                                path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarkings, heuristicFunction,
-                                diagnostics: benchmarkEntry);
-                                break;
-                            case BestFirstQueryOptions queryOptions:
-                                path = PetriNetUtils.PetriNetBestFirstSearch(net, initialMarking, targetMarkings, heuristicFunction,
-                                    diagnostics: benchmarkEntry);
-                                break;
-                            default:
-                                throw new NotImplementedException("Handling for options " + options + " is not implemented.");
-                        }
-                        watch.Stop();
-                        benchmarkEntry.timeInAlgorithm = watch.ElapsedMilliseconds;
-                    }
-                }
 
                 benchmarkEntry.path = path != null
                             ? String.Join(", ", path.Select(t => t.Name))

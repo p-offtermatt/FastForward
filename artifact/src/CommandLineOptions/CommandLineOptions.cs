@@ -227,27 +227,6 @@ namespace PetriTool
         public bool competitiveMode { get; set; }
     }
 
-    public class UnityFrontierOptions : SingleQueryOptions, HeuristicOption
-    {
-        public string chosenHeuristic { get; set; }
-
-        // Is only set programmatically, not via parsing input parameters.
-        // Enabling this means output will not be as detailed, but much faster. 
-        public bool competitiveMode { get; set; }
-    }
-
-    [Verb("a-star-unity-frontier", HelpText = "Run A* with unified frontier for Petri Nets.")]
-    public class AStarUnityFrontierOptions : UnityFrontierOptions
-    {
-
-    }
-
-    [Verb("best-first-unity-frontier", HelpText = "Run GBFS with unified frontier for Petri Nets.")]
-    public class BestFirstUnityFrontierOptions : UnityFrontierOptions
-    {
-
-    }
-
     [Verb("best-first", HelpText = "Run Best First Search for Petri Nets.")]
     public class BestFirstQueryOptions : SingleQueryOptions, HeuristicOption
     {
