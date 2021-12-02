@@ -471,13 +471,13 @@ namespace PetriTool
             entry.timeInHeuristicCalculation = watch.ElapsedMilliseconds;
             entry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
-            string scoreString = "\"heuristic\": " + (initialScore.HasValue ? initialScore.Value.ToString() : "\"unreachable\"");
+            string scoreString = "\"heuristic\": " + (initialScore.HasValue ? initialScore.Value.ToString() : "\"unreachable\"") + ",";
 
             string entryAsJson = entry.ToJSON();
 
             // insert the score string right after the opening bracket of the json
             entryAsJson = entryAsJson.Trim();
-            entryAsJson.Insert(1, scoreString);
+            entryAsJson = entryAsJson.Insert(1, scoreString);
             Console.WriteLine(entryAsJson);
         }
 
