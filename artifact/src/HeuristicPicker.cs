@@ -63,7 +63,7 @@ namespace PetriTool
 
 
         public static Func<Marking, float?> ChooseForwardHeuristic(
-            SearchBenchmarkEntry diagnostics,
+            BenchmarkEntryWithHeuristics diagnostics,
             HeuristicOption heuristicOptions,
             PetriNet net,
             Marking initialMarking,

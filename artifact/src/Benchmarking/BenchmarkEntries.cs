@@ -13,10 +13,22 @@ namespace Benchmark
         public long timeInQuery { get; set; }
         public int numberOfPlaces { get; set; }
         public int numberOfTransitions { get; set; }
-
     }
 
-    public class SearchBenchmarkEntry : BenchmarkEntry
+    public class BenchmarkEntryWithHeuristics : BenchmarkEntry
+    {
+
+        public long timeHeuristicInit { get; set; }
+
+        public long timeInHeuristicCalculation { get; set; } = 0;
+
+        public string ToJSON()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+    }
+
+    public class SearchBenchmarkEntry : BenchmarkEntryWithHeuristics
     {
         public long timeTakenPruning { get; set; }
 
@@ -31,10 +43,6 @@ namespace Benchmark
         public int numberOfTransitionsInHeuristicSupport { get; set; }
 
         public long timeInAlgorithm { get; set; }
-
-        public long timeHeuristicInit { get; set; }
-
-        public long timeInHeuristicCalculation { get; set; } = 0;
 
         public string path { get; set; }
 

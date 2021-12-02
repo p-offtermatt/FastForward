@@ -447,18 +447,38 @@ namespace PetriTool
 
         public static void CalculateHeuristicDistance(CalculateHeuristicOptions options)
         {
-            SearchBenchmarkEntry entry = new SearchBenchmarkEntry();
+            BenchmarkEntryWithHeuristics entry = new BenchmarkEntryWithHeuristics();
+            Stopwatch queryWatch = Stopwatch.StartNew();
+
             FullParser parser = ParserPicker.ChooseFullParser(options.netFilePath, options.formulaFilePath);
 
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(options.formulaFilePath);
 
-            Pruning.Prune(entry, ref net, ref initialMarking, ref targetMarkings);
+            entry.numberOfPlaces = net.Places.Count;
+            entry.numberOfTransitions = net.Transitions.Count;
+
+            if (options.prune)
+            {
+                // heuristic benchmark entry does not have fields for pruning, so don't pass it in
+                Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings);
+            }
 
             Func<Marking, float?> heuristic = HeuristicPicker.ChooseForwardHeuristic(entry, options, net, initialMarking, targetMarkings);
 
+            Stopwatch watch = Stopwatch.StartNew();
             var initialScore = heuristic(initialMarking);
-            Console.WriteLine("{ \"heuristic\": " + (initialScore.HasValue ? initialScore.Value.ToString() : "\"unreachable\"") + "}");
+            entry.timeInHeuristicCalculation = watch.ElapsedMilliseconds;
+            entry.timeInQuery = queryWatch.ElapsedMilliseconds;
+
+            string scoreString = "\"heuristic\": " + (initialScore.HasValue ? initialScore.Value.ToString() : "\"unreachable\"");
+
+            string entryAsJson = entry.ToJSON();
+
+            // insert the score string right after the opening bracket of the json
+            entryAsJson = entryAsJson.Trim();
+            entryAsJson.Insert(1, scoreString);
+            Console.WriteLine(entryAsJson);
         }
 
 
