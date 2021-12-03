@@ -1,0 +1,36 @@
+PLACE
+alpha,fork_dot_s00001298_dot_activated_dot_s00001075,fork_dot_s00001298_dot_activated_dot_s00001081,join_dot_s00001163_dot_activated_dot_s00001062,join_dot_s00001163_dot_activated_dot_s00001064,join_dot_s00001163_dot_activated_dot_s00001065,join_dot_s00001163_dot_activated_dot_s00001067,merge_dot_s00001061_dot_activated,o_star,process_dot_s00000575##s00003884_dot_input_dot_s00001052;
+
+MARKING
+alpha: 1, fork_dot_s00001298_dot_activated_dot_s00001075: 0, fork_dot_s00001298_dot_activated_dot_s00001081: 0, join_dot_s00001163_dot_activated_dot_s00001062: 0, join_dot_s00001163_dot_activated_dot_s00001064: 0, join_dot_s00001163_dot_activated_dot_s00001065: 0, join_dot_s00001163_dot_activated_dot_s00001067: 0, merge_dot_s00001061_dot_activated: 0, o_star: 0, process_dot_s00000575##s00003884_dot_input_dot_s00001052: 0;
+
+TRANSITION join_dot_s00001163_dot_activate_dot_s00001062
+CONSUME fork_dot_s00001298_dot_activated_dot_s00001081: 1;
+PRODUCE join_dot_s00001163_dot_activated_dot_s00001062: 1, merge_dot_s00001061_dot_activated: 1;
+
+
+
+TRANSITION join_dot_s00001163_dot_activate_dot_s00001064
+CONSUME alpha: 1;
+PRODUCE join_dot_s00001163_dot_activated_dot_s00001064: 1, merge_dot_s00001061_dot_activated: 1, fork_dot_s00001298_dot_activated_dot_s00001075: 1, fork_dot_s00001298_dot_activated_dot_s00001081: 1, process_dot_s00000575##s00003884_dot_input_dot_s00001052: 1;
+
+
+
+TRANSITION join_dot_s00001163_dot_activate_dot_s00001065
+CONSUME fork_dot_s00001298_dot_activated_dot_s00001075: 1;
+PRODUCE join_dot_s00001163_dot_activated_dot_s00001065: 1, merge_dot_s00001061_dot_activated: 1;
+
+
+
+TRANSITION join_dot_s00001163_dot_activate_dot_s00001067
+CONSUME process_dot_s00000575##s00003884_dot_input_dot_s00001052: 1;
+PRODUCE join_dot_s00001163_dot_activated_dot_s00001067: 1, merge_dot_s00001061_dot_activated: 1;
+
+
+
+TRANSITION t_star
+CONSUME join_dot_s00001163_dot_activated_dot_s00001065: 1, join_dot_s00001163_dot_activated_dot_s00001067: 1, merge_dot_s00001061_dot_activated: 1, join_dot_s00001163_dot_activated_dot_s00001062: 1, join_dot_s00001163_dot_activated_dot_s00001064: 1;
+PRODUCE o_star: 1;
+
+
+

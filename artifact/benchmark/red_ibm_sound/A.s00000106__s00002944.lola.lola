@@ -1,0 +1,42 @@
+PLACE
+alpha,callToProcess_dot_s00001374_dot_output_dot_s00000713,callToTask_dot_s00001094_dot_output_dot_s00001082,endNode_dot_s00000851_dot_input_dot_default,fork_dot_s00000981_dot_activated_dot_s00000715,merge_dot_s00000742_dot_activated,merge_dot_s00000856_dot_activated,o_star;
+
+MARKING
+alpha: 1, callToProcess_dot_s00001374_dot_output_dot_s00000713: 0, callToTask_dot_s00001094_dot_output_dot_s00001082: 0, endNode_dot_s00000851_dot_input_dot_default: 0, fork_dot_s00000981_dot_activated_dot_s00000715: 0, merge_dot_s00000742_dot_activated: 0, merge_dot_s00000856_dot_activated: 0, o_star: 0;
+
+TRANSITION callToTask_dot_s00001094_dot_outputCriterion_dot_s00000704
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00001094_dot_output_dot_s00001082: 1, endNode_dot_s00000851_dot_input_dot_default: 1, fork_dot_s00000981_dot_activated_dot_s00000715: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000731
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, callToProcess_dot_s00001374_dot_output_dot_s00000713: 1, endNode_dot_s00000851_dot_input_dot_default: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000733
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, endNode_dot_s00000851_dot_input_dot_default: 1, fork_dot_s00000981_dot_activated_dot_s00000715: 1;
+
+
+
+TRANSITION merge_dot_s00000856_dot_activate_dot_s00000731
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000856_dot_activated: 1, endNode_dot_s00000851_dot_input_dot_default: 1, merge_dot_s00000742_dot_activated: 1, fork_dot_s00000981_dot_activated_dot_s00000715: 1;
+
+
+
+TRANSITION merge_dot_s00000856_dot_activate_dot_s00000733
+CONSUME fork_dot_s00000981_dot_activated_dot_s00000715: 1;
+PRODUCE merge_dot_s00000856_dot_activated: 1, callToProcess_dot_s00001374_dot_output_dot_s00000713: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToTask_dot_s00001094_dot_output_dot_s00001082: 1, merge_dot_s00000742_dot_activated: 1, merge_dot_s00000856_dot_activated: 1, callToProcess_dot_s00001374_dot_output_dot_s00000713: 1, endNode_dot_s00000851_dot_input_dot_default: 1;
+PRODUCE o_star: 1;
+
+
+

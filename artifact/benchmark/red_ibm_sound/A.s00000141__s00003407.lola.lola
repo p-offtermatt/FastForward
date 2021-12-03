@@ -1,0 +1,36 @@
+PLACE
+alpha,endNode_dot_s00000850_dot_input_dot_default,merge_dot_s00000742_dot_activated,merge_dot_s00000856_dot_activated,o_star,process_dot_s00000141##s00003407_dot_output_dot_s00002498;
+
+MARKING
+alpha: 1, endNode_dot_s00000850_dot_input_dot_default: 0, merge_dot_s00000742_dot_activated: 0, merge_dot_s00000856_dot_activated: 0, o_star: 0, process_dot_s00000141##s00003407_dot_output_dot_s00002498: 0;
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000731
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, endNode_dot_s00000850_dot_input_dot_default: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000733
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, merge_dot_s00000856_dot_activated: 1, endNode_dot_s00000850_dot_input_dot_default: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000735
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, endNode_dot_s00000850_dot_input_dot_default: 1, process_dot_s00000141##s00003407_dot_output_dot_s00002498: 1;
+
+
+
+TRANSITION merge_dot_s00000856_dot_activate_dot_s00000733
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000856_dot_activated: 1, endNode_dot_s00000850_dot_input_dot_default: 1;
+
+
+
+TRANSITION t_star
+CONSUME merge_dot_s00000742_dot_activated: 1, merge_dot_s00000856_dot_activated: 1, process_dot_s00000141##s00003407_dot_output_dot_s00002498: 1, endNode_dot_s00000850_dot_input_dot_default: 1;
+PRODUCE o_star: 1;
+
+
+

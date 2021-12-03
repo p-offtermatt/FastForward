@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="16-unsound2-checkpnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>16-unsound2-checkpnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="auxi">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="i">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="a">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="b">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="c">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="f">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="auxf">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="auxInit">
+        <name>
+          <text>auxInit</text>
+        </name>
+      </transition>
+      <transition id="t1">
+        <name>
+          <text>t1</text>
+        </name>
+      </transition>
+      <transition id="t2">
+        <name>
+          <text>t2</text>
+        </name>
+      </transition>
+      <transition id="t3">
+        <name>
+          <text>t3</text>
+        </name>
+      </transition>
+      <transition id="t4">
+        <name>
+          <text>t4</text>
+        </name>
+      </transition>
+      <transition id="auxFinal">
+        <name>
+          <text>auxFinal</text>
+        </name>
+      </transition>
+      <arc id="auxi_to_auxInit" source="auxi" target="auxInit">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="auxInit_to_i" source="auxInit" target="i">
+        <inscription>
+          <text>2</text>
+        </inscription>
+      </arc>
+      <arc id="i_to_t1" source="i" target="t1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t1_to_a" source="t1" target="a">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t1_to_b" source="t1" target="b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="b_to_t2" source="b" target="t2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t2_to_a" source="t2" target="a">
+        <inscription>
+          <text>16</text>
+        </inscription>
+      </arc>
+      <arc id="a_to_t3" source="a" target="t3">
+        <inscription>
+          <text>16</text>
+        </inscription>
+      </arc>
+      <arc id="t3_to_c" source="t3" target="c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a_to_t4" source="a" target="t4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="c_to_t4" source="c" target="t4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t4_to_f" source="t4" target="f">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="f_to_auxFinal" source="f" target="auxFinal">
+        <inscription>
+          <text>2</text>
+        </inscription>
+      </arc>
+      <arc id="auxFinal_to_auxf" source="auxFinal" target="auxf">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

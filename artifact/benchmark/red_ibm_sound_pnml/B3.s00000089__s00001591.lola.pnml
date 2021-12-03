@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B3s00000089s00001591lolapnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B3s00000089s00001591lolapnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00001545_dot_input_dot_s00001066">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="endNode_dot_s00001060_dot_input_dot_default">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000089##s00001591_dot_input_dot_s00001109">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055">
+        <name>
+          <text>callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055</text>
+        </name>
+      </transition>
+      <transition id="decision_dot_s00001123_dot_fire_dot_s00001073">
+        <name>
+          <text>decision_dot_s00001123_dot_fire_dot_s00001073</text>
+        </name>
+      </transition>
+      <transition id="decision_dot_s00001123_dot_fire_dot_s00001078">
+        <name>
+          <text>decision_dot_s00001123_dot_fire_dot_s00001078</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="callToTask_dot_s00001545_dot_input_dot_s00001066_to_callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055" source="callToTask_dot_s00001545_dot_input_dot_s00001066" target="callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000089##s00001591_dot_input_dot_s00001109_to_callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055" source="process_dot_s00000089##s00001591_dot_input_dot_s00001109" target="callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055_to_process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega" source="callToTask_dot_s00001547_dot_outputCriterion_dot_s00001055" target="process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00001123_dot_fire_dot_s00001073" source="alpha" target="decision_dot_s00001123_dot_fire_dot_s00001073">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001073_to_callToTask_dot_s00001545_dot_input_dot_s00001066" source="decision_dot_s00001123_dot_fire_dot_s00001073" target="callToTask_dot_s00001545_dot_input_dot_s00001066">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001073_to_process_dot_s00000089##s00001591_dot_input_dot_s00001109" source="decision_dot_s00001123_dot_fire_dot_s00001073" target="process_dot_s00000089##s00001591_dot_input_dot_s00001109">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001073_to_endNode_dot_s00001060_dot_input_dot_default" source="decision_dot_s00001123_dot_fire_dot_s00001073" target="endNode_dot_s00001060_dot_input_dot_default">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00001123_dot_fire_dot_s00001078" source="alpha" target="decision_dot_s00001123_dot_fire_dot_s00001078">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001078_to_endNode_dot_s00001060_dot_input_dot_default" source="decision_dot_s00001123_dot_fire_dot_s00001078" target="endNode_dot_s00001060_dot_input_dot_default">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001078_to_process_dot_s00000089##s00001591_dot_input_dot_s00001109" source="decision_dot_s00001123_dot_fire_dot_s00001078" target="process_dot_s00000089##s00001591_dot_input_dot_s00001109">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00001123_dot_fire_dot_s00001078_to_process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega" source="decision_dot_s00001123_dot_fire_dot_s00001078" target="process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="endNode_dot_s00001060_dot_input_dot_default_to_t_star" source="endNode_dot_s00001060_dot_input_dot_default" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega_to_t_star" source="process_dot_s00000089##s00001591_dot_outputCriterion_dot_s00001055_omega" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

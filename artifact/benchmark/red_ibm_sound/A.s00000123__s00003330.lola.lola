@@ -1,0 +1,48 @@
+PLACE
+alpha,callToProcess_dot_s00000863_dot_output_dot_s00000754,callToTask_dot_s00003334_dot_output_dot_s00001673,callToTask_dot_s00003336_dot_output_dot_s00001185,merge_dot_s00000730_dot_activated,merge_dot_s00000742_dot_activated,merge_dot_s00000856_dot_activated,o_star;
+
+MARKING
+alpha: 1, callToProcess_dot_s00000863_dot_output_dot_s00000754: 0, callToTask_dot_s00003334_dot_output_dot_s00001673: 0, callToTask_dot_s00003336_dot_output_dot_s00001185: 0, merge_dot_s00000730_dot_activated: 0, merge_dot_s00000742_dot_activated: 0, merge_dot_s00000856_dot_activated: 0, o_star: 0;
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000731
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000730_dot_activated: 1;
+
+
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000733
+CONSUME merge_dot_s00000742_dot_activated: 1;
+PRODUCE merge_dot_s00000730_dot_activated: 1, callToTask_dot_s00003334_dot_output_dot_s00001673: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000731
+CONSUME merge_dot_s00000730_dot_activated: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000733
+CONSUME merge_dot_s00000730_dot_activated: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, callToProcess_dot_s00000863_dot_output_dot_s00000754: 1;
+
+
+
+TRANSITION merge_dot_s00000856_dot_activate_dot_s00000731
+CONSUME merge_dot_s00000742_dot_activated: 1;
+PRODUCE merge_dot_s00000856_dot_activated: 1, callToTask_dot_s00003336_dot_output_dot_s00001185: 1, callToTask_dot_s00003334_dot_output_dot_s00001673: 1;
+
+
+
+TRANSITION merge_dot_s00000856_dot_activate_dot_s00000733
+CONSUME merge_dot_s00000742_dot_activated: 1;
+PRODUCE merge_dot_s00000856_dot_activated: 1, callToTask_dot_s00003334_dot_output_dot_s00001673: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToProcess_dot_s00000863_dot_output_dot_s00000754: 1, callToTask_dot_s00003334_dot_output_dot_s00001673: 1, callToTask_dot_s00003336_dot_output_dot_s00001185: 1, merge_dot_s00000856_dot_activated: 1;
+PRODUCE o_star: 1;
+
+
+

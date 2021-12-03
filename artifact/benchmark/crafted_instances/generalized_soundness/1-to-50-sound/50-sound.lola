@@ -1,0 +1,29 @@
+PLACE
+auxi,i,a,b,c,f,auxf;
+
+MARKING
+auxi: 1;
+
+TRANSITION auxInit
+CONSUME axui: 1;
+PRODUCE i: 50;
+
+TRANSITION t1
+CONSUME i: 1;
+PRODUCE a: 1, b: 1;
+
+TRANSITION t2
+CONSUME b: 1;
+PRODUCE a: 50;
+
+TRANSITION t3
+CONSUME a: 50;
+PRODUCE c: 1;
+
+TRANSITION t4
+CONSUME a: 1, c: 1;
+PRODUCE f: 1;
+
+TRANSITION auxFinal
+CONSUME f: 50
+PRODUCE auxf: 1;

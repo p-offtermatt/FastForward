@@ -1,0 +1,42 @@
+PLACE
+alpha,callToTask_dot_s00000887_dot_output_dot_s00000867,callToTask_dot_s00000889_dot_input_dot_s00000709,endNode_dot_s00000706_dot_input_dot_default,merge_dot_s00000742_dot_activated,o_star,process_dot_s00000023##s00000863_dot_input_dot_s00000865,process_dot_s00000023##s00000863_dot_output_dot_s00000754;
+
+MARKING
+alpha: 1, callToTask_dot_s00000887_dot_output_dot_s00000867: 0, callToTask_dot_s00000889_dot_input_dot_s00000709: 0, endNode_dot_s00000706_dot_input_dot_default: 0, merge_dot_s00000742_dot_activated: 0, o_star: 0, process_dot_s00000023##s00000863_dot_input_dot_s00000865: 0, process_dot_s00000023##s00000863_dot_output_dot_s00000754: 0;
+
+TRANSITION callToTask_dot_s00000887_dot_outputCriterion_dot_s00000859
+CONSUME merge_dot_s00000742_dot_activated: 1;
+PRODUCE callToTask_dot_s00000887_dot_output_dot_s00000867: 1, endNode_dot_s00000706_dot_input_dot_default: 1;
+
+
+
+TRANSITION decision_dot_s00000874_dot_fire_dot_s00000715
+CONSUME merge_dot_s00000742_dot_activated: 1;
+PRODUCE endNode_dot_s00000706_dot_input_dot_default: 1, process_dot_s00000023##s00000863_dot_output_dot_s00000754: 1;
+
+
+
+TRANSITION decision_dot_s00000876_dot_fire_dot_s00000724
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00000889_dot_input_dot_s00000709: 1, process_dot_s00000023##s00000863_dot_input_dot_s00000865: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000733
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1, process_dot_s00000023##s00000863_dot_input_dot_s00000865: 1;
+
+
+
+TRANSITION merge_dot_s00000742_dot_activate_dot_s00000735
+CONSUME callToTask_dot_s00000889_dot_input_dot_s00000709: 1, process_dot_s00000023##s00000863_dot_input_dot_s00000865: 1;
+PRODUCE merge_dot_s00000742_dot_activated: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToTask_dot_s00000887_dot_output_dot_s00000867: 1, process_dot_s00000023##s00000863_dot_output_dot_s00000754: 1, endNode_dot_s00000706_dot_input_dot_default: 1;
+PRODUCE o_star: 1;
+
+
+

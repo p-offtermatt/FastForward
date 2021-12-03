@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="As00000029s00001135lolapnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>As00000029s00001135lolapnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00000887_dot_output_dot_s00000849">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00001140_dot_output_dot_s00000713">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="fork_dot_s00000981_dot_activated_dot_s00000715">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="merge_dot_s00000742_dot_activated">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="merge_dot_s00000742_dot_activate_dot_s00000731">
+        <name>
+          <text>merge_dot_s00000742_dot_activate_dot_s00000731</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00000742_dot_activate_dot_s00000733">
+        <name>
+          <text>merge_dot_s00000742_dot_activate_dot_s00000733</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="alpha_to_merge_dot_s00000742_dot_activate_dot_s00000731" source="alpha" target="merge_dot_s00000742_dot_activate_dot_s00000731">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activate_dot_s00000731_to_merge_dot_s00000742_dot_activated" source="merge_dot_s00000742_dot_activate_dot_s00000731" target="merge_dot_s00000742_dot_activated">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activate_dot_s00000731_to_callToTask_dot_s00001140_dot_output_dot_s00000713" source="merge_dot_s00000742_dot_activate_dot_s00000731" target="callToTask_dot_s00001140_dot_output_dot_s00000713">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activate_dot_s00000731_to_fork_dot_s00000981_dot_activated_dot_s00000715" source="merge_dot_s00000742_dot_activate_dot_s00000731" target="fork_dot_s00000981_dot_activated_dot_s00000715">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00000981_dot_activated_dot_s00000715_to_merge_dot_s00000742_dot_activate_dot_s00000733" source="fork_dot_s00000981_dot_activated_dot_s00000715" target="merge_dot_s00000742_dot_activate_dot_s00000733">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activate_dot_s00000733_to_merge_dot_s00000742_dot_activated" source="merge_dot_s00000742_dot_activate_dot_s00000733" target="merge_dot_s00000742_dot_activated">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activate_dot_s00000733_to_callToTask_dot_s00000887_dot_output_dot_s00000849" source="merge_dot_s00000742_dot_activate_dot_s00000733" target="callToTask_dot_s00000887_dot_output_dot_s00000849">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00000887_dot_output_dot_s00000849_to_t_star" source="callToTask_dot_s00000887_dot_output_dot_s00000849" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000742_dot_activated_to_t_star" source="merge_dot_s00000742_dot_activated" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00001140_dot_output_dot_s00000713_to_t_star" source="callToTask_dot_s00001140_dot_output_dot_s00000713" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

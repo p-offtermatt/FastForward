@@ -1,0 +1,24 @@
+PLACE
+alpha,fork_dot_s00001054_dot_activated_dot_s00000787,join_dot_s00000879_dot_input_dot_s00000819,merge_dot_s00000815_dot_activated,o_star;
+
+MARKING
+alpha: 1, fork_dot_s00001054_dot_activated_dot_s00000787: 0, join_dot_s00000879_dot_input_dot_s00000819: 0, merge_dot_s00000815_dot_activated: 0, o_star: 0;
+
+TRANSITION merge_dot_s00000815_dot_activate_dot_s00000816
+CONSUME merge_dot_s00000815_dot_activated: 1;
+PRODUCE merge_dot_s00000815_dot_activated: 1, fork_dot_s00001054_dot_activated_dot_s00000787: 1;
+
+
+
+TRANSITION merge_dot_s00000815_dot_activate_dot_s00000817
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000815_dot_activated: 1, join_dot_s00000879_dot_input_dot_s00000819: 1;
+
+
+
+TRANSITION t_star
+CONSUME fork_dot_s00001054_dot_activated_dot_s00000787: 1, join_dot_s00000879_dot_input_dot_s00000819: 1;
+PRODUCE o_star: 1;
+
+
+
