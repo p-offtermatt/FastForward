@@ -1,5 +1,6 @@
 import argparse
 import os
+import twopower as tp
 
 
 NET_TEMPLATE = r"""
@@ -40,26 +41,6 @@ CONSUME l{FINAL_LEVEL}: 1, r{FINAL_LEVEL}: 1;
 PRODUCE f: {SOUND_NUM};
 """
 
-LEVEL_PLACES_TEMPLATE=r"r{LEVEL},l{LEVEL},"
-
-LEVEL_TEMPLATE = r"""
-TRANSITION t{LEVEL}l
-CONSUME l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-PRODUCE l{LEVEL}: 1;
-
-TRANSITION b{LEVEL}l
-CONSUME l{LEVEL}: 1;
-PRODUCE l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-
-TRANSITION t{LEVEL}r
-CONSUME l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-PRODUCE r{LEVEL}: 1;
-
-TRANSITION b{LEVEL}r
-CONSUME r{LEVEL}: 1;
-PRODUCE l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-"""
-
 FORMULA_TEMPLATE = r"""
 AGEF (f = 1)
 """
@@ -74,16 +55,10 @@ def GetNetAndFormulaForInstance(k, c):
     """
 
     # build a net with c levels
-    levels = ""
-    places = ""
-    for i in range(1, c+1):
-        levels += LEVEL_TEMPLATE.replace("{LEVEL}", str(i)).replace("{PREV_LEVEL}", str(i-1))
-        places += LEVEL_PLACES_TEMPLATE.replace("{LEVEL}", str(i))
-        # add linebreaks for better readability
-        levels += "\n\n"
+    levels, places = tp.generate_twopower_levels(c)
     
     net_string = NET_TEMPLATE.replace("{LEVELS}", levels).replace("{LEVEL_PLACES}", places)
-    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(i)).replace("{SOUND_NUM}", str(pow(2, c+1)))
+    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(c+1)).replace("{SOUND_NUM}", str(pow(2, c+1)))
     net_string = net_string.replace("{FINAL_TRANSITION}", final_transition).replace("{CHECK_NUM}", str(k))
 
 
