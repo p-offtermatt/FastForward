@@ -1,21 +1,21 @@
-LEVEL_PLACES_TEMPLATE=r"r{LEVEL},l{LEVEL},"
+LEVEL_PLACES_TEMPLATE=r"rightlevel{LEVEL},leftlevel{LEVEL},"
 
 LEVEL_TEMPLATE = r"""
 TRANSITION t{LEVEL}l
-CONSUME l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-PRODUCE l{LEVEL}: 1;
+CONSUME leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
+PRODUCE leftlevel{LEVEL}: 1;
 
 TRANSITION b{LEVEL}l
-CONSUME l{LEVEL}: 1;
-PRODUCE l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
+CONSUME leftlevel{LEVEL}: 1;
+PRODUCE leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 
 TRANSITION t{LEVEL}r
-CONSUME l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
-PRODUCE r{LEVEL}: 1;
+CONSUME leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
+PRODUCE rightlevel{LEVEL}: 1;
 
 TRANSITION b{LEVEL}r
-CONSUME r{LEVEL}: 1;
-PRODUCE l{PREV_LEVEL}: 1, r{PREV_LEVEL}: 1;
+CONSUME rightlevel{LEVEL}: 1;
+PRODUCE leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 """
 
 def generate_twopower_levels(c):

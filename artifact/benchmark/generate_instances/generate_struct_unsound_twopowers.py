@@ -5,7 +5,7 @@ import twopower as tp
 
 NET_TEMPLATE = r"""
 PLACE
-auxi,i,u,copy,r0,l0,{LEVEL_PLACES}f,auxf;
+auxi,i,u,copy,rightlevel0,leftlevel0,{LEVEL_PLACES}f,auxf;
 
 MARKING
 auxi: 1;
@@ -25,18 +25,18 @@ PRODUCE u: 1, copy: 1;
 
 TRANSITION t0l
 CONSUME u: 1;
-PRODUCE l0: 1;
+PRODUCE leftlevel0: 1;
 
 TRANSITION b0l
-CONSUME l0: 1;
+CONSUME leftlevel0: 1;
 PRODUCE u: 1;
 
 TRANSITION t0r
 CONSUME u: 1;
-PRODUCE r0: 1;
+PRODUCE rightlevel0: 1;
 
 TRANSITION b0r
-CONSUME r0: 1;
+CONSUME rightlevel0: 1;
 PRODUCE u: 1;
 
 
@@ -53,7 +53,7 @@ PRODUCE f: 1, copy: 1;
 
 FINAL_TRANSITION_TEMPLATE = r"""
 TRANSITION tf
-CONSUME copy: 1, l{FINAL_LEVEL}: 1, r{FINAL_LEVEL}: 1;
+CONSUME copy: 1, leftlevel{FINAL_LEVEL}: 1, rightlevel{FINAL_LEVEL}: 1;
 PRODUCE f: 1;
 """
 
