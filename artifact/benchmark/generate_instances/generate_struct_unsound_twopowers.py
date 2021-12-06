@@ -5,7 +5,7 @@ import twopower as tp
 
 NET_TEMPLATE = r"""
 PLACE
-auxi,i,u,copy,r0,l0,{LEVEL_PLACES}f;
+auxi,i,u,copy,r0,l0,{LEVEL_PLACES}f,auxf;
 
 MARKING
 auxi: 1;
@@ -13,6 +13,11 @@ auxi: 1;
 TRANSITION tauxi
 CONSUME auxi: 1;
 PRODUCE i: {CHECK_NUM};
+
+TRANSITION tauxf
+CONSUME f: {CHECK_NUM};
+PRODUCE auxf: 1;
+
 
 TRANSITION tu
 CONSUME i: 1;
@@ -34,15 +39,14 @@ TRANSITION b0r
 CONSUME r0: 1;
 PRODUCE u: 1;
 
+
+{LEVELS}
+
+
 TRANSITION tdec
 CONSUME copy: 2;
 PRODUCE f: 1, copy: 1;
 
-TRANSITION tauxf
-CONSUME f: {CHECK_NUM};
-PRODUCE auxf: 1;
-
-{LEVELS}
 
 {FINAL_TRANSITION}
 """
@@ -54,7 +58,7 @@ PRODUCE f: 1;
 """
 
 FORMULA_TEMPLATE = r"""
-AGEF (f = 1)
+AGEF (auxf = 1)
 """
 
 
@@ -70,7 +74,7 @@ def GetNetAndFormulaForInstance(k, c):
     levels, places = tp.generate_twopower_levels(c)
     
     net_string = NET_TEMPLATE.replace("{LEVELS}", levels).replace("{LEVEL_PLACES}", places)
-    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(c+1)).replace("{SOUND_NUM}", str(pow(2, c+1)))
+    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(c)).replace("{SOUND_NUM}", str(pow(2, c+1)))
     net_string = net_string.replace("{FINAL_TRANSITION}", final_transition).replace("{CHECK_NUM}", str(k))
 
 
@@ -94,7 +98,7 @@ if __name__ == "__main__":
         sound_num = pow(2, c+1)
         for k in range(1, sound_num+1):
             net_string, formula_string = GetNetAndFormulaForInstance(k, c)
-            out_filepath = args.output_dir + "/" + str(pow(2, c+1)) + "-sound_" + str(k) + "-check"
+            out_filepath = args.output_dir + "/" + str(pow(2, c+1)) + "-reach_" + str(k) + "-check"
 
             print("Writing to " + out_filepath)
 

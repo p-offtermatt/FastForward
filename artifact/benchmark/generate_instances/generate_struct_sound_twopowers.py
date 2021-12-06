@@ -58,7 +58,7 @@ def GetNetAndFormulaForInstance(k, c):
     levels, places = tp.generate_twopower_levels(c)
     
     net_string = NET_TEMPLATE.replace("{LEVELS}", levels).replace("{LEVEL_PLACES}", places)
-    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(c+1)).replace("{SOUND_NUM}", str(pow(2, c+1)))
+    final_transition = FINAL_TRANSITION_TEMPLATE.replace("{FINAL_LEVEL}", str(c)).replace("{SOUND_NUM}", str(pow(2, c+1)))
     net_string = net_string.replace("{FINAL_TRANSITION}", final_transition).replace("{CHECK_NUM}", str(k))
 
 
