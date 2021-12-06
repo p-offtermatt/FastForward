@@ -58,7 +58,7 @@ namespace Benchmark
 
         public long timeForFormulaParsing { get; set; }
 
-        public string ToJSON()
+        public new string ToJSON()
         {
 #if COMP
             return "{\"path\": \""+ this.path +"\"}";
