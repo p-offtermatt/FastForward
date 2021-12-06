@@ -631,6 +631,7 @@ namespace Petri
                     Z3Heuristics.GenerateMarkingConstraint(ctx, net, initialMarking);
                 BoolExpr finalMarkingConstraint =
                     Z3Heuristics.GenerateFinalMarkingConstraint(ctx, targetMarkings);
+
                 BoolExpr markingEQConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx, net, timesFiredVarsAreInt: doMarkingEQOverN);
 
                 BoolExpr constraintsAnd =

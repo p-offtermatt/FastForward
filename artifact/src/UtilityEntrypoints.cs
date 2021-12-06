@@ -62,6 +62,7 @@ namespace PetriTool
             FullParser parser = ParserPicker.ChooseFullParser(options.netFilePath, options.formulaFilePath);
 
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
+
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(options.formulaFilePath);
 
             entry.numberOfPlaces = net.Places.Count;
