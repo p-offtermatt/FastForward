@@ -5,14 +5,23 @@ import twopower as tp
 
 NET_TEMPLATE = r"""
 PLACE
-i,u,rightlevel0,leftlevel0,{LEVEL_PLACES}f;
+auxi,auxf,i,u,rightlevel0,leftlevel0,{LEVEL_PLACES}f;
 
 MARKING
-i: 1;
+auxi: 1;
+
+TRANSITION tauxi
+CONSUME auxi: 1;
+PRODUCE i: {CHECK_NUM};
+
+TRANSITION tauxi
+CONSUME f: {CHECK_NUM};
+PRODUCE auxf: 1;
+
 
 TRANSITION tu
 CONSUME i: 1;
-PRODUCE u: {CHECK_NUM};
+PRODUCE u: 1;
 
 TRANSITION t0l
 CONSUME u: 1;
@@ -42,7 +51,7 @@ PRODUCE f: {SOUND_NUM};
 """
 
 FORMULA_TEMPLATE = r"""
-AGEF (f = 1)
+AGEF (auxf = 1)
 """
 
 
