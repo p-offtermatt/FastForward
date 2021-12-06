@@ -623,7 +623,7 @@ namespace Petri
         }
 
         public static Dictionary<UpdateTransition, float> CalculateParikhImageViaQReachability(PetriNet net,
-            Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
+            Marking initialMarking, List<MarkingWithConstraints> targetMarkings, bool doMarkingEQOverN = false)
         {
             using (Context ctx = new Context())
             {
@@ -631,7 +631,7 @@ namespace Petri
                     Z3Heuristics.GenerateMarkingConstraint(ctx, net, initialMarking);
                 BoolExpr finalMarkingConstraint =
                     Z3Heuristics.GenerateFinalMarkingConstraint(ctx, targetMarkings);
-                BoolExpr markingEQConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx, net);
+                BoolExpr markingEQConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx, net, timesFiredVarsAreInt: doMarkingEQOverN);
 
                 BoolExpr constraintsAnd =
                     ctx.MkAnd(markingEQConstraint, initialMarkingConstraint, finalMarkingConstraint);
@@ -639,16 +639,16 @@ namespace Petri
                 Optimize minimizer = ctx.MkOptimize();
                 minimizer.Add(constraintsAnd);
 
-                minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net));
+                minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net, timesFiredVarsAreInt: doMarkingEQOverN));
                 Status status = minimizer.Check();
 
-                Console.WriteLine(minimizer.ToString());
+                // Console.WriteLine(minimizer.ToString());
 
 
                 if (status == Status.SATISFIABLE)
                 {
                     Model model = minimizer.Model;
-                    return GetParikhImageFromModel(ctx, net, model);
+                    return GetParikhImageFromModel(ctx, net, model, timesFiredVarsAreInt: doMarkingEQOverN);
                 }
                 else
                 {
@@ -1002,13 +1002,21 @@ namespace Petri
             foreach (UpdateTransition transition in net.Transitions)
             {
                 ArithExpr transitionVar = MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt);
-                parikhImage[transition] = ((float)
-                                           ((RatNum)model.Evaluate(
-                                               transitionVar)).Numerator
-                                           .Int /
-                                           (float)((RatNum)model.Evaluate(
-                                               transitionVar)).Denominator
-                                           .Int);
+
+                if (timesFiredVarsAreInt)
+                {
+                    parikhImage[transition] = (float)((IntNum)model.Evaluate(transitionVar)).Int64;
+                }
+                else
+                {
+                    parikhImage[transition] = ((float)
+                                               ((RatNum)model.Evaluate(
+                                                   transitionVar)).Numerator
+                                               .Int /
+                                               (float)((RatNum)model.Evaluate(
+                                                   transitionVar)).Denominator
+                                               .Int);
+                }
             }
             return parikhImage;
         }

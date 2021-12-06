@@ -68,7 +68,7 @@ namespace PetriTool
             entry.numberOfTransitions = net.Transitions.Count;
 
             Stopwatch watch = Stopwatch.StartNew();
-            Dictionary<UpdateTransition, float> parikhImage = Z3Heuristics.CalculateParikhImageViaQReachability(net, initialMarking, targetMarkings);
+            Dictionary<UpdateTransition, float> parikhImage = Z3Heuristics.CalculateParikhImageViaQReachability(net, initialMarking, targetMarkings, doMarkingEQOverN: true);
             entry.timeInHeuristicCalculation = watch.ElapsedMilliseconds;
             entry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
