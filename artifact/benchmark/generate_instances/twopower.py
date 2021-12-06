@@ -1,19 +1,19 @@
 LEVEL_PLACES_TEMPLATE=r"rightlevel{LEVEL},leftlevel{LEVEL},"
 
 LEVEL_TEMPLATE = r"""
-TRANSITION t{LEVEL}l
+TRANSITION twopower_{LEVEL}l
 CONSUME leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 PRODUCE leftlevel{LEVEL}: 1;
 
-TRANSITION b{LEVEL}l
+TRANSITION twopower_back_{LEVEL}l
 CONSUME leftlevel{LEVEL}: 1;
 PRODUCE leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 
-TRANSITION t{LEVEL}r
+TRANSITION twopower_{LEVEL}r
 CONSUME leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 PRODUCE rightlevel{LEVEL}: 1;
 
-TRANSITION b{LEVEL}r
+TRANSITION twopower_back_{LEVEL}r
 CONSUME rightlevel{LEVEL}: 1;
 PRODUCE leftlevel{PREV_LEVEL}: 1, rightlevel{PREV_LEVEL}: 1;
 """
