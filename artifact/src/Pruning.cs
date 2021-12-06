@@ -67,13 +67,6 @@ namespace Petri
             }
         }
 
-        public static Tuple<PetriNet, Marking, List<MarkingWithConstraints>> PruneWithContinuousSupportHeuristic(PetriNet net,
-           Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
-        {
-            HashSet<UpdateTransition> transitionsInContinuousSupport = Z3Heuristics.ComputeContinuousSupport(net, initialMarking, targetMarkings);
-            return ReduceNetByTransitions(net, initialMarking, targetMarkings, transitionsInContinuousSupport);
-        }
-
         public static Tuple<PetriNet, Marking, List<MarkingWithConstraints>> ReduceNetByTransitions(PetriNet net, Marking initialMarking, List<MarkingWithConstraints> targetMarkings, IEnumerable<UpdateTransition> reducedTransitions)
         {
             HashSet<Place> reducedPlaces = new HashSet<Place>();

@@ -61,7 +61,7 @@ namespace Petri
 
         public override string ToString()
         {
-            return "{" + String.Join(", ", Pre) + " --(" + Name + ")--> " + String.Join(", ", Post) + "}";
+            return Name;
         }
 
         public override bool Equals(object obj)

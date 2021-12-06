@@ -8,6 +8,7 @@ using Benchmark;
 using Statistics = MathNet.Numerics.Statistics.Statistics;
 using Utils;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -53,7 +54,7 @@ namespace PetriTool
             Console.WriteLine(entryAsJson);
         }
 
-        public static void CalculateMarkingEquationParikhImage(CalculateHeuristicOptions options)
+        public static void CalculateMarkingEquationParikhImage(CalculateMarkingEquationParikhImageOptions options)
         {
             BenchmarkEntryWithHeuristics entry = new BenchmarkEntryWithHeuristics();
             Stopwatch queryWatch = Stopwatch.StartNew();
@@ -66,26 +67,19 @@ namespace PetriTool
             entry.numberOfPlaces = net.Places.Count;
             entry.numberOfTransitions = net.Transitions.Count;
 
-            if (options.prune)
-            {
-                // heuristic benchmark entry does not have fields for pruning, so don't pass it in
-                Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings);
-            }
-
-            Func<Marking, float?> heuristic = HeuristicPicker.ChooseForwardHeuristic(entry, options, net, initialMarking, targetMarkings);
-
             Stopwatch watch = Stopwatch.StartNew();
-            var initialScore = heuristic(initialMarking);
+            Dictionary<UpdateTransition, float> parikhImage = Z3Heuristics.CalculateParikhImageViaQReachability(net, initialMarking, targetMarkings);
             entry.timeInHeuristicCalculation = watch.ElapsedMilliseconds;
             entry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
-            string scoreString = "\"heuristic\": " + (initialScore.HasValue ? initialScore.Value.ToString() : "\"unreachable\"") + ",";
+
+            string parikhImageString = "\"parikhImage\": " + (parikhImage != null ? JsonConvert.SerializeObject(parikhImage) : "\"unreachable\"") + ",";
 
             string entryAsJson = entry.ToJSON();
 
             // insert the score string right after the opening bracket of the json
             entryAsJson = entryAsJson.Trim();
-            entryAsJson = entryAsJson.Insert(1, scoreString);
+            entryAsJson = entryAsJson.Insert(1, parikhImageString);
             Console.WriteLine(entryAsJson);
         }
 

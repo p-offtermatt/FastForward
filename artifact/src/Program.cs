@@ -63,7 +63,7 @@ namespace PetriTool
             var parser = new CommandLine.Parser(with => with.HelpWriter = null);
 
             var parserResult = parser
-                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions>(args);
+                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, CalculateMarkingEquationParikhImageOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions>(args);
             parserResult.WithParsed<AStarQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<BestFirstQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<WitnessCheckOptions>(UtilityEntrypoints.WitnessCheck)
@@ -71,6 +71,7 @@ namespace PetriTool
                 .WithParsed<CalculateHeuristicOptions>(UtilityEntrypoints.CalculateHeuristicDistance)
                 .WithParsed<CalculateHeuristicSupportOptions>(UtilityEntrypoints.CalculateHeuristicSupport)
                 .WithParsed<ComputeNetStatisticsOptions>(UtilityEntrypoints.ComputeNetStatistics)
+                .WithParsed<CalculateMarkingEquationParikhImageOptions>(UtilityEntrypoints.CalculateMarkingEquationParikhImage)
                 .WithParsed<GenerateInstanceOptions>(UtilityEntrypoints.GenerateInstance)
                 .WithParsed<SaturationSearchOptions>(SearchQueryEntryPoints.SaturationSearch)
                 .WithParsed<WFTransformationOptions>(TransformationEntryPoints.TransformToWFNet)

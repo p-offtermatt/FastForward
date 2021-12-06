@@ -268,6 +268,9 @@ namespace PetriTool
         public string formulaFilePath { get; set; }
     }
 
+    [Verb("calculate-markingeq-parikh", HelpText = "Computes the Parikh image of the marking equation over N for a given net and formula.")]
+    public class CalculateMarkingEquationParikhImageOptions : NetWithFormulaOptions { }
+
     public interface RemoveUncoverableTransitionsOptions
     {
         [Option("remove-uncoverable-transitions", HelpText = "If enabled, performs one coverability check per transition in order to remove transitions that cannot be covered, so cannot be useful.", Required = false, Default = false)]

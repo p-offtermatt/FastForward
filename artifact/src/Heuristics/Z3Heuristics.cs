@@ -381,201 +381,6 @@ namespace Petri
             return QReachabilityHeuristic;
         }
 
-        public static HashSet<UpdateTransition> ComputeContinuousSupport(PetriNet net, Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
-        {
-            HashSet<UpdateTransition> support = targetMarkings.Select(targetMarking => ComputeContinuousSupportForTarget(net, initialMarking, targetMarking)).Aggregate(new HashSet<UpdateTransition>(), (elem, acc) => elem.Union(acc).ToHashSet());
-            return support;
-        }
-
-        private static HashSet<UpdateTransition> ComputeContinuousSupportForTarget(PetriNet net, Marking initialMarking, MarkingWithConstraints targetMarking)
-        {
-            using (Context ctx = new Context(new Dictionary<string, string>
-            {
-                ["timeout"] = Z3Heuristics.z3TimeOut.ToString(),
-            }))
-            {
-                BoolExpr initialMarkingConstraint = Z3Heuristics.GenerateMarkingConstraint(ctx, net, initialMarking, "initialMarking_");
-                BoolExpr finalMarkingConstraint = Z3Heuristics.GenerateUpwardMarkingConstraint(ctx, targetMarking, "finalMarking_");
-
-                BoolExpr qReachableConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx,
-                                                                                             net,
-                                                                                             initialMarkingVariableName: "initialMarking_",
-                                                                                             finalMarkingVariableName: "finalMarking_",
-                                                                                             transitionTimesFiredVariableName: "times_{#1}_fired",
-                                                                                             firingOrderConstraintVariableName: "firing_order");
-
-                BoolExpr parikhImageSupportConstraint = Z3Heuristics.GenerateParikhImageSupportConstraint(ctx,
-                    net,
-                    transitionTimesFiredVariableName: "times_{#1}_fired",
-                    parikhImageSupportVariableName: "support_");
-
-                ArithExpr supportSum = Z3Heuristics.GenerateSupportSumTerm(ctx, net, parikhImageSupportVariableName: "support_");
-
-                Optimize maximizer = ctx.MkOptimize();
-                maximizer.Add(initialMarkingConstraint, finalMarkingConstraint, qReachableConstraint, parikhImageSupportConstraint);
-                maximizer.MkMaximize(supportSum);
-
-                Status status = maximizer.Check();
-
-                Model model = maximizer.Model;
-
-                if (status == Status.SATISFIABLE)
-                {
-                    Dictionary<UpdateTransition, float> parikhImage = GetParikhImageFromModel(ctx, net, model, "times_{#1}_fired");
-                    return parikhImage.Where(kvPair => kvPair.Value > 0).Select(kvPair => kvPair.Key).ToHashSet();
-                }
-                else
-                {
-                    return new HashSet<UpdateTransition>();
-                }
-            }
-
-        }
-
-        private static ArithExpr GenerateSupportSumTerm(Context ctx, PetriNet net, string parikhImageSupportVariableName)
-        {
-            // if there are no transitions, no need to minimize a parikh image
-            if (net.Transitions.Count == 0)
-            {
-                return ctx.MkInt(0);
-            }
-            return ctx.MkAdd(
-                net.Transitions.Select(transition => ctx.MkIntConst(parikhImageSupportVariableName + transition.Name)));
-        }
-
-        private static BoolExpr GenerateParikhImageSupportConstraint(Context ctx,
-                                                                     PetriNet net,
-                                                                     string transitionTimesFiredVariableName,
-                                                                     string parikhImageSupportVariableName)
-        {
-            return ctx.MkAnd(net.Transitions.Cast<UpdateTransition>().Select(transition => GenerateSupportConstraintForTransition(ctx,
-                                                                                                  transition,
-                                                                                                  transitionTimesFiredVariableName,
-                                                                                                  parikhImageSupportVariableName)));
-        }
-
-        private static BoolExpr GenerateSupportConstraintForTransition(Context ctx,
-                                                                       UpdateTransition transition,
-                                                                       string transitionTimesFiredVariableName,
-                                                                       string parikhImageSupportVariableName)
-        {
-            RealExpr transitionCount = ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name));
-            IntExpr supportConst = ctx.MkIntConst(parikhImageSupportVariableName + transition.Name);
-            BoolExpr supportEqualsZero = ctx.MkEq(supportConst, ctx.MkInt(0));
-            BoolExpr supportEqualsOne = ctx.MkEq(supportConst, ctx.MkInt(1));
-
-            BoolExpr transitionCountGreaterZero = ctx.MkGt(transitionCount, ctx.MkInt(0));
-
-            return ctx.MkAnd(ctx.MkImplies(ctx.MkNot(transitionCountGreaterZero), supportEqualsZero),
-                             ctx.MkImplies(transitionCountGreaterZero, supportEqualsOne));
-        }
-
-        /// <summary>
-        /// Initializes an instance of the heuristic function that overapproximates PetriNet reachability via continuous reachability,
-        /// and uses syntactic distance to bound the lower size for solutions that are checked.
-        /// Note: make sure to initialize a new heuristic function when you use a different net.
-        /// This function makes use of caching to reduce the continuous reachability queries.
-        /// </summary>
-        /// <param name="net"></param>
-        /// <param name="targetMarkings"></param>
-        /// <returns></returns>
-        public static Func<Marking, float?> InitializeQReachabilityHeuristicWithSyntacticDistanceBaseline(PetriNet net,
-            List<MarkingWithConstraints> targetMarkings)
-        {
-            using (Context ctx = new Context(new Dictionary<string, string>
-            {
-                ["timeout"] = Z3Heuristics.z3TimeOut.ToString(),
-            }))
-            {
-                BoolExpr finalMarkingConstraint =
-                    Z3Heuristics.GenerateFinalMarkingConstraint(ctx, targetMarkings);
-                BoolExpr qReachableConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx, net);
-
-                Func<Marking, float?> syntacticDistanceHeuristicFunction = StructuralHeuristics.InitializeSyntacticDistanceHeuristic(net, targetMarkings);
-
-                Optimize minimizer = ctx.MkOptimize();
-
-                minimizer.Add(ctx.MkAnd(qReachableConstraint, finalMarkingConstraint));
-                minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net));
-
-
-                Dictionary<Marking, float?> cachedMarkings = new Dictionary<Marking, float?>();
-
-                float? QReachabilityHeuristic(Marking marking)
-                {
-                    if (cachedMarkings.ContainsKey(marking))
-                    {
-                        return cachedMarkings[marking];
-                    }
-                    else
-                    {
-
-                        minimizer.Push();
-
-                        // perform additional syntactic distance check
-                        float? syntacticDistance = syntacticDistanceHeuristicFunction(marking);
-                        if (syntacticDistance == null)
-                        {
-                            return null;
-                        }
-
-                        BoolExpr initialMarkingConstraint =
-                            Z3Heuristics.GenerateMarkingConstraint(ctx, net, marking);
-
-                        // add requirement: path must be at least as long as the syntactic distance underapproximation estimates
-                        BoolExpr lengthConstraint = Z3Heuristics.GenerateMinimalPathLengthConstraint(ctx, net, syntacticDistance.Value);
-
-                        minimizer.Add(initialMarkingConstraint);
-                        minimizer.Add(lengthConstraint);
-
-                        Status status = minimizer.Check();
-
-                        Model model = minimizer.Model;
-
-                        minimizer.Pop();
-                        if (status == Status.SATISFIABLE)
-                        {
-                            Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
-                            foreach (UpdateTransition transition in net.Transitions)
-                            {
-                                RealExpr evaluation =
-                                    (RealExpr)model.Evaluate(ctx.MkRealConst("times_" + transition.Name + "_fired"));
-                                if (evaluation.IsRatNum)
-                                {
-                                    parikhImage[transition] =
-                                        (float)((RatNum)evaluation).Numerator.Int
-                                        / (float)((RatNum)evaluation).Denominator.Int;
-                                }
-                                else
-                                {
-                                    parikhImage[transition] = 0f;
-                                }
-                            }
-
-                            float score =
-                                parikhImage.Aggregate(0f, (accumulator, kvPair) => accumulator + kvPair.Value);
-                            cachedMarkings[marking] = score;
-
-                            return score;
-                        }
-                        else // status == Status.UNSATISFIABLE or status == Status.UNKNOWN
-                        {
-                            cachedMarkings[marking] = null;
-                            return null;
-                        }
-                    }
-                }
-
-                return QReachabilityHeuristic;
-            }
-        }
-
-        private static BoolExpr GenerateMinimalPathLengthConstraint(Context ctx, PetriNet net, float value, string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName)
-        {
-            ArithExpr parikhImageSumTerm = Z3Heuristics.GenerateParikhImageSumTerm(ctx, net, transitionTimesFiredVariableName);
-            return ctx.MkGe(parikhImageSumTerm, ctx.MkInt((int)value));
-        }
-
         public static Func<Marking, float?> InitializeBackwardsHeuristic(PetriNet net, Marking initialMarking, bool QReach = true)
         {
             using (Context ctx = new Context(new Dictionary<string, string>
@@ -761,121 +566,7 @@ namespace Petri
                         minimizer.Pop();
                         if (status == Status.SATISFIABLE)
                         {
-                            Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
-                            foreach (UpdateTransition transition in net.Transitions)
-                            {
-                                RealExpr evaluation =
-                                    (RealExpr)model.Evaluate(ctx.MkRealConst("times_" + transition.Name + "_fired"));
-                                if (evaluation.IsRatNum)
-                                {
-                                    parikhImage[transition] =
-                                        (float)((RatNum)evaluation).Numerator.Int
-                                        / (float)((RatNum)evaluation).Denominator.Int;
-                                }
-                                else
-                                {
-                                    parikhImage[transition] = 0f;
-                                }
-                            }
-
-                            float score =
-                                parikhImage.Aggregate(0f, (accumulator, kvPair) => accumulator + kvPair.Value);
-                            cachedMarkings[marking] = score;
-
-                            return score;
-                        }
-                        else // status == Status.UNSATISFIABLE or status == Status.UNKNOWN
-                        {
-                            cachedMarkings[marking] = null;
-                            return null;
-                        }
-                    }
-                }
-
-                return MarkingEquationHeuristic;
-            }
-        }
-
-        /// <summary>
-        /// Initializes an instance of the heuristic function that overapproximates PetriNet reachability via continuous reachability,
-        /// and uses syntactic distance to bound the lower size for solutions that are checked.
-        /// Note: make sure to initialize a new heuristic function when you use a different net.
-        /// This function makes use of caching to reduce the continuous reachability queries.
-        /// </summary>
-        /// <param name="net"></param>
-        /// <param name="targetMarkings"></param>
-        /// <returns>A function that can be applied to a marking: it returns the sum of the parikh image
-        /// of the shortest firing sequence that reaches a target marking.</returns>
-        public static Func<Marking, float?> InitializeMarkingEquationHeuristicWithSyntacticDistanceBaseline(PetriNet net,
-            List<MarkingWithConstraints> targetMarkings)
-        {
-            using (Context ctx = new Context(new Dictionary<string, string>
-            {
-                ["timeout"] = Z3Heuristics.z3TimeOut.ToString(),
-            }))
-            {
-                Func<Marking, float?> syntacticDistanceHeuristicFunction = StructuralHeuristics.InitializeSyntacticDistanceHeuristic(net, targetMarkings);
-
-                BoolExpr finalMarkingConstraint =
-                    Z3Heuristics.GenerateFinalMarkingConstraint(ctx, targetMarkings);
-                BoolExpr markingEquationConstraint = Z3Heuristics.GenerateMarkingEquationConstraint(ctx, net);
-
-                Optimize minimizer = ctx.MkOptimize();
-
-                minimizer.Add(markingEquationConstraint, finalMarkingConstraint);
-                minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net));
-
-
-                Dictionary<Marking, float?> cachedMarkings = new Dictionary<Marking, float?>();
-
-
-                float? MarkingEquationHeuristic(Marking marking)
-                {
-                    if (cachedMarkings.ContainsKey(marking))
-                    {
-                        return cachedMarkings[marking];
-                    }
-                    else
-                    {
-                        minimizer.Push();
-
-                        float? syntacticDistance = syntacticDistanceHeuristicFunction(marking);
-                        if (syntacticDistance == null)
-                        {
-                            return null;
-                        }
-
-                        BoolExpr initialMarkingConstraint =
-                            Z3Heuristics.GenerateMarkingConstraint(ctx, net, marking);
-
-                        BoolExpr lengthConstraint = Z3Heuristics.GenerateMinimalPathLengthConstraint(ctx, net, syntacticDistance.Value);
-
-                        minimizer.Add(lengthConstraint);
-                        minimizer.Add(initialMarkingConstraint);
-
-                        Status status = minimizer.Check();
-
-                        Model model = minimizer.Model;
-
-                        minimizer.Pop();
-                        if (status == Status.SATISFIABLE)
-                        {
-                            Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
-                            foreach (UpdateTransition transition in net.Transitions)
-                            {
-                                RealExpr evaluation =
-                                    (RealExpr)model.Evaluate(ctx.MkRealConst("times_" + transition.Name + "_fired"));
-                                if (evaluation.IsRatNum)
-                                {
-                                    parikhImage[transition] =
-                                        (float)((RatNum)evaluation).Numerator.Int
-                                        / (float)((RatNum)evaluation).Denominator.Int;
-                                }
-                                else
-                                {
-                                    parikhImage[transition] = 0f;
-                                }
-                            }
+                            Dictionary<UpdateTransition, float> parikhImage = GetParikhImageFromModel(ctx, net, model, defaultTransitionTimesFiredVariableName);
 
                             float score =
                                 parikhImage.Aggregate(0f, (accumulator, kvPair) => accumulator + kvPair.Value);
@@ -909,21 +600,25 @@ namespace Petri
                 BoolExpr constraintsAnd = ctx.MkAnd(initialMarkingConstraint, finalMarkingConstraint,
                     markingEquationConstraint);
 
-                Model model = Z3Utils.Check(ctx, constraintsAnd, Status.SATISFIABLE);
 
-                Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
-                foreach (UpdateTransition transition in net.Transitions)
+
+                Optimize minimizer = ctx.MkOptimize();
+                minimizer.Add(constraintsAnd);
+
+                minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net));
+                Status status = minimizer.Check();
+
+                if (status == Status.SATISFIABLE)
                 {
-                    parikhImage[transition] = ((float)
-                                               ((RatNum)model.Evaluate(
-                                                   ctx.MkRealConst("times_" + transition.Name + "_fired"))).Numerator
-                                               .Int /
-                                               (float)((RatNum)model.Evaluate(
-                                                   ctx.MkRealConst("times_" + transition.Name + "_fired"))).Denominator
-                                               .Int);
-                }
 
-                return parikhImage;
+                    Model model = minimizer.Model;
+
+                    return GetParikhImageFromModel(ctx, net, model);
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -942,26 +637,18 @@ namespace Petri
                     ctx.MkAnd(markingEQConstraint, initialMarkingConstraint, finalMarkingConstraint);
 
                 Optimize minimizer = ctx.MkOptimize();
-
                 minimizer.Add(constraintsAnd);
+
                 minimizer.MkMinimize(GenerateParikhImageSumTerm(ctx, net));
                 Status status = minimizer.Check();
+
+                Console.WriteLine(minimizer.ToString());
+
 
                 if (status == Status.SATISFIABLE)
                 {
                     Model model = minimizer.Model;
-
-                    Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
-                    foreach (UpdateTransition transition in net.Transitions)
-                    {
-                        parikhImage[transition] =
-                            ((float)((RatNum)model.Evaluate(ctx.MkRealConst("times_" + transition.Name + "_fired")))
-                             .Numerator.Int /
-                             ((RatNum)model.Evaluate(ctx.MkRealConst("times_" + transition.Name + "_fired")))
-                             .Denominator.Int);
-                    }
-
-                    return parikhImage;
+                    return GetParikhImageFromModel(ctx, net, model);
                 }
                 else
                 {
@@ -970,12 +657,13 @@ namespace Petri
             }
         }
 
-        public static ArithExpr GenerateParikhImageSumTerm(Context ctx, PetriNet net, string transitionTimesFiredVariableName = "times_{#1}_fired")
+        public static ArithExpr GenerateParikhImageSumTerm(Context ctx, PetriNet net, string transitionTimesFiredVariableName = "times_{#1}_fired",
+        bool timesFiredVarsAreInt = false)
         {
-            return GenerateParikhImageSumTerm(ctx, net.Transitions, transitionTimesFiredVariableName);
+            return GenerateParikhImageSumTerm(ctx, net.Transitions, transitionTimesFiredVariableName, timesFiredVarsAreInt: timesFiredVarsAreInt);
         }
 
-        public static ArithExpr GenerateParikhImageSumTerm(Context ctx, IEnumerable<Transition> transitions, string transitionTimesFiredVariableName = "times_{#1}_fired")
+        public static ArithExpr GenerateParikhImageSumTerm(Context ctx, IEnumerable<Transition> transitions, string transitionTimesFiredVariableName = "times_{#1}_fired", bool timesFiredVarsAreInt = false)
         {
             // if there are no transitions, no need to minimize a parikh image
             if (transitions.Count() == 0)
@@ -983,7 +671,7 @@ namespace Petri
                 return ctx.MkInt(0);
             }
             return ctx.MkAdd(
-                transitions.Select(transition => ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name))));
+                transitions.Select(transition => MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt)));
         }
 
         private static BoolExpr GenerateMarkingEquationConstraint(
@@ -993,13 +681,14 @@ namespace Petri
             string finalMarkingVariableName = defaultFinalMarkingVariableName,
             string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName,
             bool initialMarkingVarIsInt = true,
-            bool finalMarkingVarIsInt = true)
+            bool finalMarkingVarIsInt = true,
+            bool timesFiredVarsAreInt = false)
         {
             List<UpdateTransition> transitions = net.Transitions.Cast<UpdateTransition>().ToList();
 
-            Dictionary<UpdateTransition, RealExpr> transitionExpressions = transitions.ToDictionary(
+            Dictionary<UpdateTransition, ArithExpr> transitionExpressions = transitions.ToDictionary(
                 transition => transition,
-                transition => ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name)));
+                transition => MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt));
 
             // times_t1_fired >= 0 AND times_t2_fired >= 0 AND ...
             BoolExpr eachTransitionTimesFiredGeq0 =
@@ -1010,25 +699,10 @@ namespace Petri
             // ensure that marking equation is satisfied for each place
             foreach (Place p in net.Places)
             {
-                ArithExpr place_initialMarking = null;
-                if (initialMarkingVarIsInt)
-                {
-                    place_initialMarking = ctx.MkIntConst(initialMarkingVariableName + p.Name);
-                }
-                else
-                {
-                    place_initialMarking = ctx.MkRealConst(initialMarkingVariableName + p.Name);
-                }
+                ArithExpr place_initialMarking = MakeVariable(ctx, initialMarkingVariableName + p.Name, initialMarkingVarIsInt);
 
-                ArithExpr place_targetMarking = null;
-                if (finalMarkingVarIsInt)
-                {
-                    place_targetMarking = ctx.MkIntConst(finalMarkingVariableName + p.Name);
-                }
-                else
-                {
-                    place_targetMarking = ctx.MkRealConst(finalMarkingVariableName + p.Name);
-                }
+                ArithExpr place_targetMarking = MakeVariable(ctx, finalMarkingVariableName + p.Name, finalMarkingVarIsInt);
+
                 // finalMarking[p] = initialMarking[p] + times_t1_fired * (t1.post[p] - t1.pre[p]) + times_t2_fired * ...
                 var transitionsWithImpact = transitions.Where(transition =>
                 {
@@ -1047,7 +721,7 @@ namespace Petri
                             int change = transition.Post.GetValueOrDefault(p, 0) -
                                          transition.Pre.GetValueOrDefault(p, 0);
                             ArithExpr transitionTimesFired_times_change = ctx.MkMul(ctx.MkInt(change),
-                                ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name)));
+                                MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt));
                             return transitionTimesFired_times_change;
                         }
                     ));
@@ -1065,6 +739,18 @@ namespace Petri
             BoolExpr allPlacesMarkingEquationSatisfied = ctx.MkAnd(placesMarkingEquationSatisfied);
 
             return ctx.MkAnd(allPlacesMarkingEquationSatisfied, eachTransitionTimesFiredGeq0);
+        }
+
+        private static ArithExpr MakeVariable(Context context, string name, bool isInt)
+        {
+            if (isInt)
+            {
+                return context.MkIntConst(name);
+            }
+            else
+            {
+                return context.MkRealConst(name);
+            }
         }
 
         private static BoolExpr GenerateMarkingConstraint(Context ctx, PetriNet net, Marking marking, string markingVariableName = defaultInitialMarkingVariableName,
@@ -1132,7 +818,8 @@ namespace Petri
             string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName,
             string firingOrderConstraintVariableName = defaultFiringOrderConstraintVariableName,
             bool initialMarkingVarIsInt = true,
-            bool finalMarkingVarIsInt = true
+            bool finalMarkingVarIsInt = true,
+            bool timesFiredVarsAreInt = false
             )
         {
             return ctx.MkAnd(
@@ -1142,12 +829,13 @@ namespace Petri
                                                   finalMarkingVariableName,
                                                   transitionTimesFiredVariableName,
                                                   initialMarkingVarIsInt: initialMarkingVarIsInt,
-                                                  finalMarkingVarIsInt: finalMarkingVarIsInt),
+                                                  finalMarkingVarIsInt: finalMarkingVarIsInt,
+                                                  timesFiredVarsAreInt: timesFiredVarsAreInt),
                 //GenerateFiringSetConstraint(ctx, net, true),
                 GenerateFiringSetConstraint(ctx, net, false, initialMarkingVariableName, finalMarkingVariableName, transitionTimesFiredVariableName, firingOrderConstraintVariableName, initialMarkingVarIsInt: initialMarkingVarIsInt,
-                                                  finalMarkingVarIsInt: finalMarkingVarIsInt),
+                                                  finalMarkingVarIsInt: finalMarkingVarIsInt, timesFiredVarsAreInt: timesFiredVarsAreInt),
                 GenerateFiringSetConstraint(ctx, net, true, initialMarkingVariableName, finalMarkingVariableName, transitionTimesFiredVariableName, firingOrderConstraintVariableName, initialMarkingVarIsInt: initialMarkingVarIsInt,
-                                                  finalMarkingVarIsInt: finalMarkingVarIsInt)
+                                                  finalMarkingVarIsInt: finalMarkingVarIsInt, timesFiredVarsAreInt: timesFiredVarsAreInt)
             );
         }
 
@@ -1161,14 +849,15 @@ namespace Petri
             string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName,
             string firingOrderConstraintVariableName = defaultFiringOrderConstraintVariableName,
             bool initialMarkingVarIsInt = true,
-            bool finalMarkingVarIsInt = true)
+            bool finalMarkingVarIsInt = true,
+            bool timesFiredVarsAreInt = false)
         {
             // firing amounts
             // "times_" + transition.Name + "_fired"
 
             // order z
             // "firing_order_" + transition.Name|place.Name
-            return ctx.MkAnd(GenerateFiringOrderConstraint(ctx, net, forward, initialMarkingVariableName, finalMarkingVariableName, transitionTimesFiredVariableName, firingOrderConstraintVariableName),
+            return ctx.MkAnd(GenerateFiringOrderConstraint(ctx, net, forward, initialMarkingVariableName, finalMarkingVariableName, transitionTimesFiredVariableName, firingOrderConstraintVariableName, timesFiredVarsAreInt: timesFiredVarsAreInt),
                 GeneratePlacesMarkedConstraint(ctx,
                                                net,
                                                forward,
@@ -1177,7 +866,8 @@ namespace Petri
                                                transitionTimesFiredVariableName,
                                                firingOrderConstraintVariableName,
                                                initialMarkingVarIsInt: initialMarkingVarIsInt,
-                                               finalMarkingVarIsInt: finalMarkingVarIsInt)
+                                               finalMarkingVarIsInt: finalMarkingVarIsInt,
+                                               timesFiredVarsAreInt: timesFiredVarsAreInt)
             );
         }
 
@@ -1187,7 +877,8 @@ namespace Petri
             string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName,
             string firingOrderConstraintVariableName = defaultFiringOrderConstraintVariableName,
             bool initialMarkingVarIsInt = true,
-            bool finalMarkingVarIsInt = true
+            bool finalMarkingVarIsInt = true,
+            bool timesFiredVarsAreInt = false
             )
         {
             List<BoolExpr> placesMarkedConditions = new List<BoolExpr>();
@@ -1213,7 +904,7 @@ namespace Petri
                 BoolExpr placeIsMarkedByTransition = ctx.MkOr(
                     (forward ? net.GetPreSet(place) : net.GetPostSet(place)).Select(transition =>
                     {
-                        RealExpr transitionTimesFiredExpr = ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name));
+                        ArithExpr transitionTimesFiredExpr = MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt);
                         BoolExpr transitionTimesFiredGreater0 = ctx.MkGt(transitionTimesFiredExpr, ctx.MkInt(0));
 
                         IntExpr transitionFiringOrderExpr =
@@ -1239,14 +930,15 @@ namespace Petri
             string initialMarkingVariableName = defaultInitialMarkingVariableName,
             string finalMarkingVariableName = defaultFinalMarkingVariableName,
             string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName,
-            string firingOrderConstraintVariableName = defaultFiringOrderConstraintVariableName)
+            string firingOrderConstraintVariableName = defaultFiringOrderConstraintVariableName,
+            bool timesFiredVarsAreInt = false)
         {
             List<BoolExpr> firingOrderConstraints = new List<BoolExpr>();
 
             foreach (UpdateTransition transition in net.Transitions)
             {
                 BoolExpr parikhImageGreaterZero =
-                    ctx.MkGt(ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name)), ctx.MkInt(0));
+                    ctx.MkGt(MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt), ctx.MkInt(0));
 
                 // transition.Pre contains elements of type KeyValuePair<Place, int>
                 BoolExpr firingOrderConstraint = ctx.MkAnd((forward ? transition.Pre : transition.Post).Select(
@@ -1304,17 +996,18 @@ namespace Petri
             return placesToTokenNumbers;
         }
 
-        private static Dictionary<UpdateTransition, float> GetParikhImageFromModel(Context ctx, PetriNet net, Model model, string transitionTimesFiredVariableName)
+        private static Dictionary<UpdateTransition, float> GetParikhImageFromModel(Context ctx, PetriNet net, Model model, string transitionTimesFiredVariableName = defaultTransitionTimesFiredVariableName, bool timesFiredVarsAreInt = false)
         {
             Dictionary<UpdateTransition, float> parikhImage = new Dictionary<UpdateTransition, float>();
             foreach (UpdateTransition transition in net.Transitions)
             {
+                ArithExpr transitionVar = MakeVariable(ctx, transitionTimesFiredVariableName.Replace("{#1}", transition.Name), timesFiredVarsAreInt);
                 parikhImage[transition] = ((float)
                                            ((RatNum)model.Evaluate(
-                                               ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name)))).Numerator
+                                               transitionVar)).Numerator
                                            .Int /
                                            (float)((RatNum)model.Evaluate(
-                                               ctx.MkRealConst(transitionTimesFiredVariableName.Replace("{#1}", transition.Name)))).Denominator
+                                               transitionVar)).Denominator
                                            .Int);
             }
             return parikhImage;
