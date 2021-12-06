@@ -68,7 +68,7 @@ namespace Testing
         {
             NetParser parser = new LolaParser();
             (PetriNet net, Marking initialMarking) = parser.ReadNet(Utils.GetPathForTestfile(net_filepath));
-            PetriNet modifiedNet = UtilityEntrypoints.RemoveUncoverableTransitions(net, initialMarking);
+            PetriNet modifiedNet = TransformationEntryPoints.RemoveUncoverableTransitions(net, initialMarking);
 
             string[] actualRemovedTransitionNames =
                 net.Transitions.Where(transition => !modifiedNet.Transitions.Contains(transition)).Select(transition => transition.Name).ToArray();
@@ -1002,7 +1002,7 @@ namespace Testing
             filename = rgx.Replace(filename, "");
 
             string outputFilepath = "net.pnml";
-            UtilityEntrypoints.WritePNMLToFile(outputFilepath, net, initialMarking);
+            TransformationEntryPoints.WritePNMLToFile(outputFilepath, net, initialMarking);
 
             PNMLParser pnml_parser = new PNMLParser();
             (PetriNet readNet, Marking readInitialMarking) = pnml_parser.ReadNet(outputFilepath);

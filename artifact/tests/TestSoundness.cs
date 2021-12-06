@@ -66,7 +66,7 @@ namespace Testing
 
             Place final = sink.First();
 
-            UtilityEntrypoints.RemoveUncoverableTransitions(net, initialMarking);
+            TransformationEntryPoints.RemoveUncoverableTransitions(net, initialMarking);
             net = net.ShortCircuit(initial, final);
 
 
