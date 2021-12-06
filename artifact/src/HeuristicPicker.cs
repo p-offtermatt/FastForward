@@ -76,11 +76,6 @@ namespace PetriTool
                 "qReachability",
                 "NMarkingEQGurobi",
                 "QMarkingEQGurobi",
-                "syntactic",
-                "markingEqSyntacticBaseline",
-                "qReachabilitySyntacticBaseline",
-                "structuralPerPlace-Q",
-                "structuralPerPlace-N",
                 "euclidean"
             });
             string chosenHeuristic = heuristicOptions.chosenHeuristic.ToLower();
@@ -116,37 +111,6 @@ namespace PetriTool
                     heuristicFunction = GurobiHeuristics.InitializeMarkingEquationHeuristic(
                         net.Places, net.Transitions, targetMarkings, GurobiConsts.Domains.Q
                     );
-#else
-                    Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
-                    System.Environment.Exit(5);
-#endif
-                    break;
-                case ("syntactic"):
-                    heuristicFunction = StructuralHeuristics.InitializeSyntacticDistanceHeuristic(net, targetMarkings);
-                    break;
-                case ("markingeqsyntacticbaseline"):
-                    heuristicFunction = Z3Heuristics.InitializeMarkingEquationHeuristicWithSyntacticDistanceBaseline(net, targetMarkings);
-                    break;
-                case ("qreachabilitysyntacticbaseline"):
-                    heuristicFunction = Z3Heuristics.InitializeQReachabilityHeuristicWithSyntacticDistanceBaseline(net, targetMarkings);
-                    break;
-                case ("structuralperplace-q"):
-#if GUROBI
-                    heuristicFunction = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net,
-                                                                                                              initialMarking,
-                                                                                                              targetMarkings,
-                                                                                                              GurobiConsts.Domains.Q);
-#else
-                    Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
-                    System.Environment.Exit(5);
-#endif
-                    break;
-                case ("structuralperplace-n"):
-#if GUROBI
-                    heuristicFunction = StructuralHeuristics.InitializeStructuralQReachabilityHeuristicGurobi(net,
-                                                                                                              initialMarking,
-                                                                                                              targetMarkings,
-                                                                                                              GurobiConsts.Domains.N);
 #else
                     Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
                     System.Environment.Exit(5);
