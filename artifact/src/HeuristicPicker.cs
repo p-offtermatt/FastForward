@@ -6,7 +6,6 @@ using Petri;
 using System.Linq;
 using System.Diagnostics;
 using Benchmark;
-using HeuristicFrontier;
 using Utils;
 #if GUROBI
 #endif
@@ -15,53 +14,6 @@ namespace PetriTool
 {
     class HeuristicPicker
     {
-        public static HeuristicFrontier<Marking> ChooseHeuristicFrontier(HeuristicOption heuristicOptions, PetriNet net, List<MarkingWithConstraints> targetMarkings)
-        {
-            List<string> availableHeuristics = new List<string>(new string[]
-            {
-                "NMarkingEQGurobi", "QMarkingEQGurobi"
-            });
-            string chosenHeuristic = heuristicOptions.chosenHeuristic.ToLower();
-
-            Stopwatch heuristicInitWatch = Stopwatch.StartNew();
-
-            HeuristicFrontier<Marking> frontier;
-
-            switch (chosenHeuristic)
-            {
-                case ("nmarkingeqgurobi"):
-#if GUROBI
-                    frontier = new GurobiMarkingEquationOverNFrontier(net, targetMarkings);
-                    return frontier;
-#else
-                    Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
-                    System.Environment.Exit(5);
-                    break;
-#endif
-                case ("qmarkingeqgurobi"):
-#if GUROBI
-                    frontier = new GurobiMarkingEquationOverQFrontier(net, targetMarkings);
-                    return frontier;
-#else
-                    Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
-                    System.Environment.Exit(5);
-                    break;
-#endif
-                case ("list-heuristics"):
-                    Console.WriteLine("Available heuristics for unity-frontier are:");
-                    Console.WriteLine(String.Join(" ", availableHeuristics));
-                    Console.WriteLine();
-                    System.Environment.Exit(1);
-                    break;
-                default:
-                    Console.WriteLine("Could not resolve heuristic function " + chosenHeuristic);
-                    goto case "list-heuristics";
-            }
-
-            throw new Exception("Error: could not resolve the heuristic function (or lack thereof)");
-        }
-
-
         public static Func<Marking, float?> ChooseForwardHeuristic(
             BenchmarkEntryWithHeuristics diagnostics,
             HeuristicOption heuristicOptions,

@@ -9,7 +9,6 @@ using SearchAlgorithms;
 using System.IO;
 using MathNet.Numerics.Statistics;
 using CommandLine.Text;
-using HeuristicFrontier;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif

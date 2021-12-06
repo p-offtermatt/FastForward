@@ -6,7 +6,6 @@ using Benchmark;
 using BoolForms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using HeuristicFrontier;
 
 namespace Petri
 {
@@ -263,32 +262,6 @@ namespace Petri
             IEnumerable<Transition> actions = net.GetTransitions();
             (_, List<Transition> shortestPath) = AStarAlgorithm.FindShortestPath(initialMarking, targetEvaluationFunction,
                 actions, PetriNetUtils.BestFirstSuccessorFunction, heuristic, reachabilityCheck, diagnostics);
-            return shortestPath;
-        }
-
-        public static List<Transition> UnityFrontierSearch(PetriNet net, Marking initialMarking,
-            List<MarkingWithConstraints> targetMarkings, HeuristicFrontier<Marking> frontier,
-            Func<Marking, Transition, Tuple<Marking, float>[]> successorFunction,
-            SearchBenchmarkEntry diagnostics = null)
-        {
-            // if there are no target markings, we can return null before even trying A*
-            if (targetMarkings.Count == 0)
-            {
-                return null;
-            }
-
-            Func<Marking, bool> targetEvaluationFunction =
-                marking => targetMarkings.Any(x => x.SatisfiedByMarking(marking));
-
-            // if there are no transitions, we just evaluate if initial marking satisfies a target
-            if (net.Transitions.Count == 0)
-            {
-                return targetEvaluationFunction(initialMarking) ? new List<Transition>() : null;
-            }
-
-            IEnumerable<Transition> actions = net.GetTransitions();
-            (_, List<Transition> shortestPath) = UnityFrontierSearchWrapper.FindShortestPath(initialMarking,
-            targetEvaluationFunction, actions, successorFunction, frontier, diagnostics, false);
             return shortestPath;
         }
 
