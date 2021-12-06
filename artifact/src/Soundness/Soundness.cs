@@ -71,7 +71,7 @@ namespace Soundness
 
                 if (!expressible)
                 {
-                    (bool isCoverable, IEnumerable<Transition> usedTransitions) = UtilityEntrypoints.CheckTransitionCoverable(net, initialMarking, transitionToCheck);
+                    (bool isCoverable, IEnumerable<Transition> usedTransitions) = PetriNetUtils.CheckTransitionCoverable(net, initialMarking, transitionToCheck);
                     if (isCoverable)
                     {
                         return (false, transitionToCheck);

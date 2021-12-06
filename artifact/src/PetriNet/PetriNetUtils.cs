@@ -6,6 +6,7 @@ using Benchmark;
 using BoolForms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Utils;
 
 namespace Petri
 {
@@ -347,6 +348,29 @@ namespace Petri
                 indicatorPlaces.Add(indicatorPlace);
             }
             return new Tuple<PetriNet, IEnumerable<Place>>(cycleNet, indicatorPlaces);
+        }
+
+        public static (bool isCoverable, IEnumerable<Transition> usedTransitions) CheckTransitionCoverable(PetriNet net, Marking initialMarking, UpdateTransition transitionToCheck)
+        {
+            MarkingWithConstraints targetMarking = new MarkingWithConstraints(new Marking(), new Constraints());
+            foreach (Place place in net.Places)
+            {
+                targetMarking.Marking[place] = transitionToCheck.Pre.GetValueOrDefault(place, 0);
+            }
+
+            var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
+                net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
+
+            List<Transition> path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarking, heuristic);
+
+            if (path == null)
+            {
+                return (false, null);
+            }
+            else
+            {
+                return (true, path);
+            }
         }
 
         /// <summary>
