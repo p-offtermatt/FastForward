@@ -82,6 +82,11 @@ namespace PetriTool
         }
     }
 
+    public class NetWithFormulaOptions : NetFilepathOption, FormuleFilepathOptions
+    {
+        public string formulaFilePath { get; set; }
+    }
+
     /// <summary>
     /// Governs the translation to a workflow net. Depending on the option chosen,
     /// the formula and/or the net may be modified.
@@ -130,9 +135,9 @@ namespace PetriTool
     }
 
     [Verb("add-indicator-places", HelpText = "Add indicator places that ensure each token from the input is used.")]
-    public class AddIndicatorPlacesOptions : NetFilepathOption, FormuleFilepathOptions
+    public class AddIndicatorPlacesOptions : NetWithFormulaOptions
     {
-        public string formulaFilePath { get; set; }
+
 
         [Value(2, MetaName = "output-dir", HelpText = "The directory to write the result files to.",
            Required = true)]
@@ -140,9 +145,9 @@ namespace PetriTool
     }
 
     [Verb("remove-place", HelpText = "Remove a place from the net and rewrite it to a different file.")]
-    public class RemovePlaceOptions : NetFilepathOption, FormuleFilepathOptions
+    public class RemovePlaceOptions : NetWithFormulaOptions
     {
-        public string formulaFilePath { get; set; }
+
 
         [Value(2, MetaName = "output-dir", HelpText = "The directory to write the result files to.",
            Required = true)]
@@ -154,17 +159,17 @@ namespace PetriTool
     }
 
     [Verb("calculate-heuristic", HelpText = "Calculates the heuristic value for a given Petri net, initial marking and final markings.")]
-    public class CalculateHeuristicOptions : NetFilepathOption, FormuleFilepathOptions, HeuristicOption, PruningOptions
+    public class CalculateHeuristicOptions : NetWithFormulaOptions, HeuristicOption, PruningOptions
     {
         public string chosenHeuristic { get; set; }
-        public string formulaFilePath { get; set; }
+
         public bool prune { get; set; }
     }
 
     [Verb("calculate-support", HelpText = "Calculates the heuristic support for a given Petri net, initial marking and final markings.")]
-    public class CalculateHeuristicSupportOptions : NetFilepathOption, FormuleFilepathOptions, PruningOptions
+    public class CalculateHeuristicSupportOptions : NetWithFormulaOptions, PruningOptions
     {
-        public string formulaFilePath { get; set; }
+
         public bool prune { get; set; }
     }
 
@@ -177,13 +182,8 @@ namespace PetriTool
         public bool prune { get; set; }
     }
 
-    public class SingleQueryOptions : NetFilepathOption, FormuleFilepathOptions, PruningOptions
+    public class SingleQueryOptions : NetWithFormulaOptions, PruningOptions
     {
-
-        [Value(1, MetaName = "formula-file",
-            HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola).",
-            Required = true)]
-        public string formulaFilePath { get; set; }
 
         public bool prune { get; set; }
 
@@ -241,12 +241,12 @@ namespace PetriTool
     }
 
     [Verb("witness-check", HelpText = "Tests whether a given witness is actually a witness for the given net and target.")]
-    public class WitnessCheckOptions : NetFilepathOption, FormuleFilepathOptions, WitnessOptions
+    public class WitnessCheckOptions : NetWithFormulaOptions, WitnessOptions
     {
         [Option('f', "formula",
             HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola). If not given, simply prints marking reached at the end of the witness trace.",
             Required = false)]
-        public string formulaFilePath { get; set; }
+
         public string witness { get; set; }
     }
 
@@ -275,14 +275,8 @@ namespace PetriTool
     }
 
     [Verb("translate", HelpText = "Translates nets and formulas from and to the different formats supported by this tool. Note: The output file extension is chosen automatically.")]
-    public class TranslationOptions : NetFilepathOption, OutputFormatOptions, FormuleFilepathOptions, RemoveUncoverableTransitionsOptions
+    public class TranslationOptions : NetWithFormulaOptions, OutputFormatOptions, RemoveUncoverableTransitionsOptions
     {
-
-        [Value(1, MetaName = "net-inputfile", HelpText = "The path to a file containing a net in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed.", Required = true)]
-        public new string netFilePath { get; set; }
-
-        [Value(2, MetaName = "formula-inputfile", HelpText = "The path to a file containing a formula in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed. If no file is given, only the net will be parsed. Depending on the chosen output format, this might not be possible.", Required = false)]
-        public string formulaFilePath { get; set; }
 
         public OutputFormat outputFormat { get; set; }
         public string outputFilePath { get; set; }
@@ -310,13 +304,8 @@ namespace PetriTool
     }
 
     [Verb("statistics", HelpText = "Computes several metrics of a given Petri net.")]
-    public class ComputeNetStatisticsOptions : NetFilepathOption, FormuleFilepathOptions
+    public class ComputeNetStatisticsOptions : NetWithFormulaOptions
     {
-        [Value(0, MetaName = "net-inputfile", HelpText = "The path to a file containing a net in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed.", Required = true)]
-        public new string netFilePath { get; set; }
-
-        [Value(1, MetaName = "formula-inputfile", HelpText = "The path to a file containing a formula in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed. If no file is given, only the net will be parsed. Depending on the chosen output format, this might not be possible.", Required = false)]
-        public string formulaFilePath { get; set; }
 
         [Option('p', "prune", HelpText = "Get statistics about pruning if flag is given, otherwise only get statistics about net itself.")]
         public bool prune { get; set; } = false;
@@ -333,9 +322,8 @@ namespace PetriTool
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]
-    public class SaturationSearchOptions : NetFilepathOption, FormuleFilepathOptions, PruningOptions
+    public class SaturationSearchOptions : NetWithFormulaOptions, PruningOptions
     {
-        public string formulaFilePath { get; set; }
         public bool prune { get; set; }
 
         [Option('v', "verbose", HelpText = @"Use this option if you want more extensive output.", Default = false)]
