@@ -268,7 +268,8 @@ namespace PetriTool
         public string formulaFilePath { get; set; }
     }
 
-    [Verb("calculate-markingeq-parikh", HelpText = "Computes the Parikh image of the marking equation over N for a given net and formula.")]
+    [Verb("structural-reach-via-nqreach", HelpText = "Given a net with initial marking m and target marking m', computes the minimal " +
+    "k such that m*k reaches m'*k with continuous reachability (but marking equation over N).")]
     public class CalculateMarkingEquationParikhImageOptions : NetWithFormulaOptions { }
 
     public interface RemoveUncoverableTransitionsOptions

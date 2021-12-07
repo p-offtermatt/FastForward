@@ -10,6 +10,7 @@ namespace PetriTool
         Lola,
         TTS,
         Dotspec,
-        PNML
+        PNML,
+        CGraph
     }
 }
