@@ -258,6 +258,11 @@ namespace PetriTool
                         }
                         return;
                     }
+                case OutputFormat.PNML:
+                    WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
+                    return;
+                default:
+                    throw new ArgumentException("Did not understand output format: " + options.outputFormat);
             }
         }
 
@@ -282,7 +287,7 @@ namespace PetriTool
                 Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, options.forwardPrune, options.backwardPrune);
             }
 
-            if (net.Places.Count == 0 || net.Transitions.Count == 0  ||
+            if (net.Places.Count == 0 || net.Transitions.Count == 0 ||
             (targetMarkings != null && targetMarkings.Count == 0))
             {
                 Console.WriteLine("Instance has no places or transitions left, or final marking is empty. Not doing any output...");
