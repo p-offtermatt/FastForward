@@ -305,6 +305,9 @@ namespace PetriTool
         public bool transformWFNet { get; set; }
 
         public bool removeUncoverableTransitions { get; set; }
+
+        [Option("--formula", HelpText = "The path to a file containing a formula in one of the supported formats. Note that the file ending should match the file content, since it determines how the file will be parsed. If no file is given, only the net will be parsed. Depending on the chosen output format, this might not be possible.", Required = false, Default = null)]
+        public new string formulaFilePath { get; set; }
     }
 
     [Verb("statistics", HelpText = "Computes several metrics of a given Petri net.")]

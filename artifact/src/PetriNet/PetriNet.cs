@@ -368,8 +368,81 @@ namespace Petri
         }
 
         /// <summary>
-        /// Returns a string representation of this Petri Net, together with
-        /// its given initial marking, in the .pnml format.
+        /// Prints a string representation of the Petri net in the CGraph format (see https://github.com/LoW12/Hadara-AdSimul)
+        /// to a file. The initial marking cannot be included, and this thus only produces meaningful output for workflow nets.
+        /// </summary>
+        public void ToCGraph(string netName, string filepath)
+        {
+            if (!this.IsWorkflowNet().Item1)
+            {
+                throw new WorkflowException("Net is not a workflow net, but CGraph format can only be used for workflow nets!");
+            }
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.Encoding = Encoding.ASCII;
+
+            XmlWriter writer = XmlTextWriter.Create(filepath, settings);
+
+            writer.WriteStartElement("CGraph");
+            writer.WriteAttributeString("Type", "WorkFlow");
+            writer.WriteAttributeString("Label", netName);
+            WritePlaces_CGraph(writer);
+            WriteTransitions_CGraph(writer);
+
+            foreach (UpdateTransition transition in Transitions)
+            {
+                foreach ((Place place, int value) in transition.Pre)
+                {
+                    WriteArc_CGraph(writer, transition, place, value);
+                }
+
+                foreach ((Place place, int value) in transition.Post)
+                {
+                    WriteArc_CGraph(writer, place, transition, value);
+                }
+            }
+
+            writer.WriteEndElement();
+            writer.Close();
+
+        }
+
+        private static void WriteArc_CGraph(XmlWriter writer, Node source, Node target, int value)
+        {
+            writer.WriteStartElement("CArc");
+            writer.WriteAttributeString("Type", "Arc");
+            writer.WriteAttributeString("Label", source.Name + "_to_" + target.Name);
+            writer.WriteAttributeString("Source", source.Name);
+            writer.WriteAttributeString("Target", target.Name);
+            writer.WriteString(value.ToString());
+            writer.WriteEndElement();
+        }
+
+        private void WriteTransitions_CGraph(XmlWriter writer)
+        {
+            foreach (Transition transition in Transitions)
+            {
+                writer.WriteStartElement("CGraph");
+                writer.WriteAttributeString("Type", "Transition");
+                writer.WriteAttributeString("Label", transition.Name);
+                writer.WriteEndElement();
+            }
+        }
+
+        private void WritePlaces_CGraph(XmlWriter writer)
+        {
+            foreach (Place place in Places)
+            {
+                writer.WriteStartElement("CGraph");
+                writer.WriteAttributeString("Type", "Place");
+                writer.WriteAttributeString("Label", place.Name);
+                writer.WriteEndElement();
+            }
+        }
+
+        /// <summary>
+        /// Prints a string representation of this Petri Net, together with
+        /// its given initial marking, in the .pnml format, to a file.
         /// </summary>
         /// <param name="initialMarking">A marking.</param>
         /// <returns>A string representation, fit to be written to a .pnml file.</returns>
@@ -380,11 +453,11 @@ namespace Petri
             settings.Encoding = Encoding.ASCII;
 
             XmlWriter writer = XmlTextWriter.Create(filepath, settings);
-            WriteNet(initialMarking, netName, writer);
+            WriteNet_PNML(initialMarking, netName, writer);
             writer.Close();
         }
 
-        private void WriteNet(Marking initialMarking, string netName, XmlWriter writer)
+        private void WriteNet_PNML(Marking initialMarking, string netName, XmlWriter writer)
         {
             writer.WriteStartDocument();
 
@@ -393,14 +466,14 @@ namespace Petri
             writer.WriteAttributeString("id", netName);
             writer.WriteAttributeString("type",
                 "http://www.pnml.org/version-2009/grammar/ptnet");
-            WriteName(writer, netName);
+            WriteName_PNML(writer, netName);
             writer.WriteStartElement("page");
             writer.WriteAttributeString("id", "page0");
-            WriteName(writer, "DefaultPage");
+            WriteName_PNML(writer, "DefaultPage");
 
-            WritePlaces(writer, initialMarking);
-            WriteTransitions(writer);
-            WriteArcs(writer);
+            WritePlaces_PNML(writer, initialMarking);
+            WriteTransitions_PNML(writer);
+            WriteArcs_PNML(writer);
 
             writer.WriteEndElement();
             writer.WriteEndElement();
@@ -408,41 +481,41 @@ namespace Petri
             writer.WriteEndDocument();
         }
 
-        private void WriteArcs(XmlWriter writer)
+        private void WriteArcs_PNML(XmlWriter writer)
         {
             foreach (UpdateTransition transition in Transitions)
             {
                 foreach (Place place in transition.GetPrePlaces())
                 {
-                    WriteArc(writer, place, transition, transition.Pre[place]);
+                    WriteArc_PNML(writer, place, transition, transition.Pre[place]);
                 }
                 foreach (Place place in transition.GetPostPlaces())
                 {
-                    WriteArc(writer, transition, place, transition.Post[place]);
+                    WriteArc_PNML(writer, transition, place, transition.Post[place]);
                 }
             }
         }
 
-        private void WriteTransitions(XmlWriter writer)
+        private void WriteTransitions_PNML(XmlWriter writer)
         {
             foreach (Transition transition in Transitions)
             {
                 writer.WriteStartElement("transition");
                 writer.WriteAttributeString("id", transition.Name);
-                WriteName(writer, transition.Name);
+                WriteName_PNML(writer, transition.Name);
                 writer.WriteEndElement();
             }
         }
 
-        private void WritePlaces(XmlWriter writer, Marking initialMarking)
+        private void WritePlaces_PNML(XmlWriter writer, Marking initialMarking)
         {
             foreach (Place place in Places)
             {
-                WritePlace(writer, place, initialMarking.GetValueOrDefault(place, 0));
+                WritePlace_PNML(writer, place, initialMarking.GetValueOrDefault(place, 0));
             }
         }
 
-        private static void WriteArc(
+        private static void WriteArc_PNML(
             XmlWriter writer,
             Node source,
             Node target,
@@ -461,7 +534,7 @@ namespace Petri
             writer.WriteEndElement();
         }
 
-        private static void WritePlace(XmlWriter writer, Place place, int numTokens)
+        private static void WritePlace_PNML(XmlWriter writer, Place place, int numTokens)
         {
             writer.WriteStartElement("place");
             writer.WriteAttributeString("id", place.Name);
@@ -473,7 +546,7 @@ namespace Petri
             writer.WriteEndElement();
         }
 
-        private void WriteName(XmlWriter writer, string name)
+        private void WriteName_PNML(XmlWriter writer, string name)
         {
             writer.WriteStartElement("name");
             writer.WriteStartElement("text");

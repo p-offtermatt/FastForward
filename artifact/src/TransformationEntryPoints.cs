@@ -264,20 +264,28 @@ namespace PetriTool
         public static void Translate(TranslationOptions options)
         {
             SearchBenchmarkEntry entry = new SearchBenchmarkEntry();
-            FullParser parser = ParserPicker.ChooseFullParser(options.netFilePath, options.formulaFilePath);
+
+            NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
 
             List<MarkingWithConstraints> targetMarkings = null;
-            targetMarkings = parser.ReadFormula(options.formulaFilePath);
+
+            if (options.formulaFilePath != null)
+            {
+                FormulaParser formulaParser = ParserPicker.ChooseFormulaParser(options.formulaFilePath);
+                targetMarkings = formulaParser.ReadFormula(options.formulaFilePath);
+            }
 
             if (options.backwardPrune || options.forwardPrune)
             {
+                Console.WriteLine("Pruning instance");
                 Pruning.Prune(null, ref net, ref initialMarking, ref targetMarkings, options.forwardPrune, options.backwardPrune);
             }
 
-            if (net.Places.Count == 0 || net.Transitions.Count == 0 || initialMarking.Count == 0 || targetMarkings.Count == 0)
+            if (net.Places.Count == 0 || net.Transitions.Count == 0 || initialMarking.Count == 0 ||
+            (targetMarkings != null && targetMarkings.Count == 0))
             {
-                Console.WriteLine("Pruning solved the instances, not doing any output...");
+                Console.WriteLine("Instance has no places or transitions left, or initial/final marking are empty. Not doing any output...");
                 return;
             }
 
@@ -314,6 +322,9 @@ namespace PetriTool
                 case (OutputFormat.PNML):
                     WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
                     break;
+                case (OutputFormat.CGraph):
+                    WriteCGraphToFile(options.outputFilePath + ".xml", net, initialMarking);
+                    break;
                 default:
                     Console.WriteLine("Could not understand file format \"" + options.outputFormat + "\"");
                     System.Environment.Exit(3);
@@ -328,6 +339,15 @@ namespace PetriTool
             netName = discardNonAlphanums.Replace(netName, "");
 
             net.ToPNML(initialMarking, netName, filepath);
+        }
+
+        public static void WriteCGraphToFile(string filepath, PetriNet net, Marking initialMarking)
+        {
+            string netName = filepath.Split("/").Last();
+            Regex discardNonAlphanums = new Regex("[^a-zA-Z0-9 -]");
+            netName = discardNonAlphanums.Replace(netName, "");
+
+            net.ToCGraph(netName, filepath);
         }
 
         public static void RemovePlace(RemovePlaceOptions options)
