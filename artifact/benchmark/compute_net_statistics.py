@@ -66,7 +66,7 @@ if __name__ == "__main__":
                                    formula_file=f"{benchmark_suite}{formula_name}",
                                    output_file=output_file,
                                    first=first,
-                                   args=args.args)
+                                   args=args.args if args.args is not None else "")
                 first = False
 
         output_file.write("]")
