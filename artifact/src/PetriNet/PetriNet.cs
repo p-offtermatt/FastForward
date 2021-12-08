@@ -393,12 +393,12 @@ namespace Petri
             {
                 foreach ((Place place, int value) in transition.Pre)
                 {
-                    WriteArc_CGraph(writer, transition, place, value);
+                    WriteArc_CGraph(writer, place, transition, value);
                 }
 
                 foreach ((Place place, int value) in transition.Post)
                 {
-                    WriteArc_CGraph(writer, place, transition, value);
+                    WriteArc_CGraph(writer, transition, place, value);
                 }
             }
 
