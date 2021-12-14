@@ -477,10 +477,8 @@ namespace Testing
             List<MarkingWithConstraints> targetMarkings = parser.ReadFormula(filename + ".formula");
 
             (PetriNet net_zeroplacePruned, _, _) = Pruning.PruneWithZeroPlaceHeuristic(net, initialMarking, targetMarkings);
-            (PetriNet net_supportPruned, _, _) = Pruning.PruneWithContinuousSupportHeuristic(net, initialMarking, targetMarkings);
 
             // cast to int because xunit warns otherwise, even as there is no canonical way to test for collection size
-            Assert.Equal(1, (int)net_supportPruned.Transitions.Count);
             Assert.Equal(2, (int)net_zeroplacePruned.Transitions.Count);
         }
     }
