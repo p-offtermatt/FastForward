@@ -690,5 +690,35 @@ namespace Petri
             copy.AddTransition(shortCircuitEdge);
             return copy;
         }
+
+        /// <summary>
+        /// Modifies this net such that all arc weights are
+        /// replaced by "towers".
+        /// These towers use a logarithmic number of places and transitions
+        /// to represent a weight.
+        /// </summary>
+        public PetriNet ReplaceArcWeights()
+        {
+            PetriNet result = new PetriNet(this);
+            foreach (Transition transition in this.Transitions)
+            {
+                if (transition.HasArcWeights())
+                {
+                    result.RemoveTransition(transition);
+                    (IEnumerable<Transition> simulTransitions, IEnumerable<Place> simulPlaces) = transition.GetWithoutArcWeights();
+
+                    foreach (Place newPlace in simulPlaces)
+                    {
+                        result.AddPlace(newPlace);
+                    }
+
+                    foreach (Transition newTransition in simulTransitions)
+                    {
+                        result.AddTransition(newTransition);
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

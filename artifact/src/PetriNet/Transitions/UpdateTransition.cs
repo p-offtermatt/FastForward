@@ -406,10 +406,9 @@ namespace Petri
                 else
                 {
                     // Stores which powers of two are factors of the arc weight
-                    IEnumerable<int> twopowers =
+                    IEnumerable<Tuple<int, bool>> twopowers =
                         Convert.ToString(weight, 2).Reverse().
-                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'))
-                            .Where((pair) => pair.Item2).Select(pair => pair.Item1);
+                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'));
 
                     int height = twopowers.Count();
                     (List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<Transition> towerTransitions) =
@@ -420,7 +419,7 @@ namespace Petri
                     places.UnionWith(leftPlaces);
                     places.UnionWith(rightPlaces);
 
-                    foreach (int index in twopowers)
+                    foreach (int index in twopowers.Where((pair) => pair.Item2).Select(pair => pair.Item1))
                     {
                         newTransition.AddPlaceToPre(leftPlaces[index], 1);
                     }
@@ -484,31 +483,34 @@ namespace Petri
             List<Place> leftPlaces = new List<Place>(height);
             List<Place> rightPlaces = new List<Place>(height - 1);
 
-            IEnumerable<UpdateTransition> transitions = new HashSet<UpdateTransition>();
+            HashSet<UpdateTransition> transitions = new HashSet<UpdateTransition>();
 
             for (int i = 0; i < height; i++)
             {
                 // create places for level
                 Place leftPlace = new Place(name + "_left_level_" + i.ToString());
-                CreateTwopowerTransitionsForPlace(place, name + "_left_", leftPlaces, rightPlaces, transitions, i, leftPlace, up);
-                leftPlaces.Append(leftPlace);
+                IEnumerable<UpdateTransition> leftTransitions = CreateTwopowerTransitionsForPlace(place, name + "_left_", leftPlaces, rightPlaces, i, leftPlace, up);
+                transitions.UnionWith(leftTransitions);
+                leftPlaces.Add(leftPlace);
 
                 // only create a right place if this is not the last level
                 if (i != height - 1)
                 {
                     Place rightPlace = new Place(name + "_right_level_" + i.ToString());
-                    CreateTwopowerTransitionsForPlace(place, name + "_right_", leftPlaces, rightPlaces, transitions, i, rightPlace, up);
-                    rightPlaces.Append(rightPlace);
+                    IEnumerable<UpdateTransition> rightTransitions = CreateTwopowerTransitionsForPlace(place, name + "_right_", leftPlaces, rightPlaces, i, rightPlace, up);
+                    transitions.UnionWith(rightTransitions);
+                    rightPlaces.Add(rightPlace);
                 }
             }
 
             return (leftPlaces, rightPlaces, transitions);
         }
 
-        private static void CreateTwopowerTransitionsForPlace(Place towerIncomingPlace, string name, List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<UpdateTransition> transitions, int level, Place currentPlace, bool up)
+        private static IEnumerable<UpdateTransition> CreateTwopowerTransitionsForPlace(Place towerIncomingPlace, string name, List<Place> leftPlaces, List<Place> rightPlaces, int level, Place currentPlace, bool up)
         {
+            HashSet<UpdateTransition> transitions = new HashSet<UpdateTransition>();
             // create transitions incoming to level
-            if (level != 0)
+            if (level == 0)
             {
                 Dictionary<Place, int> previous = new Dictionary<Place, int>() { [towerIncomingPlace] = 1 };
                 Dictionary<Place, int> current = new Dictionary<Place, int>() { [currentPlace] = 1 };
@@ -521,7 +523,7 @@ namespace Petri
                         previous,
                         current
                     );
-                    transitions.Append(leftTransition);
+                    transitions.Add(leftTransition);
                 }
 
                 // also need the backtransition to preserve liveness in case a run guesses the wrong place to proceed to
@@ -531,7 +533,7 @@ namespace Petri
                      previous
                 );
 
-                transitions.Append(leftBackTransition);
+                transitions.Add(leftBackTransition);
             }
             else
             {
@@ -547,7 +549,7 @@ namespace Petri
                         new Dictionary<Place, int>() { [prevLeft] = 1, [prevRight] = 1 },
                          new Dictionary<Place, int>() { [currentPlace] = 1 }
                     );
-                    transitions.Append(leftTransition);
+                    transitions.Add(leftTransition);
                 }
 
                 UpdateTransition leftBackTransition = new UpdateTransition(
@@ -556,8 +558,9 @@ namespace Petri
                     new Dictionary<Place, int>() { [prevLeft] = 1, [prevRight] = 1 }
                 );
 
-                transitions.Append(leftBackTransition);
+                transitions.Add(leftBackTransition);
             }
+            return transitions;
         }
 
         public override bool HasArcWeights()

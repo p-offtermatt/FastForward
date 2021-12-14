@@ -306,27 +306,9 @@ namespace PetriTool
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
 
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
+            PetriNet newNet = net.ReplaceArcWeights();
 
-            foreach (Transition transition in net.Transitions)
-            {
-                if (transition.HasArcWeights())
-                {
-                    net.RemoveTransition(transition);
-                    (IEnumerable<Transition> simulTransitions, IEnumerable<Place> simulPlaces) = transition.GetWithoutArcWeights();
-
-                    foreach (Place newPlace in simulPlaces)
-                    {
-                        net.AddPlace(newPlace);
-                    }
-
-                    foreach (Transition newTransition in simulTransitions)
-                    {
-                        net.AddTransition(newTransition);
-                    }
-                }
-            }
-
-            WriteNet(options.outputFormat, options.netFilePath, net, initialMarking, null);
+            WriteNet(options.outputFormat, options.netFilePath, newNet, initialMarking, null);
         }
 
         private static void WriteFormula(OutputFormat outputFormat, string outputFilePath, PetriNet net, Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
