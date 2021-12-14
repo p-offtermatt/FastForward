@@ -1,0 +1,198 @@
+PLACE
+auxi,i,u,copy,rightlevel0,leftlevel0,rightlevel1,leftlevel1,rightlevel2,leftlevel2,rightlevel3,leftlevel3,rightlevel4,leftlevel4,rightlevel5,leftlevel5,f,auxf,aux_p1,aux_p2,aux_p3;
+
+MARKING
+aux_p1: 1, auxi: 0, i: 0, u: 0, copy: 0, rightlevel0: 0, leftlevel0: 0, rightlevel1: 0, leftlevel1: 0, rightlevel2: 0, leftlevel2: 0, rightlevel3: 0, leftlevel3: 0, rightlevel4: 0, leftlevel4: 0, rightlevel5: 0, leftlevel5: 0, f: 0, auxf: 0, aux_p2: 0, aux_p3: 0;
+
+TRANSITION tauxi
+CONSUME auxi: 1;
+PRODUCE i: 33;
+
+
+
+TRANSITION tauxf
+CONSUME f: 33;
+PRODUCE auxf: 1;
+
+
+
+TRANSITION tu
+CONSUME i: 1;
+PRODUCE u: 1, copy: 1;
+
+
+
+TRANSITION t0l
+CONSUME u: 1;
+PRODUCE leftlevel0: 1;
+
+
+
+TRANSITION b0l
+CONSUME leftlevel0: 1;
+PRODUCE u: 1;
+
+
+
+TRANSITION t0r
+CONSUME u: 1;
+PRODUCE rightlevel0: 1;
+
+
+
+TRANSITION b0r
+CONSUME rightlevel0: 1;
+PRODUCE u: 1;
+
+
+
+TRANSITION twopower_1l
+CONSUME leftlevel0: 1, rightlevel0: 1;
+PRODUCE leftlevel1: 1;
+
+
+
+TRANSITION twopower_back_1l
+CONSUME leftlevel1: 1;
+PRODUCE leftlevel0: 1, rightlevel0: 1;
+
+
+
+TRANSITION twopower_1r
+CONSUME leftlevel0: 1, rightlevel0: 1;
+PRODUCE rightlevel1: 1;
+
+
+
+TRANSITION twopower_back_1r
+CONSUME rightlevel1: 1;
+PRODUCE leftlevel0: 1, rightlevel0: 1;
+
+
+
+TRANSITION twopower_2l
+CONSUME leftlevel1: 1, rightlevel1: 1;
+PRODUCE leftlevel2: 1;
+
+
+
+TRANSITION twopower_back_2l
+CONSUME leftlevel2: 1;
+PRODUCE leftlevel1: 1, rightlevel1: 1;
+
+
+
+TRANSITION twopower_2r
+CONSUME leftlevel1: 1, rightlevel1: 1;
+PRODUCE rightlevel2: 1;
+
+
+
+TRANSITION twopower_back_2r
+CONSUME rightlevel2: 1;
+PRODUCE leftlevel1: 1, rightlevel1: 1;
+
+
+
+TRANSITION twopower_3l
+CONSUME leftlevel2: 1, rightlevel2: 1;
+PRODUCE leftlevel3: 1;
+
+
+
+TRANSITION twopower_back_3l
+CONSUME leftlevel3: 1;
+PRODUCE leftlevel2: 1, rightlevel2: 1;
+
+
+
+TRANSITION twopower_3r
+CONSUME leftlevel2: 1, rightlevel2: 1;
+PRODUCE rightlevel3: 1;
+
+
+
+TRANSITION twopower_back_3r
+CONSUME rightlevel3: 1;
+PRODUCE leftlevel2: 1, rightlevel2: 1;
+
+
+
+TRANSITION twopower_4l
+CONSUME leftlevel3: 1, rightlevel3: 1;
+PRODUCE leftlevel4: 1;
+
+
+
+TRANSITION twopower_back_4l
+CONSUME leftlevel4: 1;
+PRODUCE leftlevel3: 1, rightlevel3: 1;
+
+
+
+TRANSITION twopower_4r
+CONSUME leftlevel3: 1, rightlevel3: 1;
+PRODUCE rightlevel4: 1;
+
+
+
+TRANSITION twopower_back_4r
+CONSUME rightlevel4: 1;
+PRODUCE leftlevel3: 1, rightlevel3: 1;
+
+
+
+TRANSITION twopower_5l
+CONSUME leftlevel4: 1, rightlevel4: 1;
+PRODUCE leftlevel5: 1;
+
+
+
+TRANSITION twopower_back_5l
+CONSUME leftlevel5: 1;
+PRODUCE leftlevel4: 1, rightlevel4: 1;
+
+
+
+TRANSITION twopower_5r
+CONSUME leftlevel4: 1, rightlevel4: 1;
+PRODUCE rightlevel5: 1;
+
+
+
+TRANSITION twopower_back_5r
+CONSUME rightlevel5: 1;
+PRODUCE leftlevel4: 1, rightlevel4: 1;
+
+
+
+TRANSITION tdec
+CONSUME copy: 2;
+PRODUCE f: 1, copy: 1;
+
+
+
+TRANSITION tf
+CONSUME copy: 1, leftlevel5: 1, rightlevel5: 1;
+PRODUCE f: 1;
+
+
+
+TRANSITION r1
+CONSUME aux_p1: 1;
+PRODUCE auxi: 1, aux_p1: 1, aux_p2: 1;
+
+
+
+TRANSITION r2
+CONSUME aux_p1: 1, aux_p2: 1;
+PRODUCE aux_p2: 1, aux_p3: 1;
+
+
+
+TRANSITION r3
+CONSUME aux_p2: 1, auxf: 1, aux_p3: 1;
+PRODUCE aux_p3: 1;
+
+
+

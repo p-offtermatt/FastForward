@@ -13,7 +13,7 @@ namespace Petri
 
         public UpdateTransition(string Name, Dictionary<Place, int> Pre, Dictionary<Place, int> Post) : base(Name)
         {
-            this.Pre = Pre;
+            this.Pre = new Dictionary<Place, int>(Pre);
             this.Post = Post;
         }
 
@@ -388,6 +388,181 @@ namespace Petri
         public override void AddPlaceToPre(Place place, int value)
         {
             this.Pre.Add(place, value);
+        }
+
+        public override (IEnumerable<Transition>, IEnumerable<Place>) GetWithoutArcWeights()
+        {
+            HashSet<Transition> transitions = new HashSet<Transition>();
+            HashSet<Place> places = new HashSet<Place>();
+
+            UpdateTransition newTransition = new UpdateTransition(this.Name + "_noweights");
+
+            foreach ((Place place, int weight) in this.Pre)
+            {
+                if (weight == 1)
+                {
+                    newTransition.AddPlaceToPre(place, 1);
+                }
+                else
+                {
+                    // Stores which powers of two are factors of the arc weight
+                    IEnumerable<int> twopowers =
+                        Convert.ToString(weight, 2).Reverse().
+                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'))
+                            .Where((pair) => pair.Item2).Select(pair => pair.Item1);
+
+                    int height = twopowers.Count();
+                    (List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<Transition> towerTransitions) =
+                        GetTwoPowerTower(place, height, place.Name + "_to_" + this.Name + "_weight_" + weight.ToString(), up: true);
+
+
+                    transitions.UnionWith(towerTransitions);
+                    places.UnionWith(leftPlaces);
+                    places.UnionWith(rightPlaces);
+
+                    foreach (int index in twopowers)
+                    {
+                        newTransition.AddPlaceToPre(leftPlaces[index], 1);
+                    }
+                }
+            }
+
+            foreach ((Place place, int weight) in this.Post)
+            {
+                if (weight == 1)
+                {
+                    newTransition.AddPlaceToPost(place, 1);
+                }
+                else
+                {
+                    // Stores which powers of two are factors of the arc weight
+                    IEnumerable<int> twopowers =
+                        Convert.ToString(weight, 2).Reverse().
+                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'))
+                            .Where((pair) => pair.Item2).Select(pair => pair.Item1);
+
+                    int height = twopowers.Count();
+                    (List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<Transition> towerTransitions) =
+                        GetTwoPowerTower(place, height, this.Name + "_to_" + place.Name + "_weight_" + weight.ToString(), up: false);
+
+                    transitions.UnionWith(towerTransitions);
+                    places.UnionWith(leftPlaces);
+                    places.UnionWith(rightPlaces);
+
+                    foreach (int index in twopowers)
+                    {
+                        newTransition.AddPlaceToPost(leftPlaces[index], 1);
+                    }
+                }
+            }
+
+            transitions.Add(newTransition);
+
+            return (transitions, places);
+        }
+
+        /// <summary>
+        /// Creates transitions for a two-power tower of the given height.
+        /// The tower has two places (a left and right place) on each level except the last.
+        /// The last level only has a left place.
+        /// The height determines how many levels the tower will have. The lowest level is level 0,
+        /// the highest level therefore height-1.
+        /// A place on level l can be marked when starting with 2^l tokens in the incoming place.
+        /// To simulate an arc that consumes e.g. 5 tokens, one should make a tower of height ceil(log(5) = 3.
+        /// </summary>
+        /// <param name="place">The place that the tower should consume tokens from</param>
+        /// <param name="height">The height of the generated tower</param>
+        /// <param name="name">The name that should be prefixed to all transition and place names of the tower.</param>
+        /// <param name="up">If true, the tower will consume tokens from the place, and
+        /// have back transitions to reverse partial commits. If false, the tower will assume to produce tokens to a place,
+        /// so have only transitions taking tokens from high to low levels.</param>
+        private (List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<Transition> transitions) GetTwoPowerTower(Place place,
+                                                                                                                        int height,
+                                                                                                                        string name,
+                                                                                                                        bool up)
+        {
+            List<Place> leftPlaces = new List<Place>(height);
+            List<Place> rightPlaces = new List<Place>(height - 1);
+
+            IEnumerable<UpdateTransition> transitions = new HashSet<UpdateTransition>();
+
+            for (int i = 0; i < height; i++)
+            {
+                // create places for level
+                Place leftPlace = new Place(name + "_left_level_" + i.ToString());
+                CreateTwopowerTransitionsForPlace(place, name + "_left_", leftPlaces, rightPlaces, transitions, i, leftPlace, up);
+                leftPlaces.Append(leftPlace);
+
+                // only create a right place if this is not the last level
+                if (i != height - 1)
+                {
+                    Place rightPlace = new Place(name + "_right_level_" + i.ToString());
+                    CreateTwopowerTransitionsForPlace(place, name + "_right_", leftPlaces, rightPlaces, transitions, i, rightPlace, up);
+                    rightPlaces.Append(rightPlace);
+                }
+            }
+
+            return (leftPlaces, rightPlaces, transitions);
+        }
+
+        private static void CreateTwopowerTransitionsForPlace(Place towerIncomingPlace, string name, List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<UpdateTransition> transitions, int level, Place currentPlace, bool up)
+        {
+            // create transitions incoming to level
+            if (level != 0)
+            {
+                Dictionary<Place, int> previous = new Dictionary<Place, int>() { [towerIncomingPlace] = 1 };
+                Dictionary<Place, int> current = new Dictionary<Place, int>() { [currentPlace] = 1 };
+
+                // is the first level, so should take from the incoming place; if tower does not go up, don't need this transition at all
+                if (up)
+                {
+                    UpdateTransition leftTransition = new UpdateTransition(
+                        name + "_Up_level" + level.ToString(),
+                        previous,
+                        current
+                    );
+                    transitions.Append(leftTransition);
+                }
+
+                // also need the backtransition to preserve liveness in case a run guesses the wrong place to proceed to
+                UpdateTransition leftBackTransition = new UpdateTransition(
+                    name + "_Down_level" + level.ToString(),
+                     current,
+                     previous
+                );
+
+                transitions.Append(leftBackTransition);
+            }
+            else
+            {
+                // is not the first level, so take tokens from places of previous level
+
+                Place prevLeft = leftPlaces[level - 1];
+                Place prevRight = rightPlaces[level - 1];
+
+                if (up)
+                {
+                    UpdateTransition leftTransition = new UpdateTransition(
+                        name + "_Up_level" + level.ToString(),
+                        new Dictionary<Place, int>() { [prevLeft] = 1, [prevRight] = 1 },
+                         new Dictionary<Place, int>() { [currentPlace] = 1 }
+                    );
+                    transitions.Append(leftTransition);
+                }
+
+                UpdateTransition leftBackTransition = new UpdateTransition(
+                    name + "_Down_level" + level.ToString(),
+                    new Dictionary<Place, int>() { [currentPlace] = 1 },
+                    new Dictionary<Place, int>() { [prevLeft] = 1, [prevRight] = 1 }
+                );
+
+                transitions.Append(leftBackTransition);
+            }
+        }
+
+        public override bool HasArcWeights()
+        {
+            return this.Pre.Any(pair => pair.Value > 1) || this.Post.Any(pair => pair.Value > 1);
         }
     }
 }

@@ -230,5 +230,15 @@ namespace Petri
         {
             throw new NotImplementedException();
         }
+
+        public override (IEnumerable<Transition>, IEnumerable<Place>) GetWithoutArcWeights()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool HasArcWeights()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

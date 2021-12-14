@@ -261,6 +261,9 @@ namespace PetriTool
                 case OutputFormat.PNML:
                     WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
                     return;
+                case OutputFormat.CGraph:
+                    WriteCGraphToFile(options.outputFilePath + ".xml", net, initialMarking);
+                    return;
                 default:
                     throw new ArgumentException("Did not understand output format: " + options.outputFormat);
             }
@@ -294,44 +297,96 @@ namespace PetriTool
                 return;
             }
 
-            switch (options.outputFormat)
+            WriteNet(options.outputFormat, options.outputFilePath, net, initialMarking, targetMarkings);
+            WriteFormula(options.outputFormat, options.outputFilePath, net, initialMarking, targetMarkings);
+        }
+
+        public static void ReplaceArcWeights(ReplaceArcWeightOptions options)
+        {
+            NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
+
+            (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
+
+            foreach (Transition transition in net.Transitions)
             {
-                case (OutputFormat.Dotspec):
-                    TranslateNetToDotspec(net, initialMarking, targetMarkings, options.outputFilePath + ".spec");
-                    break;
-                case (OutputFormat.Lola):
-                    string lolaOutput = net.ToLola(initialMarking);
-                    using (StreamWriter file = new StreamWriter(options.outputFilePath + ".lola", append: false))
+                if (transition.HasArcWeights())
+                {
+                    net.RemoveTransition(transition);
+                    (IEnumerable<Transition> simulTransitions, IEnumerable<Place> simulPlaces) = transition.GetWithoutArcWeights();
+
+                    foreach (Place newPlace in simulPlaces)
                     {
-                        file.Write(lolaOutput);
+                        net.AddPlace(newPlace);
                     }
-                    using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
+
+                    foreach (Transition newTransition in simulTransitions)
+                    {
+                        net.AddTransition(newTransition);
+                    }
+                }
+            }
+
+            WriteNet(options.outputFormat, options.netFilePath, net, initialMarking, null);
+        }
+
+        private static void WriteFormula(OutputFormat outputFormat, string outputFilePath, PetriNet net, Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
+        {
+            switch (outputFormat)
+            {
+                case (OutputFormat.Lola):
+                    using (StreamWriter file = new StreamWriter(outputFilePath + ".formula", append: false))
                     {
                         file.Write(MarkingWithConstraints.ListToLola(targetMarkings));
                     }
                     break;
                 case (OutputFormat.TTS):
-                    using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".tts"))
-                    {
-                        writer.Write(net.ToTTS_PN());
-                    }
-                    using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".prop"))
+                    using (StreamWriter writer = new StreamWriter(outputFilePath + ".prop"))
                     {
                         writer.Write(targetMarkings.First().ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: false));
                     }
-                    using (StreamWriter writer = new StreamWriter(options.outputFilePath + ".init"))
+                    using (StreamWriter writer = new StreamWriter(outputFilePath + ".init"))
                     {
                         writer.Write(initialMarking.ToTTS_PN(net.GetPlaceToCounterNumDict(), initialMarking: true));
                     }
                     break;
+                default:
+                    Console.WriteLine("Could not write target file for output format \"" + outputFormat + "\"");
+                    Console.WriteLine("It may be the case that the target file is already in the net file for the chosen format.");
+                    break;
+            }
+        }
+
+        private static void WriteNet(OutputFormat outputFormat,
+                                     string outputFilePath,
+                                     PetriNet net,
+                                     Marking initialMarking,
+                                     List<MarkingWithConstraints> targetMarkings)
+        {
+            switch (outputFormat)
+            {
+                case (OutputFormat.Dotspec):
+                    TranslateNetToDotspec(net, initialMarking, targetMarkings, outputFilePath + ".spec");
+                    break;
+                case (OutputFormat.Lola):
+                    using (StreamWriter file = new StreamWriter(outputFilePath + ".formula", append: false))
+                    {
+                        file.Write(MarkingWithConstraints.ListToLola(targetMarkings));
+                    }
+                    break;
+                case (OutputFormat.TTS):
+                    using (StreamWriter writer = new StreamWriter(outputFilePath + ".tts"))
+                    {
+                        writer.Write(net.ToTTS_PN());
+                    }
+                    break;
                 case (OutputFormat.PNML):
-                    WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
+                    WritePNMLToFile(outputFilePath + ".pnml", net, initialMarking);
                     break;
                 case (OutputFormat.CGraph):
-                    WriteCGraphToFile(options.outputFilePath + ".xml", net, initialMarking);
+                    WriteCGraphToFile(outputFilePath + ".xml", net, initialMarking);
                     break;
                 default:
-                    Console.WriteLine("Could not understand file format \"" + options.outputFormat + "\"");
+                    Console.WriteLine("Could not understand file format \"" + outputFormat + "\"");
                     System.Environment.Exit(3);
                     break;
             }

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="kxnhpnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>kxnhpnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="i">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:busy">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ()* ()">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end">
+        <name>
+          <text>*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end</text>
+        </name>
+      </transition>
+      <transition id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:join">
+        <name>
+          <text>t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:join</text>
+        </name>
+      </transition>
+      <transition id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:split">
+        <name>
+          <text>t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:split</text>
+        </name>
+      </transition>
+      <transition id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()">
+        <name>
+          <text>t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()</text>
+        </name>
+      </transition>
+      <transition id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">
+        <name>
+          <text>t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()</text>
+        </name>
+      </transition>
+      <arc id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ()* ()_to_*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end" source="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ()* ()" target="*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:busy_to_*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end" source="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:busy" target="*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end_to_o_star" source="*:Model.kxnh--0-----u--:Model.kxnh--0-----u--:end" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:join_to_p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:busy" source="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:join" target="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Output:busy">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy_to_t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:split" source="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy" target="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:split">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="i_to_t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()" source="i" target="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()_to_o_star" source="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()_to_p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy" source="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_No_ ():split:Split_Join_ ()" target="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="i_to_t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" source="i" target="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()_to_p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ()* ()" source="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" target="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ()* ()">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()_to_p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy" source="t:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Split_Yes_ ():split:Split_Join_ ():Split_Yes_ ()* ()" target="p:Model.kxnh--0-----u--:Model.kxnh--0-----u--:Skip:busy">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

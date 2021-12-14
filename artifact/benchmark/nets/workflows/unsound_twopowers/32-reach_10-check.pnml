@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="32-reach10-checkpnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>32-reach10-checkpnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="auxi">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="i">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="u">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="copy">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="rightlevel0">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="leftlevel0">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="rightlevel1">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="leftlevel1">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="rightlevel2">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="leftlevel2">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="rightlevel3">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="leftlevel3">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="rightlevel4">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="leftlevel4">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="f">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="auxf">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="tauxi">
+        <name>
+          <text>tauxi</text>
+        </name>
+      </transition>
+      <transition id="tauxf">
+        <name>
+          <text>tauxf</text>
+        </name>
+      </transition>
+      <transition id="tu">
+        <name>
+          <text>tu</text>
+        </name>
+      </transition>
+      <transition id="t0l">
+        <name>
+          <text>t0l</text>
+        </name>
+      </transition>
+      <transition id="b0l">
+        <name>
+          <text>b0l</text>
+        </name>
+      </transition>
+      <transition id="t0r">
+        <name>
+          <text>t0r</text>
+        </name>
+      </transition>
+      <transition id="b0r">
+        <name>
+          <text>b0r</text>
+        </name>
+      </transition>
+      <transition id="twopower_1l">
+        <name>
+          <text>twopower_1l</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_1l">
+        <name>
+          <text>twopower_back_1l</text>
+        </name>
+      </transition>
+      <transition id="twopower_1r">
+        <name>
+          <text>twopower_1r</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_1r">
+        <name>
+          <text>twopower_back_1r</text>
+        </name>
+      </transition>
+      <transition id="twopower_2l">
+        <name>
+          <text>twopower_2l</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_2l">
+        <name>
+          <text>twopower_back_2l</text>
+        </name>
+      </transition>
+      <transition id="twopower_2r">
+        <name>
+          <text>twopower_2r</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_2r">
+        <name>
+          <text>twopower_back_2r</text>
+        </name>
+      </transition>
+      <transition id="twopower_3l">
+        <name>
+          <text>twopower_3l</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_3l">
+        <name>
+          <text>twopower_back_3l</text>
+        </name>
+      </transition>
+      <transition id="twopower_3r">
+        <name>
+          <text>twopower_3r</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_3r">
+        <name>
+          <text>twopower_back_3r</text>
+        </name>
+      </transition>
+      <transition id="twopower_4l">
+        <name>
+          <text>twopower_4l</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_4l">
+        <name>
+          <text>twopower_back_4l</text>
+        </name>
+      </transition>
+      <transition id="twopower_4r">
+        <name>
+          <text>twopower_4r</text>
+        </name>
+      </transition>
+      <transition id="twopower_back_4r">
+        <name>
+          <text>twopower_back_4r</text>
+        </name>
+      </transition>
+      <transition id="tdec">
+        <name>
+          <text>tdec</text>
+        </name>
+      </transition>
+      <transition id="tf">
+        <name>
+          <text>tf</text>
+        </name>
+      </transition>
+      <arc id="auxi_to_tauxi" source="auxi" target="tauxi">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="tauxi_to_i" source="tauxi" target="i">
+        <inscription>
+          <text>10</text>
+        </inscription>
+      </arc>
+      <arc id="f_to_tauxf" source="f" target="tauxf">
+        <inscription>
+          <text>10</text>
+        </inscription>
+      </arc>
+      <arc id="tauxf_to_auxf" source="tauxf" target="auxf">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="i_to_tu" source="i" target="tu">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="tu_to_u" source="tu" target="u">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="tu_to_copy" source="tu" target="copy">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="u_to_t0l" source="u" target="t0l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t0l_to_leftlevel0" source="t0l" target="leftlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel0_to_b0l" source="leftlevel0" target="b0l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="b0l_to_u" source="b0l" target="u">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="u_to_t0r" source="u" target="t0r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t0r_to_rightlevel0" source="t0r" target="rightlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel0_to_b0r" source="rightlevel0" target="b0r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="b0r_to_u" source="b0r" target="u">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel0_to_twopower_1l" source="leftlevel0" target="twopower_1l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel0_to_twopower_1l" source="rightlevel0" target="twopower_1l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_1l_to_leftlevel1" source="twopower_1l" target="leftlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel1_to_twopower_back_1l" source="leftlevel1" target="twopower_back_1l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_1l_to_leftlevel0" source="twopower_back_1l" target="leftlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_1l_to_rightlevel0" source="twopower_back_1l" target="rightlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel0_to_twopower_1r" source="leftlevel0" target="twopower_1r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel0_to_twopower_1r" source="rightlevel0" target="twopower_1r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_1r_to_rightlevel1" source="twopower_1r" target="rightlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel1_to_twopower_back_1r" source="rightlevel1" target="twopower_back_1r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_1r_to_leftlevel0" source="twopower_back_1r" target="leftlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_1r_to_rightlevel0" source="twopower_back_1r" target="rightlevel0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel1_to_twopower_2l" source="leftlevel1" target="twopower_2l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel1_to_twopower_2l" source="rightlevel1" target="twopower_2l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_2l_to_leftlevel2" source="twopower_2l" target="leftlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel2_to_twopower_back_2l" source="leftlevel2" target="twopower_back_2l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_2l_to_leftlevel1" source="twopower_back_2l" target="leftlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_2l_to_rightlevel1" source="twopower_back_2l" target="rightlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel1_to_twopower_2r" source="leftlevel1" target="twopower_2r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel1_to_twopower_2r" source="rightlevel1" target="twopower_2r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_2r_to_rightlevel2" source="twopower_2r" target="rightlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel2_to_twopower_back_2r" source="rightlevel2" target="twopower_back_2r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_2r_to_leftlevel1" source="twopower_back_2r" target="leftlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_2r_to_rightlevel1" source="twopower_back_2r" target="rightlevel1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel2_to_twopower_3l" source="leftlevel2" target="twopower_3l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel2_to_twopower_3l" source="rightlevel2" target="twopower_3l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_3l_to_leftlevel3" source="twopower_3l" target="leftlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel3_to_twopower_back_3l" source="leftlevel3" target="twopower_back_3l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_3l_to_leftlevel2" source="twopower_back_3l" target="leftlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_3l_to_rightlevel2" source="twopower_back_3l" target="rightlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel2_to_twopower_3r" source="leftlevel2" target="twopower_3r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel2_to_twopower_3r" source="rightlevel2" target="twopower_3r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_3r_to_rightlevel3" source="twopower_3r" target="rightlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel3_to_twopower_back_3r" source="rightlevel3" target="twopower_back_3r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_3r_to_leftlevel2" source="twopower_back_3r" target="leftlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_3r_to_rightlevel2" source="twopower_back_3r" target="rightlevel2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel3_to_twopower_4l" source="leftlevel3" target="twopower_4l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel3_to_twopower_4l" source="rightlevel3" target="twopower_4l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_4l_to_leftlevel4" source="twopower_4l" target="leftlevel4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel4_to_twopower_back_4l" source="leftlevel4" target="twopower_back_4l">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_4l_to_leftlevel3" source="twopower_back_4l" target="leftlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_4l_to_rightlevel3" source="twopower_back_4l" target="rightlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel3_to_twopower_4r" source="leftlevel3" target="twopower_4r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel3_to_twopower_4r" source="rightlevel3" target="twopower_4r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_4r_to_rightlevel4" source="twopower_4r" target="rightlevel4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel4_to_twopower_back_4r" source="rightlevel4" target="twopower_back_4r">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_4r_to_leftlevel3" source="twopower_back_4r" target="leftlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="twopower_back_4r_to_rightlevel3" source="twopower_back_4r" target="rightlevel3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="copy_to_tdec" source="copy" target="tdec">
+        <inscription>
+          <text>2</text>
+        </inscription>
+      </arc>
+      <arc id="tdec_to_f" source="tdec" target="f">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="tdec_to_copy" source="tdec" target="copy">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="copy_to_tf" source="copy" target="tf">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="leftlevel4_to_tf" source="leftlevel4" target="tf">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="rightlevel4_to_tf" source="rightlevel4" target="tf">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="tf_to_f" source="tf" target="f">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

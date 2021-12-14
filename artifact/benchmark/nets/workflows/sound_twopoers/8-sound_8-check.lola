@@ -1,0 +1,79 @@
+
+PLACE
+auxi,auxf,i,u,rightlevel0,leftlevel0,rightlevel1,leftlevel1,rightlevel2,leftlevel2,f;
+
+MARKING
+auxi: 1;
+
+TRANSITION tauxi
+CONSUME auxi: 1;
+PRODUCE i: 8;
+
+TRANSITION tauxf
+CONSUME f: 8;
+PRODUCE auxf: 1;
+
+
+TRANSITION tu
+CONSUME i: 1;
+PRODUCE u: 1;
+
+TRANSITION t0l
+CONSUME u: 1;
+PRODUCE leftlevel0: 1;
+
+TRANSITION b0l
+CONSUME leftlevel0: 1;
+PRODUCE u: 1;
+
+TRANSITION t0r
+CONSUME u: 1;
+PRODUCE rightlevel0: 1;
+
+TRANSITION b0r
+CONSUME rightlevel0: 1;
+PRODUCE u: 1;
+
+
+TRANSITION twopower_1l
+CONSUME leftlevel0: 1, rightlevel0: 1;
+PRODUCE leftlevel1: 1;
+
+TRANSITION twopower_back_1l
+CONSUME leftlevel1: 1;
+PRODUCE leftlevel0: 1, rightlevel0: 1;
+
+TRANSITION twopower_1r
+CONSUME leftlevel0: 1, rightlevel0: 1;
+PRODUCE rightlevel1: 1;
+
+TRANSITION twopower_back_1r
+CONSUME rightlevel1: 1;
+PRODUCE leftlevel0: 1, rightlevel0: 1;
+
+
+
+TRANSITION twopower_2l
+CONSUME leftlevel1: 1, rightlevel1: 1;
+PRODUCE leftlevel2: 1;
+
+TRANSITION twopower_back_2l
+CONSUME leftlevel2: 1;
+PRODUCE leftlevel1: 1, rightlevel1: 1;
+
+TRANSITION twopower_2r
+CONSUME leftlevel1: 1, rightlevel1: 1;
+PRODUCE rightlevel2: 1;
+
+TRANSITION twopower_back_2r
+CONSUME rightlevel2: 1;
+PRODUCE leftlevel1: 1, rightlevel1: 1;
+
+
+
+
+
+TRANSITION tf
+CONSUME leftlevel2: 1, rightlevel2: 1;
+PRODUCE f: 8;
+

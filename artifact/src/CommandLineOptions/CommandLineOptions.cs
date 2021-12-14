@@ -114,13 +114,21 @@ namespace PetriTool
         StructuralReachability
     }
 
-    [Verb("translate-wf",
-        HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
-    public class TranslateWFOptions : NetFilepathOption, OutputFormatOptions
+    public class NetAndOutputOptions : NetFilepathOption, OutputFormatOptions
     {
-
         public string outputFilePath { get; set; }
         public OutputFormat outputFormat { get; set; }
+    }
+
+    [Verb("replace-weights", HelpText = "Tansforms the net into one with no arc weights in a way that preserves soundness and reachability. Does not preserve free-choiceness. If the net has no arc weights, leaves it untouched. All places in the original net will also be present in the reduced net, but formulas that specify some behaviour for all places will need to be modified to include the new places.")]
+    public class ReplaceArcWeightOptions : NetAndOutputOptions
+    {
+    }
+
+    [Verb("translate-wf",
+        HelpText = "Translates a workflow net to .lola format and provides a .formula file for checking soundness.")]
+    public class TranslateWFOptions : NetAndOutputOptions
+    {
 
         [Option('m', "mode",
             HelpText = "Whether to write a formula to check soundness, reachability (of final place), or coverability (of final place). Only lola format supports soundness.",

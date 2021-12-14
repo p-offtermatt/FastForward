@@ -170,5 +170,19 @@ namespace Petri
 
         public abstract string ToLola();
         internal abstract bool IsStateMachineTransition();
+
+        /// <summary>
+        /// Returns enumerables of transitions and places which together simulate this transition, but without arc weights.
+        /// Replacing transitions in this way will preserve liveness, boundedness 
+        /// and reachability.
+        /// </summary>
+        /// <returns>A tuple of transitions and places which together represent this transition.</returns>
+        public abstract (IEnumerable<Transition>, IEnumerable<Place>) GetWithoutArcWeights();
+
+        /// <summary>
+        /// Returns whether any of the arcs of this transition have a weight greater than one.
+        /// </summary>
+        /// <returns></returns>
+        public abstract bool HasArcWeights();
     }
 }
