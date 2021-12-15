@@ -1,0 +1,126 @@
+PLACE
+auxf,auxi,d_to_td_weight_2_left_level_0,d_to_td_weight_2_right_level_0,u_to_tu_weight_14_left_level_0,u_to_tu_weight_14_left_level_1,u_to_tu_weight_14_left_level_2,u_to_tu_weight_14_left_level_3,u_to_tu_weight_14_right_level_0,u_to_tu_weight_14_right_level_1,u_to_tu_weight_14_right_level_2,aux_p1,aux_p2,aux_p3;
+
+MARKING
+aux_p1: 1, auxf: 0, auxi: 0, d_to_td_weight_2_left_level_0: 0, d_to_td_weight_2_right_level_0: 0, u_to_tu_weight_14_left_level_0: 0, u_to_tu_weight_14_left_level_1: 0, u_to_tu_weight_14_left_level_2: 0, u_to_tu_weight_14_left_level_3: 0, u_to_tu_weight_14_right_level_0: 0, u_to_tu_weight_14_right_level_1: 0, u_to_tu_weight_14_right_level_2: 0, aux_p2: 0, aux_p3: 0;
+
+TRANSITION d_to_td_weight_2_right__Down_level0
+CONSUME d_to_td_weight_2_right_level_0: 1;
+PRODUCE d_to_td_weight_2_left_level_0: 1;
+
+
+
+TRANSITION d_to_td_weight_2_right__Up_level0
+CONSUME d_to_td_weight_2_left_level_0: 1;
+PRODUCE d_to_td_weight_2_right_level_0: 1;
+
+
+
+TRANSITION td_noweights
+CONSUME d_to_td_weight_2_left_level_0: 1, d_to_td_weight_2_right_level_0: 1;
+PRODUCE d_to_td_weight_2_left_level_0: 1, auxf: 1;
+
+
+
+TRANSITION ti
+CONSUME auxi: 1;
+PRODUCE d_to_td_weight_2_left_level_0: 1, u_to_tu_weight_14_left_level_0: 1;
+
+
+
+TRANSITION tu_noweights
+CONSUME d_to_td_weight_2_left_level_0: 1, u_to_tu_weight_14_left_level_1: 1, u_to_tu_weight_14_left_level_2: 1, u_to_tu_weight_14_left_level_3: 1;
+PRODUCE auxf: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Down_level1
+CONSUME u_to_tu_weight_14_left_level_1: 1;
+PRODUCE u_to_tu_weight_14_left_level_0: 1, u_to_tu_weight_14_right_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Down_level2
+CONSUME u_to_tu_weight_14_left_level_2: 1;
+PRODUCE u_to_tu_weight_14_left_level_1: 1, u_to_tu_weight_14_right_level_1: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Down_level3
+CONSUME u_to_tu_weight_14_left_level_3: 1;
+PRODUCE u_to_tu_weight_14_left_level_2: 1, u_to_tu_weight_14_right_level_2: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Up_level1
+CONSUME u_to_tu_weight_14_left_level_0: 1, u_to_tu_weight_14_right_level_0: 1;
+PRODUCE u_to_tu_weight_14_left_level_1: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Up_level2
+CONSUME u_to_tu_weight_14_left_level_1: 1, u_to_tu_weight_14_right_level_1: 1;
+PRODUCE u_to_tu_weight_14_left_level_2: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_left__Up_level3
+CONSUME u_to_tu_weight_14_left_level_2: 1, u_to_tu_weight_14_right_level_2: 1;
+PRODUCE u_to_tu_weight_14_left_level_3: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Down_level0
+CONSUME u_to_tu_weight_14_right_level_0: 1;
+PRODUCE u_to_tu_weight_14_left_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Down_level1
+CONSUME u_to_tu_weight_14_right_level_1: 1;
+PRODUCE u_to_tu_weight_14_left_level_0: 1, u_to_tu_weight_14_right_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Down_level2
+CONSUME u_to_tu_weight_14_right_level_2: 1;
+PRODUCE u_to_tu_weight_14_left_level_1: 1, u_to_tu_weight_14_right_level_1: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Up_level0
+CONSUME u_to_tu_weight_14_left_level_0: 1;
+PRODUCE u_to_tu_weight_14_right_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Up_level1
+CONSUME u_to_tu_weight_14_left_level_0: 1, u_to_tu_weight_14_right_level_0: 1;
+PRODUCE u_to_tu_weight_14_right_level_1: 1;
+
+
+
+TRANSITION u_to_tu_weight_14_right__Up_level2
+CONSUME u_to_tu_weight_14_left_level_1: 1, u_to_tu_weight_14_right_level_1: 1;
+PRODUCE u_to_tu_weight_14_right_level_2: 1;
+
+
+
+TRANSITION r1
+CONSUME aux_p1: 1;
+PRODUCE auxi: 1, aux_p1: 1, aux_p2: 1;
+
+
+
+TRANSITION r2
+CONSUME aux_p1: 1, aux_p2: 1;
+PRODUCE aux_p2: 1, aux_p3: 1;
+
+
+
+TRANSITION r3
+CONSUME aux_p2: 1, auxf: 1, aux_p3: 1;
+PRODUCE aux_p3: 1;
+
+
+
