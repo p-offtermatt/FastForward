@@ -308,7 +308,7 @@ namespace PetriTool
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
             PetriNet newNet = net.ReplaceArcWeights();
 
-            WriteNet(options.outputFormat, options.netFilePath, newNet, initialMarking, null);
+            WriteNet(options.outputFormat, options.outputFilePath, newNet, initialMarking, null);
         }
 
         private static void WriteFormula(OutputFormat outputFormat, string outputFilePath, PetriNet net, Marking initialMarking, List<MarkingWithConstraints> targetMarkings)
@@ -350,9 +350,9 @@ namespace PetriTool
                     TranslateNetToDotspec(net, initialMarking, targetMarkings, outputFilePath + ".spec");
                     break;
                 case (OutputFormat.Lola):
-                    using (StreamWriter file = new StreamWriter(outputFilePath + ".formula", append: false))
+                    using (StreamWriter file = new StreamWriter(outputFilePath + ".lola", append: false))
                     {
-                        file.Write(MarkingWithConstraints.ListToLola(targetMarkings));
+                        file.Write(net.ToLola(initialMarking));
                     }
                     break;
                 case (OutputFormat.TTS):

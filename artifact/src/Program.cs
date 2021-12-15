@@ -63,7 +63,7 @@ namespace PetriTool
             var parser = new CommandLine.Parser(with => with.HelpWriter = null);
 
             var parserResult = parser
-                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, CalculateMarkingEquationParikhImageOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions>(args);
+                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, CalculateMarkingEquationParikhImageOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions, ReplaceArcWeightOptions>(args);
             parserResult.WithParsed<AStarQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<BestFirstQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<WitnessCheckOptions>(UtilityEntrypoints.WitnessCheck)
@@ -79,6 +79,7 @@ namespace PetriTool
                 .WithParsed<SoundnessOptions>(SoundnessChecker.VerifySoundness)
                 .WithParsed<TranslateWFOptions>(TransformationEntryPoints.TranslateWFNet)
                 .WithParsed<SoundnessReverseTransitionOptions>(SoundnessChecker.VerifySoundnessViaTransition)
+                .WithParsed<ReplaceArcWeightOptions>(TransformationEntryPoints.ReplaceArcWeights)
                 .WithNotParsed((_) => DisplayHelp(parserResult));
 #endif
             System.Environment.Exit(0);

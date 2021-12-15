@@ -97,5 +97,24 @@ namespace Testing
                 file.Write(newNet.ToLola(initialMarking));
             }
         }
+
+        [Fact]
+        public void TestLargeExample()
+        {
+            NetParser parser = new LolaParser();
+            (PetriNet net, Marking initialMarking) = parser.ReadNet(Utils.GetPathForTestfile("arc-weight-removal/6.lola"));
+            PetriNet originalNet = new PetriNet(net);
+            PetriNet newNet = net.ReplaceArcWeights();
+
+            output.WriteLine(net.ToString());
+            Assert.Equal(originalNet, net);
+
+            Assert.True(newNet.Places.Count > net.Places.Count);
+
+            using (StreamWriter file = new StreamWriter(Utils.GetPathForTestfile("arc-weight-removal/_tmp.lola"), append: false))
+            {
+                file.Write(newNet.ToLola(initialMarking));
+            }
+        }
     }
 }

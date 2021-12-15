@@ -435,10 +435,9 @@ namespace Petri
                 else
                 {
                     // Stores which powers of two are factors of the arc weight
-                    IEnumerable<int> twopowers =
+                    IEnumerable<Tuple<int, bool>> twopowers =
                         Convert.ToString(weight, 2).Reverse().
-                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'))
-                            .Where((pair) => pair.Item2).Select(pair => pair.Item1);
+                            Select((letter, index) => new Tuple<int, bool>(index, letter == '1'));
 
                     int height = twopowers.Count();
                     (List<Place> leftPlaces, List<Place> rightPlaces, IEnumerable<Transition> towerTransitions) =
@@ -448,7 +447,7 @@ namespace Petri
                     places.UnionWith(leftPlaces);
                     places.UnionWith(rightPlaces);
 
-                    foreach (int index in twopowers)
+                    foreach (int index in twopowers.Where((pair) => pair.Item2).Select(pair => pair.Item1))
                     {
                         newTransition.AddPlaceToPost(leftPlaces[index], 1);
                     }
