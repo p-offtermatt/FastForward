@@ -54,7 +54,7 @@ if __name__ == "__main__":
     os.makedirs(args.output_dir, exist_ok=True)
 
     for reach_num in sizes:
-        for check_num in range(1, reach_num):
+        for check_num in range(1, reach_num+1):
             net_string, formula_string = GetNetAndFormulaForInstance(check_num, reach_num)
             out_filepath = args.output_dir + "/" + str(reach_num) + "-sound_" + str(check_num) + "-check"
 

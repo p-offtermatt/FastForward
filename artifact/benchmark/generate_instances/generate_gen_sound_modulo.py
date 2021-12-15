@@ -65,8 +65,7 @@ if __name__ == "__main__":
 
     for size in sizes:
         c = size
-        k = 1
-        while True:
+        for k in range(1, c+1):
             net_string, formula_string = GetNetAndFormulaForInstance(k, c)
             out_filepath = args.output_dir + "/" + str(c) + "-unsound_" + str(k) + "-check"
 
@@ -81,7 +80,6 @@ if __name__ == "__main__":
 
             if k == c:
                 break
-            k = min(k*2, c)
         
         print("Done writing files for size " + str(c))
     print("Done with all sizes")
