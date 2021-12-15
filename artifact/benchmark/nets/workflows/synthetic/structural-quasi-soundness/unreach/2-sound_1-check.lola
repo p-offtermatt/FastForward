@@ -1,0 +1,126 @@
+PLACE
+auxi,auxf,i,f,u,d,u_to_tu_weight_2_left_level_0,u_to_tu_weight_2_left_level_1,u_to_tu_weight_2_right_level_0,d_to_tu_weight_2_left_level_0,d_to_tu_weight_2_left_level_1,d_to_tu_weight_2_right_level_0,aux_p1,aux_p2,aux_p3;
+
+MARKING
+aux_p1: 1, auxi: 0, auxf: 0, i: 0, f: 0, u: 0, d: 0, u_to_tu_weight_2_left_level_0: 0, u_to_tu_weight_2_left_level_1: 0, u_to_tu_weight_2_right_level_0: 0, d_to_tu_weight_2_left_level_0: 0, d_to_tu_weight_2_left_level_1: 0, d_to_tu_weight_2_right_level_0: 0, aux_p2: 0, aux_p3: 0;
+
+TRANSITION tauxi
+CONSUME auxi: 1;
+PRODUCE i: 1;
+
+
+
+TRANSITION ti
+CONSUME i: 1;
+PRODUCE u: 1, d: 1;
+
+
+
+TRANSITION tauxf
+CONSUME f: 1;
+PRODUCE auxf: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_left__Up_level0
+CONSUME u: 1;
+PRODUCE u_to_tu_weight_2_left_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_left__Down_level0
+CONSUME u_to_tu_weight_2_left_level_0: 1;
+PRODUCE u: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_right__Up_level0
+CONSUME u: 1;
+PRODUCE u_to_tu_weight_2_right_level_0: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_right__Down_level0
+CONSUME u_to_tu_weight_2_right_level_0: 1;
+PRODUCE u: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_left__Up_level1
+CONSUME u_to_tu_weight_2_left_level_0: 1, u_to_tu_weight_2_right_level_0: 1;
+PRODUCE u_to_tu_weight_2_left_level_1: 1;
+
+
+
+TRANSITION u_to_tu_weight_2_left__Down_level1
+CONSUME u_to_tu_weight_2_left_level_1: 1;
+PRODUCE u_to_tu_weight_2_left_level_0: 1, u_to_tu_weight_2_right_level_0: 1;
+
+
+
+TRANSITION tu_noweights
+CONSUME u_to_tu_weight_2_left_level_1: 1, d: 1;
+PRODUCE f: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_left__Up_level0
+CONSUME d: 1;
+PRODUCE d_to_tu_weight_2_left_level_0: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_left__Down_level0
+CONSUME d_to_tu_weight_2_left_level_0: 1;
+PRODUCE d: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_right__Up_level0
+CONSUME d: 1;
+PRODUCE d_to_tu_weight_2_right_level_0: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_right__Down_level0
+CONSUME d_to_tu_weight_2_right_level_0: 1;
+PRODUCE d: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_left__Up_level1
+CONSUME d_to_tu_weight_2_left_level_0: 1, d_to_tu_weight_2_right_level_0: 1;
+PRODUCE d_to_tu_weight_2_left_level_1: 1;
+
+
+
+TRANSITION d_to_tu_weight_2_left__Down_level1
+CONSUME d_to_tu_weight_2_left_level_1: 1;
+PRODUCE d_to_tu_weight_2_left_level_0: 1, d_to_tu_weight_2_right_level_0: 1;
+
+
+
+TRANSITION tu_noweights
+CONSUME d_to_tu_weight_2_left_level_1: 1;
+PRODUCE d: 1, f: 1;
+
+
+
+TRANSITION r1
+CONSUME aux_p1: 1;
+PRODUCE auxi: 1, aux_p1: 1, aux_p2: 1;
+
+
+
+TRANSITION r2
+CONSUME aux_p1: 1, aux_p2: 1;
+PRODUCE aux_p2: 1, aux_p3: 1;
+
+
+
+TRANSITION r3
+CONSUME aux_p2: 1, auxf: 1, aux_p3: 1;
+PRODUCE aux_p3: 1;
+
+
+
