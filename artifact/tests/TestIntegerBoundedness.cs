@@ -35,7 +35,7 @@ namespace Testing
             Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
             PetriNet net = input.Item1;
 
-            var result = GurobiHeuristics.CheckIntegerUnboundedness(net) == null;
+            var result = GurobiHeuristics.CheckIntegerUnboundedness(net).counterexample == null;
 
             Assert.True(expected == result, filepath + ", " + expected.ToString());
         }
@@ -48,7 +48,7 @@ namespace Testing
             Tuple<PetriNet, Marking> input = parser.ReadNet(Utils.GetPathForTestfile(filepath));
             PetriNet net = input.Item1;
 
-            var result = GurobiHeuristics.CheckIntegerUnboundedness(net) == null;
+            var result = GurobiHeuristics.CheckIntegerUnboundedness(net).counterexample == null;
 
             Assert.True(boundedNet == result, filepath + ", " + boundedNet.ToString());
 
@@ -56,7 +56,7 @@ namespace Testing
 
             Assert.True(isWF);
 
-            var resultWF = GurobiHeuristics.CheckIntegerUnboundedness(net.ShortCircuit(sources.First(), sinks.First())) == null;
+            var resultWF = GurobiHeuristics.CheckIntegerUnboundedness(net.ShortCircuit(sources.First(), sinks.First())).counterexample == null;
             Assert.True(boundedWFNet == resultWF, filepath + ", " + boundedWFNet.ToString());
 
         }
