@@ -190,7 +190,7 @@ namespace Petri
             model.AddQConstr(placeSum, '<', 0 - ZEROEPS, "farkas_second_constraint");
         }
 
-        public static Dictionary<Transition, double> CheckIntegerUnboundedness(PetriNet net)
+        public static (bool isBounded, Dictionary<Transition, double> counterexample) CheckIntegerUnboundedness(PetriNet net)
         {
             //Check whether from zero marking, the zero marking can be covered
             GRBModel model = InitializeModel();
@@ -257,11 +257,11 @@ namespace Petri
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
             {
-                return null;
+                return (true, null);
             }
             else
             {
-                return ExtractTransitionMultiset(net.Transitions, model, transitionVars);
+                return (false, ExtractTransitionMultiset(net.Transitions, model, transitionVars));
             }
         }
 

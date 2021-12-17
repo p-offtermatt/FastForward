@@ -362,7 +362,7 @@ namespace PetriTool
         public string outputFilePath { get; set; }
     }
 
-    [Verb("continuous-sound", HelpText = @"Checks whether the net is (generalized) continuous sound.")]
+    [Verb("continuous-sound", HelpText = @"Checks whether the net is (generalized) continuous sound. First, checks Z-boundedness (a necessary condition), and if the net is indeed continuous sound, will check continuous soundness using continuous reachability and unreachability.")]
     public class ContinuousSoundnessOptions : NetFilepathOption
     {
     }

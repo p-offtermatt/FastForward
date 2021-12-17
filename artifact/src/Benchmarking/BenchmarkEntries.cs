@@ -90,6 +90,19 @@ namespace Benchmark
         }
     }
 
+    public class ContinuousSoundnessBenchmarkEntry : BenchmarkEntry
+    {
+        public bool isZBounded { set; get; }
+        public string ZBoundednessCounterexample { set; get; }
+        public bool isContinuousSound { set; get; }
+        public string continuousSoundnessCounterexample { set; get; }
+
+        public string ToJSON()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+    }
+
     public class SoundnessViaTransitionBenchmarkEntry : BenchmarkEntry
     {
 

@@ -98,7 +98,7 @@ namespace Soundness
 
         public static void VerifyContinuousSoundness(ContinuousSoundnessOptions options)
         {
-            SoundnessBenchmarkEntry benchmarkEntry = new SoundnessBenchmarkEntry();
+            ContinuousSoundnessBenchmarkEntry benchmarkEntry = new ContinuousSoundnessBenchmarkEntry();
 
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, Marking initialMarking) = parser.ReadNet(options.netFilePath);
@@ -107,15 +107,27 @@ namespace Soundness
             benchmarkEntry.numberOfTransitions = net.Transitions.Count;
 
             Stopwatch queryWatch = Stopwatch.StartNew();
-            var (isSound, counterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
+            var (isZBounded, zBoundednessCounterexample) = GurobiHeuristics.CheckIntegerUnboundedness(net);
+            benchmarkEntry.isZBounded = isZBounded;
+            if (!isZBounded)
+            {
+                queryWatch.Stop();
+                benchmarkEntry.timeInQuery = queryWatch.ElapsedMilliseconds;
+                benchmarkEntry.ZBoundednessCounterexample = String.Join(", ", zBoundednessCounterexample.Where(pair => pair.Value > 0));
+                benchmarkEntry.isContinuousSound = false;
+                Console.WriteLine(benchmarkEntry.ToJSON());
+                return;
+            }
+            var (isSound, soundnessCounterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
             queryWatch.Stop();
-            benchmarkEntry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
             benchmarkEntry.isContinuousSound = isSound;
             if (!isSound)
             {
-                benchmarkEntry.counterexampleMarking = String.Join(", ", counterexample.Where(pair => pair.Value > 0));
+                benchmarkEntry.continuousSoundnessCounterexample = String.Join(", ", soundnessCounterexample.Where(pair => pair.Value > 0));
             }
+
+            benchmarkEntry.timeInQuery = queryWatch.ElapsedMilliseconds;
             Console.WriteLine(benchmarkEntry.ToJSON());
         }
 
