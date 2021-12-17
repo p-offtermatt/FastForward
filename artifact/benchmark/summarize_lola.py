@@ -1,6 +1,5 @@
 import argparse
 import plotting_utils as utils
-import numpy
 import pandas
 
 
@@ -25,7 +24,7 @@ def print_statistics(entries):
     print("----------------------------------------")
 
     lola_entries = [
-        entry for entry in entries if "methodName" in entry and entry["methodName"] == "LoLA"]
+        entry for entry in entries if "methodName" in entry and entry["methodName"] == "reachability"]
     print(f"LoLA runs: {len(lola_entries)}")
     print("----------------------------------------")
 

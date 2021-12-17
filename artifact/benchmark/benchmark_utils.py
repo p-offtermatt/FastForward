@@ -1,3 +1,5 @@
+import argparse
+import psutil
 import os
 import glob
 from subprocess import check_output, Popen, PIPE, CalledProcessError, TimeoutExpired
@@ -83,7 +85,6 @@ def call_fastforward(method_name, lola_file, formula_file, pruning, extra_option
     result_obj = call_fastforward_helper(command, timeout_time)
     return result_obj
 
-import psutil
 
 def kill(proc_pid):
     process = psutil.Process(proc_pid)
@@ -217,237 +218,64 @@ def call_lola(lola_file, formula_file, timeout_time):
     result_obj["wallTime"] = execution_time * 1000
     return result_obj
 
+def CheckFormulaFileExists(net_filepath):
+    formula_filepath = GetFormulaFileForNet(net_filepath)
+    if not os.path.isfile(formula_filepath):
+        raise FileNotFoundError("Netfile " + net_filepath + " does not have an associated .formula file! Make sure the file is in the same folder and has the same name, except for a .formula extension: " + formula_filepath)
 
-def call_icover(spec_file, timeout):
-    command = f"python2 icover/main.py --pre --omega {spec_file} limit"
-    print(command)
+def GetFormulaFileForNet(net_filepath):
+    root,ext = os.path.splitext(net_filepath)
+    assert(ext == ".lola")
+    return root + ".formula"
 
-    process = Popen(command.split(" "), stdout=PIPE,
-                    stderr=PIPE, preexec_fn=limit_virtual_memory)
-    result_obj = {}
-    try:
-        execution_time = time.time()
-        result, stderr = process.communicate(timeout=timeout)
+# ensure that the two input dictionaries (string->list of files) contain the same values, and if not, print the difference
+# names are needed to nicely print error message
+def EnsureSameFiles(dict1_files: 'dict[str, list[str]]', dict2_files: 'dict[str, list[str]]', dict1_name: str, dict2_name: str):
+    if(dict2_files != dict1_files):
+        print(f"Input instances for {dict1_name} and {dict2_name} are not the same.")
+        for dir,entries in dict1_files.items():
+            if dir not in dict2_files:
+                print(f"{dict2_name} does not have subfolder " + dir)
+                return False
+            difference = set(entries) - set(dict2_files[dir])
+            if len(difference) > 0:
+                print(f"Extra files for {dict1_name} in " + dir + ": " + str(difference))
+                return False
 
-        process.kill()
+        
+        for dir,entries in dict2_files.items():
+            if dir not in dict1_files:
+                print(f"{dict1_name} does not have subfolder " + dir)
+                return False
+            difference = set(entries) - set(dict1_files[dir])
+            if len(difference) > 0:
+                print(f"Extra files for {dict2_name} in " + dir + ": " + str(difference))
+                return False
+    return True
 
-        execution_time = time.time() - execution_time
+def CreateBenchmarkArgparser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('benchmark_dir', type=str,
+                        help="The directory containing the lola and fastforward subfolders, which should in turn contain the input files, potentially again in subfolders. Subfolders are assumed to be mirrored among the lola and fastforward subfolders.")
+    parser.add_argument("-o", "--outputfile", type=str, required=True, 
+        help="""The base name for the output file. Should not contain the extension, which will be chosen automatically. Also, one output file will be 
+        produced per subdirectory in the fastforward and lola subfolders. For example, if there is a folder lola/unsound,
+        then one output file will be called {outputfile}_unsound.json""")
 
-        result = result.decode("utf-8").strip()
-        if("MemoryError" in stderr.decode("utf-8")):
-            result_obj["error"] = "memout"
-        else:
-            last_line = result.splitlines()[-1]
-            result_obj["path"] = "unreachable" if last_line == 'Safe' else "reachable" if last_line == "Unsafe" else result
-    except TimeoutExpired:
-        execution_time = time.time()
-        result_obj = {"error": "timeout"}
-        process.kill()
-        result, stderr = process.communicate(timeout=timeout)
-        print("Timeout!")
+def GetBenchmarkInstancesFromFolder(folderpath, extension):
+    print(f"Looking for {extension} files in {folderpath}")
+    result = dict()
+    for dir,_,files in os.walk(folderpath):
+        reldir = os.path.relpath(dir, start=folderpath)
+        if len(files) > 0:
+            result[reldir] = []
+        for file in files:
+            if file.endswith(extension):
+                result[reldir] += [file]
+    return result
 
-    result_obj["wallTime"] = execution_time * 1000
-
-    return result_obj
-
-
-def call_bfc(executable_name, tts_file, prop_file, timeout):
-    command = f"{executable_name} {tts_file} -a {prop_file}"
-    print(command)
-
-    process = Popen(command.split(" "), stdout=PIPE,
-                    stderr=PIPE, preexec_fn=limit_virtual_memory)
-    result_obj = {}
-    try:
-        execution_time = time.time()
-        result, stderr = process.communicate(timeout=timeout)
-
-        process.kill()
-
-        execution_time = time.time() - execution_time
-
-        result_string = result.decode("utf-8")
-        if "VERIFICATION FAILED" in result_string:
-            witness_path_query = re.search(
-                r"counterexample\n([\n \w | \d , \/]*)\nResult:",
-                result_string,
-                re.MULTILINE | re.IGNORECASE
-            )
-
-            if witness_path_query is not None:
-                witness_path = witness_path_query.group(1)
-            else:
-                witness_path_query = re.search(
-                    r"FW TACE\n-*\n([^-]*)\n-*", result_string, re.MULTILINE | re.IGNORECASE)
-                if witness_path_query is not None:
-                    witness_path = witness_path_query.group(1)
-                else:
-                    witness_path = f"Could not extract path from result {result_string}"
-                    print(f"(NONFATAL) ERROR: {witness_path}")
-
-        elif "VERIFICATION SUCCESSFUL" in result_string:
-            witness_path = "unreachable"
-        elif "MEMOUT" in result_string:
-            result_obj["error"] = "memout"
-            witness_path = ""
-        else:
-            print("BFC ran into a problem")
-            result_obj["error"] = result_string
-            witness_path = ""
-
-        result_obj["path"] = witness_path.replace("\n", ";")
-    except TimeoutExpired:
-        execution_time = time.time() - execution_time
-        result_obj["error"] = "timeout"
-        process.kill()
-        result, stderr = process.communicate(timeout=timeout)
-        print("Timeout!")
-
-    result_obj["wallTime"] = execution_time * 1000
-    return result_obj
-
-
-def call_mist(spec_file, timeout):
-    command = f"mist --backward {spec_file}"
-
-    process = Popen(command.split(" "), stdout=PIPE,
-                    stderr=PIPE, preexec_fn=limit_virtual_memory)
-    result_obj = {}
-    try:
-        execution_time = time.time()
-        result, stderr = process.communicate(timeout=timeout)
-
-        process.kill()
-
-        execution_time = time.time() - execution_time
-
-        result_string = result.decode("utf-8")
-        stderr_string = stderr.decode("utf-8")
-
-        # mist does not seem to consume additional memory apart from reading in the model.
-        # if there is a memout, it seems to abort immediately, and if it doesn't, there won't ever be a memout.
-        # also, memouts mean mist just returns nothing.
-        if result_string == "" or "memory exhausted" in stderr_string:
-            result_obj["error"] = "memout"
-            witness_path = ""
-        else:
-            if "backward algorithm concludes unsafe" in result_string:
-                witness_path = re.search(
-                    r"Run to reach the bad states from the initial marking:\n([\n \w | \d , \/, \[, >]*)\nTotal",
-                    result_string,
-                    re.MULTILINE | re.IGNORECASE
-                ).group(1)
-            elif "backward algorithm concludes safe" in result_string:
-                witness_path = "unreachable"
-
-                if "Unsafe region is empty or lies outside the invariants or contains some initial states" in result_string:
-                    expanded_nodes = 1
-                else:
-                    # match last occurence of 'Iterations', since the index of the last iteration will be the total number of iterations
-                    expanded_nodes = re.search(r"Iteration\s*(\d*)(?!.*Iteration)",
-                                               result_string,
-                                               re.MULTILINE | re.IGNORECASE | re.DOTALL).group(1)
-
-                result_obj["expandedNodes"] = expanded_nodes
-            else:
-                result_obj["error"] = result_string
-                witness_path = ""
-
-        result_obj["path"] = witness_path
-    except TimeoutExpired:
-        execution_time = time.time() - execution_time
-
-        result_obj = {"error": "timeout"}
-        process.kill()
-        result, stderr = process.communicate(timeout=timeout)
-        print("Timeout!")
-
-    result_obj["wallTime"] = execution_time * 1000
-    return result_obj
-
-
-def call_petrinizer(command, lola_file, sample_name, timeout):
-    print(command)
-
-    process = Popen(command.split(" "), stdout=PIPE,
-                    stderr=PIPE, preexec_fn=limit_virtual_memory)
-    result_obj = {}
-    result_obj["sampleName"] = sample_name
-
-    try:
-        execution_time = time.time()
-        result, stderr = process.communicate(timeout=timeout)
-
-        process.kill()
-
-        execution_time = time.time() - execution_time
-
-        result_string = result.decode("utf-8")
-        if "may not be satisfied." in result_string:
-            result_obj["path"] = "inconclusive"
-        elif "is satisfied." in result_string:
-            result_obj["path"] = "terminating"
-        else:
-            print("Petrinizer ran into a problem")
-            result_obj["error"] = result_string
-    except TimeoutExpired:
-        execution_time = time.time() - execution_time
-        result_obj["error"] = "timeout"
-        process.kill()
-        result, stderr = process.communicate(timeout=timeout)
-        print("Timeout for " + sample_name)
-
-    result_obj["wallTime"] = execution_time * 1000
-    return result_obj
-
-
-def call_kosaraju(spec_file, timeout, is_coverability):
-    command = f"./kreach-artifact/kosaraju -q " + \
-        ("-c" if is_coverability else "-r") + f" {spec_file}"
-    print(command)
-
-    my_env = os.environ.copy()
-    my_env["KOSARAJU_SOLVER"] = "cvc4"
-    my_env["PATH"] = "/home/local/USHERBROOKE/offp3001/git/a_star/code/benchmark/kreach-artifact/cvc4:" + my_env["PATH"]
-
-    process = Popen(command.split(" "),
-                    env=my_env,
-                    stdout=PIPE,
-                    stderr=PIPE,
-                    preexec_fn=limit_memory_and_set_sid)
-    result_obj = {}
-
-    try:
-        execution_time = time.time()
-        result, stderr = process.communicate(timeout=timeout)
-
-        process.kill()
-
-        execution_time = time.time() - execution_time
-
-        stderr_string = stderr.decode("utf-8")
-        result_string = result.decode("utf-8")
-        result_lines = result_string.strip().split("\n")
-        last_line = result_lines[len(result_lines)-1]
-
-        if last_line in ["Unreachable", "Safe"]:
-            result_obj["path"] = "unreachable"
-        elif last_line in ["Reachable", "Unsafe"]:
-            result_obj["path"] = "reachable"
-        elif "out of memory" in stderr_string:
-            result_obj["error"] = "memout"
-        else:
-            result_obj["error"] = "Exception: Could not understand output:\n" + \
-                result_string + "\n\n" + stderr.decode("utf-8")
-            print("Encountered an error:\n")
-            print(result_string)
-            print(stderr.decode("utf-8"))
-    except TimeoutExpired:
-        execution_time = time.time() - execution_time
-        result_obj["error"] = "timeout"
-        os.killpg(os.getpgid(process.pid), signal.SIGTERM)
-        result, stderr = process.communicate(timeout=timeout)
-        print("Timeout!")
-
-    result_obj["wallTime"] = execution_time * 1000
-    return result_obj
+def EnsureFormulaFilesExist(folder, net_files):
+    for dir, entries in net_files.items():
+        for entry in entries:
+            net_filepath = os.path.join(folder, dir, entry)
+            CheckFormulaFileExists(net_filepath)

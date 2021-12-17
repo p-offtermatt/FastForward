@@ -19,11 +19,6 @@ def print_statistics(entries):
     print("Transitions...")
     print(transitions.describe())
 
-    someUncoverableTransitions = [
-        entry for entry in entries if entry["numberOfTransitions"] != entry["numberOfCoverableTransitions"]]
-    print("Entries with uncoverable transitions: ")
-    print(len(someUncoverableTransitions))
-
     totalTimes = pandas.Series(numpy.array(
         [entry["timeInQuery"]/1000 for entry in entries if "error" not in entry]))
     soundTimes = pandas.Series(numpy.array(

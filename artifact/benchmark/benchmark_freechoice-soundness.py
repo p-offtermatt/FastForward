@@ -25,23 +25,22 @@ if __name__ == "__main__":
     # get instances in lola and fastforward subdirectories
     lola_folder = folder_name.joinpath("lola")
     ff_folder = folder_name.joinpath("fastforward")
-    print(f"Looking for LoLA inputs in {lola_folder}")
+    woflan_folder = folder_name.joinpath("woflan")
 
     lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
-
-    print(f"Looking for FastForward inputs in {ff_folder}")
-
     ff_files = benchmark_utils.GetBenchmarkInstancesFromFolder(ff_folder, ".lola")
+    woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".pnml")
     
     if not benchmark_utils.EnsureSameFiles(lola_files, ff_files, "LoLA", "FastForward"):
         exit(1)
+    if not benchmark_utils.EnsureSameFiles(woflan_files, ff_files, "woflan", "FastForward"):
+        exit(1)
     
-    # ff_files and lola_files are identical; to avoid naming confusion, assign new variable
+    # files are identical; to avoid naming confusion, assign new variable
     files = lola_files
 
-    # ensure all files have an associated formula file, e.g. for file.lola, there should exist file.formula in the same subfolder
+    # ensure lola files have an associated formula file, e.g. for file.lola, there should exist file.formula in the same subfolder
     benchmark_utils.EnsureFormulaFilesExist(lola_folder, files)
-    benchmark_utils.EnsureFormulaFilesExist(ff_folder, files)
 
     for dir, entries in files.items():
         # write result file for this directory of instances
@@ -60,8 +59,8 @@ if __name__ == "__main__":
                 ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
 
                 
-                ff_result = benchmark_utils.call_fastforward("calculate-heuristic", ff_netpath, ff_formulapath, pruning=False,
-                    extra_options="-h qReachability", timeout_time=timeout_time)
+                ff_result = benchmark_utils.call_fastforward("continuous-sound", ff_netpath, "", pruning=False,
+                    timeout_time=timeout_time)
                 ff_result["sampleName"] = entry
                 ff_result["methodName"] = "continuous"
 
@@ -76,10 +75,20 @@ if __name__ == "__main__":
 
                 lola_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, timeout_time)
                 lola_result["sampleName"] = entry
-                lola_result["methodName"] = "reachability"
+                lola_result["methodName"] = "lola"
 
                 output_file.write(",\n")
                 output_file.write(json.dumps(lola_result))
+                output_file.flush()
+
+                woflan_filepath = os.path.join(woflan_folder, dir, entry)
+
+                woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
+                woflan_result["sampleName"] = entry
+                woflan_result["methodName"] = "woflan"
+
+                output_file.write(",\n")
+                output_file.write(json.dumps(woflan_result))
                 output_file.flush()
             output_file.write("]")
             output_file.flush()
