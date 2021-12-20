@@ -4,10 +4,10 @@ mkdir -p "${base_path}woflan"
 mkdir -p "${base_path}continuous"
 mkdir -p "${base_path}lola"
 
-for FILE in ../nets/workflows/workflows_transformed/IBM/*.lola;
+for FILE in ../nets/workflows/workflows_transformed/SAP/*.lola;
     do
     echo "${FILE}"
-    FILENAME=${FILE#../nets/workflows/workflows_transformed/IBM/}
+    FILENAME=${FILE#../nets/workflows/workflows_transformed/SAP/}
     FILENAME_NO_EXTENSION=${FILENAME%.lola}
 
     TARGET="${base_path}continuous/"${FILENAME}
