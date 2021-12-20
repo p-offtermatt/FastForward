@@ -225,7 +225,7 @@ def CheckFormulaFileExists(net_filepath):
 
 def GetFormulaFileForNet(net_filepath):
     root,ext = os.path.splitext(net_filepath)
-    assert(ext == ".lola")
+    assert ext == ".lola", f"Extension of {net_filepath} is {ext} but should be .lola"
     return root + ".formula"
 
 # ensure that the two input dictionaries (string->list of files) contain the same values, and if not, print the difference
@@ -281,5 +281,5 @@ def GetBenchmarkInstancesFromFolder(folderpath, extension):
 def EnsureFormulaFilesExist(folder, net_files):
     for dir, entries in net_files.items():
         for entry in entries:
-            net_filepath = os.path.join(folder, dir, entry)
+            net_filepath = os.path.join(folder, dir, entry + ".lola")
             CheckFormulaFileExists(net_filepath)

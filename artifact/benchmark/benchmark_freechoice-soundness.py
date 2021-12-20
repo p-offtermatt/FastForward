@@ -56,12 +56,12 @@ if __name__ == "__main__":
                 benchmark_suite = dir
                 instance_name = entry
 
-                ff_netpath = os.path.join(continuous_folder, dir, entry)
+                ff_netpath = os.path.join(continuous_folder, dir, entry + ".lola")
                 ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
 
                 
                 ff_result = benchmark_utils.call_fastforward("continuous-sound", ff_netpath, "", pruning=False,
-                    timeout_time=timeout_time)
+                    timeout_time=timeout_time, extra_options="")
                 ff_result["sampleName"] = entry
                 ff_result["methodName"] = "continuous"
 
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(ff_result))
                 output_file.flush()
 
-                lola_filepath = os.path.join(lola_folder, dir, entry)
+                lola_filepath = os.path.join(lola_folder, dir, entry + ".lola")
                 lola_formulapath = benchmark_utils.GetFormulaFileForNet(lola_filepath)
 
                 lola_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, timeout_time)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(lola_result))
                 output_file.flush()
 
-                woflan_filepath = os.path.join(woflan_folder, dir, entry)
+                woflan_filepath = os.path.join(woflan_folder, dir, entry + ".pnml")
 
                 woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
                 woflan_result["sampleName"] = entry
