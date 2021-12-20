@@ -231,26 +231,29 @@ def GetFormulaFileForNet(net_filepath):
 # ensure that the two input dictionaries (string->list of files) contain the same values, and if not, print the difference
 # names are needed to nicely print error message
 def EnsureSameFiles(dict1_files: 'dict[str, list[str]]', dict2_files: 'dict[str, list[str]]', dict1_name: str, dict2_name: str):
-    if(dict2_files != dict1_files):
-        print(f"Input instances for {dict1_name} and {dict2_name} are not the same.")
-        for dir,entries in dict1_files.items():
-            if dir not in dict2_files:
-                print(f"{dict2_name} does not have subfolder " + dir)
-                return False
-            difference = set(entries) - set(dict2_files[dir])
-            if len(difference) > 0:
-                print(f"Extra files for {dict1_name} in " + dir + ": " + str(difference))
-                return False
+    for dir,entries in dict1_files.items():
+        if dir not in dict2_files:
+            print(f"{dict2_name} does not have subfolder " + dir)
+            return False
+        for entry in entries:
+            if entry not in dict2_files[dir]:
+                print(f"{entry} not in {dict2_name} for {dir}")
+        difference = set(entries) - set(dict2_files[dir])
+        if len(difference) > 0:
+            print(f"Extra files for {dict1_name} in " + dir + ": " + str(difference))
+            return False
 
-        
-        for dir,entries in dict2_files.items():
-            if dir not in dict1_files:
-                print(f"{dict1_name} does not have subfolder " + dir)
-                return False
-            difference = set(entries) - set(dict1_files[dir])
-            if len(difference) > 0:
-                print(f"Extra files for {dict2_name} in " + dir + ": " + str(difference))
-                return False
+    for dir,entries in dict2_files.items():
+        if dir not in dict1_files:
+            print(f"{dict1_name} does not have subfolder " + dir)
+            return False
+        difference = set(entries) - set(dict1_files[dir])
+        for entry in entries:
+            if entry not in dict1_files[dir]:
+                print(f"{entry} not in {dict1_name} for {dir}")
+        if len(difference) > 0:
+            print(f"Extra files for {dict2_name} in " + dir + ": " + str(difference))
+            return False
     return True
 
 def CreateBenchmarkArgparser():
@@ -272,7 +275,7 @@ def GetBenchmarkInstancesFromFolder(folderpath, extension):
             result[reldir] = []
         for file in files:
             if file.endswith(extension):
-                result[reldir] += [file]
+                result[reldir] += [file[:-len(extension)]]
     return result
 
 def EnsureFormulaFilesExist(folder, net_files):
