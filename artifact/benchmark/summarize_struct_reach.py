@@ -108,7 +108,10 @@ def print_statistics(entries, name):
     plt.legend()
     plt.title(name)
 
+    print("CONTINUOUS")
     print(" ".join([f"({x[i]},{continuous_data[i]/1000})" for i in range(0, len(x))]))
+
+    print("REACHABILITY")
     print(" ".join([f"({x[i]},{reachability_data[i]/1000})" for i in range(0, len(x))]))
 
     plt.show()
