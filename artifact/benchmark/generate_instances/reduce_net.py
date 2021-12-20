@@ -18,6 +18,8 @@ if __name__ == "__main__":
     print(input_file)
     
     call_and_log("dotnet ../fastforward/fastforward.dll translate-wf " + input_file + " -f CGraph -o tmp -m Reachability")
+    print("Removing " + input_file)
+    os.remove(input_file)
     
 
     shutil.rmtree('xml', ignore_errors=True)
