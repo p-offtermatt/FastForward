@@ -36,8 +36,6 @@ if __name__ == "__main__":
     if not benchmark_utils.EnsureSameFiles(woflan_files, continuous_files, "woflan", "Continuous"):
         exit(1)
 
-    exit()
-    
     # files are identical; to avoid naming confusion, assign new variable
     files = lola_files
 
