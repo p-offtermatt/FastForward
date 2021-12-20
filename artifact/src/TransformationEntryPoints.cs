@@ -108,7 +108,9 @@ namespace PetriTool
 
             if (!isWF)
             {
-                throw new WorkflowException("Not a workflow net! Sources: " + String.Join(", ", sources) + "; Sinks: " + String.Join(", ", sinks));
+                throw new WorkflowException("Not a workflow net! Sources: " 
+                + (sources == null ? "null" : String.Join(", ", sources)) + "; Sinks: " 
+                + (sinks == null ? "null" : String.Join(", ", sinks)));
             }
 
             Place initial = sources.First();
