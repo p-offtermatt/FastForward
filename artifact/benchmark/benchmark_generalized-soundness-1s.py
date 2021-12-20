@@ -11,6 +11,8 @@ timeout_time = 120
 
 
 if __name__ == "__main__":
+    print("This script checks generalized soundness by checking continuous soundness and comparing to checking 1-soundness with Lola and Woflan.")
+    print("The script thus only makes sense to run on instances that are NOT 1-sound!")
     parser = benchmark_utils.CreateBenchmarkArgparser()
     args = parser.parse_args()
 
@@ -30,13 +32,13 @@ if __name__ == "__main__":
     continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
     woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".pnml")
 
+    print("CONTI FILES")
+    print([key for key in continuous_files.keys()])
     
     if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
         exit(1)
     if not benchmark_utils.EnsureSameFiles(woflan_files, continuous_files, "woflan", "Continuous"):
         exit(1)
-
-    exit()
     
     # files are identical; to avoid naming confusion, assign new variable
     files = lola_files
