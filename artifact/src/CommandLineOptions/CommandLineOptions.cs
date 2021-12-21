@@ -134,6 +134,9 @@ namespace PetriTool
             HelpText = "Whether to write a formula to check soundness, reachability (of final place), or coverability (of final place). Only lola format supports soundness.",
             Required = true)]
         public WorkflowTranslation translationMode { get; set; }
+
+        [Option('k', "check-number", HelpText = "If provided, will generate a workflow net where checking the property checks the property in the original workflow net, but with k initial tokens. For example, translating a net with -m Soundness and -k 3 will yield a net which is 1-sound if and only if the original net is 3-sound.")]
+        public int k { get; set; } = 1;
     }
 
     public class TranslateUnsoundnessToReachabilityOptions : NetFilepathOption, OutputPathOptions, WitnessOptions

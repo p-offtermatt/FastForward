@@ -101,6 +101,16 @@ namespace PetriTool
 
         public static void TranslateWFNet(TranslateWFOptions options)
         {
+            if (options.k <= 0)
+            {
+                throw new ArgumentException("k needs to be a positive integer, but input was k=" + options.k.ToString());
+            }
+
+            if (options.k > 1 && options.translationMode == PetriTool.WorkflowTranslation.StructuralReachability)
+            {
+                throw new ArgumentException("k < 1 is not compatible with mode StructuralReachability!");
+            }
+
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, _) = parser.ReadNet(options.netFilePath);
 
@@ -108,13 +118,28 @@ namespace PetriTool
 
             if (!isWF)
             {
-                throw new WorkflowException("Not a workflow net! Sources: " 
-                + (sources == null ? "null" : String.Join(", ", sources)) + "; Sinks: " 
+                throw new WorkflowException("Not a workflow net! Sources: "
+                + (sources == null ? "null" : String.Join(", ", sources)) + "; Sinks: "
                 + (sinks == null ? "null" : String.Join(", ", sinks)));
             }
 
             Place initial = sources.First();
             Place final = sinks.First();
+
+            if (options.k > 1)
+            {
+                Place newInitial = net.AddNewPlace("pAuxInit");
+                Place newFinal = net.AddNewPlace("pAuxFinal");
+
+                Transition auxInitTransition = net.AddNewTransition("tAuxInit");
+                Transition auxFinalTransition = net.AddNewTransition("tAuxFinal");
+
+                auxInitTransition.AddPlaceToPre(newInitial, 1);
+                auxInitTransition.AddPlaceToPost(initial, options.k);
+
+                auxFinalTransition.AddPlaceToPre(final, options.k);
+                auxFinalTransition.AddPlaceToPost(newFinal, 1);
+            }
 
             List<MarkingWithConstraints> resultTargetMarkings = null;
             PetriNet resultNet = null;
@@ -124,12 +149,6 @@ namespace PetriTool
             switch (options.translationMode)
             {
                 case WorkflowTranslation.Soundness:
-                    if (options.outputFormat != OutputFormat.Lola)
-                    {
-                        throw new NotSupportedException("Only LoLA format supports checking soundness!");
-                    }
-                    // cannot fall through, so simply goto right case label after doing additional check.
-                    goto case WorkflowTranslation.Reachability;
                 case WorkflowTranslation.Coverability:
                 case WorkflowTranslation.Reachability:
                     {
