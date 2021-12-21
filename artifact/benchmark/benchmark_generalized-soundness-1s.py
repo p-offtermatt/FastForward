@@ -13,6 +13,7 @@ timeout_time = 120
 if __name__ == "__main__":
     print("This script checks generalized soundness by checking continuous soundness and comparing to checking 1-soundness with Lola and Woflan.")
     print("The script thus only makes sense to run on instances that are NOT 1-sound!")
+    time.sleep(2)
     parser = benchmark_utils.CreateBenchmarkArgparser()
     args = parser.parse_args()
 
@@ -32,14 +33,12 @@ if __name__ == "__main__":
     continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
     woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".pnml")
 
-    print("CONTI FILES")
-    print([key for key in continuous_files.keys()])
     
     if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
         exit(1)
     if not benchmark_utils.EnsureSameFiles(woflan_files, continuous_files, "woflan", "Continuous"):
         exit(1)
-    
+
     # files are identical; to avoid naming confusion, assign new variable
     files = lola_files
 
@@ -60,12 +59,12 @@ if __name__ == "__main__":
                 benchmark_suite = dir
                 instance_name = entry
 
-                ff_netpath = os.path.join(continuous_folder, dir, entry)
+                ff_netpath = os.path.join(continuous_folder, dir, entry + ".lola")
                 ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
 
                 
                 ff_result = benchmark_utils.call_fastforward("continuous-sound", ff_netpath, "", pruning=False,
-                    timeout_time=timeout_time)
+                    timeout_time=timeout_time, extra_options="")
                 ff_result["sampleName"] = entry
                 ff_result["methodName"] = "continuous"
 
@@ -75,7 +74,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(ff_result))
                 output_file.flush()
 
-                lola_filepath = os.path.join(lola_folder, dir, entry)
+                lola_filepath = os.path.join(lola_folder, dir, entry + ".lola")
                 lola_formulapath = benchmark_utils.GetFormulaFileForNet(lola_filepath)
 
                 lola_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, timeout_time)
@@ -86,7 +85,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(lola_result))
                 output_file.flush()
 
-                woflan_filepath = os.path.join(woflan_folder, dir, entry)
+                woflan_filepath = os.path.join(woflan_folder, dir, entry + ".pnml")
 
                 woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
                 woflan_result["sampleName"] = entry
