@@ -107,7 +107,10 @@ namespace Soundness
             benchmarkEntry.numberOfTransitions = net.Transitions.Count;
 
             Stopwatch queryWatch = Stopwatch.StartNew();
+            Stopwatch zBoundednessWatch = Stopwatch.StartNew();
             var (isZBounded, zBoundednessCounterexample) = GurobiHeuristics.CheckIntegerUnboundedness(net);
+            zBoundednessWatch.Stop();
+            benchmarkEntry.timeForZBoundedness = zBoundednessWatch.ElapsedMilliseconds;
             benchmarkEntry.isZBounded = isZBounded;
             if (!isZBounded)
             {
@@ -118,7 +121,10 @@ namespace Soundness
                 Console.WriteLine(benchmarkEntry.ToJSON());
                 return;
             }
+            Stopwatch continuousSoundnessWatch = Stopwatch.StartNew();
             var (isSound, soundnessCounterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);
+            continuousSoundnessWatch.Stop();
+            benchmarkEntry.timeForContinuousSoundness = continuousSoundnessWatch.ElapsedMilliseconds;
             queryWatch.Stop();
 
             benchmarkEntry.isContinuousSound = isSound;

@@ -97,6 +97,9 @@ namespace Benchmark
         public bool isContinuousSound { set; get; }
         public string continuousSoundnessCounterexample { set; get; }
 
+        public long timeForZBoundedness { set; get; } = 0;
+        public long timeForContinuousSoundness { set; get; } = 0;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
