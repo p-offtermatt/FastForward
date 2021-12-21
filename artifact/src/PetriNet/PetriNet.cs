@@ -661,6 +661,24 @@ namespace Petri
             return result;
         }
 
+        /// <summary>
+        /// Method to generate a new transition, which attempts to use the given name.
+        /// If a place of that name already exists, modifies the name by appending '1'
+        /// successively until the name does not exist yet.
+        /// If repeated names are not a concern, using new Transition(name) yields better performance.
+        /// </summary>
+        /// <returns>A transition with a name that does not yet occur in this Petri net.</returns>
+        public UpdateTransition AddNewTransition(string name)
+        {
+            if (Places.Any(place => place.Name == name))
+            {
+                return AddNewTransition(name + "1");
+            }
+            UpdateTransition result = new UpdateTransition(name);
+            AddTransition(result);
+            return result;
+        }
+
         public void AddPlace(Place place)
         {
             this.Places.Add(place);
