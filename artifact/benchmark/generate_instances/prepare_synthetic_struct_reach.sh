@@ -1,8 +1,8 @@
 #!/bin/bash
-for FILE in ../nets/workflows/synthetic/structural-soundness/lola/*/*_1-check.lola;
+for FILE in ../nets/workflows/synthetic/structural-soundness-templates/*/*_1-check.lola;
     do
     echo "${FILE}"
-    FILENAME=${FILE#../nets/workflows/synthetic/structural-soundness/lola/}
+    FILENAME=${FILE#../nets/workflows/synthetic/structural-templates/}
     FILENAME=${FILENAME%.lola}
     TARGET_ROOT="../nets/workflows/synthetic/structural-reachability"
     mkdir -p "${TARGET_ROOT}/fastforward/${FILENAME%/*}"

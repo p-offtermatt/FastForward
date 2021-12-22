@@ -1,5 +1,6 @@
 import argparse
 import os
+import utils
 
 NET_TEMPLATE = r"""
 PLACE
@@ -42,18 +43,17 @@ def GetNetAndFormulaForInstance(check_num, sound_num):
     return net_string, formula_string
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('output_dir', type=str,
-            help="The directory to which the output files should be written.")
-    parser.add_argument("-s", "--sizes", nargs="+", type=int)
+    parser = utils.generate_argparser()
 
     args = parser.parse_args()
+
+    print(args.nocheck)
 
     sizes = args.sizes
     os.makedirs(args.output_dir, exist_ok=True)
 
     for sound_num in sizes:
-        for check_num in range(1, sound_num+1):
+        for check_num in range(1, (sound_num+1) if not args.nocheck else 2):
             net_string, formula_string = GetNetAndFormulaForInstance(check_num, sound_num)
             out_filepath = args.output_dir + "/" + str(sound_num) + "-sound_" + str(check_num) + "-check"
 
