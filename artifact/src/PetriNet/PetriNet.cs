@@ -670,7 +670,7 @@ namespace Petri
         /// <returns>A transition with a name that does not yet occur in this Petri net.</returns>
         public UpdateTransition AddNewTransition(string name)
         {
-            if (Places.Any(place => place.Name == name))
+            if (Transitions.Any(transition => transition.Name == name))
             {
                 return AddNewTransition(name + "1");
             }
