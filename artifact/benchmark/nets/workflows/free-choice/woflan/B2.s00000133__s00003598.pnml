@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B2s00000133s00003598pnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B2s00000133s00003598pnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToProcess_dot_s00003578_dot_input_dot_s00000950">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="merge_dot_s00000945_dot_activated">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000133##s00003598_dot_output_dot_s00001610">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="decision_dot_s00000999_dot_fire_dot_s00000991">
+        <name>
+          <text>decision_dot_s00000999_dot_fire_dot_s00000991</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00000945_dot_activate_dot_s00000951">
+        <name>
+          <text>merge_dot_s00000945_dot_activate_dot_s00000951</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00000945_dot_activate_dot_s00001122">
+        <name>
+          <text>merge_dot_s00000945_dot_activate_dot_s00001122</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="callToProcess_dot_s00003578_dot_input_dot_s00000950_to_decision_dot_s00000999_dot_fire_dot_s00000991" source="callToProcess_dot_s00003578_dot_input_dot_s00000950" target="decision_dot_s00000999_dot_fire_dot_s00000991">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00000999_dot_fire_dot_s00000991" source="alpha" target="decision_dot_s00000999_dot_fire_dot_s00000991">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000999_dot_fire_dot_s00000991_to_callToProcess_dot_s00003578_dot_input_dot_s00000950" source="decision_dot_s00000999_dot_fire_dot_s00000991" target="callToProcess_dot_s00003578_dot_input_dot_s00000950">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToProcess_dot_s00003578_dot_input_dot_s00000950_to_merge_dot_s00000945_dot_activate_dot_s00000951" source="callToProcess_dot_s00003578_dot_input_dot_s00000950" target="merge_dot_s00000945_dot_activate_dot_s00000951">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_merge_dot_s00000945_dot_activate_dot_s00000951" source="alpha" target="merge_dot_s00000945_dot_activate_dot_s00000951">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000945_dot_activate_dot_s00000951_to_merge_dot_s00000945_dot_activated" source="merge_dot_s00000945_dot_activate_dot_s00000951" target="merge_dot_s00000945_dot_activated">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000945_dot_activate_dot_s00000951_to_process_dot_s00000133##s00003598_dot_output_dot_s00001610" source="merge_dot_s00000945_dot_activate_dot_s00000951" target="process_dot_s00000133##s00003598_dot_output_dot_s00001610">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToProcess_dot_s00003578_dot_input_dot_s00000950_to_merge_dot_s00000945_dot_activate_dot_s00001122" source="callToProcess_dot_s00003578_dot_input_dot_s00000950" target="merge_dot_s00000945_dot_activate_dot_s00001122">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_merge_dot_s00000945_dot_activate_dot_s00001122" source="alpha" target="merge_dot_s00000945_dot_activate_dot_s00001122">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000945_dot_activate_dot_s00001122_to_merge_dot_s00000945_dot_activated" source="merge_dot_s00000945_dot_activate_dot_s00001122" target="merge_dot_s00000945_dot_activated">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000133##s00003598_dot_output_dot_s00001610_to_t_star" source="process_dot_s00000133##s00003598_dot_output_dot_s00001610" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000945_dot_activated_to_t_star" source="merge_dot_s00000945_dot_activated" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

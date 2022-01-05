@@ -1,0 +1,42 @@
+PLACE
+alpha,callToTask_dot_s00002431_dot_output_dot_s00001673,callToTask_dot_s00003266_dot_output_dot_s00001825,endNode_dot_s00001195_dot_input_dot_default,o_star,process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859_omega,process_dot_s00000112##s00003260_dot_output_dot_s00000918;
+
+MARKING
+alpha: 1, callToTask_dot_s00002431_dot_output_dot_s00001673: 0, callToTask_dot_s00003266_dot_output_dot_s00001825: 0, endNode_dot_s00001195_dot_input_dot_default: 0, o_star: 0, process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859_omega: 0, process_dot_s00000112##s00003260_dot_output_dot_s00000918: 0;
+
+TRANSITION callToProcess_dot_s00002019_dot_outputCriterion_dot_s00000859
+CONSUME alpha: 1;
+PRODUCE endNode_dot_s00001195_dot_input_dot_default: 1, process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859_omega: 1;
+
+
+
+TRANSITION decision_dot_s00001362_dot_fire_dot_s00000799
+CONSUME alpha: 1;
+PRODUCE endNode_dot_s00001195_dot_input_dot_default: 1, process_dot_s00000112##s00003260_dot_output_dot_s00000918: 1;
+
+
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000735
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00002431_dot_output_dot_s00001673: 1, endNode_dot_s00001195_dot_input_dot_default: 1;
+
+
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000738
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00002431_dot_output_dot_s00001673: 1, callToTask_dot_s00003266_dot_output_dot_s00001825: 1, endNode_dot_s00001195_dot_input_dot_default: 1;
+
+
+
+TRANSITION process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859
+CONSUME callToTask_dot_s00002431_dot_output_dot_s00001673: 1, callToTask_dot_s00003266_dot_output_dot_s00001825: 1, process_dot_s00000112##s00003260_dot_output_dot_s00000918: 1;
+PRODUCE process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859_omega: 1;
+
+
+
+TRANSITION t_star
+CONSUME endNode_dot_s00001195_dot_input_dot_default: 1, process_dot_s00000112##s00003260_dot_outputCriterion_dot_s00000859_omega: 1;
+PRODUCE o_star: 1;
+
+
+

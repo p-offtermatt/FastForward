@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B1s00000505s00003693pnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B1s00000505s00003693pnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToProcess_dot_s00000843_dot_output_dot_s00000883">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00003649_dot_input_dot_s00000819">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000505##s00003693_dot_input_dot_s00001238">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773">
+        <name>
+          <text>callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773</text>
+        </name>
+      </transition>
+      <transition id="decision_dot_s00000781_dot_fire_dot_s00000784">
+        <name>
+          <text>decision_dot_s00000781_dot_fire_dot_s00000784</text>
+        </name>
+      </transition>
+      <transition id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773">
+        <name>
+          <text>process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="callToTask_dot_s00003649_dot_input_dot_s00000819_to_callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773" source="callToTask_dot_s00003649_dot_input_dot_s00000819" target="callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000505##s00003693_dot_input_dot_s00001238_to_callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773" source="process_dot_s00000505##s00003693_dot_input_dot_s00001238" target="callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773_to_callToProcess_dot_s00000843_dot_output_dot_s00000883" source="callToProcess_dot_s00000843_dot_outputCriterion_dot_s00000773" target="callToProcess_dot_s00000843_dot_output_dot_s00000883">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00000781_dot_fire_dot_s00000784" source="alpha" target="decision_dot_s00000781_dot_fire_dot_s00000784">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000781_dot_fire_dot_s00000784_to_callToTask_dot_s00003649_dot_input_dot_s00000819" source="decision_dot_s00000781_dot_fire_dot_s00000784" target="callToTask_dot_s00003649_dot_input_dot_s00000819">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000781_dot_fire_dot_s00000784_to_process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega" source="decision_dot_s00000781_dot_fire_dot_s00000784" target="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000781_dot_fire_dot_s00000784_to_process_dot_s00000505##s00003693_dot_input_dot_s00001238" source="decision_dot_s00000781_dot_fire_dot_s00000784" target="process_dot_s00000505##s00003693_dot_input_dot_s00001238">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773" source="alpha" target="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_to_process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega" source="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773" target="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_to_callToProcess_dot_s00000843_dot_output_dot_s00000883" source="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773" target="callToProcess_dot_s00000843_dot_output_dot_s00000883">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_to_process_dot_s00000505##s00003693_dot_input_dot_s00001238" source="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773" target="process_dot_s00000505##s00003693_dot_input_dot_s00001238">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToProcess_dot_s00000843_dot_output_dot_s00000883_to_t_star" source="callToProcess_dot_s00000843_dot_output_dot_s00000883" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega_to_t_star" source="process_dot_s00000505##s00003693_dot_outputCriterion_dot_s00000773_omega" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B2s00000285s00004838pnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B2s00000285s00004838pnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="fork_dot_s00001067_dot_activated_dot_s00000993">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000285##s00004838_dot_input_dot_s00000936">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="fork_dot_s00001067_dot_fire_dot_s00000991">
+        <name>
+          <text>fork_dot_s00001067_dot_fire_dot_s00000991</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00000945_dot_activate_dot_s00000946">
+        <name>
+          <text>merge_dot_s00000945_dot_activate_dot_s00000946</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="alpha_to_fork_dot_s00001067_dot_fire_dot_s00000991" source="alpha" target="fork_dot_s00001067_dot_fire_dot_s00000991">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_fire_dot_s00000991_to_fork_dot_s00001067_dot_activated_dot_s00000993" source="fork_dot_s00001067_dot_fire_dot_s00000991" target="fork_dot_s00001067_dot_activated_dot_s00000993">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_fire_dot_s00000991_to_process_dot_s00000285##s00004838_dot_input_dot_s00000936" source="fork_dot_s00001067_dot_fire_dot_s00000991" target="process_dot_s00000285##s00004838_dot_input_dot_s00000936">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_fire_dot_s00000991_to_process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega" source="fork_dot_s00001067_dot_fire_dot_s00000991" target="process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000285##s00004838_dot_input_dot_s00000936_to_merge_dot_s00000945_dot_activate_dot_s00000946" source="process_dot_s00000285##s00004838_dot_input_dot_s00000936" target="merge_dot_s00000945_dot_activate_dot_s00000946">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00000945_dot_activate_dot_s00000946_to_process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega" source="merge_dot_s00000945_dot_activate_dot_s00000946" target="process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega_to_t_star" source="process_dot_s00000285##s00004838_dot_outputCriterion_dot_s00000939_omega" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_activated_dot_s00000993_to_t_star" source="fork_dot_s00001067_dot_activated_dot_s00000993" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

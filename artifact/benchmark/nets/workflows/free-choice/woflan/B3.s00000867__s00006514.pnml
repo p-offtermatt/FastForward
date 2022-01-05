@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B3s00000867s00006514pnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B3s00000867s00006514pnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00002122_dot_output_dot_s00001077">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="fork_dot_s00001071_dot_activated_dot_s00001075">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="merge_dot_s00001061_dot_input_dot_s00001068">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="merge_dot_s00001061_dot_input_dot_s00001128">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="fork_dot_s00001071_dot_fire_dot_s00001073">
+        <name>
+          <text>fork_dot_s00001071_dot_fire_dot_s00001073</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00001061_dot_activate_dot_s00001064">
+        <name>
+          <text>merge_dot_s00001061_dot_activate_dot_s00001064</text>
+        </name>
+      </transition>
+      <transition id="merge_dot_s00001061_dot_activate_dot_s00001065">
+        <name>
+          <text>merge_dot_s00001061_dot_activate_dot_s00001065</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="alpha_to_fork_dot_s00001071_dot_fire_dot_s00001073" source="alpha" target="fork_dot_s00001071_dot_fire_dot_s00001073">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001071_dot_fire_dot_s00001073_to_merge_dot_s00001061_dot_input_dot_s00001128" source="fork_dot_s00001071_dot_fire_dot_s00001073" target="merge_dot_s00001061_dot_input_dot_s00001128">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001071_dot_fire_dot_s00001073_to_merge_dot_s00001061_dot_input_dot_s00001068" source="fork_dot_s00001071_dot_fire_dot_s00001073" target="merge_dot_s00001061_dot_input_dot_s00001068">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001071_dot_fire_dot_s00001073_to_callToTask_dot_s00002122_dot_output_dot_s00001077" source="fork_dot_s00001071_dot_fire_dot_s00001073" target="callToTask_dot_s00002122_dot_output_dot_s00001077">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001071_dot_fire_dot_s00001073_to_fork_dot_s00001071_dot_activated_dot_s00001075" source="fork_dot_s00001071_dot_fire_dot_s00001073" target="fork_dot_s00001071_dot_activated_dot_s00001075">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00001061_dot_input_dot_s00001128_to_merge_dot_s00001061_dot_activate_dot_s00001064" source="merge_dot_s00001061_dot_input_dot_s00001128" target="merge_dot_s00001061_dot_activate_dot_s00001064">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00001061_dot_activate_dot_s00001064_to_callToTask_dot_s00002122_dot_output_dot_s00001077" source="merge_dot_s00001061_dot_activate_dot_s00001064" target="callToTask_dot_s00002122_dot_output_dot_s00001077">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00001061_dot_input_dot_s00001068_to_merge_dot_s00001061_dot_activate_dot_s00001065" source="merge_dot_s00001061_dot_input_dot_s00001068" target="merge_dot_s00001061_dot_activate_dot_s00001065">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="merge_dot_s00001061_dot_activate_dot_s00001065_to_callToTask_dot_s00002122_dot_output_dot_s00001077" source="merge_dot_s00001061_dot_activate_dot_s00001065" target="callToTask_dot_s00002122_dot_output_dot_s00001077">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00002122_dot_output_dot_s00001077_to_t_star" source="callToTask_dot_s00002122_dot_output_dot_s00001077" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001071_dot_activated_dot_s00001075_to_t_star" source="fork_dot_s00001071_dot_activated_dot_s00001075" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>

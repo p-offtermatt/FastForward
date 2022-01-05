@@ -1,0 +1,24 @@
+PLACE
+alpha,join_dot_s00001163_dot_activated_dot_s00001064,merge_dot_s00001061_dot_activated,o_star,process_dot_s00000771##s00005478_dot_outputCriterion_dot_s00001055_omega;
+
+MARKING
+alpha: 1, join_dot_s00001163_dot_activated_dot_s00001064: 0, merge_dot_s00001061_dot_activated: 0, o_star: 0, process_dot_s00000771##s00005478_dot_outputCriterion_dot_s00001055_omega: 0;
+
+TRANSITION merge_dot_s00001061_dot_activate_dot_s00001064
+CONSUME join_dot_s00001163_dot_activated_dot_s00001064: 1;
+PRODUCE merge_dot_s00001061_dot_activated: 1;
+
+
+
+TRANSITION merge_dot_s00001061_dot_activate_dot_s00001065
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00001061_dot_activated: 1, join_dot_s00001163_dot_activated_dot_s00001064: 1, process_dot_s00000771##s00005478_dot_outputCriterion_dot_s00001055_omega: 1;
+
+
+
+TRANSITION t_star
+CONSUME process_dot_s00000771##s00005478_dot_outputCriterion_dot_s00001055_omega: 1, merge_dot_s00001061_dot_activated: 1;
+PRODUCE o_star: 1;
+
+
+

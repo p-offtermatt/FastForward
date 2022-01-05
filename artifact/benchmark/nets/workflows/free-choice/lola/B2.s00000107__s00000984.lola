@@ -1,0 +1,48 @@
+PLACE
+alpha,callToTask_dot_s00001000_dot_output_dot_s00000956,callToTask_dot_s00001001_dot_output_dot_s00000979,callToTask_dot_s00001002_dot_input_dot_s00000985,callToTask_dot_s00001004_dot_output_dot_s00000956,callToTask_dot_s00001017_dot_output_dot_s00000979,callToTask_dot_s00001018_dot_output_dot_s00000959,o_star;
+
+MARKING
+alpha: 1, callToTask_dot_s00001000_dot_output_dot_s00000956: 0, callToTask_dot_s00001001_dot_output_dot_s00000979: 0, callToTask_dot_s00001002_dot_input_dot_s00000985: 0, callToTask_dot_s00001004_dot_output_dot_s00000956: 0, callToTask_dot_s00001017_dot_output_dot_s00000979: 0, callToTask_dot_s00001018_dot_output_dot_s00000959: 0, o_star: 0;
+
+TRANSITION callToTask_dot_s00001000_dot_outputCriterion_dot_s00000939
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00001000_dot_output_dot_s00000956: 1;
+
+
+
+TRANSITION callToTask_dot_s00001001_dot_outputCriterion_dot_s00000939
+CONSUME callToTask_dot_s00001000_dot_output_dot_s00000956: 1, callToTask_dot_s00001002_dot_input_dot_s00000985: 1;
+PRODUCE callToTask_dot_s00001001_dot_output_dot_s00000979: 1;
+
+
+
+TRANSITION callToTask_dot_s00001004_dot_outputCriterion_dot_s00000939
+CONSUME callToTask_dot_s00001000_dot_output_dot_s00000956: 1, callToTask_dot_s00001002_dot_input_dot_s00000985: 1;
+PRODUCE callToTask_dot_s00001004_dot_output_dot_s00000956: 1;
+
+
+
+TRANSITION callToTask_dot_s00001017_dot_outputCriterion_dot_s00000939
+CONSUME callToTask_dot_s00001000_dot_output_dot_s00000956: 1, callToTask_dot_s00001002_dot_input_dot_s00000985: 1;
+PRODUCE callToTask_dot_s00001017_dot_output_dot_s00000979: 1;
+
+
+
+TRANSITION callToTask_dot_s00001018_dot_outputCriterion_dot_s00000939
+CONSUME callToTask_dot_s00001000_dot_output_dot_s00000956: 1, callToTask_dot_s00001002_dot_input_dot_s00000985: 1;
+PRODUCE callToTask_dot_s00001018_dot_output_dot_s00000959: 1;
+
+
+
+TRANSITION decision_dot_s00000999_dot_fire_dot_s00000991
+CONSUME alpha: 1;
+PRODUCE callToTask_dot_s00001002_dot_input_dot_s00000985: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToTask_dot_s00001001_dot_output_dot_s00000979: 1, callToTask_dot_s00001004_dot_output_dot_s00000956: 1, callToTask_dot_s00001017_dot_output_dot_s00000979: 1, callToTask_dot_s00001018_dot_output_dot_s00000959: 1;
+PRODUCE o_star: 1;
+
+
+

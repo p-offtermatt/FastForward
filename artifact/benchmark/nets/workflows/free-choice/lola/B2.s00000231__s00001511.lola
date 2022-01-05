@@ -1,0 +1,36 @@
+PLACE
+alpha,callToProcess_dot_s00001507_dot_output_dot_s00000981,callToTask_dot_s00001516_dot_output_dot_s00000981,callToTask_dot_s00001517_dot_output_dot_s00000979,callToTask_dot_s00001519_dot_output_dot_s00000981,fork_dot_s00001293_dot_activated_dot_s00000993,fork_dot_s00001293_dot_activated_dot_s00000997,merge_dot_s00000945_dot_activated,o_star,process_dot_s00000231##s00001511_dot_input_dot_s00001512;
+
+MARKING
+alpha: 1, callToProcess_dot_s00001507_dot_output_dot_s00000981: 0, callToTask_dot_s00001516_dot_output_dot_s00000981: 0, callToTask_dot_s00001517_dot_output_dot_s00000979: 0, callToTask_dot_s00001519_dot_output_dot_s00000981: 0, fork_dot_s00001293_dot_activated_dot_s00000993: 0, fork_dot_s00001293_dot_activated_dot_s00000997: 0, merge_dot_s00000945_dot_activated: 0, o_star: 0, process_dot_s00000231##s00001511_dot_input_dot_s00001512: 0;
+
+TRANSITION merge_dot_s00000945_dot_activate_dot_s00000946
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000945_dot_activated: 1, callToTask_dot_s00001516_dot_output_dot_s00000981: 1, fork_dot_s00001293_dot_activated_dot_s00000993: 1, fork_dot_s00001293_dot_activated_dot_s00000997: 1, process_dot_s00000231##s00001511_dot_input_dot_s00001512: 1;
+
+
+
+TRANSITION merge_dot_s00000945_dot_activate_dot_s00000948
+CONSUME fork_dot_s00001293_dot_activated_dot_s00000993: 1;
+PRODUCE merge_dot_s00000945_dot_activated: 1, callToTask_dot_s00001517_dot_output_dot_s00000979: 1;
+
+
+
+TRANSITION merge_dot_s00000945_dot_activate_dot_s00000949
+CONSUME process_dot_s00000231##s00001511_dot_input_dot_s00001512: 1;
+PRODUCE merge_dot_s00000945_dot_activated: 1, callToProcess_dot_s00001507_dot_output_dot_s00000981: 1;
+
+
+
+TRANSITION merge_dot_s00000945_dot_activate_dot_s00000951
+CONSUME fork_dot_s00001293_dot_activated_dot_s00000997: 1;
+PRODUCE merge_dot_s00000945_dot_activated: 1, callToTask_dot_s00001519_dot_output_dot_s00000981: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToProcess_dot_s00001507_dot_output_dot_s00000981: 1, callToTask_dot_s00001516_dot_output_dot_s00000981: 1, callToTask_dot_s00001517_dot_output_dot_s00000979: 1, callToTask_dot_s00001519_dot_output_dot_s00000981: 1, merge_dot_s00000945_dot_activated: 1;
+PRODUCE o_star: 1;
+
+
+

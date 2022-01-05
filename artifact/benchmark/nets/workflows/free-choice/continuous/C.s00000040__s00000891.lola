@@ -1,0 +1,60 @@
+PLACE
+alpha,merge_dot_s00000937_dot_activated,merge_dot_s00000938_dot_activated,o_star,task_dot_s00000901_dot_output_dot_s00000900,task_dot_s00000908_dot_input_dot_s00000896,task_dot_s00000908_dot_input_dot_s00000909;
+
+MARKING
+alpha: 1, merge_dot_s00000937_dot_activated: 0, merge_dot_s00000938_dot_activated: 0, o_star: 0, task_dot_s00000901_dot_output_dot_s00000900: 0, task_dot_s00000908_dot_input_dot_s00000896: 0, task_dot_s00000908_dot_input_dot_s00000909: 0;
+
+TRANSITION decision_dot_s00000926_dot_fire_dot_s00000272
+CONSUME merge_dot_s00000938_dot_activated: 1;
+PRODUCE task_dot_s00000908_dot_input_dot_s00000909: 1, merge_dot_s00000937_dot_activated: 1;
+
+
+
+TRANSITION decision_dot_s00000927_dot_fire_dot_s00000272
+CONSUME merge_dot_s00000937_dot_activated: 1;
+PRODUCE task_dot_s00000908_dot_input_dot_s00000896: 1, task_dot_s00000901_dot_output_dot_s00000900: 1;
+
+
+
+TRANSITION merge_dot_s00000936_dot_activate_dot_s00000286
+CONSUME task_dot_s00000901_dot_output_dot_s00000900: 1, task_dot_s00000908_dot_input_dot_s00000896: 1, task_dot_s00000908_dot_input_dot_s00000909: 1;
+PRODUCE o_star: 1;
+
+
+
+TRANSITION merge_dot_s00000937_dot_activate_dot_s00000284
+CONSUME merge_dot_s00000938_dot_activated: 1;
+PRODUCE merge_dot_s00000937_dot_activated: 1;
+
+
+
+TRANSITION merge_dot_s00000938_dot_activate_dot_s00000284
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000938_dot_activated: 1;
+
+
+
+TRANSITION merge_dot_s00000938_dot_activate_dot_s00000286
+CONSUME task_dot_s00000901_dot_output_dot_s00000900: 1, task_dot_s00000908_dot_input_dot_s00000896: 1, task_dot_s00000908_dot_input_dot_s00000909: 1;
+PRODUCE merge_dot_s00000938_dot_activated: 1;
+
+
+
+TRANSITION task_dot_s00000914_dot_inputCriterion_dot_s00000257
+CONSUME merge_dot_s00000938_dot_activated: 1;
+PRODUCE o_star: 1;
+
+
+
+TRANSITION task_dot_s00000914_dot_inputCriterion_dot_s00000916
+CONSUME merge_dot_s00000937_dot_activated: 1;
+PRODUCE task_dot_s00000901_dot_output_dot_s00000900: 1, o_star: 1;
+
+
+
+TRANSITION task_dot_s00000914_dot_inputCriterion_dot_s00000917
+CONSUME merge_dot_s00000938_dot_activated: 1;
+PRODUCE merge_dot_s00000937_dot_activated: 1, o_star: 1;
+
+
+

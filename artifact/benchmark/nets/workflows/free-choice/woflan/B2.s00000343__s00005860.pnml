@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<pnml>
+  <net id="B2s00000343s00005860pnml" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>B2s00000343s00005860pnml</text>
+    </name>
+    <page id="page0">
+      <name>
+        <text>DefaultPage</text>
+      </name>
+      <place id="alpha">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00005243_dot_input_dot_s00000987">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00005863_dot_input_dot_s00000985">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="callToTask_dot_s00005864_dot_input_dot_s00000986">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="fork_dot_s00001067_dot_activated_dot_s00000993">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="fork_dot_s00001293_dot_activated_dot_s00000993">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <place id="o_star">
+        <initialMarking>
+          <text>0</text>
+        </initialMarking>
+      </place>
+      <transition id="decision_dot_s00000989_dot_fire_dot_s00000995">
+        <name>
+          <text>decision_dot_s00000989_dot_fire_dot_s00000995</text>
+        </name>
+      </transition>
+      <transition id="decision_dot_s00000989_dot_fire_dot_s00000997">
+        <name>
+          <text>decision_dot_s00000989_dot_fire_dot_s00000997</text>
+        </name>
+      </transition>
+      <transition id="decision_dot_s00000989_dot_fire_dot_s00001068">
+        <name>
+          <text>decision_dot_s00000989_dot_fire_dot_s00001068</text>
+        </name>
+      </transition>
+      <transition id="fork_dot_s00001067_dot_activate_dot_s00000990">
+        <name>
+          <text>fork_dot_s00001067_dot_activate_dot_s00000990</text>
+        </name>
+      </transition>
+      <transition id="fork_dot_s00001293_dot_activate_dot_s00000990">
+        <name>
+          <text>fork_dot_s00001293_dot_activate_dot_s00000990</text>
+        </name>
+      </transition>
+      <transition id="t_star">
+        <name>
+          <text>t_star</text>
+        </name>
+      </transition>
+      <arc id="alpha_to_decision_dot_s00000989_dot_fire_dot_s00000995" source="alpha" target="decision_dot_s00000989_dot_fire_dot_s00000995">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000989_dot_fire_dot_s00000995_to_callToTask_dot_s00005863_dot_input_dot_s00000985" source="decision_dot_s00000989_dot_fire_dot_s00000995" target="callToTask_dot_s00005863_dot_input_dot_s00000985">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00000989_dot_fire_dot_s00000997" source="alpha" target="decision_dot_s00000989_dot_fire_dot_s00000997">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000989_dot_fire_dot_s00000997_to_callToTask_dot_s00005243_dot_input_dot_s00000987" source="decision_dot_s00000989_dot_fire_dot_s00000997" target="callToTask_dot_s00005243_dot_input_dot_s00000987">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_decision_dot_s00000989_dot_fire_dot_s00001068" source="alpha" target="decision_dot_s00000989_dot_fire_dot_s00001068">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="decision_dot_s00000989_dot_fire_dot_s00001068_to_callToTask_dot_s00005864_dot_input_dot_s00000986" source="decision_dot_s00000989_dot_fire_dot_s00001068" target="callToTask_dot_s00005864_dot_input_dot_s00000986">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_fork_dot_s00001067_dot_activate_dot_s00000990" source="alpha" target="fork_dot_s00001067_dot_activate_dot_s00000990">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_activate_dot_s00000990_to_fork_dot_s00001067_dot_activated_dot_s00000993" source="fork_dot_s00001067_dot_activate_dot_s00000990" target="fork_dot_s00001067_dot_activated_dot_s00000993">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="alpha_to_fork_dot_s00001293_dot_activate_dot_s00000990" source="alpha" target="fork_dot_s00001293_dot_activate_dot_s00000990">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001293_dot_activate_dot_s00000990_to_fork_dot_s00001293_dot_activated_dot_s00000993" source="fork_dot_s00001293_dot_activate_dot_s00000990" target="fork_dot_s00001293_dot_activated_dot_s00000993">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00005243_dot_input_dot_s00000987_to_t_star" source="callToTask_dot_s00005243_dot_input_dot_s00000987" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00005863_dot_input_dot_s00000985_to_t_star" source="callToTask_dot_s00005863_dot_input_dot_s00000985" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="callToTask_dot_s00005864_dot_input_dot_s00000986_to_t_star" source="callToTask_dot_s00005864_dot_input_dot_s00000986" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001067_dot_activated_dot_s00000993_to_t_star" source="fork_dot_s00001067_dot_activated_dot_s00000993" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="fork_dot_s00001293_dot_activated_dot_s00000993_to_t_star" source="fork_dot_s00001293_dot_activated_dot_s00000993" target="t_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="t_star_to_o_star" source="t_star" target="o_star">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+  </net>
+</pnml>
