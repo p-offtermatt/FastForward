@@ -17,6 +17,55 @@ namespace PetriTool
 {
     public class TransformationEntryPoints
     {
+        public static void ChainNetsEntryPoint(ChainNetsOptions options)
+        {
+            // holds tuples of <net, initialPlace, finalPlace> in order to facilitate chaining
+            List<Tuple<PetriNet, Place, Place>> netTuples = new List<Tuple<PetriNet, Place, Place>>();
+            Console.WriteLine("Reading nets to chain");
+            foreach (string path in options.nets)
+            {
+                Console.WriteLine(path);
+                NetParser netParser = ParserPicker.ChooseNetParser(path);
+                (PetriNet net, Marking initialMarking) = netParser.ReadNet(path);
+                (bool isWF, IEnumerable<Place> sources, IEnumerable<Place> sinks) = net.IsWorkflowNet();
+                if (!isWF)
+                {
+                    throw new WorkflowException("Net is not a workflow net!");
+                }
+                Place initial = sources.First();
+                Place final = sinks.First();
+
+                netTuples.Add(new Tuple<PetriNet, Place, Place>(net, initial, final));
+            }
+
+            (PetriNet chainedNet, Marking firstInitialMarking) = ChainNets(netTuples);
+
+            WriteNet(options.outputFormat, options.outputFilePath, chainedNet, firstInitialMarking, new List<MarkingWithConstraints>());
+        }
+
+        private static (PetriNet net, Marking initialMarking) ChainNets(List<Tuple<PetriNet, Place, Place>> netTuples)
+        {
+            (PetriNet curNet, Place curInitial, Place curFinal) = netTuples[0];
+            // copy net to avoid modifying the input net
+            curNet = new PetriNet(curNet);
+
+            for (int i = 1; i < netTuples.Count(); i++)
+            {
+                (PetriNet nextNet, Place nextInitial, Place nextFinal) = netTuples[i];
+                Dictionary<Place, Place> placeMapping = curNet.Join(nextNet);
+                UpdateTransition chainTransition = curNet.AddNewTransition("net_" + (i - 1).ToString() + "_to_net_" + i.ToString());
+                chainTransition.AddPlaceToPre(curFinal, 1);
+                chainTransition.AddPlaceToPost(placeMapping[nextInitial], 1);
+
+                curFinal = placeMapping[nextFinal];
+            }
+
+            Marking resultInitialMarking = new Marking();
+            resultInitialMarking[curInitial] = 1;
+
+            return (curNet, resultInitialMarking);
+        }
+
         public static void TransformToWFNet(WFTransformationOptions options)
         {
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
@@ -161,18 +210,12 @@ namespace PetriTool
                         MarkingWithConstraints finalMarkingWithConstraints = options.translationMode switch
                         {
                             // just wraps finalMarking in marking with constraints; constraints will be ignored for soundness later
-                            PetriTool.WorkflowTranslation.Soundness => MarkingWithConstraints.AsCoverability(finalMarking),
+                            PetriTool.WorkflowTranslation.Soundness => MarkingWithConstraints.AsReachability(finalMarking, net),
                             PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking),
                             PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net)
                         };
 
                         resultTargetMarkings = new List<MarkingWithConstraints>() { finalMarkingWithConstraints };
-                        // formulaString = options.translationMode switch
-                        // {
-                        //     PetriTool.WorkflowTranslation.Soundness => finalMarking.ToLolaLivenessPredicate(net),
-                        //     PetriTool.WorkflowTranslation.Coverability => "EF (" + MarkingWithConstraints.AsCoverability(finalMarking).ToLola() + ")",
-                        //     PetriTool.WorkflowTranslation.Reachability => "EF (" + MarkingWithConstraints.AsReachability(finalMarking, net).ToLola() + ")"
-                        // };
 
                         resultNet = net;
                         break;
@@ -247,7 +290,8 @@ namespace PetriTool
                         }
                         using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
                         {
-                            file.Write(MarkingWithConstraints.ListToLola(resultTargetMarkings));
+                            // For soundness, transforms EG (o = 1) to AFEG (o = 1)
+                            file.Write((options.translationMode == WorkflowTranslation.Soundness ? "AG" : "") + MarkingWithConstraints.ListToLola(resultTargetMarkings));
                         }
                         return;
                     }

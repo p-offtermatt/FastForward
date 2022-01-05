@@ -63,7 +63,7 @@ namespace PetriTool
             var parser = new CommandLine.Parser(with => with.HelpWriter = null);
 
             var parserResult = parser
-                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, CalculateMarkingEquationParikhImageOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, SaturationSearchOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions, ReplaceArcWeightOptions>(args);
+                .ParseArguments<AStarQueryOptions, WitnessCheckOptions, BestFirstQueryOptions, TranslationOptions, CalculateHeuristicOptions, CalculateHeuristicSupportOptions, CalculateMarkingEquationParikhImageOptions, ComputeNetStatisticsOptions, GenerateInstanceOptions, WFTransformationOptions, ContinuousSoundnessOptions, SoundnessOptions, TranslateWFOptions, SoundnessReverseTransitionOptions, ChainNetsOptions, ReplaceArcWeightOptions>(args);
             parserResult.WithParsed<AStarQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<BestFirstQueryOptions>(SearchQueryEntryPoints.SingleQueryWithHeuristic)
                 .WithParsed<WitnessCheckOptions>(UtilityEntrypoints.WitnessCheck)
@@ -73,13 +73,13 @@ namespace PetriTool
                 .WithParsed<ComputeNetStatisticsOptions>(UtilityEntrypoints.ComputeNetStatistics)
                 .WithParsed<CalculateMarkingEquationParikhImageOptions>(UtilityEntrypoints.CalculateMarkingEquationParikhImage)
                 .WithParsed<GenerateInstanceOptions>(UtilityEntrypoints.GenerateInstance)
-                .WithParsed<SaturationSearchOptions>(SearchQueryEntryPoints.SaturationSearch)
                 .WithParsed<WFTransformationOptions>(TransformationEntryPoints.TransformToWFNet)
                 .WithParsed<ContinuousSoundnessOptions>(SoundnessChecker.VerifyContinuousSoundness)
                 .WithParsed<SoundnessOptions>(SoundnessChecker.VerifySoundness)
                 .WithParsed<TranslateWFOptions>(TransformationEntryPoints.TranslateWFNet)
                 .WithParsed<SoundnessReverseTransitionOptions>(SoundnessChecker.VerifySoundnessViaTransition)
                 .WithParsed<ReplaceArcWeightOptions>(TransformationEntryPoints.ReplaceArcWeights)
+                .WithParsed<ChainNetsOptions>(TransformationEntryPoints.ChainNetsEntryPoint)
                 .WithNotParsed((_) => DisplayHelp(parserResult));
 #endif
             System.Environment.Exit(0);

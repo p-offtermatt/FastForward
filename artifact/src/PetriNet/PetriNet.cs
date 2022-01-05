@@ -663,7 +663,7 @@ namespace Petri
 
         /// <summary>
         /// Method to generate a new transition, which attempts to use the given name.
-        /// If a place of that name already exists, modifies the name by appending '1'
+        /// If a transition of that name already exists, modifies the name by appending '1'
         /// successively until the name does not exist yet.
         /// If repeated names are not a concern, using new Transition(name) yields better performance.
         /// </summary>
@@ -684,7 +684,57 @@ namespace Petri
             this.Places.Add(place);
         }
 
+        /// <summary>
+        /// Clears any cached values of this net, e.g. presets and postsets of places
+        /// </summary>
+        public void ClearCache()
+        {
+            PlacesToPostsets.Clear();
+            PlacesToPresets.Clear();
+        }
 
+
+
+        /// <summary>
+        /// Joins the other Petri net into this net by adding all its places and transitions.
+        /// Avoids naming conflicts by assigning new names to places and transitions if necessary.
+        /// If the optional "prefix" argument is provided, all place/transition names are prefixed with
+        /// the string to better disambiguate, otherwise the disambiguation from AddNewPlace / AddNewTransition is used
+        /// </summary>
+        /// <param name="other"></param>
+        /// <param name="prefix"></param>
+        /// <returns>Modified this net, and returns a mapping from places in the other net to the newly added places in this net.</returns>
+        public Dictionary<Place, Place> Join(PetriNet other, string prefix = "")
+        {
+            // maps a place from the old other net to the place in the result net
+            Dictionary<Place, Place> placeMapping = new Dictionary<Place, Place>();
+
+            foreach (Place place in other.Places)
+            {
+                string attemptedName = prefix + place.Name;
+                Place newPlace = this.AddNewPlace(attemptedName);
+                placeMapping.Add(place, newPlace);
+            }
+
+            foreach (UpdateTransition transition in other.Transitions)
+            {
+                string attemptedName = prefix + transition.Name;
+                UpdateTransition newTransition = this.AddNewTransition(attemptedName);
+                foreach ((Place place, int value) in transition.Pre)
+                {
+                    newTransition.Pre.Add(placeMapping[place], value);
+                }
+
+                foreach ((Place place, int value) in transition.Post)
+                {
+                    newTransition.Post.Add(placeMapping[place], value);
+                }
+            }
+
+            this.ClearCache();
+
+            return placeMapping;
+        }
 
         public IEnumerable<Place> GetSinkPlaces()
         {

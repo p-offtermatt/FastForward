@@ -1,9 +1,20 @@
 ﻿using CommandLine;
 using Petri;
 using System;
+using System.Collections.Generic;
 
 namespace PetriTool
 {
+
+    [Verb("chain-nets", HelpText = "Chains multiple workflow nets together by cmonbining the final place of net i with the initial place of net i+1.")]
+    public class ChainNetsOptions : OutputFormatOptions
+    {
+        [Value(0, MetaName = "nets", HelpText = "The nets to chain together. The order is the order in which the nets will be chained.", Required = true)]
+        public IEnumerable<string> nets { get; set; }
+        public OutputFormat outputFormat { get; set; }
+        public string outputFilePath { get; set; }
+    }
+
     [Verb("benchmark", HelpText = "run benchmarks on all .lola/.formula files in a folder")]
     public class BenchmarkOptions
     {
@@ -247,17 +258,13 @@ namespace PetriTool
 
     public interface WitnessOptions
     {
-        [Value(1, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
+        [Value(2, MetaName = "witness", HelpText = "The witness sequence to be checked, in the form of a quote-enclosed, comma separated list of transition names.", Required = true)]
         public string witness { get; set; }
     }
 
     [Verb("witness-check", HelpText = "Tests whether a given witness is actually a witness for the given net and target.")]
     public class WitnessCheckOptions : NetWithFormulaOptions, WitnessOptions
     {
-        [Option('f', "formula",
-            HelpText = "The path to a file that contains the target markings in the .formula format (this format is part of lola). If not given, simply prints marking reached at the end of the witness trace.",
-            Required = false)]
-
         public string witness { get; set; }
     }
 
