@@ -1,7 +1,8 @@
 #!/bin/bash
 base_path=../nets/workflows/chained_workflows/
 
-python3 chain_nets.py ../nets/workflows/workflows_transformed/IBM ../nets/workflows/chained_workflows_unreduced/
+rm -r ../nets/workflows/chained_workflows*
+python3 chain_nets.py ../nets/workflows/fc-safety ../nets/workflows/chained_workflows_unreduced/
 
 mkdir -p ../nets/workflows/chained_workflows_templates/
 cp ../nets/workflows/chained_workflows_unreduced/* ../nets/workflows/chained_workflows_templates/
