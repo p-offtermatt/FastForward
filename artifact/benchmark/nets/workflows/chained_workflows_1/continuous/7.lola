@@ -1,0 +1,24 @@
+PLACE
+alpha,callToProcess_dot_s00001030_dot_output_dot_s00000919,merge_dot_s00000730_dot_activated,o_star;
+
+MARKING
+alpha: 1, callToProcess_dot_s00001030_dot_output_dot_s00000919: 0, merge_dot_s00000730_dot_activated: 0, o_star: 0;
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000731
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000730_dot_activated: 1, callToProcess_dot_s00001030_dot_output_dot_s00000919: 1;
+
+
+
+TRANSITION merge_dot_s00000730_dot_activate_dot_s00000733
+CONSUME alpha: 1;
+PRODUCE merge_dot_s00000730_dot_activated: 1;
+
+
+
+TRANSITION t_star
+CONSUME callToProcess_dot_s00001030_dot_output_dot_s00000919: 1, merge_dot_s00000730_dot_activated: 1;
+PRODUCE o_star: 1;
+
+
+
