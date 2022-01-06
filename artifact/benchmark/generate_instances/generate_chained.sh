@@ -18,7 +18,6 @@ for ((chain=1;chain<=201;chain=chain+20))
     for FILE in ../nets/workflows/chained_workflows_templates_${chain}/*.lola;
         do
         echo ${FILE}
-        sleep 2c
         python3 reduce_net.py ${FILE}
 
 
