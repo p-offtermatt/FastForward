@@ -9,8 +9,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("inputdir")
     parser.add_argument("outputdir")
-    parser.add_argument("repeats")
-    parser.add_argument("chain_num", help="How many nets should be chained together for each repeat")
+    parser.add_argument("repeats", type=int)
+    parser.add_argument("chain_num", help="How many nets should be chained together for each repeat", type=int)
 
     args = parser.parse_args()
 
