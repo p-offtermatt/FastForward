@@ -8,12 +8,6 @@ for FILE in ../nets/workflows/workflows_transformed/IBM/*.lola;
     FILENAME=${FILE#../nets/workflows/workflows_transformed/IBM/}
     FILENAME_NO_EXTENSION=${FILENAME%.lola}
 
-    TARGET="${base_path}/"${FILENAME}
-    TARGET_NO_EXTENSION=${TARGET%.lola}
-
-    cp $FILE $TARGET
-    python3 reduce_net.py ${TARGET}
-
-    dotnet ../fastforward/fastforward.dll translate-wf ${TARGET} -f Lola -o "${base_path}/${FILENAME_NO_EXTENSION}" -m Safety
+    dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -f Lola -o "${base_path}/${FILENAME_NO_EXTENSION}" -m Safety
 
     done
