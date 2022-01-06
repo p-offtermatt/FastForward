@@ -122,7 +122,12 @@ namespace PetriTool
         /// <summary>
         /// Does there exist k such that from initial:k, final:k is *reachable*?
         /// </summary>
-        StructuralReachability
+        StructuralReachability,
+
+        /// <summary>
+        /// Does m[p] <= 1 hold for all markings m and places p?
+        /// </summary>
+        Safety
     }
 
     public class NetAndOutputOptions : NetFilepathOption, OutputFormatOptions

@@ -160,6 +160,11 @@ namespace PetriTool
                 throw new ArgumentException("k < 1 is not compatible with mode StructuralReachability!");
             }
 
+            if (options.translationMode == WorkflowTranslation.Safety && options.outputFormat != OutputFormat.Lola)
+            {
+                throw new ArgumentException("Unsafety is only supported for the Lola format!");
+            }
+
             NetParser parser = ParserPicker.ChooseNetParser(options.netFilePath);
             (PetriNet net, _) = parser.ReadNet(options.netFilePath);
 
@@ -271,6 +276,14 @@ namespace PetriTool
                         resultTargetMarkings = new List<MarkingWithConstraints>() { MarkingWithConstraints.AsReachability(finalMarking, net) };
                         break;
                     }
+                case WorkflowTranslation.Safety:
+                    {
+                        initialMarking = new Marking();
+                        initialMarking[initial] = 1;
+                        resultNet = net;
+                        break;
+                    }
+
             }
 
 
@@ -290,8 +303,15 @@ namespace PetriTool
                         }
                         using (StreamWriter file = new StreamWriter(options.outputFilePath + ".formula", append: false))
                         {
-                            // For soundness, transforms EG (o = 1) to AFEG (o = 1)
-                            file.Write((options.translationMode == WorkflowTranslation.Soundness ? "AG" : "") + MarkingWithConstraints.ListToLola(resultTargetMarkings));
+                            if (options.translationMode == WorkflowTranslation.Safety)
+                            {
+                                file.Write("AG ((" + String.Join(" AND\n", net.Places.Select(place => place.Name + " <= 1")) + "))");
+                            }
+                            else
+                            {
+                                // For soundness, transforms EG (o = 1) to AFEG (o = 1)
+                                file.Write((options.translationMode == WorkflowTranslation.Soundness ? "AG" : "") + MarkingWithConstraints.ListToLola(resultTargetMarkings));
+                            }
                         }
                         return;
                     }
