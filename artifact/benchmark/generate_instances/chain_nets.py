@@ -9,16 +9,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("inputdir")
     parser.add_argument("outputdir")
+    parser.add_argument("repeats")
+    parser.add_argument("chain_num", help="How many nets should be chained together for each repeat")
 
     args = parser.parse_args()
 
-    filepaths = [os.path.join(args.inputdir, filename) for filename in os.listdir(args.inputdir) if not filename.startswith("A") and filename.endswith(".lola")]
+    filepaths = [os.path.join(args.inputdir, filename) for filename in os.listdir(args.inputdir) if filename.endswith(".lola")]
     print(f"Found {len(filepaths)} nets from libraries B and C in {args.inputdir}")
 
     pathlib.Path(args.outputdir).mkdir(parents=True, exist_ok=True)
 
-    repeat_num = 50
-    chain_num = 200
+    repeat_num = args.repeats
+    chain_num = args.chain_num
     print(f"Generating {repeat_num} nets by combining {chain_num} random nets")
 
     for i in range(0, repeat_num):
