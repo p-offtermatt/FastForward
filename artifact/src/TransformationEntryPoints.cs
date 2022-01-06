@@ -305,7 +305,7 @@ namespace PetriTool
                         {
                             if (options.translationMode == WorkflowTranslation.Safety)
                             {
-                                file.Write("AG ((" + String.Join(" AND\n", net.Places.Select(place => place.Name + " <= 1")) + "))");
+                                file.Write("AG ((" + String.Join(" AND\n", net.Places.Select(place => PetriNetUtils.EscapeCharsLola(place.Name) + " <= 1")) + "))");
                             }
                             else
                             {
