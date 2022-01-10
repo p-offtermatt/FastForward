@@ -18,5 +18,5 @@ if __name__ == "__main__":
     data = read_json_from_file(args.safety_file)
     
     for entry in data:
-        if "error" not in entry and not get_result_from_entry(entry):
+        if "error" in entry or not get_result_from_entry(entry):
             os.remove(entry["netFile"])
