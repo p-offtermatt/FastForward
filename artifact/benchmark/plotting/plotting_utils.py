@@ -33,7 +33,7 @@ def read_json_from_file(filepath):
 def group_by_name(entries):
     result = dict()
     for entry in entries:
-        normalized_sample_name = strip_common_extensions(entry["sampleName"])
+        normalized_sample_name = strip_common_extensions(str(entry["sampleName"]))
         entries_for_name = result.get(normalized_sample_name, list())
         entries_for_name.append(entry)
         result[normalized_sample_name] = entries_for_name
