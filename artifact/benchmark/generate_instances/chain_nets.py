@@ -4,7 +4,7 @@ import pathlib
 import random
 from subprocess import run
 
-
+random.seed(0)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("inputdir")

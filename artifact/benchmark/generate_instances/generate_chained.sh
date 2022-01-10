@@ -1,9 +1,9 @@
 #!/bin/bash
 
-REPEATS=10
+REPEATS=20
 rm -r ../nets/workflows/chained_workflows*
 
-for ((chain=1;chain<=201;chain=chain+20))
+for ((chain=1;chain<=401;chain=chain+20))
     do
     base_path=../nets/workflows/chained_workflows_${chain}/
 
