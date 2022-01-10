@@ -193,6 +193,9 @@ namespace PetriTool
 
                 auxFinalTransition.AddPlaceToPre(final, options.k);
                 auxFinalTransition.AddPlaceToPost(newFinal, 1);
+
+                initial = newInitial;
+                final = newFinal;
             }
 
             List<MarkingWithConstraints> resultTargetMarkings = null;
