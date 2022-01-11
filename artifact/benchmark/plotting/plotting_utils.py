@@ -1,4 +1,5 @@
 import json
+from shutil import Error
 
 def strip_common_extensions(string):
     changed = True
@@ -18,6 +19,14 @@ def removesuffix(s, suf):
     if suf and s.endswith(suf):
         return s[:-len(suf)]
     return s
+
+def get_entry_with_method_from_list(method, entries):
+    possible_results = [x for x in entries if "methodName" in x and x["methodName"] == method]
+    if len(possible_results) > 1:
+        raise Error(f"Multiple possible results for method {method} in entries")
+    if len(possible_results) == 0:
+        return None
+    return possible_results[0]
 
 def read_json_from_file(filepath):
     with open(filepath, 'r') as json_file:
