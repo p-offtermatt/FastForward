@@ -24,16 +24,16 @@ if __name__ == "__main__":
     
     # get instances in lola and fastforward subdirectories
     lola_folder = folder_name.joinpath("lola")
-    ff_folder = folder_name.joinpath("fastforward")
+    ff_folder = folder_name.joinpath("continuous")
     print(f"Looking for LoLA inputs in {lola_folder}")
 
     lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
 
-    print(f"Looking for FastForward inputs in {ff_folder}")
+    print(f"Looking for Continuous inputs in {ff_folder}")
 
     ff_files = benchmark_utils.GetBenchmarkInstancesFromFolder(ff_folder, ".lola")
     
-    if not benchmark_utils.EnsureSameFiles(lola_files, ff_files, "LoLA", "FastForward"):
+    if not benchmark_utils.EnsureSameFiles(lola_files, ff_files, "LoLA", "Continuous"):
         exit(1)
     
     # ff_files and lola_files are identical; to avoid naming confusion, assign new variable

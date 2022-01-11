@@ -103,26 +103,26 @@ if __name__ == "__main__":
                 output_file.flush()
 
 
-                woflan_result = dict()
-                woflan_result["methodName"] = "woflan"
-                woflan_result["sampleName"] = c
-                for k in range(1, c+1):
-                    filename = get_filename_for_numbers(k, c)
-                    woflan_filepath = os.path.join(woflan_folder, dir, filename + ".pnml")
+                # woflan_result = dict()
+                # woflan_result["methodName"] = "woflan"
+                # woflan_result["sampleName"] = c
+                # for k in range(1, c+1):
+                #     filename = get_filename_for_numbers(k, c)
+                #     woflan_filepath = os.path.join(woflan_folder, dir, filename + ".pnml")
 
-                    remaining_timeout = timeout_time - (woflan_result.get("wallTime",0)/1000)
-                    print("Remaining timeout: " + str(remaining_timeout))
-                    k_result = benchmark_utils.call_woflan(woflan_filepath, remaining_timeout)
-                    if "error" in k_result:
-                        woflan_result["error"] = k_result["error"]
-                        break
-                    woflan_result["wallTime"] = woflan_result.get("wallTime", 0) + k_result["wallTime"]
-                    woflan_result[k] = k_result
-                    if k == c:
-                        woflan_result["result"] = "successful"
+                #     remaining_timeout = timeout_time - (woflan_result.get("wallTime",0)/1000)
+                #     print("Remaining timeout: " + str(remaining_timeout))
+                #     k_result = benchmark_utils.call_woflan(woflan_filepath, remaining_timeout)
+                #     if "error" in k_result:
+                #         woflan_result["error"] = k_result["error"]
+                #         break
+                #     woflan_result["wallTime"] = woflan_result.get("wallTime", 0) + k_result["wallTime"]
+                #     woflan_result[k] = k_result
+                #     if k == c:
+                #         woflan_result["result"] = "successful"
 
-                output_file.write(",\n")
-                output_file.write(json.dumps(woflan_result))
-                output_file.flush()
+                # output_file.write(",\n")
+                # output_file.write(json.dumps(woflan_result))
+                # output_file.flush()
             output_file.write("]")
             output_file.flush()
