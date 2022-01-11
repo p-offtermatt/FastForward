@@ -16,17 +16,20 @@ for FILE in ../nets/workflows/synthetic/structural-soundness-templates/*/*-check
     FILENAME_NO_K=${FILENAME_NO_FOLDER%%_*}
     echo $FILENAME_NO_K
 
+    LOLA_TARGET="${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_1-check"
+    LOLA_OUTPUT=${LOLA_TARGET}.lola
 
-    # do not need to perform structural reachability reduction for fastforward, since struct. reach is solved by continuous reach
-    # that's why mode is Reachability
+    dotnet ../fastforward/fastforward.dll replace-weights ${FILE} -f Lola -o ${LOLA_TARGET}
+
+    python3 reduce_net.py ${LOLA_OUTPUT}
 
     for ((i=1;i<=NUM_C;i++));
         do
-        echo dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f Lola -o "${TARGET_ROOT}/continuous/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
-        dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f Lola -o "${TARGET_ROOT}/continuous/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
-        echo dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f Lola -o "${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
-        dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f Lola -o "${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
-        echo dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f PNML -o "${TARGET_ROOT}/woflan/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
-        dotnet ../fastforward/fastforward.dll translate-wf ${FILE} -m Soundness -f PNML -o "${TARGET_ROOT}/woflan/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        echo dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f Lola -o "${TARGET_ROOT}/continuous/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f Lola -o "${TARGET_ROOT}/continuous/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        echo dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f Lola -o "${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f Lola -o "${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        echo dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f PNML -o "${TARGET_ROOT}/woflan/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
+        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -f PNML -o "${TARGET_ROOT}/woflan/${FOLDER_NO_FILENAME}/${FILENAME_NO_K}_${i}-check" -k $i
         done
     done
