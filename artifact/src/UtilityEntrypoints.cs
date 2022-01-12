@@ -54,7 +54,7 @@ namespace PetriTool
             Console.WriteLine(entryAsJson);
         }
 
-        public static void CalculateMarkingEquationParikhImage(CalculateMarkingEquationParikhImageOptions options)
+        public static void CalculateMinimalKMarkingEquation(CalculateMarkingEquationParikhImageOptions options)
         {
             BenchmarkEntryWithHeuristics entry = new BenchmarkEntryWithHeuristics();
             Stopwatch queryWatch = Stopwatch.StartNew();
@@ -68,13 +68,19 @@ namespace PetriTool
             entry.numberOfPlaces = net.Places.Count;
             entry.numberOfTransitions = net.Transitions.Count;
 
+            if (targetMarkings.Count > 1)
+            {
+                throw new ArgumentException("This method supports only a single target marking!");
+            }
+            Marking targetMarking = targetMarkings[0].Marking;
+
             Stopwatch watch = Stopwatch.StartNew();
-            Dictionary<UpdateTransition, float> parikhImage = Z3Heuristics.CalculateParikhImageViaQReachability(net, initialMarking, targetMarkings, doMarkingEQOverN: true);
+            int? minimal_k = Z3Heuristics.CalculateMinimalKMarkingEquation(net, initialMarking, targetMarking, doMarkingEQOverN: true);
             entry.timeInHeuristicCalculation = watch.ElapsedMilliseconds;
             entry.timeInQuery = queryWatch.ElapsedMilliseconds;
 
 
-            string parikhImageString = "\"parikhImage\": " + (parikhImage != null ? JsonConvert.SerializeObject(parikhImage) : "\"unreachable\"") + ",";
+            string parikhImageString = "\"k\": " + (minimal_k != null ? minimal_k.ToString() : "\"unreachable\"") + ",";
 
             string entryAsJson = entry.ToJSON();
 

@@ -658,6 +658,55 @@ namespace Petri
             }
         }
 
+        /// <summary>
+        /// Computes the smallest k such that m can reach m' continuously, with marking equation over N.
+        /// </summary>
+        /// <param name="net"></param>
+        /// <param name="initialMarking"></param>
+        /// <param name="targetMarking"></param>
+        /// <param name="doMarkingEQOverN"></param>
+        /// <returns>The smallest k, or null if no such k exists.</returns>
+        public static int? CalculateMinimalKMarkingEquation(PetriNet net,
+            Marking initialMarking, Marking targetMarking, bool doMarkingEQOverN = false)
+        {
+            using (Context ctx = new Context())
+            {
+                IntExpr k = ctx.MkIntConst("k");
+                BoolExpr kPositive = ctx.MkGe(k, ctx.MkInt(1));
+
+                BoolExpr initialMarkingConstraint =
+                    Z3Heuristics.GenerateMultipleOfMarkingConstraint(ctx, net, initialMarking, k);
+                BoolExpr finalMarkingConstraint =
+                    Z3Heuristics.GenerateMultipleOfMarkingConstraint(ctx, net, targetMarking, k, markingVariableName: "finalMarking_");
+
+                BoolExpr markingEQConstraint = Z3Heuristics.GenerateQReachabilityConstraint(ctx, net, timesFiredVarsAreInt: doMarkingEQOverN);
+
+                BoolExpr constraintsAnd =
+                    ctx.MkAnd(markingEQConstraint, initialMarkingConstraint, finalMarkingConstraint);
+
+                Optimize minimizer = ctx.MkOptimize();
+                minimizer.Add(constraintsAnd);
+                minimizer.Add(kPositive);
+
+
+                minimizer.MkMinimize(k);
+                Status status = minimizer.Check();
+
+                // Console.WriteLine(minimizer.ToString());
+
+
+                if (status == Status.SATISFIABLE)
+                {
+                    Model model = minimizer.Model;
+                    return ((IntNum)model.Evaluate(k)).Int;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         public static ArithExpr GenerateParikhImageSumTerm(Context ctx, PetriNet net, string transitionTimesFiredVariableName = "times_{#1}_fired",
         bool timesFiredVarsAreInt = false)
         {
@@ -771,6 +820,27 @@ namespace Petri
                 }
 
                 IntExpr amountExpr = ctx.MkInt(amount);
+                return ctx.MkEq(placeExpr, amountExpr);
+            }));
+        }
+
+        private static BoolExpr GenerateMultipleOfMarkingConstraint(Context ctx, PetriNet net, Marking marking, IntExpr k, string markingVariableName = defaultInitialMarkingVariableName, 
+        bool markingVarIsInt = true)
+        {
+            return ctx.MkAnd(net.Places.Select(place =>
+            {
+                int amount = marking.GetValueOrDefault(place, 0);
+                Expr placeExpr = null;
+                if (markingVarIsInt)
+                {
+                    placeExpr = ctx.MkIntConst(markingVariableName + place.Name);
+                }
+                else
+                {
+                    placeExpr = ctx.MkRealConst(markingVariableName + place.Name);
+                }
+
+                ArithExpr amountExpr = ctx.MkInt(amount) * k;
                 return ctx.MkEq(placeExpr, amountExpr);
             }));
         }

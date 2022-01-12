@@ -71,7 +71,7 @@ namespace PetriTool
                 .WithParsed<CalculateHeuristicOptions>(UtilityEntrypoints.CalculateHeuristicDistance)
                 .WithParsed<CalculateHeuristicSupportOptions>(UtilityEntrypoints.CalculateHeuristicSupport)
                 .WithParsed<ComputeNetStatisticsOptions>(UtilityEntrypoints.ComputeNetStatistics)
-                .WithParsed<CalculateMarkingEquationParikhImageOptions>(UtilityEntrypoints.CalculateMarkingEquationParikhImage)
+                .WithParsed<CalculateMarkingEquationParikhImageOptions>(UtilityEntrypoints.CalculateMinimalKMarkingEquation)
                 .WithParsed<GenerateInstanceOptions>(UtilityEntrypoints.GenerateInstance)
                 .WithParsed<WFTransformationOptions>(TransformationEntryPoints.TransformToWFNet)
                 .WithParsed<ContinuousSoundnessOptions>(SoundnessChecker.VerifyContinuousSoundness)
