@@ -11,6 +11,7 @@ namespace PetriTool
         TTS,
         Dotspec,
         PNML,
-        CGraph
+        CGraph,
+        TPN
     }
 }

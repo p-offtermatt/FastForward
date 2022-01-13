@@ -440,6 +440,45 @@ namespace Petri
             }
         }
 
+        public string ToTPN(Marking initialMarking)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Place place in Places)
+            {
+                sb.Append("place " + place.Name + "");
+                int tokens = initialMarking.GetValueOrDefault(place, 0);
+                if (tokens > 0)
+                {
+                    sb.Append(" init " + tokens.ToString());
+                }
+                sb.Append(";\n");
+            }
+            foreach (UpdateTransition transition in Transitions)
+            {
+                foreach ((Place place, int tokens) in transition.Pre)
+                {
+                    if (tokens > 1)
+                    {
+                        throw new NotImplementedException("TPN format does not handle transitions with weights yet!");
+                    }
+                }
+                foreach ((Place place, int tokens) in transition.Post)
+                {
+                    if (tokens > 1)
+                    {
+                        throw new NotImplementedException("TPN format does not handle transitions with weights yet!");
+                    }
+                }
+                sb.Append("trans " + transition.Name);
+                sb.Append(" in ");
+                sb.Append(String.Join(" ", transition.GetPrePlaces().Select(p => p.Name)));
+                sb.Append(" out ");
+                sb.Append(String.Join(" ", transition.GetPostPlaces().Select(p => p.Name)));
+                sb.Append(";\n");
+            }
+            return sb.ToString();
+        }
+
         /// <summary>
         /// Prints a string representation of this Petri Net, together with
         /// its given initial marking, in the .pnml format, to a file.

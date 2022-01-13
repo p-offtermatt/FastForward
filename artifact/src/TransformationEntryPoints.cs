@@ -349,6 +349,12 @@ namespace PetriTool
                 case OutputFormat.PNML:
                     WritePNMLToFile(options.outputFilePath + ".pnml", net, initialMarking);
                     return;
+                case OutputFormat.TPN:
+                    using (StreamWriter file = new StreamWriter(options.outputFilePath + ".tpn", append: false))
+                    {
+                        file.Write(resultNet.ToTPN(initialMarking));
+                    }
+                    return;
                 case OutputFormat.CGraph:
                     WriteCGraphToFile(options.outputFilePath + ".xml", net, initialMarking);
                     return;
