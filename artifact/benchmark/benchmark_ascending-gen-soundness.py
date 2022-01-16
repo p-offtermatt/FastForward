@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
     lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
     continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
-    woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".pnml")
+    woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".tpn")
 
     
     if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
@@ -65,64 +65,64 @@ if __name__ == "__main__":
 
                 benchmark_suite = dir
 
-                ff_netpath = os.path.join(continuous_folder, dir, get_filename_for_numbers(1, c) + ".lola")
-                ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
+                # ff_netpath = os.path.join(continuous_folder, dir, get_filename_for_numbers(1, c) + ".lola")
+                # ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
 
                 
-                ff_result = benchmark_utils.call_fastforward("continuous-sound", ff_netpath, "", pruning=False,
-                    timeout_time=timeout_time, extra_options="")
-                ff_result["sampleName"] = c
-                ff_result["methodName"] = "continuous"
+                # ff_result = benchmark_utils.call_fastforward("continuous-sound", ff_netpath, "", pruning=False,
+                #     timeout_time=timeout_time, extra_options="")
+                # ff_result["sampleName"] = c
+                # ff_result["methodName"] = "continuous"
 
-                if not first:
-                    output_file.write(",\n")
-                first = False
-                output_file.write(json.dumps(ff_result))
-                output_file.flush()
+                # if not first:
+                #     output_file.write(",\n")
+                # first = False
+                # output_file.write(json.dumps(ff_result))
+                # output_file.flush()
 
-                lola_result = dict()
-                lola_result["sampleName"] = c                    
-                lola_result["methodName"] = "lola"
-                for k in range(1, c+1):
-                    filename = get_filename_for_numbers(k, c)
-                    lola_filepath = os.path.join(lola_folder, dir, filename + ".lola")
-                    lola_formulapath = benchmark_utils.GetFormulaFileForNet(lola_filepath)
-                    remaining_timeout = timeout_time - (lola_result.get("wallTime",0)/1000)
-                    print("Remaining timeout: " + str(remaining_timeout))
-                    k_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, remaining_timeout)
-                    if "error" in k_result:
-                        lola_result["error"] = k_result["error"]
-                        break
-                    lola_result["wallTime"] = lola_result.get("wallTime", 0) + k_result["wallTime"]
-                    lola_result[k] = k_result
-                    if k == c:
-                        lola_result["result"] = "successful"
-
-                output_file.write(",\n")
-                output_file.write(json.dumps(lola_result))
-                output_file.flush()
-
-
-                # woflan_result = dict()
-                # woflan_result["methodName"] = "woflan"
-                # woflan_result["sampleName"] = c
+                # lola_result = dict()
+                # lola_result["sampleName"] = c                    
+                # lola_result["methodName"] = "lola"
                 # for k in range(1, c+1):
                 #     filename = get_filename_for_numbers(k, c)
-                #     woflan_filepath = os.path.join(woflan_folder, dir, filename + ".pnml")
-
-                #     remaining_timeout = timeout_time - (woflan_result.get("wallTime",0)/1000)
+                #     lola_filepath = os.path.join(lola_folder, dir, filename + ".lola")
+                #     lola_formulapath = benchmark_utils.GetFormulaFileForNet(lola_filepath)
+                #     remaining_timeout = timeout_time - (lola_result.get("wallTime",0)/1000)
                 #     print("Remaining timeout: " + str(remaining_timeout))
-                #     k_result = benchmark_utils.call_woflan(woflan_filepath, remaining_timeout)
+                #     k_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, remaining_timeout)
                 #     if "error" in k_result:
-                #         woflan_result["error"] = k_result["error"]
+                #         lola_result["error"] = k_result["error"]
                 #         break
-                #     woflan_result["wallTime"] = woflan_result.get("wallTime", 0) + k_result["wallTime"]
-                #     woflan_result[k] = k_result
+                #     lola_result["wallTime"] = lola_result.get("wallTime", 0) + k_result["wallTime"]
+                #     lola_result[k] = k_result
                 #     if k == c:
-                #         woflan_result["result"] = "successful"
+                #         lola_result["result"] = "successful"
 
                 # output_file.write(",\n")
-                # output_file.write(json.dumps(woflan_result))
+                # output_file.write(json.dumps(lola_result))
                 # output_file.flush()
+
+
+                woflan_result = dict()
+                woflan_result["methodName"] = "woflan"
+                woflan_result["sampleName"] = c
+                for k in range(1, c+1):
+                    filename = get_filename_for_numbers(k, c)
+                    woflan_filepath = os.path.join(woflan_folder, dir, filename + ".tpn")
+
+                    remaining_timeout = timeout_time - (woflan_result.get("wallTime",0)/1000)
+                    print("Remaining timeout: " + str(remaining_timeout))
+                    k_result = benchmark_utils.call_woflan(woflan_filepath, remaining_timeout)
+                    if "error" in k_result:
+                        woflan_result["error"] = k_result["error"]
+                        break
+                    woflan_result["wallTime"] = woflan_result.get("wallTime", 0) + k_result["wallTime"]
+                    woflan_result[k] = k_result
+                    if k == c:
+                        woflan_result["result"] = "successful"
+
+                output_file.write(",\n")
+                output_file.write(json.dumps(woflan_result))
+                output_file.flush()
             output_file.write("]")
             output_file.flush()
