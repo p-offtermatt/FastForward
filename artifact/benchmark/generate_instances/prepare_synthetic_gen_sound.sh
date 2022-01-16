@@ -19,18 +19,22 @@ for FILE in $(find ../nets/workflows/synthetic/generalized-soundness-templates -
     mkdir -p "${TARGET_ROOT}/lola/${FOLDER_NO_FILENAME}"
     mkdir -p "${TARGET_ROOT}/woflan/${FOLDER_NO_FILENAME}"
 
-    LOLA_TARGET="${TARGET_ROOT}/lola/${FILENAME}"
-    LOLA_OUTPUT="${LOLA_TARGET}.lola"
+    REPLACE_TARGET="${TARGET_ROOT}/lola/${FILENAME}"
+    REPLACE_OUTPUT="${REPLACE_TARGET}.lola"
 
-    dotnet ../fastforward/fastforward.dll replace-weights ${FILE} -f Lola -o ${LOLA_TARGET}
+    echo $REPLACE_TARGET
+    echo $REPLACE_OUTPUT
 
-    python3 reduce_net.py ${LOLA_OUTPUT}
+
+    dotnet ../fastforward/fastforward.dll replace-weights ${FILE} -f Lola -o ${REPLACE_TARGET}
+
+    python3 reduce_net.py ${REPLACE_OUTPUT}
 
     for ((i=1;i<=NUM_C;i++));
     do
-        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/continuous/${FILENAME_WITHOUT_CHECK}${i}-check"
-        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/lola/${FILENAME_WITHOUT_CHECK}${i}-check"
-        dotnet ../fastforward/fastforward.dll translate-wf ${LOLA_OUTPUT} -m Soundness -k $i -f PNML -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
+        # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/continuous/${FILENAME_WITHOUT_CHECK}${i}-check"
+        # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/lola/${FILENAME_WITHOUT_CHECK}${i}-check"
+        dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f PNML -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
     done
 
 
