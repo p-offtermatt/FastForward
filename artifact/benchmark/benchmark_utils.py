@@ -128,6 +128,53 @@ def call_woflan(net_file, timeout_time):
 
     return result_obj
 
+<<<<<<< Updated upstream
+=======
+def kill(proc_pid):
+    process = psutil.Process(proc_pid)
+    for proc in process.children(recursive=True):
+        proc.kill()
+    process.kill()
+
+def call_woflan(net_file, timeout_time):
+    prom_home = os.getenv("PROM_HOME")
+    if prom_home is None:
+        raise FileNotFoundError("PROM_HOME is not set! Make sure the env variable PROM_HOME points to the ProM installation!")
+    prom_net_file = prom_home + "/net.pnml"
+
+    copyfile(net_file, prom_net_file)
+
+    command = f"wine woflan/woftest.exe {net_file}"
+    print(command)
+    process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory)
+    result_obj = {}
+    try:
+        stdout, stderr = process.communicate(timeout=timeout_time)
+        result_string = stdout.decode() + stderr.decode()
+        print(result_string)
+        woflan_time = re.search(r"total verification time: ([0-9]*) ms", result_string).group(1)
+        print(woflan_time)
+        result_obj["wallTime"] = float(woflan_time)
+
+        diagnosis__result = result_string
+        result_obj["diagnosisResult"] = diagnosis__result
+
+        # print("Took " + woflan_time + " millis")
+        print(diagnosis__result)
+    except TimeoutExpired:
+        result_obj["error"] = "timeout"
+        print("TIMEOUT!")
+        kill(process.pid)
+    except Exception as e:
+        print("Encountered error:")
+        print(e)
+        result_obj["error"] = str(e)
+    
+
+    return result_obj
+
+
+>>>>>>> Stashed changes
 def call_lola(lola_file, formula_file, timeout_time):
     with contextlib.suppress(FileNotFoundError):
         os.remove("lola.json")
