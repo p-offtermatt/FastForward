@@ -85,7 +85,6 @@ def call_fastforward(method_name, lola_file, formula_file, pruning, extra_option
     result_obj = call_fastforward_helper(command, timeout_time)
     return result_obj
 
-
 def kill(proc_pid):
     process = psutil.Process(proc_pid)
     for proc in process.children(recursive=True):
@@ -100,20 +99,22 @@ def call_woflan(net_file, timeout_time):
 
     copyfile(net_file, prom_net_file)
 
-    command = f"sh ProM_CLI.sh -f call_woflan.java"
+    command = f"wine woflan/woftest.exe {net_file}"
     print(command)
-    process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory, cwd=prom_home)
+    process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory)
     result_obj = {}
     try:
         stdout, stderr = process.communicate(timeout=timeout_time)
-        result_string = stdout.decode('utf-8')
-        woflan_time = re.search(r"Total Woflan time .*\n([0-9\.]*)", result_string, re.MULTILINE).group(1)
+        result_string = stdout.decode() + stderr.decode()
+        print(result_string)
+        woflan_time = re.search(r"total verification time: ([0-9]*) ms", result_string).group(1)
+        print(woflan_time)
         result_obj["wallTime"] = float(woflan_time)
 
-        diagnosis__result = re.search(r"Woflan diagnosis of net .*\n((.*\n)*)End of Woflan diagnosis", result_string, re.MULTILINE).group(1)
+        diagnosis__result = result_string
         result_obj["diagnosisResult"] = diagnosis__result
 
-        print("Took " + woflan_time + " millis")
+        # print("Took " + woflan_time + " millis")
         print(diagnosis__result)
     except TimeoutExpired:
         result_obj["error"] = "timeout"
@@ -126,7 +127,6 @@ def call_woflan(net_file, timeout_time):
     
 
     return result_obj
-
 
 def call_lola(lola_file, formula_file, timeout_time):
     with contextlib.suppress(FileNotFoundError):

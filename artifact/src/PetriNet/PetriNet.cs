@@ -455,25 +455,11 @@ namespace Petri
             }
             foreach (UpdateTransition transition in Transitions)
             {
-                foreach ((Place place, int tokens) in transition.Pre)
-                {
-                    if (tokens > 1)
-                    {
-                        throw new NotImplementedException("TPN format does not handle transitions with weights yet!");
-                    }
-                }
-                foreach ((Place place, int tokens) in transition.Post)
-                {
-                    if (tokens > 1)
-                    {
-                        throw new NotImplementedException("TPN format does not handle transitions with weights yet!");
-                    }
-                }
                 sb.Append("trans " + transition.Name);
                 sb.Append(" in ");
-                sb.Append(String.Join(" ", transition.GetPrePlaces().Select(p => p.Name)));
+                sb.Append(String.Join(" ", transition.Pre.Select(p => string.Concat(Enumerable.Repeat(p.Key.Name + " ", p.Value)))));
                 sb.Append(" out ");
-                sb.Append(String.Join(" ", transition.GetPostPlaces().Select(p => p.Name)));
+                sb.Append(String.Join(" ", transition.Post.Select(p => string.Concat(Enumerable.Repeat(p.Key.Name + " ", p.Value)))));
                 sb.Append(";\n");
             }
             return sb.ToString();
