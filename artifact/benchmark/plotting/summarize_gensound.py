@@ -3,7 +3,6 @@ import os
 
 from tabulate import tabulate
 import plotting_utils as utils
-import matplotlib.pyplot as plt
 import numpy as np
 
 def get_woflan_reason(entry):
@@ -26,7 +25,7 @@ def get_woflan_reason(entry):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('datafile')
+    parser.add_argument('datafiles', nargs="+")
 
     args = parser.parse_args()
 
@@ -39,7 +38,10 @@ if __name__ == "__main__":
 
     size_data = []
 
-    entries = utils.read_json_from_file(args.datafile)
+    entries = []
+    
+    for file in args.datafiles:
+        entries += utils.read_json_from_file(file)
 
     for entry in entries:
         if "error" in entry:
