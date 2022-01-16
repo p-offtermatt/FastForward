@@ -34,7 +34,7 @@ for FILE in $(find ../nets/workflows/synthetic/generalized-soundness-templates -
     do
         # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/continuous/${FILENAME_WITHOUT_CHECK}${i}-check"
         # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/lola/${FILENAME_WITHOUT_CHECK}${i}-check"
-        dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f PNML -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
+        dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f TPN -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
     done
 
 

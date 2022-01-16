@@ -30,24 +30,24 @@ if __name__ == "__main__":
     folder_name = Path(folder_name).absolute()
     
     # get instances in lola and fastforward subdirectories
-    lola_folder = folder_name.joinpath("lola")
-    continuous_folder = folder_name.joinpath("continuous")
+    # lola_folder = folder_name.joinpath("lola")
+    # continuous_folder = folder_name.joinpath("continuous")
     woflan_folder = folder_name.joinpath("woflan")
 
-    lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
-    continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
+    # lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
+    # continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
     woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".tpn")
 
     
-    if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
-        exit(1)
-    if not benchmark_utils.EnsureSameFiles(woflan_files, continuous_files, "woflan", "Continuous"):
-        exit(1)
+    # if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
+    #     exit(1)
+    # if not benchmark_utils.EnsureSameFiles(woflan_files, continuous_files, "woflan", "Continuous"):
+    #     exit(1)
 
     # files are identical; to avoid naming confusion, assign new variable
-    files = lola_files
+    files = woflan_files
     # ensure lola files have an associated formula file, e.g. for file.lola, there should exist file.formula in the same subfolder
-    benchmark_utils.EnsureFormulaFilesExist(lola_folder, files)
+    # benchmark_utils.EnsureFormulaFilesExist(lola_folder, files)
 
     for dir, entries in files.items():
         files[dir] = sorted(set([entry.split("-")[0] for entry in entries]), key=lambda x: int(x))
