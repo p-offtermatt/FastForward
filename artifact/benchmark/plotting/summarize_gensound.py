@@ -61,23 +61,21 @@ if __name__ == "__main__":
         conti_entry = utils.get_entry_with_method_from_list("continuous", entry)
         conti_time = conti_entry["wallTime"] if conti_entry is not None else "dnf"
 
-        size = conti_entry["numberOfPlaces"] + conti_entry["numberOfTransitions"]
-
-        data += [[samplename, conti_time, lola_time, woflan_time, size]]
+        data += [[samplename, conti_time, lola_time, woflan_time]]
 
     data.sort(key=lambda x: int(x[0]))
     size_data.sort(key=lambda x: x[0])
     print("conti")
-    print(" ".join(f"({str(entry[0])},{str(entry[1])})" for entry in data))
+    print(" ".join(f"({str(entry[0])},{str(float(entry[1])/1000)})" for entry in data))
 
     print("lola")
-    print(" ".join(f"({str(entry[0])},{str(entry[2])})" for entry in data))
+    print(" ".join(f"({str(entry[0])},{str(float(entry[2]/1000))})" for entry in data))
 
     print("woflan")
-    print(" ".join(f"({str(entry[0])},{str(entry[3])})" for entry in data))
+    print(" ".join(f"({str(entry[0])},{str(float(entry[3]/1000))})" for entry in data))
 
-    print("sizes")
-    print(" ".join(f"({str(entry[0])},{str(entry[4])})" for entry in data))
+    print(np.mean([entry[1] for entry in data if entry[1] < 1000]))
+
 
 
         

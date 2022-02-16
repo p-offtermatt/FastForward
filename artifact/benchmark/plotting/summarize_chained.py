@@ -40,11 +40,17 @@ if __name__ == "__main__":
 
     size_data = []
 
+    entries_by_chainnum = dict()
+
     for filepath in args.datafiles:
         # assumes files are named chained_workflows_NUMBER_.json
         chain_num = os.path.splitext(filepath)[0].split("_")[-2]
         entries = utils.read_json_from_file(filepath)
+        entries_by_chainnum[chain_num] = entries_by_chainnum.get(chain_num, []) + entries
 
+    timeouts = dict()
+    
+    for chain_num, entries in entries_by_chainnum.items():
         for entry in entries:
             if "error" in entry:
                 entry["wallTime"] = 120000
@@ -63,6 +69,12 @@ if __name__ == "__main__":
         woflan_entries = [entry for entry in entries if "methodName" in entry and entry["methodName"]
                         == "woflan"]
 
+        timeout_woflans = [entry for entry in woflan_entries if entry["wallTime"] == 120000]
+        print(len(timeout_woflans))
+        timeout_fraction = len(timeout_woflans) / len(woflan_entries)
+        timeouts[chain_num] = timeout_fraction
+
+
         lola_times = [entry["wallTime"] for entry in lola_entries]
         continuous_reach_times = [entry["wallTime"] for entry in continuous_reach_entries]
         woflan_times = [entry["wallTime"] for entry in woflan_entries]
@@ -74,19 +86,21 @@ if __name__ == "__main__":
         data += [[chain_num, continuous_reach_times, lola_times, woflan_times]]
     data.sort(key=lambda x: int(x[0]))
     size_data.sort(key=lambda x: x[0])
-    print("conti")
-    print(" ".join(f"({str(entry[0])},{str(np.mean(entry[1]) / 1000)})" for entry in data))
 
-    print("lola")
-    print(" ".join(f"({str(entry[0])},{str(np.mean(entry[2])  / 1000)})" for entry in data))
+    for func in [np.mean, np.min, np.max]:
+        print("---------------" + func.__name__ + "-----------------")
+        print("conti")
+        print(" ".join(f"({str(entry[0])},{str(func(entry[1]) / 1000)})" for entry in data))
 
-    print("woflan")
-    print(" ".join(f"({str(entry[0])},{str(np.mean(entry[3])  / 1000)})" for entry in data))
+        print("lola")
+        print(" ".join(f"({str(entry[0])},{str(func(entry[2])  / 1000)})" for entry in data))
 
-    print("sizes")
-    print(" ".join(f"({str(entry[0])},{str(np.mean(entry[1]))})" for entry in size_data))
+        print("woflan")
+        print(" ".join(f"({str(entry[0])},{str(func(entry[3])  / 1000)})" for entry in data))
+
+        print("sizes")
+        print(" ".join(f"({str(entry[0])},{str(func(entry[1]))})" for entry in size_data))
 
 
-
-        
+    print(sorted(timeouts.items(), key=lambda x: int(x[0])))
 
