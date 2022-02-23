@@ -1,15 +1,11 @@
-import argparse
 import psutil
+import argparse
 import os
-import glob
 from subprocess import check_output, Popen, PIPE, CalledProcessError, TimeoutExpired
-import csv
 import time
 import json
-import sys
 import re
 import resource
-import signal
 import contextlib
 from shutil import copy, copyfile
 
