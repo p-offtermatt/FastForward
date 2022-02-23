@@ -43,6 +43,8 @@ namespace Testing
             Assert.Equal(expected, isSound);
         }
 
+        #if GUROBI
+
         [Theory]
         [InlineData("transition-expression/1.lola", 1, false, "t1")]
         [InlineData("transition-expression/2.lola", 1, false, "t1")]
@@ -115,5 +117,6 @@ namespace Testing
                 Assert.Equal(faultyTransition, counterexample.Name);
             }
         }
+        #endif
     }
 }

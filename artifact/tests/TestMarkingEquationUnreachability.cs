@@ -10,7 +10,7 @@ using System.Linq;
 namespace Testing
 {
 
-
+#if GUROBI
     public class TestMarkingEquationUnreachability
     {
 
@@ -39,4 +39,5 @@ namespace Testing
             Assert.Equal(result == null, reachableExpected);
         }
     }
+#endif
 }

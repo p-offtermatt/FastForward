@@ -10,7 +10,7 @@ using System.Linq;
 namespace Testing
 {
 
-
+#if GUROBI
     public class TestMarkingEquationUnsoundness
     {
 
@@ -45,4 +45,5 @@ namespace Testing
             Assert.Equal(sound, counterexample == null);
         }
     }
+#endif
 }

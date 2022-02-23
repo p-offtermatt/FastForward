@@ -17,6 +17,7 @@ namespace Testing
             this.output = output;
         }
 
+#if GUROBI
         [Theory]
         [InlineData("workflow_tests/A.lola", true)]
         [InlineData("workflow_tests/B.lola", false)]
@@ -60,5 +61,6 @@ namespace Testing
             Assert.True(boundedWFNet == resultWF, filepath + ", " + boundedWFNet.ToString());
 
         }
+#endif
     }
 }
