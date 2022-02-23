@@ -60,33 +60,6 @@ namespace Testing
         }
 
         [Theory]
-        [InlineData("remove-uncoverable-transitions/1.lola", "r1 r2 r3")]
-        [InlineData("remove-uncoverable-transitions/2.lola", null)]
-        [InlineData("remove-uncoverable-transitions/3.lola", null)]
-        [InlineData("remove-uncoverable-transitions/4.lola", "r1")]
-        public void TestRemoveUncoverableTransitions(string net_filepath, string space_separated_expected_removed_transitionnames)
-        {
-            NetParser parser = new LolaParser();
-            (PetriNet net, Marking initialMarking) = parser.ReadNet(Utils.GetPathForTestfile(net_filepath));
-            PetriNet modifiedNet = TransformationEntryPoints.RemoveUncoverableTransitions(net, initialMarking);
-
-            string[] actualRemovedTransitionNames =
-                net.Transitions.Where(transition => !modifiedNet.Transitions.Contains(transition)).Select(transition => transition.Name).ToArray();
-
-            if (space_separated_expected_removed_transitionnames == null)
-            {
-                Assert.Equal(0, actualRemovedTransitionNames.Count());
-                return;
-            }
-
-            string[] expectedRemovedTransitionNames = space_separated_expected_removed_transitionnames.Split(" ");
-            Array.Sort(actualRemovedTransitionNames);
-            Array.Sort(expectedRemovedTransitionNames);
-
-            Assert.Equal(expectedRemovedTransitionNames, actualRemovedTransitionNames);
-        }
-
-        [Theory]
         [InlineData(1, 2, 3, 4, 5, 6, 7, 8, true, false)]
         [InlineData(1, 2, 3, 4, 5, 6, 7, 8, false, false)]
         [InlineData(2, 3, 4, 5, 1, 2, 3, 4, true, true)]
