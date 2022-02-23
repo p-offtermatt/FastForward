@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <!-- <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Editor|AnyCPU' "> -->
-  <PropertyGroup>
+  <!-- <PropertyGroup>
     <DefineConstants>$(DefineConstants);GUROBI</DefineConstants>
-  </PropertyGroup>
+  </PropertyGroup> -->
 
 <PropertyGroup>
   <DefineConstants Condition=" '$(COMP)' == 'true' ">$(DefineConstants);COMP</DefineConstants>
@@ -28,7 +28,7 @@
     <PackageReference Include="OptimizedPriorityQueue" Version="4.2.0" />
     <PackageReference Include="Simbool" Version="0.1.0" />
     <PackageReference Include="Xunit" Version="2.4.1" />
-    <Reference Include="gurobi90.netstandard20.dll">
+    <Reference Include="gurobi90.netstandard20.dll" Condition=" '$(GUROBI)' == 'true' ">
       <HintPath>gurobi/gurobi90.netstandard20.dll</HintPath>
     </Reference>
   </ItemGroup>

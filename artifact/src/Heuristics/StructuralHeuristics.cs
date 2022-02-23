@@ -1,5 +1,3 @@
-#define GUROBI
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -43,7 +41,7 @@ namespace Petri
             return syntacticDistanceHeuristic;
         }
 
-# if GUROBI
+#if GUROBI
         public static Func<Marking, float?> InitializeStructuralQReachabilityHeuristicGurobi(
             PetriNet net,
             Marking initialMarking,

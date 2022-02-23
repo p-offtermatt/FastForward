@@ -134,6 +134,7 @@ namespace PetriTool
             }
         }
 
+#if GUROBI
         public static void SaturationSearch(SaturationSearchOptions options)
         {
             SaturationSearchBenchmarkEntry benchmarkEntry = new SaturationSearchBenchmarkEntry();
@@ -174,5 +175,6 @@ namespace PetriTool
             Console.WriteLine(benchmarkEntry.ToJSON());
 
         }
+#endif
     }
 }

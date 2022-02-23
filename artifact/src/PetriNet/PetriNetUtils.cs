@@ -358,8 +358,14 @@ namespace Petri
                 targetMarking.Marking[place] = transitionToCheck.Pre.GetValueOrDefault(place, 0);
             }
 
+#if GUROBI
+
             var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
                 net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
+#else
+            var heuristic = Z3Heuristics.InitializeMarkingEquationHeuristic(net, new List<MarkingWithConstraints>() { targetMarking });
+#endif
+
 
             List<Transition> path = PetriNetUtils.PetriNetAStar(net, initialMarking, targetMarking, heuristic);
 
@@ -372,7 +378,6 @@ namespace Petri
                 return (true, path);
             }
         }
-
         /// <summary>
         /// Yields all the possible ways that 'number' can be split into 'pieces' many numbers such that n_1 + ... + n_pieces = number.
         /// </summary>

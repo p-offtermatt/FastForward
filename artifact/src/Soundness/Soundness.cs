@@ -10,6 +10,7 @@ namespace Soundness
 {
     public static class SoundnessChecker
     {
+
         /// <summary>
         ///  Verifies soundness by checking whether for each transition t fireable from i: k,
         /// it holds that t^-1 can be expressed by the other transitions of the net (including the short circuit transition)-
@@ -17,6 +18,7 @@ namespace Soundness
         /// </summary>
         public static void VerifySoundnessViaTransition(SoundnessReverseTransitionOptions options)
         {
+#if GUROBI
             SoundnessViaTransitionBenchmarkEntry entry = new SoundnessViaTransitionBenchmarkEntry();
             entry.checkedIndex = options.index;
 
@@ -54,8 +56,14 @@ namespace Soundness
             entry.counterexampleTransition = counterexample == null ? null : counterexample.Name;
 
             Console.WriteLine(entry.ToJSON());
+#else
+            Console.WriteLine("Gurobi needs to be installed, and the compile flag set, to use this heuristic! See the README for more information.");
+            System.Environment.Exit(5);
+
+#endif
         }
 
+#if GUROBI
         /// <summary>
         /// Checks whether all transitions in the input net that are *not* reverse-expressible are also *not* coverable from the initial marking.
         /// </summary>
@@ -95,6 +103,7 @@ namespace Soundness
             }
             return (true, null);
         }
+#endif
 
         public static void VerifyContinuousSoundness(ContinuousSoundnessOptions options)
         {
@@ -107,6 +116,7 @@ namespace Soundness
             benchmarkEntry.numberOfTransitions = net.Transitions.Count;
 
             Stopwatch queryWatch = Stopwatch.StartNew();
+#if GUROBI
             Stopwatch zBoundednessWatch = Stopwatch.StartNew();
             var (isZBounded, zBoundednessCounterexample) = GurobiHeuristics.CheckIntegerUnboundedness(net);
             zBoundednessWatch.Stop();
@@ -121,6 +131,9 @@ namespace Soundness
                 Console.WriteLine(benchmarkEntry.ToJSON());
                 return;
             }
+#else
+            Stopwatch zBoundednessWatch = new Stopwatch();
+#endif
             benchmarkEntry.isZBounded = true;
             Stopwatch continuousSoundnessWatch = Stopwatch.StartNew();
             var (isSound, soundnessCounterexample) = Z3Heuristics.IsContinuousSound_ViaContinuousReach(net, initialMarking);

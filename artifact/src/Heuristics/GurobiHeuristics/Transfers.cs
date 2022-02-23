@@ -1,3 +1,4 @@
+#if GUROBI
 using System.Collections.Generic;
 using System.Linq;
 using Gurobi;
@@ -162,3 +163,4 @@ namespace Petri
         }
     }
 }
+#endif

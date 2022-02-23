@@ -1,3 +1,4 @@
+#if GUROBI
 using Gurobi;
 
 namespace Utils
@@ -46,3 +47,4 @@ namespace Utils
         }
     }
 }
+#endif

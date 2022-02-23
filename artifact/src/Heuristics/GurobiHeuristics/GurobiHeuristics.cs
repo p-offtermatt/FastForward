@@ -1,5 +1,4 @@
-#define GUROBI
-
+#if GUROBI
 using System;
 using System.Linq;
 using System.Collections;
@@ -1068,3 +1067,4 @@ namespace Petri
         }
     }
 }
+#endif

@@ -1,14 +1,9 @@
-﻿#define GUROBI
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Petri;
-using System.Linq;
 using System.Diagnostics;
 using Benchmark;
 using Utils;
-#if GUROBI
-#endif
 
 namespace PetriTool
 {
@@ -26,8 +21,10 @@ namespace PetriTool
                 "zero",
                 "markingEQ",
                 "qReachability",
+                #if GUROBI
                 "NMarkingEQGurobi",
                 "QMarkingEQGurobi",
+                #endif
                 "euclidean"
             });
             string chosenHeuristic = heuristicOptions.chosenHeuristic.ToLower();

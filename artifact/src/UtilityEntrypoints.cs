@@ -236,10 +236,12 @@ namespace PetriTool
             }
         }
 
+        #if GUROBI
         private static (bool isBounded, Dictionary<Transition, Double> counterexample) GetIntegerBoundednessCounterexample(PetriNet net)
         {
             return GurobiHeuristics.CheckIntegerUnboundedness(net);
         }
+        #endif
 
         private static List<Place> ComputeMonotonicPlaceOrderViaSMT(PetriNet net, int degree)
         {
@@ -549,9 +551,14 @@ namespace PetriTool
             {
                 // Checking for integer boundedness in WF nets
 
-                Stopwatch watch = Stopwatch.StartNew();
+                var isZBounded = true; 
+                Stopwatch watch;
+                #if GUROBI
+                watch = Stopwatch.StartNew();
 
-                (var isZBounded, var wfBoundCounterexample) = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
+                Dictionary<Transition, double> wfBoundCounterexample;
+
+                (isZBounded, wfBoundCounterexample) = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
 
                 watch.Stop();
 
@@ -560,6 +567,7 @@ namespace PetriTool
                 dataEntry.wfIntegerBoundednessCounterexample = isZBounded ? "None" : String.Join(";", wfBoundCounterexample);
                 dataEntry.wfIntegerBoundednessCounterexampleSupportSize = isZBounded ? 0 : wfBoundCounterexample.Where(pair => pair.Value > 0).Count();
                 dataEntry.wfIntegerBoundednessCounterexampleImageSize = isZBounded ? 0 : wfBoundCounterexample.Sum(pair => pair.Value);
+                #endif
 
                 if (isZBounded && options.checkContinuousSoundness)
                 {
@@ -573,6 +581,7 @@ namespace PetriTool
                     dataEntry.continuousSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
 
+                #if GUROBI
                 if (isZBounded && options.checkIntegerSoundness)
                 {
                     // Checking for integer soundness
@@ -586,6 +595,7 @@ namespace PetriTool
                     dataEntry.isIntegerSound = counterexample == null;
                     dataEntry.integerSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
+                #endif
             }
 
             // Writing output
