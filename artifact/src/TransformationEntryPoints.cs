@@ -102,52 +102,6 @@ namespace PetriTool
             }
         }
 
-        /// <summary>
-        /// If the options specify, then this methods 
-        /// removes transitions whose postsets can never be enabled from the initial marking.
-        /// This is achieved by checking coverability using a-star plus the marking equation over Q in Gurobi.
-        /// If options do no specify that, then the method simply returns the input net.
-        /// Does not modify the input net, but rather returns a copy of it.
-        /// </summary>
-        /// <returns></returns>
-        public static PetriNet RemoveUncoverableTransitions(RemoveUncoverableTransitionsOptions options, PetriNet net, Marking initialMarking)
-        {
-            if (!options.removeUncoverableTransitions)
-            {
-                return net;
-            }
-
-            return RemoveUncoverableTransitions(net, initialMarking);
-        }
-
-        public static PetriNet RemoveUncoverableTransitions(PetriNet original_net, Marking initialMarking)
-        {
-            // copy net to avoid modifying the input net
-            PetriNet net = new PetriNet(original_net);
-
-            HashSet<Transition> uncheckedTransitions = net.Transitions.ToHashSet();
-            UpdateTransition transitionToCheck;
-
-            while ((transitionToCheck = (UpdateTransition)uncheckedTransitions.FirstOrDefault()) != null)
-            {
-                (bool isCoverable, IEnumerable<Transition> usedTransitions) = PetriNetUtils.CheckTransitionCoverable(net, initialMarking, transitionToCheck);
-                if (!isCoverable)
-                {
-                    net.RemoveTransition(transitionToCheck);
-                }
-                else
-                {
-                    foreach (Transition checkedTransition in usedTransitions)
-                    {
-                        uncheckedTransitions.Remove(checkedTransition);
-                    }
-                    uncheckedTransitions.Remove(transitionToCheck);
-                }
-            }
-
-            return net;
-        }
-
         public static void TranslateWFNet(TranslateWFOptions options)
         {
             if (options.k <= 0)

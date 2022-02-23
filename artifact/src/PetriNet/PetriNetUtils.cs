@@ -363,7 +363,7 @@ namespace Petri
             var heuristic = GurobiHeuristics.InitializeMarkingEquationHeuristic(
                 net.Places, net.Transitions, new List<MarkingWithConstraints>() { targetMarking }, GurobiConsts.Domains.Q);
 #else
-            var heuristic = Z3Heuristics.InitializeMarkingEquationHeuristic(net, new List<MarkingWithConstraints>() { targetMarking });
+            var heuristic = Z3Heuristics.InitializeQReachabilityHeuristic(net, new List<MarkingWithConstraints>() { targetMarking });
 #endif
 
 
