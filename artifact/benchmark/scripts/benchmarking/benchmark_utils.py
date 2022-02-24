@@ -95,7 +95,7 @@ def call_woflan(net_file, timeout_time):
 
     copyfile(net_file, prom_net_file)
 
-    command = f"wine ../../tools/woflan/woftest.exe {net_file}"
+    command = f"wine ../../tools/woftest.exe {net_file}"
     print(command)
     process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory)
     result_obj = {}

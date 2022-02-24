@@ -1,0 +1,1 @@
+python3 benchmark.py ../../instances/IBM-safety-check -o ../results/IBM-safety.json -to 60 -t LoLA -mode cover

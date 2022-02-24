@@ -30,7 +30,7 @@ if __name__ == "__main__":
         output_name = str(i)
         output_path = os.path.join(args.outputdir, output_name)
 
-        command = f"dotnet ../fastforward/fastforward.dll chain-nets {' '.join(nets)} -f Lola -o {output_path}"
+        command = f"dotnet ../../tools/fastforward/fastforward.dll chain-nets {' '.join(nets)} -f Lola -o {output_path}"
         print(command)
         run(command.split(" "))
     
