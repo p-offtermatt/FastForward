@@ -17,6 +17,8 @@ if __name__ == "__main__":
     folder_name = args.benchmark_dir
     output_filepath = args.outputfile
 
+    Path(os.path.dirname(output_filepath)).mkdir(parents=True, exist_ok=True)
+
     folder_name = folder_name.rstrip("/")
 
     folder_name = Path(folder_name).absolute()
@@ -28,7 +30,7 @@ if __name__ == "__main__":
 
     lola_files = benchmark_utils.GetBenchmarkInstancesFromFolder(lola_folder, ".lola")
     continuous_files = benchmark_utils.GetBenchmarkInstancesFromFolder(continuous_folder, ".lola")
-    woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".pnml")
+    woflan_files = benchmark_utils.GetBenchmarkInstancesFromFolder(woflan_folder, ".tpn")
 
     
     if not benchmark_utils.EnsureSameFiles(lola_files, continuous_files, "LoLA", "Continuous"):
@@ -82,7 +84,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(lola_result))
                 output_file.flush()
 
-                woflan_filepath = os.path.join(woflan_folder, dir, entry + ".pnml")
+                woflan_filepath = os.path.join(woflan_folder, dir, entry + ".tpn")
 
                 woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
                 woflan_result["sampleName"] = entry

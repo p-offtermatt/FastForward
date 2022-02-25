@@ -7,7 +7,7 @@ for ((chain=1;chain<=401;chain=chain+20))
     do
     base_path=../../instances/chained/chained_${chain}/
 
-    python3 chain_nets.py ../../instances/safe-nets ../../instances/chained/chained_unreduced_${chain}/ $REPEATS $chain
+    python3 chain_nets.py ../../instances/IBM-safety-check ../../instances/chained/chained_unreduced_${chain}/ $REPEATS $chain
 
     mkdir -p ../../instances/chained/chained_templates_${chain}/
     cp ../../instances/chained/chained_unreduced_${chain}/* ../../instances/chained/chained_templates_${chain}/

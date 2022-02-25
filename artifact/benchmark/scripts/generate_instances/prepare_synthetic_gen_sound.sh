@@ -1,11 +1,11 @@
 #!/bin/bash
-for FILE in $(find ../nets/workflows/synthetic/generalized-soundness-templates -name '*.lola');
+for FILE in $(find ../../instances/synthetic/generalized-soundness-templates -name '*.lola');
     do
     echo "${FILE}"
 
-    FILENAME=${FILE#../nets/workflows/synthetic/generalized-soundness-templates/}
+    FILENAME=${FILE#../../instances/synthetic/generalized-soundness-templates/}
     FILENAME=${FILENAME%.lola}
-    TARGET_ROOT="../nets/workflows/synthetic/generalized-soundness/"
+    TARGET_ROOT="../../instances/synthetic/generalized-soundness/"
 
     FILENAME_NO_FOLDER=${FILENAME##*/}
     FOLDER_NO_FILENAME=${FILENAME%%/*}
@@ -26,15 +26,15 @@ for FILE in $(find ../nets/workflows/synthetic/generalized-soundness-templates -
     echo $REPLACE_OUTPUT
 
 
-    dotnet ../fastforward/fastforward.dll replace-weights ${FILE} -f Lola -o ${REPLACE_TARGET}
+    dotnet ../../tools/fastforward/fastforward.dll replace-weights ${FILE} -f Lola -o ${REPLACE_TARGET}
 
     python3 reduce_net.py ${REPLACE_OUTPUT}
 
     for ((i=1;i<=NUM_C;i++));
     do
-        # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/continuous/${FILENAME_WITHOUT_CHECK}${i}-check"
-        # dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/lola/${FILENAME_WITHOUT_CHECK}${i}-check"
-        dotnet ../fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f TPN -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
+        dotnet ../../tools/fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/continuous/${FILENAME_WITHOUT_CHECK}${i}-check"
+        dotnet ../../tools/fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f Lola -o "${TARGET_ROOT}/lola/${FILENAME_WITHOUT_CHECK}${i}-check"
+        dotnet ../../tools/fastforward/fastforward.dll translate-wf ${REPLACE_OUTPUT} -m Soundness -k $i -f TPN -o "${TARGET_ROOT}/woflan/${FILENAME_WITHOUT_CHECK}${i}-check"
     done
 
 

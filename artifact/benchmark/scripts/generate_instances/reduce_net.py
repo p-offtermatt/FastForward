@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     print(input_file)
     
-    call_and_log("dotnet ../fastforward/fastforward.dll translate-wf " + input_file + " -f CGraph -o tmp -m Reachability")
+    call_and_log("dotnet ../../tools/fastforward/fastforward.dll translate-wf " + input_file + " -f CGraph -o tmp -m Reachability")
     print("Removing " + input_file)
     os.remove(input_file)
     
@@ -33,16 +33,16 @@ if __name__ == "__main__":
     shutil.rmtree('xml', ignore_errors=True)
     os.makedirs('xml')
 
-    call_and_log("../tools/Hadara_AdSimul_Red tmp.xml")
+    call_and_log("../../tools/Hadara_AdSimul_Red tmp.xml")
 
     if not os.path.isfile("xml/red_tmpxml.xml"):
         print("File was solved by reducing, moving on")
         exit(0)
 
-    call_and_log(f"dotnet ../fastforward/fastforward.dll translate-wf xml/red_tmpxml.xml -m Reachability -f PNML -o {prom_home}/net")
+    call_and_log(f"dotnet ../../tools/fastforward/fastforward.dll translate-wf xml/red_tmpxml.xml -m Reachability -f PNML -o {prom_home}/net")
     call_and_log(f"cd {prom_home}; sh ProM_CLI.sh -f call_reduction.java")
 
-    call_and_log(f"dotnet ../fastforward/fastforward.dll translate-wf {prom_home}/reduced.pnml -m Reachability -f Lola -o " + input_file_no_extensions)
+    call_and_log(f"dotnet ../../tools/fastforward/fastforward.dll translate-wf {prom_home}/reduced.pnml -m Reachability -f Lola -o " + input_file_no_extensions)
 
     shutil.rmtree('xml', ignore_errors=True)
     os.remove("tmp.xml")
