@@ -53,11 +53,11 @@ def group_by_name(entries):
 
     return result
 
-def get_time_from_entries(entry_list):
+def get_time_from_entries(entry_list, default_time):
     result_list = list()
     for entry in entry_list:
         if "error" in entry:
-            entry_time = 120000
+            entry_time = default_time
         else:
             entry_time = entry["wallTime"]
         result_list.append(entry_time)
