@@ -1,9 +1,9 @@
 #!/bin/bash
 
-REPEATS=4
+REPEATS=20
 rm -r ../../instances/chained/
 
-for ((chain=1;chain<=401;chain=chain+40))
+for ((chain=1;chain<=401;chain=chain+20))
     do
     base_path=../../instances/chained/chained_${chain}/
 
