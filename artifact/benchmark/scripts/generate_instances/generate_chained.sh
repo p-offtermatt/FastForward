@@ -24,7 +24,7 @@ for ((chain=1;chain<=401;chain=chain+40))
         FILENAME=${FILE##*/}
         FILENAME_NO_EXTENSION=${FILENAME%.lola}
 
-        dotnet ../../tools/fastforward/fastforward.dll translate-wf ${FILE} -f PNML -o "${base_path}woflan/${FILENAME_NO_EXTENSION}" -m Reachability
+        dotnet ../../tools/fastforward/fastforward.dll translate-wf ${FILE} -f TPN -o "${base_path}woflan/${FILENAME_NO_EXTENSION}" -m Reachability
         dotnet ../../tools/fastforward/fastforward.dll translate-wf ${FILE} -f Lola -o "${base_path}lola/${FILENAME_NO_EXTENSION}" -m Soundness
         dotnet ../../tools/fastforward/fastforward.dll translate-wf ${FILE} -f Lola -o "${base_path}continuous/${FILENAME_NO_EXTENSION}" -m Soundness
 

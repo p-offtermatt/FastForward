@@ -1,0 +1,100 @@
+\begin{figure}
+    \centering
+    \begin{tabular}{c}
+      %% Top
+      \begin{tikzpicture}[node distance=0.5cm and 1.5cm,
+                          scale=0.9, transform shape]
+        \tikzstyle{cplace} = [place, minimum size=15pt]
+        
+        \node[cplace, label=left:{$\initial$}] (i) at (0.25,1) {};
+        \node[transition, right=1.5cm of i, label=below:{$t_\initial$}] (t1) {};
+        \path[->]
+        (i) edge[]            node[] {}           (t1);
+        
+        
+        \node[cplace, right=of t1, label=below:{$p$}] (p) {};
+        \path[->]
+        (t1) edge[]            node[above] {$c+1$}           (p);
+        
+        \node[transition, above=of p, label=left:{$t_r$}] (t3) {};
+        \node[cplace, right=of t3, label=right:{$r$}] (r) {};
+        
+        \path[->]
+        (p)  edge[]            node[left] {$c$}           (t3)
+        (t3) edge[]            node[] {}           (r)
+        ;
+        
+        \node[transition, right=1.5cm of p, label=below:{$t_\output$}] (tf) {};
+        \node[cplace, right=1.5cm of tf, label=right:{$\output$}] (f) {};
+        \path[->]
+        (p)  edge[]            node[] {}           (tf)
+        (r)  edge[]            node[] {}           (tf)
+        (tf) edge[]            node[] {}           (f)
+        ;    
+      \end{tikzpicture} \\[-2pt]
+      \midrule \\[-10pt]
+      \begin{tikzpicture}[node distance=0cm and 1.25cm, transform shape, scale=0.9]
+        \tikzstyle{cplace} = [place, minimum size=15pt]
+          
+        %% Bottom left
+        \node[cplace, label=left:{$\initial$}] (i) {};
+        \node[transition, right=0.85cm of i, label=above:{$t$}]  (t) {};
+        \node[cplace, right=0.85cm of t, label=right:{$\output$}] (f) {};
+        
+        \path[->]
+        (i) edge[] node[above] {$c$} (t)
+        (t) edge[] node[above] {$c$} (f)
+        ;
+  
+        %% Bottom center
+        \node[cplace, label=left:{$\initial$}, right=1cm of f]   (i2)  {};
+        \node[transition, right=0.85cm of i2, label=above:{$t$}]  (t2) {};
+        \node[cplace, right=0.85cm of t2, label=right:{$\output$}] (f2) {};
+        
+        \path[->]
+        (i2) edge[] node[above] {$c$}     (t2)
+        (t2) edge[] node[above] {$c - 1$} (f2)
+        ;
+  
+        %% Bottom right
+        \node[cplace, label=left:{$\initial$}, right=1cm of f2] (i3) {};
+        \node[transition, right=0.5cm of i3, label=above:{$t_\initial$}] (ti) {};
+        
+        \node[cplace, above right=0cm and 0.5cm of ti, label={[xshift=-10pt, yshift=-5pt]above:{$u$}}] (u) {};
+        \node[cplace, below right=0cm and 0.5cm of ti, label={[xshift=-10pt, yshift=5pt]below:{$d$}}] (d) {};
+        
+        \node[transition, right=0.5cm of u, label={[xshift=12pt, yshift=-7pt]above:{$t_u$}}] (tu) {};
+        \node[transition, right=0.5cm of d, label={[xshift=12pt, yshift=7pt]below:{$t_d$}}] (td) {};
+        
+        \node[cplace, below right=0cm and 0.5cm of tu,
+              label=right:{$\output$}] (f3) {};
+        
+        \path[->]
+        (i3) edge[] node[above] {} (ti)
+        (ti) edge[] node[above] {} (u)
+        (ti) edge[] node[above] {} (d)
+        ;
+        
+        \path[->]
+        (u)  edge[] node[above] {$c$} (tu)
+        (d)  edge[] node[above] {}    (tu)
+        (tu) edge[] node[above] {}    (f3)
+        ;
+        
+        \path[->]
+        (d)  edge[bend right=15] node[below] {$2$} (td)
+        (td) edge[bend right=15] node[above] {}    (d)
+        (td) edge[]              node[above] {}    (f3)
+        ;
+      \end{tikzpicture}
+    \end{tabular}
+    \caption{Included in the artifact for reference. \emph{Top}: A workflow net $\pn_c$ that is $c$-unsound and
+      $k$-sound for all $k \in [1..c-1]$. \emph{Bottom}: Three families
+      of instances. \emph{Bottom left:} $\pn_{\text{sound-}c}$ is
+      quasi-sound and $\ell c$-sound for all $\ell \in
+      \Nn$. \emph{Bottom center:} $\pn_{\neg \text{quasi-}c}$ is not
+      structurally quasi-sound. \emph{Bottom right:} $\pn_{\neg
+        \text{sound-}c}$ is $\ell c$-quasi-sound for all $\ell \in \Nn$,
+      but not structurally sound.}\label{fig:synthetic}
+  \end{figure}
+  

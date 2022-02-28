@@ -260,6 +260,7 @@ def CreateBenchmarkArgparser():
         help="""The base name for the output file. Should not contain the extension, which will be chosen automatically. Also, one output file will be 
         produced per subdirectory in the fastforward and lola subfolders. For example, if there is a folder lola/unsound,
         then one output file will be called {outputfile}_unsound.json""")
+    parser.add_argument("-t", "--timeout", type=int, default=120)
     return parser
 
 def GetBenchmarkInstancesFromFolder(folderpath, extension):

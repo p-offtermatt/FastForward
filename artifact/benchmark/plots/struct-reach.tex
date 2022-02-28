@@ -1,0 +1,18 @@
+\begin{figure}
+    \centering
+    \plotcanvaswithextraargs{$c$}{analysis time (s)}{
+        \input{data/synthetic-struct-reach_sound.tex}%
+        \legend{This work, \textsc{LoLA}}
+    }{0.38\textwidth}{xtick={1,10,20,30,40}}
+    %
+    \plotcanvaswithextraargs{$c$}{}{
+        \input{data/synthetic-struct-reach_unreach.tex}%
+    }{0.38\textwidth}{xtick={1,10,20,30,40}, ytick={0,50,100,120}}
+    %
+    \plotcanvaswithextraargs{$c$}{}{
+        \input{data/synthetic-struct-reach_unsound.tex}%
+    }{0.38\textwidth}{xtick={1,10,20,30,40}, ytick={0,50,100,120}}
+
+    \caption{Time taken vs parameter $c$ for checking structural quasi-soundness using the reduction to reachability, and utilizing our approach to compute $k_{\pn,\Qpos}$, for each of the three families at the bottom of \Cref{fig:synthetic}: $\pn_{\text{sound-}c}$ (\emph{left}),$\pn_{\neg \text{quasi-}c}$ (\emph{center}), $\pn_{\neg \text{sound-}c}$ (\emph{right}).
+        Marks on the gray line denote timeouts.}\label{fig:synth-struct-results}
+\end{figure}

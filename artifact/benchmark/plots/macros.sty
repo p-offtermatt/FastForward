@@ -1,55 +1,172 @@
 %% General typesetting
-\newcommand{\eg}{\textit{e.g.}}
-\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
 \newcommand{\etal}{\textit{et al.}}
+\newcommand{\tmp}[1]{\textcolor{red}{#1}}
 
 %% General math
-\usepackage{bm}                                       %% \bm
-\usepackage{stmaryrd}                                 %% \llbracket, \rrbracket
-
 \newcommand{\defeq}{\coloneqq}                        %% Definition operator
 \newcommand{\N}{\mathbb{N}}                           %% Natural numbers
 \newcommand{\Z}{\mathbb{Z}}                           %% Integers
 \newcommand{\Q}{\mathbb{Q}}                           %% Rationals
-\newcommand{\Qpos}{\Q_{>0}}                           %% Positive rationals
-\newcommand{\Qnon}{\Q_{\geq 0}}                       %% Non neg. rationals
-\newcommand{\sumnorm}[1]{\left\lVert#1\right\rVert_1} %% Sum-norm
-\renewcommand{\vec}[1]{\bm{#1}}                       %% Vector notation
+\newcommand{\R}{\mathbb{R}}                           %% Reals
+\newcommand{\D}{\mathbb{D}}                           %% Generic domain
+\newcommand{\Qpos}{\mathbb{Q}_{\ge 0}}                    %% Non neg. rationals
 \newcommand{\mat}[1]{\mathbf{#1}}                     %% Matrix notation
-\newcommand{\supp}[1]{\llbracket#1\rrbracket}         %% Vector support
-\newcommand{\G}{\mathbb{G}}
+\renewcommand{\vec}[1]{\bm{#1}}                       %% Vector notation
+\newcommand{\transpose}{\mathsf{T}}                   %% Matrix transpose
+\newcommand{\sol}[1]{\llbracket#1\rrbracket}          %% Set of solutions
+\newcommand{\G}{\mathfrak{S}}
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\Pe}{\mathcal{P}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\ls}{<}
+\newcommand{\gr}{>}
+
+\newcommand{\Nn}{\N_{\geq 1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+%% For vectors
+\newcommand{\0}{\vec{0}}
+\newcommand{\1}{\vec{1}}
+\newcommand{\B}{\vec{B}}
+\newcommand{\ttau}{\vec{\tau}}
+
+
+% \newcommand{\Ball}{B_{\set{1,\dots,n}}}
+\newcommand{\Ball}{B}
+
+%%%%
+% from https://tex.stackexchange.com/a/43009
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+%%%%
+
+%% Complexity
+\newcommand{\bigO}{\mathcal{O}}
 
 %% Petri nets
-\newcommand{\pre}[1]{\ensuremath{{^\bullet #1}}}
-\newcommand{\post}[1]{\ensuremath{{#1^\bullet}}}
-\newcommand{\areach}[2]{\xrightarrow{#2}_{#1}}        %% Template reach. rel
-\newcommand{\reach}[1]{\areach{\N}{#1}}               %% Standard reach. rel
-\newcommand{\creach}[1]{\areach{\Qnon}{#1}}           %% Continuous reach. rel.
-\newcommand{\incid}{\ensuremath{\mathrm{Incid}}}      %% Incidence matrix
-\newcommand{\guard}[1]{\vec{g}_{#1}}                  %% Transition pre-cond.
-\newcommand{\effect}[1]{\vec{\Delta}_{#1}}            %% Transition net effect
-\newcommand{\qreach}[1]{\areach{\Q}{#1}}              %% Q-reach. rel.
-\newcommand{\zreach}[1]{\areach{\Z}{#1}}              %% Z-reach. rel.
-\newcommand{\greach}[1]{\areach{\G}{#1}}              %% G-reach. rel.
-\newcommand{\dreach}[1]{\areach{\D}{#1}}              %% Generic reach. rel.
 \newcommand{\pn}{\mathcal{N}}                         %% Generic Petri net name
+\newcommand{\trans}[1]{\xrightarrow{}^{#1}}              %% Reachability relation
+\newcommand{\reach}{\trans{*}}                       %% Starred reachability
+\newcommand{\ctrans}[1]{\xrightarrow{}_{\Qpos}^{#1}} %% Continuous reach. rel.
+\newcommand{\creach}{\ctrans{*}}                   %% Starred continuous reach.
+\newcommand{\ztrans}[1]{\xrightarrow{}_{\Z}^{#1}}  %% Continuous reach. rel.
+\newcommand{\zreach}{\ztrans{*}}                   %% Starred int. reach.
+\newcommand{\dtrans}[1]{\xrightarrow{}_{\D}^{#1}}  %% Generic reach. rel.
+\newcommand{\dreach}{\dtrans{*}}                   %% Starred generic reach.
 
-%% Algorithms
-\newcommand{\astar}{$\textsf{A}^{\!*}$}
+\newcommand{\effectt}{\delta_t}
+\newcommand{\pre}[1]{{^\bullet #1}}
+\newcommand{\post}[1]{{#1^\bullet}}
+\newcommand{\pret}{\pre{t}}
+\newcommand{\postt}{\post{t}}
+\newcommand{\effect}[1]{\Delta(#1)}
 
-%% Plots
-\newcommand{\plotscale}{0.77}
-\newcommand{\covscale}{0.83}
+\newcommand{\supppre}[1]{\support{^\bullet #1}}
+\newcommand{\supppost}[1]{\support{#1^\bullet}}
+\newcommand{\support}[1]{\mathrm{supp}(#1)}
 
-% Colors
+\newcommand{\soundS}[1]{\mathcal{S}_{#1}}
 
-% Other tools
+\newcommand{\modp}{\% p}
+\newcommand{\upk}{\leq k}
+
+\newcommand{\Reach}[1]{\text{Reach}(#1)}        %% Reachable markings
+\newcommand{\ZReach}[1]{\Z\text{-Reach}(#1)}    %% Reachable markings
+\newcommand{\QReach}[1]{\Qpos\text{-Reach}(#1)} %% Reachable markings
+
+% Runs
+\newcommand{\parikh}[1]{\vec{#1}}
+\newcommand{\FromTo}[3]{#1[#2:#3]}
+
+% Continuous PN
+%\newcommand{\ZeroOne}{\Q \cap (0,1]} % Continuous domain
+\newcommand{\ZeroOne}{(0,1]} % Continuous domain
+
+%% WF Nets
+\newcommand{\initial}{\mathsf{i}}
+\renewcommand{\output}{\mathsf{f}}
+
+\newcommand{\m}{\vec{m}}
+\newcommand{\n}{\vec{n}}
+\newcommand{\bv}{\vec{v}}
+
+\newcommand{\ssound}{supersound}
+\newcommand{\f}{\output}
+\newcommand{\imarked}[1]{\{\initial\colon #1\}}
+\newcommand{\fmarked}[1]{\{\f\colon #1\}}
+\newcommand{\omarked}[1]{\fmarked{#1}}
+\newcommand{\marking}[1]{\text{marking}(#1)}
+\newcommand{\imarking}[1]{\overline{\text{marking}}(#1)}
+
+\newcommand{\sNums}[1]{\text{Sound}(#1)}
+\newcommand{\sns}{\sNums{N}}
+
+\newcommand{\csharp}{C\#}
 
 
 
-% Other colors (heuristics)
-\colorlet{colqreach}{red}
-\colorlet{colsyntactic}{black}
+
+%% Aligning texts properly
+\newcommand{\textphantom}[2]{%
+  \makebox[0pt][l]{#1}\phantom{#2}%
+}
+
+%% Colors
+\newcommand{\phaseTwoColor}{green!50!black}
+\newcommand{\phaseTwoIncColor}{green!50!blue}
+\newcommand{\phaseTwoDecColor}{green!50!red}
+
+
+%% ILPs
+\newcommand{\solutions}[1]{\llbracket #1 \rrbracket}
+\newcommand{\nsolutions}[1]{\llbracket #1 \rrbracket_{\geq 0}}
+
+% Plotting
+\newcommand{\plotscale}{0.9}
+
+\newcommand{\plotcanvas}[4]{%
+  \begin{tikzpicture}[font=\small, scale=\plotscale, transform shape]%
+    \begin{axis}[%
+        width=#4,
+        xlabel=#1,
+        legend pos=north west,
+        ylabel=#2,
+      ]%
+      #3%
+    \end{axis}%
+  \end{tikzpicture}%
+}
+
+\newcommand{\plotcanvaswithextraargs}[5]{%
+  \begin{tikzpicture}[font=\small]%
+    \begin{axis}[%
+        width=#4,
+        xlabel=#1,
+        legend pos=north west,
+        ylabel=#2,
+        #5
+      ]%
+      #3%
+    \end{axis}%
+  \end{tikzpicture}%
+}
 
 % Legends
 \makeatletter
@@ -73,184 +190,27 @@
 
 \newcommand{\addlegendmark}[2]{\addlegendimage{col#1, fill=col#1, only marks, mark=#2}}
 
+\colorlet{colConti}{green!50!black}
+\colorlet{colLola}{blue}
+\colorlet{colWoflan}{orange}
 
-%% Plot the line of a tool
-\newcommand{\toolplot}[3]{%
-  \addplot[very thick, color=col#1, mark=#2] coordinates {#3};%
-}
+\newcommand{\ourlegend}{\begin{tikzpicture}
+  \begin{axis}[%
+          hide axis,
+          xmin=10,
+          xmax=50,
+          ymin=0,
+          ymax=0.4,
+          legend columns=4,
+          legend style={draw=none, /tikz/every even column/.append style={column sep=0.5cm}}
+      ]
+      \addlegendimage{colConti,mark=*}
+      \addlegendentry{This work};
+      \addlegendimage{colLola,mark=square*}
+      \addlegendentry{LoLA};
+      \addlegendimage{colWoflan,mark=diamond*}
+      \addlegendentry{Woflan};
+  \end{axis}
+\end{tikzpicture}}
 
-%% plot with summary at the end of each line
-\newcommand{\toolplotwithtotalcount}[6]{%
-  \addplot[very thick, color=col#1, mark=#2] coordinates {#3};%
-  \node[coordinate, label={[label distance=5pt]right:{\textcolor{col#1}{#6}}}]
-       at (axis cs:#4, #5) {};
-}
-
-\newcommand{\comparisonplot}[3]{
-  \begin{tikzpicture}[scale=\covscale, every node/.style={scale=\covscale}, font=\normalsize]%
-    \begin{loglogaxis}[%
-        xmin=50,
-        xmax=100000,
-        ymin=50,
-        ymax=100000,
-        width=1.1\textwidth,
-        xlabel style={align=center},
-        ylabel style={align=center},
-        xticklabels={0, 0.1, 1, 10},
-        yticklabels={0, 0.1, 1, 10},
-        extra x ticks={60000},
-        extra x tick label={60},
-        extra y ticks={60000},
-        extra y tick label={60},
-        xlabel={#1},
-        ylabel={#2},
-        legend style={
-          at={(0, 0.65)},
-          anchor=west},
-        reverse legend,
-      ]%
-      \addplot[mark=none] coordinates {(100,100) (60000, 60000)};
-      \addplot[green!70!black, mark=none] coordinates {(60000,100) (60000, 60000)};
-      \addplot[green!70!black, mark=none] coordinates {(100,60000) (60000, 60000)};
-
-%% Negative instances      
-#3
-
-    \end{loglogaxis}%
-  \end{tikzpicture}%
-}
-
-% histogram
-\newcommand{\histogram}[3]{%
-\begin{tikzpicture}[scale=0.39, every node/.style={scale=0.7}, font=\Huge]
-\begin{axis}[
-  ymin=0,
-  xmin=-10, xmax=110,
-  domain=0:105,
-  xlabel=#1,
-  ylabel=#2,
-  area style
-  ]
-      #3%
-  \end{axis}%
-\end{tikzpicture}%
-}
-
-\newcommand{\heuristicplot}[3]{%
-\begin{tikzpicture}[scale=0.7, every node/.style={scale=\plotscale}, font=\Large]
-\begin{loglogaxis}[
-  log basis y=10,
-  log basis x=10,
-  ymin=-2, ymax=52,
-  xmax=-2, xmax=52,
-  domain=0:50,
-  xticklabels={0, 1, 10},
-  yticklabels={0, 1, 10},
-  extra x ticks={50},
-  extra x tick labels={50},
-  extra y ticks={50},
-  extra y tick labels={50},
-  xlabel=#1,
-  ylabel=#2
-  ]
-      #3%
-  \end{loglogaxis}%
-\end{tikzpicture}%
-}
-
-
-%% Grid containing all tools
-\newcommand{\plotcanvas}[3]{%
-  \begin{tikzpicture}[scale=\plotscale, every node/.style={scale=\plotscale}, font=\large]%
-    \begin{semilogxaxis}[%
-        ymin=-0.1,
-        xmin=90,
-        xmax=60050,
-        domain=100:60050,
-        xtick={100, 500, 1500, 5000, 15000, 60000},
-        xticklabels={0.1, 0.5, 1.5, 5, 15, 60},
-        width=\textwidth,
-        xlabel=#1,
-        ylabel style={align=center},
-        ylabel=#2,
-        legend style={
-          at={(0, 0.65)},
-          anchor=west},
-        reverse legend,
-        clip=false
-      ]%
-      #3%
-    \end{semilogxaxis}%
-  \end{tikzpicture}%
-}
-
-\newcommand{\zeroeps}{0.6} %% Hack to emulate 0 tick on logscale...
-\newcommand{\plotcanvaslog}[3]{%
-  \begin{tikzpicture}[scale=\plotscale, every node/.style={scale=\plotscale}, font=\large]%
-    \begin{loglogaxis}[%
-        ymin=\zeroeps-0.1,
-        xmin=90,
-        xmax=60050,
-        domain=100:60050,
-        xtick={100, 500, 1500, 5000, 15000, 60000},
-        xticklabels={0.1, 0.5, 1.5, 5, 15, 60},
-        ytick={1, 10, 100},
-        yticklabels={1, 10, 100},
-        extra y ticks={\zeroeps},
-        extra y tick labels={0},
-        width=\textwidth,
-        xlabel=#1,
-        ylabel style={align=center},
-        ylabel=#2,
-        legend style={
-          at={(0, 0.65)},
-          anchor=west},
-        reverse legend,
-        clip=false
-      ]%
-      #3%
-    \end{loglogaxis}%
-  \end{tikzpicture}%
-}
-
-%% Uncomment to go back to linear scale!
-%% \renewcommand{\zeroeps}{0}
-%% \renewcommand{\plotcanvaslog}{\plotcanvas}
-
-%% Grid containing all tools (longer timeout)
-\newcommand{\plotcanvaslonger}[3]{%
-  \begin{tikzpicture}[scale=\plotscale, every node/.style={scale=\plotscale}]%
-    \begin{semilogxaxis}[%
-        ymin=-1,
-        xmin=90,
-        xmax=600000,
-        domain=100:600000,
-        xtick={100, 500, 1500, 5000, 25000, 100000, 600000},
-        xticklabels={0.1, 0.5, 1.5, 5, 25, 100, 600},
-        width=\textwidth,
-        xlabel=#1,
-        ylabel style={align=center},
-        ylabel=#2,
-        legend style={
-          at={(0, 0.65)},
-          anchor=west},
-        reverse legend,
-        clip=false
-      ]%
-      #3%
-    \end{semilogxaxis}%
-  \end{tikzpicture}%
-}
-
-%% Code
-\newcommand{\codeword}[1]{%
-\texttt{\textcolor{red}{#1}}%
-}
-
-\newcommand{\code}[1]{%
-\texttt{{#1}}%
-}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\newcommand{\encpn}{\pn_\mathrm{enc}}

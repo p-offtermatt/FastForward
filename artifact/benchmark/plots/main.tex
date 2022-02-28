@@ -1,22 +1,43 @@
 \documentclass[runningheads]{llncs}
+
 \usepackage{xcolor}
-\usepackage{pgffor}
-\usepackage{macros}
-\usepackage{tikz}
-\usepackage{pgfplots}
+
+\usepackage{bm}
+\usepackage{stmaryrd}
 \usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{amssymb}
+\usetikzlibrary{petri,calc,backgrounds, positioning}
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{enumitem}
 \usepackage{multirow}
-\usepackage{amsmath, amssymb}  
-\pgfplotsset{compat=1.3}
+\usepackage{marvosym}
+\usepackage{booktabs}
+\usetikzlibrary{hobby, decorations.pathreplacing}
+\pgfdeclarelayer{back}
+\pgfsetlayers{back,main}
+\usepackage{macros}
+\usepackage{xspace}
  
 \begin{document}
 
-\foreach \i in {free-choice.tex, struct-sound.tex, gen-sound.tex} {%
-        \edef\FileName{\i}% 
-        \IfFileExists{\FileName}{%
-            \input{\FileName}% 
-        }
-    }
+\input{synthetic.tex}
+
+\input{free-choice.tex}
+\input{gen-sound.tex}
+\input{struct-reach.tex}
+
+
+% \foreach \i in {free-choice.tex, gen-sound.tex, struct-reach.tex} {%
+%         \edef\FileName{\i}% 
+%         \IfFileExists{\FileName}{%
+%             \input{\FileName}% 
+%         }
+%     }
 
 
 \end{document}

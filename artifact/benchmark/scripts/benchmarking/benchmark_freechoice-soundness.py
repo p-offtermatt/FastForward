@@ -16,6 +16,7 @@ if __name__ == "__main__":
 
     folder_name = args.benchmark_dir
     output_filepath = args.outputfile
+    timeout_time = args.timeout
 
     Path(os.path.dirname(output_filepath)).mkdir(parents=True, exist_ok=True)
 

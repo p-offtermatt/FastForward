@@ -1,3 +1,3 @@
-for i in 1 21 41 .. 401; do
-    python3 benchmark_freechoice-soundness.py ../../instances/chained/chained_workflows_$i/ -o ../../results/chained/$i
+for i in {1..401..40}; do
+    python3 benchmark_freechoice-soundness.py ../../instances/chained/chained_$i/ -o ../../results/chained/$i -t 60
 done

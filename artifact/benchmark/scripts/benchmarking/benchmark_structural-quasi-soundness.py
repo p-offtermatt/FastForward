@@ -17,6 +17,7 @@ if __name__ == "__main__":
 
     folder_name = args.benchmark_dir
     output_filepath = args.outputfile
+    timeout_time = args.timeout
 
     folder_name = folder_name.rstrip("/")
 
