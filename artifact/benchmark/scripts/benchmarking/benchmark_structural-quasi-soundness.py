@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 benchmark_suite = dir
                 instance_name = entry
 
-                ff_netpath = os.path.join(ff_folder, dir, entry)
+                ff_netpath = os.path.join(ff_folder, dir, entry + ".lola")
                 ff_formulapath = benchmark_utils.GetFormulaFileForNet(ff_netpath)
 
                 
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(ff_result))
                 output_file.flush()
 
-                lola_filepath = os.path.join(lola_folder, dir, entry)
+                lola_filepath = os.path.join(lola_folder, dir, entry + ".lola")
                 lola_formulapath = benchmark_utils.GetFormulaFileForNet(lola_filepath)
 
                 lola_result = benchmark_utils.call_lola(lola_filepath, lola_formulapath, timeout_time)
