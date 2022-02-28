@@ -7,6 +7,12 @@ This artifact showcases an extension of FastForward with methods for attacking
 soundness in workflow nets, particularly structural soundness and generalized soundness, as well as soundness of free-choice workflow nets.
 
 This README is structured as follows:
+
+- ["Reproducing experimental results"](#reproducing-experimental-results)
+explains how to reproduce the experiments of the paper.
+- ["Plotting experimental results"](#plotting-experimental-results) explains how to transform the data generated in the previous step
+to plots similar to the ones in the paper.
+
 - OPTIONAL: ["Building FastForward"](#compiling-fastforward) explains
 how to build FastForward and its dependencies.
 This information is helpful for using FastForward outside of this virtual machine. The section is
@@ -15,10 +21,21 @@ optional, as this virtual machine comes with a pre-built version of FastForward.
 regenerate the benchmark instances.
 The scripts used in this section can help understanding how these instances are obtained from the original benchmark sets.
 This section is optional, as this virtual machine contains the pre-generated benchmark instances.
-- ["Reproducing experimental results"](#reproducing-experimental-results)
-explains how to reproduce the experiments of the paper.
-- ["Plotting experimental results"](#plotting-experimental-results) explains how to transform the data generated in the previous step
-to plots similar to the ones in the paper.
+
+## Reproducing experimental results
+
+To reproduce experimental results, navigate to the
+`artifact/benchmark/scripts` folder.
+Two scripts are relevant:
+* By default, we assume reviewers to use `benchmark_partial.sh`.
+This reproduces the results of the paper on a subset of the benchmark instances, and with a lower timeout of 60 seconds rather than 120 seconds as in the paper.
+* OPTIONAL: `benchmark_full.sh` runs the full set of benchmarks from the paper with the same time limit. Note that the full set of benchmark instances should be generated to use this script; see ["Regenerating instances"](#regenerating-instances).
+
+If you want more fine-grained control over what is benchmarked,
+take a look at the scripts. They call utilities in the `artifact/benchmark/scripts/benchmarking` folder, and those scripts
+can also be invoked individually by an interested reviewer.
+
+## Plotting experimental results
 
 ## Building FastForward
 
@@ -44,30 +61,13 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 ## Regenerating instances
 
-## Reproducing experimental results
+To regenerate benchmark instances, navigate to the
+`artifact/benchmark/scripts` folder.
+There are two relevant scripts for this step:
+* `generate_instances_full.sh` generates the full set of instances as used in the paper.
+* `generate_instances_partial.sh` generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
 
-## Plotting experimental results
-
-
-# Troubleshooting
-
-### **Running FastForward outputs libgurobi90.so is not installed**
-If you see an error message complaining about the lack of `libgurobi90.so`,
-it can mean Gurobi is not installed properly, but you compiled with Gurobi.
-Check whether you can run the `gurobi_cl` command, or compile without Gurobi by using the script `republish.sh` to compile FastForward.
-
-### **Running FastForward outputs "Failed to create CoreCLR"**
-
-The first step when encountering this error is to restart the machine.
-If the error persists, it can mean that dotnet does not have enough memory available.
-
-### **Running with Z3 as a heuristic outputs "Unhandled exception. Microsoft.Z3.Z3Exception: Overflow encountered when expanding old_vector"**
-
-Some instances are too large for Z3 to solve.
-You can try running with a different heuristic not using Z3.
 
 # Links
 
-<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-72013-1_1">Blondin M., Haase C., Offtermatt P. (2021) Directed Reachability for Infinite-State Systems. In: Groote J.F., Larsen K.G. (eds) Tools and Algorithms for the Construction and Analysis of Systems. TACAS 2021. Lecture Notes in Computer Science, vol 12652. Springer, Cham. https://doi.org/10.1007/978-3-030-72013-1_1</a>
-
-<a href="https://figshare.com/articles/software/FastForward_A_tool_for_reachability_in_Petri_nets_with_infinite_state_spaces_Artifact_for_the_TACAS21_Contribution_Directed_Reachability_for_Infinite-State_Systems_/13573592">Blondin, Michael; Haase, Christoph; Offtermatt, Philip (2021): FastForward: A tool for reachability in Petri nets with infinite state spaces. Artifact for the TACAS21 Contribution "Directed Reachability for Infinite-State Systems". figshare. Software. https://doi.org/10.6084/m9.figshare.13573592.v1 </a>
+TODO: Figshare link
