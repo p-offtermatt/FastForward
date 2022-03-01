@@ -138,7 +138,7 @@ if __name__ == "__main__":
             file.write(
                 (r"\addplot[thick, color=black, mark=x, mark size=1.2pt] coordinates {" if foldername == "means" else
                 r"\addplot[ultra thin, color=black!50!white, mark=x, mark size=1.2pt] coordinates {") + 
-                " ".join(f"({str(entry[0])},{str(func(entry[1]) / 1000)})" for entry in data) +
+                " ".join(f"({str(entry[0])},{str(func(entry[1]))})" for entry in data) +
                 r"};"
             )
 
