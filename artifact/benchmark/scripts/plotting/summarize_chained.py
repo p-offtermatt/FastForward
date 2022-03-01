@@ -1,5 +1,6 @@
 import argparse
 import os
+from pathlib import Path
 
 from tabulate import tabulate
 import plotting_utils as utils
@@ -101,6 +102,8 @@ if __name__ == "__main__":
 
     for func in [np.mean, np.min, np.max]:
         foldername = funcname_to_foldername[func.__name__]
+
+        Path(f"{args.target_directory}/{foldername}").mkdir(parents=True, exist_ok=True)
         print("--------------- Writing in folder " + foldername + "-----------------")
         
         print(f"writing {args.target_directory}/{foldername}/continuous.tex")
