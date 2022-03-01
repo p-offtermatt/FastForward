@@ -28,6 +28,8 @@ def get_woflan_reason(entry):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('datafiles', nargs="+")
+    parser.add_argument('-t', '--target_directory', help = "The directory that the data should be written into.", required = True)
+    parser.add_argument('-to', '--timeout', help = "The assumed timeout time of the experiment whose results are processed, in seconds.", required = True, type=int)
 
     args = parser.parse_args()
 
@@ -43,8 +45,8 @@ if __name__ == "__main__":
     entries_by_chainnum = dict()
 
     for filepath in args.datafiles:
-        # assumes files are named chained_workflows_NUMBER_.json
-        chain_num = os.path.splitext(filepath)[0].split("_")[-2]
+        # assumes files are named directorypath/NUMBER_..json
+        chain_num = os.path.splitext(filepath)[0].split("/")[-1].split("_")[-2]
         entries = utils.read_json_from_file(filepath)
         entries_by_chainnum[chain_num] = entries_by_chainnum.get(chain_num, []) + entries
 
@@ -53,7 +55,7 @@ if __name__ == "__main__":
     for chain_num, entries in entries_by_chainnum.items():
         for entry in entries:
             if "error" in entry:
-                entry["wallTime"] = 120000
+                entry["wallTime"] = args.timeout * 1000
 
         lola_entries = [
         entry for entry in entries if "methodName" in entry and entry["methodName"] == "lola"]
@@ -69,7 +71,7 @@ if __name__ == "__main__":
         woflan_entries = [entry for entry in entries if "methodName" in entry and entry["methodName"]
                         == "woflan"]
 
-        timeout_woflans = [entry for entry in woflan_entries if entry["wallTime"] == 120000]
+        timeout_woflans = [entry for entry in woflan_entries if entry["wallTime"] == args.timeout * 1000]
         print(len(timeout_woflans))
         timeout_fraction = len(timeout_woflans) / len(woflan_entries)
         timeouts[chain_num] = timeout_fraction
@@ -87,20 +89,55 @@ if __name__ == "__main__":
     data.sort(key=lambda x: int(x[0]))
     size_data.sort(key=lambda x: x[0])
 
+    funcname_to_foldername = {"mean": "means",
+    "amax": "maximums", "amin": "minimums"}
+
+    with open(f"{args.target_directory}/timeout.tex", 'w') as file:
+            file.write(
+                r"\addplot[ultra thick, color=gray, opacity=0.5] coordinates {" + 
+                f"(1,{args.timeout}) (401,{args.timeout})" +
+                r"};"
+            )
+
     for func in [np.mean, np.min, np.max]:
-        print("---------------" + func.__name__ + "-----------------")
-        print("conti")
-        print(" ".join(f"({str(entry[0])},{str(func(entry[1]) / 1000)})" for entry in data))
+        foldername = funcname_to_foldername[func.__name__]
+        print("--------------- Writing in folder " + foldername + "-----------------")
+        
+        print(f"writing {args.target_directory}/{foldername}/continuous.tex")
+        with open(f"{args.target_directory}/{foldername}/continuous.tex", 'w') as file:
+            file.write(
+                (r"\addplot[thick, color=colConti, mark=*, mark size=1.2pt] coordinates {" if foldername == "means" else
+                r"\addplot[ultra thin, color=colConti!50!white, mark=*, mark size=1.2pt] coordinates {") + 
+                " ".join(f"({str(entry[0])},{str(func(entry[1]) / 1000)})" for entry in data) +
+                r"};"
+            )
 
-        print("lola")
-        print(" ".join(f"({str(entry[0])},{str(func(entry[2])  / 1000)})" for entry in data))
+        print(f"writing {args.target_directory}/{foldername}/lola.tex")
+        with open(f"{args.target_directory}/{foldername}/lola.tex", 'w') as file:
+            file.write(
+                (r"\addplot[thick, color=colLola, mark=square*, mark size=1.2pt] coordinates {" if foldername == "means" else
+                r"\addplot[ultra thin, color=colLola!50!white, mark=square*, mark size=1.2pt] coordinates {") + 
+                " ".join(f"({str(entry[0])},{str(func(entry[2]) / 1000)})" for entry in data) +
+                r"};"
+            )
 
-        print("woflan")
-        print(" ".join(f"({str(entry[0])},{str(func(entry[3])  / 1000)})" for entry in data))
+        print(f"writing {args.target_directory}/{foldername}/woflan.tex")
+        with open(f"{args.target_directory}/{foldername}/woflan.tex", 'w') as file:
+            file.write(
+                (r"\addplot[thick, color=colWoflan, mark=diamond*, mark size=1.2pt] coordinates {" if foldername == "means" else
+                r"\addplot[ultra thin, color=colWoflan!50!white, mark=diamond*, mark size=1.2pt] coordinates {") + 
+                " ".join(f"({str(entry[0])},{str(func(entry[3]) / 1000)})" for entry in data) +
+                r"};"
+            )
 
-        print("sizes")
-        print(" ".join(f"({str(entry[0])},{str(func(entry[1]))})" for entry in size_data))
-
+        print(f"writing {args.target_directory}/{foldername}/size.tex")
+        with open(f"{args.target_directory}/{foldername}/size.tex", 'w') as file:
+            file.write(
+                (r"\addplot[thick, color=black, mark=x, mark size=1.2pt] coordinates {" if foldername == "means" else
+                r"\addplot[ultra thin, color=black!50!white, mark=x, mark size=1.2pt] coordinates {") + 
+                " ".join(f"({str(entry[0])},{str(func(entry[1]) / 1000)})" for entry in data) +
+                r"};"
+            )
 
     print(sorted(timeouts.items(), key=lambda x: int(x[0])))
 

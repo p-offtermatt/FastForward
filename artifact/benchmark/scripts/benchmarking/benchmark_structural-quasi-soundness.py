@@ -45,6 +45,7 @@ if __name__ == "__main__":
     benchmark_utils.EnsureFormulaFilesExist(ff_folder, files)
 
     for dir, entries in files.items():
+
         # write result file for this directory of instances
         with open(output_filepath + "_" + dir + ".json", 'w') as output_file:
             output_file.write("[")

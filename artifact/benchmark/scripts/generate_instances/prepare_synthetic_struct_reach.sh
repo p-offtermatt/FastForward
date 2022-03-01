@@ -2,7 +2,7 @@
 for FILE in ../../instances/synthetic/structural-soundness/continuous/*/*_1-check.lola;
     do
     echo "${FILE}"
-    FILENAME=${FILE#../../instances/synthetic/structural-soundness/}
+    FILENAME=${FILE#../../instances/synthetic/structural-soundness/continuous}
     FILENAME=${FILENAME%.lola}
     TARGET_ROOT="../../instances/synthetic/structural-reachability"
     mkdir -p "${TARGET_ROOT}/continuous/${FILENAME%/*}"
