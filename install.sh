@@ -10,13 +10,6 @@ cd artifact/src/
 dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
 cd ../..
 
-# installing lola
-cd lola-2.0
-./configure
-make
-sudo make install
-cd ..
-
 # installing psutil
 sudo apt-get install -y python3
 sudo apt-get install -y python3-pip
