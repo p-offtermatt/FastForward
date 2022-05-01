@@ -5,6 +5,9 @@ wget https://dot.net/v1/dotnet-install.sh
 sudo chmod +x dotnet-install.sh
 ./dotnet-install.sh -c 6.0
 
+# add dotnet to path
+echo "PATH=/home/cav2022/.dotnet:$PATH" >> ~/.bashrc
+
 # adding nuget sources
 cd artifact/src/
 dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
