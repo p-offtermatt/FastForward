@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # install dotnet
-snap install dotnet-sdk --classic --channel=6.0
+wget https://dot.net/v1/dotnet-install.sh
+chmod +x dotnet-install.sh
+./dotnet-install.sh -c 6.0
 
 # installing psutil
 apt-get install python3
