@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install dotnet
-sudo snap install dotnet-sdk --classic --channel=6.0
+snap install dotnet-sdk --classic --channel=6.0
 
 # installing psutil
 apt-get install python3
