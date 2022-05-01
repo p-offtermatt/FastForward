@@ -47,7 +47,6 @@ Make sure you have the following installed on your machine:
 lola: NET
 lola:   reading net from stdin
 ```
-* <a href="https://www.winehq.org/">Wine</a> (can be installed via the apt package manager)
 
 Run `sudo sh install.sh` in the root directory.
 You may be asked whether to continue installation several times.
