@@ -2,18 +2,27 @@
 
 # install dotnet
 wget https://dot.net/v1/dotnet-install.sh
-chmod +x dotnet-install.sh
+sudo chmod +x dotnet-install.sh
 ./dotnet-install.sh -c 6.0
 
+# adding nuget sources
+cd artifact/src/
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+cd ../..
+
+# installing lola
+cd lola-2.0
+./configure
+make
+sudo make install
+cd ..
+
 # installing psutil
-apt-get install python3
-apt-get install python3-pip
+sudo apt-get install -y python3
+sudo apt-get install -y python3-pip
 pip install psutil
 
-# adding nuget sources
-dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
-
 # installing wine32 (needed for woflan)
-dpkg --add-architecture i386
-apt-get update
-apt-get install wine32
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install wine32
