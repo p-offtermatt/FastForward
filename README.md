@@ -135,4 +135,4 @@ The artifact is structured as follows:
   - `src`: The source code. Notable files are:
     - `Soundness/Soundness.cs`: Method `VerifyContinuousSoundness` implements continuous soundness. 
     - `UtilityEntrypoints.cs`: Method `CalculateHeuristicDistance` implements the computation of a lower bound for structural reachability, explained in Section 5 of the paper.
-    - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve continuous reachability queries.
+    - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve various relaxations, e.g. 
