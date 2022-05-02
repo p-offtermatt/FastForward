@@ -17,6 +17,7 @@ cd ../..
 sudo apt-get install -y python3
 sudo apt-get install -y python3-pip
 pip install psutil
+pip install tabulate
 
 # installing wine32 (needed for woflan)
 sudo dpkg --add-architecture i386
