@@ -128,7 +128,7 @@ Note that the figure numbering is different than in the paper
 due to technical limitations.
 
 
-The artifact is structured as follows:
+Notable folders in this artifact are listed in the following, though this is not a comprehensive table:
 - `artifact`: The main folder of the artifact.
   - `benchmark`: All files relating to benchmarking the artifact.
     - `scripts`: Scripts to facilitate benchmarking. Typically, reviewers will benchmark via the scripts here.
@@ -139,4 +139,4 @@ The artifact is structured as follows:
   - `src`: The source code. Notable files are:
     - `Soundness/Soundness.cs`: Method `VerifyContinuousSoundness` implements continuous soundness. 
     - `UtilityEntrypoints.cs`: Method `CalculateHeuristicDistance` implements the computation of a lower bound for structural reachability, explained in Section 5 of the paper.
-    - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve various relaxations, e.g. 
+    - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve various relaxations, e.g. continuous soundness and integer unboundedness
