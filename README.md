@@ -80,8 +80,8 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 To regenerate benchmark instances, navigate to the
 `artifact/benchmark/scripts` folder.
 There are two relevant scripts for this step:
-* `generate_instances_full.sh` (~6 hours) generates the full set of instances as used in the paper.
-* `generate_instances_partial.sh` (~1 hour) generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
+* `generate_instances_full.sh` (~16 hours) generates the full set of instances as used in the paper.
+* `generate_instances_partial.sh` (~4 hours) generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
 
 ## Reproducing experimental results
 
