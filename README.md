@@ -35,6 +35,11 @@ one for partial and one for full reproduction.
 Use of partial or full reproduction should be consistent,
 that is, either the full or partial scripts should be used
 for all steps.
+By default, we assume reviewers to use partial reproduction,
+since the partial evaluation provides the same trends as the full one
+while taking much less time.
+For full reproduction, reviewers need to regenerate instances - see the corresponding optional section
+later in this readme.
 
 ## Optional: Building FastForward
 
