@@ -75,17 +75,17 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 To regenerate benchmark instances, navigate to the
 `artifact/benchmark/scripts` folder.
 There are two relevant scripts for this step:
-* `generate_instances_full.sh` generates the full set of instances as used in the paper.
-* `generate_instances_partial.sh` generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
+* `generate_instances_full.sh` (~6 hours) generates the full set of instances as used in the paper.
+* `generate_instances_partial.sh` (~1 hour) generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
 
 ## Reproducing experimental results
 
 Navigate to the
 `artifact/benchmark/scripts` folder.
 Two scripts are relevant:
-* `benchmark_partial.sh` reproduces the results of the paper on a subset of the benchmark instances, as explained
+* `benchmark_partial.sh` (~1 hour) reproduces the results of the paper on a subset of the benchmark instances, as explained
 in ["Partial Reproduction"](#partial-reproduction)
-* `benchmark_full.sh` to reproduce the full set of benchmarks.
+* `benchmark_full.sh` (~6 hours) to reproduce the full set of benchmarks.
 
 If you want more fine-grained control over what is benchmarked,
 take a look at the scripts. They call utilities in the `artifact/benchmark/scripts/benchmarking` folder, and those scripts
@@ -96,8 +96,8 @@ can also be invoked individually by an interested reviewer.
 Navigate to the
 `artifact/benchmark/scripts` folder.
 The relevant scripts are
-* `plot_results_partial.sh` and
-* `plot_results_full.sh`
+* `plot_results_partial.sh` (~5 min) and
+* `plot_results_full.sh` (~5 min)
 
 Execute the script that matches your choice from the previous step.
 
