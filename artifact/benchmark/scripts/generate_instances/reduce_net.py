@@ -31,8 +31,10 @@ if __name__ == "__main__":
         print("File was solved by reducing, moving on")
         exit(0)
 
+    call_and_log(f"dotnet ../../tools/fastforward/fastforward.dll translate-wf xml/red_tmpxml.xml -m Reachability -f PNML -o {prom_home}/net")
+    call_and_log(f"cd {prom_home}; sh ProM_CLI.sh -f call_reduction.java")
 
-    call_and_log(f"dotnet ../../tools/fastforward/fastforward.dll translate-wf xml/red_tmpxml.xml -m Reachability -f Lola -o " + input_file_no_extensions)
+    call_and_log(f"dotnet ../../tools/fastforward/fastforward.dll translate-wf {prom_home}/reduced.pnml -m Reachability -f Lola -o " + input_file_no_extensions)
 
     shutil.rmtree('xml', ignore_errors=True)
     os.remove("tmp.xml")
