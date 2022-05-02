@@ -122,7 +122,7 @@ the ones in the paper.
 Note that the figure numbering is different than in the paper
 due to technical limitations.
 
+## Structure of the artifact
 
-# Links
-
-TODO: Figshare link
+The artifact is structured as follows:
+- `artifact`: 
