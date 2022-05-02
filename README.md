@@ -46,6 +46,9 @@ Make sure you have the following installed on your machine:
 lola: NET
 lola:   reading net from stdin
 ```
+* <a  href="https://github.com/p-offtermatt/Hadara-AdSimul-Cav22-Dependency">Hadara-AdSimul-Red</a> (for regenerating instances):
+Once compiled, place the `Hadara_AdSimul_Red` executable in the `artifact/benchmark/tools` folder.
+* <a href="https://ctan.org/pkg/latexmk?lang=en">Latexmk</a> and a <a href="https://www.tug.org/texlive/">Tex distribution</a> (for generating plots)
 
 Run `sudo sh install.sh` in the root directory.
 You may be asked whether to continue installation several times.
