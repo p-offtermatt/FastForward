@@ -48,6 +48,8 @@ lola:   reading net from stdin
 ```
 * <a  href="https://github.com/p-offtermatt/Hadara-AdSimul-Cav22-Dependency">Hadara-AdSimul-Red</a> (for regenerating instances):
 Once compiled, place the `Hadara_AdSimul_Red` executable in the `artifact/benchmark/tools` folder.
+* <a href="https://www.promtools.org/doku.php">ProM</a> (for regenerating instances), tested with version 6.11. Note that ProM requires Java.
+Set the `PROM_HOME` environment variable to point to the root directory of ProM, e.g. `/home/cav2022/Desktop/prom-6.11-all-platforms`. Further, follow the instructions in `dependencies/`, which involves moving files to your `PROM_HOME` directory.
 * <a href="https://ctan.org/pkg/latexmk?lang=en">Latexmk</a> and a <a href="https://www.tug.org/texlive/">Tex distribution</a> (for generating plots)
 
 Run `sudo sh install.sh` in the root directory.
@@ -126,7 +128,6 @@ Note that the figure numbering is different than in the paper
 due to technical limitations.
 
 
-<<<<<<< HEAD
 The artifact is structured as follows:
 - `artifact`: The main folder of the artifact.
   - `benchmark`: All files relating to benchmarking the artifact.
@@ -139,8 +140,3 @@ The artifact is structured as follows:
     - `Soundness/Soundness.cs`: Method `VerifyContinuousSoundness` implements continuous soundness. 
     - `UtilityEntrypoints.cs`: Method `CalculateHeuristicDistance` implements the computation of a lower bound for structural reachability, explained in Section 5 of the paper.
     - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve various relaxations, e.g. 
-=======
-# Links
-
-TODO: Figshare link
->>>>>>> parent of 1836e60ab... Remove prom from dependencies
