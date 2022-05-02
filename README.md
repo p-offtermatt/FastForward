@@ -40,7 +40,7 @@ for all steps.
 
 Make sure you have the following installed on your machine:
 
-* <a href="https://github.com/Z3Prover/z3">Z3</a> (tested under Z3 version 4.8.7)
+* <a href="https://github.com/Z3Prover/z3">Z3 with dotnet bindings</a> (tested under Z3 version 4.8.7)
 * <a href="https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/">lola2.0</a> See lola's readme for instructions. lola should be on your path, e.g. running `lola` should give output like this:
 ```
 lola: NET
