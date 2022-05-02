@@ -125,8 +125,8 @@ the ones in the paper.
 Note that the figure numbering is different than in the paper
 due to technical limitations.
 
-## Structure of the artifact
 
+<<<<<<< HEAD
 The artifact is structured as follows:
 - `artifact`: The main folder of the artifact.
   - `benchmark`: All files relating to benchmarking the artifact.
@@ -139,3 +139,8 @@ The artifact is structured as follows:
     - `Soundness/Soundness.cs`: Method `VerifyContinuousSoundness` implements continuous soundness. 
     - `UtilityEntrypoints.cs`: Method `CalculateHeuristicDistance` implements the computation of a lower bound for structural reachability, explained in Section 5 of the paper.
     - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve various relaxations, e.g. 
+=======
+# Links
+
+TODO: Figshare link
+>>>>>>> parent of 1836e60ab... Remove prom from dependencies
