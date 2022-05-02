@@ -40,8 +40,15 @@ for all steps.
 
 Make sure you have the following installed on your machine:
 
-* <a href="https://dotnet.microsoft.com/">dotnet core</a> with version at least 3.1.403
 * <a href="https://github.com/Z3Prover/z3">Z3</a> (tested under Z3 version 4.8.7)
+* <a href="https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/">lola2.0</a> See lola's readme for instructions. lola should be on your path, e.g. running `lola` should give output like this:
+```
+lola: NET
+lola:   reading net from stdin
+```
+
+Run `sudo sh install.sh` in the root directory.
+You may be asked whether to continue installation several times.
 
 Next, navigate to the `artifact/src` folder and
 run `./republish.sh` to compile FastForward. 

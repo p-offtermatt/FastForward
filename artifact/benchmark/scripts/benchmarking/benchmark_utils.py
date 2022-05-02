@@ -88,13 +88,6 @@ def kill(proc_pid):
     process.kill()
 
 def call_woflan(net_file, timeout_time):
-    prom_home = os.getenv("PROM_HOME")
-    if prom_home is None:
-        raise FileNotFoundError("PROM_HOME is not set! Make sure the env variable PROM_HOME points to the ProM installation!")
-    prom_net_file = prom_home + "/net.pnml"
-
-    copyfile(net_file, prom_net_file)
-
     command = f"wine ../../tools/woftest.exe {net_file}"
     print(command)
     process = Popen(command.split(" "), stdout=PIPE, stderr=PIPE, preexec_fn=limit_virtual_memory)
