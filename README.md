@@ -125,4 +125,14 @@ due to technical limitations.
 ## Structure of the artifact
 
 The artifact is structured as follows:
-- `artifact`: 
+- `artifact`: The main folder of the artifact.
+  - `benchmark`: All files relating to benchmarking the artifact.
+    - `scripts`: Scripts to facilitate benchmarking. Typically, reviewers will benchmark via the scripts here.
+    - `instances`: The various benchmark suites mentioned in Section 8 of the paper.
+    - `results`: Raw benchmarking results, stored as jsons and used for plotting. 
+    - `plots`: Contains the Latex source files to display results as a pdf. Populated from the `results` folder.
+    - `tools`: The various tools used in the evaluation (except for LoLA, which is assumed to be installed globally)
+  - `src`: The source code. Notable files are:
+    - `Soundness/Soundness.cs`: Method `VerifyContinuousSoundness` implements continuous soundness. 
+    - `UtilityEntrypoints.cs`: Method `CalculateHeuristicDistance` implements the computation of a lower bound for structural reachability, explained in Section 5 of the paper.
+    - `Heuristics/Z3Heuristics.cs` and `Heuristics/Z3Utils.cs` call Z3 to solve continuous reachability queries.
