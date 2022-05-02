@@ -7,6 +7,14 @@ def call_and_log(command):
     os.system(command)
 
 if __name__ == "__main__":
+    prom_home = os.getenv("PROM_HOME")
+    if prom_home is None:
+        raise FileNotFoundError("PROM_HOME is not set! Make sure the env variable PROM_HOME points to the ProM installation!")
+    prom_input = prom_home + "/net.pnml"
+    prom_output = prom_home + "/reduced.pnml"
+
+
+
     parser = argparse.ArgumentParser()
     parser.add_argument('input_file')
 
