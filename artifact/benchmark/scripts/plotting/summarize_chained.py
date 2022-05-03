@@ -82,7 +82,7 @@ if __name__ == "__main__":
         continuous_reach_times = [entry["wallTime"] for entry in continuous_reach_entries]
         woflan_times = [entry["wallTime"] for entry in woflan_entries]
 
-        sizes = [entry["numberOfPlaces"] + entry["numberOfTransitions"] for entry in continuous_reach_entries]
+        sizes = [entry["numberOfPlaces"] + entry["numberOfTransitions"] for entry in continuous_reach_entries if "numberOfPlaces" in entry and "numberOfTransitions" in entry]
         size_data += [[int(chain_num), sizes]]
 
 
