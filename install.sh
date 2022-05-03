@@ -13,11 +13,12 @@ cd artifact/src/
 dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
 cd ../..
 
-# installing psutil
+# installing python packages
 sudo apt-get install -y python3
 sudo apt-get install -y python3-pip
 pip install psutil
 pip install tabulate
+pip install matplotlib
 
 # installing wine32 (needed for woflan)
 sudo dpkg --add-architecture i386
