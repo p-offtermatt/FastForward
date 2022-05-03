@@ -61,7 +61,7 @@ if __name__ == "__main__":
         lola_entries = [
         entry for entry in entries if "methodName" in entry and entry["methodName"] == "lola"]
 
-        if any([entry["lola_special_commentary"]["analysis"]["result"] for entry in lola_entries]):
+        if any([entry["lola_special_commentary"]["analysis"]["result"] for entry in lola_entries if "lola_special_commentary" in entry]):
             print("LoLA thinks something is sound; error?")
             print(lola_entries)
             exit(1)
