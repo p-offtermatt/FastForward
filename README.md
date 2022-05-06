@@ -138,7 +138,7 @@ Notable folders in this artifact are listed in the following, though this is not
   - `benchmark`: All files relating to benchmarking the artifact.
     - `scripts`: Scripts to facilitate benchmarking. Typically, reviewers will benchmark via the scripts here.
     - `instances`: The various benchmark suites mentioned in Section 8 of the paper.
-    - `results`: Raw benchmarking results, stored as jsons and used for plotting. 
+    - `results`: Raw benchmarking results, stored as jsons and used for plotting. If reporting problems, please include this folder.
     - `plots`: Contains the Latex source files to display results as a pdf. Populated from the `results` folder.
     - `tools`: The various tools used in the evaluation (except for LoLA, which is assumed to be installed globally)
   - `src`: The source code. Notable files are:
