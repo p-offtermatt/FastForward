@@ -1,0 +1,102 @@
+PLACE
+n1,n2,n3,n4,n5,n6,n7,n8,n9,aux_p1,aux_p2,aux_p3;
+
+MARKING
+aux_p1: 1, n1: 0, n2: 0, n3: 0, n4: 0, n5: 0, n6: 0, n7: 0, n8: 0, n9: 0, aux_p2: 0, aux_p3: 0;
+
+TRANSITION n10
+CONSUME n4: 1;
+PRODUCE n3: 1;
+
+
+
+TRANSITION n11
+CONSUME n3: 1;
+PRODUCE n4: 1;
+
+
+
+TRANSITION n12
+CONSUME n4: 1, n3: 1;
+PRODUCE n1: 1, n3: 1;
+
+
+
+TRANSITION n13
+CONSUME n2: 1;
+PRODUCE n5: 1, n3: 1;
+
+
+
+TRANSITION n14
+CONSUME n6: 1, n5: 1, n7: 1, n3: 1;
+PRODUCE n1: 1;
+
+
+
+TRANSITION n15
+CONSUME n6: 1;
+PRODUCE n8: 1, n5: 1;
+
+
+
+TRANSITION n16
+CONSUME n7: 1;
+PRODUCE n9: 1, n6: 1;
+
+
+
+TRANSITION n17
+CONSUME n8: 1, n5: 1;
+PRODUCE n6: 1;
+
+
+
+TRANSITION n18
+CONSUME n9: 1, n6: 1;
+PRODUCE n7: 1;
+
+
+
+TRANSITION n19
+CONSUME n8: 1;
+PRODUCE n5: 1;
+
+
+
+TRANSITION n20
+CONSUME n9: 1;
+PRODUCE n5: 1, n8: 1;
+
+
+
+TRANSITION n21
+CONSUME n5: 1;
+PRODUCE n8: 1;
+
+
+
+TRANSITION n22
+CONSUME n8: 1, n5: 1;
+PRODUCE n9: 1;
+
+
+
+TRANSITION r1
+CONSUME aux_p1: 1;
+PRODUCE n2: 1, aux_p1: 1, aux_p2: 1;
+
+
+
+TRANSITION r2
+CONSUME aux_p1: 1, aux_p2: 1;
+PRODUCE aux_p2: 1, aux_p3: 1;
+
+
+
+TRANSITION r3
+CONSUME aux_p2: 1, n1: 1, aux_p3: 1;
+PRODUCE aux_p3: 1;
+
+
+

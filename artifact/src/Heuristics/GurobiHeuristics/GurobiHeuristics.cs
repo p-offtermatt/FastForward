@@ -295,7 +295,7 @@ namespace Petri
                         placeEffect.AddTerm(t.GetPrePostDifference().GetValueOrDefault(p), transitionVars[j]);
                         j += 1;
                     }
-                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name);
+                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name.Truncate(200));
                 }
             }
 

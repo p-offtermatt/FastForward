@@ -1,0 +1,27 @@
+# Objective value = 0
+transitionVariable_"*_Model.322n--0-----u--_Model.322n--0-----u--_start"~"*_Model.322n--0-----u--_Model.322n--0-----u-- 0
+transitionVariable_"*_Model.322n--0-----u--_Model.322n--0-----u--_end"~"*_Model.322n--0-----u--_Model.322n--0-----u--_e 1
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_join_InputCondition"~"t_Model.322n--0-----u--_M 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_split_Split_Split_Consignment/_Pipeline_Settlem 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_No_Consignment/_Pipeline_Settlement_(323n)_join 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_No_Consignment/_Pipeline_Settlement_(323n)_spli 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_Yes_Consignment/_Pipeline_Settlement_(323n)_joi 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Split_Yes_Consignment/_Pipeline_Settlement_(323n)_spl 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Skip_join_Split_Join_Consignment/_Pipeline_Settlement 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Skip_split_Join_Split_and_(3237)_Join_Split_Invoice_R 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Consignment/_Pipeline_Settlement_(323n)_join_Split_Ye 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Consignment/_Pipeline_Settlement_(323n)_split_Consign 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_and_(3237)_join_Consignment/_Pipeline_Settlement_(323 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_and_(3237)_split_and_(3237)*Join_Yes_and_(3237)_and_( 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Invoice_Release_(3241)_join_and_(3237)*Invoice_Releas 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Invoice_Release_(3241)_split_Invoice_Release_(3241)*J 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_No_and_(3237)_join_Join_Split_and_(3237)"~"t_Mod 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_No_and_(3237)_split_Join_Join_and_(3237)"~"t_Mod 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_Yes_and_(3237)_join_and_(3237)*Join_Yes_and_(323 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_Yes_and_(3237)_split_Join_Join_and_(3237)"~"t_Mo 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_No_Invoice_Release_(3241)_join_Join_Split_Invoic 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_No_Invoice_Release_(3241)_split_Join_Join_Invoic 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_Yes_Invoice_Release_(3241)_join_Invoice_Release_ 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Join_Yes_Invoice_Release_(3241)_split_Join_Join_Invoi 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Output_join_Join_Join_and_(3237)_Join_Join_Invoice_Re 0
+transitionVariable_"t_Model.322n--0-----u--_Model.322n--0-----u--_Output_split_OutputCondition"~"t_Model.322n--0-----u- 0
