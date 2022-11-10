@@ -261,7 +261,69 @@ namespace Petri
             }
             else
             {
+                // model.Set(GRB.IntParam.SolutionNumber, 0);
                 return (false, ExtractTransitionMultiset(net.Transitions, model, transitionVars));
+            }
+        }
+
+        public static (bool isBounded, Dictionary<Transition, double> counterexample) CheckForNonnegativeCycle(PetriNet net)
+        {
+            //Check whether from zero marking, the zero marking can be covered
+            GRBModel model = InitializeModel();
+
+            GRBVar[] transitionVars = new GRBVar[net.Transitions.Count];
+
+            {
+                int i = 0;
+                foreach (Transition t in net.Transitions)
+                {
+                    transitionVars[i] = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "transitionVariable_" + t.Name.Truncate(100));
+                    i += 1;
+                }
+            }
+            GRBLinExpr transitionSum = new GRBLinExpr();
+            transitionSum.AddTerms(transitionVars.Select(_ => 1.0).ToArray(), transitionVars);
+
+            model.AddConstr(transitionSum, '>', 1, "Cycle nonempty");
+            {
+                foreach (Place p in net.Places)
+                {
+                    GRBLinExpr placeEffect = new GRBLinExpr();
+                    int j = 0;
+                    foreach (UpdateTransition t in net.Transitions)
+                    {
+                        placeEffect.AddTerm(t.GetPrePostDifference().GetValueOrDefault(p), transitionVars[j]);
+                        j += 1;
+                    }
+                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name);
+                }
+            }
+
+
+            // model.ModelSense = GRB.MINIMIZE;
+            // // model.SetObjective(objective, GRB.MINIMIZE);
+
+            model.Write("gurobi.lp");
+
+            model.Optimize();
+            if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
+            {
+                return (true, null);
+            }
+            else
+            {
+                double[] transitionMults = model.Get(GRB.DoubleAttr.X, transitionVars);
+                Dictionary<Transition, double> result = new Dictionary<Transition, double>();
+                for (int i = 0; i < net.Transitions.Count; i++)
+                {
+                    double transitionMult = transitionMults[i];
+                    if (transitionMult == 0.0)
+                    {
+                        continue;
+                    }
+                    result.Add(net.Transitions[i], transitionMult);
+                }
+                return (false, result);
             }
         }
 
@@ -532,7 +594,6 @@ namespace Petri
 
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
             {
-                Console.WriteLine(model.Status);
                 return null;
             }
             else

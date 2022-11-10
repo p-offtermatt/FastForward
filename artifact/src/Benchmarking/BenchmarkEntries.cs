@@ -320,6 +320,11 @@ namespace Benchmark
 
         public long timeForIntegerSoundness;
 
+        // Bounded Runs
+        public bool hasBoundedRuns;
+        public string boundedRunCounterExample;
+        public long timeForBoundedRuns;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);

@@ -587,6 +587,18 @@ namespace PetriTool
                     dataEntry.integerSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
             }
+            {
+                // check for unboundedness
+                var watch = Stopwatch.StartNew();
+
+                var (hasBoundedRuns, counterexample) = GurobiHeuristics.CheckForNonnegativeCycle(net);
+                watch.Stop();
+
+                dataEntry.hasBoundedRuns = hasBoundedRuns;
+                dataEntry.boundedRunCounterExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                dataEntry.timeForBoundedRuns = watch.ElapsedMilliseconds;
+            }
+
 
             // Writing output
             Console.WriteLine(dataEntry.ToJSON());
