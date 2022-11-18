@@ -62,6 +62,108 @@ namespace Petri
             }
         }
 
+        public static Dictionary<Transition, double> CheckIntegerDeadlock(PetriNet net, Place initialPlace, Place finalPlace, bool parikhImageOverIntegers)
+        {
+            //Check whether from zero marking, the zero marking can be covered
+            GRBModel model = InitializeModel();
+
+            GRBVar[] transitionVars = new GRBVar[net.Transitions.Count];
+
+            {
+                int i = 0;
+                foreach (Transition t in net.Transitions)
+                {
+                    transitionVars[i] = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.INTEGER, "transitionVariable_" + t.Name.Truncate(100));
+                    i += 1;
+                }
+            }
+            {
+                GRBLinExpr[] placeEffects = new GRBLinExpr[net.Places.Count];
+                int i = 0;
+                foreach (Place p in net.Places)
+                {
+                    if (p.Equals(initialPlace))
+                    {
+                        // initial place can have negative effect
+                        continue;
+                    }
+                    GRBLinExpr placeEffect = new GRBLinExpr();
+                    int j = 0;
+                    foreach (UpdateTransition t in net.Transitions)
+                    {
+                        placeEffect.AddTerm(t.GetPrePostDifference().GetValueOrDefault(p), transitionVars[j]);
+                        j += 1;
+                    }
+                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name.Truncate(200));
+                    i++;
+                    placeEffects[i] = placeEffect;
+                }
+
+                // ensure -initialPlace != finalPlace by checking \abs{initialPlace + finalPlace} \geq 1
+                int initialPlaceIndex = net.Places.FindIndex(p => p.Equals(initialPlace));
+                int finalPlaceIndex = net.Places.FindIndex(p => p.Equals(finalPlace));
+
+                GRBVar initialFinalDifference = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "initial_final_difference");
+                model.AddConstr(initialFinalDifference, '=', placeEffects[initialPlaceIndex] + placeEffects[finalPlaceIndex],
+                "initial_final_difference_assignment"); // initial place will have negative effect, so add it to check 
+
+                GRBVar absoluteInitialFinalDifference = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "absolute_initial_final_difference");
+                model.AddGenConstrAbs(absoluteInitialFinalDifference, initialFinalDifference, "absolute_initial_final_difference_assigment");
+
+                model.AddConstr(absoluteInitialFinalDifference, '>', 1, "initial_and_final_differ");
+
+                // ensure the marking is a deadlock over the naturals
+                // for each place we check that marking[p] \leq pre_t(p) - 1 for all transitions that consume from p
+                for (i = 0; i < net.Transitions.Count; i++)
+                {
+                    UpdateTransition transition = (UpdateTransition)net.Transitions[i];
+                    for (int j = 0; j < net.Places.Count; j++)
+                    {
+                        Place place = net.Places[j];
+                        int guard = transition.GetGuard().GetValueOrDefault(place, 0);
+                        if (guard != 0)
+                        {
+                            model.AddConstr(
+                                placeEffects[j],
+                                '<',
+                                guard - 1,
+                                "deadlock_transition_" + transition.Name.Truncate(100) + "_place_" + place.Name.Truncate(100)
+                            );
+                        }
+                    }
+                }
+            }
+
+
+
+
+            // model.ModelSense = GRB.MINIMIZE;
+            // // model.SetObjective(objective, GRB.MINIMIZE);
+
+            model.Write("gurobi.lp");
+
+            model.Optimize();
+            if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
+            {
+                return null;
+            }
+            else
+            {
+                double[] transitionMults = model.Get(GRB.DoubleAttr.X, transitionVars);
+                Dictionary<Transition, double> result = new Dictionary<Transition, double>();
+                for (int i = 0; i < net.Transitions.Count; i++)
+                {
+                    double transitionMult = transitionMults[i];
+                    if (transitionMult == 0.0)
+                    {
+                        continue;
+                    }
+                    result.Add(net.Transitions[i], transitionMult);
+                }
+                return result;
+            }
+        }
+
         /// <summary>
         /// Returns a function that checks whether for a given transition t of the input net
         /// the effect of -t can be expressed by the other transitions of the net.
