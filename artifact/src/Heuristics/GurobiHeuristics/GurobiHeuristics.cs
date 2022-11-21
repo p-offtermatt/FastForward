@@ -64,7 +64,6 @@ namespace Petri
 
         public static Dictionary<Transition, double> CheckIntegerDeadlock(PetriNet net, Place initialPlace, Place finalPlace, bool parikhImageOverIntegers)
         {
-            //Check whether from zero marking, the zero marking can be covered
             GRBModel model = InitializeModel();
 
             GRBVar[] transitionVars = new GRBVar[net.Transitions.Count];
@@ -82,11 +81,6 @@ namespace Petri
                 int i = 0;
                 foreach (Place p in net.Places)
                 {
-                    if (p.Equals(initialPlace))
-                    {
-                        // initial place can have negative effect
-                        continue;
-                    }
                     GRBLinExpr placeEffect = new GRBLinExpr();
                     int j = 0;
                     foreach (UpdateTransition t in net.Transitions)
@@ -94,43 +88,77 @@ namespace Petri
                         placeEffect.AddTerm(t.GetPrePostDifference().GetValueOrDefault(p), transitionVars[j]);
                         j += 1;
                     }
-                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name.Truncate(200));
-                    i++;
                     placeEffects[i] = placeEffect;
+                    i++;
+                    if (p.Equals(initialPlace))
+                    {
+                        // initial place can have negative effect
+                        continue;
+                    }
+                    model.AddConstr(placeEffect, '>', 0.0, "Effect nonnegative " + p.Name.Truncate(200));
                 }
 
                 // ensure -initialPlace != finalPlace by checking \abs{initialPlace + finalPlace} \geq 1
                 int initialPlaceIndex = net.Places.FindIndex(p => p.Equals(initialPlace));
                 int finalPlaceIndex = net.Places.FindIndex(p => p.Equals(finalPlace));
 
-                GRBVar initialFinalDifference = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "initial_final_difference");
-                model.AddConstr(initialFinalDifference, '=', placeEffects[initialPlaceIndex] + placeEffects[finalPlaceIndex],
-                "initial_final_difference_assignment"); // initial place will have negative effect, so add it to check 
+                GRBVar initFinalDiffPositiveIndicator = model.AddVar(
+                    0,
+                    Utils.GurobiConsts.UpperBound,
+                    0,
+                    GRB.BINARY,
+                    "initial_final_difference_positive_indicator");
 
-                GRBVar absoluteInitialFinalDifference = model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.CONTINUOUS, "absolute_initial_final_difference");
-                model.AddGenConstrAbs(absoluteInitialFinalDifference, initialFinalDifference, "absolute_initial_final_difference_assigment");
+                GRBVar initFinalDiffNegativeIndicator = model.AddVar(
+                    0,
+                    Utils.GurobiConsts.UpperBound,
+                    0,
+                    GRB.BINARY,
+                    "initial_final_difference_positive_indicator");
 
-                model.AddConstr(absoluteInitialFinalDifference, '>', 1, "initial_and_final_differ");
+                model.AddGenConstrIndicator(initFinalDiffPositiveIndicator,
+                                            1,
+                                            placeEffects[initialPlaceIndex] + placeEffects[finalPlaceIndex],
+                                            GRB.GREATER_EQUAL,
+                                            1,
+                                            "init_final_diff_positive");
+
+                model.AddGenConstrIndicator(initFinalDiffNegativeIndicator,
+                                            1,
+                                            placeEffects[initialPlaceIndex] + placeEffects[finalPlaceIndex],
+                                            GRB.LESS_EQUAL,
+                                            -1,
+                                            "init_final_diff_negative");
+
+                model.AddConstr(
+                    initFinalDiffNegativeIndicator + initFinalDiffPositiveIndicator,
+                    GRB.GREATER_EQUAL,
+                    1,
+                    "initial_final_difference_positive_or_negative"); // initial place will have negative effect, so add it to check 
+
 
                 // ensure the marking is a deadlock over the naturals
-                // for each place we check that marking[p] \leq pre_t(p) - 1 for all transitions that consume from p
+                // for each transition we check that
+                // at least one of its input places is smaller than the pre of the transition in that place
                 for (i = 0; i < net.Transitions.Count; i++)
                 {
                     UpdateTransition transition = (UpdateTransition)net.Transitions[i];
+
+                    GRBLinExpr placeLockSum = new GRBLinExpr();
+
                     for (int j = 0; j < net.Places.Count; j++)
                     {
                         Place place = net.Places[j];
                         int guard = transition.GetGuard().GetValueOrDefault(place, 0);
                         if (guard != 0)
                         {
-                            model.AddConstr(
-                                placeEffects[j],
-                                '<',
-                                guard - 1,
-                                "deadlock_transition_" + transition.Name.Truncate(100) + "_place_" + place.Name.Truncate(100)
-                            );
+                            GRBVar placeLockIndicator =
+                                model.AddVar(0, Utils.GurobiConsts.UpperBound, 0, GRB.BINARY, "place_disables_transition_" + place.Name.Truncate(100) + "_____________" + transition.Name.Truncate(100));
+                            model.AddGenConstrIndicator(placeLockIndicator, 1, placeEffects[j], GRB.LESS_EQUAL, guard - 1, "deadlock_transition_" + transition.Name.Truncate(100) + "_place_" + place.Name.Truncate(100));
+                            placeLockSum.AddTerm(1, placeLockIndicator);
                         }
                     }
+                    model.AddConstr(placeLockSum, GRB.GREATER_EQUAL, 1, "at_least_one_place_locks_" + transition.Name.Truncate(200));
                 }
             }
 
@@ -141,6 +169,8 @@ namespace Petri
             // // model.SetObjective(objective, GRB.MINIMIZE);
 
             model.Write("gurobi.lp");
+            model.Write("../../../gurobi.lp");
+
 
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
