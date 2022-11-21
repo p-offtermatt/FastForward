@@ -2,6 +2,7 @@ import argparse
 import plotting_utils as utils
 import numpy
 import pandas
+import matplotlib.pyplot
 
 def remove_usual_file_endings(input: str):
     while True:
@@ -15,59 +16,69 @@ def remove_usual_file_endings(input: str):
             return input
 
 
-def print_statistics(original_entries, transformed_entries):
+def print_statistics(entries):
     print("Printing statistics...")
 
-    names_to_entry_pairs = dict()
+    entries = [entry for entry in entries if entry["sampleName"].endswith("_1-check.lola")]
 
-    for entry in original_entries:
-        name = remove_usual_file_endings(entry["sampleName"])
-        matching_entries = [trans_entry  for trans_entry in transformed_entries if remove_usual_file_endings(trans_entry["sampleName"]) == name]
-        if len(matching_entries) != 1 and len(matching_entries) != 0:
-            raise Exception(f"For entry {name}, have {len(matching_entries)} entries that match")
-
-    bounded_before = [entry for entry in original_entries if "error" not in entry and entry["hasBoundedRuns"]]
-    unbounded_before = [entry for entry in original_entries if "error" not in entry and not entry["hasBoundedRuns"]]
-
-    bounded_after = [entry for entry in transformed_entries if "error" not in entry and entry["hasBoundedRuns"]]
-    unbounded_after = [entry for entry in transformed_entries if "error" not in entry and not entry["hasBoundedRuns"]]
+    for entry in entries:
+        print(entry["sampleName"])
 
 
-    print("Total before: " + str(len(original_entries)))
-    print("Total after: " + str(len(transformed_entries)))
-    print("Number of places before: ")
-    df = pandas.Series([entry["places"] for entry in original_entries])
+    bounded = [entry for entry in entries if "error" not in entry and entry["hasBoundedRuns"]]
+    unbounded = [entry for entry in entries if "error" not in entry and not entry["hasBoundedRuns"]]
+
+
+    print("Total : " + str(len(entries)))
+    print("Number of places : ")
+    df = pandas.Series([entry["places"] for entry in entries])
     print(df.describe())
-    print("Number of places after: ")
-    df = pandas.Series([entry["places"] for entry in transformed_entries])
+    print("Bounded : " + str(len(bounded)))
+    print("Unbounded : " + str(len(unbounded)))
+
+
+    print("Bounded , free choice: " + str(len([entry for entry in bounded if entry["isFreeChoice"]])))
+    print("Unbounded , free choice: " + str(len([entry for entry in unbounded if entry["isFreeChoice"]])))
+
+    bdAftContDead = [entry for entry in bounded if entry["hasContinuousDeadlock"]]
+    bdAftIntDead = [entry for entry in bdAftContDead if entry["hasIntegerDeadlock"]]
+
+    print("-------------- Bounded  -------------------------")
+    print("Conti Deadlock: " + str(len(bdAftContDead)))
+    print("Int Deadlock: " + str(len(bdAftIntDead)))
+
+    print("Describe time for conti deadlock:")
+    df = pandas.Series([entry["timeForContinuousDeadlock"] for entry in entries])
     print(df.describe())
-    print("Bounded before: " + str(len(bounded_before)))
-    print("Bounded after: " + str(len(bounded_after)))
-    print("Unbounded before: " + str(len(unbounded_before)))
-    print("Unbounded after: " + str(len(unbounded_after)))
+
+    print("Describe time for int deadlock:")
+    df = pandas.Series([entry["timeForIntegerDeadlock"] for entry in entries])
+    print(df.describe())
+
+    print("Describe time for conti soundness:")
+    df = pandas.Series([entry["timeForContinuousSoundness"] for entry in entries])
+    print(df.describe())
+
+    for entry in entries:
+        if entry["hasContinuousDeadlock"] == entry["isContinuousSound"] or entry["hasIntegerDeadlock"] == entry["isContinuousSound"]:
+            print("Something is wrong!")
+            print(entry["sampleName"])
 
 
-    print("Bounded after, free choice: " + str(len([entry for entry in bounded_after if entry["isFreeChoice"]])))
-    print("Unounded after, free choice: " + str(len([entry for entry in unbounded_after if entry["isFreeChoice"]])))
 
 
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-o', '--originalfiles', nargs="+", required=True)
-    parser.add_argument('-t', '--transformedfiles', nargs="+", required=True)
+    parser.add_argument('-i', '--inputfiles', nargs="+", required=True)
 
     args = parser.parse_args()
 
     original_entries = []
-    transformed_entries = []
 
     # read input
-    for filepath in args.originalfiles:
+    for filepath in args.inputfiles:
         original_entries += utils.read_json_from_file(filepath)
 
-    for filepath in args.transformedfiles:
-        transformed_entries += utils.read_json_from_file(filepath)
-
-    print_statistics(original_entries, transformed_entries)
+    print_statistics(original_entries)
