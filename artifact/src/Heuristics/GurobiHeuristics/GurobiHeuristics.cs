@@ -62,7 +62,8 @@ namespace Petri
             }
         }
 
-        public static Dictionary<Transition, double> CheckIntegerDeadlock(PetriNet net, Place initialPlace, Place finalPlace, bool parikhImageOverIntegers)
+        public static Dictionary<Transition, double> CheckIntegerDeadlock(PetriNet net, Place initialPlace, Place finalPlace, bool parikhImageOverIntegers,
+        string netName = "")
         {
             GRBModel model = InitializeModel();
 
@@ -168,11 +169,14 @@ namespace Petri
             // model.ModelSense = GRB.MINIMIZE;
             // // model.SetObjective(objective, GRB.MINIMIZE);
 
-            model.Write("gurobi.lp");
+            model.Write("gurobi" + netName + ".mps");
             model.Write("../../../gurobi.lp");
 
 
             model.Optimize();
+
+            model.Write("gurobi" + netName + ".sol");
+
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
             {
                 return null;

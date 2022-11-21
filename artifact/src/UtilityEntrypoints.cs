@@ -587,13 +587,15 @@ namespace PetriTool
                     dataEntry.integerSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
 
+                var netName = dataEntry.netFile.Split("/").Last().Split(".")[0];
+
                 if (options.checkIntegerDeadlock)
                 {
                     // check for integer deadlocks
                     watch = Stopwatch.StartNew();
 
                     var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
-                    true);
+                    true, netName);
                     watch.Stop();
 
                     if (counterexample == null)
@@ -611,7 +613,7 @@ namespace PetriTool
                     watch = Stopwatch.StartNew();
 
                     var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
-                    false);
+                    false, netName);
                     watch.Stop();
 
                     if (counterexample == null)
