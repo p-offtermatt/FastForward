@@ -586,6 +586,42 @@ namespace PetriTool
                     dataEntry.isIntegerSound = counterexample == null;
                     dataEntry.integerSoundnessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                 }
+
+                if (options.checkIntegerDeadlock)
+                {
+                    // check for integer deadlocks
+                    watch = Stopwatch.StartNew();
+
+                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
+                    true);
+                    watch.Stop();
+
+                    if (counterexample == null)
+                    {
+
+                    }
+                    dataEntry.hasIntegerDeadlock = counterexample != null;
+                    dataEntry.integerDeadlockExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                    dataEntry.timeForIntegerDeadlock = watch.ElapsedMilliseconds;
+                }
+
+                if (options.checkContinuousDeadlock)
+                {
+                    // check for integer deadlocks
+                    watch = Stopwatch.StartNew();
+
+                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
+                    false);
+                    watch.Stop();
+
+                    if (counterexample == null)
+                    {
+
+                    }
+                    dataEntry.hasContinuousDeadlock = counterexample != null;
+                    dataEntry.continuousDeadlockExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                    dataEntry.timeForContinuousDeadlock = watch.ElapsedMilliseconds;
+                }
             }
             {
                 // check for unboundedness

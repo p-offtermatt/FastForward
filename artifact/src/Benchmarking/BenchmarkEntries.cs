@@ -325,6 +325,16 @@ namespace Benchmark
         public string boundedRunCounterExample;
         public long timeForBoundedRuns;
 
+        // Integer Deadlocks
+        public bool hasIntegerDeadlock;
+        public string integerDeadlockExample;
+        public long timeForIntegerDeadlock;
+
+        // Continuous Deadlocks
+        public bool hasContinuousDeadlock;
+        public string continuousDeadlockExample;
+        public long timeForContinuousDeadlock;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);

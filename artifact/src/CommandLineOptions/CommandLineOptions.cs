@@ -349,6 +349,12 @@ namespace PetriTool
 
         [Option("cont-sound", HelpText = "If present and assuming that the net is a workflow net, checks continuous soundness")]
         public bool checkContinuousSoundness { get; set; } = false;
+
+        [Option("int-deadlock", HelpText = "If present and assuming that the net is a workflow net, checks integer deadlocking")]
+        public bool checkIntegerDeadlock { get; set; } = false;
+
+        [Option("cont-deadlock", HelpText = "If present and assuming that the net is a workflow net, checks continuous deadlocking")]
+        public bool checkContinuousDeadlock { get; set; } = false;
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]
