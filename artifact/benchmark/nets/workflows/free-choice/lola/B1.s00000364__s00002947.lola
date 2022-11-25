@@ -1,30 +1,24 @@
 PLACE
-alpha,callToProcess_dot_s00002717_dot_output_dot_s00000785,callToTask_dot_s00002948_dot_input_dot_s00000819,merge_dot_s00000815_dot_input_dot_s00000807,o_star;
+n1,n2,n3,n4;
 
 MARKING
-alpha: 1, callToProcess_dot_s00002717_dot_output_dot_s00000785: 0, callToTask_dot_s00002948_dot_input_dot_s00000819: 0, merge_dot_s00000815_dot_input_dot_s00000807: 0, o_star: 0;
+n1: 1, n2: 0, n3: 0, n4: 0;
 
-TRANSITION decision_dot_s00000964_dot_fire_dot_s00000784
-CONSUME callToProcess_dot_s00002717_dot_output_dot_s00000785: 1, callToTask_dot_s00002948_dot_input_dot_s00000819: 1;
-PRODUCE callToTask_dot_s00002948_dot_input_dot_s00000819: 1;
-
-
-
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000816
-CONSUME alpha: 1;
-PRODUCE merge_dot_s00000815_dot_input_dot_s00000807: 1, callToProcess_dot_s00002717_dot_output_dot_s00000785: 1;
+TRANSITION n5
+CONSUME n2: 1, n3: 1;
+PRODUCE n3: 1;
 
 
 
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000817
-CONSUME merge_dot_s00000815_dot_input_dot_s00000807: 1;
-PRODUCE callToProcess_dot_s00002717_dot_output_dot_s00000785: 1;
+TRANSITION n6
+CONSUME n1: 1;
+PRODUCE n2: 2;
 
 
 
-TRANSITION t_star
-CONSUME callToProcess_dot_s00002717_dot_output_dot_s00000785: 1, callToTask_dot_s00002948_dot_input_dot_s00000819: 1;
-PRODUCE o_star: 1;
+TRANSITION n7
+CONSUME n3: 1, n2: 1;
+PRODUCE n4: 1;
 
 
 

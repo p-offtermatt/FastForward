@@ -82,14 +82,14 @@ if __name__ == "__main__":
                 output_file.write(json.dumps(lola_result))
                 output_file.flush()
 
-                woflan_filepath = os.path.join(woflan_folder, dir, entry + ".pnml")
+                # woflan_filepath = os.path.join(woflan_folder, dir, entry + ".pnml")
 
-                woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
-                woflan_result["sampleName"] = entry
-                woflan_result["methodName"] = "woflan"
+                # woflan_result = benchmark_utils.call_woflan(woflan_filepath, timeout_time)
+                # woflan_result["sampleName"] = entry
+                # woflan_result["methodName"] = "woflan"
 
-                output_file.write(",\n")
-                output_file.write(json.dumps(woflan_result))
+                # output_file.write(",\n")
+                # output_file.write(json.dumps(woflan_result))
                 output_file.flush()
             output_file.write("]")
             output_file.flush()

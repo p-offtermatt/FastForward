@@ -1,42 +1,42 @@
 PLACE
-alpha,callToProcess_dot_s00003476_dot_output_dot_s00001267,callToTask_dot_s00003613_dot_output_dot_s00001266,callToTask_dot_s00003632_dot_output_dot_s00002815,endNode_dot_s00000851_dot_input_dot_default,o_star,process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704_omega;
+n1,n2,n3,n4,n5,n6,n7;
 
 MARKING
-alpha: 1, callToProcess_dot_s00003476_dot_output_dot_s00001267: 0, callToTask_dot_s00003613_dot_output_dot_s00001266: 0, callToTask_dot_s00003632_dot_output_dot_s00002815: 0, endNode_dot_s00000851_dot_input_dot_default: 0, o_star: 0, process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704_omega: 0;
+n1: 1, n2: 0, n3: 0, n4: 0, n5: 0, n6: 0, n7: 0;
 
-TRANSITION callToProcess_dot_s00001030_dot_outputCriterion_dot_s00000704
-CONSUME callToTask_dot_s00003632_dot_output_dot_s00002815: 1;
-PRODUCE callToTask_dot_s00003613_dot_output_dot_s00001266: 1, endNode_dot_s00000851_dot_input_dot_default: 1, callToProcess_dot_s00003476_dot_output_dot_s00001267: 1;
-
-
-
-TRANSITION decision_dot_s00003605_dot_fire_dot_s00000711
-CONSUME callToTask_dot_s00003632_dot_output_dot_s00002815: 1;
-PRODUCE endNode_dot_s00000851_dot_input_dot_default: 1, process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704_omega: 1, callToProcess_dot_s00003476_dot_output_dot_s00001267: 1;
+TRANSITION n8
+CONSUME n4: 1;
+PRODUCE n2: 1, n3: 1, n5: 1;
 
 
 
-TRANSITION merge_dot_s00000730_dot_activate_dot_s00000731
-CONSUME alpha: 1;
-PRODUCE callToTask_dot_s00003632_dot_output_dot_s00002815: 1;
+TRANSITION n9
+CONSUME n4: 1;
+PRODUCE n7: 1, n2: 1, n5: 1;
 
 
 
-TRANSITION merge_dot_s00000730_dot_activate_dot_s00000733
-CONSUME callToTask_dot_s00003632_dot_output_dot_s00002815: 1;
-PRODUCE callToTask_dot_s00003632_dot_output_dot_s00002815: 1, callToProcess_dot_s00003476_dot_output_dot_s00001267: 1;
+TRANSITION n10
+CONSUME n1: 1;
+PRODUCE n4: 1;
 
 
 
-TRANSITION process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704
-CONSUME callToProcess_dot_s00003476_dot_output_dot_s00001267: 1, callToTask_dot_s00003613_dot_output_dot_s00001266: 1;
-PRODUCE process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704_omega: 1;
+TRANSITION n11
+CONSUME n4: 1;
+PRODUCE n4: 1, n2: 1;
 
 
 
-TRANSITION t_star
-CONSUME endNode_dot_s00000851_dot_input_dot_default: 1, process_dot_s00000131##s00003631_dot_outputCriterion_dot_s00000704_omega: 1;
-PRODUCE o_star: 1;
+TRANSITION n12
+CONSUME n3: 1, n2: 1;
+PRODUCE n7: 1;
+
+
+
+TRANSITION n13
+CONSUME n7: 1, n5: 1;
+PRODUCE n6: 1;
 
 
 

@@ -1,48 +1,42 @@
 PLACE
-alpha,callToProcess_dot_s00000954_dot_output_dot_s00000785,endNode_dot_s00000878_dot_input_dot_default,join_dot_s00000879_dot_input_dot_s00000807,merge_dot_s00000815_dot_activated,merge_dot_s00001050_dot_activated,o_star,process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773_omega;
+n1,n2,n3,n4,n5,n6,n7;
 
 MARKING
-alpha: 1, callToProcess_dot_s00000954_dot_output_dot_s00000785: 0, endNode_dot_s00000878_dot_input_dot_default: 0, join_dot_s00000879_dot_input_dot_s00000807: 0, merge_dot_s00000815_dot_activated: 0, merge_dot_s00001050_dot_activated: 0, o_star: 0, process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773_omega: 0;
+n1: 1, n2: 0, n3: 0, n4: 0, n5: 0, n6: 0, n7: 0;
 
-TRANSITION callToProcess_dot_s00000954_dot_outputCriterion_dot_s00000773
-CONSUME merge_dot_s00000815_dot_activated: 1;
-PRODUCE callToProcess_dot_s00000954_dot_output_dot_s00000785: 1, endNode_dot_s00000878_dot_input_dot_default: 1;
-
-
-
-TRANSITION decision_dot_s00000964_dot_fire_dot_s00000787
-CONSUME merge_dot_s00000815_dot_activated: 1;
-PRODUCE process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773_omega: 1, endNode_dot_s00000878_dot_input_dot_default: 1;
+TRANSITION n8
+CONSUME n4: 1;
+PRODUCE n2: 1, n3: 1;
 
 
 
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000816
-CONSUME alpha: 1;
-PRODUCE merge_dot_s00000815_dot_activated: 1, join_dot_s00000879_dot_input_dot_s00000807: 1;
+TRANSITION n9
+CONSUME n4: 1;
+PRODUCE n3: 1, n7: 1;
 
 
 
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000817
-CONSUME join_dot_s00000879_dot_input_dot_s00000807: 1;
-PRODUCE merge_dot_s00000815_dot_activated: 1;
+TRANSITION n10
+CONSUME n1: 1;
+PRODUCE n4: 2;
 
 
 
-TRANSITION merge_dot_s00001050_dot_activate_dot_s00000817
-CONSUME merge_dot_s00000815_dot_activated: 1;
-PRODUCE merge_dot_s00001050_dot_activated: 1, endNode_dot_s00000878_dot_input_dot_default: 1;
+TRANSITION n11
+CONSUME n4: 1;
+PRODUCE n5: 1, n3: 1;
 
 
 
-TRANSITION process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773
-CONSUME callToProcess_dot_s00000954_dot_output_dot_s00000785: 1, merge_dot_s00001050_dot_activated: 1;
-PRODUCE process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773_omega: 1;
+TRANSITION n12
+CONSUME n5: 1, n2: 1;
+PRODUCE n7: 1;
 
 
 
-TRANSITION t_star
-CONSUME endNode_dot_s00000878_dot_input_dot_default: 1, process_dot_s00000465##s00003522_dot_outputCriterion_dot_s00000773_omega: 1;
-PRODUCE o_star: 1;
+TRANSITION n13
+CONSUME n3: 1, n7: 1;
+PRODUCE n6: 1;
 
 
 

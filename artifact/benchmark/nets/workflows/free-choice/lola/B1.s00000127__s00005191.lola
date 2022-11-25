@@ -1,24 +1,18 @@
 PLACE
-alpha,join_dot_s00000879_dot_input_dot_s00000807,merge_dot_s00000815_dot_activated,o_star,process_dot_s00000127##s00005191_dot_input_dot_s00001238;
+n1,n2,n3,n4;
 
 MARKING
-alpha: 1, join_dot_s00000879_dot_input_dot_s00000807: 0, merge_dot_s00000815_dot_activated: 0, o_star: 0, process_dot_s00000127##s00005191_dot_input_dot_s00001238: 0;
+n1: 1, n2: 0, n3: 0, n4: 0;
 
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000816
-CONSUME alpha: 1;
-PRODUCE merge_dot_s00000815_dot_activated: 1, join_dot_s00000879_dot_input_dot_s00000807: 1, process_dot_s00000127##s00005191_dot_input_dot_s00001238: 1;
-
-
-
-TRANSITION merge_dot_s00000815_dot_activate_dot_s00000817
-CONSUME process_dot_s00000127##s00005191_dot_input_dot_s00001238: 1;
-PRODUCE merge_dot_s00000815_dot_activated: 1;
+TRANSITION n5
+CONSUME n1: 1;
+PRODUCE n2: 1, n3: 2;
 
 
 
-TRANSITION t_star
-CONSUME join_dot_s00000879_dot_input_dot_s00000807: 1, merge_dot_s00000815_dot_activated: 1;
-PRODUCE o_star: 1;
+TRANSITION n6
+CONSUME n3: 1, n2: 1;
+PRODUCE n4: 1;
 
 
 
