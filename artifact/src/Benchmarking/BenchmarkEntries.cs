@@ -177,6 +177,14 @@ namespace Benchmark
         }
     }
 
+    public class TransitionMultResult
+    {
+        public int bound;
+        public bool boundExceeded;
+        public string parikhImage;
+        public long timeTaken;
+    }
+
     public class NetStatisticsEntry
     {
         public int places;
@@ -321,9 +329,9 @@ namespace Benchmark
         public long timeForIntegerSoundness;
 
         // Bounded Runs
-        public bool hasBoundedRuns;
-        public string boundedRunCounterExample;
-        public long timeForBoundedRuns;
+        public bool hasFastTermination;
+        public string fastTerminationCounterexample;
+        public long timeForFastTerminationCheck;
 
         // Integer Deadlocks
         public bool hasIntegerDeadlock;
@@ -334,6 +342,14 @@ namespace Benchmark
         public bool hasContinuousDeadlock;
         public string continuousDeadlockExample;
         public long timeForContinuousDeadlock;
+
+        // Transition multiplicites
+        public TransitionMultResult[] transitionMultResults;
+
+        // transition bottlenecks
+        public long timeForTransitionBottlenecks;
+
+        public string transitionBottlenecks;
 
         public string ToJSON()
         {

@@ -551,7 +551,10 @@ namespace PetriTool
 
                 Stopwatch watch = Stopwatch.StartNew();
 
-                (var isZBounded, var wfBoundCounterexample) = GetIntegerBoundednessCounterexample(net.ShortCircuit(inputPlaceChoices.First(), outputPlaceChoices.First()));
+                Place initialPlace = inputPlaceChoices.First();
+                Place finalPlace = outputPlaceChoices.First();
+
+                (var isZBounded, var wfBoundCounterexample) = GetIntegerBoundednessCounterexample(net.ShortCircuit(initialPlace, finalPlace));
 
                 watch.Stop();
 
@@ -579,7 +582,7 @@ namespace PetriTool
                     watch = Stopwatch.StartNew();
 
                     // (in/out)putPlaceChoices.First() guaranteed to return unique place since net is a WF net
-                    var counterexample = GurobiHeuristics.CheckMarkingEquationUnsoundness(net, inputPlaceChoices.First(), outputPlaceChoices.First());
+                    var counterexample = GurobiHeuristics.CheckMarkingEquationUnsoundness(net, initialPlace, finalPlace);
                     watch.Stop();
                     dataEntry.timeForIntegerSoundness = watch.ElapsedMilliseconds;
 
@@ -594,14 +597,10 @@ namespace PetriTool
                     // check for integer deadlocks
                     watch = Stopwatch.StartNew();
 
-                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
+                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, initialPlace, finalPlace,
                     true, netName);
                     watch.Stop();
 
-                    if (counterexample == null)
-                    {
-
-                    }
                     dataEntry.hasIntegerDeadlock = counterexample != null;
                     dataEntry.integerDeadlockExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                     dataEntry.timeForIntegerDeadlock = watch.ElapsedMilliseconds;
@@ -612,17 +611,49 @@ namespace PetriTool
                     // check for integer deadlocks
                     watch = Stopwatch.StartNew();
 
-                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, inputPlaceChoices.First(), outputPlaceChoices.First(),
+                    var counterexample = GurobiHeuristics.CheckIntegerDeadlock(net, initialPlace, finalPlace,
                     false, netName);
                     watch.Stop();
 
-                    if (counterexample == null)
-                    {
-
-                    }
                     dataEntry.hasContinuousDeadlock = counterexample != null;
                     dataEntry.continuousDeadlockExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
                     dataEntry.timeForContinuousDeadlock = watch.ElapsedMilliseconds;
+                }
+
+                {
+                    // check transition multiplicities
+                    var checkNumbers = new HashSet<int>() { 1, 2, 3, 4, 5, 10, 50, 200 };
+
+                    TransitionMultResult[] results = new TransitionMultResult[checkNumbers.Count];
+
+                    // Iterate over the set using a foreach loop
+                    int i = 0;
+                    foreach (int number in checkNumbers)
+                    {
+                        watch = Stopwatch.StartNew();
+                        var (exceeded, example) = GurobiHeuristics.CheckTransitionMults(net, initialPlace, number);
+                        watch.Stop();
+
+                        var checkResult = new TransitionMultResult();
+                        checkResult.bound = number;
+                        checkResult.boundExceeded = exceeded;
+                        checkResult.parikhImage = example == null ? "None" : String.Join(";", example.Where(pair => pair.Value > 0));
+                        checkResult.timeTaken = watch.ElapsedMilliseconds;
+                        results[i] = checkResult;
+                        i += 1;
+                    }
+
+                    dataEntry.transitionMultResults = results;
+                }
+                {
+                    // check transition bottlenecks
+                    watch = Stopwatch.StartNew();
+
+                    var transitionBottlenecks = GurobiHeuristics.ComputeTransitionBottlenecks(net, initialPlace, finalPlace);
+                    watch.Stop();
+
+                    dataEntry.transitionBottlenecks = String.Join(";", transitionBottlenecks);
+                    dataEntry.timeForTransitionBottlenecks = watch.ElapsedMilliseconds;
                 }
             }
             {
@@ -632,9 +663,9 @@ namespace PetriTool
                 var (hasBoundedRuns, counterexample) = GurobiHeuristics.CheckForNonnegativeCycle(net);
                 watch.Stop();
 
-                dataEntry.hasBoundedRuns = hasBoundedRuns;
-                dataEntry.boundedRunCounterExample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
-                dataEntry.timeForBoundedRuns = watch.ElapsedMilliseconds;
+                dataEntry.hasFastTermination = hasBoundedRuns;
+                dataEntry.fastTerminationCounterexample = counterexample == null ? "None" : String.Join(";", counterexample.Where(pair => pair.Value > 0));
+                dataEntry.timeForFastTerminationCheck = watch.ElapsedMilliseconds;
             }
 
 
