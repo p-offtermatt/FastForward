@@ -351,6 +351,8 @@ namespace Benchmark
 
         public string transitionBottlenecks;
 
+        public Dictionary<string, double> transitionBottleneckNums;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);

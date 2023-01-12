@@ -645,6 +645,7 @@ namespace PetriTool
 
                     dataEntry.transitionMultResults = results;
                 }
+                if (options.checkTransitionBottlenecks)
                 {
                     // check transition bottlenecks
                     watch = Stopwatch.StartNew();
@@ -652,7 +653,10 @@ namespace PetriTool
                     var transitionBottlenecks = GurobiHeuristics.ComputeTransitionBottlenecks(net, initialPlace, finalPlace);
                     watch.Stop();
 
-                    dataEntry.transitionBottlenecks = String.Join(";", transitionBottlenecks);
+                    dataEntry.transitionBottlenecks = "{" +
+                    String.Join("};;;{", transitionBottlenecks.Select((kvpair) => kvpair.Key.Name + ": " + String.Join(";", kvpair.Value)))
+                     + "}";
+                    dataEntry.transitionBottleneckNums = transitionBottlenecks.ToDictionary(kvpair => kvpair.Key.Name, kvpair => kvpair.Value.GetValueOrDefault(kvpair.Key, -1));
                     dataEntry.timeForTransitionBottlenecks = watch.ElapsedMilliseconds;
                 }
             }

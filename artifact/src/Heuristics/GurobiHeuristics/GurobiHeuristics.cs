@@ -464,10 +464,10 @@ namespace Petri
         }
 
         // computes, for each transition, the min number of times the transition is used among continuous pseudo-runs where that transition is the most used one
-        // in the result, mapping a transition to -1 means the lp for that transition returned "unreachable"
-        public static Dictionary<Transition, double> ComputeTransitionBottlenecks(PetriNet net, Place initialPlace, Place finalPlace)
+        // in the result, having an empty map for a transition the lp for that transition returned "unreachable"
+        public static Dictionary<Transition, Dictionary<Transition, double>> ComputeTransitionBottlenecks(PetriNet net, Place initialPlace, Place finalPlace)
         {
-            Dictionary<Transition, double> result = new Dictionary<Transition, double>();
+            Dictionary<Transition, Dictionary<Transition, double>> result = new Dictionary<Transition, Dictionary<Transition, double>>();
 
             //Check whether from zero marking, the zero marking can be covered
             GRBModel model = InitializeModel();
@@ -533,22 +533,31 @@ namespace Petri
                     GRBConstr constraint = transitionMaximalConstraints[i];
                     model.Remove(constraint);
                     // essentially copy the constraint, but change the lhs to match the curTransition
-                    transitionMaximalConstraints[i] = model.AddConstr(transitionVars[curTransitionNum], constraint.Sense, constraint.RHS, constraint.ConstrName);
+                    transitionMaximalConstraints[i] = model.AddConstr(transitionVars[curTransitionNum], GRB.GREATER_EQUAL, transitionVars[i], "transition_greater_" + net.Transitions[i].Name.Truncate(200));
                 }
                 model.SetObjective(
                     new GRBLinExpr(transitionVars[curTransitionNum], 1.0),
                     GRB.MINIMIZE
                 );
-                model.Write("gurobi.lp");
+                model.Write("gurobi-transitionbottlenecks.lp");
                 model.Optimize();
                 if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
                 {
-                    result.Add(net.Transitions[curTransitionNum], -1);
+                    result.Add(net.Transitions[curTransitionNum], new Dictionary<Transition, double>());
                 }
                 else
                 {
                     double[] transitionMults = model.Get(GRB.DoubleAttr.X, transitionVars);
-                    result.Add(net.Transitions[curTransitionNum], transitionMults[curTransitionNum]);
+                    Dictionary<Transition, double> multsDict = new Dictionary<Transition, double>();
+                    for (int j = 0; j < net.Transitions.Count; j++)
+                    {
+                        double transitionMult = transitionMults[j];
+                        if (transitionMult > 0)
+                        {
+                            multsDict.Add(net.Transitions[j], transitionMult);
+                        }
+                    }
+                    result.Add(net.Transitions[curTransitionNum], multsDict);
                 }
             }
 

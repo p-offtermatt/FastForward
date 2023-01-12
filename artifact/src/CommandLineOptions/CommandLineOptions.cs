@@ -355,6 +355,9 @@ namespace PetriTool
 
         [Option("cont-deadlock", HelpText = "If present and assuming that the net is a workflow net, checks continuous deadlocking")]
         public bool checkContinuousDeadlock { get; set; } = false;
+
+        [Option("transition-bottlenecks", HelpText = "If present and assuming that the net is a workflow net, checks transition bottlenecks")]
+        public bool checkTransitionBottlenecks { get; set; } = false;
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]
