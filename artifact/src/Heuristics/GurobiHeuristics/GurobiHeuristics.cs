@@ -402,6 +402,76 @@ namespace Petri
             }
         }
 
+
+        public static double Compute_A_n(PetriNet net,
+                                        Place initialPlace, Place finalPlace)
+        {
+            // execution should be at most bound*numTransitions long
+            //Check whether from zero marking, the zero marking can be covered
+            GRBModel model = InitializeModel();
+
+            GRBVar[] transitionVars = new GRBVar[net.Transitions.Count];
+            GRBLinExpr transitionCount = new GRBLinExpr();
+
+            {
+                int i = 0;
+
+                foreach (Transition t in net.Transitions)
+                {
+                    transitionVars[i] = model.AddVar(0,
+                                                     Utils.GurobiConsts.UpperBound,
+                                                     0,
+                                                     GRB.CONTINUOUS,
+                                                     "transitionVariable_" + t.Name.Truncate(100));
+                    transitionCount.AddTerm(1, transitionVars[i]);
+                    i += 1;
+                }
+            }
+
+            GRBConstr[] effectNonnegative = new GRBConstr[net.Places.Count];
+            {
+                for (int i = 0; i < net.Places.Count; i++)
+                {
+                    Place place = net.Places[i];
+                    GRBLinExpr placeEffect = new GRBLinExpr();
+
+                    for (int j = 0; j < net.Transitions.Count; j++)
+                    {
+                        UpdateTransition transition = (UpdateTransition)net.Transitions[j];
+                        int effect = transition.Post.GetValueOrDefault(place, 0) - transition.Pre.GetValueOrDefault(place, 0);
+                        if (effect != 0)
+                        {
+                            placeEffect.AddTerm(effect, transitionVars[j]);
+                        };
+                    }
+
+                    model.AddConstr(placeEffect,
+                                    GRB.GREATER_EQUAL,
+                                    place.Equals(initialPlace) ? -1 : 0, // initial place starts with 1 token
+                                    "placeEffectNonnegative_" + place.Name.Truncate(200));
+                }
+            }
+
+            model.SetObjective(transitionCount, GRB.MAXIMIZE);
+
+            model.Write("../../../Gurobi.lp");
+            model.Optimize();
+            Console.WriteLine(model.Status);
+            if (model.Status == GRB.Status.UNBOUNDED || model.Status == GRB.Status.INF_OR_UNBD)
+            // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
+            {
+                return double.PositiveInfinity;
+            }
+            else if (model.Status == GRB.Status.INFEASIBLE)
+            {
+                throw new Exception("Searching for A_n, but LP is infeasible: model has no transition consuming only from the initial place");
+            }
+            else
+            {
+                return model.Get(GRB.DoubleAttr.ObjVal);
+            }
+        }
+
         public static (bool isBounded, Dictionary<Transition, double> counterexample) CheckForNonnegativeCycle(PetriNet net)
         {
             //Check whether from zero marking, the zero marking can be covered
