@@ -9,6 +9,7 @@ using Statistics = MathNet.Numerics.Statistics.Statistics;
 using Utils;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 #if GUROBI
 using static Petri.GurobiHeuristics;
 #endif
@@ -620,31 +621,31 @@ namespace PetriTool
                     dataEntry.timeForContinuousDeadlock = watch.ElapsedMilliseconds;
                 }
 
-                {
-                    // check transition multiplicities
-                    var checkNumbers = new HashSet<int>() { 1, 2, 3, 4, 5, 10, 50, 200 };
+                // {
+                //     // check transition multiplicities
+                //     var checkNumbers = new HashSet<int>() { 1, 2, 3, 4, 5, 10, 50, 200 };
 
-                    TransitionMultResult[] results = new TransitionMultResult[checkNumbers.Count];
+                //     TransitionMultResult[] results = new TransitionMultResult[checkNumbers.Count];
 
-                    // Iterate over the set using a foreach loop
-                    int i = 0;
-                    foreach (int number in checkNumbers)
-                    {
-                        watch = Stopwatch.StartNew();
-                        var (exceeded, example) = GurobiHeuristics.CheckTransitionMults(net, initialPlace, number);
-                        watch.Stop();
+                //     // Iterate over the set using a foreach loop
+                //     int i = 0;
+                //     foreach (int number in checkNumbers)
+                //     {
+                //         watch = Stopwatch.StartNew();
+                //         var (exceeded, example) = GurobiHeuristics.CheckTransitionMults(net, initialPlace, number);
+                //         watch.Stop();
 
-                        var checkResult = new TransitionMultResult();
-                        checkResult.bound = number;
-                        checkResult.boundExceeded = exceeded;
-                        checkResult.parikhImage = example == null ? "None" : String.Join(";", example.Where(pair => pair.Value > 0));
-                        checkResult.timeTaken = watch.ElapsedMilliseconds;
-                        results[i] = checkResult;
-                        i += 1;
-                    }
+                //         var checkResult = new TransitionMultResult();
+                //         checkResult.bound = number;
+                //         checkResult.boundExceeded = exceeded;
+                //         checkResult.parikhImage = example == null ? "None" : String.Join(";", example.Where(pair => pair.Value > 0));
+                //         checkResult.timeTaken = watch.ElapsedMilliseconds;
+                //         results[i] = checkResult;
+                //         i += 1;
+                //     }
 
-                    dataEntry.transitionMultResults = results;
-                }
+                //     dataEntry.transitionMultResults = results;
+                // }
                 if (options.checkTransitionBottlenecks)
                 {
                     // check transition bottlenecks
@@ -658,6 +659,80 @@ namespace PetriTool
                      + "}";
                     dataEntry.transitionBottleneckNums = transitionBottlenecks.ToDictionary(kvpair => kvpair.Key.Name, kvpair => kvpair.Value.GetValueOrDefault(kvpair.Key, -1));
                     dataEntry.timeForTransitionBottlenecks = watch.ElapsedMilliseconds;
+                }
+                if (options.checkSmallBoundProperties)
+                {
+                    Dictionary<String, object> smallBoundProperties = new Dictionary<string, object>();
+                    watch = Stopwatch.StartNew();
+
+                    var task = Task.Run(() => GurobiHeuristics.Compute_A_n(net, initialPlace, finalPlace));
+                    double an = 0;
+                    if (task.Wait(TimeSpan.FromSeconds(60)))
+                    {
+                        smallBoundProperties["timeForComputingA_n"] = watch.ElapsedMilliseconds;
+                        an = task.Result;
+                    }
+                    else
+                    {
+                        smallBoundProperties["timeForComputingA_n"] = -1;
+                        an = -1.0;
+                    }
+                    smallBoundProperties["A_n"] = an;
+                    if (an != -1.0) // check the net is linear
+                    {
+                        watch = Stopwatch.StartNew();
+                        var minTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeMinTimeWithBound(net,
+                            initialPlace,
+                            finalPlace,
+                            1,
+                            (int)an));
+                        if (minTimeTask.Wait(TimeSpan.FromSeconds(60)))
+                        {
+                            smallBoundProperties["timeForComputingMinTime"] = watch.ElapsedMilliseconds;
+                            smallBoundProperties["minTime"] = minTimeTask.Result;
+                        }
+                        else
+                        {
+                            smallBoundProperties["timeForComputingMinTime"] = -1;
+                            smallBoundProperties["minTime"] = "timeout";
+                        }
+
+                        watch = Stopwatch.StartNew();
+                        var maxTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeL(net,
+                            initialPlace,
+                            finalPlace,
+                            1,
+                            (int)an));
+                        if (maxTimeTask.Wait(TimeSpan.FromSeconds(60)))
+                        {
+                            smallBoundProperties["timeForComputingMaxTime"] = watch.ElapsedMilliseconds;
+                            smallBoundProperties["maxTime"] = maxTimeTask.Result;
+                        }
+                        else
+                        {
+                            smallBoundProperties["timeForComputingMaxTime"] = -1;
+                            smallBoundProperties["maxTime"] = "timeout";
+                        }
+
+                        watch = Stopwatch.StartNew();
+                        var soundnessTask = Task.Run(() => GurobiHeuristics.Unroll_CheckSoundness(net,
+                            initialPlace,
+                            finalPlace,
+                            1,
+                            (int)an));
+                        if (soundnessTask.Wait(TimeSpan.FromSeconds(60)))
+                        {
+                            smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
+                            smallBoundProperties["isSound"] = soundnessTask.Result;
+                        }
+                        else
+                        {
+                            smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
+                            smallBoundProperties["isSound"] = "timeout";
+                        }
+                    }
+
+                    dataEntry.smallBoundProperties = smallBoundProperties;
                 }
             }
             {

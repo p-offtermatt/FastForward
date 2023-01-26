@@ -358,6 +358,12 @@ namespace PetriTool
 
         [Option("transition-bottlenecks", HelpText = "If present and assuming that the net is a workflow net, checks transition bottlenecks")]
         public bool checkTransitionBottlenecks { get; set; } = false;
+
+        [Option("check-small-bound-properties", HelpText = @"If present and assuming that the net is a workflow net,
+        checks properties relating to a_pn, namely it computes a_pn,
+        and under the assumption that the net has linear termination time,
+        also computes the minimal parallel execution time, maximal sequential execution time, and 1-soundness.")]
+        public bool checkSmallBoundProperties { get; set; } = false;
     }
 
     [Verb("saturation-search", HelpText = "Performs saturation search.")]

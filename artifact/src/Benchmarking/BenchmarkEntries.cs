@@ -353,6 +353,8 @@ namespace Benchmark
 
         public Dictionary<string, double> transitionBottleneckNums;
 
+        public Dictionary<string, object> smallBoundProperties;
+
         public string ToJSON()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
