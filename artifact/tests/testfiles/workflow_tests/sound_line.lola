@@ -1,0 +1,21 @@
+PLACE
+i,a,b,c,d,f;
+
+MARKING
+i: 1;
+
+TRANSITION t1
+CONSUME i: 1;
+PRODUCE a: 1;
+
+TRANSITION t2
+CONSUME a: 1;
+PRODUCE b: 1, d: 1;
+
+TRANSITION t3
+CONSUME d: 1, b: 1;
+PRODUCE d: 1, c: 1;
+
+TRANSITION t4
+CONSUME d: 1, c: 1;
+PRODUCE f: 1;

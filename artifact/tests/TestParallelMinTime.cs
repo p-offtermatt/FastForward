@@ -71,6 +71,19 @@ namespace Testing
         [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "min-time/2.lola", 2, 3 })]
         [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "min-time/2.lola", 3, 4 })]
         [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "min-time/2.lola", 4, 5 })]
+        [InlineData("workflow_tests/unsound_2quasi-sound.lola", 1, 50, -1)]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/unsound_2quasi-sound.lola", 2, 3 })]
+        [InlineData("workflow_tests/unsound_2quasi-sound.lola", 3, 50, -1)]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/unsound_2quasi-sound.lola", 4, 4 })]
+        [InlineData("workflow_tests/unsound_2quasi-sound.lola", 5, 50, -1)]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/unsound_2quasi-sound.lola", 6, 5 })]
+        [InlineData("workflow_tests/unsound_2quasi-sound.lola", 7, 50, -1)]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/unsound_2quasi-sound.lola", 8, 6 })]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/sound_line.lola", 1, 4 })]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/sound_line.lola", 2, 5 })]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/sound_line.lola", 3, 6 })]
+        [MemberData(nameof(GetParamsForKnownBounds), parameters: new object[] { "workflow_tests/sound_line.lola", 4, 7 })]
+
         public void TestComputingMinTime(string filepath, int initialBudget, int bound, int expectedMinTime)
         {
             LolaParser parser = new LolaParser();
