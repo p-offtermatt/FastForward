@@ -402,6 +402,256 @@ namespace Petri
             }
         }
 
+        public static bool Unroll_ComputeL(PetriNet net,
+                                        Place initialPlace, Place finalPlace, int initialBudget, int bound)
+        {
+            // execution should be at most bound*numTransitions long
+            //Check whether from zero marking, the zero marking can be covered
+            GRBModel model = InitializeModel();
+
+            int runLength = bound;
+            GRBVar[,] transitionVars = Unroll_CreateTransitionVars(net, model, runLength, GRB.INTEGER);
+            GRBLinExpr[,] placeEffects = Unroll_ImposePlacesNonnegative(net, initialPlace, initialBudget, model, runLength, transitionVars);
+            Unroll_ImposeBlockConstraints(net, model, runLength, transitionVars, placeEffects);
+            Unroll_ImposeFinalMarkingConstraint(net, finalPlace, initialBudget, model, runLength, placeEffects);
+
+            model.Write("../../../Gurobi.lp");
+            model.Optimize();
+            if (model.Status == GRB.Status.INFEASIBLE)
+            // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
+            {
+                return false;
+            }
+            else if (model.Status == GRB.Status.OPTIMAL || model.Status == GRB.Status.SUBOPTIMAL)
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("Unexpected status code from Gurobi: " + model.Status);
+            }
+        }
+
+        /// <summary>
+        /// Similar to <see cref="Unroll_MinTimeAtMostBound"/>,
+        /// but instead of computing whether there exists a parallel execution within the bound,
+        /// finds the minimal parallel execution up to the given bound.
+        /// </summary>
+        /// <param name="net">The workflow net</param>
+        /// <param name="initialPlace">Its initial place, i.e. place without inputs</param>
+        /// <param name="finalPlace">Its final place, i.e. place without outputs</param>
+        /// <param name="initialBudget">The token count in the initial place</param>
+        /// <param name="bound">The bound on the length of runs</param>
+        /// <returns>The computed value for MinTime among executions up to the given bound.
+        /// -1 if no execution exists.</returns>
+        /// <exception cref="Exception"></exception>
+        /// <seealso cref="Unroll_MinTimeAtMostBound(PetriNet, Place, Place, int, int)"/>
+        public static int Unroll_ComputeMinTimeWithBound(PetriNet net,
+                                        Place initialPlace, Place finalPlace, int initialBudget, int bound)
+        {
+            GRBModel model = InitializeModel();
+
+            // execution should be at most bound long
+            int runLength = bound;
+            GRBVar[,] transitionVars = Unroll_CreateTransitionVars(net, model, runLength, GRB.INTEGER);
+            GRBLinExpr[,] placeEffects = Unroll_ImposePlacesNonnegative(net, initialPlace, initialBudget, model, runLength, transitionVars);
+            Unroll_ImposeBlockConstraints(net, model, runLength, transitionVars, placeEffects);
+            Unroll_ImposeFinalMarkingConstraint(net, finalPlace, initialBudget, model, runLength, placeEffects);
+
+            // objective is to minimize the number of blocks with non-zero transition var
+            // create indicator vars that indicate for each step whether it is non-zero
+            GRBVar[] stepNonzeroIndicatorVars = new GRBVar[runLength];
+            for (int step = 0; step < runLength; step++)
+            {
+                GRBLinExpr transitionCountForThisStep = new GRBLinExpr();
+                for (int i = 0; i < net.Transitions.Count; i++)
+                {
+                    GRBVar transitionVar = transitionVars[i, step];
+                    transitionCountForThisStep.AddTerm(1, transitionVar);
+                }
+                GRBVar indicator = model.AddVar(0, 1, 0, GRB.BINARY, "step_" + step.ToString() + "_indicator");
+                stepNonzeroIndicatorVars[step] = indicator;
+
+                // variable indicates whether any transition var for the step is non-zero.
+                // since all are positive, just check the sum
+                // implication direction is important: (var = 0) implies (transition sum = 0)
+                model.AddGenConstrIndicator(indicator, 0, transitionCountForThisStep, GRB.EQUAL, 0, "step_" + step.ToString() + "_indicator_constraint");
+            }
+
+            GRBLinExpr indicatorSum = CreateVariableSumExpression(stepNonzeroIndicatorVars);
+            model.SetObjective(indicatorSum, GRB.MINIMIZE);
+
+
+            model.Write("../../../Gurobi.lp");
+            model.Optimize();
+            if (model.Status == GRB.Status.INFEASIBLE)
+            // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
+            {
+                return -1;
+            }
+            else if (model.Status == GRB.Status.OPTIMAL || model.Status == GRB.Status.SUBOPTIMAL)
+            {
+                return (int)model.ObjVal;
+            }
+            else
+            {
+                throw new Exception("Unexpected status code from Gurobi: " + model.Status);
+            }
+        }
+
+        /// <summary>
+        /// Checks whether there exists a parallel execution that goes from
+        /// {initialPlace: initialBudget} to {finalPlace: initialBudget}
+        /// which uses at most bound blocks.
+        /// parallel executions are runs where transitions are grouped into blocks such that:
+        /// * each block can only include transition at most once
+        /// * the pre of each block must be satisfied before the next step
+        /// </summary>
+        /// <param name="net">The workflow net</param>
+        /// <param name="initialPlace">Its initial place, i.e. place without inputs</param>
+        /// <param name="finalPlace">Its final place, i.e. place without outputs</param>
+        /// <param name="initialBudget">The token count in the initial place</param>
+        /// <param name="bound">The bound on the length of runs</param>
+        /// <returns>True if there exists a parallel execution with at most bound blocks, false if not.</returns>
+        /// <exception cref="Exception"></exception>
+        public static bool Unroll_MinTimeAtMostBound(PetriNet net,
+                                        Place initialPlace, Place finalPlace, int initialBudget, int bound)
+        {
+            GRBModel model = InitializeModel();
+
+            // execution should be at most bound long
+            int runLength = bound;
+            GRBVar[,] transitionVars = Unroll_CreateTransitionVars(net, model, runLength, GRB.INTEGER);
+            GRBLinExpr[,] placeEffects = Unroll_ImposePlacesNonnegative(net, initialPlace, initialBudget, model, runLength, transitionVars);
+            Unroll_ImposeBlockConstraints(net, model, runLength, transitionVars, placeEffects);
+            Unroll_ImposeFinalMarkingConstraint(net, finalPlace, initialBudget, model, runLength, placeEffects);
+
+            model.Write("../../../Gurobi.lp");
+            model.Optimize();
+            if (model.Status == GRB.Status.INFEASIBLE)
+            // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
+            {
+                return false;
+            }
+            else if (model.Status == GRB.Status.OPTIMAL || model.Status == GRB.Status.SUBOPTIMAL)
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("Unexpected status code from Gurobi: " + model.Status);
+            }
+        }
+
+        private static void Unroll_ImposeFinalMarkingConstraint(PetriNet net, Place finalPlace, int initialBudget, GRBModel model, int runLength, GRBLinExpr[,] placeEffects)
+        {
+            // check that final effect is correct: all tokens are moved to final place
+            // (recall that place effect on initial also includes the initial marking, so can ignore here)
+            for (int i = 0; i < net.Places.Count; i++)
+            {
+                Place place = net.Places[i];
+
+                model.AddConstr(
+                    placeEffects[i, runLength],
+                    GRB.EQUAL,
+                    place.Equals(finalPlace) ? initialBudget : 0,
+                    "correctFinalMarking_" + place.Name.Truncate(100)
+                );
+            }
+        }
+
+        // imposes that the transition vars encode a parallel execution.
+        // transitions are split into blocks such that:
+        // * each block can only include transition at most once
+        //  * the pre of each block must be satisfied before the next step
+        private static void Unroll_ImposeBlockConstraints(PetriNet net, GRBModel model, int runLength, GRBVar[,] transitionVars, GRBLinExpr[,] placeEffects)
+        {
+            for (int step = 0; step < runLength; step++)
+            {
+                for (int i = 0; i < net.Transitions.Count; i++)
+                {
+                    model.AddConstr(
+                        transitionVars[i, step],
+                        GRB.LESS_EQUAL,
+                        1,
+                        "transitionOccursAtMostOnce_" + step.ToString() + "_name_" + net.Transitions[i].Name.Truncate(100));
+                }
+
+                for (int i = 0; i < net.Places.Count; i++)
+                {
+                    Place place = net.Places[i];
+                    GRBLinExpr stepPre = new GRBLinExpr();
+                    for (int j = 1; j < net.Transitions.Count; j++)
+                    {
+                        UpdateTransition transition = (UpdateTransition)net.Transitions[j];
+                        stepPre.AddTerm(transition.Pre.GetValueOrDefault(place, 0), transitionVars[j, step]);
+                    }
+
+                    model.AddConstr(stepPre,
+                                    GRB.LESS_EQUAL,
+                                    placeEffects[i, step],
+                                    "blockCanBeFired_step_" + step.ToString() + "_name_" + place.Name.Truncate(100));
+                }
+            }
+        }
+
+        private static GRBLinExpr[,] Unroll_ImposePlacesNonnegative(PetriNet net, Place initialPlace, int initialBudget, GRBModel model, int runLength, GRBVar[,] transitionVars)
+        {
+            // i, j is the place effect on place i before step j is fired
+            GRBLinExpr[,] placeEffectsBeforeStep = new GRBLinExpr[net.Places.Count, runLength + 1];
+            for (int i = 0; i < net.Places.Count; i++)
+            {
+                Place place = net.Places[i];
+                placeEffectsBeforeStep[i, 0] = new GRBLinExpr(place.Equals(initialPlace) ? initialBudget : 0);
+                for (int step = 1; step < runLength + 1; step++)
+                {
+                    GRBLinExpr placeEffectBeforePrevStep = placeEffectsBeforeStep[i, step - 1];
+                    GRBLinExpr placeEffectBeforeStep = new GRBLinExpr(placeEffectBeforePrevStep);
+
+
+                    for (int j = 0; j < net.Transitions.Count; j++)
+                    {
+                        UpdateTransition transition = (UpdateTransition)net.Transitions[j];
+                        int effect = transition.Post.GetValueOrDefault(place, 0) - transition.Pre.GetValueOrDefault(place, 0);
+                        if (effect != 0)
+                        {
+                            placeEffectBeforeStep.AddTerm(effect, transitionVars[j, step - 1]);
+                        };
+                    }
+
+                    placeEffectsBeforeStep[i, step] = placeEffectBeforeStep;
+                    model.AddConstr(placeEffectBeforeStep,
+                                    GRB.GREATER_EQUAL,
+                                    0,
+                                    "placeNonnegative_Step_" + step.ToString() + "_name_" + place.Name.Truncate(150));
+
+                }
+            }
+            return placeEffectsBeforeStep;
+        }
+
+        private static GRBVar[,] Unroll_CreateTransitionVars(PetriNet net, GRBModel model, int runLength, char variableDomain)
+        {
+            GRBVar[,] transitionVars = new GRBVar[net.Transitions.Count, runLength];
+
+            {
+                for (int step = 0; step < runLength; step++)
+                {
+                    int i = 0;
+                    foreach (Transition t in net.Transitions)
+                    {
+                        transitionVars[i, step] = model.AddVar(0,
+                                                         Utils.GurobiConsts.UpperBound,
+                                                         0,
+                                                         variableDomain,
+                                                         "transitionVariable_" + step.ToString() + "_" + t.Name.Truncate(100));
+                        i += 1;
+                    }
+                }
+            }
+
+            return transitionVars;
+        }
 
         public static double Compute_A_n(PetriNet net,
                                         Place initialPlace, Place finalPlace)
@@ -456,7 +706,6 @@ namespace Petri
 
             model.Write("../../../Gurobi.lp");
             model.Optimize();
-            Console.WriteLine(model.Status);
             if (model.Status == GRB.Status.UNBOUNDED || model.Status == GRB.Status.INF_OR_UNBD)
             // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
             {
