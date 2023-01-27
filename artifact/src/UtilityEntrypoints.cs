@@ -678,6 +678,7 @@ namespace PetriTool
                         an = -1.0;
                     }
                     smallBoundProperties["A_n"] = an;
+                    Console.WriteLine(an);
                     if (an != -1.0) // check the net is linear
                     {
                         watch = Stopwatch.StartNew();
@@ -686,7 +687,7 @@ namespace PetriTool
                             finalPlace,
                             1,
                             (int)an));
-                        if (minTimeTask.Wait(TimeSpan.FromSeconds(60)))
+                        if (minTimeTask.Wait(TimeSpan.FromSeconds(15)))
                         {
                             smallBoundProperties["timeForComputingMinTime"] = watch.ElapsedMilliseconds;
                             smallBoundProperties["minTime"] = minTimeTask.Result;
@@ -703,7 +704,7 @@ namespace PetriTool
                             finalPlace,
                             1,
                             (int)an));
-                        if (maxTimeTask.Wait(TimeSpan.FromSeconds(60)))
+                        if (maxTimeTask.Wait(TimeSpan.FromSeconds(15)))
                         {
                             smallBoundProperties["timeForComputingMaxTime"] = watch.ElapsedMilliseconds;
                             smallBoundProperties["maxTime"] = maxTimeTask.Result;
@@ -720,7 +721,7 @@ namespace PetriTool
                             finalPlace,
                             1,
                             (int)an));
-                        if (soundnessTask.Wait(TimeSpan.FromSeconds(60)))
+                        if (soundnessTask.Wait(TimeSpan.FromSeconds(15)))
                         {
                             smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
                             smallBoundProperties["isSound"] = soundnessTask.Result;
