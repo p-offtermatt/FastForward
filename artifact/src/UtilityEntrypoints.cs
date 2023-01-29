@@ -678,7 +678,6 @@ namespace PetriTool
                         an = -1.0;
                     }
                     smallBoundProperties["A_n"] = an;
-                    Console.WriteLine(an);
                     if (an != -1.0) // check the net is linear
                     {
                         watch = Stopwatch.StartNew();
