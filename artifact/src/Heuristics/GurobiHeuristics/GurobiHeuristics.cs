@@ -845,7 +845,7 @@ namespace Petri
             if (model.Status == GRB.Status.UNBOUNDED || model.Status == GRB.Status.INF_OR_UNBD)
             // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
             {
-                return double.PositiveInfinity;
+                return -1.0;
             }
             else if (model.Status == GRB.Status.INFEASIBLE)
             {
