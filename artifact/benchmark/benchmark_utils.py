@@ -52,6 +52,9 @@ def call_fastforward_helper(command, timeout_time):
         else:
             print("empty output!")
             result_obj = {}
+        if stderr:
+            print("error")
+            result_obj["error"] = stderr.decode("utf-8").replace("\"", "'")
     except CalledProcessError:
         execution_time = time.time() - execution_time
         process.kill()

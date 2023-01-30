@@ -10,7 +10,7 @@ import pandas
 from typing import Dict
 import argparse
 
-timeout_time = 600
+timeout_time = 6000
 
 
 def compute_statistics(sample_name, lola_file, formula_file, output_file, args, first):
