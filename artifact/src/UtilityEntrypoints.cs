@@ -665,70 +665,84 @@ namespace PetriTool
                     Dictionary<String, object> smallBoundProperties = new Dictionary<string, object>();
                     watch = Stopwatch.StartNew();
 
-                    var task = Task.Run(() => GurobiHeuristics.Compute_A_n(net, initialPlace, finalPlace));
-                    double an = 0;
-                    if (task.Wait(TimeSpan.FromSeconds(60)))
+                    // computing these only works properly if the net has a transition that consumes exactly one token from the input place, so ensure this here
+                    bool hasStartTransition = net.Transitions.Any(transition =>
                     {
-                        smallBoundProperties["timeForComputingA_n"] = watch.ElapsedMilliseconds;
-                        an = task.Result;
+                        HashSet<Place> prePlaces = transition.GetPrePlaces();
+                        return prePlaces.Count == 1 && prePlaces.First().Equals(initialPlace) && transition.GetGuard()[initialPlace] == 1;
+                    });
+
+                    if (!hasStartTransition)
+                    {
+                        smallBoundProperties.Add("error", "net has no transition consuming only 1 token from the initial place");
                     }
                     else
                     {
-                        smallBoundProperties["timeForComputingA_n"] = -1;
-                        an = -1.0;
-                    }
-                    smallBoundProperties["A_n"] = an;
-                    if (an != -1.0) // check the net is linear
-                    {
-                        watch = Stopwatch.StartNew();
-                        var minTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeMinTimeWithBound(net,
-                            initialPlace,
-                            finalPlace,
-                            1,
-                            (int)an));
-                        if (minTimeTask.Wait(TimeSpan.FromSeconds(15)))
+                        var task = Task.Run(() => GurobiHeuristics.Compute_A_n(net, initialPlace, finalPlace));
+                        double an = 0;
+                        if (task.Wait(TimeSpan.FromSeconds(60)))
                         {
-                            smallBoundProperties["timeForComputingMinTime"] = watch.ElapsedMilliseconds;
-                            smallBoundProperties["minTime"] = minTimeTask.Result;
+                            smallBoundProperties["timeForComputingA_n"] = watch.ElapsedMilliseconds;
+                            an = task.Result;
                         }
                         else
                         {
-                            smallBoundProperties["timeForComputingMinTime"] = -1;
-                            smallBoundProperties["minTime"] = "timeout";
+                            smallBoundProperties["timeForComputingA_n"] = -1;
+                            an = -1.0;
                         }
+                        smallBoundProperties["A_n"] = an;
+                        if (an != -1.0) // check the net is linear
+                        {
+                            watch = Stopwatch.StartNew();
+                            var minTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeMinTimeWithBound(net,
+                                initialPlace,
+                                finalPlace,
+                                1,
+                                (int)an));
+                            if (minTimeTask.Wait(TimeSpan.FromSeconds(15)))
+                            {
+                                smallBoundProperties["timeForComputingMinTime"] = watch.ElapsedMilliseconds;
+                                smallBoundProperties["minTime"] = minTimeTask.Result;
+                            }
+                            else
+                            {
+                                smallBoundProperties["timeForComputingMinTime"] = "timeout";
+                                smallBoundProperties["minTime"] = "timeout";
+                            }
 
-                        watch = Stopwatch.StartNew();
-                        var maxTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeL(net,
-                            initialPlace,
-                            finalPlace,
-                            1,
-                            (int)an));
-                        if (maxTimeTask.Wait(TimeSpan.FromSeconds(15)))
-                        {
-                            smallBoundProperties["timeForComputingMaxTime"] = watch.ElapsedMilliseconds;
-                            smallBoundProperties["maxTime"] = maxTimeTask.Result;
-                        }
-                        else
-                        {
-                            smallBoundProperties["timeForComputingMaxTime"] = -1;
-                            smallBoundProperties["maxTime"] = "timeout";
-                        }
+                            watch = Stopwatch.StartNew();
+                            var maxTimeTask = Task.Run(() => GurobiHeuristics.Unroll_ComputeL(net,
+                                initialPlace,
+                                finalPlace,
+                                1,
+                                (int)an));
+                            if (maxTimeTask.Wait(TimeSpan.FromSeconds(15)))
+                            {
+                                smallBoundProperties["timeForComputingMaxTime"] = watch.ElapsedMilliseconds;
+                                smallBoundProperties["maxTime"] = maxTimeTask.Result;
+                            }
+                            else
+                            {
+                                smallBoundProperties["timeForComputingMaxTime"] = "timeout";
+                                smallBoundProperties["maxTime"] = "timeout";
+                            }
 
-                        watch = Stopwatch.StartNew();
-                        var soundnessTask = Task.Run(() => GurobiHeuristics.Unroll_CheckSoundness(net,
-                            initialPlace,
-                            finalPlace,
-                            1,
-                            (int)an));
-                        if (soundnessTask.Wait(TimeSpan.FromSeconds(15)))
-                        {
-                            smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
-                            smallBoundProperties["isSound"] = soundnessTask.Result;
-                        }
-                        else
-                        {
-                            smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
-                            smallBoundProperties["isSound"] = "timeout";
+                            watch = Stopwatch.StartNew();
+                            var soundnessTask = Task.Run(() => GurobiHeuristics.Unroll_CheckSoundness(net,
+                                initialPlace,
+                                finalPlace,
+                                1,
+                                (int)an));
+                            if (soundnessTask.Wait(TimeSpan.FromSeconds(15)))
+                            {
+                                smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = watch.ElapsedMilliseconds;
+                                smallBoundProperties["isSound"] = soundnessTask.Result;
+                            }
+                            else
+                            {
+                                smallBoundProperties["timeForComputingSoundnessViaUnrolling"] = "timeout";
+                                smallBoundProperties["isSound"] = "timeout";
+                            }
                         }
                     }
 
