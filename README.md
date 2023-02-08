@@ -9,11 +9,18 @@ soundness in workflow nets, particularly structural soundness and generalized so
 This artifact demonstrates an extension of FastForward with techniques for
 several problems related to termination and terminating workflow nets.
 
+*NOTE: The artifact relies on the MILP solver Gurobi.
+The solver is proprietary software, and we are not able
+to include it in this artifact.
+However, with a university affiliation, it is possible to obtain an
+academic license. We explain how to install Gurobi in
+the section on how to build FastForward.
+
 
 This README is structured as follows:
 
-- OPTIONAL: ["Building FastForward"](#compiling-fastforward) explains
-how to build FastForward and its dependencies
+- ["Building FastForward"](#compiling-fastforward) explains
+how to install FastForward and its dependencies.
 This information is helpful for using FastForward outside of this virtual machine. The section is
 optional, as this virtual machine comes with a pre-built version of FastForward.
 - ["Reproducing experimental results"](#reproducing-experimental-results)
@@ -33,9 +40,12 @@ while taking much less time.
 For full reproduction, reviewers need to regenerate instances - see the corresponding optional section
 later in this readme.
 
-## Optional: Building FastForward
+## Building FastForward
 
 Make sure you have the following installed on your machine:
+
+* <a href="https://github.com/Z3Prover/z3">Z3 with dotnet bindings</a> (tested under Z3 version 4.8.7)
+* <a href="https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/">Gurobi</a>
 
 Run `sudo sh install.sh` in the root directory.
 You may be asked whether to continue installation several times.
