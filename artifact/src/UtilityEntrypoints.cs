@@ -542,9 +542,9 @@ namespace PetriTool
 
             // // Checking for integer boundedness
 
-            // var counterexample = GetIntegerBoundednessCounterexample(net);
+            var counterexample = GetIntegerBoundednessCounterexample(net);
 
-            // dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
+            dataEntry.integerBoundednessCounterexample = counterexample == null ? "None" : String.Join(";", counterexample);
 
             if (isWF)
             {
