@@ -1,0 +1,72 @@
+PLACE
+alpha,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,final;
+
+MARKING
+alpha: 1, a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0, i: 0, j: 0, k: 0, l: 0, m: 0, n: 0, o: 0, p: 0, q: 0, r: 0, final: 0;
+
+TRANSITION callToProcess.s00001009.inputCriterion.s00000700
+CONSUME m: 1, n: 1, o: 1;
+PRODUCE a: 1;
+
+
+
+TRANSITION callToProcess.s00001009.outputCriterion.s00000704
+CONSUME a: 1;
+PRODUCE b: 1, c: 1;
+
+
+
+TRANSITION callToTask.s00001371.inputCriterion.s00000700
+CONSUME b: 1, c: 1;
+PRODUCE d: 1;
+
+
+
+TRANSITION callToTask.s00001371.outputCriterion.s00000704
+CONSUME d: 1;
+PRODUCE e: 1, f: 1, g: 1;
+
+
+
+TRANSITION callToTask.s00001372.inputCriterion.s00000700
+CONSUME f: 1, g: 1;
+PRODUCE h: 1;
+
+
+
+TRANSITION callToTask.s00001372.outputCriterion.s00000704
+CONSUME h: 1;
+PRODUCE i: 1, j: 1;
+
+
+
+TRANSITION callToTask.s00001373.inputCriterion.s00000858
+CONSUME k: 1, p: 1, q: 1;
+PRODUCE l: 1;
+
+
+
+TRANSITION callToTask.s00001373.outputCriterion.s00000859
+CONSUME l: 1;
+PRODUCE m: 1, n: 1, o: 1;
+
+
+
+TRANSITION process.s00000035##s00001370.inputCriterion.s00000700
+CONSUME alpha: 1;
+PRODUCE k: 1, p: 1, q: 1;
+
+
+
+TRANSITION process.s00000035##s00001370.outputCriterion.s00000704
+CONSUME e: 1, j: 1;
+PRODUCE r: 1;
+
+
+
+TRANSITION t_final
+CONSUME i: 1, r: 1;
+PRODUCE final: 1;
+
+
+
