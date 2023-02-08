@@ -1,31 +1,21 @@
 #!/bin/bash
-echo "---- Installing Nuget Packages ---"
-mkdir -p $HOME/.nuget/
-cp -R dependencies/nuget/packages/ $HOME/.nuget/
-echo "---- Installing dependencies/pkgs ----"
-sudo dpkg -i dependencies/pkgs/*.deb
 
-echo "---- Making LoLA ----"
-cd dependencies/lola
-sudo ./configure
-sudo make
-sudo make install
+# install dotnet
+wget https://dot.net/v1/dotnet-install.sh
+sudo chmod +x dotnet-install.sh
+./dotnet-install.sh -c 6.0
 
-echo "---- Making MIST ----"
-cd ../mist
-sudo ./configure
-sudo make
-sudo make install
+# add dotnet to path
+echo "PATH=/home/cav23/.dotnet:$PATH" >> ~/.bashrc
 
-echo "---- Installing Python3 packages ----"
-cd ../python
-python3 -m pip install *.whl
+# adding nuget sources
+cd artifact/src/
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+cd ../..
 
-echo "---- Installing Python2 packages ----"
-cd ../python2
-python2 get-pip.py --no-index --find-links=.
-python2 -m pip install *.whl
-
-echo "---- Creating link to z3 binary ----"
-cd ../z3
-sudo ln -s $PWD/bin/z3 /usr/local/bin/z3
+# installing python packages
+sudo apt-get install -y python3
+sudo apt-get install -y python3-pip
+pip install psutil
+pip install tabulate
+pip install matplotlib

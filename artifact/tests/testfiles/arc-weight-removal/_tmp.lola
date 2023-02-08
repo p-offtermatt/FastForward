@@ -1,0 +1,102 @@
+PLACE
+a,b,a_to_t1_weight_5_left_level_0,a_to_t1_weight_5_left_level_1,a_to_t1_weight_5_left_level_2,a_to_t1_weight_5_right_level_0,a_to_t1_weight_5_right_level_1,t1_to_b_weight_7_left_level_0,t1_to_b_weight_7_left_level_1,t1_to_b_weight_7_left_level_2,t1_to_b_weight_7_right_level_0,t1_to_b_weight_7_right_level_1;
+
+MARKING
+a: 5, b: 0, a_to_t1_weight_5_left_level_0: 0, a_to_t1_weight_5_left_level_1: 0, a_to_t1_weight_5_left_level_2: 0, a_to_t1_weight_5_right_level_0: 0, a_to_t1_weight_5_right_level_1: 0, t1_to_b_weight_7_left_level_0: 0, t1_to_b_weight_7_left_level_1: 0, t1_to_b_weight_7_left_level_2: 0, t1_to_b_weight_7_right_level_0: 0, t1_to_b_weight_7_right_level_1: 0;
+
+TRANSITION a_to_t1_weight_5_left__Up_level0
+CONSUME a: 1;
+PRODUCE a_to_t1_weight_5_left_level_0: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_left__Down_level0
+CONSUME a_to_t1_weight_5_left_level_0: 1;
+PRODUCE a: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_right__Up_level0
+CONSUME a: 1;
+PRODUCE a_to_t1_weight_5_right_level_0: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_right__Down_level0
+CONSUME a_to_t1_weight_5_right_level_0: 1;
+PRODUCE a: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_left__Up_level1
+CONSUME a_to_t1_weight_5_left_level_0: 1, a_to_t1_weight_5_right_level_0: 1;
+PRODUCE a_to_t1_weight_5_left_level_1: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_left__Down_level1
+CONSUME a_to_t1_weight_5_left_level_1: 1;
+PRODUCE a_to_t1_weight_5_left_level_0: 1, a_to_t1_weight_5_right_level_0: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_right__Up_level1
+CONSUME a_to_t1_weight_5_left_level_0: 1, a_to_t1_weight_5_right_level_0: 1;
+PRODUCE a_to_t1_weight_5_right_level_1: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_right__Down_level1
+CONSUME a_to_t1_weight_5_right_level_1: 1;
+PRODUCE a_to_t1_weight_5_left_level_0: 1, a_to_t1_weight_5_right_level_0: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_left__Up_level2
+CONSUME a_to_t1_weight_5_left_level_1: 1, a_to_t1_weight_5_right_level_1: 1;
+PRODUCE a_to_t1_weight_5_left_level_2: 1;
+
+
+
+TRANSITION a_to_t1_weight_5_left__Down_level2
+CONSUME a_to_t1_weight_5_left_level_2: 1;
+PRODUCE a_to_t1_weight_5_left_level_1: 1, a_to_t1_weight_5_right_level_1: 1;
+
+
+
+TRANSITION t1_to_b_weight_7_left__Down_level0
+CONSUME t1_to_b_weight_7_left_level_0: 1;
+PRODUCE b: 1;
+
+
+
+TRANSITION t1_to_b_weight_7_right__Down_level0
+CONSUME t1_to_b_weight_7_right_level_0: 1;
+PRODUCE b: 1;
+
+
+
+TRANSITION t1_to_b_weight_7_left__Down_level1
+CONSUME t1_to_b_weight_7_left_level_1: 1;
+PRODUCE t1_to_b_weight_7_left_level_0: 1, t1_to_b_weight_7_right_level_0: 1;
+
+
+
+TRANSITION t1_to_b_weight_7_right__Down_level1
+CONSUME t1_to_b_weight_7_right_level_1: 1;
+PRODUCE t1_to_b_weight_7_left_level_0: 1, t1_to_b_weight_7_right_level_0: 1;
+
+
+
+TRANSITION t1_to_b_weight_7_left__Down_level2
+CONSUME t1_to_b_weight_7_left_level_2: 1;
+PRODUCE t1_to_b_weight_7_left_level_1: 1, t1_to_b_weight_7_right_level_1: 1;
+
+
+
+TRANSITION t1_noweights
+CONSUME a_to_t1_weight_5_left_level_0: 1, a_to_t1_weight_5_left_level_2: 1;
+PRODUCE t1_to_b_weight_7_left_level_0: 1, t1_to_b_weight_7_left_level_1: 1, t1_to_b_weight_7_left_level_2: 1;
+
+
+
