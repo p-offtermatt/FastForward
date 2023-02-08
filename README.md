@@ -37,18 +37,6 @@ later in this readme.
 
 Make sure you have the following installed on your machine:
 
-* <a href="https://github.com/Z3Prover/z3">Z3 with dotnet bindings</a> (tested under Z3 version 4.8.7)
-* <a href="https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/">lola2.0</a> See lola's readme for instructions. lola should be on your path, e.g. running `lola` should give output like this:
-```
-lola: NET
-lola:   reading net from stdin
-```
-* <a  href="https://github.com/p-offtermatt/Hadara-AdSimul-Cav22-Dependency">Hadara-AdSimul-Red</a> (for regenerating instances):
-Once compiled, place the `Hadara_AdSimul_Red` executable in the `artifact/benchmark/tools` folder.
-* <a href="https://www.promtools.org/doku.php">ProM</a> (for regenerating instances), tested with version 6.11. Note that ProM requires Java.
-Set the `PROM_HOME` environment variable to point to the root directory of ProM, e.g. `/home/cav2022/Desktop/prom-6.11-all-platforms`. Further, follow the instructions in `dependencies/`, which involves moving files to your `PROM_HOME` directory.
-* <a href="https://ctan.org/pkg/latexmk?lang=en">Latexmk</a> and a <a href="https://www.tug.org/texlive/">Tex distribution</a> (for generating plots)
-
 Run `sudo sh install.sh` in the root directory.
 You may be asked whether to continue installation several times.
 
