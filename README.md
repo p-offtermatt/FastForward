@@ -42,12 +42,26 @@ later in this readme.
 
 ## Building FastForward
 
-Make sure you have the following installed on your machine:
+FastForward depends on multiple solvers. One is 
+Z3 with dotnet bindings, which can be obtained from 
+<a href="https://github.com/Z3Prover/z3">https://github.com/Z3Prover/z3</a>.
+We tested with version 4.8.7. This version is already included in the virtula machine.
 
-* <a href="https://github.com/Z3Prover/z3">Z3 with dotnet bindings</a> (tested under Z3 version 4.8.7)
-* <a href="https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/">Gurobi</a>
+The other required solver is <a href="https://www.gurobi.com/">Gurobi</a>.
+Due to licensing issues, we cannot include it in the artifact.
+You can obtain a free academic license for Gurobi
+on the official website.
+Once that is done, please go to
+https://www.gurobi.com/downloads/gurobi-software/
+and download the Gurobi Optimizer in version v9.0.X (we tested with version 9.0.3).
+Note that newer versions will *not* work.
+Once you have downloaded the Gurobi Optimizer, nagivate, in that folder, to the `lib`
+folder, and copy the file `gurobi90.netstandard20.dll`
+to this artifact, into the two folders
+`src/gurobi` and `tests/gurobi`.
 
-Run `sudo sh install.sh` in the root directory.
+
+Once this is done, run `sudo sh install.sh` in the root directory.
 You may be asked whether to continue installation several times.
 
 Next, navigate to the `artifact/src` folder and
@@ -65,18 +79,56 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   fastforward -> /home/user/fastforwardartifact/src/bin/Release/netcoreapp3.1/linux-x64/publish/
 ```
 
-## Optional: Regenerating instances
+You can test that the installation worked in two ways.
+The first is by navigating to the `tests` folder and
+executing the script `run_tests.sh`.
+This runs unit tests.
 
-To regenerate benchmark instances, navigate to the
-`artifact/benchmark/scripts` folder.
-There are two relevant scripts for this step:
-* `generate_instances_full.sh` (~24 hours) generates the full set of instances as used in the paper.
-* `generate_instances_partial.sh` (~8 hours) generates a partial set of benchmark instances. Running the experiments on this partial set is much faster as there are fewer data points, but the same trends should be visible in the results.
+The second is by navigating to the `benchmark/scrips`
+folder and executing the script `quicktest.sh`.
+This takes about 5 minutes to run, and can give a quick indication
+that FastForward is running correctly.
+
+The output of the script should end with the following:
+
+```
+Done with main file
+Reading input from results/quicktest/test.json
+Printing statistics...
+10 entries.
+===============================
+3 timeouts on instances:
+A.s00000029__s00001158.lola
+A.s00000031__s00001218.lola
+A.s00000031__s00001177.lola
+===============================
+7 error free instances:
+A.s00000033__s00001232.lola
+A.s00000029__s00001170.lola
+A.s00000031__s00001361.lola
+A.s00000035__s00001374.lola
+A.s00000029__s00001148.lola
+A.s00000035__s00001370.lola
+A.s00000029__s00001135.lola
+===============================
+5 entries are not continuously sound
+===============================
+6 entries are terminating
+===============================
+Values for the linear constant a_n:
+A.s00000033__s00001232.lola has a_n = 9.0
+A.s00000029__s00001170.lola has a_n = 21.0
+A.s00000031__s00001361.lola has a_n = 12.0
+A.s00000035__s00001374.lola has a_n = 31.0
+A.s00000029__s00001148.lola has a_n = 25.0
+A.s00000035__s00001370.lola has a_n = 11.0
+A.s00000029__s00001135.lola has a_n = -1.0
+```
 
 ## Reproducing experimental results
 
 Navigate to the
-`artifact/benchmark/scripts` folder.
+`artifact/benchmark/scripts/benchmark` folder.
 Two scripts are relevant:
 * `benchmark_partial.sh` (~1 hour) reproduces the results of the paper on a subset of the benchmark instances, as explained
 in ["Partial Reproduction"](#partial-reproduction)
