@@ -150,8 +150,8 @@ namespace Petri
             // model.ModelSense = GRB.MINIMIZE;
             // // model.SetObjective(objective, GRB.MINIMIZE);
 
-            model.Write("gurobi" + netName + ".mps");
-            model.Write("../../../gurobi.lp");
+            // model.Write("gurobi" + netName + ".mps");
+            // model.Write("../../../gurobi.lp");
 
 
             model.Optimize();
@@ -163,7 +163,7 @@ namespace Petri
             }
             else
             {
-                model.Write("gurobi" + netName + ".sol");
+                // model.Write("gurobi" + netName + ".sol");
                 double[] transitionMults = model.Get(GRB.DoubleAttr.X, transitionVars);
                 Dictionary<Transition, double> result = new Dictionary<Transition, double>();
                 for (int i = 0; i < net.Transitions.Count; i++)
@@ -440,7 +440,7 @@ namespace Petri
             model.SetObjective(indicatorSum, GRB.MINIMIZE);
 
 
-            model.Write("../../../Gurobi.lp");
+            // model.Write("../../../Gurobi.lp");
             model.Optimize();
             if (model.Status == GRB.Status.INFEASIBLE)
             {
@@ -478,7 +478,7 @@ namespace Petri
             ImposeNotFinalMarkingConstraint(net, finalPlace, initialBudget, model, lastStepPlaceEffects);
 
 
-            model.Write("../../../Gurobi.lp");
+            // model.Write("../../../Gurobi.lp");
             model.Optimize();
             if (model.Status == GRB.Status.INFEASIBLE)
             // a witness means we found a deadlock that's not the correct final marking, so net is unsound
@@ -547,7 +547,7 @@ namespace Petri
 
             model.SetObjective(indicatorSum, GRB.MAXIMIZE);
 
-            model.Write("../../../Gurobi.lp");
+            // model.Write("../../../Gurobi.lp");
             model.Optimize();
             if (model.Status == GRB.Status.OPTIMAL || model.Status == GRB.Status.SUBOPTIMAL)
             {
@@ -588,7 +588,7 @@ namespace Petri
             Unroll_ImposeBlockConstraints(net, model, runLength, transitionVars, placeEffects);
             Unroll_ImposeFinalMarkingConstraint(net, finalPlace, initialBudget, model, runLength, placeEffects);
 
-            model.Write("../../../Gurobi.lp");
+            // model.Write("../../../Gurobi.lp");
             model.Optimize();
             if (model.Status == GRB.Status.INFEASIBLE)
             {
@@ -840,7 +840,7 @@ namespace Petri
 
             model.SetObjective(transitionCount, GRB.MAXIMIZE);
 
-            model.Write("../../../Gurobi.lp");
+            // model.Write("../../../Gurobi.lp");
             model.Optimize();
             if (model.Status == GRB.Status.UNBOUNDED || model.Status == GRB.Status.INF_OR_UNBD)
             // never infeasible unless no transition consumes only from initial => unbounded should be guaranteed
@@ -894,7 +894,7 @@ namespace Petri
             // model.ModelSense = GRB.MINIMIZE;
             // // model.SetObjective(objective, GRB.MINIMIZE);
 
-            model.Write("gurobi.lp");
+            // model.Write("gurobi.lp");
 
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
@@ -994,7 +994,7 @@ namespace Petri
                     new GRBLinExpr(transitionVars[curTransitionNum], 1.0),
                     GRB.MINIMIZE
                 );
-                model.Write("gurobi-transitionbottlenecks.lp");
+                // model.Write("gurobi-transitionbottlenecks.lp");
                 model.Optimize();
                 if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
                 {
@@ -1069,7 +1069,7 @@ namespace Petri
                             maxMult,
                             "is_any_transition_used_more_than_count_times_k?");
 
-            model.Write("gurobi_transitionmult" + count.ToString() + ".lp");
+            // model.Write("gurobi_transitionmult" + count.ToString() + ".lp");
 
             model.Optimize();
             if (model.Status != GRB.Status.OPTIMAL && model.Status != GRB.Status.SUBOPTIMAL)
