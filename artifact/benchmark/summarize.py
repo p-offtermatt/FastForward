@@ -5,17 +5,115 @@ import pandas
 import matplotlib.pyplot
 import tabulate
 
-spacer = ("=======================")
+spacer = "======================="
+
+bigspacer = "\n" + spacer + "\n" + spacer + "\n"
+
 
 def removeEntriesWithErrors(entries):
     result = [entry for entry in entries if "error" not in entry]
     print(f"Results without error: {len(result)}")
-    timeouts = [entry for entry in entries if "error" in entry and entry["error"] == "timeout"]
+    timeouts = [
+        entry for entry in entries if "error" in entry and entry["error"] == "timeout"]
     print(f"Timeouts: {len(timeouts)}")
+
+    nonWorkflowNets = [entry for entry in result if not entry["isWorkflowNet"]]
+    print(f"Non-Workflow nets: {len(nonWorkflowNets)}")
+
+    result = [entry for entry in result if entry["isWorkflowNet"]]
 
     return result
 
+def fig5MakeBottomPartialTable(buckets_with_entries):
+    table = [["B", "count with size(N) \in B", "Mean", "Median", "Max"]]
+    for bucket in buckets_with_entries:
+        range = bucket[0]
+        entries = bucket[1]
+        df = pandas.Series(entries)
+        table += [[f"[{range[0]}, {range[1]})", len(bucket), df.mean(), df.median(), df.max()]]
+    
+    table = zip(*table)
+    print(tabulate.tabulate(table, tablefmt="grid"))
 
+def iterate_over_range(function, entries):
+    result = []
+    for range in [(0,20), (20,60), (60, 150), (150, 405)]:
+        entries_in_range = [
+            entry for entry in entries if range[0] <= entry["places"] + entry["transitions"] < range[1]]
+
+        result += [(range, [function(entry) for entry in entries_in_range])]
+    return result
+
+def printFig5(smallBoundPropEntries):
+    fastTerminatingEntries = [
+        entry for entry in smallBoundPropEntries if entry["hasFastTermination"]]
+    
+    linFractions = [entry["smallBoundProperties"]["A_n"] /
+                    entry["transitions"] for entry in fastTerminatingEntries]
+
+    table = [["B", "Count with L \in B"]]
+
+    for range in [(-1, 0), (0, 0.75), (0.75, 1), (1, 1.0001), (1.0001, 1.75), (1.75, 1000)]:
+        entries_in_range = [
+            entry for entry in linFractions if range[0] <= entry < range[1]]
+        table += [[f"[{range[0]}, {range[1]})", len(entries_in_range)]]
+
+    print("Top:")
+    table = zip(*table)
+    print(tabulate.tabulate(table, tablefmt="grid"))
+
+    print(bigspacer)
+
+    print("Middle:")
+    timeouts = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]
+                ["maxTime"] == "timeout" or entry["smallBoundProperties"]["minTime"] == "timeout"]
+    print(
+        f"Filtering out {len(timeouts)} instances where MinTime(1) or MaxTime(1) timed out")
+
+    minusOnes = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]
+                 ["maxTime"] == -1 or entry["smallBoundProperties"]["minTime"] == -1]
+    print(
+        f"Filtering out {len(minusOnes)} instances where MinTime(1) or MaxTime(1) are infinity")
+    
+    fastTerminatingEntries = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]["maxTime"] not in {-1, "timeout"}
+                  and entry["smallBoundProperties"]["minTime"] not in {-1, "timeout"}]
+
+    table = [["", "Count with D \in B"]]
+
+    differences = []
+    for entry in fastTerminatingEntries:
+        maxTime = entry["smallBoundProperties"]["maxTime"]
+        normalizedMaxTime = maxTime / int(entry["transitions"]) 
+        minTime = entry["smallBoundProperties"]["minTime"]
+        normalizedMinTime = minTime / int(entry["transitions"])
+
+        differences.append([normalizedMaxTime-normalizedMinTime, entry])
+
+    for range in [(-1, 0), (0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5), (0.5, 1000)]:
+        entries_in_range = [
+            entry for entry in linFractions if range[0] <= entry < range[1]]
+        table.append([f"[{range[0]}, {range[1]})", len(entries_in_range)])
+
+    table = zip(*table)
+    print(tabulate.tabulate(table, tablefmt="grid"))
+
+    print(bigspacer)
+    print("Bottom:")
+
+    anBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingA_n"], fastTerminatingEntries)
+    minTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMinTime"], fastTerminatingEntries)
+    maxTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMaxTime"], fastTerminatingEntries)
+
+    print("Analysis time for computing a_N (in ms):")
+    fig5MakeBottomPartialTable(anBuckets)
+
+    print(bigspacer)
+    print("Analysis time for computing MinTime(1) (in ms):")
+    fig5MakeBottomPartialTable(minTimeBuckets)
+
+    print(bigspacer)
+    print("Analysis time for computing MaxTime(1) (in ms):")
+    fig5MakeBottomPartialTable(maxTimeBuckets)
 
 def printFig4(smallBoundPropEntries,
               continuousSoundnessEntries,
@@ -27,7 +125,7 @@ def printFig4(smallBoundPropEntries,
                                 for entry in smallBoundPropEntries])
 
     termination = pandas.Series([entry["timeForFastTerminationCheck"]
-                                for entry in transformedSmallBoundPropEntries])
+                                for entry in smallBoundPropEntries])
     continuousDeadlock = pandas.Series(
         [entry["timeForContinuousDeadlock"] for entry in continuousDeadlockEntries])
     integerDeadlock = pandas.Series(
@@ -48,8 +146,9 @@ def printFig4(smallBoundPropEntries,
              ]
 
     # transpose table
-    table=zip(*table)
+    table = zip(*table)
 
+    print("Top:")
 
     print(tabulate.tabulate(table,
                             headers=["",
@@ -60,6 +159,24 @@ def printFig4(smallBoundPropEntries,
                                      "Integer\nDeadlock",
                                      "Continuous\nSoundness"],
                             tablefmt="grid"))
+
+    print("Bottom:")
+    totalTerminating = [
+        entry for entry in integerDeadlockEntries if entry["hasFastTermination"]]
+    totalNonterminating = [
+        entry for entry in integerDeadlockEntries if not entry["hasFastTermination"]]
+
+    terminatingDeadlocks = [
+        entry for entry in totalTerminating if entry["hasIntegerDeadlock"] or entry["hasContinuousDeadlock"]]
+    nonterminatingDeadlocks = [
+        entry for entry in totalNonterminating if entry["hasIntegerDeadlock"] or entry["hasContinuousDeadlock"]]
+
+    table = [["", "Terminating", "Non-\nterminating"],
+             ["Total", len(totalTerminating), len(totalNonterminating)],
+             ["Deadlocking\n(Not generalised sound)", len(terminatingDeadlocks), len(nonterminatingDeadlocks)]]
+
+    table = zip(*table)
+    print(tabulate.tabulate(table, tablefmt="grid"))
 
 
 def print_statistics(transformedSmallBoundPropEntries,
@@ -75,30 +192,45 @@ def print_statistics(transformedSmallBoundPropEntries,
     print(spacer)
     print("Removing entries with errors (timeouts, memouts, ...)")
     print("Small Bound Properties on Unreduced Nets")
-    transformedSmallBoundPropEntries = removeEntriesWithErrors(transformedSmallBoundPropEntries)
-
-    print("Continuous Soundness on Unreduced Nets")
-    transformedContinuousSoundnessEntries = removeEntriesWithErrors(transformedContinuousSoundnessEntries)
-
-    print("Continuous Deadlocks on Unreduced Nets")
-    transformedContinuousDeadlockEntries = removeEntriesWithErrors(transformedContinuousDeadlockEntries)
-
-    print("Integer Deadlocks on Unreduced Nets")
-    transformedIntegerDeadlockEntries = removeEntriesWithErrors(transformedIntegerDeadlockEntries)
-    
-    print("Small Bound Properties on Reduced Nets")
-    reducedSmallBoundPropEntries = removeEntriesWithErrors(reducedSmallBoundPropEntries)
-
-    print("Continuous Soundness on Reduced Nets")
-    reducedContinuousSoundnessEntries = removeEntriesWithErrors(reducedContinuousSoundnessEntries)
-
-    print("Continuous Deadlocks on Reduced Nets")
-    reducedContinuousDeadlockEntries = removeEntriesWithErrors(reducedContinuousDeadlockEntries)
-
-    print("Integer Deadlocks on Reduced Nets")
-    reducedIntegerDeadlockEntries = removeEntriesWithErrors(reducedIntegerDeadlockEntries)
+    transformedSmallBoundPropEntries = removeEntriesWithErrors(
+        transformedSmallBoundPropEntries)
 
     print(spacer)
+    print("Continuous Soundness on Unreduced Nets")
+    transformedContinuousSoundnessEntries = removeEntriesWithErrors(
+        transformedContinuousSoundnessEntries)
+
+    print(spacer)
+    print("Continuous Deadlocks on Unreduced Nets")
+    transformedContinuousDeadlockEntries = removeEntriesWithErrors(
+        transformedContinuousDeadlockEntries)
+
+    print(spacer)
+    print("Integer Deadlocks on Unreduced Nets")
+    transformedIntegerDeadlockEntries = removeEntriesWithErrors(
+        transformedIntegerDeadlockEntries)
+
+    print(spacer)
+    print("Small Bound Properties on Reduced Nets")
+    reducedSmallBoundPropEntries = removeEntriesWithErrors(
+        reducedSmallBoundPropEntries)
+
+    print(spacer)
+    print("Continuous Soundness on Reduced Nets")
+    reducedContinuousSoundnessEntries = removeEntriesWithErrors(
+        reducedContinuousSoundnessEntries)
+
+    print(spacer)
+    print("Continuous Deadlocks on Reduced Nets")
+    reducedContinuousDeadlockEntries = removeEntriesWithErrors(
+        reducedContinuousDeadlockEntries)
+
+    print(spacer)
+    print("Integer Deadlocks on Reduced Nets")
+    reducedIntegerDeadlockEntries = removeEntriesWithErrors(
+        reducedIntegerDeadlockEntries)
+
+    print(bigspacer)
 
     print("Figure 4: Unreduced instances")
     printFig4(transformedSmallBoundPropEntries,
@@ -106,13 +238,17 @@ def print_statistics(transformedSmallBoundPropEntries,
               transformedContinuousDeadlockEntries,
               transformedIntegerDeadlockEntries)
 
-    print(spacer)
-    
+    print(bigspacer)
+
     print("Figure 4: Reduced instances")
     printFig4(reducedSmallBoundPropEntries,
               reducedContinuousSoundnessEntries,
               reducedContinuousDeadlockEntries,
               reducedIntegerDeadlockEntries)
+    
+    print(bigspacer)
+    
+    printFig5(transformedSmallBoundPropEntries)
 
 
 def find_matching_entry(entry, entries):
@@ -160,7 +296,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     transformedSmallBoundPropEntries = read_from_filepaths_into_list(
-        args.reducedSmallBoundPropResults)
+        args.transformedSmallBoundPropResults)
     transformedContinuousSoundnessEntries = read_from_filepaths_into_list(
         args.transformedContinuousSoundnessResults)
     transformedContinuousDeadlockEntries = read_from_filepaths_into_list(
