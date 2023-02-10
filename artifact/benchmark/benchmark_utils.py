@@ -25,8 +25,9 @@ def limit_virtual_memory():
     # the soft part so that the limit can be increased later (setting also
     # the hard limit would prevent that).
     # When the limit cannot be changed, setrlimit() raises ValueError.
-    resource.setrlimit(resource.RLIMIT_AS,
-                       (MAX_VIRTUAL_MEMORY, resource.RLIM_INFINITY))
+    # resource.setrlimit(resource.RLIMIT_AS,
+    #                    (MAX_VIRTUAL_MEMORY, resource.RLIM_INFINITY))
+    pass
 ####
 
 
