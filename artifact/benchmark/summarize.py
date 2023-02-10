@@ -1,4 +1,5 @@
 import argparse
+import os
 import plotting_utils as utils
 import numpy
 import pandas
@@ -266,7 +267,8 @@ def find_matching_entry(entry, entries):
 def read_from_filepaths_into_list(filepaths):
     result = []
     for filepath in filepaths:
-        result += utils.read_json_from_file(filepath)
+        if os.path.isfile(filepath):
+            result += utils.read_json_from_file(filepath)
     return result
 
 

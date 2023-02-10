@@ -19,3 +19,4 @@ sudo apt-get install -y python3-pip
 pip install psutil
 pip install tabulate
 pip install matplotlib
+pip install pandas
