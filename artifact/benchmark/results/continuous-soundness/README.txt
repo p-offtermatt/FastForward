@@ -1,0 +1,1 @@
+The results from the checks for continuous soundness will be stored here.

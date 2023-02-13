@@ -18,6 +18,11 @@ def removeEntriesWithErrors(entries):
         entry for entry in entries if "error" in entry and entry["error"] == "timeout"]
     print(f"Timeouts: {len(timeouts)}")
 
+    memouts = [
+        entry for entry in entries if "error" in entry and "out of memory" in entry["error"].lower()]
+    print(f"Memouts: {len(memouts)}")
+
+
     nonWorkflowNets = [entry for entry in result if not entry["isWorkflowNet"]]
     print(f"Non-Workflow nets: {len(nonWorkflowNets)}")
 
@@ -54,7 +59,7 @@ def printFig5(smallBoundPropEntries):
 
     table = [["B", "Count with L \in B"]]
 
-    for range in [(-1, 0), (0, 0.75), (0.75, 1), (1, 1.0001), (1.0001, 1.75), (1.75, 1000)]:
+    for range in [(0, 0.75), (0.75, 1), (1, 1.0001), (1.0001, 1.75), (1.75, 1000)]:
         entries_in_range = [
             entry for entry in linFractions if range[0] <= entry < range[1]]
         table += [[f"[{range[0]}, {range[1]})", len(entries_in_range)]]
@@ -88,11 +93,12 @@ def printFig5(smallBoundPropEntries):
         minTime = entry["smallBoundProperties"]["minTime"]
         normalizedMinTime = minTime / int(entry["transitions"])
 
+
         differences.append([normalizedMaxTime-normalizedMinTime, entry])
 
-    for range in [(-1, 0), (0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5), (0.5, 1000)]:
+    for range in [(0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5), (0.5, 1000)]:
         entries_in_range = [
-            entry for entry in linFractions if range[0] <= entry < range[1]]
+            entry for entry in linFractions if range[0] <= entry < range[0]]
         table.append([f"[{range[0]}, {range[1]})", len(entries_in_range)])
 
     table = zip(*table)

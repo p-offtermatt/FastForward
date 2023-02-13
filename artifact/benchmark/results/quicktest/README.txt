@@ -1,0 +1,1 @@
+The results from the functionality test will be stored here.
