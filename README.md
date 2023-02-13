@@ -130,14 +130,16 @@ Computing statistics for net B2.s00000307__s00004790.lola
 dotnet fastforward/fastforward.dll statistics nets/workflows/workflows_transformed/IBM/B2.s00000307__s00004790.lola nets/workflows/workflows_transformed/IBM/B2.s00000307__s00004790.formula --cont-sound
 ```
 
-If the script outputs `empty output` for every instance, something is very likely going wrong.
+The script should not output errors for every instance,
+but geeting errors very rarely is fine
+(e.g. some timeouts and memouts are expected).
 
 If this script takes too long to run for your time budget,
-you can skip running continuous soundness,
+you can skip running continuous soundness on instances,
 which takes a large fraction of the total time.
 This can be achieved by running the script `benchmark_short.sh`.
-This means the last column of the top table of Fig. 4 will
-not be populated.
+The last column of the top table of Fig. 4 will
+not be populated if it is done like this.
 
 ## Summarizing experimental results
 
