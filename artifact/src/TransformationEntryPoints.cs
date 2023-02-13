@@ -220,7 +220,9 @@ namespace PetriTool
                             // just wraps finalMarking in marking with constraints; constraints will be ignored for soundness later
                             PetriTool.WorkflowTranslation.Soundness => MarkingWithConstraints.AsReachability(finalMarking, net),
                             PetriTool.WorkflowTranslation.Coverability => MarkingWithConstraints.AsCoverability(finalMarking),
-                            PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net)
+                            PetriTool.WorkflowTranslation.Reachability => MarkingWithConstraints.AsReachability(finalMarking, net),
+                            _  =>
+                    throw new ArgumentException("Bad translation option " + nameof(options.translationMode))
                         };
 
                         resultTargetMarkings = new List<MarkingWithConstraints>() { finalMarkingWithConstraints };
@@ -286,7 +288,6 @@ namespace PetriTool
                         resultNet = net;
                         break;
                     }
-
             }
 
 
