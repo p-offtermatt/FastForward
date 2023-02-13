@@ -36,7 +36,7 @@ def fig5MakeBottomPartialTable(buckets_with_entries):
         range = bucket[0]
         entries = bucket[1]
         df = pandas.Series(entries)
-        table += [[f"[{range[0]}, {range[1]})", len(bucket), df.mean(), df.median(), df.max()]]
+        table += [[f"[{range[0]}, {range[1]})", len(entries), df.mean(), df.median(), df.max()]]
     
     table = zip(*table)
     print(tabulate.tabulate(table, tablefmt="grid"))
@@ -98,7 +98,7 @@ def printFig5(smallBoundPropEntries):
 
     for range in [(0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5), (0.5, 1000)]:
         entries_in_range = [
-            entry for entry in linFractions if range[0] <= entry < range[0]]
+            entry for entry in linFractions if range[0] <= entry < range[1]]
         table.append([f"[{range[0]}, {range[1]})", len(entries_in_range)])
 
     table = zip(*table)
