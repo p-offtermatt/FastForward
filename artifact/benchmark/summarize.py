@@ -71,15 +71,25 @@ def printFig5(smallBoundPropEntries):
     print(bigspacer)
 
     print("Middle:")
-    timeouts = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]
-                ["maxTime"] == "timeout" or entry["smallBoundProperties"]["minTime"] == "timeout"]
-    print(
-        f"Filtering out {len(timeouts)} instances where MinTime(1) or MaxTime(1) timed out")
+    both_timeouts = [entry for entry in fastTerminatingEntries if 
+                        entry["smallBoundProperties"]["maxTime"] == "timeout" and
+                        entry["smallBoundProperties"]["minTime"] == "timeout"]
+    mintime_timeouts = [entry for entry in fastTerminatingEntries if 
+                            entry["smallBoundProperties"]["maxTime"] != "timeout" and
+                            entry["smallBoundProperties"]["minTime"] == "timeout"]
+    maxtime_timeouts = [entry for entry in fastTerminatingEntries if 
+                            entry["smallBoundProperties"]["maxTime"] == "timeout" and
+                            entry["smallBoundProperties"]["minTime"] != "timeout"]
+    print(f"Filtering out instances with timeouts")
+    print(f"{len(both_timeouts)} instances where MinTime(1) and MaxTime(1) time out")
+    print(f"{len(mintime_timeouts)} instances where MinTime(1) timed out")
+    print(f"{len(maxtime_timeouts)} instances where MaxTime(1) timed out")
 
-    minusOnes = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]
-                 ["maxTime"] == -1 or entry["smallBoundProperties"]["minTime"] == -1]
+    minusOnes = [entry for entry in fastTerminatingEntries if 
+                    (entry["smallBoundProperties"]["minTime"] != "timeout" and
+                     entry["smallBoundProperties"]["minTime"] == -1)]
     print(
-        f"Filtering out {len(minusOnes)} instances where MinTime(1) or MaxTime(1) are infinity")
+        f"Filtering out {len(minusOnes)} instances where MinTime(1) is infinity")
     
     fastTerminatingEntries = [entry for entry in fastTerminatingEntries if entry["smallBoundProperties"]["maxTime"] not in {-1, "timeout"}
                   and entry["smallBoundProperties"]["minTime"] not in {-1, "timeout"}]
@@ -98,7 +108,7 @@ def printFig5(smallBoundPropEntries):
 
     for range in [(0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5), (0.5, 1000)]:
         entries_in_range = [
-            entry for entry in linFractions if range[0] <= entry < range[1]]
+            entry for entry in differences if range[0] <= entry[0] < range[1]]
         table.append([f"[{range[0]}, {range[1]})", len(entries_in_range)])
 
     table = zip(*table)
@@ -107,9 +117,21 @@ def printFig5(smallBoundPropEntries):
     print(bigspacer)
     print("Bottom:")
 
-    anBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingA_n"], fastTerminatingEntries)
-    minTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMinTime"], fastTerminatingEntries)
-    maxTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMaxTime"], fastTerminatingEntries)
+    entries_with_an = [entry for entry in smallBoundPropEntries if 
+                       entry["smallBoundProperties"]["timeForComputingA_n"] != "timeout"
+                       and entry["smallBoundProperties"].get("timeForComputingMinTime", "timeout") != "timeout"
+                       and entry["smallBoundProperties"].get("timeForComputingMaxTime", "timeout") != "timeout"]
+
+    entries_with_timeout = [entry for entry in smallBoundPropEntries if
+                            entry["smallBoundProperties"]["timeForComputingA_n"] == "timeout"
+                       or entry["smallBoundProperties"].get("timeForComputingMinTime", "") == "timeout"
+                       or entry["smallBoundProperties"].get("timeForComputingMaxTime", "") == "timeout"]
+
+    print(f"Filtering out {len(entries_with_timeout)} entries with timeouts")
+
+    anBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingA_n"], entries_with_an)
+    minTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMinTime"], entries_with_an)
+    maxTimeBuckets = iterate_over_range(lambda entry: entry["smallBoundProperties"]["timeForComputingMaxTime"], entries_with_an)
 
     print("Analysis time for computing a_N (in ms):")
     fig5MakeBottomPartialTable(anBuckets)
@@ -134,11 +156,11 @@ def printFig4(smallBoundPropEntries,
     termination = pandas.Series([entry["timeForFastTerminationCheck"]
                                 for entry in smallBoundPropEntries])
     continuousDeadlock = pandas.Series(
-        [entry["timeForContinuousDeadlock"] for entry in continuousDeadlockEntries])
+        [entry["timeForContinuousDeadlock"] for entry in continuousDeadlockEntries], dtype=float)
     integerDeadlock = pandas.Series(
-        [entry["timeForIntegerDeadlock"] for entry in integerDeadlockEntries])
+        [entry["timeForIntegerDeadlock"] for entry in integerDeadlockEntries], dtype=float)
     continuousSoundness = pandas.Series(
-        [entry["timeForContinuousSoundness"] for entry in continuousSoundnessEntries])
+        [entry["timeForContinuousSoundness"] for entry in continuousSoundnessEntries], dtype=float)
 
     def makeColumn(entries):
         return [entries.mean(), entries.median(), entries.max()]
